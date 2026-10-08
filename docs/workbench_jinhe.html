@@ -1,0 +1,801 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>津河省区经营数据工作台</title>
+<style>
+:root {
+  --ink:#17181C; --muted:#737780; --canvas:#F4F5F8; --paper:#FFFFFF;
+  --line:#E8E9EE; --blue:#1677FF; --cyan:#00A7A0;
+  --orange:#FF8A3D; --pink:#E96D8A; --purple:#8B6DFF;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Microsoft YaHei",sans-serif;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--canvas);color:var(--ink);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:none;color:inherit;cursor:pointer}
+.app{display:grid;grid-template-columns:220px minmax(0,1fr);min-height:100vh;max-width:1480px;margin:auto}
+.sidebar{position:sticky;top:0;height:100vh;padding:30px 18px;background:rgba(255,255,255,.58);border-right:1px solid rgba(0,0,0,.05);backdrop-filter:blur(30px) saturate(170%);-webkit-backdrop-filter:blur(30px) saturate(170%)}
+.brand{padding:0 12px 28px;font-size:13px;font-weight:700;letter-spacing:.02em} .brand span{display:block;color:var(--muted);font-size:11px;font-weight:500;margin-top:5px}
+.nav-label{margin:0 12px 8px;color:var(--muted);font-size:11px;font-weight:700;letter-spacing:.08em}
+.nav-item{display:flex;align-items:center;gap:11px;width:100%;margin:4px 0;padding:11px 12px;border-radius:13px;color:#4B4D55;font-size:13px;font-weight:600;text-align:left;transition:.2s}
+.nav-item:hover{background:rgba(255,255,255,.72)} .nav-item.active{background:rgba(22,119,255,.10);color:var(--blue)}
+.nav-icon{width:20px;text-align:center;font-size:16px} .sidebar-note{position:absolute;left:30px;right:26px;bottom:30px;color:var(--muted);font-size:11px;line-height:1.6}
+.content{min-width:0;padding:30px 34px 70px} .topbar{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:24px}
+.eyebrow{color:var(--muted);font-size:13px;font-weight:600} h1{margin:7px 0 0;font-size:34px;line-height:1.08;letter-spacing:-.03em} h2{margin:0;font-size:20px;letter-spacing:-.02em} h3{margin:0;font-size:15px}
+.top-actions{display:flex;align-items:center;gap:10px} .glass-pill,.status{padding:9px 13px;border:1px solid rgba(255,255,255,.9);border-radius:14px;background:rgba(255,255,255,.62);box-shadow:0 7px 22px rgba(32,44,70,.06);backdrop-filter:blur(20px);font-size:12px;font-weight:600}
+.status{color:#268A57} .status i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#34C759;margin-right:6px}
+.section{display:none;animation:fade .22s ease} .section.active{display:block} @keyframes fade{from{opacity:.2;transform:translateY(4px)}to{opacity:1;transform:none}}
+.section-head{display:flex;justify-content:space-between;align-items:flex-end;margin:30px 0 15px} .section-head p{margin:5px 0 0;color:var(--muted);font-size:12px}
+.glass-tabs{display:flex;gap:4px;padding:4px;margin-bottom:18px;border-radius:15px;background:rgba(118,118,128,.13);backdrop-filter:blur(20px) saturate(170%);width:max-content}
+.glass-tab{padding:8px 16px;border-radius:11px;font-size:12px;font-weight:600;color:#5D6069} .glass-tab.active{background:rgba(255,255,255,.9);box-shadow:0 5px 14px rgba(31,42,68,.12);color:var(--ink)}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px} .kpi,.panel{border:1px solid rgba(0,0,0,.045);border-radius:19px;background:rgba(255,255,255,.86);box-shadow:0 12px 32px rgba(32,44,70,.055)}
+.kpi{min-height:142px;padding:18px;position:relative;overflow:hidden} .kpi-label{color:var(--muted);font-size:12px;font-weight:700} .kpi-value{display:block;margin-top:14px;font-size:30px;letter-spacing:-.04em} .kpi-foot{display:flex;gap:8px;margin-top:11px;color:var(--muted);font-size:11px} .kpi-foot .positive{color:#1B9B65} .kpi-foot .negative{color:#D95562}
+.kpi::after{content:"";position:absolute;right:-25px;bottom:-42px;width:120px;height:120px;border-radius:50%;background:rgba(22,119,255,.08)} .kpi:nth-child(2)::after{background:rgba(255,138,61,.10)} .kpi:nth-child(3)::after{background:rgba(0,167,160,.10)} .kpi:nth-child(4)::after{background:rgba(139,109,255,.10)}
+.grid-2{display:grid;grid-template-columns:1fr;gap:16px;margin-top:16px} .grid-2.equal{grid-template-columns:1fr}
+.panel{padding:20px;min-width:0} .panel-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px} .panel-head p{margin:4px 0 0;color:var(--muted);font-size:11px} .legend{display:flex;gap:12px;color:var(--muted);font-size:11px;white-space:nowrap} .legend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}
+.chart-svg{display:block;width:100%;height:auto;overflow:visible} .axis-label{fill:#9A9DA6;font-size:10px} .point-label{font-size:11px;font-weight:700}
+.insights{display:grid;gap:10px} .insight{padding:13px 14px;border-radius:14px;background:#F7F8FA} .insight b{font-size:13px} .insight p{margin:6px 0 0;color:var(--muted);font-size:12px;line-height:1.6} .tag{display:inline-block;margin-top:8px;padding:4px 7px;border-radius:7px;font-size:10px;font-weight:700} .tag.good{color:#23875B;background:#E8F7EF} .tag.warn{color:#C65A61;background:#FFF0F1}
+.sort-trigger{display:inline-flex;align-items:center;gap:4px;border:0;background:transparent;padding:0;color:inherit;font:inherit;font-weight:700;cursor:pointer} .sort-indicator{width:10px;color:#A7ABB5;font-size:12px;line-height:1;opacity:.65} .sort-trigger.active .sort-indicator{color:var(--blue);opacity:1} .sort-trigger:hover{color:var(--blue)} .sort-trigger:hover .sort-indicator{opacity:1}
+.table-scroll{overflow-x:auto} table{width:100%;border-collapse:collapse;min-width:820px} th{padding:11px 10px;text-align:left;color:#858994;font-size:11px;font-weight:700;border-bottom:1px solid var(--line);white-space:nowrap} td{padding:13px 10px;border-bottom:1px solid #F0F1F4;font-size:12px;vertical-align:middle} td small{display:block;margin-top:4px;color:#9A9DA6;font-size:10px;font-weight:500} td.num{font-variant-numeric:tabular-nums;white-space:nowrap} td.rank{width:38px;color:#9A9DA6;font-size:11px;font-weight:800} td strong{font-weight:700} .positive{color:#189963!important} .negative{color:#D85863!important} .provider{display:inline-block;padding:5px 8px;border-radius:8px;background:#F1F5FF;color:#4B6DB8;font-size:11px;white-space:nowrap} .channel-stack{display:flex;flex-wrap:wrap;gap:5px;min-width:175px} .channel-chip{display:inline-flex;padding:4px 7px;border-radius:7px;background:#F4F5F7;color:#646872;font-size:10px;white-space:nowrap} .channel-chip.positive{background:#EAF8F2} .channel-chip.negative{background:#FFF0F1} .empty,.empty-state{color:#9A9DA6;font-size:12px} .empty-state{padding:28px;text-align:center;background:#F8F9FB;border-radius:12px}
+.bar-wrap{height:12px;display:flex;overflow:hidden;border-radius:8px;background:#EEF0F5;margin:12px 0} .segment-bar{display:block;height:100%} .segment-bar.calendar{background:var(--cyan)} .segment-bar.voucher{background:var(--orange)} .structure-legend{display:flex;gap:16px;color:var(--muted);font-size:11px} .structure-legend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}
+.callout{margin-top:16px;padding:15px 17px;border-radius:14px;background:linear-gradient(100deg,#F5F8FF,#F9FBFF);color:#525661;font-size:12px;line-height:1.7} .callout strong{color:var(--ink)}
+.mobile-nav{display:none}
+@media(max-width:1050px){.app{grid-template-columns:80px minmax(0,1fr)}.sidebar{padding:22px 10px}.brand,.nav-label,.nav-item span:not(.nav-icon),.sidebar-note{display:none}.nav-item{justify-content:center;padding:13px 8px}.content{padding:24px}.kpis{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.app{display:block}.sidebar{display:none}.content{padding:20px 15px 92px}.topbar{align-items:flex-start;display:block}.top-actions{margin-top:15px;justify-content:space-between}h1{font-size:30px}.kpis{grid-template-columns:1fr 1fr;gap:10px}.kpi{min-height:120px;padding:14px}.kpi-value{font-size:23px;margin-top:11px}.grid-2,.grid-2.equal{grid-template-columns:1fr}.panel{padding:15px;border-radius:16px}.mobile-nav{position:fixed;display:flex;z-index:20;left:14px;right:14px;bottom:15px;justify-content:space-around;padding:9px 7px;border:1px solid rgba(255,255,255,.85);border-radius:20px;background:rgba(255,255,255,.72);box-shadow:0 12px 30px rgba(32,44,70,.15);backdrop-filter:blur(25px) saturate(170%)}.mobile-nav button{padding:6px 12px;border-radius:12px;color:var(--muted);font-size:10px;font-weight:700}.mobile-nav button.active{background:#fff;color:var(--blue);box-shadow:0 4px 10px rgba(31,42,68,.1)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">经营数据工作台<span>津河省区 · 10-01–10-07</span></div>
+    <p class="nav-label">板块</p>
+    <button class="nav-item active" data-target="overview"><span class="nav-icon">⌂</span><span>经营总览</span></button>
+    <button class="nav-item" data-target="stores"><span class="nav-icon">↗</span><span>门店排名</span></button>
+    <button class="nav-item" data-target="attribution"><span class="nav-icon">◌</span><span>增长归因</span></button>
+    <button class="nav-item" data-target="providers"><span class="nav-icon">◎</span><span>服务商</span></button>
+    <button class="nav-item" data-target="voucher"><span class="nav-icon">◇</span><span>通兑商品</span></button>
+    <div class="sidebar-note">数据来源：抖音生活服务生意经<br>生成时间：2026-10-08 14:29<br>校验：门店名单与经营渠道口径已校验</div>
+  </aside>
+  <main class="content">
+    <header class="topbar">
+      <div><div class="eyebrow">国庆经营数据 · 数据截至 2026-10-07</div><h1>津河省区</h1></div>
+      <div class="top-actions"><span class="status"><i></i>数据已校验</span><span class="glass-pill">10-01–10-07 对比 09-24–09-30</span></div>
+    </header>
+
+    <section class="section active" id="overview">
+      <div class="glass-tabs">
+        <button class="glass-tab active">总体</button><button class="glass-tab" data-target="stores">门店</button><button class="glass-tab" data-target="providers">服务商</button><button class="glass-tab" data-target="voucher">通兑商品</button>
+      </div>
+      <div class="kpis">
+        <article class="kpi"><span class="kpi-label">支付 GMV</span><b class="kpi-value">100.04万</b><div class="kpi-foot"><span class="positive">+25.8%</span><span>较上期 79.53万</span></div></article>
+        <article class="kpi"><span class="kpi-label">核销 GMV</span><b class="kpi-value">58.34万</b><div class="kpi-foot"><span class="positive">+145.2%</span><span>较上期 23.79万</span></div></article>
+        <article class="kpi"><span class="kpi-label">支付间夜</span><b class="kpi-value">3,815</b><div class="kpi-foot"><span>+17.1%</span><span>间夜</span></div></article>
+        <article class="kpi"><span class="kpi-label">动销门店</span><b class="kpi-value">242<small style="font-size:14px">家</small></b><div class="kpi-foot"><span>-7家</span><span>较上期</span></div></article>
+      </div>
+      <div class="grid-2">
+        <article class="panel"><div class="panel-head"><div><h2>支付与核销日趋势</h2><p>10.1–10.7 · 单位：万元</p></div><div class="legend"><span><i style="background:var(--blue)"></i>支付</span><span><i style="background:var(--orange)"></i>核销</span></div></div>
+      <svg class="chart-svg" viewBox="0 0 760 270" role="img"
+           aria-label="支付与核销日趋势，单位万元">
+        <line x1="54" y1="24.0" x2="736" y2="24.0" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="91.3" x2="736" y2="91.3" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="158.6" x2="736" y2="158.6" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="228.0" x2="736" y2="228.0" stroke="#ECEEF3" stroke-width="1"/><text x="44" y="28.0" text-anchor="end" class="axis-label">24.8</text><text x="44" y="130.0" text-anchor="end" class="axis-label">12.4</text><text x="44" y="232.0" text-anchor="end" class="axis-label">0.0</text>
+        <path d="M54.0 24.0 L167.7 30.5 L281.3 72.6 L395.0 102.4 L508.7 153.5 L622.3 191.0 L736.0 197.4" fill="none" stroke="#1677FF"
+              stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M54.0 200.5 L167.7 161.2 L281.3 133.9 L395.0 132.9 L508.7 139.5 L622.3 153.0 L736.0 194.2" fill="none" stroke="#FF8A3D"
+              stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="736.0" cy="197.4" r="5" fill="#1677FF"/>
+        <circle cx="736.0" cy="194.2" r="5" fill="#FF8A3D"/>
+        <text x="728.0" y="185.4"
+              text-anchor="end" class="point-label" fill="#1677FF">3.7万</text>
+        <text x="728.0" y="218.2"
+              text-anchor="end" class="point-label" fill="#FF8A3D">4.1万</text>
+        <text x="54.0" y="258" text-anchor="middle" class="axis-label">10-01</text><text x="167.7" y="258" text-anchor="middle" class="axis-label">10-02</text><text x="281.3" y="258" text-anchor="middle" class="axis-label">10-03</text><text x="395.0" y="258" text-anchor="middle" class="axis-label">10-04</text><text x="508.7" y="258" text-anchor="middle" class="axis-label">10-05</text><text x="622.3" y="258" text-anchor="middle" class="axis-label">10-06</text><text x="736.0" y="258" text-anchor="middle" class="axis-label">10-07</text>
+      </svg>
+    </article>
+        <aside class="panel"><div class="panel-head"><div><h2>本期重点判断</h2><p>从数据变化直接定位动作</p></div></div><div class="insights">
+          <div class="insight"><b>支付增长主要来自 搜索结果卡</b><p>渠道增量 +9.77万，可在增长归因中查看对应服务商。</p><span class="tag good">增长来源</span></div>
+          <div class="insight"><b>凯里亚德酒店(天津空港滨海国际机场店) 需要跟进</b><p>北京昱海黑科技有限公司 · 下降 2.99万，优先检查渠道投放变化。</p><span class="tag warn">重点风险</span></div>
+        </div></aside>
+      </div>
+      <div class="callout"><strong>数据口径：</strong>经营渠道保留交易明细中的全部“交易体裁（二级）”；达人直播、官号直播、达人视频和官号视频分别归并为达播、自播、短视频，其余渠道原样保留。支付与核销增减分别闭合到省区总额。</div>
+    </section>
+
+    <section class="section" id="stores">
+      <div class="section-head"><div><h2>门店排名</h2><p>按国庆 7 天支付 GMV 排名，服务商和经营渠道归因一并展示</p></div></div>
+      <div class="glass-tabs"><button class="glass-tab active" data-local="payment">支付 GMV Top10</button><button class="glass-tab" data-local="growth">增长 Top10</button><button class="glass-tab" data-local="decline">下降 Top10</button></div>
+      <article class="panel local-panel" data-panel="payment">
+      <div class="table-scroll">
+        <table>
+          <thead><tr>
+            <th>#</th><th>门店 / 城市</th><th>服务商</th><th>本期支付</th>
+            <th>本期核销</th><th>上期支付</th><th>支付增减</th><th>经营渠道（Top 3）</th>
+          </tr></thead>
+          <tbody>
+            <tr>
+              <td class="rank">01</td>
+              <td><strong>喆啡酒店(天津西站天津之眼店)</strong><small>天津市</small></td>
+              <td><span class="provider">北京昱海黑科技有限公司</span></td>
+              <td class="num">9.96万</td>
+              <td class="num">0</td>
+              <td class="num">3.34万</td>
+              <td class="num positive">+6.62万<small>+198.2%</small></td>
+              <td class="channel-stack"><span class="channel-chip positive">达播 +4.60万</span><span class="channel-chip positive">短视频 +895</span></td>
+            </tr>
+            
+            <tr>
+              <td class="rank">02</td>
+              <td><strong>维也纳国际酒店(天津站滨江道步行街店)</strong><small>天津市</small></td>
+              <td><span class="provider">北京昱海黑科技有限公司</span></td>
+              <td class="num">7.32万</td>
+              <td class="num">0</td>
+              <td class="num">4.44万</td>
+              <td class="num positive">+2.88万<small>+65.0%</small></td>
+              <td class="channel-stack"><span class="channel-chip positive">达播 +1.17万</span><span class="channel-chip positive">短视频 +2,326</span></td>
+            </tr>
+            
+            <tr>
+              <td class="rank">03</td>
+              <td><strong>维也纳国际酒店(天津滨海新区塘沽地铁站店)</strong><small>天津市</small></td>
+              <td><span class="provider">天津壹欧喜佑文化传媒有限责任公司</span></td>
+              <td class="num">6.06万</td>
+              <td class="num">0</td>
+              <td class="num">5.72万</td>
+              <td class="num positive">+3,326<small>+5.8%</small></td>
+              <td class="channel-stack"><span class="channel-chip positive">达播 +4,027</span><span class="channel-chip negative">短视频 -1,415</span></td>
+            </tr>
+            
+            <tr>
+              <td class="rank">04</td>
+              <td><strong>凯里亚德酒店(天津空港滨海国际机场店)</strong><small>天津市</small></td>
+              <td><span class="provider">北京昱海黑科技有限公司</span></td>
+              <td class="num">5.28万</td>
+              <td class="num">0</td>
+              <td class="num">8.27万</td>
+              <td class="num negative">-2.99万<small>-36.2%</small></td>
+              <td class="channel-stack"><span class="channel-chip negative">达播 -2.47万</span><span class="channel-chip negative">自播 -3,031</span><span class="channel-chip positive">短视频 +2,731</span></td>
+            </tr>
+            
+            <tr>
+              <td class="rank">05</td>
+              <td><strong>丽柏酒店Park Inn(天津空港滨海国际机场店)</strong><small>天津市</small></td>
+              <td><span class="provider">北京昱海黑科技有限公司</span></td>
+              <td class="num">4.56万</td>
+              <td class="num">0</td>
+              <td class="num">4.30万</td>
+              <td class="num positive">+2,613<small>+6.1%</small></td>
+              <td class="channel-stack"><span class="channel-chip negative">达播 -3,876</span></td>
+            </tr>
+            
+            <tr>
+              <td class="rank">06</td>
+              <td><strong>喆啡锐品酒店(天津滨海塘沽火车站极地海洋馆店)</strong><small>天津市</small></td>
+              <td><span class="provider">北京昱海黑科技有限公司</span></td>
+              <td class="num">4.28万</td>
+              <td class="num">0</td>
+              <td class="num">2.74万</td>
+              <td class="num positive">+1.54万<small>+56.1%</small></td>
+              <td class="channel-stack"><span class="channel-chip positive">达播 +2,304</span><span class="channel-chip negative">短视频 -475</span></td>
+            </tr>
+            
+            <tr>
+              <td class="rank">07</td>
+              <td><strong>LAVANDE麗枫酒店(天津滨海国际机场空港商务园店)</strong><small>天津市</small></td>
+              <td><span class="provider">北京昱海黑科技有限公司</span></td>
+              <td class="num">3.54万</td>
+              <td class="num">0</td>
+              <td class="num">658</td>
+              <td class="num positive">+3.47万<small>+5271.7%</small></td>
+              <td class="channel-stack"><span class="channel-chip positive">达播 +2.64万</span><span class="channel-chip positive">短视频 +574</span></td>
+            </tr>
+            
+            <tr>
+              <td class="rank">08</td>
+              <td><strong>维也纳国际酒店生态城(北塘古镇店)</strong><small>天津市</small></td>
+              <td><span class="provider">北京昱海黑科技有限公司</span></td>
+              <td class="num">2.85万</td>
+              <td class="num">0</td>
+              <td class="num">1.14万</td>
+              <td class="num positive">+1.71万<small>+149.6%</small></td>
+              <td class="channel-stack"><span class="channel-chip positive">短视频 +2,352</span><span class="channel-chip negative">达播 -579</span></td>
+            </tr>
+            
+            <tr>
+              <td class="rank">09</td>
+              <td><strong>维也纳酒店(河头老街店)</strong><small>唐山市</small></td>
+              <td><span class="provider">北京昱海黑科技有限公司</span></td>
+              <td class="num">2.44万</td>
+              <td class="num">0</td>
+              <td class="num">1.59万</td>
+              <td class="num positive">+8,473<small>+53.2%</small></td>
+              <td class="channel-stack"><span class="channel-chip positive">自播 +2,555</span><span class="channel-chip positive">达播 +1,876</span><span class="channel-chip negative">短视频 -649</span></td>
+            </tr>
+            
+            <tr>
+              <td class="rank">10</td>
+              <td><strong>麗枫酒店(唐山世博广场万达店)</strong><small>唐山市</small></td>
+              <td><span class="provider">北京昱海黑科技有限公司</span></td>
+              <td class="num">2.41万</td>
+              <td class="num">0</td>
+              <td class="num">3.07万</td>
+              <td class="num negative">-6,502<small>-21.2%</small></td>
+              <td class="channel-stack"><span class="channel-chip negative">达播 -1.84万</span><span class="channel-chip positive">短视频 +3,185</span></td>
+            </tr>
+            </tbody>
+        </table>
+      </div>
+    </article>
+      <article class="panel local-panel" data-panel="growth" style="display:none">
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>#</th><th>门店 / 服务商</th><th>本期支付</th><th>上期支付</th><th>增减额</th><th>经营渠道拆解</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="rank">01</td>
+              <td><strong>喆啡酒店(天津西站天津之眼店)</strong><small>天津市 · 北京昱海黑科技有限公司</small></td>
+              <td class="num">9.96万</td>
+              <td class="num">3.34万</td>
+              <td class="num positive">+6.62万</td>
+              <td class="channel-stack"><span class="channel-chip positive">达播 +4.60万</span><span class="channel-chip positive">短视频 +895</span></td>
+            </tr>
+            
+            <tr>
+              <td class="rank">02</td>
+              <td><strong>LAVANDE麗枫酒店(天津滨海国际机场空港商务园店)</strong><small>天津市 · 北京昱海黑科技有限公司</small></td>
+              <td class="num">3.54万</td>
+              <td class="num">658</td>
+              <td class="num positive">+3.47万</td>
+              <td class="channel-stack"><span class="channel-chip positive">达播 +2.64万</span><span class="channel-chip positive">短视频 +574</span></td>
+            </tr>
+            
+            <tr>
+              <td class="rank">03</td>
+              <td><strong>维也纳国际酒店(天津站滨江道步行街店)</strong><small>天津市 · 北京昱海黑科技有限公司</small></td>
+              <td class="num">7.32万</td>
+              <td class="num">4.44万</td>
+              <td class="num positive">+2.88万</td>
+              <td class="channel-stack"><span class="channel-chip positive">达播 +1.17万</span><span class="channel-chip positive">短视频 +2,326</span></td>
+            </tr>
+            
+            <tr>
+              <td class="rank">04</td>
+              <td><strong>维也纳国际酒店生态城(北塘古镇店)</strong><small>天津市 · 北京昱海黑科技有限公司</small></td>
+              <td class="num">2.85万</td>
+              <td class="num">1.14万</td>
+              <td class="num positive">+1.71万</td>
+              <td class="channel-stack"><span class="channel-chip positive">短视频 +2,352</span><span class="channel-chip negative">达播 -579</span></td>
+            </tr>
+            
+            <tr>
+              <td class="rank">05</td>
+              <td><strong>喆啡锐品酒店(天津滨海塘沽火车站极地海洋馆店)</strong><small>天津市 · 北京昱海黑科技有限公司</small></td>
+              <td class="num">4.28万</td>
+              <td class="num">2.74万</td>
+              <td class="num positive">+1.54万</td>
+              <td class="channel-stack"><span class="channel-chip positive">达播 +2,304</span><span class="channel-chip negative">短视频 -475</span></td>
+            </tr>
+            
+            <tr>
+              <td class="rank">06</td>
+              <td><strong>凯里亚德酒店(天津于家堡金融中心店)</strong><small>天津市 · 北京昱海黑科技有限公司</small></td>
+              <td class="num">1.99万</td>
+              <td class="num">5,754</td>
+              <td class="num positive">+1.41万</td>
+              <td class="channel-stack"><span class="channel-chip positive">短视频 +1,972</span></td>
+            </tr>
+            
+            <tr>
+              <td class="rank">07</td>
+              <td><strong>7天优品酒店(天津北辰柴楼地铁站店)</strong><small>天津市 · 北京昱海黑科技有限公司</small></td>
+              <td class="num">1.70万</td>
+              <td class="num">3,680</td>
+              <td class="num positive">+1.33万</td>
+              <td class="channel-stack"><span class="channel-chip positive">达播 +2,648</span></td>
+            </tr>
+            
+            <tr>
+              <td class="rank">08</td>
+              <td><strong>维也纳酒店(河头老街店)</strong><small>唐山市 · 北京昱海黑科技有限公司</small></td>
+              <td class="num">2.44万</td>
+              <td class="num">1.59万</td>
+              <td class="num positive">+8,473</td>
+              <td class="channel-stack"><span class="channel-chip positive">自播 +2,555</span><span class="channel-chip positive">达播 +1,876</span><span class="channel-chip negative">短视频 -649</span></td>
+            </tr>
+            
+            <tr>
+              <td class="rank">09</td>
+              <td><strong>锦江之星(秦皇岛山海关火车站老龙头路浴场酒店)</strong><small>秦皇岛市 · 天津壹欧喜佑文化传媒有限责任公司</small></td>
+              <td class="num">9,393</td>
+              <td class="num">1,532</td>
+              <td class="num positive">+7,861</td>
+              <td class="channel-stack"><span class="channel-chip positive">短视频 +756</span></td>
+            </tr>
+            
+            <tr>
+              <td class="rank">10</td>
+              <td><strong>喆啡酒店(天津站津湾广场店)</strong><small>天津市 · 北京昱海黑科技有限公司</small></td>
+              <td class="num">2.06万</td>
+              <td class="num">1.29万</td>
+              <td class="num positive">+7,653</td>
+              <td class="channel-stack"><span class="channel-chip positive">短视频 +4,027</span><span class="channel-chip negative">达播 -1,546</span></td>
+            </tr>
+            </tbody>
+        </table>
+      </div>
+    </article>
+      <article class="panel local-panel" data-panel="decline" style="display:none">
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>#</th><th>门店 / 服务商</th><th>本期支付</th><th>上期支付</th><th>增减额</th><th>经营渠道拆解</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="rank">01</td>
+              <td><strong>凯里亚德酒店(天津空港滨海国际机场店)</strong><small>天津市 · 北京昱海黑科技有限公司</small></td>
+              <td class="num">5.28万</td>
+              <td class="num">8.27万</td>
+              <td class="num negative">-2.99万</td>
+              <td class="channel-stack"><span class="channel-chip negative">达播 -2.47万</span><span class="channel-chip negative">自播 -3,031</span><span class="channel-chip positive">短视频 +2,731</span></td>
+            </tr>
+            
+            <tr>
+              <td class="rank">02</td>
+              <td><strong>麗枫酒店(唐山世博广场万达店)</strong><small>唐山市 · 北京昱海黑科技有限公司</small></td>
+              <td class="num">2.41万</td>
+              <td class="num">3.07万</td>
+              <td class="num negative">-6,502</td>
+              <td class="channel-stack"><span class="channel-chip negative">达播 -1.84万</span><span class="channel-chip positive">短视频 +3,185</span></td>
+            </tr>
+            
+            <tr>
+              <td class="rank">03</td>
+              <td><strong>锦江之星品尚酒店(天津五大道小白楼地铁站店)</strong><small>天津市 · 未绑定服务商</small></td>
+              <td class="num">5,103</td>
+              <td class="num">1.06万</td>
+              <td class="num negative">-5,452</td>
+              <td class="channel-stack"><span class="channel-chip negative">达播 -149</span></td>
+            </tr>
+            
+            <tr>
+              <td class="rank">04</td>
+              <td><strong>麗枫酒店(天津东丽万科民和巷店)</strong><small>天津市 · 北京昱海黑科技有限公司</small></td>
+              <td class="num">4,541</td>
+              <td class="num">9,250</td>
+              <td class="num negative">-4,709</td>
+              <td class="channel-stack"><span class="channel-chip negative">达播 -4,174</span></td>
+            </tr>
+            
+            <tr>
+              <td class="rank">05</td>
+              <td><strong>喆啡酒店(天津五大道小白楼地铁站店)</strong><small>天津市 · 天津壹欧喜佑文化传媒有限责任公司</small></td>
+              <td class="num">1.30万</td>
+              <td class="num">1.77万</td>
+              <td class="num negative">-4,679</td>
+              <td class="channel-stack"><span class="channel-chip negative">达播 -1,764</span><span class="channel-chip positive">短视频 +1,116</span></td>
+            </tr>
+            
+            <tr>
+              <td class="rank">06</td>
+              <td><strong>麗枫酒店(天津奥体中心天塔湖景区店)</strong><small>天津市 · 北京昱海黑科技有限公司</small></td>
+              <td class="num">5,351</td>
+              <td class="num">9,005</td>
+              <td class="num negative">-3,654</td>
+              <td class="channel-stack"><span class="channel-chip negative">短视频 -1,225</span><span class="channel-chip negative">达播 -617</span></td>
+            </tr>
+            
+            <tr>
+              <td class="rank">07</td>
+              <td><strong>希岸Deluxe酒店(天津武清友谊百货店)</strong><small>天津市 · 未绑定服务商</small></td>
+              <td class="num">646</td>
+              <td class="num">4,070</td>
+              <td class="num negative">-3,424</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+            
+            <tr>
+              <td class="rank">08</td>
+              <td><strong>喆啡酒店(天津五大道友谊路文化中心地铁站店)</strong><small>天津市 · 未绑定服务商</small></td>
+              <td class="num">1,905</td>
+              <td class="num">5,207</td>
+              <td class="num negative">-3,302</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+            
+            <tr>
+              <td class="rank">09</td>
+              <td><strong>麗枫酒店(天津小白楼地铁站店)</strong><small>天津市 · 未绑定服务商</small></td>
+              <td class="num">0</td>
+              <td class="num">3,151</td>
+              <td class="num negative">-3,151</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+            
+            <tr>
+              <td class="rank">10</td>
+              <td><strong>希岸酒店(天津中北大道店)</strong><small>天津市 · 未绑定服务商</small></td>
+              <td class="num">675</td>
+              <td class="num">3,538</td>
+              <td class="num negative">-2,863</td>
+              <td class="channel-stack"><span class="channel-chip negative">短视频 -318</span></td>
+            </tr>
+            </tbody>
+        </table>
+      </div>
+    </article>
+    </section>
+
+    <section class="section" id="attribution">
+      <div class="section-head"><div><h2>增长归因</h2><p>保留全部交易体裁，分别查看支付与核销增减及绑定服务商贡献</p></div></div>
+      <div class="grid-2 equal"><article class="panel"><div class="panel-head"><div><h2>经营渠道变化</h2><p>本期对比上期 · 支付和核销 · 服务商明细 · 单位：元</p></div></div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr>
+            <th><button class="sort-trigger" type="button" data-sort-key="channel" onclick="sortChannelTable('channel')" title="按渠道名称排序">经营渠道 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger" type="button" data-sort-key="payment-current" onclick="sortChannelTable('payment-current')" title="按本期支付额排序">本期支付 <span class="sort-indicator"></span></button></th>
+            <th>上期支付</th>
+            <th><button class="sort-trigger" type="button" data-sort-key="payment-delta" onclick="sortChannelTable('payment-delta')" title="按支付增减排序">支付增减 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger" type="button" data-sort-key="payment-growth" onclick="sortChannelTable('payment-growth')" title="按支付增长率排序">支付增长率 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger" type="button" data-sort-key="redeem-current" onclick="sortChannelTable('redeem-current')" title="按本期核销额排序">本期核销 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger" type="button" data-sort-key="redeem-previous" onclick="sortChannelTable('redeem-previous')" title="按上期核销额排序">上期核销 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger" type="button" data-sort-key="redeem-delta" onclick="sortChannelTable('redeem-delta')" title="按核销增减排序">核销增减 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger" type="button" data-sort-key="redeem-growth" onclick="sortChannelTable('redeem-growth')" title="按核销增长率排序">核销增长率 <span class="sort-indicator"></span></button></th>
+            <th>绑定服务商及增减</th>
+          </tr></thead>
+          <tbody id="channel-attribution-body">
+            <tr data-channel="达播"
+                data-payment-current="250652.90000000002"
+                data-payment-delta="40286.74999999994"
+                data-payment-growth="0.19150775920935903"
+                data-redeem-current="125228.15000000002"
+                data-redeem-previous="11636.4"
+                data-redeem-delta="113591.75000000003"
+                data-redeem-growth="9.761760510123409">
+              <td><strong>达播</strong></td>
+              <td class="num">25.07万</td>
+              <td class="num">21.04万</td>
+              <td class="num positive">+4.03万</td>
+              <td class="num">+19.2%</td>
+              <td class="num">12.52万</td>
+              <td class="num">1.16万</td>
+              <td class="num positive">+11.36万</td>
+              <td class="num">+976.2%</td>
+              <td class="channel-stack"><span class="channel-chip positive">北京昱海黑科技有限公司 支付 +3.82万 · 核销 +7.90万</span><span class="channel-chip positive">天津壹欧喜佑文化传媒有限责任公司 支付 +2,263 · 核销 +3.35万</span><span class="channel-chip negative">未绑定服务商 支付 -106 · 核销 +1,150</span><span class="channel-chip negative">广西世爵新媒体有限公司 支付 -50 · 核销 -10</span></td>
+            </tr>
+            
+            <tr data-channel="自播"
+                data-payment-current="10545.7"
+                data-payment-delta="-3572.7999999999993"
+                data-payment-growth="-0.25305804440981683"
+                data-redeem-current="11576.3"
+                data-redeem-previous="2108.0"
+                data-redeem-delta="9468.3"
+                data-redeem-growth="4.491603415559772">
+              <td><strong>自播</strong></td>
+              <td class="num">1.05万</td>
+              <td class="num">1.41万</td>
+              <td class="num negative">-3,573</td>
+              <td class="num">-25.3%</td>
+              <td class="num">1.16万</td>
+              <td class="num">2,108</td>
+              <td class="num positive">+9,468</td>
+              <td class="num">+449.2%</td>
+              <td class="channel-stack"><span class="channel-chip negative">北京昱海黑科技有限公司 支付 -675 · 核销 +9,453</span><span class="channel-chip negative">广西世爵新媒体有限公司 支付 -1,891 · 核销 -298</span><span class="channel-chip negative">未绑定服务商 支付 -1,405 · 核销 -745</span><span class="channel-chip positive">天津壹欧喜佑文化传媒有限责任公司 支付 0 · 核销 +1,058</span><span class="channel-chip positive">北京满房酒店管理有限公司 支付 +398 · 核销 0</span></td>
+            </tr>
+            
+            <tr data-channel="短视频"
+                data-payment-current="51124.500000000015"
+                data-payment-delta="18851.400000000005"
+                data-payment-growth="0.5841211411361165"
+                data-redeem-current="19209.65"
+                data-redeem-previous="6143.0"
+                data-redeem-delta="13066.650000000001"
+                data-redeem-growth="2.127079602799935">
+              <td><strong>短视频</strong></td>
+              <td class="num">5.11万</td>
+              <td class="num">3.23万</td>
+              <td class="num positive">+1.89万</td>
+              <td class="num">+58.4%</td>
+              <td class="num">1.92万</td>
+              <td class="num">6,143</td>
+              <td class="num positive">+1.31万</td>
+              <td class="num">+212.7%</td>
+              <td class="channel-stack"><span class="channel-chip positive">北京昱海黑科技有限公司 支付 +1.59万 · 核销 +1.12万</span><span class="channel-chip positive">未绑定服务商 支付 +574 · 核销 +1,549</span><span class="channel-chip positive">天津壹欧喜佑文化传媒有限责任公司 支付 +1,470 · 核销 +301</span><span class="channel-chip positive">北京满房酒店管理有限公司 支付 +683 · 核销 +275</span><span class="channel-chip positive">广西世爵新媒体有限公司 支付 0 · 核销 -279</span></td>
+            </tr>
+            
+            <tr data-channel="UGC视频"
+                data-payment-current="388.9"
+                data-payment-delta="-89.10000000000002"
+                data-payment-growth="-0.18640167364016746"
+                data-redeem-current="331.0"
+                data-redeem-previous="0.0"
+                data-redeem-delta="331.0"
+                data-redeem-growth="0">
+              <td><strong>UGC视频</strong></td>
+              <td class="num">389</td>
+              <td class="num">478</td>
+              <td class="num negative">-89</td>
+              <td class="num">-18.6%</td>
+              <td class="num">331</td>
+              <td class="num">0</td>
+              <td class="num positive">+331</td>
+              <td class="num">基期较低</td>
+              <td class="channel-stack"><span class="channel-chip negative">天津壹欧喜佑文化传媒有限责任公司 支付 -478 · 核销 0</span><span class="channel-chip positive">未绑定服务商 支付 +389 · 核销 +331</span></td>
+            </tr>
+            
+            <tr data-channel="其他"
+                data-payment-current="272381.9500000029"
+                data-payment-delta="35906.000000003376"
+                data-payment-growth="0.15183785074128453"
+                data-redeem-current="175621.70000000007"
+                data-redeem-previous="71106.90000000001"
+                data-redeem-delta="104514.80000000006"
+                data-redeem-growth="1.46982641628309">
+              <td><strong>其他</strong></td>
+              <td class="num">27.24万</td>
+              <td class="num">23.65万</td>
+              <td class="num positive">+3.59万</td>
+              <td class="num">+15.2%</td>
+              <td class="num">17.56万</td>
+              <td class="num">7.11万</td>
+              <td class="num positive">+10.45万</td>
+              <td class="num">+147.0%</td>
+              <td class="channel-stack"><span class="channel-chip positive">北京昱海黑科技有限公司 支付 +3.64万 · 核销 +7.28万</span><span class="channel-chip negative">天津壹欧喜佑文化传媒有限责任公司 支付 -6,457 · 核销 +1.69万</span><span class="channel-chip positive">未绑定服务商 支付 +9,231 · 核销 +1.49万</span><span class="channel-chip negative">广西世爵新媒体有限公司 支付 -1,545 · 核销 +1,647</span><span class="channel-chip negative">北京满房酒店管理有限公司 支付 -876 · 核销 -854</span></td>
+            </tr>
+            
+            <tr data-channel="搜索结果卡"
+                data-payment-current="362529.20000000554"
+                data-payment-delta="97701.59999999945"
+                data-payment-growth="0.36892529328513035"
+                data-redeem-current="240201.5499999999"
+                data-redeem-previous="141490.0"
+                data-redeem-delta="98711.5499999999"
+                data-redeem-growth="0.6976574316206086">
+              <td><strong>搜索结果卡</strong></td>
+              <td class="num">36.25万</td>
+              <td class="num">26.48万</td>
+              <td class="num positive">+9.77万</td>
+              <td class="num">+36.9%</td>
+              <td class="num">24.02万</td>
+              <td class="num">14.15万</td>
+              <td class="num positive">+9.87万</td>
+              <td class="num">+69.8%</td>
+              <td class="channel-stack"><span class="channel-chip positive">北京昱海黑科技有限公司 支付 +8.15万 · 核销 +7.39万</span><span class="channel-chip positive">天津壹欧喜佑文化传媒有限责任公司 支付 +1.39万 · 核销 +1.80万</span><span class="channel-chip positive">未绑定服务商 支付 +418 · 核销 +4,677</span><span class="channel-chip positive">广西世爵新媒体有限公司 支付 +1,552 · 核销 +2,330</span><span class="channel-chip positive">北京满房酒店管理有限公司 支付 +423 · 核销 -342</span></td>
+            </tr>
+            
+            <tr data-channel="职人/店员直播"
+                data-payment-current="15316.0"
+                data-payment-delta="-6537.0999999999985"
+                data-payment-growth="-0.2991383373525952"
+                data-redeem-current="1914.0"
+                data-redeem-previous="471.34000000000003"
+                data-redeem-delta="1442.6599999999999"
+                data-redeem-growth="3.06076293121738">
+              <td><strong>职人/店员直播</strong></td>
+              <td class="num">1.53万</td>
+              <td class="num">2.19万</td>
+              <td class="num negative">-6,537</td>
+              <td class="num">-29.9%</td>
+              <td class="num">1,914</td>
+              <td class="num">471</td>
+              <td class="num positive">+1,443</td>
+              <td class="num">+306.1%</td>
+              <td class="channel-stack"><span class="channel-chip negative">北京昱海黑科技有限公司 支付 -5,837 · 核销 +1,705</span><span class="channel-chip negative">天津壹欧喜佑文化传媒有限责任公司 支付 -458 · 核销 0</span><span class="channel-chip negative">未绑定服务商 支付 -242 · 核销 -262</span></td>
+            </tr>
+            
+            <tr data-channel="职人/店员视频"
+                data-payment-current="737.0"
+                data-payment-delta="558.0"
+                data-payment-growth="3.11731843575419"
+                data-redeem-current="339.0"
+                data-redeem-previous="0.0"
+                data-redeem-delta="339.0"
+                data-redeem-growth="0">
+              <td><strong>职人/店员视频</strong></td>
+              <td class="num">737</td>
+              <td class="num">179</td>
+              <td class="num positive">+558</td>
+              <td class="num">+311.7%</td>
+              <td class="num">339</td>
+              <td class="num">0</td>
+              <td class="num positive">+339</td>
+              <td class="num">基期较低</td>
+              <td class="channel-stack"><span class="channel-chip positive">北京满房酒店管理有限公司 支付 +398 · 核销 0</span><span class="channel-chip positive">未绑定服务商 支付 +160 · 核销 +339</span></td>
+            </tr>
+            
+            <tr data-channel="获客卡"
+                data-payment-current="36688.600000000006"
+                data-payment-delta="21971.700000000004"
+                data-payment-growth="1.4929570765582425"
+                data-redeem-current="8990.15"
+                data-redeem-previous="4946.280000000001"
+                data-redeem-delta="4043.869999999999"
+                data-redeem-growth="0.8175578414485227">
+              <td><strong>获客卡</strong></td>
+              <td class="num">3.67万</td>
+              <td class="num">1.47万</td>
+              <td class="num positive">+2.20万</td>
+              <td class="num">+149.3%</td>
+              <td class="num">8,990</td>
+              <td class="num">4,946</td>
+              <td class="num positive">+4,044</td>
+              <td class="num">+81.8%</td>
+              <td class="channel-stack"><span class="channel-chip positive">北京昱海黑科技有限公司 支付 +1.34万 · 核销 +1,050</span><span class="channel-chip positive">未绑定服务商 支付 +5,785 · 核销 +1,892</span><span class="channel-chip positive">天津壹欧喜佑文化传媒有限责任公司 支付 +775 · 核销 +1,666</span><span class="channel-chip positive">北京满房酒店管理有限公司 支付 +994 · 核销 0</span><span class="channel-chip positive">青岛三合酒店管理有限公司 支付 +564 · 核销 -564</span></td>
+            </tr>
+            </tbody>
+        </table>
+      </div>
+    </article>
+      <article class="panel"><div class="panel-head"><div><h2>增长 / 下滑摘要</h2><p>按支付 GMV 增减额排序</p></div></div>
+        <div class="insights">
+          <div class="insight"><b>最大增长门店</b><p>喆啡酒店(天津西站天津之眼店) · +6.62万 · 北京昱海黑科技有限公司</p><span class="tag good">达播</span></div>
+          <div class="insight"><b>最大下滑门店</b><p>凯里亚德酒店(天津空港滨海国际机场店) · -2.99万 · 北京昱海黑科技有限公司</p><span class="tag warn">达播</span></div>
+        </div>
+      </article></div>
+    </section>
+
+    <section class="section" id="providers">
+      <div class="section-head"><div><h2>服务商表现</h2><p>总量、增长率和平均每家动销门店产出</p></div></div>
+      <div class="grid-2"><article class="panel"><div class="panel-head"><div><h2>服务商累计表现</h2><p>按支付 GMV 排序 · 金额单位：万元</p></div></div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>#</th><th>服务商</th><th>动销门店</th><th>支付 GMV</th><th>支付增长率</th><th>核销 GMV</th><th>核销增长率</th><th>平均单店支付</th><th>单店支付增长率</th><th>平均单店核销</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="rank">01</td>
+              <td><strong>北京昱海黑科技有限公司</strong></td>
+              <td class="num">48家</td>
+              <td class="num">62.45万</td>
+              <td class="num positive">+40.1%</td>
+              <td class="num">32.30万</td>
+              <td class="num positive">+337.0%</td>
+              <td class="num">1.30万</td>
+              <td class="num positive">+40.1%</td>
+              <td class="num">6,728</td>
+            </tr>
+            
+            <tr>
+              <td class="rank">02</td>
+              <td><strong>未绑定服务商</strong></td>
+              <td class="num">179家</td>
+              <td class="num">24.16万</td>
+              <td class="num positive">+6.5%</td>
+              <td class="num">15.95万</td>
+              <td class="num positive">+17.5%</td>
+              <td class="num">1,350</td>
+              <td class="num positive">+12.5%</td>
+              <td class="num">891</td>
+            </tr>
+            
+            <tr>
+              <td class="rank">03</td>
+              <td><strong>天津壹欧喜佑文化传媒有限责任公司</strong></td>
+              <td class="num">16家</td>
+              <td class="num">11.93万</td>
+              <td class="num positive">+10.1%</td>
+              <td class="num">9.11万</td>
+              <td class="num positive">+361.7%</td>
+              <td class="num">7,458</td>
+              <td class="num positive">+10.1%</td>
+              <td class="num">5,696</td>
+            </tr>
+            
+            <tr>
+              <td class="rank">04</td>
+              <td><strong>广西世爵新媒体有限公司</strong></td>
+              <td class="num">2家</td>
+              <td class="num">7,042</td>
+              <td class="num negative">-17.1%</td>
+              <td class="num">7,351</td>
+              <td class="num positive">+85.6%</td>
+              <td class="num">3,521</td>
+              <td class="num negative">-17.1%</td>
+              <td class="num">3,676</td>
+            </tr>
+            
+            <tr>
+              <td class="rank">05</td>
+              <td><strong>北京满房酒店管理有限公司</strong></td>
+              <td class="num">2家</td>
+              <td class="num">5,033</td>
+              <td class="num positive">+67.0%</td>
+              <td class="num">1,115</td>
+              <td class="num negative">-45.2%</td>
+              <td class="num">2,517</td>
+              <td class="num positive">+67.0%</td>
+              <td class="num">558</td>
+            </tr>
+            
+            <tr>
+              <td class="rank">06</td>
+              <td><strong>青岛三合酒店管理有限公司</strong></td>
+              <td class="num">1家</td>
+              <td class="num">2,843</td>
+              <td class="num negative">-4.5%</td>
+              <td class="num">1,319</td>
+              <td class="num negative">-47.9%</td>
+              <td class="num">2,843</td>
+              <td class="num negative">-4.5%</td>
+              <td class="num">1,319</td>
+            </tr>
+            </tbody>
+        </table>
+      </div>
+    </article>
+      <article class="panel"><div class="panel-head"><div><h2>服务商水平</h2><p>平均单店支付产出柱状图 · 单位：万元</p></div></div>
+        <div class="insights"><div class="insight"><b>北京昱海黑科技有限公司</b><p>1.30万 /家支付 · 6,728 /家核销 · 48家动销</p><div class="bar-wrap"><span class="segment-bar calendar" style="width:100.0%"></span></div><span class="tag good">单店产出 +40.1%</span></div><div class="insight"><b>未绑定服务商</b><p>1,350 /家支付 · 891 /家核销 · 179家动销</p><div class="bar-wrap"><span class="segment-bar calendar" style="width:10.4%"></span></div><span class="tag good">单店产出 +12.5%</span></div><div class="insight"><b>天津壹欧喜佑文化传媒有限责任公司</b><p>7,458 /家支付 · 5,696 /家核销 · 16家动销</p><div class="bar-wrap"><span class="segment-bar calendar" style="width:57.3%"></span></div><span class="tag good">单店产出 +10.1%</span></div><div class="insight"><b>广西世爵新媒体有限公司</b><p>3,521 /家支付 · 3,676 /家核销 · 2家动销</p><div class="bar-wrap"><span class="segment-bar calendar" style="width:27.1%"></span></div><span class="tag warn">单店产出 -17.1%</span></div><div class="insight"><b>北京满房酒店管理有限公司</b><p>2,517 /家支付 · 558 /家核销 · 2家动销</p><div class="bar-wrap"><span class="segment-bar calendar" style="width:19.3%"></span></div><span class="tag good">单店产出 +67.0%</span></div><div class="insight"><b>青岛三合酒店管理有限公司</b><p>2,843 /家支付 · 1,319 /家核销 · 1家动销</p><div class="bar-wrap"><span class="segment-bar calendar" style="width:21.9%"></span></div><span class="tag warn">单店产出 -4.5%</span></div></div>
+      </article></div>
+    </section>
+
+    <section class="section" id="voucher">
+      <div class="section-head"><div><h2>通兑商品</h2><p>省区合计 · 仅展示支付与核销趋势，不拆分 SKU</p></div></div>
+      <div class="kpis">
+        <article class="kpi"><span class="kpi-label">通兑支付 GMV</span><b class="kpi-value">1.32万</b><div class="kpi-foot"><span>国庆 7 天累计</span><span>支付券 32张</span></div></article>
+        <article class="kpi"><span class="kpi-label">通兑核销 GMV</span><b class="kpi-value">2.42万</b><div class="kpi-foot"><span>国庆 7 天累计</span><span>核销券 109张</span></div></article>
+      </div>
+      <article class="panel" style="margin-top:16px">
+        <div class="panel-head"><div><h2>支付与核销趋势</h2><p>10.1–10.7 · 单位：万元 · 通兑商品省区合计</p></div><div class="legend"><span><i style="background:var(--blue)"></i>支付</span><span><i style="background:var(--orange)"></i>核销</span></div></div>
+        
+      <svg class="chart-svg" viewBox="0 0 760 270" role="img"
+           aria-label="支付与核销日趋势，单位万元">
+        <line x1="54" y1="24.0" x2="736" y2="24.0" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="91.3" x2="736" y2="91.3" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="158.6" x2="736" y2="158.6" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="228.0" x2="736" y2="228.0" stroke="#ECEEF3" stroke-width="1"/><text x="44" y="28.0" text-anchor="end" class="axis-label">0.8</text><text x="44" y="130.0" text-anchor="end" class="axis-label">0.4</text><text x="44" y="232.0" text-anchor="end" class="axis-label">0.0</text>
+        <path d="M54.0 186.4 L167.7 125.9 L281.3 124.2 L395.0 142.4 L508.7 228.0 L622.3 206.6 L736.0 228.0" fill="none" stroke="#1677FF"
+              stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M54.0 216.8 L167.7 115.0 L281.3 71.9 L395.0 24.0 L508.7 117.3 L622.3 188.7 L736.0 211.4" fill="none" stroke="#FF8A3D"
+              stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="736.0" cy="228.0" r="5" fill="#1677FF"/>
+        <circle cx="736.0" cy="211.4" r="5" fill="#FF8A3D"/>
+        <text x="728.0" y="216.0"
+              text-anchor="end" class="point-label" fill="#1677FF">0.0万</text>
+        <text x="728.0" y="235.4"
+              text-anchor="end" class="point-label" fill="#FF8A3D">0.1万</text>
+        <text x="54.0" y="258" text-anchor="middle" class="axis-label">10-01</text><text x="167.7" y="258" text-anchor="middle" class="axis-label">10-02</text><text x="281.3" y="258" text-anchor="middle" class="axis-label">10-03</text><text x="395.0" y="258" text-anchor="middle" class="axis-label">10-04</text><text x="508.7" y="258" text-anchor="middle" class="axis-label">10-05</text><text x="622.3" y="258" text-anchor="middle" class="axis-label">10-06</text><text x="736.0" y="258" text-anchor="middle" class="axis-label">10-07</text>
+      </svg>
+    
+      </article>
+    </section>
+
+  </main>
+</div>
+<nav class="mobile-nav">
+  <button class="active" data-target="overview">总览</button><button data-target="stores">门店</button><button data-target="attribution">归因</button><button data-target="providers">服务商</button><button data-target="voucher">通兑</button>
+</nav>
+<script>
+const navItems=[...document.querySelectorAll('[data-target]')];
+const sections=[...document.querySelectorAll('.section')];
+function showSection(id){
+  sections.forEach(s=>s.classList.toggle('active',s.id===id));
+  navItems.forEach(n=>n.classList.toggle('active',n.dataset.target===id));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+navItems.forEach(item=>item.addEventListener('click',()=>{if(item.dataset.target)showSection(item.dataset.target)}));
+document.querySelectorAll('[data-local]').forEach(tab=>tab.addEventListener('click',()=>{
+  const panel=tab.dataset.local;
+  const parent=tab.closest('.section');
+  parent.querySelectorAll('[data-local]').forEach(t=>t.classList.toggle('active',t===tab));
+  parent.querySelectorAll('.local-panel').forEach(p=>p.style.display=p.dataset.panel===panel?'block':'none');
+}));
+let channelSortKey='redeem-delta';
+let channelSortDirection='desc';
+function sortChannelTable(nextKey){
+  const body=document.getElementById('channel-attribution-body');
+  if(!body)return;
+  if(nextKey===channelSortKey)channelSortDirection=channelSortDirection==='asc'?'desc':'asc';
+  else{channelSortKey=nextKey;channelSortDirection='desc';}
+  const key=channelSortKey;
+  const rows=[...body.querySelectorAll('tr')];
+  rows.sort((a,b)=>{
+    const av=key==='channel'?a.getAttribute('data-channel'):(Number(a.getAttribute('data-'+key))||0);
+    const bv=key==='channel'?b.getAttribute('data-channel'):(Number(b.getAttribute('data-'+key))||0);
+    const result=key==='channel'?av.localeCompare(bv,'zh-CN'):av-bv;
+    return channelSortDirection==='asc'?result:-result;
+  });
+  rows.forEach(row=>body.appendChild(row));
+  document.querySelectorAll('.sort-trigger').forEach(button=>{
+    const active=button.dataset.sortKey===channelSortKey;
+    button.classList.toggle('active',active);
+    const indicator=button.querySelector('.sort-indicator');
+    if(indicator)indicator.textContent=active?(channelSortDirection==='asc'?'↑':'↓'):'↕';
+  });
+}
+sortChannelTable('redeem-delta');
+document.documentElement.dataset.workbench="{\"region\": \"津河省区\", \"periods\": {\"previous_start\": \"2026-09-24\", \"previous_end\": \"2026-09-30\", \"current_start\": \"2026-10-01\", \"current_end\": \"2026-10-07\"}, \"verification\": {\"detail_row_count\": 7274, \"channel_row_count\": 7828, \"other_region_row_count\": 13024, \"provider_count\": 6, \"store_count\": 268, \"voucher_product_count\": 8, \"product_structure_closed\": true}}";
+</script>
+</body>
+</html>
