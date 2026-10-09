@@ -1,0 +1,18 @@
+docs/workbench_jinhe.html
+  h_8a7325ff3be7f5 58,77,733
+docs/workbench_ludong.html
+  h_8a7325ff3be7f5 58,77,798
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.21",
+  "base_commit_sha": "aaf21e53fa34db16ccad8f457434924d3f2e7bab",
+  "prompts": {},
+  "humans": {
+    "h_8a7325ff3be7f5": {
+      "author": "yishenweizhong <yishenweizhong@users.noreply.github.com>"
+    }
+  },
+  "attestation_metadata": {},
+  "remote_transcripts": {}
+}
