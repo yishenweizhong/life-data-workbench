@@ -1,0 +1,18 @@
+docs/index.html
+  h_8a7325ff3be7f5 19
+docs/workbench_shanhe.html
+  h_8a7325ff3be7f5 1-7105
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.21",
+  "base_commit_sha": "2788b4ccaba32683c57815e92397166b032d3b68",
+  "prompts": {},
+  "humans": {
+    "h_8a7325ff3be7f5": {
+      "author": "yishenweizhong <yishenweizhong@users.noreply.github.com>"
+    }
+  },
+  "attestation_metadata": {},
+  "remote_transcripts": {}
+}
