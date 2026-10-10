@@ -56,16 +56,17 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
     <button class="nav-item" data-target="attribution"><span class="nav-icon">◌</span><span>增长归因</span></button>
     <button class="nav-item" data-target="providers"><span class="nav-icon">◎</span><span>服务商</span></button>
     <button class="nav-item" data-target="voucher"><span class="nav-icon">◇</span><span>通兑商品</span></button>
+    <button class="nav-item" data-target="merchant-live"><span class="nav-icon">▶</span><span>商家自播</span></button>
   </aside>
   <main class="content">
     <header class="topbar">
-      <div><div class="eyebrow">近 7 日经营数据 · 数据截至 2026-10-09</div><h1>津河省区</h1></div>
+      <div><div class="eyebrow">近 7 日经营数据 · 数据截至 2026-10-09 · 数据来源：生意经</div><h1>津河省区</h1></div>
       <div class="top-actions"><span class="status"><i></i>数据已校验</span><span class="glass-pill">10-03–10-09 对比 09-26–10-02</span></div>
     </header>
 
     <section class="section active" id="overview">
       <div class="glass-tabs">
-        <button class="glass-tab active">总体</button><button class="glass-tab" data-target="stores">门店</button><button class="glass-tab" data-target="providers">服务商</button><button class="glass-tab" data-target="voucher">通兑商品</button>
+        <button class="glass-tab active">总体</button><button class="glass-tab" data-target="stores">门店</button><button class="glass-tab" data-target="providers">服务商</button><button class="glass-tab" data-target="voucher">通兑商品</button><button class="glass-tab" data-target="merchant-live">商家自播</button>
       </div>
       <div class="kpis">
         <article class="kpi"><span class="kpi-label">支付 GMV</span><b class="kpi-value">59.91万</b><div class="kpi-foot"><span class="negative">-45.8%</span><span>较上期 110.54万</span></div></article>
@@ -6522,10 +6523,213 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
       </article>
     </section>
 
+
+    <section class="section" id="merchant-live">
+      <div class="section-head"><div><h2>商家自播</h2><p>商家官号 · 近 7 日对比前 7 日 · 数据来源：生意经</p></div></div>
+      <div class="kpis">
+        <article class="kpi"><span class="kpi-label">直播成交金额</span><b class="kpi-value">2,310</b><div class="kpi-foot"><span class="negative">-87.0%</span><span>较前 7 日 1.78万</span></div></article>
+        <article class="kpi"><span class="kpi-label">直播场次</span><b class="kpi-value">28<small style="font-size:14px">场</small></b><div class="kpi-foot"><span class="negative">-15.2%</span><span>较前 7 日 33场</span></div></article>
+        <article class="kpi"><span class="kpi-label">直播时长</span><b class="kpi-value">42.3小时</b><div class="kpi-foot"><span class="negative">-23.3%</span><span>较前 7 日 55.2小时</span></div></article>
+        <article class="kpi"><span class="kpi-label">开播账号</span><b class="kpi-value">6<small style="font-size:14px">个</small></b><div class="kpi-foot"><span class="positive">+1个</span><span>较前 7 日</span></div></article>
+      </div>
+      <article class="panel" style="margin-top:16px">
+        <div class="panel-head trend-panel-head"><div class="trend-heading"><h2>直播成交每日趋势</h2><span class="trend-range">10-03–10-09 · 单位：万元</span></div></div>
+
+      <svg class="chart-svg" viewBox="0 0 760 270" role="img"
+           aria-label="商家官号直播成交金额每日趋势">
+        <line x1="54" y1="24.0" x2="736" y2="24.0" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="91.3" x2="736" y2="91.3" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="158.6" x2="736" y2="158.6" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="228.0" x2="736" y2="228.0" stroke="#ECEEF3" stroke-width="1"/><text x="44" y="28.0" text-anchor="end" class="axis-label">0.1</text><text x="44" y="130.0" text-anchor="end" class="axis-label">0.1</text><text x="44" y="232.0" text-anchor="end" class="axis-label">0.0</text>
+        <path d="M54.0 228.0 L54.0 198.5 L167.7 228.0 L281.3 24.0 L395.0 198.5 L508.7 228.0 L622.3 194.2 L736.0 198.5 L736.0 228.0 Z" fill="#8B6DFF" fill-opacity=".10"/>
+        <path d="M54.0 198.5 L167.7 228.0 L281.3 24.0 L395.0 198.5 L508.7 228.0 L622.3 194.2 L736.0 198.5" fill="none" stroke="#8B6DFF" stroke-width="4"
+              stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="736.0" cy="198.5" r="5" fill="#8B6DFF"/>
+        <text x="728.0" y="186.5" text-anchor="end"
+              class="point-label" fill="#8B6DFF">0.0万</text>
+        <text x="54.0" y="258" text-anchor="middle" class="axis-label">10-03</text><text x="167.7" y="258" text-anchor="middle" class="axis-label">10-04</text><text x="281.3" y="258" text-anchor="middle" class="axis-label">10-05</text><text x="395.0" y="258" text-anchor="middle" class="axis-label">10-06</text><text x="508.7" y="258" text-anchor="middle" class="axis-label">10-07</text><text x="622.3" y="258" text-anchor="middle" class="axis-label">10-08</text><text x="736.0" y="258" text-anchor="middle" class="axis-label">10-09</text>
+      </svg>
+
+      </article>
+      <div class="grid-2 equal">
+        <article class="panel"><div class="panel-head"><div><h2>城市自播排名</h2><p>按近 7 日直播成交金额降序</p></div></div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>#</th><th>城市</th><th>直播成交金额</th><th>直播场次</th><th>直播时长</th><th>开播账号</th></tr></thead>
+          <tbody>
+        <tr>
+          <td class="rank">01</td>
+          <td><strong>天津市</strong></td>
+          <td class="num">2,071</td>
+          <td class="num">14</td>
+          <td class="num">25.5小时</td>
+          <td class="num">2</td>
+        </tr>
+
+        <tr>
+          <td class="rank">02</td>
+          <td><strong>廊坊市</strong></td>
+          <td class="num">239</td>
+          <td class="num">10</td>
+          <td class="num">14.3小时</td>
+          <td class="num">1</td>
+        </tr>
+
+        <tr>
+          <td class="rank">03</td>
+          <td><strong>秦皇岛市</strong></td>
+          <td class="num">0</td>
+          <td class="num">2</td>
+          <td class="num">1.9小时</td>
+          <td class="num">2</td>
+        </tr>
+
+        <tr>
+          <td class="rank">04</td>
+          <td><strong>唐山市</strong></td>
+          <td class="num">0</td>
+          <td class="num">2</td>
+          <td class="num">0.6小时</td>
+          <td class="num">1</td>
+        </tr>
+        </tbody>
+        </table>
+      </div>
+    </article>
+        <article class="panel"><div class="panel-head"><div><h2>账号明细</h2><p>商家官号近 7 日直播与整体成交表现</p></div></div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>#</th><th>抖音号</th><th>城市 / 门店</th><th>直播成交金额</th><th>直播场次</th><th>直播时长</th><th>总成交金额</th><th>总核销金额</th></tr></thead>
+          <tbody>
+        <tr>
+          <td class="rank">01</td>
+          <td><strong>凯里亚德酒店（天津空港滨海国际机场店）</strong><small>54916367390</small></td>
+          <td>天津市<small>凯里亚德酒店(天津空港滨海国际机场店)</small></td>
+          <td class="num">1,862</td>
+          <td class="num">10</td>
+          <td class="num">23.1小时</td>
+          <td class="num">2,171</td>
+          <td class="num">1.00万</td>
+        </tr>
+
+        <tr>
+          <td class="rank">02</td>
+          <td><strong>维也纳国际酒店（霸州裕华东道亿辰大厦店）</strong><small>79685040135</small></td>
+          <td>廊坊市<small>维也纳国际酒店(霸州裕华东道亿辰大厦店)</small></td>
+          <td class="num">239</td>
+          <td class="num">10</td>
+          <td class="num">14.3小时</td>
+          <td class="num">438</td>
+          <td class="num">199</td>
+        </tr>
+
+        <tr>
+          <td class="rank">03</td>
+          <td><strong>麗枫酒店（天津梅江会展中心山姆会员店）</strong><small>55704124620</small></td>
+          <td>天津市<small>麗枫酒店(天津梅江会展中心山姆会员店)</small></td>
+          <td class="num">209</td>
+          <td class="num">4</td>
+          <td class="num">2.4小时</td>
+          <td class="num">716</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr>
+          <td class="rank">04</td>
+          <td><strong>锦江都城酒店(遵化文化南路店)</strong><small>jjdczh5175</small></td>
+          <td>唐山市<small>锦江都城酒店(遵化文化南路店)</small></td>
+          <td class="num">0</td>
+          <td class="num">2</td>
+          <td class="num">0.6小时</td>
+          <td class="num">321</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr>
+          <td class="rank">05</td>
+          <td><strong>丽枫酒店(秦皇岛抚宁健康大街店)</strong><small>83739530387</small></td>
+          <td>秦皇岛市<small>丽枫酒店(秦皇岛抚宁健康大街店)</small></td>
+          <td class="num">0</td>
+          <td class="num">1</td>
+          <td class="num">1.8小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr>
+          <td class="rank">06</td>
+          <td><strong>麗枫酒店北戴河火车站环境工程学院店</strong><small>26164146046</small></td>
+          <td>秦皇岛市<small>麗枫酒店(北戴河火车站环境工程学院店)</small></td>
+          <td class="num">0</td>
+          <td class="num">1</td>
+          <td class="num">0.1小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr>
+          <td class="rank">07</td>
+          <td><strong>喆啡酒店天津西站天津之眼中山路地铁站店</strong><small>zfjdtjzyzsldtzd</small></td>
+          <td>天津市<small>喆啡酒店(天津西站天津之眼店)</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">569</td>
+          <td class="num">569</td>
+        </tr>
+
+        <tr>
+          <td class="rank">08</td>
+          <td><strong>丽枫酒店(秦皇岛火车站店)</strong><small>LF0335_5311777</small></td>
+          <td>秦皇岛市<small>丽枫酒店(秦皇岛火车站店)</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">338</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr>
+          <td class="rank">09</td>
+          <td><strong>88822555253</strong><small>88822555253</small></td>
+          <td>天津市<small>凯里亚德酒店(天津于家堡金融中心店)</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">1,085</td>
+          <td class="num">209</td>
+        </tr>
+
+        <tr>
+          <td class="rank">10</td>
+          <td><strong>维也纳国际酒店（塘沽地铁站店）</strong><small>54112119410</small></td>
+          <td>天津市<small>维也纳国际酒店(天津滨海新区塘沽地铁站店)</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">924</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr>
+          <td class="rank">11</td>
+          <td><strong>麗枫酒店(三河燕郊燕顺路中央美院店）</strong><small>36010185569</small></td>
+          <td>廊坊市<small>麗枫酒店(三河燕郊燕顺路中央美院店)</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">219</td>
+        </tr>
+        </tbody>
+        </table>
+      </div>
+    </article>
+      </div>
+    </section>
+
+
   </main>
 </div>
 <nav class="mobile-nav">
-  <button class="active" data-target="overview">总览</button><button data-target="stores">门店</button><button data-target="attribution">归因</button><button data-target="providers">服务商</button><button data-target="voucher">通兑</button>
+  <button class="active" data-target="overview">总览</button><button data-target="stores">门店</button><button data-target="attribution">归因</button><button data-target="providers">服务商</button><button data-target="voucher">通兑</button><button data-target="merchant-live">自播</button>
 </nav>
 <script>
 const navItems=[...document.querySelectorAll('[data-target]')];
