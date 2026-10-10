@@ -1,0 +1,2325 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>鲁东省区 · 淄博片区经营数据工作台</title>
+<style>
+:root {
+  --ink:#17181C; --muted:#737780; --canvas:#F4F5F8; --paper:#FFFFFF;
+  --line:#E8E9EE; --blue:#1677FF; --cyan:#00A7A0;
+  --orange:#FF8A3D; --pink:#E96D8A; --purple:#8B6DFF;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Microsoft YaHei",sans-serif;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--canvas);color:var(--ink);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:none;color:inherit;cursor:pointer}
+.app{display:grid;grid-template-columns:220px minmax(0,1fr);min-height:100vh;max-width:1480px;margin:auto}
+.sidebar{position:sticky;top:0;height:100vh;padding:30px 18px;background:rgba(255,255,255,.58);border-right:1px solid rgba(0,0,0,.05);backdrop-filter:blur(30px) saturate(170%);-webkit-backdrop-filter:blur(30px) saturate(170%)}
+.brand{padding:0 12px 28px;font-size:13px;font-weight:700} .brand span{display:block;color:var(--muted);font-size:11px;font-weight:500;margin-top:5px}
+.nav-label{margin:0 12px 8px;color:var(--muted);font-size:11px;font-weight:700;letter-spacing:.08em}
+.nav-item{display:flex;align-items:center;gap:11px;width:100%;margin:4px 0;padding:11px 12px;border-radius:13px;color:#4B4D55;font-size:13px;font-weight:600;text-align:left;transition:.2s}
+.nav-item:hover{background:rgba(255,255,255,.72)} .nav-item.active{background:rgba(22,119,255,.10);color:var(--blue)}
+.nav-icon{width:20px;text-align:center;font-size:16px}
+.content{min-width:0;padding:30px 34px 70px} .topbar{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:24px}
+.eyebrow{color:var(--muted);font-size:13px;font-weight:600} h1{margin:7px 0 0;font-size:34px;line-height:1.08;letter-spacing:0} h2{margin:0;font-size:20px;letter-spacing:0} h3{margin:0;font-size:15px}
+.top-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap} .glass-pill,.status{padding:9px 13px;border:1px solid rgba(255,255,255,.9);border-radius:14px;background:rgba(255,255,255,.62);box-shadow:0 7px 22px rgba(32,44,70,.06);backdrop-filter:blur(20px);font-size:12px;font-weight:600}
+.status{color:#268A57} .status i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#34C759;margin-right:6px}
+.organization-filters{display:flex;align-items:flex-end;gap:10px;margin:-6px 0 22px;padding:13px 14px;border:1px solid rgba(0,0,0,.045);border-radius:12px;background:rgba(255,255,255,.82)} .organization-filters label{display:grid;gap:5px} .organization-filters label span{color:var(--muted);font-size:10px;font-weight:700} .organization-filters select{min-width:180px;height:38px;padding:0 34px 0 11px;border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--ink);font:inherit;font-size:12px;outline:none} .organization-filters select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(22,119,255,.10)} .organization-filters select:disabled{color:#A2A5AD;background:#F4F5F7}
+.section{display:none;animation:fade .22s ease} .section.active{display:block} @keyframes fade{from{opacity:.2;transform:translateY(4px)}to{opacity:1;transform:none}}
+.section-head{display:flex;justify-content:space-between;align-items:flex-end;margin:30px 0 15px} .section-head p{margin:5px 0 0;color:var(--muted);font-size:12px}
+.glass-tabs{display:flex;gap:4px;padding:4px;margin-bottom:18px;border-radius:15px;background:rgba(118,118,128,.13);backdrop-filter:blur(20px) saturate(170%);width:max-content;max-width:100%;overflow-x:auto;scrollbar-width:none} .glass-tabs::-webkit-scrollbar{display:none}
+.glass-tab{padding:8px 16px;border-radius:11px;font-size:12px;font-weight:600;color:#5D6069} .glass-tab.active{background:rgba(255,255,255,.9);box-shadow:0 5px 14px rgba(31,42,68,.12);color:var(--ink)}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px} .kpi,.panel{border:1px solid rgba(0,0,0,.045);border-radius:19px;background:rgba(255,255,255,.86);box-shadow:0 12px 32px rgba(32,44,70,.055)}
+.kpi{min-height:142px;padding:18px;position:relative;overflow:hidden} .kpi-label{color:var(--muted);font-size:12px;font-weight:700} .kpi-value{display:block;margin-top:14px;font-size:30px;letter-spacing:0} .kpi-foot{display:flex;align-items:baseline;gap:9px;margin-top:11px;color:var(--muted);font-size:12px} .kpi-foot>span:first-child{font-size:16px;font-weight:800} .kpi-foot .positive{color:#15945E} .kpi-foot .negative{color:#D44755} .kpi-foot .neutral{color:var(--muted)}
+.kpi::after{content:"";position:absolute;right:-25px;bottom:-42px;width:120px;height:120px;border-radius:50%;background:rgba(22,119,255,.08)} .kpi:nth-child(2)::after{background:rgba(255,138,61,.10)} .kpi:nth-child(3)::after{background:rgba(0,167,160,.10)} .kpi:nth-child(4)::after{background:rgba(139,109,255,.10)}
+.grid-2{display:grid;grid-template-columns:1fr;gap:16px;margin-top:16px} .grid-2.equal{grid-template-columns:1fr}
+.panel{padding:20px;min-width:0} .panel-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px} .panel-head p{margin:4px 0 0;color:var(--muted);font-size:11px} .trend-panel-head{align-items:flex-start;flex-wrap:wrap} .trend-heading{display:flex;align-items:baseline;gap:14px;white-space:nowrap} .trend-range{color:#5F636D;font-size:15px;font-weight:750} .legend{display:flex;gap:12px;color:var(--muted);font-size:11px;white-space:nowrap} .legend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}
+.chart-scroll{overflow-x:auto} .chart-svg{display:block;width:100%;height:auto;overflow:visible} .axis-label{fill:#858994;font-size:10px} .point-label,.merchant-live-point-label,.merchant-duration-label{font-size:11px;font-weight:750;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.merchant-trend-canvas{min-width:680px} .merchant-amount-chart{margin-bottom:2px} .merchant-subchart-title{margin:0 24px 0 54px;padding-top:13px;border-top:1px solid var(--line);color:#4F535C;font-size:12px;font-weight:750} .merchant-subchart-title span{margin-left:6px;color:var(--muted);font-size:10px;font-weight:600}
+.insights{display:grid;gap:10px} .insight{padding:13px 14px;border-radius:14px;background:#F7F8FA} .insight b{font-size:13px} .insight p{margin:6px 0 0;color:var(--muted);font-size:12px;line-height:1.6} .tag{display:inline-block;margin-top:8px;padding:4px 7px;border-radius:7px;font-size:10px;font-weight:700} .tag.good{color:#23875B;background:#E8F7EF} .tag.warn{color:#C65A61;background:#FFF0F1}
+.sort-trigger{display:inline-flex;align-items:center;gap:4px;border:0;background:transparent;padding:0;color:inherit;font:inherit;font-weight:700;cursor:pointer} .sort-indicator{width:10px;color:#A7ABB5;font-size:12px;line-height:1;opacity:.65} .sort-trigger.active .sort-indicator{color:var(--blue);opacity:1} .sort-trigger:hover{color:var(--blue)} .sort-trigger:hover .sort-indicator{opacity:1}
+.filter-bar{display:flex;align-items:center;gap:10px;margin-bottom:14px} .filter-bar input,.filter-bar select{height:38px;border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--ink);font:inherit;font-size:12px;outline:none} .filter-bar input{min-width:260px;padding:0 12px} .filter-bar select{padding:0 30px 0 10px} .filter-bar input:focus,.filter-bar select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(22,119,255,.10)} .filter-count{margin-left:auto;color:var(--muted);font-size:11px;white-space:nowrap}
+.table-scroll{overflow-x:auto} table{width:100%;border-collapse:collapse;min-width:820px} .merchant-table{min-width:980px} th{padding:11px 10px;text-align:left;color:#858994;font-size:11px;font-weight:700;border-bottom:1px solid var(--line);white-space:nowrap} td{padding:13px 10px;border-bottom:1px solid #F0F1F4;font-size:12px;vertical-align:middle} td small{display:block;margin-top:4px;color:#9A9DA6;font-size:10px;font-weight:500} td.num{font-variant-numeric:tabular-nums;white-space:nowrap} td.rank{width:38px;color:#9A9DA6;font-size:11px;font-weight:800} td strong{font-weight:700} .positive{color:#189963!important} .negative{color:#D85863!important} .provider{display:inline-block;padding:5px 8px;border-radius:8px;background:#F1F5FF;color:#4B6DB8;font-size:11px;white-space:nowrap} .channel-stack{display:flex;flex-wrap:wrap;gap:5px;min-width:175px} .channel-chip{display:inline-flex;padding:4px 7px;border-radius:7px;background:#F4F5F7;color:#646872;font-size:10px;white-space:nowrap} .channel-chip.positive{background:#EAF8F2} .channel-chip.negative{background:#FFF0F1} .live-status{display:inline-block;padding:2px 6px;border-radius:6px;background:#EAF8F2;color:#16835A;font-size:9px;font-weight:750;white-space:nowrap} .live-status.未直播,.live-status.零开播{background:#F0F1F4;color:#747984} .empty,.empty-state{color:#9A9DA6;font-size:12px} .empty-state{padding:28px;text-align:center;background:#F8F9FB;border-radius:12px}
+.bar-wrap{height:12px;display:flex;overflow:hidden;border-radius:8px;background:#EEF0F5;margin:12px 0} .segment-bar{display:block;height:100%} .segment-bar.calendar{background:var(--cyan)} .segment-bar.voucher{background:var(--orange)} .structure-legend{display:flex;gap:16px;color:var(--muted);font-size:11px} .structure-legend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}
+.mobile-nav{display:none}
+@media(max-width:1050px){.app{grid-template-columns:80px minmax(0,1fr)}.sidebar{padding:22px 10px}.brand,.nav-label,.nav-item span:not(.nav-icon){display:none}.nav-item{justify-content:center;padding:13px 8px}.content{padding:24px}.kpis{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.app{display:block}.sidebar{display:none}.content{padding:20px 15px 92px}.topbar{align-items:flex-start;display:block}.top-actions{margin-top:15px;justify-content:space-between;flex-wrap:wrap}.organization-filters{align-items:stretch;display:grid;grid-template-columns:1fr 1fr;margin-top:0}.organization-filters select{min-width:0;width:100%}h1{font-size:30px}.kpis{grid-template-columns:1fr 1fr;gap:10px}.kpi{min-height:120px;padding:14px}.kpi-value{font-size:23px;margin-top:11px}.kpi-foot{display:block}.kpi-foot>span{display:block}.kpi-foot>span:first-child{font-size:15px}.grid-2,.grid-2.equal{grid-template-columns:1fr}.panel{padding:15px;border-radius:16px}.trend-heading{gap:9px;white-space:normal;flex-wrap:wrap}.trend-heading h2{font-size:17px}.trend-range{font-size:13px}.chart-scroll .chart-svg{width:680px;max-width:none}.merchant-trend-scroll .chart-svg{width:100%}.filter-bar{align-items:stretch;flex-wrap:wrap}.filter-bar input{min-width:0;flex:1 1 100%}.filter-bar select{flex:1}.filter-count{align-self:center}.mobile-nav{position:fixed;display:flex;z-index:20;left:14px;right:14px;bottom:15px;justify-content:space-around;padding:9px 7px;border:1px solid rgba(255,255,255,.85);border-radius:20px;background:rgba(255,255,255,.72);box-shadow:0 12px 30px rgba(32,44,70,.15);backdrop-filter:blur(25px) saturate(170%)}.mobile-nav button{padding:6px 8px;border-radius:12px;color:var(--muted);font-size:10px;font-weight:700}.mobile-nav button.active{background:#fff;color:var(--blue);box-shadow:0 4px 10px rgba(31,42,68,.1)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">经营数据工作台<span>鲁东省区 · 淄博片区 · 10-03–10-09</span></div>
+    <p class="nav-label">板块</p>
+    <button class="nav-item active" data-target="overview"><span class="nav-icon">⌂</span><span>经营总览</span></button>
+    <button class="nav-item" data-target="provinces"><span class="nav-icon">▦</span><span>组织架构</span></button>
+    <button class="nav-item" data-target="stores"><span class="nav-icon">↗</span><span>门店排名</span></button>
+    <button class="nav-item" data-target="attribution"><span class="nav-icon">◌</span><span>增长归因</span></button>
+    <button class="nav-item" data-target="providers"><span class="nav-icon">◎</span><span>服务商</span></button>
+    <button class="nav-item" data-target="voucher"><span class="nav-icon">◇</span><span>通兑商品</span></button>
+    <button class="nav-item" data-target="merchant-live"><span class="nav-icon">▶</span><span>商家自播</span></button>
+  </aside>
+  <main class="content">
+    <header class="topbar">
+      <div><div class="eyebrow">近 7 日经营数据 · 数据截至 2026-10-09 · 数据来源：生意经</div><h1>鲁东省区 · 淄博片区</h1></div>
+      <div class="top-actions"><span class="status"><i></i>数据已校验</span><span class="glass-pill">主数据 50 家 · 1 片区</span><span class="glass-pill">10-03–10-09 对比 09-26–10-02</span></div>
+    </header>
+    <div class="organization-filters"><label><span>一级省区</span><select id="organization-province-filter"><option value="workbench_ludong.html" selected>鲁东省区</option></select></label><label><span>二级片区</span><select id="organization-area-filter" ><option value="workbench_ludong.html">全部二级片区</option><option value="workbench_ludong__鲁东省区__临沂片区.html" >临沂片区</option><option value="workbench_ludong__鲁东省区__威烟片区.html" >威烟片区</option><option value="workbench_ludong__鲁东省区__日照片区.html" >日照片区</option><option value="workbench_ludong__鲁东省区__沂枣片区.html" >沂枣片区</option><option value="workbench_ludong__鲁东省区__淄博片区.html" selected>淄博片区</option><option value="workbench_ludong__鲁东省区__潍坊片区.html" >潍坊片区</option><option value="workbench_ludong__鲁东省区__烟台片区.html" >烟台片区</option><option value="workbench_ludong__鲁东省区__青岛前海片区.html" >青岛前海片区</option><option value="workbench_ludong__鲁东省区__青岛北片区.html" >青岛北片区</option><option value="workbench_ludong__鲁东省区__青岛西片区.html" >青岛西片区</option></select></label></div>
+
+    <section class="section active" id="overview">
+      <div class="glass-tabs">
+        <button class="glass-tab active">总体</button><button class="glass-tab" data-target="provinces">组织</button><button class="glass-tab" data-target="stores">门店</button><button class="glass-tab" data-target="providers">服务商</button><button class="glass-tab" data-target="voucher">通兑商品</button><button class="glass-tab" data-target="merchant-live">商家自播</button>
+      </div>
+      <div class="kpis">
+        <article class="kpi"><span class="kpi-label">支付 GMV</span><b class="kpi-value">8.29万</b><div class="kpi-foot"><span class="negative">-41.4%</span><span>较上期 14.14万</span></div></article>
+        <article class="kpi"><span class="kpi-label">核销 GMV</span><b class="kpi-value">6.06万</b><div class="kpi-foot"><span class="positive">+29.6%</span><span>较上期 4.67万</span></div></article>
+        <article class="kpi"><span class="kpi-label">支付间夜</span><b class="kpi-value">414</b><div class="kpi-foot"><span class="negative">-34.6%</span><span>间夜</span></div></article>
+        <article class="kpi"><span class="kpi-label">动销门店</span><b class="kpi-value">43<small style="font-size:14px">家</small></b><div class="kpi-foot"><span class="negative">-1家</span><span>较上期</span></div></article>
+      </div>
+      <div class="grid-2">
+        <article class="panel"><div class="panel-head trend-panel-head"><div class="trend-heading"><h2>支付与核销日趋势</h2><span class="trend-range">10-03–10-09 · 单位：万元</span></div><div class="legend"><span><i style="background:var(--blue)"></i>支付</span><span><i style="background:var(--orange)"></i>核销</span></div></div><div class="chart-scroll">
+      <svg class="chart-svg" viewBox="0 0 760 300" role="img"
+           aria-label="支付与核销日趋势，单位万元">
+        <line x1="54" y1="34.0" x2="736" y2="34.0" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="104.6" x2="736" y2="104.6" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="175.2" x2="736" y2="175.2" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="248.0" x2="736" y2="248.0" stroke="#ECEEF3" stroke-width="1"/><text x="44" y="38.0" text-anchor="end" class="axis-label">2.6</text><text x="44" y="145.0" text-anchor="end" class="axis-label">1.3</text><text x="44" y="252.0" text-anchor="end" class="axis-label">0.0</text>
+        <path d="M54.0 34.0 L167.7 78.2 L281.3 122.4 L395.0 163.8 L508.7 209.9 L622.3 220.5 L736.0 229.5" fill="none" stroke="#1677FF"
+              stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M54.0 122.5 L167.7 143.1 L281.3 172.1 L395.0 169.5 L508.7 173.7 L622.3 231.5 L736.0 228.4" fill="none" stroke="#FF8A3D"
+              stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle class="trend-point payment-point" cx="54.0" cy="34.0" r="5" fill="#1677FF"/><text x="58.0" y="22.0" text-anchor="start" class="point-label payment-label" fill="#1677FF">2.6万</text><circle class="trend-point payment-point" cx="167.7" cy="78.2" r="5" fill="#1677FF"/><text x="167.7" y="66.2" text-anchor="middle" class="point-label payment-label" fill="#1677FF">2.1万</text><circle class="trend-point payment-point" cx="281.3" cy="122.4" r="5" fill="#1677FF"/><text x="281.3" y="110.4" text-anchor="middle" class="point-label payment-label" fill="#1677FF">1.5万</text><circle class="trend-point payment-point" cx="395.0" cy="163.8" r="5" fill="#1677FF"/><text x="395.0" y="151.8" text-anchor="middle" class="point-label payment-label" fill="#1677FF">1.0万</text><circle class="trend-point payment-point" cx="508.7" cy="209.9" r="5" fill="#1677FF"/><text x="508.7" y="187.9" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.5万</text><circle class="trend-point payment-point" cx="622.3" cy="220.5" r="5" fill="#1677FF"/><text x="622.3" y="208.5" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.3万</text><circle class="trend-point payment-point" cx="736.0" cy="229.5" r="5" fill="#1677FF"/><text x="732.0" y="217.5" text-anchor="end" class="point-label payment-label" fill="#1677FF">0.2万</text>
+        <circle class="trend-point redeem-point" cx="54.0" cy="122.5" r="5" fill="#FF8A3D"/><text x="58.0" y="146.5" text-anchor="start" class="point-label redeem-label" fill="#FF8A3D">1.5万</text><circle class="trend-point redeem-point" cx="167.7" cy="143.1" r="5" fill="#FF8A3D"/><text x="167.7" y="167.1" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">1.3万</text><circle class="trend-point redeem-point" cx="281.3" cy="172.1" r="5" fill="#FF8A3D"/><text x="281.3" y="196.1" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.9万</text><circle class="trend-point redeem-point" cx="395.0" cy="169.5" r="5" fill="#FF8A3D"/><text x="395.0" y="193.5" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">1.0万</text><circle class="trend-point redeem-point" cx="508.7" cy="173.7" r="5" fill="#FF8A3D"/><text x="508.7" y="207.7" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.9万</text><circle class="trend-point redeem-point" cx="622.3" cy="231.5" r="5" fill="#FF8A3D"/><text x="622.3" y="255.5" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.2万</text><circle class="trend-point redeem-point" cx="736.0" cy="228.4" r="5" fill="#FF8A3D"/><text x="732.0" y="252.4" text-anchor="end" class="point-label redeem-label" fill="#FF8A3D">0.2万</text>
+        <text x="54.0" y="288" text-anchor="middle" class="axis-label">10-03</text><text x="167.7" y="288" text-anchor="middle" class="axis-label">10-04</text><text x="281.3" y="288" text-anchor="middle" class="axis-label">10-05</text><text x="395.0" y="288" text-anchor="middle" class="axis-label">10-06</text><text x="508.7" y="288" text-anchor="middle" class="axis-label">10-07</text><text x="622.3" y="288" text-anchor="middle" class="axis-label">10-08</text><text x="736.0" y="288" text-anchor="middle" class="axis-label">10-09</text>
+      </svg>
+    </div></article>
+        <aside class="panel"><div class="panel-head"><div><h2>本期重点判断</h2><p>从数据变化直接定位动作</p></div></div><div class="insights">
+          <div class="insight"><b>支付增长主要来自 达播</b><p>渠道增量 -388，可在增长归因中查看对应服务商。</p><span class="tag good">增长来源</span></div>
+          <div class="insight"><b>丽枫酒店(淄博北站柳泉路店) 需要跟进</b><p>青岛三合酒店管理有限公司 · 下降 2.42万，优先检查渠道投放变化。</p><span class="tag warn">重点风险</span></div>
+        </div></aside>
+      </div>
+    </section>
+
+    <section class="section" id="provinces"><div class="section-head"><div><h2>组织架构经营对比</h2><p>一级省区与二级片区均按门店总表 POI 归属</p></div></div><article class="panel">
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>省份</th><th>主数据门店</th><th>已绑定门店</th><th>有数据门店</th><th>本期支付</th><th>支付增长率</th><th>本期核销</th><th>核销增长率</th><th>动销门店</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>鲁东省区</strong></td>
+              <td class="num">50家</td>
+              <td class="num">0家</td>
+              <td class="num">45家</td>
+              <td class="num">8.29万</td>
+              <td class="num negative">-41.4%</td>
+              <td class="num">6.06万</td>
+              <td class="num positive">+29.6%</td>
+              <td class="num">43家</td>
+            </tr>
+            </tbody>
+        </table>
+      </div>
+    </article><article class="panel" style="margin-top:16px"><div class="panel-head"><div><h2>二级片区明细</h2><p>片区不按行政城市推断，以门店总表标注为准</p></div></div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>一级省区</th><th>二级片区</th><th>主数据门店</th><th>有数据门店</th><th>本期支付</th><th>支付增长率</th><th>本期核销</th><th>核销增长率</th><th>动销门店</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td class="num">50家</td>
+              <td class="num">45家</td>
+              <td class="num">8.29万</td>
+              <td class="num negative">-41.4%</td>
+              <td class="num">6.06万</td>
+              <td class="num positive">+29.6%</td>
+              <td class="num">43家</td>
+            </tr>
+            </tbody>
+        </table>
+      </div>
+    </article></section>
+
+    <section class="section" id="stores">
+      <div class="section-head"><div><h2>门店排名</h2><p>全部门店 · 默认按本期核销金额降序，可点击表头重新排序</p></div></div>
+      <div class="glass-tabs"><button class="glass-tab active" data-local="all">全部门店</button><button class="glass-tab" data-local="growth">增长 Top10</button><button class="glass-tab" data-local="decline">下降 Top10</button></div>
+      <article class="panel local-panel" data-panel="all"><div class="filter-bar"><input id="store-search" type="search" placeholder="搜索门店、城市、片区或服务商" aria-label="搜索门店、城市、片区或服务商"><select id="province-filter" aria-label="按省份筛选"><option value="">全部省份</option><option value="鲁东省区">鲁东省区</option></select><select id="area-filter" aria-label="按二级片区筛选"><option value="">全部二级片区</option><option value="淄博片区">淄博片区</option></select><span id="store-result-count" class="filter-count"></span></div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr>
+            <th>#</th>
+            <th><button class="sort-trigger store-sort-trigger" type="button" data-sort-key="province" onclick="sortStoreTable('province')" title="按省份排序">省份 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger store-sort-trigger" type="button" data-sort-key="area" onclick="sortStoreTable('area')" title="按二级片区排序">二级片区 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger store-sort-trigger" type="button" data-sort-key="store" onclick="sortStoreTable('store')" title="按门店名称排序">门店 / 城市 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger store-sort-trigger" type="button" data-sort-key="provider" onclick="sortStoreTable('provider')" title="按服务商排序">服务商 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger store-sort-trigger" type="button" data-sort-key="redeem-current" onclick="sortStoreTable('redeem-current')" title="按本期核销额排序">本期核销 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger store-sort-trigger" type="button" data-sort-key="payment-current" onclick="sortStoreTable('payment-current')" title="按本期支付额排序">本期支付 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger store-sort-trigger" type="button" data-sort-key="redeem-nights" onclick="sortStoreTable('redeem-nights')" title="按核销间夜排序">核销间夜 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger store-sort-trigger" type="button" data-sort-key="payment-nights" onclick="sortStoreTable('payment-nights')" title="按支付间夜排序">支付间夜 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger store-sort-trigger" type="button" data-sort-key="redeem-growth" onclick="sortStoreTable('redeem-growth')" title="按核销增长率排序">核销增长率 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger store-sort-trigger" type="button" data-sort-key="payment-growth" onclick="sortStoreTable('payment-growth')" title="按支付增长率排序">支付增长率 <span class="sort-indicator"></span></button></th>
+          </tr></thead>
+          <tbody id="store-all-body">
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="丽枫酒店(淄博北站柳泉路店)"
+                data-city="淄博市"
+                data-provider="青岛三合酒店管理有限公司"
+                data-redeem-current="13245.0"
+                data-payment-current="9048.8"
+                data-redeem-nights="35.0"
+                data-payment-nights="32.0"
+                data-redeem-growth="2.5729700566495817"
+                data-payment-growth="-0.7278646420719916">
+              <td class="rank">01</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>丽枫酒店(淄博北站柳泉路店)</strong><small>淄博市 · 有返回记录</small></td>
+              <td><span class="provider">青岛三合酒店管理有限公司</span></td>
+              <td class="num">1.32万</td>
+              <td class="num">9,049</td>
+              <td class="num">35</td>
+              <td class="num">32</td>
+              <td class="num positive">+257.3%</td>
+              <td class="num negative">-72.8%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="7天优品(淄博博山红叶柿岩珑山路店)"
+                data-city="淄博市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="7235.05"
+                data-payment-current="10913.599999999999"
+                data-redeem-nights="22.0"
+                data-payment-nights="49.0"
+                data-redeem-growth="2.86281366791244"
+                data-payment-growth="-0.40070727260746386">
+              <td class="rank">02</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>7天优品(淄博博山红叶柿岩珑山路店)</strong><small>淄博市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">7,235</td>
+              <td class="num">1.09万</td>
+              <td class="num">22</td>
+              <td class="num">49</td>
+              <td class="num positive">+286.3%</td>
+              <td class="num negative">-40.1%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="维也纳国际酒店(临淄区政府青银高速路口店)"
+                data-city="淄博市"
+                data-provider="青岛三合酒店管理有限公司"
+                data-redeem-current="3433.0"
+                data-payment-current="3938.0"
+                data-redeem-nights="9.0"
+                data-payment-nights="12.0"
+                data-redeem-growth="1.4609318996415772"
+                data-payment-growth="0.20321427480216325">
+              <td class="rank">03</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>维也纳国际酒店(临淄区政府青银高速路口店)</strong><small>淄博市 · 有返回记录</small></td>
+              <td><span class="provider">青岛三合酒店管理有限公司</span></td>
+              <td class="num">3,433</td>
+              <td class="num">3,938</td>
+              <td class="num">9</td>
+              <td class="num">12</td>
+              <td class="num positive">+146.1%</td>
+              <td class="num positive">+20.3%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="锦江之星品尚酒店(淄博博山客运站店)"
+                data-city="淄博市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="3360.0"
+                data-payment-current="5337.0"
+                data-redeem-nights="11.0"
+                data-payment-nights="24.0"
+                data-redeem-growth="-0.03724928366762181"
+                data-payment-growth="-0.12549771420144518">
+              <td class="rank">04</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>锦江之星品尚酒店(淄博博山客运站店)</strong><small>淄博市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">3,360</td>
+              <td class="num">5,337</td>
+              <td class="num">11</td>
+              <td class="num">24</td>
+              <td class="num negative">-3.7%</td>
+              <td class="num negative">-12.5%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="7天酒店(淄博北站工业职业学院店)"
+                data-city="淄博市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="3295.0"
+                data-payment-current="3828.8"
+                data-redeem-nights="17.0"
+                data-payment-nights="23.0"
+                data-redeem-growth="0.9566508313539193"
+                data-payment-growth="0.5513147765487623">
+              <td class="rank">05</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>7天酒店(淄博北站工业职业学院店)</strong><small>淄博市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">3,295</td>
+              <td class="num">3,829</td>
+              <td class="num">17</td>
+              <td class="num">23</td>
+              <td class="num positive">+95.7%</td>
+              <td class="num positive">+55.1%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="锦江之星(淄博沂源店)"
+                data-city="淄博市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="2399.0"
+                data-payment-current="4497.599999999999"
+                data-redeem-nights="13.0"
+                data-payment-nights="22.0"
+                data-redeem-growth="0.5876902713434811"
+                data-payment-growth="0.5910570256119991">
+              <td class="rank">06</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>锦江之星(淄博沂源店)</strong><small>淄博市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">2,399</td>
+              <td class="num">4,498</td>
+              <td class="num">13</td>
+              <td class="num">22</td>
+              <td class="num positive">+58.8%</td>
+              <td class="num positive">+59.1%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="白玉兰商务酒店(淄博银座广场西六路店)"
+                data-city="淄博市"
+                data-provider="未绑定服务商"
+                data-redeem-current="2032.05"
+                data-payment-current="2481.6000000000004"
+                data-redeem-nights="7.0"
+                data-payment-nights="10.0"
+                data-redeem-growth="1.5180297397769515"
+                data-payment-growth="-0.3641325236374817">
+              <td class="rank">07</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>白玉兰商务酒店(淄博银座广场西六路店)</strong><small>淄博市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">2,032</td>
+              <td class="num">2,482</td>
+              <td class="num">7</td>
+              <td class="num">10</td>
+              <td class="num positive">+151.8%</td>
+              <td class="num negative">-36.4%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="维也纳酒店(淄博易达广场店)"
+                data-city="淄博市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="1901.0"
+                data-payment-current="2030.6000000000001"
+                data-redeem-nights="4.0"
+                data-payment-nights="11.0"
+                data-redeem-growth="-0.24323248407643316"
+                data-payment-growth="-0.6357341465602295">
+              <td class="rank">08</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>维也纳酒店(淄博易达广场店)</strong><small>淄博市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">1,901</td>
+              <td class="num">2,031</td>
+              <td class="num">4</td>
+              <td class="num">11</td>
+              <td class="num negative">-24.3%</td>
+              <td class="num negative">-63.6%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="IU酒店(淄博海岱楼西班牙风情街店)"
+                data-city="淄博市"
+                data-provider="未绑定服务商"
+                data-redeem-current="1683.0"
+                data-payment-current="169.0"
+                data-redeem-nights="7.0"
+                data-payment-nights="2.0"
+                data-redeem-growth="-0.20650636492220653"
+                data-payment-growth="-0.9658233735768165">
+              <td class="rank">09</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>IU酒店(淄博海岱楼西班牙风情街店)</strong><small>淄博市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">1,683</td>
+              <td class="num">169</td>
+              <td class="num">7</td>
+              <td class="num">2</td>
+              <td class="num negative">-20.7%</td>
+              <td class="num negative">-96.6%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="维也纳3好酒店(淄博金晶大道万象汇八大局店)"
+                data-city="淄博市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="1585.0"
+                data-payment-current="3988.7000000000003"
+                data-redeem-nights="4.0"
+                data-payment-nights="15.0"
+                data-redeem-growth="0.10222531293463133"
+                data-payment-growth="0.1997172677234036">
+              <td class="rank">10</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>维也纳3好酒店(淄博金晶大道万象汇八大局店)</strong><small>淄博市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">1,585</td>
+              <td class="num">3,989</td>
+              <td class="num">4</td>
+              <td class="num">15</td>
+              <td class="num positive">+10.2%</td>
+              <td class="num positive">+20.0%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="7天酒店(淄博沂源健康路店)"
+                data-city="淄博市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="1368.0"
+                data-payment-current="3042.7000000000003"
+                data-redeem-nights="9.0"
+                data-payment-nights="19.0"
+                data-redeem-growth="-0.1648351648351648"
+                data-payment-growth="0.26205981168858106">
+              <td class="rank">11</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>7天酒店(淄博沂源健康路店)</strong><small>淄博市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">1,368</td>
+              <td class="num">3,043</td>
+              <td class="num">9</td>
+              <td class="num">19</td>
+              <td class="num negative">-16.5%</td>
+              <td class="num positive">+26.2%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="白玉兰商务酒店(淄博桓台信誉楼店)"
+                data-city="淄博市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="1300.0"
+                data-payment-current="1990.1"
+                data-redeem-nights="8.0"
+                data-payment-nights="14.0"
+                data-redeem-growth="-0.0030674846625766694"
+                data-payment-growth="-0.25797912005965695">
+              <td class="rank">12</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>白玉兰商务酒店(淄博桓台信誉楼店)</strong><small>淄博市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">1,300</td>
+              <td class="num">1,990</td>
+              <td class="num">8</td>
+              <td class="num">14</td>
+              <td class="num negative">-0.3%</td>
+              <td class="num negative">-25.8%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="维也纳酒店(5.0淄博中润大道店)"
+                data-city="淄博市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="1235.0"
+                data-payment-current="1792.0"
+                data-redeem-nights="5.0"
+                data-payment-nights="8.0"
+                data-redeem-growth="1.388781431334623"
+                data-payment-growth="-0.6265810915001354">
+              <td class="rank">13</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>维也纳酒店(5.0淄博中润大道店)</strong><small>淄博市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">1,235</td>
+              <td class="num">1,792</td>
+              <td class="num">5</td>
+              <td class="num">8</td>
+              <td class="num positive">+138.9%</td>
+              <td class="num negative">-62.7%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="丽枫酒店(淄博人民西路店)"
+                data-city="淄博市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="1101.0"
+                data-payment-current="2007.5000000000002"
+                data-redeem-nights="4.0"
+                data-payment-nights="8.0"
+                data-redeem-growth="-0.21357142857142852"
+                data-payment-growth="0.3288541735619248">
+              <td class="rank">14</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>丽枫酒店(淄博人民西路店)</strong><small>淄博市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">1,101</td>
+              <td class="num">2,008</td>
+              <td class="num">4</td>
+              <td class="num">8</td>
+              <td class="num negative">-21.4%</td>
+              <td class="num positive">+32.9%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="7天优品(淄博淄川鸿泰店)"
+                data-city="淄博市"
+                data-provider="未绑定服务商"
+                data-redeem-current="1079.0"
+                data-payment-current="1455.4000000000003"
+                data-redeem-nights="8.0"
+                data-payment-nights="11.0"
+                data-redeem-growth="3.4403292181069958"
+                data-payment-growth="6.787051899411451">
+              <td class="rank">15</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>7天优品(淄博淄川鸿泰店)</strong><small>淄博市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">1,079</td>
+              <td class="num">1,455</td>
+              <td class="num">8</td>
+              <td class="num">11</td>
+              <td class="num positive">+344.0%</td>
+              <td class="num positive">+678.7%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="希岸酒店(淄博周村古商城区政府店)"
+                data-city="淄博市"
+                data-provider="青岛三合酒店管理有限公司"
+                data-redeem-current="926.0"
+                data-payment-current="1124.8000000000002"
+                data-redeem-nights="3.0"
+                data-payment-nights="4.0"
+                data-redeem-growth="-0.6012058570198104"
+                data-payment-growth="-0.708117085322815">
+              <td class="rank">16</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>希岸酒店(淄博周村古商城区政府店)</strong><small>淄博市 · 有返回记录</small></td>
+              <td><span class="provider">青岛三合酒店管理有限公司</span></td>
+              <td class="num">926</td>
+              <td class="num">1,125</td>
+              <td class="num">3</td>
+              <td class="num">4</td>
+              <td class="num negative">-60.1%</td>
+              <td class="num negative">-70.8%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="7天酒店(淄博市政府八大局店)"
+                data-city="淄博市"
+                data-provider="未绑定服务商"
+                data-redeem-current="926.0"
+                data-payment-current="733.9"
+                data-redeem-nights="5.0"
+                data-payment-nights="7.0"
+                data-redeem-growth="0.618881118881119"
+                data-payment-growth="0.8444332746921337">
+              <td class="rank">17</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>7天酒店(淄博市政府八大局店)</strong><small>淄博市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">926</td>
+              <td class="num">734</td>
+              <td class="num">5</td>
+              <td class="num">7</td>
+              <td class="num positive">+61.9%</td>
+              <td class="num positive">+84.4%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="麗枫酒店(淄博北京路琉璃馆牧羊村店)"
+                data-city="淄博市"
+                data-provider="青岛三合酒店管理有限公司"
+                data-redeem-current="856.0"
+                data-payment-current="1575.0"
+                data-redeem-nights="2.0"
+                data-payment-nights="7.0"
+                data-redeem-growth="-0.6828454983327158"
+                data-payment-growth="-0.5849364886944606">
+              <td class="rank">18</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>麗枫酒店(淄博北京路琉璃馆牧羊村店)</strong><small>淄博市 · 有返回记录</small></td>
+              <td><span class="provider">青岛三合酒店管理有限公司</span></td>
+              <td class="num">856</td>
+              <td class="num">1,575</td>
+              <td class="num">2</td>
+              <td class="num">7</td>
+              <td class="num negative">-68.3%</td>
+              <td class="num negative">-58.5%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="白玉兰商务酒店(淄博新区大学城店)"
+                data-city="淄博市"
+                data-provider="未绑定服务商"
+                data-redeem-current="840.0"
+                data-payment-current="1289.9"
+                data-redeem-nights="4.0"
+                data-payment-nights="8.0"
+                data-redeem-growth="0.650294695481336"
+                data-payment-growth="-0.3908957831609766">
+              <td class="rank">19</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>白玉兰商务酒店(淄博新区大学城店)</strong><small>淄博市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">840</td>
+              <td class="num">1,290</td>
+              <td class="num">4</td>
+              <td class="num">8</td>
+              <td class="num positive">+65.0%</td>
+              <td class="num negative">-39.1%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="7天酒店(新7天·淄博临淄天齐路方正2009店)"
+                data-city="淄博市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="823.0"
+                data-payment-current="0.0"
+                data-redeem-nights="3.0"
+                data-payment-nights="0.0"
+                data-redeem-growth="0.03783102143757877"
+                data-payment-growth="-1.0">
+              <td class="rank">20</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>7天酒店(新7天·淄博临淄天齐路方正2009店)</strong><small>淄博市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">823</td>
+              <td class="num">0</td>
+              <td class="num">3</td>
+              <td class="num">0</td>
+              <td class="num positive">+3.8%</td>
+              <td class="num negative">-100.0%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="白玉兰商务酒店(淄博周村古商城步行街店)"
+                data-city="淄博市"
+                data-provider="未绑定服务商"
+                data-redeem-current="756.0"
+                data-payment-current="1280.0"
+                data-redeem-nights="3.0"
+                data-payment-nights="8.0"
+                data-redeem-growth="-0.5902439024390245"
+                data-payment-growth="-0.7043538514840051">
+              <td class="rank">21</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>白玉兰商务酒店(淄博周村古商城步行街店)</strong><small>淄博市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">756</td>
+              <td class="num">1,280</td>
+              <td class="num">3</td>
+              <td class="num">8</td>
+              <td class="num negative">-59.0%</td>
+              <td class="num negative">-70.4%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="IU酒店(淄博火车站吾悦广场店)"
+                data-city="淄博市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="737.0"
+                data-payment-current="1245.6000000000004"
+                data-redeem-nights="4.0"
+                data-payment-nights="7.0"
+                data-redeem-growth="0.7179487179487178"
+                data-payment-growth="0.36012229744485746">
+              <td class="rank">22</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>IU酒店(淄博火车站吾悦广场店)</strong><small>淄博市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">737</td>
+              <td class="num">1,246</td>
+              <td class="num">4</td>
+              <td class="num">7</td>
+              <td class="num positive">+71.8%</td>
+              <td class="num positive">+36.0%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="白玉兰酒店(淄博沂源店)"
+                data-city="淄博市"
+                data-provider="未绑定服务商"
+                data-redeem-current="726.0"
+                data-payment-current="305.9"
+                data-redeem-nights="3.0"
+                data-payment-nights="2.0"
+                data-redeem-growth="0.37760910815939286"
+                data-payment-growth="-0.7774463441251365">
+              <td class="rank">23</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>白玉兰酒店(淄博沂源店)</strong><small>淄博市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">726</td>
+              <td class="num">306</td>
+              <td class="num">3</td>
+              <td class="num">2</td>
+              <td class="num positive">+37.8%</td>
+              <td class="num negative">-77.7%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="希岸酒店(淄博临淄区政府火车站店)"
+                data-city="淄博市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="722.0"
+                data-payment-current="1442.9"
+                data-redeem-nights="3.0"
+                data-payment-nights="7.0"
+                data-redeem-growth="0.014044943820224809"
+                data-payment-growth="-0.17919108026622677">
+              <td class="rank">24</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>希岸酒店(淄博临淄区政府火车站店)</strong><small>淄博市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">722</td>
+              <td class="num">1,443</td>
+              <td class="num">3</td>
+              <td class="num">7</td>
+              <td class="num positive">+1.4%</td>
+              <td class="num negative">-17.9%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="锦江之星(淄博周村古商城银座店)"
+                data-city="淄博市"
+                data-provider="未绑定服务商"
+                data-redeem-current="690.0"
+                data-payment-current="1160.8000000000002"
+                data-redeem-nights="3.0"
+                data-payment-nights="8.0"
+                data-redeem-growth="4.036496350364963"
+                data-payment-growth="0.6973241702003221">
+              <td class="rank">25</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>锦江之星(淄博周村古商城银座店)</strong><small>淄博市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">690</td>
+              <td class="num">1,161</td>
+              <td class="num">3</td>
+              <td class="num">8</td>
+              <td class="num positive">+403.6%</td>
+              <td class="num positive">+69.7%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="非繁云居酒店(淄博沂源康源路店)"
+                data-city="淄博市"
+                data-provider="青岛三合酒店管理有限公司"
+                data-redeem-current="639.0"
+                data-payment-current="643.0"
+                data-redeem-nights="2.0"
+                data-payment-nights="2.0"
+                data-redeem-growth="1.8149779735682818"
+                data-payment-growth="-0.37439190503989095">
+              <td class="rank">26</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>非繁云居酒店(淄博沂源康源路店)</strong><small>淄博市 · 有返回记录</small></td>
+              <td><span class="provider">青岛三合酒店管理有限公司</span></td>
+              <td class="num">639</td>
+              <td class="num">643</td>
+              <td class="num">2</td>
+              <td class="num">2</td>
+              <td class="num positive">+181.5%</td>
+              <td class="num negative">-37.4%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="IU酒店(淄博淄川松龄东路店)"
+                data-city="淄博市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="623.0"
+                data-payment-current="1079.7000000000003"
+                data-redeem-nights="3.0"
+                data-payment-nights="7.0"
+                data-redeem-growth="-0.5882625074350671"
+                data-payment-growth="-0.6024083075563411">
+              <td class="rank">27</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>IU酒店(淄博淄川松龄东路店)</strong><small>淄博市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">623</td>
+              <td class="num">1,080</td>
+              <td class="num">3</td>
+              <td class="num">7</td>
+              <td class="num negative">-58.8%</td>
+              <td class="num negative">-60.2%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="麗枫酒店(淄博沂源螳螂河东路店)"
+                data-city="淄博市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="601.0"
+                data-payment-current="769.8"
+                data-redeem-nights="2.0"
+                data-payment-nights="3.0"
+                data-redeem-growth="-0.17217630853994492"
+                data-payment-growth="-0.5476554236690564">
+              <td class="rank">28</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>麗枫酒店(淄博沂源螳螂河东路店)</strong><small>淄博市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">601</td>
+              <td class="num">770</td>
+              <td class="num">2</td>
+              <td class="num">3</td>
+              <td class="num negative">-17.2%</td>
+              <td class="num negative">-54.8%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="7天优品(淄博沂源店)"
+                data-city="淄博市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="599.0"
+                data-payment-current="1752.4000000000003"
+                data-redeem-nights="6.0"
+                data-payment-nights="15.0"
+                data-redeem-growth="-0.12936046511627908"
+                data-payment-growth="0.27763196267133283">
+              <td class="rank">29</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>7天优品(淄博沂源店)</strong><small>淄博市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">599</td>
+              <td class="num">1,752</td>
+              <td class="num">6</td>
+              <td class="num">15</td>
+              <td class="num negative">-12.9%</td>
+              <td class="num positive">+27.8%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="IU酒店(淄博中润大道银泰城店)"
+                data-city="淄博市"
+                data-provider="未绑定服务商"
+                data-redeem-current="562.0"
+                data-payment-current="724.9"
+                data-redeem-nights="3.0"
+                data-payment-nights="4.0"
+                data-redeem-growth="0.5482093663911847"
+                data-payment-growth="-0.7048092193671867">
+              <td class="rank">30</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>IU酒店(淄博中润大道银泰城店)</strong><small>淄博市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">562</td>
+              <td class="num">725</td>
+              <td class="num">3</td>
+              <td class="num">4</td>
+              <td class="num positive">+54.8%</td>
+              <td class="num negative">-70.5%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="麗枫酒店(淄博临淄大院区政府店)"
+                data-city="淄博市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="548.0"
+                data-payment-current="737.0"
+                data-redeem-nights="2.0"
+                data-payment-nights="3.0"
+                data-redeem-growth="-0.7583774250440918"
+                data-payment-growth="-0.7059996808680389">
+              <td class="rank">31</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>麗枫酒店(淄博临淄大院区政府店)</strong><small>淄博市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">548</td>
+              <td class="num">737</td>
+              <td class="num">2</td>
+              <td class="num">3</td>
+              <td class="num negative">-75.8%</td>
+              <td class="num negative">-70.6%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="IU酒店(淄博高新区裕民路店)"
+                data-city="淄博市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="537.0"
+                data-payment-current="70.0"
+                data-redeem-nights="3.0"
+                data-payment-nights="1.0"
+                data-redeem-growth="1.1141732283464565"
+                data-payment-growth="-0.9727159338946055">
+              <td class="rank">32</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>IU酒店(淄博高新区裕民路店)</strong><small>淄博市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">537</td>
+              <td class="num">70</td>
+              <td class="num">3</td>
+              <td class="num">1</td>
+              <td class="num positive">+111.4%</td>
+              <td class="num negative">-97.3%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="丽怡酒店(淄博柳泉路八大局高新区店)"
+                data-city="淄博市"
+                data-provider="青岛三合酒店管理有限公司"
+                data-redeem-current="488.0"
+                data-payment-current="0.0"
+                data-redeem-nights="1.0"
+                data-payment-nights="0.0"
+                data-redeem-growth="0.0"
+                data-payment-growth="-1.0">
+              <td class="rank">33</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>丽怡酒店(淄博柳泉路八大局高新区店)</strong><small>淄博市 · 有返回记录</small></td>
+              <td><span class="provider">青岛三合酒店管理有限公司</span></td>
+              <td class="num">488</td>
+              <td class="num">0</td>
+              <td class="num">1</td>
+              <td class="num">0</td>
+              <td class="num neutral">基期较低</td>
+              <td class="num negative">-100.0%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="希岸酒店(淄博山东理工大学东校店)"
+                data-city="淄博市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="478.0"
+                data-payment-current="1329.8000000000002"
+                data-redeem-nights="2.0"
+                data-payment-nights="7.0"
+                data-redeem-growth="-0.055335968379446654"
+                data-payment-growth="-0.34063863546211814">
+              <td class="rank">34</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>希岸酒店(淄博山东理工大学东校店)</strong><small>淄博市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">478</td>
+              <td class="num">1,330</td>
+              <td class="num">2</td>
+              <td class="num">7</td>
+              <td class="num negative">-5.5%</td>
+              <td class="num negative">-34.1%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="7天优品Premium(淄博临淄区稷山路店)"
+                data-city="淄博市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="366.0"
+                data-payment-current="453.79999999999995"
+                data-redeem-nights="2.0"
+                data-payment-nights="4.0"
+                data-redeem-growth="0.0"
+                data-payment-growth="-0.37155518626229067">
+              <td class="rank">35</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>7天优品Premium(淄博临淄区稷山路店)</strong><small>淄博市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">366</td>
+              <td class="num">454</td>
+              <td class="num">2</td>
+              <td class="num">4</td>
+              <td class="num neutral">基期较低</td>
+              <td class="num negative">-37.2%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="IU酒店(淄博柳泉路店)"
+                data-city="淄博市"
+                data-provider="未绑定服务商"
+                data-redeem-current="349.0"
+                data-payment-current="149.0"
+                data-redeem-nights="1.0"
+                data-payment-nights="1.0"
+                data-redeem-growth="-0.8036015756893641"
+                data-payment-growth="-0.894892776523702">
+              <td class="rank">36</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>IU酒店(淄博柳泉路店)</strong><small>淄博市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">349</td>
+              <td class="num">149</td>
+              <td class="num">1</td>
+              <td class="num">1</td>
+              <td class="num negative">-80.4%</td>
+              <td class="num negative">-89.5%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="7天酒店(淄博火车站万象汇八大局店)"
+                data-city="淄博市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="198.0"
+                data-payment-current="436.0"
+                data-redeem-nights="2.0"
+                data-payment-nights="4.0"
+                data-redeem-growth="-0.7071005917159763"
+                data-payment-growth="0.22163070888203995">
+              <td class="rank">37</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>7天酒店(淄博火车站万象汇八大局店)</strong><small>淄博市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">198</td>
+              <td class="num">436</td>
+              <td class="num">2</td>
+              <td class="num">4</td>
+              <td class="num negative">-70.7%</td>
+              <td class="num positive">+22.2%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="7天酒店(淄博火车站南广场店)"
+                data-city="淄博市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="196.0"
+                data-payment-current="601.9"
+                data-redeem-nights="2.0"
+                data-payment-nights="6.0"
+                data-redeem-growth="1.0851063829787235"
+                data-payment-growth="-0.015054819178530576">
+              <td class="rank">38</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>7天酒店(淄博火车站南广场店)</strong><small>淄博市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">196</td>
+              <td class="num">602</td>
+              <td class="num">2</td>
+              <td class="num">6</td>
+              <td class="num positive">+108.5%</td>
+              <td class="num negative">-1.5%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="7天酒店(淄博东四路盛世新城店【新7天】)"
+                data-city="淄博市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="145.0"
+                data-payment-current="372.9"
+                data-redeem-nights="1.0"
+                data-payment-nights="3.0"
+                data-redeem-growth="-0.7969187675070029"
+                data-payment-growth="-0.5243015690776884">
+              <td class="rank">39</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>7天酒店(淄博东四路盛世新城店【新7天】)</strong><small>淄博市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">145</td>
+              <td class="num">373</td>
+              <td class="num">1</td>
+              <td class="num">3</td>
+              <td class="num negative">-79.7%</td>
+              <td class="num negative">-52.4%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="麗枫酒店(淄博周村正阳路五洲国际盛世家居广场店)"
+                data-city="淄博市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="0.0"
+                data-payment-current="3546.7000000000003"
+                data-redeem-nights="0.0"
+                data-payment-nights="13.0"
+                data-redeem-growth="-1.0"
+                data-payment-growth="2.1868990924611373">
+              <td class="rank">40</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>麗枫酒店(淄博周村正阳路五洲国际盛世家居广场店)</strong><small>淄博市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">0</td>
+              <td class="num">3,547</td>
+              <td class="num">0</td>
+              <td class="num">13</td>
+              <td class="num negative">-100.0%</td>
+              <td class="num positive">+218.7%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="IU酒店(淄博临淄金山店)"
+                data-city="淄博市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="0.0"
+                data-payment-current="1256.0"
+                data-redeem-nights="0.0"
+                data-payment-nights="4.0"
+                data-redeem-growth="-1.0"
+                data-payment-growth="1.0767195767195767">
+              <td class="rank">41</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>IU酒店(淄博临淄金山店)</strong><small>淄博市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">0</td>
+              <td class="num">1,256</td>
+              <td class="num">0</td>
+              <td class="num">4</td>
+              <td class="num negative">-100.0%</td>
+              <td class="num positive">+107.7%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="7天优品 ( 淄博桓台信誉楼店)"
+                data-city="淄博市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="0.0"
+                data-payment-current="773.0"
+                data-redeem-nights="0.0"
+                data-payment-nights="7.0"
+                data-redeem-growth="0.0"
+                data-payment-growth="0.0">
+              <td class="rank">42</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>7天优品 ( 淄博桓台信誉楼店)</strong><small>淄博市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">0</td>
+              <td class="num">773</td>
+              <td class="num">0</td>
+              <td class="num">7</td>
+              <td class="num neutral">基期较低</td>
+              <td class="num neutral">基期较低</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="IU酒店(淄博万象汇王府井步行街店)"
+                data-city="淄博市"
+                data-provider="未绑定服务商"
+                data-redeem-current="0.0"
+                data-payment-current="714.0"
+                data-redeem-nights="0.0"
+                data-payment-nights="7.0"
+                data-redeem-growth="-1.0"
+                data-payment-growth="2.988826815642458">
+              <td class="rank">43</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>IU酒店(淄博万象汇王府井步行街店)</strong><small>淄博市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">0</td>
+              <td class="num">714</td>
+              <td class="num">0</td>
+              <td class="num">7</td>
+              <td class="num negative">-100.0%</td>
+              <td class="num positive">+298.9%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="iu酒店·(淄博高新区高铁北站金科学府店)"
+                data-city="淄博市"
+                data-provider="未绑定服务商"
+                data-redeem-current="0.0"
+                data-payment-current="476.1"
+                data-redeem-nights="0.0"
+                data-payment-nights="4.0"
+                data-redeem-growth="-1.0"
+                data-payment-growth="0.9995800083998321">
+              <td class="rank">44</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>iu酒店·(淄博高新区高铁北站金科学府店)</strong><small>淄博市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">0</td>
+              <td class="num">476</td>
+              <td class="num">0</td>
+              <td class="num">4</td>
+              <td class="num negative">-100.0%</td>
+              <td class="num positive">+100.0%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="麗枫酒店(淄博火车站张店区吾悦广场店)"
+                data-city="淄博市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="0.0"
+                data-payment-current="341.9"
+                data-redeem-nights="0.0"
+                data-payment-nights="1.0"
+                data-redeem-growth="0.0"
+                data-payment-growth="-0.4134499914221994">
+              <td class="rank">45</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>麗枫酒店(淄博火车站张店区吾悦广场店)</strong><small>淄博市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">0</td>
+              <td class="num">342</td>
+              <td class="num">0</td>
+              <td class="num">1</td>
+              <td class="num neutral">基期较低</td>
+              <td class="num negative">-41.3%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="希岸酒店(淄博陶瓷琉璃馆万达广场店)"
+                data-city=""
+                data-provider="未绑定服务商"
+                data-redeem-current="0.0"
+                data-payment-current="0.0"
+                data-redeem-nights="0.0"
+                data-payment-nights="0.0"
+                data-redeem-growth="0.0"
+                data-payment-growth="0.0">
+              <td class="rank">46</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>希岸酒店(淄博陶瓷琉璃馆万达广场店)</strong><small> · 无返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num neutral">基期较低</td>
+              <td class="num neutral">基期较低</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="#N/A"
+                data-city=""
+                data-provider="未绑定服务商"
+                data-redeem-current="0.0"
+                data-payment-current="0.0"
+                data-redeem-nights="0.0"
+                data-payment-nights="0.0"
+                data-redeem-growth="0.0"
+                data-payment-growth="0.0">
+              <td class="rank">47</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>#N/A</strong><small> · 无返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num neutral">基期较低</td>
+              <td class="num neutral">基期较低</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="#N/A"
+                data-city=""
+                data-provider="未绑定服务商"
+                data-redeem-current="0.0"
+                data-payment-current="0.0"
+                data-redeem-nights="0.0"
+                data-payment-nights="0.0"
+                data-redeem-growth="0.0"
+                data-payment-growth="0.0">
+              <td class="rank">48</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>#N/A</strong><small> · 无返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num neutral">基期较低</td>
+              <td class="num neutral">基期较低</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="#N/A"
+                data-city=""
+                data-provider="未绑定服务商"
+                data-redeem-current="0.0"
+                data-payment-current="0.0"
+                data-redeem-nights="0.0"
+                data-payment-nights="0.0"
+                data-redeem-growth="0.0"
+                data-payment-growth="0.0">
+              <td class="rank">49</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>#N/A</strong><small> · 无返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num neutral">基期较低</td>
+              <td class="num neutral">基期较低</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="淄博片区"
+                data-store="#N/A"
+                data-city=""
+                data-provider="未绑定服务商"
+                data-redeem-current="0.0"
+                data-payment-current="0.0"
+                data-redeem-nights="0.0"
+                data-payment-nights="0.0"
+                data-redeem-growth="0.0"
+                data-payment-growth="0.0">
+              <td class="rank">50</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>淄博片区</strong></td>
+              <td><strong>#N/A</strong><small> · 无返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num neutral">基期较低</td>
+              <td class="num neutral">基期较低</td>
+            </tr>
+            </tbody>
+        </table>
+      </div>
+    </article>
+      <article class="panel local-panel" data-panel="growth" style="display:none">
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>#</th><th>门店 / 服务商</th><th>本期支付</th><th>上期支付</th><th>增减额</th><th>经营渠道拆解</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="rank">01</td>
+              <td><strong>麗枫酒店(淄博周村正阳路五洲国际盛世家居广场店)</strong><small>淄博市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">3,547</td>
+              <td class="num">1,113</td>
+              <td class="num positive">+2,434</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">02</td>
+              <td><strong>锦江之星(淄博沂源店)</strong><small>淄博市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">4,498</td>
+              <td class="num">2,827</td>
+              <td class="num positive">+1,671</td>
+              <td class="channel-stack"><span class="channel-chip positive">短视频 +298</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">03</td>
+              <td><strong>7天酒店(淄博北站工业职业学院店)</strong><small>淄博市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">3,829</td>
+              <td class="num">2,468</td>
+              <td class="num positive">+1,361</td>
+              <td class="channel-stack"><span class="channel-chip positive">短视频 +99</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">04</td>
+              <td><strong>7天优品(淄博淄川鸿泰店)</strong><small>淄博市 · 未绑定服务商</small></td>
+              <td class="num">1,455</td>
+              <td class="num">187</td>
+              <td class="num positive">+1,269</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">05</td>
+              <td><strong>7天优品 ( 淄博桓台信誉楼店)</strong><small>淄博市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">773</td>
+              <td class="num">0</td>
+              <td class="num positive">+773</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">06</td>
+              <td><strong>维也纳国际酒店(临淄区政府青银高速路口店)</strong><small>淄博市 · 青岛三合酒店管理有限公司</small></td>
+              <td class="num">3,938</td>
+              <td class="num">3,273</td>
+              <td class="num positive">+665</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">07</td>
+              <td><strong>维也纳3好酒店(淄博金晶大道万象汇八大局店)</strong><small>淄博市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">3,989</td>
+              <td class="num">3,325</td>
+              <td class="num positive">+664</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">08</td>
+              <td><strong>IU酒店(淄博临淄金山店)</strong><small>淄博市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">1,256</td>
+              <td class="num">605</td>
+              <td class="num positive">+651</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">09</td>
+              <td><strong>7天酒店(淄博沂源健康路店)</strong><small>淄博市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">3,043</td>
+              <td class="num">2,411</td>
+              <td class="num positive">+632</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">10</td>
+              <td><strong>IU酒店(淄博万象汇王府井步行街店)</strong><small>淄博市 · 未绑定服务商</small></td>
+              <td class="num">714</td>
+              <td class="num">179</td>
+              <td class="num positive">+535</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+            </tbody>
+        </table>
+      </div>
+    </article>
+      <article class="panel local-panel" data-panel="decline" style="display:none">
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>#</th><th>门店 / 服务商</th><th>本期支付</th><th>上期支付</th><th>增减额</th><th>经营渠道拆解</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="rank">01</td>
+              <td><strong>丽枫酒店(淄博北站柳泉路店)</strong><small>淄博市 · 青岛三合酒店管理有限公司</small></td>
+              <td class="num">9,049</td>
+              <td class="num">3.33万</td>
+              <td class="num negative">-2.42万</td>
+              <td class="channel-stack"><span class="channel-chip negative">自播 -3,844</span><span class="channel-chip negative">短视频 -1,474</span><span class="channel-chip positive">达播 +150</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">02</td>
+              <td><strong>7天优品(淄博博山红叶柿岩珑山路店)</strong><small>淄博市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">1.09万</td>
+              <td class="num">1.82万</td>
+              <td class="num negative">-7,297</td>
+              <td class="channel-stack"><span class="channel-chip negative">达播 -488</span><span class="channel-chip positive">自播 +320</span><span class="channel-chip positive">短视频 0</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">03</td>
+              <td><strong>IU酒店(淄博海岱楼西班牙风情街店)</strong><small>淄博市 · 未绑定服务商</small></td>
+              <td class="num">169</td>
+              <td class="num">4,945</td>
+              <td class="num negative">-4,776</td>
+              <td class="channel-stack"><span class="channel-chip negative">短视频 -476</span><span class="channel-chip negative">达播 -50</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">04</td>
+              <td><strong>维也纳酒店(淄博易达广场店)</strong><small>淄博市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">2,031</td>
+              <td class="num">5,574</td>
+              <td class="num negative">-3,544</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">05</td>
+              <td><strong>白玉兰商务酒店(淄博周村古商城步行街店)</strong><small>淄博市 · 未绑定服务商</small></td>
+              <td class="num">1,280</td>
+              <td class="num">4,329</td>
+              <td class="num negative">-3,049</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">06</td>
+              <td><strong>维也纳酒店(5.0淄博中润大道店)</strong><small>淄博市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">1,792</td>
+              <td class="num">4,799</td>
+              <td class="num negative">-3,007</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">07</td>
+              <td><strong>希岸酒店(淄博周村古商城区政府店)</strong><small>淄博市 · 青岛三合酒店管理有限公司</small></td>
+              <td class="num">1,125</td>
+              <td class="num">3,854</td>
+              <td class="num negative">-2,729</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">08</td>
+              <td><strong>IU酒店(淄博高新区裕民路店)</strong><small>淄博市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">70</td>
+              <td class="num">2,566</td>
+              <td class="num negative">-2,496</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">09</td>
+              <td><strong>丽怡酒店(淄博柳泉路八大局高新区店)</strong><small>淄博市 · 青岛三合酒店管理有限公司</small></td>
+              <td class="num">0</td>
+              <td class="num">2,238</td>
+              <td class="num negative">-2,238</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">10</td>
+              <td><strong>麗枫酒店(淄博北京路琉璃馆牧羊村店)</strong><small>淄博市 · 青岛三合酒店管理有限公司</small></td>
+              <td class="num">1,575</td>
+              <td class="num">3,795</td>
+              <td class="num negative">-2,220</td>
+              <td class="channel-stack"><span class="channel-chip negative">短视频 -677</span></td>
+            </tr>
+            </tbody>
+        </table>
+      </div>
+    </article>
+    </section>
+
+    <section class="section" id="attribution">
+      <div class="section-head"><div><h2>增长归因</h2><p>保留全部交易体裁，分别查看支付与核销增减及绑定服务商贡献</p></div></div>
+      <div class="grid-2 equal"><article class="panel"><div class="panel-head"><div><h2>经营渠道变化</h2><p>本期对比上期 · 支付和核销 · 服务商明细 · 单位：元</p></div></div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr>
+            <th><button class="sort-trigger channel-sort-trigger" type="button" data-sort-key="channel" onclick="sortChannelTable('channel')" title="按渠道名称排序">经营渠道 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger channel-sort-trigger" type="button" data-sort-key="payment-current" onclick="sortChannelTable('payment-current')" title="按本期支付额排序">本期支付 <span class="sort-indicator"></span></button></th>
+            <th>上期支付</th>
+            <th><button class="sort-trigger channel-sort-trigger" type="button" data-sort-key="payment-delta" onclick="sortChannelTable('payment-delta')" title="按支付增减排序">支付增减 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger channel-sort-trigger" type="button" data-sort-key="payment-growth" onclick="sortChannelTable('payment-growth')" title="按支付增长率排序">支付增长率 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger channel-sort-trigger" type="button" data-sort-key="redeem-current" onclick="sortChannelTable('redeem-current')" title="按本期核销额排序">本期核销 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger channel-sort-trigger" type="button" data-sort-key="redeem-previous" onclick="sortChannelTable('redeem-previous')" title="按上期核销额排序">上期核销 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger channel-sort-trigger" type="button" data-sort-key="redeem-delta" onclick="sortChannelTable('redeem-delta')" title="按核销增减排序">核销增减 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger channel-sort-trigger" type="button" data-sort-key="redeem-growth" onclick="sortChannelTable('redeem-growth')" title="按核销增长率排序">核销增长率 <span class="sort-indicator"></span></button></th>
+            <th>绑定服务商及增减</th>
+          </tr></thead>
+          <tbody id="channel-attribution-body">
+            <tr data-channel="达播"
+                data-payment-current="150.0"
+                data-payment-delta="-388.0"
+                data-payment-growth="-0.7211895910780669"
+                data-redeem-current="837.0"
+                data-redeem-previous="487.0"
+                data-redeem-delta="350.0"
+                data-redeem-growth="0.7186858316221767">
+              <td><strong>达播</strong></td>
+              <td class="num">150</td>
+              <td class="num">538</td>
+              <td class="num negative">-388</td>
+              <td class="num">-72.1%</td>
+              <td class="num">837</td>
+              <td class="num">487</td>
+              <td class="num positive">+350</td>
+              <td class="num">+71.9%</td>
+              <td class="channel-stack"><span class="channel-chip negative">杭州四库传媒有限公司 支付 -488 · 核销 +488</span><span class="channel-chip negative">未绑定服务商 支付 -50 · 核销 -487</span><span class="channel-chip positive">青岛三合酒店管理有限公司 支付 +150 · 核销 +349</span></td>
+            </tr>
+
+            <tr data-channel="自播"
+                data-payment-current="1354.0"
+                data-payment-delta="-2808.0"
+                data-payment-growth="-0.6746756367131187"
+                data-redeem-current="1873.0"
+                data-redeem-previous="897.0"
+                data-redeem-delta="976.0"
+                data-redeem-growth="1.0880713489409142">
+              <td><strong>自播</strong></td>
+              <td class="num">1,354</td>
+              <td class="num">4,162</td>
+              <td class="num negative">-2,808</td>
+              <td class="num">-67.5%</td>
+              <td class="num">1,873</td>
+              <td class="num">897</td>
+              <td class="num positive">+976</td>
+              <td class="num">+108.8%</td>
+              <td class="channel-stack"><span class="channel-chip negative">青岛三合酒店管理有限公司 支付 -3,844 · 核销 0</span><span class="channel-chip positive">杭州四库传媒有限公司 支付 +538 · 核销 +478</span><span class="channel-chip positive">未绑定服务商 支付 +498 · 核销 +498</span></td>
+            </tr>
+
+            <tr data-channel="短视频"
+                data-payment-current="3742.9"
+                data-payment-delta="-2887.9999999999995"
+                data-payment-growth="-0.43553665414951204"
+                data-redeem-current="786.0"
+                data-redeem-previous="685.0"
+                data-redeem-delta="101.0"
+                data-redeem-growth="0.14744525547445253">
+              <td><strong>短视频</strong></td>
+              <td class="num">3,743</td>
+              <td class="num">6,631</td>
+              <td class="num negative">-2,888</td>
+              <td class="num">-43.6%</td>
+              <td class="num">786</td>
+              <td class="num">685</td>
+              <td class="num positive">+101</td>
+              <td class="num">+14.7%</td>
+              <td class="channel-stack"><span class="channel-chip negative">青岛三合酒店管理有限公司 支付 -2,444 · 核销 +358</span><span class="channel-chip negative">未绑定服务商 支付 -525 · 核销 -49</span><span class="channel-chip positive">杭州四库传媒有限公司 支付 +81 · 核销 -208</span></td>
+            </tr>
+
+            <tr data-channel="其他"
+                data-payment-current="30911.40000000003"
+                data-payment-delta="-13621.100000000006"
+                data-payment-growth="-0.30586874754392845"
+                data-redeem-current="21106.05"
+                data-redeem-previous="14970.0"
+                data-redeem-delta="6136.049999999999"
+                data-redeem-growth="0.4098897795591181">
+              <td><strong>其他</strong></td>
+              <td class="num">3.09万</td>
+              <td class="num">4.45万</td>
+              <td class="num negative">-1.36万</td>
+              <td class="num">-30.6%</td>
+              <td class="num">2.11万</td>
+              <td class="num">1.50万</td>
+              <td class="num positive">+6,136</td>
+              <td class="num">+41.0%</td>
+              <td class="channel-stack"><span class="channel-chip negative">青岛三合酒店管理有限公司 支付 -5,244 · 核销 +3,370</span><span class="channel-chip negative">未绑定服务商 支付 -4,622 · 核销 +1,005</span><span class="channel-chip negative">杭州四库传媒有限公司 支付 -3,755 · 核销 +1,761</span></td>
+            </tr>
+
+            <tr data-channel="搜索结果卡"
+                data-payment-current="41820.80000000006"
+                data-payment-delta="-28381.799999999654"
+                data-payment-growth="-0.40428417181129717"
+                data-redeem-current="32307.05"
+                data-redeem-previous="29219.1"
+                data-redeem-delta="3087.9500000000007"
+                data-redeem-growth="0.10568258433695776">
+              <td><strong>搜索结果卡</strong></td>
+              <td class="num">4.18万</td>
+              <td class="num">7.02万</td>
+              <td class="num negative">-2.84万</td>
+              <td class="num">-40.4%</td>
+              <td class="num">3.23万</td>
+              <td class="num">2.92万</td>
+              <td class="num positive">+3,088</td>
+              <td class="num">+10.6%</td>
+              <td class="channel-stack"><span class="channel-chip negative">杭州四库传媒有限公司 支付 -1.27万 · 核销 +1,615</span><span class="channel-chip negative">青岛三合酒店管理有限公司 支付 -9,054 · 核销 +1,904</span><span class="channel-chip negative">未绑定服务商 支付 -6,628 · 核销 -431</span></td>
+            </tr>
+
+            <tr data-channel="职人/店员直播"
+                data-payment-current="0.0"
+                data-payment-delta="-9870.0"
+                data-payment-growth="-1.0"
+                data-redeem-current="2798.0"
+                data-redeem-previous="238.0"
+                data-redeem-delta="2560.0"
+                data-redeem-growth="10.756302521008404">
+              <td><strong>职人/店员直播</strong></td>
+              <td class="num">0</td>
+              <td class="num">9,870</td>
+              <td class="num negative">-9,870</td>
+              <td class="num">-100.0%</td>
+              <td class="num">2,798</td>
+              <td class="num">238</td>
+              <td class="num positive">+2,560</td>
+              <td class="num">+1075.6%</td>
+              <td class="channel-stack"><span class="channel-chip negative">青岛三合酒店管理有限公司 支付 -9,870 · 核销 +2,560</span></td>
+            </tr>
+
+            <tr data-channel="获客卡"
+                data-payment-current="4929.0"
+                data-payment-delta="-547.1000000000004"
+                data-payment-growth="-0.09990686802651527"
+                data-redeem-current="875.0"
+                data-redeem-previous="238.0"
+                data-redeem-delta="637.0"
+                data-redeem-growth="2.676470588235294">
+              <td><strong>获客卡</strong></td>
+              <td class="num">4,929</td>
+              <td class="num">5,476</td>
+              <td class="num negative">-547</td>
+              <td class="num">-10.0%</td>
+              <td class="num">875</td>
+              <td class="num">238</td>
+              <td class="num positive">+637</td>
+              <td class="num">+267.6%</td>
+              <td class="channel-stack"><span class="channel-chip negative">青岛三合酒店管理有限公司 支付 -803 · 核销 +696</span><span class="channel-chip positive">杭州四库传媒有限公司 支付 +217 · 核销 -59</span><span class="channel-chip positive">未绑定服务商 支付 +39 · 核销 0</span></td>
+            </tr>
+            </tbody>
+        </table>
+      </div>
+    </article>
+      <article class="panel"><div class="panel-head"><div><h2>增长 / 下滑摘要</h2><p>按支付 GMV 增减额排序</p></div></div>
+        <div class="insights">
+          <div class="insight"><b>最大增长门店</b><p>麗枫酒店(淄博周村正阳路五洲国际盛世家居广场店) · +2,434 · 杭州四库传媒有限公司</p><span class="tag good">暂无渠道</span></div>
+          <div class="insight"><b>最大下滑门店</b><p>丽枫酒店(淄博北站柳泉路店) · -2.42万 · 青岛三合酒店管理有限公司</p><span class="tag warn">自播</span></div>
+        </div>
+      </article></div>
+    </section>
+
+    <section class="section" id="providers">
+      <div class="section-head"><div><h2>头部服务商表现</h2><p>按绑定门店数展示前 8 家主要服务商</p></div></div>
+      <div class="grid-2"><article class="panel"><div class="panel-head"><div><h2>服务商累计表现</h2><p>支付、核销、绑定规模与单店产出 · 金额单位：万元</p></div></div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>#</th><th>服务商</th><th>绑定门店</th><th>动销门店</th><th>支付 GMV</th><th>支付增长率</th><th>核销 GMV</th><th>核销增长率</th><th>平均单店支付</th><th>单店支付增长率</th><th>平均单店核销</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="rank">01</td>
+              <td><strong>杭州四库传媒有限公司</strong></td>
+              <td class="num">27家</td>
+              <td class="num">27家</td>
+              <td class="num">5.56万</td>
+              <td class="num negative">-22.5%</td>
+              <td class="num">3.14万</td>
+              <td class="num positive">+14.9%</td>
+              <td class="num">2,061</td>
+              <td class="num negative">-25.3%</td>
+              <td class="num">1,161</td>
+            </tr>
+
+            <tr>
+              <td class="rank">02</td>
+              <td><strong>青岛三合酒店管理有限公司</strong></td>
+              <td class="num">6家</td>
+              <td class="num">6家</td>
+              <td class="num">1.63万</td>
+              <td class="num negative">-65.6%</td>
+              <td class="num">1.96万</td>
+              <td class="num positive">+89.2%</td>
+              <td class="num">2,722</td>
+              <td class="num negative">-65.6%</td>
+              <td class="num">3,264</td>
+            </tr>
+
+            <tr>
+              <td class="rank">03</td>
+              <td><strong>未绑定服务商</strong></td>
+              <td class="num">0家</td>
+              <td class="num">12家</td>
+              <td class="num">1.09万</td>
+              <td class="num negative">-50.8%</td>
+              <td class="num">9,643</td>
+              <td class="num positive">+5.9%</td>
+              <td class="num">912</td>
+              <td class="num negative">-50.8%</td>
+              <td class="num">804</td>
+            </tr>
+            </tbody>
+        </table>
+      </div>
+    </article>
+      <article class="panel"><div class="panel-head"><div><h2>服务商水平</h2><p>平均单店支付产出柱状图 · 单位：万元</p></div></div>
+        <div class="insights"><div class="insight"><b>杭州四库传媒有限公司</b><p>2,061 /家支付 · 1,161 /家核销 · 27家动销</p><div class="bar-wrap"><span class="segment-bar calendar" style="width:75.7%"></span></div><span class="tag warn">单店产出 -25.3%</span></div><div class="insight"><b>青岛三合酒店管理有限公司</b><p>2,722 /家支付 · 3,264 /家核销 · 6家动销</p><div class="bar-wrap"><span class="segment-bar calendar" style="width:100.0%"></span></div><span class="tag warn">单店产出 -65.6%</span></div><div class="insight"><b>未绑定服务商</b><p>912 /家支付 · 804 /家核销 · 12家动销</p><div class="bar-wrap"><span class="segment-bar calendar" style="width:33.5%"></span></div><span class="tag warn">单店产出 -50.8%</span></div></div>
+      </article></div>
+    </section>
+
+    <section class="section" id="voucher">
+      <div class="section-head"><div><h2>通兑商品</h2><p>省区合计 · 仅展示支付与核销趋势，不拆分 SKU</p></div></div>
+      <div class="kpis">
+        <article class="kpi"><span class="kpi-label">通兑支付 GMV</span><b class="kpi-value">4,739</b><div class="kpi-foot"><span>本期 7 天累计</span><span>支付券 31张</span></div></article>
+        <article class="kpi"><span class="kpi-label">通兑核销 GMV</span><b class="kpi-value">0</b><div class="kpi-foot"><span>本期 7 天累计</span><span>核销券 0张</span></div></article>
+      </div>
+      <article class="panel" style="margin-top:16px">
+        <div class="panel-head trend-panel-head"><div class="trend-heading"><h2>支付与核销趋势</h2><span class="trend-range">10-03–10-09 · 单位：万元</span></div><div class="legend"><span><i style="background:var(--blue)"></i>支付</span><span><i style="background:var(--orange)"></i>核销</span></div></div>
+        <div class="chart-scroll">
+      <svg class="chart-svg" viewBox="0 0 760 300" role="img"
+           aria-label="支付与核销日趋势，单位万元">
+        <line x1="54" y1="34.0" x2="736" y2="34.0" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="104.6" x2="736" y2="104.6" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="175.2" x2="736" y2="175.2" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="248.0" x2="736" y2="248.0" stroke="#ECEEF3" stroke-width="1"/><text x="44" y="38.0" text-anchor="end" class="axis-label">0.1</text><text x="44" y="145.0" text-anchor="end" class="axis-label">0.1</text><text x="44" y="252.0" text-anchor="end" class="axis-label">0.0</text>
+        <path d="M54.0 45.6 L167.7 122.8 L281.3 34.0 L395.0 147.4 L508.7 221.8 L622.3 248.0 L736.0 221.8" fill="none" stroke="#1677FF"
+              stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M54.0 248.0 L167.7 248.0 L281.3 248.0 L395.0 248.0 L508.7 248.0 L622.3 248.0 L736.0 248.0" fill="none" stroke="#FF8A3D"
+              stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle class="trend-point payment-point" cx="54.0" cy="45.6" r="5" fill="#1677FF"/><text x="58.0" y="33.6" text-anchor="start" class="point-label payment-label" fill="#1677FF">0.1万</text><circle class="trend-point payment-point" cx="167.7" cy="122.8" r="5" fill="#1677FF"/><text x="167.7" y="110.8" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.1万</text><circle class="trend-point payment-point" cx="281.3" cy="34.0" r="5" fill="#1677FF"/><text x="281.3" y="22.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.1万</text><circle class="trend-point payment-point" cx="395.0" cy="147.4" r="5" fill="#1677FF"/><text x="395.0" y="135.4" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.1万</text><circle class="trend-point payment-point" cx="508.7" cy="221.8" r="5" fill="#1677FF"/><text x="508.7" y="209.8" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="622.3" cy="248.0" r="5" fill="#1677FF"/><text x="622.3" y="236.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="736.0" cy="221.8" r="5" fill="#1677FF"/><text x="732.0" y="209.8" text-anchor="end" class="point-label payment-label" fill="#1677FF">0.0万</text>
+        <circle class="trend-point redeem-point" cx="54.0" cy="248.0" r="5" fill="#FF8A3D"/><text x="58.0" y="272.0" text-anchor="start" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="167.7" cy="248.0" r="5" fill="#FF8A3D"/><text x="167.7" y="272.0" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="281.3" cy="248.0" r="5" fill="#FF8A3D"/><text x="281.3" y="272.0" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="395.0" cy="248.0" r="5" fill="#FF8A3D"/><text x="395.0" y="272.0" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="508.7" cy="248.0" r="5" fill="#FF8A3D"/><text x="508.7" y="272.0" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="622.3" cy="248.0" r="5" fill="#FF8A3D"/><text x="622.3" y="272.0" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="736.0" cy="248.0" r="5" fill="#FF8A3D"/><text x="732.0" y="272.0" text-anchor="end" class="point-label redeem-label" fill="#FF8A3D">0.0万</text>
+        <text x="54.0" y="288" text-anchor="middle" class="axis-label">10-03</text><text x="167.7" y="288" text-anchor="middle" class="axis-label">10-04</text><text x="281.3" y="288" text-anchor="middle" class="axis-label">10-05</text><text x="395.0" y="288" text-anchor="middle" class="axis-label">10-06</text><text x="508.7" y="288" text-anchor="middle" class="axis-label">10-07</text><text x="622.3" y="288" text-anchor="middle" class="axis-label">10-08</text><text x="736.0" y="288" text-anchor="middle" class="axis-label">10-09</text>
+      </svg>
+    </div>
+      </article>
+    </section>
+
+
+    <section class="section" id="merchant-live">
+      <div class="section-head"><div><h2>商家自播</h2><p>商家官号 · 近 7 日对比前 7 日 · 数据来源：生意经</p></div></div>
+      <div class="kpis">
+        <article class="kpi"><span class="kpi-label">直播成交金额</span><b class="kpi-value">0</b><div class="kpi-foot"><span class="negative">-100.0%</span><span>较前 7 日 4,043</span></div></article>
+        <article class="kpi"><span class="kpi-label">直播场次</span><b class="kpi-value">1<small style="font-size:14px">场</small></b><div class="kpi-foot"><span class="negative">-87.5%</span><span>较前 7 日 8场</span></div></article>
+        <article class="kpi"><span class="kpi-label">直播时长</span><b class="kpi-value">1.0小时</b><div class="kpi-foot"><span class="negative">-90.0%</span><span>较前 7 日 10.0小时</span></div></article>
+        <article class="kpi"><span class="kpi-label">开播账号</span><b class="kpi-value">1<small style="font-size:14px">个</small></b><div class="kpi-foot"><span class="negative">-1个</span><span>较前 7 日</span></div></article>
+      </div>
+      <article class="panel" style="margin-top:16px">
+        <div class="panel-head trend-panel-head"><div class="trend-heading"><h2>直播成交与时长每日趋势</h2><span class="trend-range">10-03–10-09</span></div></div>
+        <div class="chart-scroll merchant-trend-scroll">
+      <div class="merchant-trend-canvas">
+        <svg class="chart-svg merchant-amount-chart" viewBox="0 0 760 245"
+             role="img" aria-label="商家官号直播成交金额每日趋势，单位万元">
+          <line x1="54" y1="34.0" x2="736" y2="34.0" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="122.5" x2="736" y2="122.5" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="211.0" x2="736" y2="211.0" stroke="#ECEEF3" stroke-width="1"/><text x="44" y="38.0" text-anchor="end" class="axis-label">0.0</text><text x="44" y="126.5" text-anchor="end" class="axis-label">0.0</text><text x="44" y="215.0" text-anchor="end" class="axis-label">0.0</text>
+          <path d="M54.0 211.0 L167.7 211.0 L281.3 211.0 L395.0 211.0 L508.7 211.0 L622.3 211.0 L736.0 211.0" fill="none" stroke="#8B6DFF"
+                stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle class="merchant-live-point" cx="54.0" cy="211.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="58.0" y="199.0" text-anchor="start" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="167.7" cy="211.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="167.7" y="199.0" text-anchor="middle" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="281.3" cy="211.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="281.3" y="199.0" text-anchor="middle" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="395.0" cy="211.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="395.0" y="199.0" text-anchor="middle" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="508.7" cy="211.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="508.7" y="199.0" text-anchor="middle" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="622.3" cy="211.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="622.3" y="199.0" text-anchor="middle" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="736.0" cy="211.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="732.0" y="199.0" text-anchor="end" fill="#8B6DFF">0.0万</text>
+        </svg>
+        <div class="merchant-subchart-title">每日直播时长 <span>单位：小时</span></div>
+        <svg class="chart-svg merchant-duration-chart" viewBox="0 0 760 155"
+             role="img" aria-label="商家官号每日直播时长，单位小时">
+          <line x1="54" y1="28.0" x2="736" y2="28.0" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="121.0" x2="736" y2="121.0" stroke="#ECEEF3" stroke-width="1"/><rect class="merchant-duration-bar" x="31.6" y="121.0" width="44.8" height="0.0" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="54.0" y="114.0" text-anchor="middle" fill="#00A7A0">0.0h</text><rect class="merchant-duration-bar" x="145.3" y="121.0" width="44.8" height="0.0" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="167.7" y="114.0" text-anchor="middle" fill="#00A7A0">0.0h</text><rect class="merchant-duration-bar" x="258.9" y="121.0" width="44.8" height="0.0" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="281.3" y="114.0" text-anchor="middle" fill="#00A7A0">0.0h</text><rect class="merchant-duration-bar" x="372.6" y="121.0" width="44.8" height="0.0" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="395.0" y="114.0" text-anchor="middle" fill="#00A7A0">0.0h</text><rect class="merchant-duration-bar" x="486.3" y="121.0" width="44.8" height="0.0" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="508.7" y="114.0" text-anchor="middle" fill="#00A7A0">0.0h</text><rect class="merchant-duration-bar" x="599.9" y="121.0" width="44.8" height="0.0" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="622.3" y="114.0" text-anchor="middle" fill="#00A7A0">0.0h</text><rect class="merchant-duration-bar" x="713.6" y="28.0" width="44.8" height="93.0" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="736.0" y="21.0" text-anchor="middle" fill="#00A7A0">1.0h</text><text x="54.0" y="145" text-anchor="middle" class="axis-label">10-03</text><text x="167.7" y="145" text-anchor="middle" class="axis-label">10-04</text><text x="281.3" y="145" text-anchor="middle" class="axis-label">10-05</text><text x="395.0" y="145" text-anchor="middle" class="axis-label">10-06</text><text x="508.7" y="145" text-anchor="middle" class="axis-label">10-07</text><text x="622.3" y="145" text-anchor="middle" class="axis-label">10-08</text><text x="736.0" y="145" text-anchor="middle" class="axis-label">10-09</text>
+        </svg>
+      </div>
+    </div>
+      </article>
+      <div class="grid-2 equal">
+        <article class="panel"><div class="panel-head"><div><h2>城市自播排名</h2><p>固定区域城市全集 · 可筛选零开播城市并点击业务列排序</p></div></div>
+      <div class="filter-bar merchant-filter-bar">
+        <input id="merchant-city-search" type="search" placeholder="搜索城市"
+               aria-label="搜索城市">
+        <select id="merchant-city-status-filter" aria-label="按开播状态筛选城市">
+          <option value="">全部状态</option>
+          <option value="有开播">有开播</option>
+          <option value="零开播">零开播</option>
+        </select>
+        <span id="merchant-city-result-count" class="filter-count"></span>
+      </div>
+      <div class="table-scroll">
+        <table class="merchant-table">
+          <thead><tr>
+            <th>#</th>
+            <th><button class="sort-trigger merchant-city-sort-trigger" type="button" data-sort-key="city-name" onclick="sortMerchantCityTable('city-name')" title="按城市排序">城市 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-city-sort-trigger" type="button" data-sort-key="city-live-amount" onclick="sortMerchantCityTable('city-live-amount')" title="按直播成交金额排序">直播成交金额 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-city-sort-trigger" type="button" data-sort-key="city-live-sessions" onclick="sortMerchantCityTable('city-live-sessions')" title="按直播场次排序">直播场次 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-city-sort-trigger" type="button" data-sort-key="city-live-hours" onclick="sortMerchantCityTable('city-live-hours')" title="按直播时长排序">直播时长 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-city-sort-trigger" type="button" data-sort-key="city-account-count" onclick="sortMerchantCityTable('city-account-count')" title="按账号数排序">账号数 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-city-sort-trigger" type="button" data-sort-key="city-live-account-count" onclick="sortMerchantCityTable('city-live-account-count')" title="按开播账号排序">开播账号 <span class="sort-indicator">↕</span></button></th>
+          </tr></thead>
+          <tbody id="merchant-city-body">
+        <tr data-city-name="淄博市"
+            data-city-status="有开播"
+            data-city-live-amount="0.0"
+            data-city-live-sessions="1.0"
+            data-city-live-hours="1.0044444444444445"
+            data-city-account-count="7.0"
+            data-city-live-account-count="1.0">
+          <td class="rank">01</td>
+          <td><strong>淄博市</strong><small><span class="live-status 有开播">有开播</span></small></td>
+          <td class="num">0</td>
+          <td class="num">1</td>
+          <td class="num">1.0小时</td>
+          <td class="num">7</td>
+          <td class="num">1</td>
+        </tr>
+        </tbody>
+        </table>
+      </div>
+    </article>
+        <article class="panel"><div class="panel-head"><div><h2>账号明细</h2><p>14 日出现账号全集 · “未直播”为近 7 日直播场次等于 0</p></div></div>
+      <div class="filter-bar merchant-filter-bar">
+        <input id="merchant-account-search" type="search"
+               placeholder="搜索账号、ID 或门店" aria-label="搜索账号、ID 或门店">
+        <select id="merchant-account-city-filter" aria-label="按城市筛选账号">
+          <option value="">全部城市</option><option value="淄博市">淄博市</option>
+        </select>
+        <select id="merchant-account-status-filter" aria-label="按直播状态筛选账号">
+          <option value="">全部状态</option>
+          <option value="已直播">已直播</option>
+          <option value="未直播">未直播</option>
+        </select>
+        <span id="merchant-account-result-count" class="filter-count"></span>
+      </div>
+      <div class="table-scroll">
+        <table class="merchant-table">
+          <thead><tr>
+            <th>#</th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-name" onclick="sortMerchantAccountTable('account-name')" title="按抖音号排序">抖音号 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-city" onclick="sortMerchantAccountTable('account-city')" title="按城市 / 门店排序">城市 / 门店 <span class="sort-indicator">↕</span></button></th>
+            <th>一级省区 / 二级片区</th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-live-amount" onclick="sortMerchantAccountTable('account-live-amount')" title="按直播成交金额排序">直播成交金额 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-live-sessions" onclick="sortMerchantAccountTable('account-live-sessions')" title="按直播场次排序">直播场次 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-live-hours" onclick="sortMerchantAccountTable('account-live-hours')" title="按直播时长排序">直播时长 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-total-amount" onclick="sortMerchantAccountTable('account-total-amount')" title="按总成交金额排序">总成交金额 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-redeem-amount" onclick="sortMerchantAccountTable('account-redeem-amount')" title="按总核销金额排序">总核销金额 <span class="sort-indicator">↕</span></button></th>
+          </tr></thead>
+          <tbody id="merchant-account-body">
+        <tr data-account-name="丽怡酒店（淄博八大局万象汇店）"
+            data-account-id="50427069235"
+            data-account-city="淄博市"
+            data-account-store="丽怡酒店(淄博柳泉路八大局高新区店)"
+            data-account-province="鲁东省区"
+            data-account-area="淄博片区"
+            data-account-status="已直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="1.0"
+            data-account-live-hours="1.0044444444444445"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">01</td>
+          <td><strong>丽怡酒店（淄博八大局万象汇店）</strong><small>50427069235 · <span class="live-status 已直播">已直播</span></small></td>
+          <td>淄博市<small>丽怡酒店(淄博柳泉路八大局高新区店)</small></td>
+          <td>鲁东省区<small>淄博片区</small></td>
+          <td class="num">0</td>
+          <td class="num">1</td>
+          <td class="num">1.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="麗枫酒店(淄博周村正阳路五洲国际盛世家居"
+            data-account-id="A19953390258"
+            data-account-city="淄博市"
+            data-account-store="麗枫酒店(淄博周村正阳路五洲国际盛世家居广场店)"
+            data-account-province="鲁东省区"
+            data-account-area="淄博片区"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">02</td>
+          <td><strong>麗枫酒店(淄博周村正阳路五洲国际盛世家居</strong><small>A19953390258 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>淄博市<small>麗枫酒店(淄博周村正阳路五洲国际盛世家居广场店)</small></td>
+          <td>鲁东省区<small>淄博片区</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="IU酒店(淄博海岱楼西班 牙风情街店)"
+            data-account-id="83628445801"
+            data-account-city="淄博市"
+            data-account-store="IU酒店(淄博海岱楼西班牙风情街店)"
+            data-account-province="鲁东省区"
+            data-account-area="淄博片区"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">03</td>
+          <td><strong>IU酒店(淄博海岱楼西班 牙风情街店)</strong><small>83628445801 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>淄博市<small>IU酒店(淄博海岱楼西班牙风情街店)</small></td>
+          <td>鲁东省区<small>淄博片区</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="7天优品(淄博博山红叶柿岩珑山路店)"
+            data-account-id="72759580430"
+            data-account-city="淄博市"
+            data-account-store="7天优品(淄博博山红叶柿岩珑山路店)"
+            data-account-province="鲁东省区"
+            data-account-area="淄博片区"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">04</td>
+          <td><strong>7天优品(淄博博山红叶柿岩珑山路店)</strong><small>72759580430 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>淄博市<small>7天优品(淄博博山红叶柿岩珑山路店)</small></td>
+          <td>鲁东省区<small>淄博片区</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="IU酒店(淄博高铁站吾悦广场店)"
+            data-account-id="72484754925"
+            data-account-city="淄博市"
+            data-account-store="IU酒店(淄博火车站吾悦广场店)"
+            data-account-province="鲁东省区"
+            data-account-area="淄博片区"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">05</td>
+          <td><strong>IU酒店(淄博高铁站吾悦广场店)</strong><small>72484754925 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>淄博市<small>IU酒店(淄博火车站吾悦广场店)</small></td>
+          <td>鲁东省区<small>淄博片区</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="麗枫酒店(淄博临淄大院区政府店)专用号"
+            data-account-id="51160340695"
+            data-account-city="淄博市"
+            data-account-store="麗枫酒店(淄博临淄大院区政府店)"
+            data-account-province="鲁东省区"
+            data-account-area="淄博片区"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">06</td>
+          <td><strong>麗枫酒店(淄博临淄大院区政府店)专用号</strong><small>51160340695 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>淄博市<small>麗枫酒店(淄博临淄大院区政府店)</small></td>
+          <td>鲁东省区<small>淄博片区</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="麗枫酒店(淄博北站柳泉路店)专用号"
+            data-account-id="22026153160"
+            data-account-city="淄博市"
+            data-account-store="丽枫酒店(淄博北站柳泉路店)"
+            data-account-province="鲁东省区"
+            data-account-area="淄博片区"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="596.0"
+            data-account-redeem-amount="1146.0">
+          <td class="rank">07</td>
+          <td><strong>麗枫酒店(淄博北站柳泉路店)专用号</strong><small>22026153160 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>淄博市<small>丽枫酒店(淄博北站柳泉路店)</small></td>
+          <td>鲁东省区<small>淄博片区</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">596</td>
+          <td class="num">1,146</td>
+        </tr>
+        </tbody>
+        </table>
+      </div>
+    </article>
+      </div>
+    </section>
+
+
+  </main>
+</div>
+<nav class="mobile-nav">
+  <button class="active" data-target="overview">总览</button><button data-target="provinces">组织</button><button data-target="stores">门店</button><button data-target="attribution">归因</button><button data-target="providers">服务商</button><button data-target="voucher">通兑</button><button data-target="merchant-live">自播</button>
+</nav>
+<script>
+const navItems=[...document.querySelectorAll('[data-target]')];
+const sections=[...document.querySelectorAll('.section')];
+function showSection(id){
+  sections.forEach(s=>s.classList.toggle('active',s.id===id));
+  navItems.forEach(n=>n.classList.toggle('active',n.dataset.target===id));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+navItems.forEach(item=>item.addEventListener('click',()=>{if(item.dataset.target)showSection(item.dataset.target)}));
+document.getElementById('organization-province-filter')
+  ?.addEventListener('change',event=>{
+    if(event.target.value)window.location.href=event.target.value;
+  });
+document.getElementById('organization-area-filter')
+  ?.addEventListener('change',event=>{
+    if(event.target.value)window.location.href=event.target.value;
+  });
+document.querySelectorAll('[data-local]').forEach(tab=>tab.addEventListener('click',()=>{
+  const panel=tab.dataset.local;
+  const parent=tab.closest('.section');
+  parent.querySelectorAll('[data-local]').forEach(t=>t.classList.toggle('active',t===tab));
+  parent.querySelectorAll('.local-panel').forEach(p=>p.style.display=p.dataset.panel===panel?'block':'none');
+}));
+let storeSortKey='';
+let storeSortDirection='desc';
+function sortStoreTable(nextKey){
+  const body=document.getElementById('store-all-body');
+  if(!body)return;
+  if(nextKey===storeSortKey)storeSortDirection=storeSortDirection==='asc'?'desc':'asc';
+  else{storeSortKey=nextKey;storeSortDirection='desc';}
+  const stringKeys=new Set(['province','area','store','provider']);
+  const rows=[...body.querySelectorAll('tr')];
+  rows.sort((a,b)=>{
+    const rawA=a.getAttribute('data-'+storeSortKey);
+    const rawB=b.getAttribute('data-'+storeSortKey);
+    const result=stringKeys.has(storeSortKey)
+      ?rawA.localeCompare(rawB,'zh-CN')
+      :(Number(rawA)-Number(rawB));
+    return storeSortDirection==='asc'?result:-result;
+  });
+  rows.forEach((row,index)=>{
+    body.appendChild(row);
+    const rank=row.querySelector('.rank');
+    if(rank)rank.textContent=String(index+1).padStart(2,'0');
+  });
+  document.querySelectorAll('.store-sort-trigger').forEach(button=>{
+    const active=button.dataset.sortKey===storeSortKey;
+    button.classList.toggle('active',active);
+    const indicator=button.querySelector('.sort-indicator');
+    if(indicator)indicator.textContent=active?(storeSortDirection==='asc'?'↑':'↓'):'↕';
+  });
+  filterStoreTable();
+}
+function filterStoreTable(){
+  const body=document.getElementById('store-all-body');
+  if(!body)return;
+  const query=(document.getElementById('store-search')?.value||'').trim().toLocaleLowerCase('zh-CN');
+  const province=document.getElementById('province-filter')?.value||'';
+  const area=document.getElementById('area-filter')?.value||'';
+  let visible=0;
+  body.querySelectorAll('tr').forEach(row=>{
+    const haystack=[
+      row.dataset.store||'',
+      row.dataset.city||'',
+      row.dataset.area||'',
+      row.dataset.provider||''
+    ].join(' ').toLocaleLowerCase('zh-CN');
+    const matches=(!query||haystack.includes(query))
+      &&(!province||row.dataset.province===province)
+      &&(!area||row.dataset.area===area);
+    row.hidden=!matches;
+    if(matches){
+      visible+=1;
+      const rank=row.querySelector('.rank');
+      if(rank)rank.textContent=String(visible).padStart(2,'0');
+    }
+  });
+  const count=document.getElementById('store-result-count');
+  if(count)count.textContent=`显示 ${visible} / ${body.querySelectorAll('tr').length} 家`;
+}
+document.getElementById('store-search')?.addEventListener('input',filterStoreTable);
+document.getElementById('province-filter')?.addEventListener('change',filterStoreTable);
+document.getElementById('area-filter')?.addEventListener('change',filterStoreTable);
+let merchantCitySortKey='';
+let merchantCitySortDirection='desc';
+function sortMerchantCityTable(nextKey){
+  const body=document.getElementById('merchant-city-body');
+  if(!body)return;
+  if(nextKey===merchantCitySortKey){
+    merchantCitySortDirection=merchantCitySortDirection==='asc'?'desc':'asc';
+  }else{
+    merchantCitySortKey=nextKey;
+    merchantCitySortDirection=nextKey==='city-name'?'asc':'desc';
+  }
+  const stringKeys=new Set(['city-name']);
+  const rows=[...body.querySelectorAll('tr')];
+  rows.sort((a,b)=>{
+    const rawA=a.getAttribute('data-'+merchantCitySortKey)||'';
+    const rawB=b.getAttribute('data-'+merchantCitySortKey)||'';
+    const result=stringKeys.has(merchantCitySortKey)
+      ?rawA.localeCompare(rawB,'zh-CN')
+      :Number(rawA)-Number(rawB);
+    return merchantCitySortDirection==='asc'?result:-result;
+  });
+  rows.forEach(row=>body.appendChild(row));
+  document.querySelectorAll('.merchant-city-sort-trigger').forEach(button=>{
+    const active=button.dataset.sortKey===merchantCitySortKey;
+    button.classList.toggle('active',active);
+    const indicator=button.querySelector('.sort-indicator');
+    if(indicator)indicator.textContent=active
+      ?(merchantCitySortDirection==='asc'?'↑':'↓')
+      :'↕';
+  });
+  filterMerchantCityTable();
+}
+function filterMerchantCityTable(){
+  const body=document.getElementById('merchant-city-body');
+  if(!body)return;
+  const query=(document.getElementById('merchant-city-search')?.value||'')
+    .trim().toLocaleLowerCase('zh-CN');
+  const status=document.getElementById('merchant-city-status-filter')?.value||'';
+  let visible=0;
+  const rows=[...body.querySelectorAll('tr')];
+  rows.forEach(row=>{
+    const city=(row.dataset.cityName||'').toLocaleLowerCase('zh-CN');
+    const matches=(!query||city.includes(query))
+      &&(!status||row.dataset.cityStatus===status);
+    row.hidden=!matches;
+    if(matches){
+      visible+=1;
+      const rank=row.querySelector('.rank');
+      if(rank)rank.textContent=String(visible).padStart(2,'0');
+    }
+  });
+  const count=document.getElementById('merchant-city-result-count');
+  if(count)count.textContent=`显示 ${visible} / ${rows.length} 城`;
+}
+let merchantAccountSortKey='';
+let merchantAccountSortDirection='desc';
+function sortMerchantAccountTable(nextKey){
+  const body=document.getElementById('merchant-account-body');
+  if(!body)return;
+  if(nextKey===merchantAccountSortKey){
+    merchantAccountSortDirection=merchantAccountSortDirection==='asc'?'desc':'asc';
+  }else{
+    merchantAccountSortKey=nextKey;
+    merchantAccountSortDirection=['account-name','account-city'].includes(nextKey)
+      ?'asc'
+      :'desc';
+  }
+  const stringKeys=new Set(['account-name','account-city']);
+  const rows=[...body.querySelectorAll('tr')];
+  rows.sort((a,b)=>{
+    const rawA=a.getAttribute('data-'+merchantAccountSortKey)||'';
+    const rawB=b.getAttribute('data-'+merchantAccountSortKey)||'';
+    const result=stringKeys.has(merchantAccountSortKey)
+      ?rawA.localeCompare(rawB,'zh-CN')
+      :Number(rawA)-Number(rawB);
+    return merchantAccountSortDirection==='asc'?result:-result;
+  });
+  rows.forEach(row=>body.appendChild(row));
+  document.querySelectorAll('.merchant-account-sort-trigger').forEach(button=>{
+    const active=button.dataset.sortKey===merchantAccountSortKey;
+    button.classList.toggle('active',active);
+    const indicator=button.querySelector('.sort-indicator');
+    if(indicator)indicator.textContent=active
+      ?(merchantAccountSortDirection==='asc'?'↑':'↓')
+      :'↕';
+  });
+  filterMerchantAccountTable();
+}
+function filterMerchantAccountTable(){
+  const body=document.getElementById('merchant-account-body');
+  if(!body)return;
+  const query=(document.getElementById('merchant-account-search')?.value||'')
+    .trim().toLocaleLowerCase('zh-CN');
+  const city=document.getElementById('merchant-account-city-filter')?.value||'';
+  const status=document.getElementById('merchant-account-status-filter')?.value||'';
+  let visible=0;
+  const rows=[...body.querySelectorAll('tr')];
+  rows.forEach(row=>{
+    const haystack=[
+      row.dataset.accountName||'',
+      row.dataset.accountId||'',
+      row.dataset.accountStore||'',
+      row.dataset.accountProvince||'',
+      row.dataset.accountArea||''
+    ].join(' ').toLocaleLowerCase('zh-CN');
+    const matches=(!query||haystack.includes(query))
+      &&(!city||row.dataset.accountCity===city)
+      &&(!status||row.dataset.accountStatus===status);
+    row.hidden=!matches;
+    if(matches){
+      visible+=1;
+      const rank=row.querySelector('.rank');
+      if(rank)rank.textContent=String(visible).padStart(2,'0');
+    }
+  });
+  const count=document.getElementById('merchant-account-result-count');
+  if(count)count.textContent=`显示 ${visible} / ${rows.length} 个账号`;
+}
+document.getElementById('merchant-city-search')
+  ?.addEventListener('input',filterMerchantCityTable);
+document.getElementById('merchant-city-status-filter')
+  ?.addEventListener('change',filterMerchantCityTable);
+document.getElementById('merchant-account-search')
+  ?.addEventListener('input',filterMerchantAccountTable);
+document.getElementById('merchant-account-city-filter')
+  ?.addEventListener('change',filterMerchantAccountTable);
+document.getElementById('merchant-account-status-filter')
+  ?.addEventListener('change',filterMerchantAccountTable);
+let channelSortKey='redeem-delta';
+let channelSortDirection='desc';
+function sortChannelTable(nextKey){
+  const body=document.getElementById('channel-attribution-body');
+  if(!body)return;
+  if(nextKey===channelSortKey)channelSortDirection=channelSortDirection==='asc'?'desc':'asc';
+  else{channelSortKey=nextKey;channelSortDirection='desc';}
+  const key=channelSortKey;
+  const rows=[...body.querySelectorAll('tr')];
+  rows.sort((a,b)=>{
+    const av=key==='channel'?a.getAttribute('data-channel'):(Number(a.getAttribute('data-'+key))||0);
+    const bv=key==='channel'?b.getAttribute('data-channel'):(Number(b.getAttribute('data-'+key))||0);
+    const result=key==='channel'?av.localeCompare(bv,'zh-CN'):av-bv;
+    return channelSortDirection==='asc'?result:-result;
+  });
+  rows.forEach(row=>body.appendChild(row));
+  document.querySelectorAll('.channel-sort-trigger').forEach(button=>{
+    const active=button.dataset.sortKey===channelSortKey;
+    button.classList.toggle('active',active);
+    const indicator=button.querySelector('.sort-indicator');
+    if(indicator)indicator.textContent=active?(channelSortDirection==='asc'?'↑':'↓'):'↕';
+  });
+}
+sortStoreTable('redeem-current');
+sortChannelTable('redeem-delta');
+sortMerchantCityTable('city-live-amount');
+sortMerchantAccountTable('account-live-amount');
+document.documentElement.dataset.workbench="{\"region\": \"鲁东省区 · 淄博片区\", \"periods\": {\"previous_start\": \"2026-09-26\", \"previous_end\": \"2026-10-02\", \"current_start\": \"2026-10-03\", \"current_end\": \"2026-10-09\"}, \"verification\": {\"detail_row_count\": 1389, \"channel_row_count\": 1445, \"other_region_row_count\": 0, \"provider_count\": 3, \"store_count\": 45, \"voucher_product_count\": 9, \"product_structure_closed\": true, \"master_store_count\": 50, \"data_store_count\": 45, \"zero_data_store_count\": 5, \"organization_province_count\": 1, \"organization_area_count\": 1, \"selected_province\": \"鲁东省区\", \"selected_area\": \"淄博片区\", \"detail_channel_closure\": {\"意向成交金额\": true, \"意向成交券数\": true, \"意向成交间夜\": true, \"核销金额\": true, \"核销券数\": true, \"核销间夜\": true}, \"passed\": true}, \"organization_navigation\": {\"selected_province\": \"鲁东省区\", \"selected_area\": \"淄博片区\", \"province_urls\": {\"鲁东省区\": \"workbench_ludong.html\"}, \"area_urls\": {\"鲁东省区\": {\"临沂片区\": \"workbench_ludong__鲁东省区__临沂片区.html\", \"威烟片区\": \"workbench_ludong__鲁东省区__威烟片区.html\", \"日照片区\": \"workbench_ludong__鲁东省区__日照片区.html\", \"沂枣片区\": \"workbench_ludong__鲁东省区__沂枣片区.html\", \"淄博片区\": \"workbench_ludong__鲁东省区__淄博片区.html\", \"潍坊片区\": \"workbench_ludong__鲁东省区__潍坊片区.html\", \"烟台片区\": \"workbench_ludong__鲁东省区__烟台片区.html\", \"青岛前海片区\": \"workbench_ludong__鲁东省区__青岛前海片区.html\", \"青岛北片区\": \"workbench_ludong__鲁东省区__青岛北片区.html\", \"青岛西片区\": \"workbench_ludong__鲁东省区__青岛西片区.html\"}}}}";
+</script>
+</body>
+</html>

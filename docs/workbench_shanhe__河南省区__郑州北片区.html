@@ -1,0 +1,2330 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>山河大区 · 河南省区 · 郑州北片区经营数据工作台</title>
+<style>
+:root {
+  --ink:#17181C; --muted:#737780; --canvas:#F4F5F8; --paper:#FFFFFF;
+  --line:#E8E9EE; --blue:#1677FF; --cyan:#00A7A0;
+  --orange:#FF8A3D; --pink:#E96D8A; --purple:#8B6DFF;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Microsoft YaHei",sans-serif;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--canvas);color:var(--ink);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:none;color:inherit;cursor:pointer}
+.app{display:grid;grid-template-columns:220px minmax(0,1fr);min-height:100vh;max-width:1480px;margin:auto}
+.sidebar{position:sticky;top:0;height:100vh;padding:30px 18px;background:rgba(255,255,255,.58);border-right:1px solid rgba(0,0,0,.05);backdrop-filter:blur(30px) saturate(170%);-webkit-backdrop-filter:blur(30px) saturate(170%)}
+.brand{padding:0 12px 28px;font-size:13px;font-weight:700} .brand span{display:block;color:var(--muted);font-size:11px;font-weight:500;margin-top:5px}
+.nav-label{margin:0 12px 8px;color:var(--muted);font-size:11px;font-weight:700;letter-spacing:.08em}
+.nav-item{display:flex;align-items:center;gap:11px;width:100%;margin:4px 0;padding:11px 12px;border-radius:13px;color:#4B4D55;font-size:13px;font-weight:600;text-align:left;transition:.2s}
+.nav-item:hover{background:rgba(255,255,255,.72)} .nav-item.active{background:rgba(22,119,255,.10);color:var(--blue)}
+.nav-icon{width:20px;text-align:center;font-size:16px}
+.content{min-width:0;padding:30px 34px 70px} .topbar{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:24px}
+.eyebrow{color:var(--muted);font-size:13px;font-weight:600} h1{margin:7px 0 0;font-size:34px;line-height:1.08;letter-spacing:0} h2{margin:0;font-size:20px;letter-spacing:0} h3{margin:0;font-size:15px}
+.top-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap} .glass-pill,.status{padding:9px 13px;border:1px solid rgba(255,255,255,.9);border-radius:14px;background:rgba(255,255,255,.62);box-shadow:0 7px 22px rgba(32,44,70,.06);backdrop-filter:blur(20px);font-size:12px;font-weight:600}
+.status{color:#268A57} .status i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#34C759;margin-right:6px}
+.organization-filters{display:flex;align-items:flex-end;gap:10px;margin:-6px 0 22px;padding:13px 14px;border:1px solid rgba(0,0,0,.045);border-radius:12px;background:rgba(255,255,255,.82)} .organization-filters label{display:grid;gap:5px} .organization-filters label span{color:var(--muted);font-size:10px;font-weight:700} .organization-filters select{min-width:180px;height:38px;padding:0 34px 0 11px;border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--ink);font:inherit;font-size:12px;outline:none} .organization-filters select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(22,119,255,.10)} .organization-filters select:disabled{color:#A2A5AD;background:#F4F5F7}
+.section{display:none;animation:fade .22s ease} .section.active{display:block} @keyframes fade{from{opacity:.2;transform:translateY(4px)}to{opacity:1;transform:none}}
+.section-head{display:flex;justify-content:space-between;align-items:flex-end;margin:30px 0 15px} .section-head p{margin:5px 0 0;color:var(--muted);font-size:12px}
+.glass-tabs{display:flex;gap:4px;padding:4px;margin-bottom:18px;border-radius:15px;background:rgba(118,118,128,.13);backdrop-filter:blur(20px) saturate(170%);width:max-content;max-width:100%;overflow-x:auto;scrollbar-width:none} .glass-tabs::-webkit-scrollbar{display:none}
+.glass-tab{padding:8px 16px;border-radius:11px;font-size:12px;font-weight:600;color:#5D6069} .glass-tab.active{background:rgba(255,255,255,.9);box-shadow:0 5px 14px rgba(31,42,68,.12);color:var(--ink)}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px} .kpi,.panel{border:1px solid rgba(0,0,0,.045);border-radius:19px;background:rgba(255,255,255,.86);box-shadow:0 12px 32px rgba(32,44,70,.055)}
+.kpi{min-height:142px;padding:18px;position:relative;overflow:hidden} .kpi-label{color:var(--muted);font-size:12px;font-weight:700} .kpi-value{display:block;margin-top:14px;font-size:30px;letter-spacing:0} .kpi-foot{display:flex;align-items:baseline;gap:9px;margin-top:11px;color:var(--muted);font-size:12px} .kpi-foot>span:first-child{font-size:16px;font-weight:800} .kpi-foot .positive{color:#15945E} .kpi-foot .negative{color:#D44755} .kpi-foot .neutral{color:var(--muted)}
+.kpi::after{content:"";position:absolute;right:-25px;bottom:-42px;width:120px;height:120px;border-radius:50%;background:rgba(22,119,255,.08)} .kpi:nth-child(2)::after{background:rgba(255,138,61,.10)} .kpi:nth-child(3)::after{background:rgba(0,167,160,.10)} .kpi:nth-child(4)::after{background:rgba(139,109,255,.10)}
+.grid-2{display:grid;grid-template-columns:1fr;gap:16px;margin-top:16px} .grid-2.equal{grid-template-columns:1fr}
+.panel{padding:20px;min-width:0} .panel-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px} .panel-head p{margin:4px 0 0;color:var(--muted);font-size:11px} .trend-panel-head{align-items:flex-start;flex-wrap:wrap} .trend-heading{display:flex;align-items:baseline;gap:14px;white-space:nowrap} .trend-range{color:#5F636D;font-size:15px;font-weight:750} .legend{display:flex;gap:12px;color:var(--muted);font-size:11px;white-space:nowrap} .legend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}
+.chart-scroll{overflow-x:auto} .chart-svg{display:block;width:100%;height:auto;overflow:visible} .axis-label{fill:#858994;font-size:10px} .point-label,.merchant-live-point-label,.merchant-duration-label{font-size:11px;font-weight:750;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.merchant-trend-canvas{min-width:680px} .merchant-amount-chart{margin-bottom:2px} .merchant-subchart-title{margin:0 24px 0 54px;padding-top:13px;border-top:1px solid var(--line);color:#4F535C;font-size:12px;font-weight:750} .merchant-subchart-title span{margin-left:6px;color:var(--muted);font-size:10px;font-weight:600}
+.insights{display:grid;gap:10px} .insight{padding:13px 14px;border-radius:14px;background:#F7F8FA} .insight b{font-size:13px} .insight p{margin:6px 0 0;color:var(--muted);font-size:12px;line-height:1.6} .tag{display:inline-block;margin-top:8px;padding:4px 7px;border-radius:7px;font-size:10px;font-weight:700} .tag.good{color:#23875B;background:#E8F7EF} .tag.warn{color:#C65A61;background:#FFF0F1}
+.sort-trigger{display:inline-flex;align-items:center;gap:4px;border:0;background:transparent;padding:0;color:inherit;font:inherit;font-weight:700;cursor:pointer} .sort-indicator{width:10px;color:#A7ABB5;font-size:12px;line-height:1;opacity:.65} .sort-trigger.active .sort-indicator{color:var(--blue);opacity:1} .sort-trigger:hover{color:var(--blue)} .sort-trigger:hover .sort-indicator{opacity:1}
+.filter-bar{display:flex;align-items:center;gap:10px;margin-bottom:14px} .filter-bar input,.filter-bar select{height:38px;border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--ink);font:inherit;font-size:12px;outline:none} .filter-bar input{min-width:260px;padding:0 12px} .filter-bar select{padding:0 30px 0 10px} .filter-bar input:focus,.filter-bar select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(22,119,255,.10)} .filter-count{margin-left:auto;color:var(--muted);font-size:11px;white-space:nowrap}
+.table-scroll{overflow-x:auto} table{width:100%;border-collapse:collapse;min-width:820px} .merchant-table{min-width:980px} th{padding:11px 10px;text-align:left;color:#858994;font-size:11px;font-weight:700;border-bottom:1px solid var(--line);white-space:nowrap} td{padding:13px 10px;border-bottom:1px solid #F0F1F4;font-size:12px;vertical-align:middle} td small{display:block;margin-top:4px;color:#9A9DA6;font-size:10px;font-weight:500} td.num{font-variant-numeric:tabular-nums;white-space:nowrap} td.rank{width:38px;color:#9A9DA6;font-size:11px;font-weight:800} td strong{font-weight:700} .positive{color:#189963!important} .negative{color:#D85863!important} .provider{display:inline-block;padding:5px 8px;border-radius:8px;background:#F1F5FF;color:#4B6DB8;font-size:11px;white-space:nowrap} .channel-stack{display:flex;flex-wrap:wrap;gap:5px;min-width:175px} .channel-chip{display:inline-flex;padding:4px 7px;border-radius:7px;background:#F4F5F7;color:#646872;font-size:10px;white-space:nowrap} .channel-chip.positive{background:#EAF8F2} .channel-chip.negative{background:#FFF0F1} .live-status{display:inline-block;padding:2px 6px;border-radius:6px;background:#EAF8F2;color:#16835A;font-size:9px;font-weight:750;white-space:nowrap} .live-status.未直播,.live-status.零开播{background:#F0F1F4;color:#747984} .empty,.empty-state{color:#9A9DA6;font-size:12px} .empty-state{padding:28px;text-align:center;background:#F8F9FB;border-radius:12px}
+.bar-wrap{height:12px;display:flex;overflow:hidden;border-radius:8px;background:#EEF0F5;margin:12px 0} .segment-bar{display:block;height:100%} .segment-bar.calendar{background:var(--cyan)} .segment-bar.voucher{background:var(--orange)} .structure-legend{display:flex;gap:16px;color:var(--muted);font-size:11px} .structure-legend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}
+.mobile-nav{display:none}
+@media(max-width:1050px){.app{grid-template-columns:80px minmax(0,1fr)}.sidebar{padding:22px 10px}.brand,.nav-label,.nav-item span:not(.nav-icon){display:none}.nav-item{justify-content:center;padding:13px 8px}.content{padding:24px}.kpis{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.app{display:block}.sidebar{display:none}.content{padding:20px 15px 92px}.topbar{align-items:flex-start;display:block}.top-actions{margin-top:15px;justify-content:space-between;flex-wrap:wrap}.organization-filters{align-items:stretch;display:grid;grid-template-columns:1fr 1fr;margin-top:0}.organization-filters select{min-width:0;width:100%}h1{font-size:30px}.kpis{grid-template-columns:1fr 1fr;gap:10px}.kpi{min-height:120px;padding:14px}.kpi-value{font-size:23px;margin-top:11px}.kpi-foot{display:block}.kpi-foot>span{display:block}.kpi-foot>span:first-child{font-size:15px}.grid-2,.grid-2.equal{grid-template-columns:1fr}.panel{padding:15px;border-radius:16px}.trend-heading{gap:9px;white-space:normal;flex-wrap:wrap}.trend-heading h2{font-size:17px}.trend-range{font-size:13px}.chart-scroll .chart-svg{width:680px;max-width:none}.merchant-trend-scroll .chart-svg{width:100%}.filter-bar{align-items:stretch;flex-wrap:wrap}.filter-bar input{min-width:0;flex:1 1 100%}.filter-bar select{flex:1}.filter-count{align-self:center}.mobile-nav{position:fixed;display:flex;z-index:20;left:14px;right:14px;bottom:15px;justify-content:space-around;padding:9px 7px;border:1px solid rgba(255,255,255,.85);border-radius:20px;background:rgba(255,255,255,.72);box-shadow:0 12px 30px rgba(32,44,70,.15);backdrop-filter:blur(25px) saturate(170%)}.mobile-nav button{padding:6px 8px;border-radius:12px;color:var(--muted);font-size:10px;font-weight:700}.mobile-nav button.active{background:#fff;color:var(--blue);box-shadow:0 4px 10px rgba(31,42,68,.1)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">经营数据工作台<span>山河大区 · 河南省区 · 郑州北片区 · 10-03–10-09</span></div>
+    <p class="nav-label">板块</p>
+    <button class="nav-item active" data-target="overview"><span class="nav-icon">⌂</span><span>经营总览</span></button>
+    <button class="nav-item" data-target="provinces"><span class="nav-icon">▦</span><span>组织架构</span></button>
+    <button class="nav-item" data-target="stores"><span class="nav-icon">↗</span><span>门店排名</span></button>
+    <button class="nav-item" data-target="attribution"><span class="nav-icon">◌</span><span>增长归因</span></button>
+    <button class="nav-item" data-target="providers"><span class="nav-icon">◎</span><span>服务商</span></button>
+    <button class="nav-item" data-target="voucher"><span class="nav-icon">◇</span><span>通兑商品</span></button>
+    <button class="nav-item" data-target="merchant-live"><span class="nav-icon">▶</span><span>商家自播</span></button>
+  </aside>
+  <main class="content">
+    <header class="topbar">
+      <div><div class="eyebrow">近 7 日经营数据 · 数据截至 2026-10-09 · 数据来源：生意经</div><h1>山河大区 · 河南省区 · 郑州北片区</h1></div>
+      <div class="top-actions"><span class="status"><i></i>数据已校验</span><span class="glass-pill">主数据 41 家 · 1 片区</span><span class="glass-pill">10-03–10-09 对比 09-26–10-02</span></div>
+    </header>
+    <div class="organization-filters"><label><span>一级省区</span><select id="organization-province-filter"><option value="workbench_shanhe.html" >全部一级省区</option><option value="workbench_shanhe__山西省区.html" >山西省区</option><option value="workbench_shanhe__河南省区.html" selected>河南省区</option><option value="workbench_shanhe__鲁东省区.html" >鲁东省区</option><option value="workbench_shanhe__鲁西省区.html" >鲁西省区</option></select></label><label><span>二级片区</span><select id="organization-area-filter" ><option value="workbench_shanhe__河南省区.html">全部二级片区</option><option value="workbench_shanhe__河南省区__河南东片区.html" >河南东片区</option><option value="workbench_shanhe__河南省区__河南中片区.html" >河南中片区</option><option value="workbench_shanhe__河南省区__河南北片区.html" >河南北片区</option><option value="workbench_shanhe__河南省区__河南南片区.html" >河南南片区</option><option value="workbench_shanhe__河南省区__河南西南片区.html" >河南西南片区</option><option value="workbench_shanhe__河南省区__河南西片区.html" >河南西片区</option><option value="workbench_shanhe__河南省区__郑州中片区.html" >郑州中片区</option><option value="workbench_shanhe__河南省区__郑州北片区.html" selected>郑州北片区</option><option value="workbench_shanhe__河南省区__郑州南片区.html" >郑州南片区</option></select></label></div>
+
+    <section class="section active" id="overview">
+      <div class="glass-tabs">
+        <button class="glass-tab active">总体</button><button class="glass-tab" data-target="provinces">组织</button><button class="glass-tab" data-target="stores">门店</button><button class="glass-tab" data-target="providers">服务商</button><button class="glass-tab" data-target="voucher">通兑商品</button><button class="glass-tab" data-target="merchant-live">商家自播</button>
+      </div>
+      <div class="kpis">
+        <article class="kpi"><span class="kpi-label">支付 GMV</span><b class="kpi-value">9.10万</b><div class="kpi-foot"><span class="negative">-0.9%</span><span>较上期 9.18万</span></div></article>
+        <article class="kpi"><span class="kpi-label">核销 GMV</span><b class="kpi-value">5.15万</b><div class="kpi-foot"><span class="positive">+11.7%</span><span>较上期 4.61万</span></div></article>
+        <article class="kpi"><span class="kpi-label">支付间夜</span><b class="kpi-value">523</b><div class="kpi-foot"><span class="positive">+2.3%</span><span>间夜</span></div></article>
+        <article class="kpi"><span class="kpi-label">动销门店</span><b class="kpi-value">35<small style="font-size:14px">家</small></b><div class="kpi-foot"><span class="neutral">+0家</span><span>较上期</span></div></article>
+      </div>
+      <div class="grid-2">
+        <article class="panel"><div class="panel-head trend-panel-head"><div class="trend-heading"><h2>支付与核销日趋势</h2><span class="trend-range">10-03–10-09 · 单位：万元</span></div><div class="legend"><span><i style="background:var(--blue)"></i>支付</span><span><i style="background:var(--orange)"></i>核销</span></div></div><div class="chart-scroll">
+      <svg class="chart-svg" viewBox="0 0 760 300" role="img"
+           aria-label="支付与核销日趋势，单位万元">
+        <line x1="54" y1="34.0" x2="736" y2="34.0" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="104.6" x2="736" y2="104.6" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="175.2" x2="736" y2="175.2" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="248.0" x2="736" y2="248.0" stroke="#ECEEF3" stroke-width="1"/><text x="44" y="38.0" text-anchor="end" class="axis-label">2.2</text><text x="44" y="145.0" text-anchor="end" class="axis-label">1.1</text><text x="44" y="252.0" text-anchor="end" class="axis-label">0.0</text>
+        <path d="M54.0 34.0 L167.7 71.1 L281.3 96.0 L395.0 142.4 L508.7 157.1 L622.3 190.5 L736.0 165.5" fill="none" stroke="#1677FF"
+              stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M54.0 178.3 L167.7 140.8 L281.3 144.0 L395.0 175.9 L508.7 183.2 L622.3 212.6 L736.0 203.7" fill="none" stroke="#FF8A3D"
+              stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle class="trend-point payment-point" cx="54.0" cy="34.0" r="5" fill="#1677FF"/><text x="58.0" y="22.0" text-anchor="start" class="point-label payment-label" fill="#1677FF">2.2万</text><circle class="trend-point payment-point" cx="167.7" cy="71.1" r="5" fill="#1677FF"/><text x="167.7" y="59.1" text-anchor="middle" class="point-label payment-label" fill="#1677FF">1.8万</text><circle class="trend-point payment-point" cx="281.3" cy="96.0" r="5" fill="#1677FF"/><text x="281.3" y="84.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">1.6万</text><circle class="trend-point payment-point" cx="395.0" cy="142.4" r="5" fill="#1677FF"/><text x="395.0" y="130.4" text-anchor="middle" class="point-label payment-label" fill="#1677FF">1.1万</text><circle class="trend-point payment-point" cx="508.7" cy="157.1" r="5" fill="#1677FF"/><text x="508.7" y="145.1" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.9万</text><circle class="trend-point payment-point" cx="622.3" cy="190.5" r="5" fill="#1677FF"/><text x="622.3" y="178.5" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.6万</text><circle class="trend-point payment-point" cx="736.0" cy="165.5" r="5" fill="#1677FF"/><text x="732.0" y="153.5" text-anchor="end" class="point-label payment-label" fill="#1677FF">0.9万</text>
+        <circle class="trend-point redeem-point" cx="54.0" cy="178.3" r="5" fill="#FF8A3D"/><text x="58.0" y="202.3" text-anchor="start" class="point-label redeem-label" fill="#FF8A3D">0.7万</text><circle class="trend-point redeem-point" cx="167.7" cy="140.8" r="5" fill="#FF8A3D"/><text x="167.7" y="164.8" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">1.1万</text><circle class="trend-point redeem-point" cx="281.3" cy="144.0" r="5" fill="#FF8A3D"/><text x="281.3" y="168.0" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">1.1万</text><circle class="trend-point redeem-point" cx="395.0" cy="175.9" r="5" fill="#FF8A3D"/><text x="395.0" y="199.9" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.7万</text><circle class="trend-point redeem-point" cx="508.7" cy="183.2" r="5" fill="#FF8A3D"/><text x="508.7" y="207.2" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.7万</text><circle class="trend-point redeem-point" cx="622.3" cy="212.6" r="5" fill="#FF8A3D"/><text x="622.3" y="236.6" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.4万</text><circle class="trend-point redeem-point" cx="736.0" cy="203.7" r="5" fill="#FF8A3D"/><text x="732.0" y="227.7" text-anchor="end" class="point-label redeem-label" fill="#FF8A3D">0.5万</text>
+        <text x="54.0" y="288" text-anchor="middle" class="axis-label">10-03</text><text x="167.7" y="288" text-anchor="middle" class="axis-label">10-04</text><text x="281.3" y="288" text-anchor="middle" class="axis-label">10-05</text><text x="395.0" y="288" text-anchor="middle" class="axis-label">10-06</text><text x="508.7" y="288" text-anchor="middle" class="axis-label">10-07</text><text x="622.3" y="288" text-anchor="middle" class="axis-label">10-08</text><text x="736.0" y="288" text-anchor="middle" class="axis-label">10-09</text>
+      </svg>
+    </div></article>
+        <aside class="panel"><div class="panel-head"><div><h2>本期重点判断</h2><p>从数据变化直接定位动作</p></div></div><div class="insights">
+          <div class="insight"><b>支付增长主要来自 其他</b><p>渠道增量 +2,239，可在增长归因中查看对应服务商。</p><span class="tag good">增长来源</span></div>
+          <div class="insight"><b>维也纳国际酒店(河南省三门峡市南站店) 需要跟进</b><p>河南美程酒店管理有限公司 · 下降 5,684，优先检查渠道投放变化。</p><span class="tag warn">重点风险</span></div>
+        </div></aside>
+      </div>
+    </section>
+
+    <section class="section" id="provinces"><div class="section-head"><div><h2>组织架构经营对比</h2><p>一级省区与二级片区均按门店总表 POI 归属</p></div></div><article class="panel">
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>省份</th><th>主数据门店</th><th>已绑定门店</th><th>有数据门店</th><th>本期支付</th><th>支付增长率</th><th>本期核销</th><th>核销增长率</th><th>动销门店</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>河南省区</strong></td>
+              <td class="num">41家</td>
+              <td class="num">0家</td>
+              <td class="num">36家</td>
+              <td class="num">9.10万</td>
+              <td class="num negative">-0.9%</td>
+              <td class="num">5.15万</td>
+              <td class="num positive">+11.7%</td>
+              <td class="num">35家</td>
+            </tr>
+            </tbody>
+        </table>
+      </div>
+    </article><article class="panel" style="margin-top:16px"><div class="panel-head"><div><h2>二级片区明细</h2><p>片区不按行政城市推断，以门店总表标注为准</p></div></div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>一级省区</th><th>二级片区</th><th>主数据门店</th><th>有数据门店</th><th>本期支付</th><th>支付增长率</th><th>本期核销</th><th>核销增长率</th><th>动销门店</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>河南省区</strong></td>
+              <td><strong>郑州北片区</strong></td>
+              <td class="num">41家</td>
+              <td class="num">36家</td>
+              <td class="num">9.10万</td>
+              <td class="num negative">-0.9%</td>
+              <td class="num">5.15万</td>
+              <td class="num positive">+11.7%</td>
+              <td class="num">35家</td>
+            </tr>
+            </tbody>
+        </table>
+      </div>
+    </article></section>
+
+    <section class="section" id="stores">
+      <div class="section-head"><div><h2>门店排名</h2><p>全部门店 · 默认按本期核销金额降序，可点击表头重新排序</p></div></div>
+      <div class="glass-tabs"><button class="glass-tab active" data-local="all">全部门店</button><button class="glass-tab" data-local="growth">增长 Top10</button><button class="glass-tab" data-local="decline">下降 Top10</button></div>
+      <article class="panel local-panel" data-panel="all"><div class="filter-bar"><input id="store-search" type="search" placeholder="搜索门店、城市、片区或服务商" aria-label="搜索门店、城市、片区或服务商"><select id="province-filter" aria-label="按省份筛选"><option value="">全部省份</option><option value="河南省区">河南省区</option></select><select id="area-filter" aria-label="按二级片区筛选"><option value="">全部二级片区</option><option value="郑州北片区">郑州北片区</option></select><span id="store-result-count" class="filter-count"></span></div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr>
+            <th>#</th>
+            <th><button class="sort-trigger store-sort-trigger" type="button" data-sort-key="province" onclick="sortStoreTable('province')" title="按省份排序">省份 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger store-sort-trigger" type="button" data-sort-key="area" onclick="sortStoreTable('area')" title="按二级片区排序">二级片区 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger store-sort-trigger" type="button" data-sort-key="store" onclick="sortStoreTable('store')" title="按门店名称排序">门店 / 城市 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger store-sort-trigger" type="button" data-sort-key="provider" onclick="sortStoreTable('provider')" title="按服务商排序">服务商 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger store-sort-trigger" type="button" data-sort-key="redeem-current" onclick="sortStoreTable('redeem-current')" title="按本期核销额排序">本期核销 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger store-sort-trigger" type="button" data-sort-key="payment-current" onclick="sortStoreTable('payment-current')" title="按本期支付额排序">本期支付 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger store-sort-trigger" type="button" data-sort-key="redeem-nights" onclick="sortStoreTable('redeem-nights')" title="按核销间夜排序">核销间夜 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger store-sort-trigger" type="button" data-sort-key="payment-nights" onclick="sortStoreTable('payment-nights')" title="按支付间夜排序">支付间夜 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger store-sort-trigger" type="button" data-sort-key="redeem-growth" onclick="sortStoreTable('redeem-growth')" title="按核销增长率排序">核销增长率 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger store-sort-trigger" type="button" data-sort-key="payment-growth" onclick="sortStoreTable('payment-growth')" title="按支付增长率排序">支付增长率 <span class="sort-indicator"></span></button></th>
+          </tr></thead>
+          <tbody id="store-all-body">
+            <tr data-province="河南省区"
+                data-area="郑州北片区"
+                data-store="维也纳国际酒店(三门峡灵宝函谷路市府店)"
+                data-city="三门峡市"
+                data-provider="河南美程酒店管理有限公司"
+                data-redeem-current="6577.0"
+                data-payment-current="8594.2"
+                data-redeem-nights="23.0"
+                data-payment-nights="37.0"
+                data-redeem-growth="1.1670510708401975"
+                data-payment-growth="0.3702924200389044">
+              <td class="rank">01</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>郑州北片区</strong></td>
+              <td><strong>维也纳国际酒店(三门峡灵宝函谷路市府店)</strong><small>三门峡市 · 有返回记录</small></td>
+              <td><span class="provider">河南美程酒店管理有限公司</span></td>
+              <td class="num">6,577</td>
+              <td class="num">8,594</td>
+              <td class="num">23</td>
+              <td class="num">37</td>
+              <td class="num positive">+116.7%</td>
+              <td class="num positive">+37.0%</td>
+            </tr>
+
+            <tr data-province="河南省区"
+                data-area="郑州北片区"
+                data-store="iu酒店(三门峡卢氏长途汽车站店)"
+                data-city="三门峡市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="5083.0"
+                data-payment-current="5903.9"
+                data-redeem-nights="37.0"
+                data-payment-nights="47.0"
+                data-redeem-growth="0.6260396673064619"
+                data-payment-growth="0.08549522881464999">
+              <td class="rank">02</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>郑州北片区</strong></td>
+              <td><strong>iu酒店(三门峡卢氏长途汽车站店)</strong><small>三门峡市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">5,083</td>
+              <td class="num">5,904</td>
+              <td class="num">37</td>
+              <td class="num">47</td>
+              <td class="num positive">+62.6%</td>
+              <td class="num positive">+8.5%</td>
+            </tr>
+
+            <tr data-province="河南省区"
+                data-area="郑州北片区"
+                data-store="维也纳智好酒店(巩义市政府商学院店)"
+                data-city="郑州市"
+                data-provider="未绑定服务商"
+                data-redeem-current="3461.5000000000005"
+                data-payment-current="11620.599999999995"
+                data-redeem-nights="16.0"
+                data-payment-nights="66.0"
+                data-redeem-growth="-0.4970212147631502"
+                data-payment-growth="0.2666884674078924">
+              <td class="rank">03</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>郑州北片区</strong></td>
+              <td><strong>维也纳智好酒店(巩义市政府商学院店)</strong><small>郑州市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">3,462</td>
+              <td class="num">1.16万</td>
+              <td class="num">16</td>
+              <td class="num">66</td>
+              <td class="num negative">-49.7%</td>
+              <td class="num positive">+26.7%</td>
+            </tr>
+
+            <tr data-province="河南省区"
+                data-area="郑州北片区"
+                data-store="iu酒店(孟州中心店)"
+                data-city="焦作市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="3012.0"
+                data-payment-current="2722.0"
+                data-redeem-nights="18.0"
+                data-payment-nights="18.0"
+                data-redeem-growth="16.21142857142857"
+                data-payment-growth="-0.08285319586239437">
+              <td class="rank">04</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>郑州北片区</strong></td>
+              <td><strong>iu酒店(孟州中心店)</strong><small>焦作市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">3,012</td>
+              <td class="num">2,722</td>
+              <td class="num">18</td>
+              <td class="num">18</td>
+              <td class="num positive">+1621.1%</td>
+              <td class="num negative">-8.3%</td>
+            </tr>
+
+            <tr data-province="河南省区"
+                data-area="郑州北片区"
+                data-store="维也纳酒店(三门峡崤山路市府店)"
+                data-city="三门峡市"
+                data-provider="河南叁伍柒科技有限公司"
+                data-redeem-current="2975.0"
+                data-payment-current="9691.0"
+                data-redeem-nights="10.0"
+                data-payment-nights="48.0"
+                data-redeem-growth="0.04385964912280693"
+                data-payment-growth="0.4065516190365608">
+              <td class="rank">05</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>郑州北片区</strong></td>
+              <td><strong>维也纳酒店(三门峡崤山路市府店)</strong><small>三门峡市 · 有返回记录</small></td>
+              <td><span class="provider">河南叁伍柒科技有限公司</span></td>
+              <td class="num">2,975</td>
+              <td class="num">9,691</td>
+              <td class="num">10</td>
+              <td class="num">48</td>
+              <td class="num positive">+4.4%</td>
+              <td class="num positive">+40.7%</td>
+            </tr>
+
+            <tr data-province="河南省区"
+                data-area="郑州北片区"
+                data-store="7天酒店(三门峡陕州大道示范区店)"
+                data-city="三门峡市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="2737.0"
+                data-payment-current="3351.9"
+                data-redeem-nights="16.0"
+                data-payment-nights="21.0"
+                data-redeem-growth="0.5784313725490196"
+                data-payment-growth="0.35048348106365834">
+              <td class="rank">06</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>郑州北片区</strong></td>
+              <td><strong>7天酒店(三门峡陕州大道示范区店)</strong><small>三门峡市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">2,737</td>
+              <td class="num">3,352</td>
+              <td class="num">16</td>
+              <td class="num">21</td>
+              <td class="num positive">+57.8%</td>
+              <td class="num positive">+35.0%</td>
+            </tr>
+
+            <tr data-province="河南省区"
+                data-area="郑州北片区"
+                data-store="维也纳酒店(焦作新师范学院人民路店)"
+                data-city="焦作市"
+                data-provider="未绑定服务商"
+                data-redeem-current="2383.0"
+                data-payment-current="2898.5000000000005"
+                data-redeem-nights="11.0"
+                data-payment-nights="13.0"
+                data-redeem-growth="2.1355263157894737"
+                data-payment-growth="0.03669659143746218">
+              <td class="rank">07</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>郑州北片区</strong></td>
+              <td><strong>维也纳酒店(焦作新师范学院人民路店)</strong><small>焦作市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">2,383</td>
+              <td class="num">2,899</td>
+              <td class="num">11</td>
+              <td class="num">13</td>
+              <td class="num positive">+213.6%</td>
+              <td class="num positive">+3.7%</td>
+            </tr>
+
+            <tr data-province="河南省区"
+                data-area="郑州北片区"
+                data-store="麗枫酒店(焦作万方桥高铁站店)"
+                data-city="焦作市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="2321.0"
+                data-payment-current="3295.9"
+                data-redeem-nights="9.0"
+                data-payment-nights="14.0"
+                data-redeem-growth="3.4720616570327554"
+                data-payment-growth="0.5437470725995317">
+              <td class="rank">08</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>郑州北片区</strong></td>
+              <td><strong>麗枫酒店(焦作万方桥高铁站店)</strong><small>焦作市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">2,321</td>
+              <td class="num">3,296</td>
+              <td class="num">9</td>
+              <td class="num">14</td>
+              <td class="num positive">+347.2%</td>
+              <td class="num positive">+54.4%</td>
+            </tr>
+
+            <tr data-province="河南省区"
+                data-area="郑州北片区"
+                data-store="维也纳酒店(郑州惠济万达广场店)"
+                data-city="郑州市"
+                data-provider="未绑定服务商"
+                data-redeem-current="2213.0"
+                data-payment-current="1029.6"
+                data-redeem-nights="8.0"
+                data-payment-nights="4.0"
+                data-redeem-growth="-0.12874015748031498"
+                data-payment-growth="-0.7082459620289034">
+              <td class="rank">09</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>郑州北片区</strong></td>
+              <td><strong>维也纳酒店(郑州惠济万达广场店)</strong><small>郑州市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">2,213</td>
+              <td class="num">1,030</td>
+              <td class="num">8</td>
+              <td class="num">4</td>
+              <td class="num negative">-12.9%</td>
+              <td class="num negative">-70.8%</td>
+            </tr>
+
+            <tr data-province="河南省区"
+                data-area="郑州北片区"
+                data-store="维也纳酒店(焦作温县新胖发祥子夏公园店)"
+                data-city="焦作市"
+                data-provider="未绑定服务商"
+                data-redeem-current="1848.0"
+                data-payment-current="2885.8"
+                data-redeem-nights="11.0"
+                data-payment-nights="16.0"
+                data-redeem-growth="-0.49244712990936557"
+                data-payment-growth="-0.40673889357153126">
+              <td class="rank">10</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>郑州北片区</strong></td>
+              <td><strong>维也纳酒店(焦作温县新胖发祥子夏公园店)</strong><small>焦作市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">1,848</td>
+              <td class="num">2,886</td>
+              <td class="num">11</td>
+              <td class="num">16</td>
+              <td class="num negative">-49.2%</td>
+              <td class="num negative">-40.7%</td>
+            </tr>
+
+            <tr data-province="河南省区"
+                data-area="郑州北片区"
+                data-store="维也纳国际酒店(河南省三门峡市南站店)"
+                data-city="三门峡市"
+                data-provider="河南美程酒店管理有限公司"
+                data-redeem-current="1643.0"
+                data-payment-current="1374.8000000000002"
+                data-redeem-nights="5.0"
+                data-payment-nights="6.0"
+                data-redeem-growth="0.07315480078380143"
+                data-payment-growth="-0.8052360174533915">
+              <td class="rank">11</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>郑州北片区</strong></td>
+              <td><strong>维也纳国际酒店(河南省三门峡市南站店)</strong><small>三门峡市 · 有返回记录</small></td>
+              <td><span class="provider">河南美程酒店管理有限公司</span></td>
+              <td class="num">1,643</td>
+              <td class="num">1,375</td>
+              <td class="num">5</td>
+              <td class="num">6</td>
+              <td class="num positive">+7.3%</td>
+              <td class="num negative">-80.5%</td>
+            </tr>
+
+            <tr data-province="河南省区"
+                data-area="郑州北片区"
+                data-store="维也纳酒店(郑州高新万达正弘汇店)"
+                data-city="郑州市"
+                data-provider="河南叁伍柒科技有限公司"
+                data-redeem-current="1561.0"
+                data-payment-current="5222.0"
+                data-redeem-nights="9.0"
+                data-payment-nights="28.0"
+                data-redeem-growth="0.3765432098765431"
+                data-payment-growth="0.5980170145051715">
+              <td class="rank">12</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>郑州北片区</strong></td>
+              <td><strong>维也纳酒店(郑州高新万达正弘汇店)</strong><small>郑州市 · 有返回记录</small></td>
+              <td><span class="provider">河南叁伍柒科技有限公司</span></td>
+              <td class="num">1,561</td>
+              <td class="num">5,222</td>
+              <td class="num">9</td>
+              <td class="num">28</td>
+              <td class="num positive">+37.7%</td>
+              <td class="num positive">+59.8%</td>
+            </tr>
+
+            <tr data-province="河南省区"
+                data-area="郑州北片区"
+                data-store="维也纳酒店(郑州南阳路兴隆铺地铁站店)"
+                data-city="郑州市"
+                data-provider="未绑定服务商"
+                data-redeem-current="1479.0"
+                data-payment-current="2504.5000000000005"
+                data-redeem-nights="5.0"
+                data-payment-nights="10.0"
+                data-redeem-growth="-0.18736263736263736"
+                data-payment-growth="-0.3618620531505592">
+              <td class="rank">13</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>郑州北片区</strong></td>
+              <td><strong>维也纳酒店(郑州南阳路兴隆铺地铁站店)</strong><small>郑州市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">1,479</td>
+              <td class="num">2,505</td>
+              <td class="num">5</td>
+              <td class="num">10</td>
+              <td class="num negative">-18.7%</td>
+              <td class="num negative">-36.2%</td>
+            </tr>
+
+            <tr data-province="河南省区"
+                data-area="郑州北片区"
+                data-store="锦江之星品尚(郑州中学瑞达路酒店)"
+                data-city="郑州市"
+                data-provider="河南叁伍柒科技有限公司"
+                data-redeem-current="1365.0"
+                data-payment-current="2069.9"
+                data-redeem-nights="8.0"
+                data-payment-nights="13.0"
+                data-redeem-growth="5.5311004784688995"
+                data-payment-growth="3.250308008213553">
+              <td class="rank">14</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>郑州北片区</strong></td>
+              <td><strong>锦江之星品尚(郑州中学瑞达路酒店)</strong><small>郑州市 · 有返回记录</small></td>
+              <td><span class="provider">河南叁伍柒科技有限公司</span></td>
+              <td class="num">1,365</td>
+              <td class="num">2,070</td>
+              <td class="num">8</td>
+              <td class="num">13</td>
+              <td class="num positive">+553.1%</td>
+              <td class="num positive">+325.0%</td>
+            </tr>
+
+            <tr data-province="河南省区"
+                data-area="郑州北片区"
+                data-store="锦江之星酒店(郑州梧桐街地铁站郑大新校区店)"
+                data-city="郑州市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="1356.0"
+                data-payment-current="2765.4000000000005"
+                data-redeem-nights="7.0"
+                data-payment-nights="15.0"
+                data-redeem-growth="-0.317907444668008"
+                data-payment-growth="0.5119737561509023">
+              <td class="rank">15</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>郑州北片区</strong></td>
+              <td><strong>锦江之星酒店(郑州梧桐街地铁站郑大新校区店)</strong><small>郑州市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">1,356</td>
+              <td class="num">2,765</td>
+              <td class="num">7</td>
+              <td class="num">15</td>
+              <td class="num negative">-31.8%</td>
+              <td class="num positive">+51.2%</td>
+            </tr>
+
+            <tr data-province="河南省区"
+                data-area="郑州北片区"
+                data-store="7天酒店(焦作孟州桑坡店)"
+                data-city="焦作市"
+                data-provider="未绑定服务商"
+                data-redeem-current="1308.0"
+                data-payment-current="3112.8"
+                data-redeem-nights="4.0"
+                data-payment-nights="19.0"
+                data-redeem-growth="1.8008565310492504"
+                data-payment-growth="0.7941210374639769">
+              <td class="rank">16</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>郑州北片区</strong></td>
+              <td><strong>7天酒店(焦作孟州桑坡店)</strong><small>焦作市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">1,308</td>
+              <td class="num">3,113</td>
+              <td class="num">4</td>
+              <td class="num">19</td>
+              <td class="num positive">+180.1%</td>
+              <td class="num positive">+79.4%</td>
+            </tr>
+
+            <tr data-province="河南省区"
+                data-area="郑州北片区"
+                data-store="锦江之星(荥阳新区店)"
+                data-city="郑州市"
+                data-provider="未绑定服务商"
+                data-redeem-current="1207.0"
+                data-payment-current="1046.7000000000003"
+                data-redeem-nights="7.0"
+                data-payment-nights="6.0"
+                data-redeem-growth="-0.3928571428571429"
+                data-payment-growth="-0.6317807640892141">
+              <td class="rank">17</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>郑州北片区</strong></td>
+              <td><strong>锦江之星(荥阳新区店)</strong><small>郑州市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">1,207</td>
+              <td class="num">1,047</td>
+              <td class="num">7</td>
+              <td class="num">6</td>
+              <td class="num negative">-39.3%</td>
+              <td class="num negative">-63.2%</td>
+            </tr>
+
+            <tr data-province="河南省区"
+                data-area="郑州北片区"
+                data-store="锦江之星(三门峡灵宝物华路天基广场店)"
+                data-city="三门峡市"
+                data-provider="未绑定服务商"
+                data-redeem-current="1174.0"
+                data-payment-current="1770.8999999999999"
+                data-redeem-nights="7.0"
+                data-payment-nights="14.0"
+                data-redeem-growth="0.20533880903490753"
+                data-payment-growth="-0.29943033467837654">
+              <td class="rank">18</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>郑州北片区</strong></td>
+              <td><strong>锦江之星(三门峡灵宝物华路天基广场店)</strong><small>三门峡市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">1,174</td>
+              <td class="num">1,771</td>
+              <td class="num">7</td>
+              <td class="num">14</td>
+              <td class="num positive">+20.5%</td>
+              <td class="num negative">-29.9%</td>
+            </tr>
+
+            <tr data-province="河南省区"
+                data-area="郑州北片区"
+                data-store="希岸轻雅酒店(郑州省体中心店)"
+                data-city="郑州市"
+                data-provider="未绑定服务商"
+                data-redeem-current="1001.0"
+                data-payment-current="1679.9000000000003"
+                data-redeem-nights="5.0"
+                data-payment-nights="10.0"
+                data-redeem-growth="0.4340974212034383"
+                data-payment-growth="-0.05872135372891796">
+              <td class="rank">19</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>郑州北片区</strong></td>
+              <td><strong>希岸轻雅酒店(郑州省体中心店)</strong><small>郑州市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">1,001</td>
+              <td class="num">1,680</td>
+              <td class="num">5</td>
+              <td class="num">10</td>
+              <td class="num positive">+43.4%</td>
+              <td class="num negative">-5.9%</td>
+            </tr>
+
+            <tr data-province="河南省区"
+                data-area="郑州北片区"
+                data-store="7天酒店钟点房·豪华大床房(修武云台山店)"
+                data-city="焦作市"
+                data-provider="未绑定服务商"
+                data-redeem-current="892.0"
+                data-payment-current="852.5999999999999"
+                data-redeem-nights="5.0"
+                data-payment-nights="6.0"
+                data-redeem-growth="0.9349240780911063"
+                data-payment-growth="-0.6106315933689548">
+              <td class="rank">20</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>郑州北片区</strong></td>
+              <td><strong>7天酒店钟点房·豪华大床房(修武云台山店)</strong><small>焦作市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">892</td>
+              <td class="num">853</td>
+              <td class="num">5</td>
+              <td class="num">6</td>
+              <td class="num positive">+93.5%</td>
+              <td class="num negative">-61.1%</td>
+            </tr>
+
+            <tr data-province="河南省区"
+                data-area="郑州北片区"
+                data-store="7天酒店.焦作沁阳店"
+                data-city="焦作市"
+                data-provider="未绑定服务商"
+                data-redeem-current="825.0"
+                data-payment-current="765.7"
+                data-redeem-nights="6.0"
+                data-payment-nights="5.0"
+                data-redeem-growth="0.5895953757225434"
+                data-payment-growth="-0.12039058012636406">
+              <td class="rank">21</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>郑州北片区</strong></td>
+              <td><strong>7天酒店.焦作沁阳店</strong><small>焦作市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">825</td>
+              <td class="num">766</td>
+              <td class="num">6</td>
+              <td class="num">5</td>
+              <td class="num positive">+59.0%</td>
+              <td class="num negative">-12.0%</td>
+            </tr>
+
+            <tr data-province="河南省区"
+                data-area="郑州北片区"
+                data-store="维也纳酒店(河朔大道经开区店)"
+                data-city="焦作市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="816.0"
+                data-payment-current="1063.5000000000002"
+                data-redeem-nights="4.0"
+                data-payment-nights="5.0"
+                data-redeem-growth="0.7142857142857142"
+                data-payment-growth="12.4620253164557">
+              <td class="rank">22</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>郑州北片区</strong></td>
+              <td><strong>维也纳酒店(河朔大道经开区店)</strong><small>焦作市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">816</td>
+              <td class="num">1,064</td>
+              <td class="num">4</td>
+              <td class="num">5</td>
+              <td class="num positive">+71.4%</td>
+              <td class="num positive">+1246.2%</td>
+            </tr>
+
+            <tr data-province="河南省区"
+                data-area="郑州北片区"
+                data-store="希岸Deluxe酒店(郑州亳都新象文庙地铁站店)"
+                data-city="郑州市"
+                data-provider="河南叁伍柒科技有限公司"
+                data-redeem-current="748.0"
+                data-payment-current="1068.0"
+                data-redeem-nights="2.0"
+                data-payment-nights="6.0"
+                data-redeem-growth="-0.48271092669432913"
+                data-payment-growth="-0.43251859723698194">
+              <td class="rank">23</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>郑州北片区</strong></td>
+              <td><strong>希岸Deluxe酒店(郑州亳都新象文庙地铁站店)</strong><small>郑州市 · 有返回记录</small></td>
+              <td><span class="provider">河南叁伍柒科技有限公司</span></td>
+              <td class="num">748</td>
+              <td class="num">1,068</td>
+              <td class="num">2</td>
+              <td class="num">6</td>
+              <td class="num negative">-48.3%</td>
+              <td class="num negative">-43.3%</td>
+            </tr>
+
+            <tr data-province="河南省区"
+                data-area="郑州北片区"
+                data-store="锦江之星(焦作大学师专太极体育中心店)"
+                data-city="焦作市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="654.0"
+                data-payment-current="2034.9"
+                data-redeem-nights="4.0"
+                data-payment-nights="13.0"
+                data-redeem-growth="3.4794520547945202"
+                data-payment-growth="3.8798561151079136">
+              <td class="rank">24</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>郑州北片区</strong></td>
+              <td><strong>锦江之星(焦作大学师专太极体育中心店)</strong><small>焦作市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">654</td>
+              <td class="num">2,035</td>
+              <td class="num">4</td>
+              <td class="num">13</td>
+              <td class="num positive">+347.9%</td>
+              <td class="num positive">+388.0%</td>
+            </tr>
+
+            <tr data-province="河南省区"
+                data-area="郑州北片区"
+                data-store="7天酒店(三门峡灵宝长安路店)"
+                data-city="三门峡市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="626.0"
+                data-payment-current="2734.8"
+                data-redeem-nights="6.0"
+                data-payment-nights="31.0"
+                data-redeem-growth="-0.4975922953451043"
+                data-payment-growth="0.11926004747483021">
+              <td class="rank">25</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>郑州北片区</strong></td>
+              <td><strong>7天酒店(三门峡灵宝长安路店)</strong><small>三门峡市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">626</td>
+              <td class="num">2,735</td>
+              <td class="num">6</td>
+              <td class="num">31</td>
+              <td class="num negative">-49.8%</td>
+              <td class="num positive">+11.9%</td>
+            </tr>
+
+            <tr data-province="河南省区"
+                data-area="郑州北片区"
+                data-store="7天酒店(焦作高铁站店)"
+                data-city="焦作市"
+                data-provider="未绑定服务商"
+                data-redeem-current="603.0"
+                data-payment-current="1633.6000000000004"
+                data-redeem-nights="3.0"
+                data-payment-nights="10.0"
+                data-redeem-growth="1.2840909090909092"
+                data-payment-growth="-0.1652102815677856">
+              <td class="rank">26</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>郑州北片区</strong></td>
+              <td><strong>7天酒店(焦作高铁站店)</strong><small>焦作市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">603</td>
+              <td class="num">1,634</td>
+              <td class="num">3</td>
+              <td class="num">10</td>
+              <td class="num positive">+128.4%</td>
+              <td class="num negative">-16.5%</td>
+            </tr>
+
+            <tr data-province="河南省区"
+                data-area="郑州北片区"
+                data-store="7天酒店(巩义康百万庄园店)"
+                data-city="郑州市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="477.0"
+                data-payment-current="1551.1"
+                data-redeem-nights="3.0"
+                data-payment-nights="12.0"
+                data-redeem-growth="-0.45547945205479456"
+                data-payment-growth="0.49604552469135776">
+              <td class="rank">27</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>郑州北片区</strong></td>
+              <td><strong>7天酒店(巩义康百万庄园店)</strong><small>郑州市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">477</td>
+              <td class="num">1,551</td>
+              <td class="num">3</td>
+              <td class="num">12</td>
+              <td class="num negative">-45.5%</td>
+              <td class="num positive">+49.6%</td>
+            </tr>
+
+            <tr data-province="河南省区"
+                data-area="郑州北片区"
+                data-store="锦江之星(焦作建设路高铁火车站店)"
+                data-city="焦作市"
+                data-provider="南通青蛙酒旅科技有限公司"
+                data-redeem-current="446.0"
+                data-payment-current="673.9"
+                data-redeem-nights="2.0"
+                data-payment-nights="4.0"
+                data-redeem-growth="0.0"
+                data-payment-growth="0.7828042328042328">
+              <td class="rank">28</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>郑州北片区</strong></td>
+              <td><strong>锦江之星(焦作建设路高铁火车站店)</strong><small>焦作市 · 有返回记录</small></td>
+              <td><span class="provider">南通青蛙酒旅科技有限公司</span></td>
+              <td class="num">446</td>
+              <td class="num">674</td>
+              <td class="num">2</td>
+              <td class="num">4</td>
+              <td class="num neutral">基期较低</td>
+              <td class="num positive">+78.3%</td>
+            </tr>
+
+            <tr data-province="河南省区"
+                data-area="郑州北片区"
+                data-store="麗枫酒店(郑州高新万达信息工程大学店)"
+                data-city="郑州市"
+                data-provider="未绑定服务商"
+                data-redeem-current="352.6"
+                data-payment-current="1065.5"
+                data-redeem-nights="1.0"
+                data-payment-nights="4.0"
+                data-redeem-growth="-0.8050425743669136"
+                data-payment-growth="0.025999037072701014">
+              <td class="rank">29</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>郑州北片区</strong></td>
+              <td><strong>麗枫酒店(郑州高新万达信息工程大学店)</strong><small>郑州市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">353</td>
+              <td class="num">1,066</td>
+              <td class="num">1</td>
+              <td class="num">4</td>
+              <td class="num negative">-80.5%</td>
+              <td class="num positive">+2.6%</td>
+            </tr>
+
+            <tr data-province="河南省区"
+                data-area="郑州北片区"
+                data-store="麗枫酒店(郑州T10探十里陇海西路店)"
+                data-city="郑州市"
+                data-provider="未绑定服务商"
+                data-redeem-current="180.0"
+                data-payment-current="1383.9"
+                data-redeem-nights="1.0"
+                data-payment-nights="7.0"
+                data-redeem-growth="-0.8826597131681877"
+                data-payment-growth="-0.5789265502342846">
+              <td class="rank">30</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>郑州北片区</strong></td>
+              <td><strong>麗枫酒店(郑州T10探十里陇海西路店)</strong><small>郑州市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">180</td>
+              <td class="num">1,384</td>
+              <td class="num">1</td>
+              <td class="num">7</td>
+              <td class="num negative">-88.3%</td>
+              <td class="num negative">-57.9%</td>
+            </tr>
+
+            <tr data-province="河南省区"
+                data-area="郑州北片区"
+                data-store="7天优品Premium(焦作火车站建设路店)"
+                data-city="焦作市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="152.0"
+                data-payment-current="845.0"
+                data-redeem-nights="2.0"
+                data-payment-nights="9.0"
+                data-redeem-growth="-0.8294051627384961"
+                data-payment-growth="-0.46006389776357826">
+              <td class="rank">31</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>郑州北片区</strong></td>
+              <td><strong>7天优品Premium(焦作火车站建设路店)</strong><small>焦作市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">152</td>
+              <td class="num">845</td>
+              <td class="num">2</td>
+              <td class="num">9</td>
+              <td class="num negative">-82.9%</td>
+              <td class="num negative">-46.0%</td>
+            </tr>
+
+            <tr data-province="河南省区"
+                data-area="郑州北片区"
+                data-store="白玉兰酒店(郑州高新区万达广场玉兰街旗舰店)"
+                data-city="郑州市"
+                data-provider="未绑定服务商"
+                data-redeem-current="0.0"
+                data-payment-current="767.0"
+                data-redeem-nights="0.0"
+                data-payment-nights="1.0"
+                data-redeem-growth="0.0"
+                data-payment-growth="0.9271356783919598">
+              <td class="rank">32</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>郑州北片区</strong></td>
+              <td><strong>白玉兰酒店(郑州高新区万达广场玉兰街旗舰店)</strong><small>郑州市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">0</td>
+              <td class="num">767</td>
+              <td class="num">0</td>
+              <td class="num">1</td>
+              <td class="num neutral">基期较低</td>
+              <td class="num positive">+92.7%</td>
+            </tr>
+
+            <tr data-province="河南省区"
+                data-area="郑州北片区"
+                data-store="白玉兰商务酒店(焦作远大未来城高铁站店)"
+                data-city="焦作市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="0.0"
+                data-payment-current="418.0"
+                data-redeem-nights="0.0"
+                data-payment-nights="2.0"
+                data-redeem-growth="-1.0"
+                data-payment-growth="-0.2627865961199295">
+              <td class="rank">33</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>郑州北片区</strong></td>
+              <td><strong>白玉兰商务酒店(焦作远大未来城高铁站店)</strong><small>焦作市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">0</td>
+              <td class="num">418</td>
+              <td class="num">0</td>
+              <td class="num">2</td>
+              <td class="num negative">-100.0%</td>
+              <td class="num negative">-26.3%</td>
+            </tr>
+
+            <tr data-province="河南省区"
+                data-area="郑州北片区"
+                data-store="潮漫酒店(三门峡市万达广场店)"
+                data-city="三门峡市"
+                data-provider="未绑定服务商"
+                data-redeem-current="0.0"
+                data-payment-current="398.1"
+                data-redeem-nights="0.0"
+                data-payment-nights="2.0"
+                data-redeem-growth="0.0"
+                data-payment-growth="0.3359060402684564">
+              <td class="rank">34</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>郑州北片区</strong></td>
+              <td><strong>潮漫酒店(三门峡市万达广场店)</strong><small>三门峡市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">0</td>
+              <td class="num">398</td>
+              <td class="num">0</td>
+              <td class="num">2</td>
+              <td class="num neutral">基期较低</td>
+              <td class="num positive">+33.6%</td>
+            </tr>
+
+            <tr data-province="河南省区"
+                data-area="郑州北片区"
+                data-store="维也纳酒店(郑州大学新校区梧桐街地铁站店)"
+                data-city="郑州市"
+                data-provider="未绑定服务商"
+                data-redeem-current="0.0"
+                data-payment-current="198.9"
+                data-redeem-nights="0.0"
+                data-payment-nights="1.0"
+                data-redeem-growth="0.0"
+                data-payment-growth="-0.8552612429049629">
+              <td class="rank">35</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>郑州北片区</strong></td>
+              <td><strong>维也纳酒店(郑州大学新校区梧桐街地铁站店)</strong><small>郑州市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">0</td>
+              <td class="num">199</td>
+              <td class="num">0</td>
+              <td class="num">1</td>
+              <td class="num neutral">基期较低</td>
+              <td class="num negative">-85.5%</td>
+            </tr>
+
+            <tr data-province="河南省区"
+                data-area="郑州北片区"
+                data-store="维也纳酒店(荥阳店)"
+                data-city="郑州市"
+                data-provider="未绑定服务商"
+                data-redeem-current="0.0"
+                data-payment-current="0.0"
+                data-redeem-nights="0.0"
+                data-payment-nights="0.0"
+                data-redeem-growth="-1.0"
+                data-payment-growth="0.0">
+              <td class="rank">36</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>郑州北片区</strong></td>
+              <td><strong>维也纳酒店(荥阳店)</strong><small>郑州市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num negative">-100.0%</td>
+              <td class="num neutral">基期较低</td>
+            </tr>
+
+            <tr data-province="河南省区"
+                data-area="郑州北片区"
+                data-store="希岸酒店(焦作体育馆店)"
+                data-city=""
+                data-provider="未绑定服务商"
+                data-redeem-current="0.0"
+                data-payment-current="0.0"
+                data-redeem-nights="0.0"
+                data-payment-nights="0.0"
+                data-redeem-growth="0.0"
+                data-payment-growth="0.0">
+              <td class="rank">37</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>郑州北片区</strong></td>
+              <td><strong>希岸酒店(焦作体育馆店)</strong><small> · 无返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num neutral">基期较低</td>
+              <td class="num neutral">基期较低</td>
+            </tr>
+
+            <tr data-province="河南省区"
+                data-area="郑州北片区"
+                data-store="#N/A"
+                data-city=""
+                data-provider="未绑定服务商"
+                data-redeem-current="0.0"
+                data-payment-current="0.0"
+                data-redeem-nights="0.0"
+                data-payment-nights="0.0"
+                data-redeem-growth="0.0"
+                data-payment-growth="0.0">
+              <td class="rank">38</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>郑州北片区</strong></td>
+              <td><strong>#N/A</strong><small> · 无返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num neutral">基期较低</td>
+              <td class="num neutral">基期较低</td>
+            </tr>
+
+            <tr data-province="河南省区"
+                data-area="郑州北片区"
+                data-store="#N/A"
+                data-city=""
+                data-provider="未绑定服务商"
+                data-redeem-current="0.0"
+                data-payment-current="0.0"
+                data-redeem-nights="0.0"
+                data-payment-nights="0.0"
+                data-redeem-growth="0.0"
+                data-payment-growth="0.0">
+              <td class="rank">39</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>郑州北片区</strong></td>
+              <td><strong>#N/A</strong><small> · 无返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num neutral">基期较低</td>
+              <td class="num neutral">基期较低</td>
+            </tr>
+
+            <tr data-province="河南省区"
+                data-area="郑州北片区"
+                data-store="#N/A"
+                data-city=""
+                data-provider="未绑定服务商"
+                data-redeem-current="0.0"
+                data-payment-current="0.0"
+                data-redeem-nights="0.0"
+                data-payment-nights="0.0"
+                data-redeem-growth="0.0"
+                data-payment-growth="0.0">
+              <td class="rank">40</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>郑州北片区</strong></td>
+              <td><strong>#N/A</strong><small> · 无返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num neutral">基期较低</td>
+              <td class="num neutral">基期较低</td>
+            </tr>
+
+            <tr data-province="河南省区"
+                data-area="郑州北片区"
+                data-store="#N/A"
+                data-city=""
+                data-provider="未绑定服务商"
+                data-redeem-current="0.0"
+                data-payment-current="0.0"
+                data-redeem-nights="0.0"
+                data-payment-nights="0.0"
+                data-redeem-growth="0.0"
+                data-payment-growth="0.0">
+              <td class="rank">41</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>郑州北片区</strong></td>
+              <td><strong>#N/A</strong><small> · 无返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num neutral">基期较低</td>
+              <td class="num neutral">基期较低</td>
+            </tr>
+            </tbody>
+        </table>
+      </div>
+    </article>
+      <article class="panel local-panel" data-panel="growth" style="display:none">
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>#</th><th>门店 / 服务商</th><th>本期支付</th><th>上期支付</th><th>增减额</th><th>经营渠道拆解</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="rank">01</td>
+              <td><strong>维也纳酒店(三门峡崤山路市府店)</strong><small>三门峡市 · 河南叁伍柒科技有限公司</small></td>
+              <td class="num">9,691</td>
+              <td class="num">6,890</td>
+              <td class="num positive">+2,801</td>
+              <td class="channel-stack"><span class="channel-chip positive">短视频 +1,835</span><span class="channel-chip positive">自播 +875</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">02</td>
+              <td><strong>维也纳智好酒店(巩义市政府商学院店)</strong><small>郑州市 · 未绑定服务商</small></td>
+              <td class="num">1.16万</td>
+              <td class="num">9,174</td>
+              <td class="num positive">+2,447</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">03</td>
+              <td><strong>维也纳国际酒店(三门峡灵宝函谷路市府店)</strong><small>三门峡市 · 河南美程酒店管理有限公司</small></td>
+              <td class="num">8,594</td>
+              <td class="num">6,272</td>
+              <td class="num positive">+2,322</td>
+              <td class="channel-stack"><span class="channel-chip positive">短视频 +368</span><span class="channel-chip positive">自播 +318</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">04</td>
+              <td><strong>维也纳酒店(郑州高新万达正弘汇店)</strong><small>郑州市 · 河南叁伍柒科技有限公司</small></td>
+              <td class="num">5,222</td>
+              <td class="num">3,268</td>
+              <td class="num positive">+1,954</td>
+              <td class="channel-stack"><span class="channel-chip positive">短视频 +189</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">05</td>
+              <td><strong>锦江之星(焦作大学师专太极体育中心店)</strong><small>焦作市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">2,035</td>
+              <td class="num">417</td>
+              <td class="num positive">+1,618</td>
+              <td class="channel-stack"><span class="channel-chip negative">短视频 -139</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">06</td>
+              <td><strong>锦江之星品尚(郑州中学瑞达路酒店)</strong><small>郑州市 · 河南叁伍柒科技有限公司</small></td>
+              <td class="num">2,070</td>
+              <td class="num">487</td>
+              <td class="num positive">+1,583</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">07</td>
+              <td><strong>7天酒店(焦作孟州桑坡店)</strong><small>焦作市 · 未绑定服务商</small></td>
+              <td class="num">3,113</td>
+              <td class="num">1,735</td>
+              <td class="num positive">+1,378</td>
+              <td class="channel-stack"><span class="channel-chip positive">短视频 +238</span><span class="channel-chip negative">自播 -139</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">08</td>
+              <td><strong>麗枫酒店(焦作万方桥高铁站店)</strong><small>焦作市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">3,296</td>
+              <td class="num">2,135</td>
+              <td class="num positive">+1,161</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">09</td>
+              <td><strong>维也纳酒店(河朔大道经开区店)</strong><small>焦作市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">1,064</td>
+              <td class="num">79</td>
+              <td class="num positive">+985</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">10</td>
+              <td><strong>锦江之星酒店(郑州梧桐街地铁站郑大新校区店)</strong><small>郑州市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">2,765</td>
+              <td class="num">1,829</td>
+              <td class="num positive">+936</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+            </tbody>
+        </table>
+      </div>
+    </article>
+      <article class="panel local-panel" data-panel="decline" style="display:none">
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>#</th><th>门店 / 服务商</th><th>本期支付</th><th>上期支付</th><th>增减额</th><th>经营渠道拆解</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="rank">01</td>
+              <td><strong>维也纳国际酒店(河南省三门峡市南站店)</strong><small>三门峡市 · 河南美程酒店管理有限公司</small></td>
+              <td class="num">1,375</td>
+              <td class="num">7,059</td>
+              <td class="num negative">-5,684</td>
+              <td class="channel-stack"><span class="channel-chip positive">短视频 +230</span><span class="channel-chip negative">自播 -219</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">02</td>
+              <td><strong>维也纳酒店(郑州惠济万达广场店)</strong><small>郑州市 · 未绑定服务商</small></td>
+              <td class="num">1,030</td>
+              <td class="num">3,529</td>
+              <td class="num negative">-2,499</td>
+              <td class="channel-stack"><span class="channel-chip negative">短视频 -247</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">03</td>
+              <td><strong>维也纳酒店(焦作温县新胖发祥子夏公园店)</strong><small>焦作市 · 未绑定服务商</small></td>
+              <td class="num">2,886</td>
+              <td class="num">4,864</td>
+              <td class="num negative">-1,978</td>
+              <td class="channel-stack"><span class="channel-chip negative">短视频 -318</span><span class="channel-chip positive">自播 0</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">04</td>
+              <td><strong>麗枫酒店(郑州T10探十里陇海西路店)</strong><small>郑州市 · 未绑定服务商</small></td>
+              <td class="num">1,384</td>
+              <td class="num">3,287</td>
+              <td class="num negative">-1,903</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">05</td>
+              <td><strong>锦江之星(荥阳新区店)</strong><small>郑州市 · 未绑定服务商</small></td>
+              <td class="num">1,047</td>
+              <td class="num">2,843</td>
+              <td class="num negative">-1,796</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">06</td>
+              <td><strong>维也纳酒店(郑州南阳路兴隆铺地铁站店)</strong><small>郑州市 · 未绑定服务商</small></td>
+              <td class="num">2,505</td>
+              <td class="num">3,925</td>
+              <td class="num negative">-1,420</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">07</td>
+              <td><strong>7天酒店钟点房·豪华大床房(修武云台山店)</strong><small>焦作市 · 未绑定服务商</small></td>
+              <td class="num">853</td>
+              <td class="num">2,190</td>
+              <td class="num negative">-1,337</td>
+              <td class="channel-stack"><span class="channel-chip negative">自播 -488</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">08</td>
+              <td><strong>维也纳酒店(郑州大学新校区梧桐街地铁站店)</strong><small>郑州市 · 未绑定服务商</small></td>
+              <td class="num">199</td>
+              <td class="num">1,374</td>
+              <td class="num negative">-1,175</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">09</td>
+              <td><strong>希岸Deluxe酒店(郑州亳都新象文庙地铁站店)</strong><small>郑州市 · 河南叁伍柒科技有限公司</small></td>
+              <td class="num">1,068</td>
+              <td class="num">1,882</td>
+              <td class="num negative">-814</td>
+              <td class="channel-stack"><span class="channel-chip negative">自播 -432</span><span class="channel-chip negative">短视频 -398</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">10</td>
+              <td><strong>锦江之星(三门峡灵宝物华路天基广场店)</strong><small>三门峡市 · 未绑定服务商</small></td>
+              <td class="num">1,771</td>
+              <td class="num">2,528</td>
+              <td class="num negative">-757</td>
+              <td class="channel-stack"><span class="channel-chip negative">短视频 -495</span></td>
+            </tr>
+            </tbody>
+        </table>
+      </div>
+    </article>
+    </section>
+
+    <section class="section" id="attribution">
+      <div class="section-head"><div><h2>增长归因</h2><p>保留全部交易体裁，分别查看支付与核销增减及绑定服务商贡献</p></div></div>
+      <div class="grid-2 equal"><article class="panel"><div class="panel-head"><div><h2>经营渠道变化</h2><p>本期对比上期 · 支付和核销 · 服务商明细 · 单位：元</p></div></div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr>
+            <th><button class="sort-trigger channel-sort-trigger" type="button" data-sort-key="channel" onclick="sortChannelTable('channel')" title="按渠道名称排序">经营渠道 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger channel-sort-trigger" type="button" data-sort-key="payment-current" onclick="sortChannelTable('payment-current')" title="按本期支付额排序">本期支付 <span class="sort-indicator"></span></button></th>
+            <th>上期支付</th>
+            <th><button class="sort-trigger channel-sort-trigger" type="button" data-sort-key="payment-delta" onclick="sortChannelTable('payment-delta')" title="按支付增减排序">支付增减 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger channel-sort-trigger" type="button" data-sort-key="payment-growth" onclick="sortChannelTable('payment-growth')" title="按支付增长率排序">支付增长率 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger channel-sort-trigger" type="button" data-sort-key="redeem-current" onclick="sortChannelTable('redeem-current')" title="按本期核销额排序">本期核销 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger channel-sort-trigger" type="button" data-sort-key="redeem-previous" onclick="sortChannelTable('redeem-previous')" title="按上期核销额排序">上期核销 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger channel-sort-trigger" type="button" data-sort-key="redeem-delta" onclick="sortChannelTable('redeem-delta')" title="按核销增减排序">核销增减 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger channel-sort-trigger" type="button" data-sort-key="redeem-growth" onclick="sortChannelTable('redeem-growth')" title="按核销增长率排序">核销增长率 <span class="sort-indicator"></span></button></th>
+            <th>绑定服务商及增减</th>
+          </tr></thead>
+          <tbody id="channel-attribution-body">
+            <tr data-channel="自播"
+                data-payment-current="3618.0"
+                data-payment-delta="4.0"
+                data-payment-growth="0.0011068068622024363"
+                data-redeem-current="488.0"
+                data-redeem-previous="2327.0"
+                data-redeem-delta="-1839.0"
+                data-redeem-growth="-0.7902879243661367">
+              <td><strong>自播</strong></td>
+              <td class="num">3,618</td>
+              <td class="num">3,614</td>
+              <td class="num positive">+4</td>
+              <td class="num">+0.1%</td>
+              <td class="num">488</td>
+              <td class="num">2,327</td>
+              <td class="num negative">-1,839</td>
+              <td class="num">-79.0%</td>
+              <td class="channel-stack"><span class="channel-chip negative">未绑定服务商 支付 -627 · 核销 -1,531</span><span class="channel-chip positive">河南叁伍柒科技有限公司 支付 +443 · 核销 -308</span><span class="channel-chip positive">河南美程酒店管理有限公司 支付 +99 · 核销 0</span><span class="channel-chip positive">杭州四库传媒有限公司 支付 +89 · 核销 0</span></td>
+            </tr>
+
+            <tr data-channel="短视频"
+                data-payment-current="5186.099999999999"
+                data-payment-delta="1087.3999999999996"
+                data-payment-growth="0.2653036328591991"
+                data-redeem-current="2279.0"
+                data-redeem-previous="646.0"
+                data-redeem-delta="1633.0"
+                data-redeem-growth="2.527863777089783">
+              <td><strong>短视频</strong></td>
+              <td class="num">5,186</td>
+              <td class="num">4,099</td>
+              <td class="num positive">+1,087</td>
+              <td class="num">+26.5%</td>
+              <td class="num">2,279</td>
+              <td class="num">646</td>
+              <td class="num positive">+1,633</td>
+              <td class="num">+252.8%</td>
+              <td class="channel-stack"><span class="channel-chip positive">河南叁伍柒科技有限公司 支付 +1,626 · 核销 +860</span><span class="channel-chip negative">未绑定服务商 支付 -1,068 · 核销 +245</span><span class="channel-chip positive">河南美程酒店管理有限公司 支付 +598 · 核销 +50</span><span class="channel-chip negative">杭州四库传媒有限公司 支付 -69 · 核销 +478</span></td>
+            </tr>
+
+            <tr data-channel="UGC视频"
+                data-payment-current="0"
+                data-payment-delta="0.0"
+                data-payment-growth="0"
+                data-redeem-current="0"
+                data-redeem-previous="159.0"
+                data-redeem-delta="-159.0"
+                data-redeem-growth="-1.0">
+              <td><strong>UGC视频</strong></td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num positive">0</td>
+              <td class="num">基期较低</td>
+              <td class="num">0</td>
+              <td class="num">159</td>
+              <td class="num negative">-159</td>
+              <td class="num">-100.0%</td>
+              <td class="channel-stack"><span class="channel-chip positive">杭州四库传媒有限公司 支付 0 · 核销 -159</span></td>
+            </tr>
+
+            <tr data-channel="其他"
+                data-payment-current="33396.300000000025"
+                data-payment-delta="2239.2999999999993"
+                data-payment-growth="0.07187148955290934"
+                data-redeem-current="17592.5"
+                data-redeem-previous="13243.5"
+                data-redeem-delta="4349.0"
+                data-redeem-growth="0.32838751085438145">
+              <td><strong>其他</strong></td>
+              <td class="num">3.34万</td>
+              <td class="num">3.12万</td>
+              <td class="num positive">+2,239</td>
+              <td class="num">+7.2%</td>
+              <td class="num">1.76万</td>
+              <td class="num">1.32万</td>
+              <td class="num positive">+4,349</td>
+              <td class="num">+32.8%</td>
+              <td class="channel-stack"><span class="channel-chip positive">河南美程酒店管理有限公司 支付 +404 · 核销 +3,832</span><span class="channel-chip positive">河南叁伍柒科技有限公司 支付 +2,522 · 核销 -70</span><span class="channel-chip positive">杭州四库传媒有限公司 支付 +799 · 核销 +2,494</span><span class="channel-chip negative">未绑定服务商 支付 -1,267 · 核销 -1,908</span><span class="channel-chip negative">南通青蛙酒旅科技有限公司 支付 -219 · 核销 0</span></td>
+            </tr>
+
+            <tr data-channel="搜索结果卡"
+                data-payment-current="39074.50000000007"
+                data-payment-delta="-4334.699999999997"
+                data-payment-growth="-0.09985671240197913"
+                data-redeem-current="30273.1"
+                data-redeem-previous="28332.399999999998"
+                data-redeem-delta="1940.7000000000007"
+                data-redeem-growth="0.06849755050754625">
+              <td><strong>搜索结果卡</strong></td>
+              <td class="num">3.91万</td>
+              <td class="num">4.34万</td>
+              <td class="num negative">-4,335</td>
+              <td class="num">-10.0%</td>
+              <td class="num">3.03万</td>
+              <td class="num">2.83万</td>
+              <td class="num positive">+1,941</td>
+              <td class="num">+6.8%</td>
+              <td class="channel-stack"><span class="channel-chip negative">未绑定服务商 支付 -5,708 · 核销 -1,645</span><span class="channel-chip positive">杭州四库传媒有限公司 支付 +4,167 · 核销 +3,218</span><span class="channel-chip negative">河南美程酒店管理有限公司 支付 -3,765 · 核销 -228</span><span class="channel-chip positive">河南叁伍柒科技有限公司 支付 +515 · 核销 +150</span><span class="channel-chip positive">南通青蛙酒旅科技有限公司 支付 +456 · 核销 +446</span></td>
+            </tr>
+
+            <tr data-channel="职人/店员直播"
+                data-payment-current="0"
+                data-payment-delta="-955.0"
+                data-payment-growth="-1.0"
+                data-redeem-current="0"
+                data-redeem-previous="358.0"
+                data-redeem-delta="-358.0"
+                data-redeem-growth="-1.0">
+              <td><strong>职人/店员直播</strong></td>
+              <td class="num">0</td>
+              <td class="num">955</td>
+              <td class="num negative">-955</td>
+              <td class="num">-100.0%</td>
+              <td class="num">0</td>
+              <td class="num">358</td>
+              <td class="num negative">-358</td>
+              <td class="num">-100.0%</td>
+              <td class="channel-stack"><span class="channel-chip negative">未绑定服务商 支付 -955 · 核销 -358</span></td>
+            </tr>
+
+            <tr data-channel="获客卡"
+                data-payment-current="9719.899999999998"
+                data-payment-delta="1167.0999999999985"
+                data-payment-growth="0.13645823589935446"
+                data-redeem-current="843.5"
+                data-redeem-previous="1029.6999999999998"
+                data-redeem-delta="-186.19999999999982"
+                data-redeem-growth="-0.1808293677770223">
+              <td><strong>获客卡</strong></td>
+              <td class="num">9,720</td>
+              <td class="num">8,553</td>
+              <td class="num positive">+1,167</td>
+              <td class="num">+13.6%</td>
+              <td class="num">844</td>
+              <td class="num">1,030</td>
+              <td class="num negative">-186</td>
+              <td class="num">-18.1%</td>
+              <td class="channel-stack"><span class="channel-chip positive">杭州四库传媒有限公司 支付 +740 · 核销 -163</span><span class="channel-chip negative">河南美程酒店管理有限公司 支付 -698 · 核销 0</span><span class="channel-chip positive">未绑定服务商 支付 +648 · 核销 -401</span><span class="channel-chip positive">河南叁伍柒科技有限公司 支付 +418 · 核销 +378</span><span class="channel-chip positive">南通青蛙酒旅科技有限公司 支付 +59 · 核销 0</span></td>
+            </tr>
+            </tbody>
+        </table>
+      </div>
+    </article>
+      <article class="panel"><div class="panel-head"><div><h2>增长 / 下滑摘要</h2><p>按支付 GMV 增减额排序</p></div></div>
+        <div class="insights">
+          <div class="insight"><b>最大增长门店</b><p>维也纳酒店(三门峡崤山路市府店) · +2,801 · 河南叁伍柒科技有限公司</p><span class="tag good">短视频</span></div>
+          <div class="insight"><b>最大下滑门店</b><p>维也纳国际酒店(河南省三门峡市南站店) · -5,684 · 河南美程酒店管理有限公司</p><span class="tag warn">短视频</span></div>
+        </div>
+      </article></div>
+    </section>
+
+    <section class="section" id="providers">
+      <div class="section-head"><div><h2>头部服务商表现</h2><p>按绑定门店数展示前 8 家主要服务商</p></div></div>
+      <div class="grid-2"><article class="panel"><div class="panel-head"><div><h2>服务商累计表现</h2><p>支付、核销、绑定规模与单店产出 · 金额单位：万元</p></div></div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>#</th><th>服务商</th><th>绑定门店</th><th>动销门店</th><th>支付 GMV</th><th>支付增长率</th><th>核销 GMV</th><th>核销增长率</th><th>平均单店支付</th><th>单店支付增长率</th><th>平均单店核销</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="rank">01</td>
+              <td><strong>未绑定服务商</strong></td>
+              <td class="num">0家</td>
+              <td class="num">17家</td>
+              <td class="num">3.56万</td>
+              <td class="num negative">-20.1%</td>
+              <td class="num">1.89万</td>
+              <td class="num negative">-22.8%</td>
+              <td class="num">2,095</td>
+              <td class="num negative">-15.4%</td>
+              <td class="num">1,113</td>
+            </tr>
+
+            <tr>
+              <td class="rank">02</td>
+              <td><strong>杭州四库传媒有限公司</strong></td>
+              <td class="num">11家</td>
+              <td class="num">11家</td>
+              <td class="num">2.67万</td>
+              <td class="num positive">+27.3%</td>
+              <td class="num">1.72万</td>
+              <td class="num positive">+51.6%</td>
+              <td class="num">2,426</td>
+              <td class="num positive">+27.3%</td>
+              <td class="num">1,567</td>
+            </tr>
+
+            <tr>
+              <td class="rank">03</td>
+              <td><strong>河南叁伍柒科技有限公司</strong></td>
+              <td class="num">4家</td>
+              <td class="num">4家</td>
+              <td class="num">1.81万</td>
+              <td class="num positive">+44.1%</td>
+              <td class="num">6,649</td>
+              <td class="num positive">+17.9%</td>
+              <td class="num">4,513</td>
+              <td class="num positive">+44.1%</td>
+              <td class="num">1,662</td>
+            </tr>
+
+            <tr>
+              <td class="rank">04</td>
+              <td><strong>河南美程酒店管理有限公司</strong></td>
+              <td class="num">2家</td>
+              <td class="num">2家</td>
+              <td class="num">9,969</td>
+              <td class="num negative">-25.2%</td>
+              <td class="num">8,220</td>
+              <td class="num positive">+80.0%</td>
+              <td class="num">4,984</td>
+              <td class="num negative">-25.2%</td>
+              <td class="num">4,110</td>
+            </tr>
+
+            <tr>
+              <td class="rank">05</td>
+              <td><strong>南通青蛙酒旅科技有限公司</strong></td>
+              <td class="num">1家</td>
+              <td class="num">1家</td>
+              <td class="num">674</td>
+              <td class="num positive">+78.3%</td>
+              <td class="num">446</td>
+              <td class="num positive">基期较低</td>
+              <td class="num">674</td>
+              <td class="num positive">+78.3%</td>
+              <td class="num">446</td>
+            </tr>
+            </tbody>
+        </table>
+      </div>
+    </article>
+      <article class="panel"><div class="panel-head"><div><h2>服务商水平</h2><p>平均单店支付产出柱状图 · 单位：万元</p></div></div>
+        <div class="insights"><div class="insight"><b>未绑定服务商</b><p>2,095 /家支付 · 1,113 /家核销 · 17家动销</p><div class="bar-wrap"><span class="segment-bar calendar" style="width:42.0%"></span></div><span class="tag warn">单店产出 -15.4%</span></div><div class="insight"><b>杭州四库传媒有限公司</b><p>2,426 /家支付 · 1,567 /家核销 · 11家动销</p><div class="bar-wrap"><span class="segment-bar calendar" style="width:48.7%"></span></div><span class="tag good">单店产出 +27.3%</span></div><div class="insight"><b>河南叁伍柒科技有限公司</b><p>4,513 /家支付 · 1,662 /家核销 · 4家动销</p><div class="bar-wrap"><span class="segment-bar calendar" style="width:90.5%"></span></div><span class="tag good">单店产出 +44.1%</span></div><div class="insight"><b>河南美程酒店管理有限公司</b><p>4,984 /家支付 · 4,110 /家核销 · 2家动销</p><div class="bar-wrap"><span class="segment-bar calendar" style="width:100.0%"></span></div><span class="tag warn">单店产出 -25.2%</span></div><div class="insight"><b>南通青蛙酒旅科技有限公司</b><p>674 /家支付 · 446 /家核销 · 1家动销</p><div class="bar-wrap"><span class="segment-bar calendar" style="width:13.5%"></span></div><span class="tag good">单店产出 +78.3%</span></div></div>
+      </article></div>
+    </section>
+
+    <section class="section" id="voucher">
+      <div class="section-head"><div><h2>通兑商品</h2><p>省区合计 · 仅展示支付与核销趋势，不拆分 SKU</p></div></div>
+      <div class="kpis">
+        <article class="kpi"><span class="kpi-label">通兑支付 GMV</span><b class="kpi-value">7,715</b><div class="kpi-foot"><span>本期 7 天累计</span><span>支付券 29张</span></div></article>
+        <article class="kpi"><span class="kpi-label">通兑核销 GMV</span><b class="kpi-value">407</b><div class="kpi-foot"><span>本期 7 天累计</span><span>核销券 3张</span></div></article>
+      </div>
+      <article class="panel" style="margin-top:16px">
+        <div class="panel-head trend-panel-head"><div class="trend-heading"><h2>支付与核销趋势</h2><span class="trend-range">10-03–10-09 · 单位：万元</span></div><div class="legend"><span><i style="background:var(--blue)"></i>支付</span><span><i style="background:var(--orange)"></i>核销</span></div></div>
+        <div class="chart-scroll">
+      <svg class="chart-svg" viewBox="0 0 760 300" role="img"
+           aria-label="支付与核销日趋势，单位万元">
+        <line x1="54" y1="34.0" x2="736" y2="34.0" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="104.6" x2="736" y2="104.6" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="175.2" x2="736" y2="175.2" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="248.0" x2="736" y2="248.0" stroke="#ECEEF3" stroke-width="1"/><text x="44" y="38.0" text-anchor="end" class="axis-label">0.2</text><text x="44" y="145.0" text-anchor="end" class="axis-label">0.1</text><text x="44" y="252.0" text-anchor="end" class="axis-label">0.0</text>
+        <path d="M54.0 34.0 L167.7 44.6 L281.3 115.6 L395.0 134.6 L508.7 139.3 L622.3 174.7 L736.0 174.7" fill="none" stroke="#1677FF"
+              stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M54.0 248.0 L167.7 248.0 L281.3 248.0 L395.0 248.0 L508.7 248.0 L622.3 218.5 L736.0 229.1" fill="none" stroke="#FF8A3D"
+              stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle class="trend-point payment-point" cx="54.0" cy="34.0" r="5" fill="#1677FF"/><text x="58.0" y="22.0" text-anchor="start" class="point-label payment-label" fill="#1677FF">0.2万</text><circle class="trend-point payment-point" cx="167.7" cy="44.6" r="5" fill="#1677FF"/><text x="167.7" y="32.6" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.2万</text><circle class="trend-point payment-point" cx="281.3" cy="115.6" r="5" fill="#1677FF"/><text x="281.3" y="103.6" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.1万</text><circle class="trend-point payment-point" cx="395.0" cy="134.6" r="5" fill="#1677FF"/><text x="395.0" y="122.6" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.1万</text><circle class="trend-point payment-point" cx="508.7" cy="139.3" r="5" fill="#1677FF"/><text x="508.7" y="127.3" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.1万</text><circle class="trend-point payment-point" cx="622.3" cy="174.7" r="5" fill="#1677FF"/><text x="622.3" y="162.7" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.1万</text><circle class="trend-point payment-point" cx="736.0" cy="174.7" r="5" fill="#1677FF"/><text x="732.0" y="162.7" text-anchor="end" class="point-label payment-label" fill="#1677FF">0.1万</text>
+        <circle class="trend-point redeem-point" cx="54.0" cy="248.0" r="5" fill="#FF8A3D"/><text x="58.0" y="272.0" text-anchor="start" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="167.7" cy="248.0" r="5" fill="#FF8A3D"/><text x="167.7" y="272.0" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="281.3" cy="248.0" r="5" fill="#FF8A3D"/><text x="281.3" y="272.0" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="395.0" cy="248.0" r="5" fill="#FF8A3D"/><text x="395.0" y="272.0" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="508.7" cy="248.0" r="5" fill="#FF8A3D"/><text x="508.7" y="272.0" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="622.3" cy="218.5" r="5" fill="#FF8A3D"/><text x="622.3" y="242.5" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="736.0" cy="229.1" r="5" fill="#FF8A3D"/><text x="732.0" y="253.1" text-anchor="end" class="point-label redeem-label" fill="#FF8A3D">0.0万</text>
+        <text x="54.0" y="288" text-anchor="middle" class="axis-label">10-03</text><text x="167.7" y="288" text-anchor="middle" class="axis-label">10-04</text><text x="281.3" y="288" text-anchor="middle" class="axis-label">10-05</text><text x="395.0" y="288" text-anchor="middle" class="axis-label">10-06</text><text x="508.7" y="288" text-anchor="middle" class="axis-label">10-07</text><text x="622.3" y="288" text-anchor="middle" class="axis-label">10-08</text><text x="736.0" y="288" text-anchor="middle" class="axis-label">10-09</text>
+      </svg>
+    </div>
+      </article>
+    </section>
+
+
+    <section class="section" id="merchant-live">
+      <div class="section-head"><div><h2>商家自播</h2><p>商家官号 · 近 7 日对比前 7 日 · 数据来源：生意经</p></div></div>
+      <div class="kpis">
+        <article class="kpi"><span class="kpi-label">直播成交金额</span><b class="kpi-value">3,370</b><div class="kpi-foot"><span class="positive">+18.3%</span><span>较前 7 日 2,848</span></div></article>
+        <article class="kpi"><span class="kpi-label">直播场次</span><b class="kpi-value">20<small style="font-size:14px">场</small></b><div class="kpi-foot"><span class="negative">-51.2%</span><span>较前 7 日 41场</span></div></article>
+        <article class="kpi"><span class="kpi-label">直播时长</span><b class="kpi-value">48.4小时</b><div class="kpi-foot"><span class="negative">-36.3%</span><span>较前 7 日 75.9小时</span></div></article>
+        <article class="kpi"><span class="kpi-label">开播账号</span><b class="kpi-value">4<small style="font-size:14px">个</small></b><div class="kpi-foot"><span class="negative">-4个</span><span>较前 7 日</span></div></article>
+      </div>
+      <article class="panel" style="margin-top:16px">
+        <div class="panel-head trend-panel-head"><div class="trend-heading"><h2>直播成交与时长每日趋势</h2><span class="trend-range">10-03–10-09</span></div></div>
+        <div class="chart-scroll merchant-trend-scroll">
+      <div class="merchant-trend-canvas">
+        <svg class="chart-svg merchant-amount-chart" viewBox="0 0 760 245"
+             role="img" aria-label="商家官号直播成交金额每日趋势，单位万元">
+          <line x1="54" y1="34.0" x2="736" y2="34.0" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="122.5" x2="736" y2="122.5" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="211.0" x2="736" y2="211.0" stroke="#ECEEF3" stroke-width="1"/><text x="44" y="38.0" text-anchor="end" class="axis-label">0.2</text><text x="44" y="126.5" text-anchor="end" class="axis-label">0.1</text><text x="44" y="215.0" text-anchor="end" class="axis-label">0.0</text>
+          <path d="M54.0 34.0 L167.7 150.3 L281.3 211.0 L395.0 211.0 L508.7 154.6 L622.3 211.0 L736.0 211.0" fill="none" stroke="#8B6DFF"
+                stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle class="merchant-live-point" cx="54.0" cy="34.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="58.0" y="22.0" text-anchor="start" fill="#8B6DFF">0.2万</text><circle class="merchant-live-point" cx="167.7" cy="150.3" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="167.7" y="138.3" text-anchor="middle" fill="#8B6DFF">0.1万</text><circle class="merchant-live-point" cx="281.3" cy="211.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="281.3" y="199.0" text-anchor="middle" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="395.0" cy="211.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="395.0" y="199.0" text-anchor="middle" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="508.7" cy="154.6" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="508.7" y="142.6" text-anchor="middle" fill="#8B6DFF">0.1万</text><circle class="merchant-live-point" cx="622.3" cy="211.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="622.3" y="199.0" text-anchor="middle" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="736.0" cy="211.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="732.0" y="199.0" text-anchor="end" fill="#8B6DFF">0.0万</text>
+        </svg>
+        <div class="merchant-subchart-title">每日直播时长 <span>单位：小时</span></div>
+        <svg class="chart-svg merchant-duration-chart" viewBox="0 0 760 155"
+             role="img" aria-label="商家官号每日直播时长，单位小时">
+          <line x1="54" y1="28.0" x2="736" y2="28.0" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="121.0" x2="736" y2="121.0" stroke="#ECEEF3" stroke-width="1"/><rect class="merchant-duration-bar" x="31.6" y="60.6" width="44.8" height="60.4" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="54.0" y="53.6" text-anchor="middle" fill="#00A7A0">7.7h</text><rect class="merchant-duration-bar" x="145.3" y="72.6" width="44.8" height="48.4" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="167.7" y="65.6" text-anchor="middle" fill="#00A7A0">6.1h</text><rect class="merchant-duration-bar" x="258.9" y="121.0" width="44.8" height="0.0" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="281.3" y="114.0" text-anchor="middle" fill="#00A7A0">0.0h</text><rect class="merchant-duration-bar" x="372.6" y="121.0" width="44.8" height="0.0" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="395.0" y="114.0" text-anchor="middle" fill="#00A7A0">0.0h</text><rect class="merchant-duration-bar" x="486.3" y="32.5" width="44.8" height="88.5" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="508.7" y="25.5" text-anchor="middle" fill="#00A7A0">11.2h</text><rect class="merchant-duration-bar" x="599.9" y="28.0" width="44.8" height="93.0" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="622.3" y="21.0" text-anchor="middle" fill="#00A7A0">11.8h</text><rect class="merchant-duration-bar" x="713.6" y="29.6" width="44.8" height="91.4" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="736.0" y="22.6" text-anchor="middle" fill="#00A7A0">11.6h</text><text x="54.0" y="145" text-anchor="middle" class="axis-label">10-03</text><text x="167.7" y="145" text-anchor="middle" class="axis-label">10-04</text><text x="281.3" y="145" text-anchor="middle" class="axis-label">10-05</text><text x="395.0" y="145" text-anchor="middle" class="axis-label">10-06</text><text x="508.7" y="145" text-anchor="middle" class="axis-label">10-07</text><text x="622.3" y="145" text-anchor="middle" class="axis-label">10-08</text><text x="736.0" y="145" text-anchor="middle" class="axis-label">10-09</text>
+        </svg>
+      </div>
+    </div>
+      </article>
+      <div class="grid-2 equal">
+        <article class="panel"><div class="panel-head"><div><h2>城市自播排名</h2><p>固定区域城市全集 · 可筛选零开播城市并点击业务列排序</p></div></div>
+      <div class="filter-bar merchant-filter-bar">
+        <input id="merchant-city-search" type="search" placeholder="搜索城市"
+               aria-label="搜索城市">
+        <select id="merchant-city-status-filter" aria-label="按开播状态筛选城市">
+          <option value="">全部状态</option>
+          <option value="有开播">有开播</option>
+          <option value="零开播">零开播</option>
+        </select>
+        <span id="merchant-city-result-count" class="filter-count"></span>
+      </div>
+      <div class="table-scroll">
+        <table class="merchant-table">
+          <thead><tr>
+            <th>#</th>
+            <th><button class="sort-trigger merchant-city-sort-trigger" type="button" data-sort-key="city-name" onclick="sortMerchantCityTable('city-name')" title="按城市排序">城市 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-city-sort-trigger" type="button" data-sort-key="city-live-amount" onclick="sortMerchantCityTable('city-live-amount')" title="按直播成交金额排序">直播成交金额 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-city-sort-trigger" type="button" data-sort-key="city-live-sessions" onclick="sortMerchantCityTable('city-live-sessions')" title="按直播场次排序">直播场次 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-city-sort-trigger" type="button" data-sort-key="city-live-hours" onclick="sortMerchantCityTable('city-live-hours')" title="按直播时长排序">直播时长 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-city-sort-trigger" type="button" data-sort-key="city-account-count" onclick="sortMerchantCityTable('city-account-count')" title="按账号数排序">账号数 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-city-sort-trigger" type="button" data-sort-key="city-live-account-count" onclick="sortMerchantCityTable('city-live-account-count')" title="按开播账号排序">开播账号 <span class="sort-indicator">↕</span></button></th>
+          </tr></thead>
+          <tbody id="merchant-city-body">
+        <tr data-city-name="三门峡市"
+            data-city-status="有开播"
+            data-city-live-amount="3201.1"
+            data-city-live-sessions="13.0"
+            data-city-live-hours="34.38777777777777"
+            data-city-account-count="4.0"
+            data-city-live-account-count="2.0">
+          <td class="rank">01</td>
+          <td><strong>三门峡市</strong><small><span class="live-status 有开播">有开播</span></small></td>
+          <td class="num">3,201</td>
+          <td class="num">13</td>
+          <td class="num">34.4小时</td>
+          <td class="num">4</td>
+          <td class="num">2</td>
+        </tr>
+
+        <tr data-city-name="焦作市"
+            data-city-status="有开播"
+            data-city-live-amount="169.0"
+            data-city-live-sessions="7.0"
+            data-city-live-hours="13.977500000000001"
+            data-city-account-count="3.0"
+            data-city-live-account-count="2.0">
+          <td class="rank">02</td>
+          <td><strong>焦作市</strong><small><span class="live-status 有开播">有开播</span></small></td>
+          <td class="num">169</td>
+          <td class="num">7</td>
+          <td class="num">14.0小时</td>
+          <td class="num">3</td>
+          <td class="num">2</td>
+        </tr>
+
+        <tr data-city-name="郑州市"
+            data-city-status="零开播"
+            data-city-live-amount="0.0"
+            data-city-live-sessions="0.0"
+            data-city-live-hours="0.0"
+            data-city-account-count="7.0"
+            data-city-live-account-count="0.0">
+          <td class="rank">03</td>
+          <td><strong>郑州市</strong><small><span class="live-status 零开播">零开播</span></small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">7</td>
+          <td class="num">0</td>
+        </tr>
+        </tbody>
+        </table>
+      </div>
+    </article>
+        <article class="panel"><div class="panel-head"><div><h2>账号明细</h2><p>14 日出现账号全集 · “未直播”为近 7 日直播场次等于 0</p></div></div>
+      <div class="filter-bar merchant-filter-bar">
+        <input id="merchant-account-search" type="search"
+               placeholder="搜索账号、ID 或门店" aria-label="搜索账号、ID 或门店">
+        <select id="merchant-account-city-filter" aria-label="按城市筛选账号">
+          <option value="">全部城市</option><option value="三门峡市">三门峡市</option><option value="焦作市">焦作市</option><option value="郑州市">郑州市</option>
+        </select>
+        <select id="merchant-account-status-filter" aria-label="按直播状态筛选账号">
+          <option value="">全部状态</option>
+          <option value="已直播">已直播</option>
+          <option value="未直播">未直播</option>
+        </select>
+        <span id="merchant-account-result-count" class="filter-count"></span>
+      </div>
+      <div class="table-scroll">
+        <table class="merchant-table">
+          <thead><tr>
+            <th>#</th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-name" onclick="sortMerchantAccountTable('account-name')" title="按抖音号排序">抖音号 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-city" onclick="sortMerchantAccountTable('account-city')" title="按城市 / 门店排序">城市 / 门店 <span class="sort-indicator">↕</span></button></th>
+            <th>一级省区 / 二级片区</th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-live-amount" onclick="sortMerchantAccountTable('account-live-amount')" title="按直播成交金额排序">直播成交金额 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-live-sessions" onclick="sortMerchantAccountTable('account-live-sessions')" title="按直播场次排序">直播场次 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-live-hours" onclick="sortMerchantAccountTable('account-live-hours')" title="按直播时长排序">直播时长 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-total-amount" onclick="sortMerchantAccountTable('account-total-amount')" title="按总成交金额排序">总成交金额 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-redeem-amount" onclick="sortMerchantAccountTable('account-redeem-amount')" title="按总核销金额排序">总核销金额 <span class="sort-indicator">↕</span></button></th>
+          </tr></thead>
+          <tbody id="merchant-account-body">
+        <tr data-account-name="维也纳酒店三门峡崤山路市府店官方专用号"
+            data-account-id="88140587219"
+            data-account-city="三门峡市"
+            data-account-store="维也纳酒店(三门峡崤山路市府店)"
+            data-account-province="河南省区"
+            data-account-area="郑州北片区"
+            data-account-status="已直播"
+            data-account-live-amount="3201.1"
+            data-account-live-sessions="11.0"
+            data-account-live-hours="31.173055555555553"
+            data-account-total-amount="4345.2"
+            data-account-redeem-amount="0.0">
+          <td class="rank">01</td>
+          <td><strong>维也纳酒店三门峡崤山路市府店官方专用号</strong><small>88140587219 · <span class="live-status 已直播">已直播</span></small></td>
+          <td>三门峡市<small>维也纳酒店(三门峡崤山路市府店)</small></td>
+          <td>河南省区<small>郑州北片区</small></td>
+          <td class="num">3,201</td>
+          <td class="num">11</td>
+          <td class="num">31.2小时</td>
+          <td class="num">4,345</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="维也纳酒店（焦作温县新胖发祥子夏公园店）"
+            data-account-id="96613599267"
+            data-account-city="焦作市"
+            data-account-store="维也纳酒店(焦作温县新胖发祥子夏公园店)"
+            data-account-province="河南省区"
+            data-account-area="郑州北片区"
+            data-account-status="已直播"
+            data-account-live-amount="169.0"
+            data-account-live-sessions="5.0"
+            data-account-live-hours="13.01388888888889"
+            data-account-total-amount="348.0"
+            data-account-redeem-amount="179.0">
+          <td class="rank">02</td>
+          <td><strong>维也纳酒店（焦作温县新胖发祥子夏公园店）</strong><small>96613599267 · <span class="live-status 已直播">已直播</span></small></td>
+          <td>焦作市<small>维也纳酒店(焦作温县新胖发祥子夏公园店)</small></td>
+          <td>河南省区<small>郑州北片区</small></td>
+          <td class="num">169</td>
+          <td class="num">5</td>
+          <td class="num">13.0小时</td>
+          <td class="num">348</td>
+          <td class="num">179</td>
+        </tr>
+
+        <tr data-account-name="麗枫酒店(焦作万方桥高铁站店)"
+            data-account-id="49107314062"
+            data-account-city="焦作市"
+            data-account-store="麗枫酒店(焦作万方桥高铁站店)"
+            data-account-province="河南省区"
+            data-account-area="郑州北片区"
+            data-account-status="已直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="2.0"
+            data-account-live-hours="0.9636111111111112"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">03</td>
+          <td><strong>麗枫酒店(焦作万方桥高铁站店)</strong><small>49107314062 · <span class="live-status 已直播">已直播</span></small></td>
+          <td>焦作市<small>麗枫酒店(焦作万方桥高铁站店)</small></td>
+          <td>河南省区<small>郑州北片区</small></td>
+          <td class="num">0</td>
+          <td class="num">2</td>
+          <td class="num">1.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="维也纳国际酒店（灵宝函谷路市府店）官号"
+            data-account-id="40708242804"
+            data-account-city="三门峡市"
+            data-account-store="维也纳国际酒店(三门峡灵宝函谷路市府店)"
+            data-account-province="河南省区"
+            data-account-area="郑州北片区"
+            data-account-status="已直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="2.0"
+            data-account-live-hours="3.214722222222222"
+            data-account-total-amount="577.0"
+            data-account-redeem-amount="259.0">
+          <td class="rank">04</td>
+          <td><strong>维也纳国际酒店（灵宝函谷路市府店）官号</strong><small>40708242804 · <span class="live-status 已直播">已直播</span></small></td>
+          <td>三门峡市<small>维也纳国际酒店(三门峡灵宝函谷路市府店)</small></td>
+          <td>河南省区<small>郑州北片区</small></td>
+          <td class="num">0</td>
+          <td class="num">2</td>
+          <td class="num">3.2小时</td>
+          <td class="num">577</td>
+          <td class="num">259</td>
+        </tr>
+
+        <tr data-account-name="锦江之星(焦作大学人民路店)"
+            data-account-id="94949131989"
+            data-account-city="焦作市"
+            data-account-store="锦江之星(焦作大学师专太极体育中心店)"
+            data-account-province="河南省区"
+            data-account-area="郑州北片区"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">05</td>
+          <td><strong>锦江之星(焦作大学人民路店)</strong><small>94949131989 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>焦作市<small>锦江之星(焦作大学师专太极体育中心店)</small></td>
+          <td>河南省区<small>郑州北片区</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="维也纳智好酒店（巩义市政府店）专用号"
+            data-account-id="72828265759"
+            data-account-city="郑州市"
+            data-account-store="维也纳智好酒店(巩义市政府商学院店)"
+            data-account-province="河南省区"
+            data-account-area="郑州北片区"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">06</td>
+          <td><strong>维也纳智好酒店（巩义市政府店）专用号</strong><small>72828265759 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>郑州市<small>维也纳智好酒店(巩义市政府商学院店)</small></td>
+          <td>河南省区<small>郑州北片区</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="7天酒店(巩义康百万庄园店)专用号"
+            data-account-id="66607081838"
+            data-account-city="郑州市"
+            data-account-store="7天酒店(巩义康百万庄园店)"
+            data-account-province="河南省区"
+            data-account-area="郑州北片区"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">07</td>
+          <td><strong>7天酒店(巩义康百万庄园店)专用号</strong><small>66607081838 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>郑州市<small>7天酒店(巩义康百万庄园店)</small></td>
+          <td>河南省区<small>郑州北片区</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="维也纳酒店(郑州惠济万达广场店)专用号"
+            data-account-id="57315451554"
+            data-account-city="郑州市"
+            data-account-store="维也纳酒店(郑州惠济万达广场店)"
+            data-account-province="河南省区"
+            data-account-area="郑州北片区"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">08</td>
+          <td><strong>维也纳酒店(郑州惠济万达广场店)专用号</strong><small>57315451554 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>郑州市<small>维也纳酒店(郑州惠济万达广场店)</small></td>
+          <td>河南省区<small>郑州北片区</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="希岸Deluxe酒店（郑州亳都新象文庙地"
+            data-account-id="54630721814"
+            data-account-city="郑州市"
+            data-account-store="希岸Deluxe酒店(郑州亳都新象文庙地铁站店)"
+            data-account-province="河南省区"
+            data-account-area="郑州北片区"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">09</td>
+          <td><strong>希岸Deluxe酒店（郑州亳都新象文庙地</strong><small>54630721814 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>郑州市<small>希岸Deluxe酒店(郑州亳都新象文庙地铁站店)</small></td>
+          <td>河南省区<small>郑州北片区</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="希岸轻雅酒店(郑州省体中心店)专用号"
+            data-account-id="47464815265"
+            data-account-city="郑州市"
+            data-account-store="希岸轻雅酒店(郑州省体中心店)"
+            data-account-province="河南省区"
+            data-account-area="郑州北片区"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">10</td>
+          <td><strong>希岸轻雅酒店(郑州省体中心店)专用号</strong><small>47464815265 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>郑州市<small>希岸轻雅酒店(郑州省体中心店)</small></td>
+          <td>河南省区<small>郑州北片区</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="维也纳酒店(荥阳店市政府店）"
+            data-account-id="43802327237"
+            data-account-city="郑州市"
+            data-account-store="维也纳酒店(荥阳店)"
+            data-account-province="河南省区"
+            data-account-area="郑州北片区"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">11</td>
+          <td><strong>维也纳酒店(荥阳店市政府店）</strong><small>43802327237 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>郑州市<small>维也纳酒店(荥阳店)</small></td>
+          <td>河南省区<small>郑州北片区</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="维也纳国际酒店（三门峡南站店）"
+            data-account-id="41313403666"
+            data-account-city="三门峡市"
+            data-account-store="维也纳国际酒店(河南省三门峡市南站店)"
+            data-account-province="河南省区"
+            data-account-area="郑州北片区"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">12</td>
+          <td><strong>维也纳国际酒店（三门峡南站店）</strong><small>41313403666 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>三门峡市<small>维也纳国际酒店(河南省三门峡市南站店)</small></td>
+          <td>河南省区<small>郑州北片区</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="维也纳酒店(郑州高新万达正弘汇店)专用号"
+            data-account-id="29825798364"
+            data-account-city="郑州市"
+            data-account-store="维也纳酒店(郑州高新万达正弘汇店)"
+            data-account-province="河南省区"
+            data-account-area="郑州北片区"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">13</td>
+          <td><strong>维也纳酒店(郑州高新万达正弘汇店)专用号</strong><small>29825798364 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>郑州市<small>维也纳酒店(郑州高新万达正弘汇店)</small></td>
+          <td>河南省区<small>郑州北片区</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="iu酒店(三门峡卢氏长途汽车站店)专用号"
+            data-account-id="2030597964"
+            data-account-city="三门峡市"
+            data-account-store="iu酒店(三门峡卢氏长途汽车站店)"
+            data-account-province="河南省区"
+            data-account-area="郑州北片区"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="109.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">14</td>
+          <td><strong>iu酒店(三门峡卢氏长途汽车站店)专用号</strong><small>2030597964 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>三门峡市<small>iu酒店(三门峡卢氏长途汽车站店)</small></td>
+          <td>河南省区<small>郑州北片区</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">109</td>
+          <td class="num">0</td>
+        </tr>
+        </tbody>
+        </table>
+      </div>
+    </article>
+      </div>
+    </section>
+
+
+  </main>
+</div>
+<nav class="mobile-nav">
+  <button class="active" data-target="overview">总览</button><button data-target="provinces">组织</button><button data-target="stores">门店</button><button data-target="attribution">归因</button><button data-target="providers">服务商</button><button data-target="voucher">通兑</button><button data-target="merchant-live">自播</button>
+</nav>
+<script>
+const navItems=[...document.querySelectorAll('[data-target]')];
+const sections=[...document.querySelectorAll('.section')];
+function showSection(id){
+  sections.forEach(s=>s.classList.toggle('active',s.id===id));
+  navItems.forEach(n=>n.classList.toggle('active',n.dataset.target===id));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+navItems.forEach(item=>item.addEventListener('click',()=>{if(item.dataset.target)showSection(item.dataset.target)}));
+document.getElementById('organization-province-filter')
+  ?.addEventListener('change',event=>{
+    if(event.target.value)window.location.href=event.target.value;
+  });
+document.getElementById('organization-area-filter')
+  ?.addEventListener('change',event=>{
+    if(event.target.value)window.location.href=event.target.value;
+  });
+document.querySelectorAll('[data-local]').forEach(tab=>tab.addEventListener('click',()=>{
+  const panel=tab.dataset.local;
+  const parent=tab.closest('.section');
+  parent.querySelectorAll('[data-local]').forEach(t=>t.classList.toggle('active',t===tab));
+  parent.querySelectorAll('.local-panel').forEach(p=>p.style.display=p.dataset.panel===panel?'block':'none');
+}));
+let storeSortKey='';
+let storeSortDirection='desc';
+function sortStoreTable(nextKey){
+  const body=document.getElementById('store-all-body');
+  if(!body)return;
+  if(nextKey===storeSortKey)storeSortDirection=storeSortDirection==='asc'?'desc':'asc';
+  else{storeSortKey=nextKey;storeSortDirection='desc';}
+  const stringKeys=new Set(['province','area','store','provider']);
+  const rows=[...body.querySelectorAll('tr')];
+  rows.sort((a,b)=>{
+    const rawA=a.getAttribute('data-'+storeSortKey);
+    const rawB=b.getAttribute('data-'+storeSortKey);
+    const result=stringKeys.has(storeSortKey)
+      ?rawA.localeCompare(rawB,'zh-CN')
+      :(Number(rawA)-Number(rawB));
+    return storeSortDirection==='asc'?result:-result;
+  });
+  rows.forEach((row,index)=>{
+    body.appendChild(row);
+    const rank=row.querySelector('.rank');
+    if(rank)rank.textContent=String(index+1).padStart(2,'0');
+  });
+  document.querySelectorAll('.store-sort-trigger').forEach(button=>{
+    const active=button.dataset.sortKey===storeSortKey;
+    button.classList.toggle('active',active);
+    const indicator=button.querySelector('.sort-indicator');
+    if(indicator)indicator.textContent=active?(storeSortDirection==='asc'?'↑':'↓'):'↕';
+  });
+  filterStoreTable();
+}
+function filterStoreTable(){
+  const body=document.getElementById('store-all-body');
+  if(!body)return;
+  const query=(document.getElementById('store-search')?.value||'').trim().toLocaleLowerCase('zh-CN');
+  const province=document.getElementById('province-filter')?.value||'';
+  const area=document.getElementById('area-filter')?.value||'';
+  let visible=0;
+  body.querySelectorAll('tr').forEach(row=>{
+    const haystack=[
+      row.dataset.store||'',
+      row.dataset.city||'',
+      row.dataset.area||'',
+      row.dataset.provider||''
+    ].join(' ').toLocaleLowerCase('zh-CN');
+    const matches=(!query||haystack.includes(query))
+      &&(!province||row.dataset.province===province)
+      &&(!area||row.dataset.area===area);
+    row.hidden=!matches;
+    if(matches){
+      visible+=1;
+      const rank=row.querySelector('.rank');
+      if(rank)rank.textContent=String(visible).padStart(2,'0');
+    }
+  });
+  const count=document.getElementById('store-result-count');
+  if(count)count.textContent=`显示 ${visible} / ${body.querySelectorAll('tr').length} 家`;
+}
+document.getElementById('store-search')?.addEventListener('input',filterStoreTable);
+document.getElementById('province-filter')?.addEventListener('change',filterStoreTable);
+document.getElementById('area-filter')?.addEventListener('change',filterStoreTable);
+let merchantCitySortKey='';
+let merchantCitySortDirection='desc';
+function sortMerchantCityTable(nextKey){
+  const body=document.getElementById('merchant-city-body');
+  if(!body)return;
+  if(nextKey===merchantCitySortKey){
+    merchantCitySortDirection=merchantCitySortDirection==='asc'?'desc':'asc';
+  }else{
+    merchantCitySortKey=nextKey;
+    merchantCitySortDirection=nextKey==='city-name'?'asc':'desc';
+  }
+  const stringKeys=new Set(['city-name']);
+  const rows=[...body.querySelectorAll('tr')];
+  rows.sort((a,b)=>{
+    const rawA=a.getAttribute('data-'+merchantCitySortKey)||'';
+    const rawB=b.getAttribute('data-'+merchantCitySortKey)||'';
+    const result=stringKeys.has(merchantCitySortKey)
+      ?rawA.localeCompare(rawB,'zh-CN')
+      :Number(rawA)-Number(rawB);
+    return merchantCitySortDirection==='asc'?result:-result;
+  });
+  rows.forEach(row=>body.appendChild(row));
+  document.querySelectorAll('.merchant-city-sort-trigger').forEach(button=>{
+    const active=button.dataset.sortKey===merchantCitySortKey;
+    button.classList.toggle('active',active);
+    const indicator=button.querySelector('.sort-indicator');
+    if(indicator)indicator.textContent=active
+      ?(merchantCitySortDirection==='asc'?'↑':'↓')
+      :'↕';
+  });
+  filterMerchantCityTable();
+}
+function filterMerchantCityTable(){
+  const body=document.getElementById('merchant-city-body');
+  if(!body)return;
+  const query=(document.getElementById('merchant-city-search')?.value||'')
+    .trim().toLocaleLowerCase('zh-CN');
+  const status=document.getElementById('merchant-city-status-filter')?.value||'';
+  let visible=0;
+  const rows=[...body.querySelectorAll('tr')];
+  rows.forEach(row=>{
+    const city=(row.dataset.cityName||'').toLocaleLowerCase('zh-CN');
+    const matches=(!query||city.includes(query))
+      &&(!status||row.dataset.cityStatus===status);
+    row.hidden=!matches;
+    if(matches){
+      visible+=1;
+      const rank=row.querySelector('.rank');
+      if(rank)rank.textContent=String(visible).padStart(2,'0');
+    }
+  });
+  const count=document.getElementById('merchant-city-result-count');
+  if(count)count.textContent=`显示 ${visible} / ${rows.length} 城`;
+}
+let merchantAccountSortKey='';
+let merchantAccountSortDirection='desc';
+function sortMerchantAccountTable(nextKey){
+  const body=document.getElementById('merchant-account-body');
+  if(!body)return;
+  if(nextKey===merchantAccountSortKey){
+    merchantAccountSortDirection=merchantAccountSortDirection==='asc'?'desc':'asc';
+  }else{
+    merchantAccountSortKey=nextKey;
+    merchantAccountSortDirection=['account-name','account-city'].includes(nextKey)
+      ?'asc'
+      :'desc';
+  }
+  const stringKeys=new Set(['account-name','account-city']);
+  const rows=[...body.querySelectorAll('tr')];
+  rows.sort((a,b)=>{
+    const rawA=a.getAttribute('data-'+merchantAccountSortKey)||'';
+    const rawB=b.getAttribute('data-'+merchantAccountSortKey)||'';
+    const result=stringKeys.has(merchantAccountSortKey)
+      ?rawA.localeCompare(rawB,'zh-CN')
+      :Number(rawA)-Number(rawB);
+    return merchantAccountSortDirection==='asc'?result:-result;
+  });
+  rows.forEach(row=>body.appendChild(row));
+  document.querySelectorAll('.merchant-account-sort-trigger').forEach(button=>{
+    const active=button.dataset.sortKey===merchantAccountSortKey;
+    button.classList.toggle('active',active);
+    const indicator=button.querySelector('.sort-indicator');
+    if(indicator)indicator.textContent=active
+      ?(merchantAccountSortDirection==='asc'?'↑':'↓')
+      :'↕';
+  });
+  filterMerchantAccountTable();
+}
+function filterMerchantAccountTable(){
+  const body=document.getElementById('merchant-account-body');
+  if(!body)return;
+  const query=(document.getElementById('merchant-account-search')?.value||'')
+    .trim().toLocaleLowerCase('zh-CN');
+  const city=document.getElementById('merchant-account-city-filter')?.value||'';
+  const status=document.getElementById('merchant-account-status-filter')?.value||'';
+  let visible=0;
+  const rows=[...body.querySelectorAll('tr')];
+  rows.forEach(row=>{
+    const haystack=[
+      row.dataset.accountName||'',
+      row.dataset.accountId||'',
+      row.dataset.accountStore||'',
+      row.dataset.accountProvince||'',
+      row.dataset.accountArea||''
+    ].join(' ').toLocaleLowerCase('zh-CN');
+    const matches=(!query||haystack.includes(query))
+      &&(!city||row.dataset.accountCity===city)
+      &&(!status||row.dataset.accountStatus===status);
+    row.hidden=!matches;
+    if(matches){
+      visible+=1;
+      const rank=row.querySelector('.rank');
+      if(rank)rank.textContent=String(visible).padStart(2,'0');
+    }
+  });
+  const count=document.getElementById('merchant-account-result-count');
+  if(count)count.textContent=`显示 ${visible} / ${rows.length} 个账号`;
+}
+document.getElementById('merchant-city-search')
+  ?.addEventListener('input',filterMerchantCityTable);
+document.getElementById('merchant-city-status-filter')
+  ?.addEventListener('change',filterMerchantCityTable);
+document.getElementById('merchant-account-search')
+  ?.addEventListener('input',filterMerchantAccountTable);
+document.getElementById('merchant-account-city-filter')
+  ?.addEventListener('change',filterMerchantAccountTable);
+document.getElementById('merchant-account-status-filter')
+  ?.addEventListener('change',filterMerchantAccountTable);
+let channelSortKey='redeem-delta';
+let channelSortDirection='desc';
+function sortChannelTable(nextKey){
+  const body=document.getElementById('channel-attribution-body');
+  if(!body)return;
+  if(nextKey===channelSortKey)channelSortDirection=channelSortDirection==='asc'?'desc':'asc';
+  else{channelSortKey=nextKey;channelSortDirection='desc';}
+  const key=channelSortKey;
+  const rows=[...body.querySelectorAll('tr')];
+  rows.sort((a,b)=>{
+    const av=key==='channel'?a.getAttribute('data-channel'):(Number(a.getAttribute('data-'+key))||0);
+    const bv=key==='channel'?b.getAttribute('data-channel'):(Number(b.getAttribute('data-'+key))||0);
+    const result=key==='channel'?av.localeCompare(bv,'zh-CN'):av-bv;
+    return channelSortDirection==='asc'?result:-result;
+  });
+  rows.forEach(row=>body.appendChild(row));
+  document.querySelectorAll('.channel-sort-trigger').forEach(button=>{
+    const active=button.dataset.sortKey===channelSortKey;
+    button.classList.toggle('active',active);
+    const indicator=button.querySelector('.sort-indicator');
+    if(indicator)indicator.textContent=active?(channelSortDirection==='asc'?'↑':'↓'):'↕';
+  });
+}
+sortStoreTable('redeem-current');
+sortChannelTable('redeem-delta');
+sortMerchantCityTable('city-live-amount');
+sortMerchantAccountTable('account-live-amount');
+document.documentElement.dataset.workbench="{\"region\": \"山河大区 · 河南省区 · 郑州北片区\", \"periods\": {\"previous_start\": \"2026-09-26\", \"previous_end\": \"2026-10-02\", \"current_start\": \"2026-10-03\", \"current_end\": \"2026-10-09\"}, \"verification\": {\"detail_row_count\": 1297, \"channel_row_count\": 1404, \"other_region_row_count\": 0, \"provider_count\": 5, \"store_count\": 36, \"voucher_product_count\": 14, \"product_structure_closed\": true, \"master_store_count\": 41, \"data_store_count\": 36, \"zero_data_store_count\": 5, \"organization_province_count\": 1, \"organization_area_count\": 1, \"selected_province\": \"河南省区\", \"selected_area\": \"郑州北片区\", \"detail_channel_closure\": {\"意向成交金额\": true, \"意向成交券数\": true, \"意向成交间夜\": true, \"核销金额\": true, \"核销券数\": true, \"核销间夜\": true}, \"passed\": true}, \"organization_navigation\": {\"selected_province\": \"河南省区\", \"selected_area\": \"郑州北片区\", \"province_urls\": {\"\": \"workbench_shanhe.html\", \"山西省区\": \"workbench_shanhe__山西省区.html\", \"河南省区\": \"workbench_shanhe__河南省区.html\", \"鲁东省区\": \"workbench_shanhe__鲁东省区.html\", \"鲁西省区\": \"workbench_shanhe__鲁西省区.html\"}, \"area_urls\": {\"山西省区\": {\"山西东片区\": \"workbench_shanhe__山西省区__山西东片区.html\", \"山西中片区\": \"workbench_shanhe__山西省区__山西中片区.html\", \"山西北片区\": \"workbench_shanhe__山西省区__山西北片区.html\", \"山西南片区\": \"workbench_shanhe__山西省区__山西南片区.html\", \"山西西片区\": \"workbench_shanhe__山西省区__山西西片区.html\"}, \"河南省区\": {\"河南东片区\": \"workbench_shanhe__河南省区__河南东片区.html\", \"河南中片区\": \"workbench_shanhe__河南省区__河南中片区.html\", \"河南北片区\": \"workbench_shanhe__河南省区__河南北片区.html\", \"河南南片区\": \"workbench_shanhe__河南省区__河南南片区.html\", \"河南西南片区\": \"workbench_shanhe__河南省区__河南西南片区.html\", \"河南西片区\": \"workbench_shanhe__河南省区__河南西片区.html\", \"郑州中片区\": \"workbench_shanhe__河南省区__郑州中片区.html\", \"郑州北片区\": \"workbench_shanhe__河南省区__郑州北片区.html\", \"郑州南片区\": \"workbench_shanhe__河南省区__郑州南片区.html\"}, \"鲁东省区\": {\"临沂片区\": \"workbench_shanhe__鲁东省区__临沂片区.html\", \"威烟片区\": \"workbench_shanhe__鲁东省区__威烟片区.html\", \"日照片区\": \"workbench_shanhe__鲁东省区__日照片区.html\", \"沂枣片区\": \"workbench_shanhe__鲁东省区__沂枣片区.html\", \"淄博片区\": \"workbench_shanhe__鲁东省区__淄博片区.html\", \"潍坊片区\": \"workbench_shanhe__鲁东省区__潍坊片区.html\", \"烟台片区\": \"workbench_shanhe__鲁东省区__烟台片区.html\", \"青岛前海片区\": \"workbench_shanhe__鲁东省区__青岛前海片区.html\", \"青岛北片区\": \"workbench_shanhe__鲁东省区__青岛北片区.html\", \"青岛西片区\": \"workbench_shanhe__鲁东省区__青岛西片区.html\"}, \"鲁西省区\": {\"德州片区\": \"workbench_shanhe__鲁西省区__德州片区.html\", \"泰安片区\": \"workbench_shanhe__鲁西省区__泰安片区.html\", \"济南东片区\": \"workbench_shanhe__鲁西省区__济南东片区.html\", \"济南中片区\": \"workbench_shanhe__鲁西省区__济南中片区.html\", \"济南北片区\": \"workbench_shanhe__鲁西省区__济南北片区.html\", \"济宁片区\": \"workbench_shanhe__鲁西省区__济宁片区.html\", \"济滨片区\": \"workbench_shanhe__鲁西省区__济滨片区.html\", \"滨东片区\": \"workbench_shanhe__鲁西省区__滨东片区.html\", \"聊宁片区\": \"workbench_shanhe__鲁西省区__聊宁片区.html\", \"菏泽片区\": \"workbench_shanhe__鲁西省区__菏泽片区.html\"}}}}";
+</script>
+</body>
+</html>

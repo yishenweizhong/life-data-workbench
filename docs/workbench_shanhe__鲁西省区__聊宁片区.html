@@ -1,0 +1,2455 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>山河大区 · 鲁西省区 · 聊宁片区经营数据工作台</title>
+<style>
+:root {
+  --ink:#17181C; --muted:#737780; --canvas:#F4F5F8; --paper:#FFFFFF;
+  --line:#E8E9EE; --blue:#1677FF; --cyan:#00A7A0;
+  --orange:#FF8A3D; --pink:#E96D8A; --purple:#8B6DFF;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Microsoft YaHei",sans-serif;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--canvas);color:var(--ink);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:none;color:inherit;cursor:pointer}
+.app{display:grid;grid-template-columns:220px minmax(0,1fr);min-height:100vh;max-width:1480px;margin:auto}
+.sidebar{position:sticky;top:0;height:100vh;padding:30px 18px;background:rgba(255,255,255,.58);border-right:1px solid rgba(0,0,0,.05);backdrop-filter:blur(30px) saturate(170%);-webkit-backdrop-filter:blur(30px) saturate(170%)}
+.brand{padding:0 12px 28px;font-size:13px;font-weight:700} .brand span{display:block;color:var(--muted);font-size:11px;font-weight:500;margin-top:5px}
+.nav-label{margin:0 12px 8px;color:var(--muted);font-size:11px;font-weight:700;letter-spacing:.08em}
+.nav-item{display:flex;align-items:center;gap:11px;width:100%;margin:4px 0;padding:11px 12px;border-radius:13px;color:#4B4D55;font-size:13px;font-weight:600;text-align:left;transition:.2s}
+.nav-item:hover{background:rgba(255,255,255,.72)} .nav-item.active{background:rgba(22,119,255,.10);color:var(--blue)}
+.nav-icon{width:20px;text-align:center;font-size:16px}
+.content{min-width:0;padding:30px 34px 70px} .topbar{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:24px}
+.eyebrow{color:var(--muted);font-size:13px;font-weight:600} h1{margin:7px 0 0;font-size:34px;line-height:1.08;letter-spacing:0} h2{margin:0;font-size:20px;letter-spacing:0} h3{margin:0;font-size:15px}
+.top-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap} .glass-pill,.status{padding:9px 13px;border:1px solid rgba(255,255,255,.9);border-radius:14px;background:rgba(255,255,255,.62);box-shadow:0 7px 22px rgba(32,44,70,.06);backdrop-filter:blur(20px);font-size:12px;font-weight:600}
+.status{color:#268A57} .status i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#34C759;margin-right:6px}
+.organization-filters{display:flex;align-items:flex-end;gap:10px;margin:-6px 0 22px;padding:13px 14px;border:1px solid rgba(0,0,0,.045);border-radius:12px;background:rgba(255,255,255,.82)} .organization-filters label{display:grid;gap:5px} .organization-filters label span{color:var(--muted);font-size:10px;font-weight:700} .organization-filters select{min-width:180px;height:38px;padding:0 34px 0 11px;border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--ink);font:inherit;font-size:12px;outline:none} .organization-filters select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(22,119,255,.10)} .organization-filters select:disabled{color:#A2A5AD;background:#F4F5F7}
+.section{display:none;animation:fade .22s ease} .section.active{display:block} @keyframes fade{from{opacity:.2;transform:translateY(4px)}to{opacity:1;transform:none}}
+.section-head{display:flex;justify-content:space-between;align-items:flex-end;margin:30px 0 15px} .section-head p{margin:5px 0 0;color:var(--muted);font-size:12px}
+.glass-tabs{display:flex;gap:4px;padding:4px;margin-bottom:18px;border-radius:15px;background:rgba(118,118,128,.13);backdrop-filter:blur(20px) saturate(170%);width:max-content;max-width:100%;overflow-x:auto;scrollbar-width:none} .glass-tabs::-webkit-scrollbar{display:none}
+.glass-tab{padding:8px 16px;border-radius:11px;font-size:12px;font-weight:600;color:#5D6069} .glass-tab.active{background:rgba(255,255,255,.9);box-shadow:0 5px 14px rgba(31,42,68,.12);color:var(--ink)}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px} .kpi,.panel{border:1px solid rgba(0,0,0,.045);border-radius:19px;background:rgba(255,255,255,.86);box-shadow:0 12px 32px rgba(32,44,70,.055)}
+.kpi{min-height:142px;padding:18px;position:relative;overflow:hidden} .kpi-label{color:var(--muted);font-size:12px;font-weight:700} .kpi-value{display:block;margin-top:14px;font-size:30px;letter-spacing:0} .kpi-foot{display:flex;align-items:baseline;gap:9px;margin-top:11px;color:var(--muted);font-size:12px} .kpi-foot>span:first-child{font-size:16px;font-weight:800} .kpi-foot .positive{color:#15945E} .kpi-foot .negative{color:#D44755} .kpi-foot .neutral{color:var(--muted)}
+.kpi::after{content:"";position:absolute;right:-25px;bottom:-42px;width:120px;height:120px;border-radius:50%;background:rgba(22,119,255,.08)} .kpi:nth-child(2)::after{background:rgba(255,138,61,.10)} .kpi:nth-child(3)::after{background:rgba(0,167,160,.10)} .kpi:nth-child(4)::after{background:rgba(139,109,255,.10)}
+.grid-2{display:grid;grid-template-columns:1fr;gap:16px;margin-top:16px} .grid-2.equal{grid-template-columns:1fr}
+.panel{padding:20px;min-width:0} .panel-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px} .panel-head p{margin:4px 0 0;color:var(--muted);font-size:11px} .trend-panel-head{align-items:flex-start;flex-wrap:wrap} .trend-heading{display:flex;align-items:baseline;gap:14px;white-space:nowrap} .trend-range{color:#5F636D;font-size:15px;font-weight:750} .legend{display:flex;gap:12px;color:var(--muted);font-size:11px;white-space:nowrap} .legend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}
+.chart-scroll{overflow-x:auto} .chart-svg{display:block;width:100%;height:auto;overflow:visible} .axis-label{fill:#858994;font-size:10px} .point-label,.merchant-live-point-label,.merchant-duration-label{font-size:11px;font-weight:750;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.merchant-trend-canvas{min-width:680px} .merchant-amount-chart{margin-bottom:2px} .merchant-subchart-title{margin:0 24px 0 54px;padding-top:13px;border-top:1px solid var(--line);color:#4F535C;font-size:12px;font-weight:750} .merchant-subchart-title span{margin-left:6px;color:var(--muted);font-size:10px;font-weight:600}
+.insights{display:grid;gap:10px} .insight{padding:13px 14px;border-radius:14px;background:#F7F8FA} .insight b{font-size:13px} .insight p{margin:6px 0 0;color:var(--muted);font-size:12px;line-height:1.6} .tag{display:inline-block;margin-top:8px;padding:4px 7px;border-radius:7px;font-size:10px;font-weight:700} .tag.good{color:#23875B;background:#E8F7EF} .tag.warn{color:#C65A61;background:#FFF0F1}
+.sort-trigger{display:inline-flex;align-items:center;gap:4px;border:0;background:transparent;padding:0;color:inherit;font:inherit;font-weight:700;cursor:pointer} .sort-indicator{width:10px;color:#A7ABB5;font-size:12px;line-height:1;opacity:.65} .sort-trigger.active .sort-indicator{color:var(--blue);opacity:1} .sort-trigger:hover{color:var(--blue)} .sort-trigger:hover .sort-indicator{opacity:1}
+.filter-bar{display:flex;align-items:center;gap:10px;margin-bottom:14px} .filter-bar input,.filter-bar select{height:38px;border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--ink);font:inherit;font-size:12px;outline:none} .filter-bar input{min-width:260px;padding:0 12px} .filter-bar select{padding:0 30px 0 10px} .filter-bar input:focus,.filter-bar select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(22,119,255,.10)} .filter-count{margin-left:auto;color:var(--muted);font-size:11px;white-space:nowrap}
+.table-scroll{overflow-x:auto} table{width:100%;border-collapse:collapse;min-width:820px} .merchant-table{min-width:980px} th{padding:11px 10px;text-align:left;color:#858994;font-size:11px;font-weight:700;border-bottom:1px solid var(--line);white-space:nowrap} td{padding:13px 10px;border-bottom:1px solid #F0F1F4;font-size:12px;vertical-align:middle} td small{display:block;margin-top:4px;color:#9A9DA6;font-size:10px;font-weight:500} td.num{font-variant-numeric:tabular-nums;white-space:nowrap} td.rank{width:38px;color:#9A9DA6;font-size:11px;font-weight:800} td strong{font-weight:700} .positive{color:#189963!important} .negative{color:#D85863!important} .provider{display:inline-block;padding:5px 8px;border-radius:8px;background:#F1F5FF;color:#4B6DB8;font-size:11px;white-space:nowrap} .channel-stack{display:flex;flex-wrap:wrap;gap:5px;min-width:175px} .channel-chip{display:inline-flex;padding:4px 7px;border-radius:7px;background:#F4F5F7;color:#646872;font-size:10px;white-space:nowrap} .channel-chip.positive{background:#EAF8F2} .channel-chip.negative{background:#FFF0F1} .live-status{display:inline-block;padding:2px 6px;border-radius:6px;background:#EAF8F2;color:#16835A;font-size:9px;font-weight:750;white-space:nowrap} .live-status.未直播,.live-status.零开播{background:#F0F1F4;color:#747984} .empty,.empty-state{color:#9A9DA6;font-size:12px} .empty-state{padding:28px;text-align:center;background:#F8F9FB;border-radius:12px}
+.bar-wrap{height:12px;display:flex;overflow:hidden;border-radius:8px;background:#EEF0F5;margin:12px 0} .segment-bar{display:block;height:100%} .segment-bar.calendar{background:var(--cyan)} .segment-bar.voucher{background:var(--orange)} .structure-legend{display:flex;gap:16px;color:var(--muted);font-size:11px} .structure-legend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}
+.mobile-nav{display:none}
+@media(max-width:1050px){.app{grid-template-columns:80px minmax(0,1fr)}.sidebar{padding:22px 10px}.brand,.nav-label,.nav-item span:not(.nav-icon){display:none}.nav-item{justify-content:center;padding:13px 8px}.content{padding:24px}.kpis{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.app{display:block}.sidebar{display:none}.content{padding:20px 15px 92px}.topbar{align-items:flex-start;display:block}.top-actions{margin-top:15px;justify-content:space-between;flex-wrap:wrap}.organization-filters{align-items:stretch;display:grid;grid-template-columns:1fr 1fr;margin-top:0}.organization-filters select{min-width:0;width:100%}h1{font-size:30px}.kpis{grid-template-columns:1fr 1fr;gap:10px}.kpi{min-height:120px;padding:14px}.kpi-value{font-size:23px;margin-top:11px}.kpi-foot{display:block}.kpi-foot>span{display:block}.kpi-foot>span:first-child{font-size:15px}.grid-2,.grid-2.equal{grid-template-columns:1fr}.panel{padding:15px;border-radius:16px}.trend-heading{gap:9px;white-space:normal;flex-wrap:wrap}.trend-heading h2{font-size:17px}.trend-range{font-size:13px}.chart-scroll .chart-svg{width:680px;max-width:none}.merchant-trend-scroll .chart-svg{width:100%}.filter-bar{align-items:stretch;flex-wrap:wrap}.filter-bar input{min-width:0;flex:1 1 100%}.filter-bar select{flex:1}.filter-count{align-self:center}.mobile-nav{position:fixed;display:flex;z-index:20;left:14px;right:14px;bottom:15px;justify-content:space-around;padding:9px 7px;border:1px solid rgba(255,255,255,.85);border-radius:20px;background:rgba(255,255,255,.72);box-shadow:0 12px 30px rgba(32,44,70,.15);backdrop-filter:blur(25px) saturate(170%)}.mobile-nav button{padding:6px 8px;border-radius:12px;color:var(--muted);font-size:10px;font-weight:700}.mobile-nav button.active{background:#fff;color:var(--blue);box-shadow:0 4px 10px rgba(31,42,68,.1)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">经营数据工作台<span>山河大区 · 鲁西省区 · 聊宁片区 · 10-03–10-09</span></div>
+    <p class="nav-label">板块</p>
+    <button class="nav-item active" data-target="overview"><span class="nav-icon">⌂</span><span>经营总览</span></button>
+    <button class="nav-item" data-target="provinces"><span class="nav-icon">▦</span><span>组织架构</span></button>
+    <button class="nav-item" data-target="stores"><span class="nav-icon">↗</span><span>门店排名</span></button>
+    <button class="nav-item" data-target="attribution"><span class="nav-icon">◌</span><span>增长归因</span></button>
+    <button class="nav-item" data-target="providers"><span class="nav-icon">◎</span><span>服务商</span></button>
+    <button class="nav-item" data-target="voucher"><span class="nav-icon">◇</span><span>通兑商品</span></button>
+    <button class="nav-item" data-target="merchant-live"><span class="nav-icon">▶</span><span>商家自播</span></button>
+  </aside>
+  <main class="content">
+    <header class="topbar">
+      <div><div class="eyebrow">近 7 日经营数据 · 数据截至 2026-10-09 · 数据来源：生意经</div><h1>山河大区 · 鲁西省区 · 聊宁片区</h1></div>
+      <div class="top-actions"><span class="status"><i></i>数据已校验</span><span class="glass-pill">主数据 43 家 · 1 片区</span><span class="glass-pill">10-03–10-09 对比 09-26–10-02</span></div>
+    </header>
+    <div class="organization-filters"><label><span>一级省区</span><select id="organization-province-filter"><option value="workbench_shanhe.html" >全部一级省区</option><option value="workbench_shanhe__山西省区.html" >山西省区</option><option value="workbench_shanhe__河南省区.html" >河南省区</option><option value="workbench_shanhe__鲁东省区.html" >鲁东省区</option><option value="workbench_shanhe__鲁西省区.html" selected>鲁西省区</option></select></label><label><span>二级片区</span><select id="organization-area-filter" ><option value="workbench_shanhe__鲁西省区.html">全部二级片区</option><option value="workbench_shanhe__鲁西省区__德州片区.html" >德州片区</option><option value="workbench_shanhe__鲁西省区__泰安片区.html" >泰安片区</option><option value="workbench_shanhe__鲁西省区__济南东片区.html" >济南东片区</option><option value="workbench_shanhe__鲁西省区__济南中片区.html" >济南中片区</option><option value="workbench_shanhe__鲁西省区__济南北片区.html" >济南北片区</option><option value="workbench_shanhe__鲁西省区__济宁片区.html" >济宁片区</option><option value="workbench_shanhe__鲁西省区__济滨片区.html" >济滨片区</option><option value="workbench_shanhe__鲁西省区__滨东片区.html" >滨东片区</option><option value="workbench_shanhe__鲁西省区__聊宁片区.html" selected>聊宁片区</option><option value="workbench_shanhe__鲁西省区__菏泽片区.html" >菏泽片区</option></select></label></div>
+
+    <section class="section active" id="overview">
+      <div class="glass-tabs">
+        <button class="glass-tab active">总体</button><button class="glass-tab" data-target="provinces">组织</button><button class="glass-tab" data-target="stores">门店</button><button class="glass-tab" data-target="providers">服务商</button><button class="glass-tab" data-target="voucher">通兑商品</button><button class="glass-tab" data-target="merchant-live">商家自播</button>
+      </div>
+      <div class="kpis">
+        <article class="kpi"><span class="kpi-label">支付 GMV</span><b class="kpi-value">10.32万</b><div class="kpi-foot"><span class="negative">-32.0%</span><span>较上期 15.17万</span></div></article>
+        <article class="kpi"><span class="kpi-label">核销 GMV</span><b class="kpi-value">7.96万</b><div class="kpi-foot"><span class="positive">+41.7%</span><span>较上期 5.62万</span></div></article>
+        <article class="kpi"><span class="kpi-label">支付间夜</span><b class="kpi-value">542</b><div class="kpi-foot"><span class="negative">-28.4%</span><span>间夜</span></div></article>
+        <article class="kpi"><span class="kpi-label">动销门店</span><b class="kpi-value">43<small style="font-size:14px">家</small></b><div class="kpi-foot"><span class="neutral">+0家</span><span>较上期</span></div></article>
+      </div>
+      <div class="grid-2">
+        <article class="panel"><div class="panel-head trend-panel-head"><div class="trend-heading"><h2>支付与核销日趋势</h2><span class="trend-range">10-03–10-09 · 单位：万元</span></div><div class="legend"><span><i style="background:var(--blue)"></i>支付</span><span><i style="background:var(--orange)"></i>核销</span></div></div><div class="chart-scroll">
+      <svg class="chart-svg" viewBox="0 0 760 300" role="img"
+           aria-label="支付与核销日趋势，单位万元">
+        <line x1="54" y1="34.0" x2="736" y2="34.0" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="104.6" x2="736" y2="104.6" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="175.2" x2="736" y2="175.2" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="248.0" x2="736" y2="248.0" stroke="#ECEEF3" stroke-width="1"/><text x="44" y="38.0" text-anchor="end" class="axis-label">3.5</text><text x="44" y="145.0" text-anchor="end" class="axis-label">1.8</text><text x="44" y="252.0" text-anchor="end" class="axis-label">0.0</text>
+        <path d="M54.0 34.0 L167.7 115.4 L281.3 158.8 L395.0 171.2 L508.7 211.7 L622.3 215.1 L736.0 199.2" fill="none" stroke="#1677FF"
+              stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M54.0 114.5 L167.7 130.3 L281.3 190.2 L395.0 198.5 L508.7 177.4 L622.3 216.7 L736.0 221.8" fill="none" stroke="#FF8A3D"
+              stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle class="trend-point payment-point" cx="54.0" cy="34.0" r="5" fill="#1677FF"/><text x="58.0" y="22.0" text-anchor="start" class="point-label payment-label" fill="#1677FF">3.5万</text><circle class="trend-point payment-point" cx="167.7" cy="115.4" r="5" fill="#1677FF"/><text x="167.7" y="103.4" text-anchor="middle" class="point-label payment-label" fill="#1677FF">2.2万</text><circle class="trend-point payment-point" cx="281.3" cy="158.8" r="5" fill="#1677FF"/><text x="281.3" y="146.8" text-anchor="middle" class="point-label payment-label" fill="#1677FF">1.5万</text><circle class="trend-point payment-point" cx="395.0" cy="171.2" r="5" fill="#1677FF"/><text x="395.0" y="159.2" text-anchor="middle" class="point-label payment-label" fill="#1677FF">1.3万</text><circle class="trend-point payment-point" cx="508.7" cy="211.7" r="5" fill="#1677FF"/><text x="508.7" y="189.7" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.6万</text><circle class="trend-point payment-point" cx="622.3" cy="215.1" r="5" fill="#1677FF"/><text x="622.3" y="203.1" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.5万</text><circle class="trend-point payment-point" cx="736.0" cy="199.2" r="5" fill="#1677FF"/><text x="732.0" y="187.2" text-anchor="end" class="point-label payment-label" fill="#1677FF">0.8万</text>
+        <circle class="trend-point redeem-point" cx="54.0" cy="114.5" r="5" fill="#FF8A3D"/><text x="58.0" y="138.5" text-anchor="start" class="point-label redeem-label" fill="#FF8A3D">2.2万</text><circle class="trend-point redeem-point" cx="167.7" cy="130.3" r="5" fill="#FF8A3D"/><text x="167.7" y="154.3" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">1.9万</text><circle class="trend-point redeem-point" cx="281.3" cy="190.2" r="5" fill="#FF8A3D"/><text x="281.3" y="214.2" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.9万</text><circle class="trend-point redeem-point" cx="395.0" cy="198.5" r="5" fill="#FF8A3D"/><text x="395.0" y="222.5" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.8万</text><circle class="trend-point redeem-point" cx="508.7" cy="177.4" r="5" fill="#FF8A3D"/><text x="508.7" y="211.4" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">1.2万</text><circle class="trend-point redeem-point" cx="622.3" cy="216.7" r="5" fill="#FF8A3D"/><text x="622.3" y="240.7" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.5万</text><circle class="trend-point redeem-point" cx="736.0" cy="221.8" r="5" fill="#FF8A3D"/><text x="732.0" y="245.8" text-anchor="end" class="point-label redeem-label" fill="#FF8A3D">0.4万</text>
+        <text x="54.0" y="288" text-anchor="middle" class="axis-label">10-03</text><text x="167.7" y="288" text-anchor="middle" class="axis-label">10-04</text><text x="281.3" y="288" text-anchor="middle" class="axis-label">10-05</text><text x="395.0" y="288" text-anchor="middle" class="axis-label">10-06</text><text x="508.7" y="288" text-anchor="middle" class="axis-label">10-07</text><text x="622.3" y="288" text-anchor="middle" class="axis-label">10-08</text><text x="736.0" y="288" text-anchor="middle" class="axis-label">10-09</text>
+      </svg>
+    </div></article>
+        <aside class="panel"><div class="panel-head"><div><h2>本期重点判断</h2><p>从数据变化直接定位动作</p></div></div><div class="insights">
+          <div class="insight"><b>支付增长主要来自 自播</b><p>渠道增量 -895，可在增长归因中查看对应服务商。</p><span class="tag good">增长来源</span></div>
+          <div class="insight"><b>麗枫酒店(聊城临清市温泉路高铁站店) 需要跟进</b><p>杭州四库传媒有限公司 · 下降 1.08万，优先检查渠道投放变化。</p><span class="tag warn">重点风险</span></div>
+        </div></aside>
+      </div>
+    </section>
+
+    <section class="section" id="provinces"><div class="section-head"><div><h2>组织架构经营对比</h2><p>一级省区与二级片区均按门店总表 POI 归属</p></div></div><article class="panel">
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>省份</th><th>主数据门店</th><th>已绑定门店</th><th>有数据门店</th><th>本期支付</th><th>支付增长率</th><th>本期核销</th><th>核销增长率</th><th>动销门店</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>鲁西省区</strong></td>
+              <td class="num">43家</td>
+              <td class="num">0家</td>
+              <td class="num">43家</td>
+              <td class="num">10.32万</td>
+              <td class="num negative">-32.0%</td>
+              <td class="num">7.96万</td>
+              <td class="num positive">+41.7%</td>
+              <td class="num">43家</td>
+            </tr>
+            </tbody>
+        </table>
+      </div>
+    </article><article class="panel" style="margin-top:16px"><div class="panel-head"><div><h2>二级片区明细</h2><p>片区不按行政城市推断，以门店总表标注为准</p></div></div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>一级省区</th><th>二级片区</th><th>主数据门店</th><th>有数据门店</th><th>本期支付</th><th>支付增长率</th><th>本期核销</th><th>核销增长率</th><th>动销门店</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>聊宁片区</strong></td>
+              <td class="num">43家</td>
+              <td class="num">43家</td>
+              <td class="num">10.32万</td>
+              <td class="num negative">-32.0%</td>
+              <td class="num">7.96万</td>
+              <td class="num positive">+41.7%</td>
+              <td class="num">43家</td>
+            </tr>
+            </tbody>
+        </table>
+      </div>
+    </article></section>
+
+    <section class="section" id="stores">
+      <div class="section-head"><div><h2>门店排名</h2><p>全部门店 · 默认按本期核销金额降序，可点击表头重新排序</p></div></div>
+      <div class="glass-tabs"><button class="glass-tab active" data-local="all">全部门店</button><button class="glass-tab" data-local="growth">增长 Top10</button><button class="glass-tab" data-local="decline">下降 Top10</button></div>
+      <article class="panel local-panel" data-panel="all"><div class="filter-bar"><input id="store-search" type="search" placeholder="搜索门店、城市、片区或服务商" aria-label="搜索门店、城市、片区或服务商"><select id="province-filter" aria-label="按省份筛选"><option value="">全部省份</option><option value="鲁西省区">鲁西省区</option></select><select id="area-filter" aria-label="按二级片区筛选"><option value="">全部二级片区</option><option value="聊宁片区">聊宁片区</option></select><span id="store-result-count" class="filter-count"></span></div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr>
+            <th>#</th>
+            <th><button class="sort-trigger store-sort-trigger" type="button" data-sort-key="province" onclick="sortStoreTable('province')" title="按省份排序">省份 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger store-sort-trigger" type="button" data-sort-key="area" onclick="sortStoreTable('area')" title="按二级片区排序">二级片区 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger store-sort-trigger" type="button" data-sort-key="store" onclick="sortStoreTable('store')" title="按门店名称排序">门店 / 城市 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger store-sort-trigger" type="button" data-sort-key="provider" onclick="sortStoreTable('provider')" title="按服务商排序">服务商 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger store-sort-trigger" type="button" data-sort-key="redeem-current" onclick="sortStoreTable('redeem-current')" title="按本期核销额排序">本期核销 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger store-sort-trigger" type="button" data-sort-key="payment-current" onclick="sortStoreTable('payment-current')" title="按本期支付额排序">本期支付 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger store-sort-trigger" type="button" data-sort-key="redeem-nights" onclick="sortStoreTable('redeem-nights')" title="按核销间夜排序">核销间夜 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger store-sort-trigger" type="button" data-sort-key="payment-nights" onclick="sortStoreTable('payment-nights')" title="按支付间夜排序">支付间夜 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger store-sort-trigger" type="button" data-sort-key="redeem-growth" onclick="sortStoreTable('redeem-growth')" title="按核销增长率排序">核销增长率 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger store-sort-trigger" type="button" data-sort-key="payment-growth" onclick="sortStoreTable('payment-growth')" title="按支付增长率排序">支付增长率 <span class="sort-indicator"></span></button></th>
+          </tr></thead>
+          <tbody id="store-all-body">
+            <tr data-province="鲁西省区"
+                data-area="聊宁片区"
+                data-store="麗枫酒店(聊城临清市温泉路高铁站店)"
+                data-city="聊城市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="13189.0"
+                data-payment-current="7862.0"
+                data-redeem-nights="48.0"
+                data-payment-nights="39.0"
+                data-redeem-growth="2.924129723296638"
+                data-payment-growth="-0.5779381133371986">
+              <td class="rank">01</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>聊宁片区</strong></td>
+              <td><strong>麗枫酒店(聊城临清市温泉路高铁站店)</strong><small>聊城市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">1.32万</td>
+              <td class="num">7,862</td>
+              <td class="num">48</td>
+              <td class="num">39</td>
+              <td class="num positive">+292.4%</td>
+              <td class="num negative">-57.8%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="聊宁片区"
+                data-store="康铂酒店(聊城万达广场店)"
+                data-city="聊城市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="7333.1"
+                data-payment-current="7788.9"
+                data-redeem-nights="30.0"
+                data-payment-nights="38.0"
+                data-redeem-growth="0.7960078373744797"
+                data-payment-growth="-0.4467914343549133">
+              <td class="rank">02</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>聊宁片区</strong></td>
+              <td><strong>康铂酒店(聊城万达广场店)</strong><small>聊城市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">7,333</td>
+              <td class="num">7,789</td>
+              <td class="num">30</td>
+              <td class="num">38</td>
+              <td class="num positive">+79.6%</td>
+              <td class="num negative">-44.7%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="聊宁片区"
+                data-store="麗枫酒店(聊城东昌湖店)"
+                data-city="聊城市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="5822.0"
+                data-payment-current="7480.799999999999"
+                data-redeem-nights="23.0"
+                data-payment-nights="34.0"
+                data-redeem-growth="0.3130356337392872"
+                data-payment-growth="-0.29888752471906954">
+              <td class="rank">03</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>聊宁片区</strong></td>
+              <td><strong>麗枫酒店(聊城东昌湖店)</strong><small>聊城市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">5,822</td>
+              <td class="num">7,481</td>
+              <td class="num">23</td>
+              <td class="num">34</td>
+              <td class="num positive">+31.3%</td>
+              <td class="num negative">-29.9%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="聊宁片区"
+                data-store="维也纳酒店(聊城铁塔金鼎店)"
+                data-city="聊城市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="4076.1"
+                data-payment-current="4863.1"
+                data-redeem-nights="15.0"
+                data-payment-nights="24.0"
+                data-redeem-growth="0.465695792880259"
+                data-payment-growth="-0.365188559792186">
+              <td class="rank">04</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>聊宁片区</strong></td>
+              <td><strong>维也纳酒店(聊城铁塔金鼎店)</strong><small>聊城市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">4,076</td>
+              <td class="num">4,863</td>
+              <td class="num">15</td>
+              <td class="num">24</td>
+              <td class="num positive">+46.6%</td>
+              <td class="num negative">-36.5%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="聊宁片区"
+                data-store="白玉兰商务酒店(聊城临清新汽车站店)"
+                data-city="聊城市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="3592.0"
+                data-payment-current="11990.9"
+                data-redeem-nights="11.0"
+                data-payment-nights="42.0"
+                data-redeem-growth="0.4673202614379084"
+                data-payment-growth="0.08294423120343208">
+              <td class="rank">05</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>聊宁片区</strong></td>
+              <td><strong>白玉兰商务酒店(聊城临清新汽车站店)</strong><small>聊城市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">3,592</td>
+              <td class="num">1.20万</td>
+              <td class="num">11</td>
+              <td class="num">42</td>
+              <td class="num positive">+46.7%</td>
+              <td class="num positive">+8.3%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="聊宁片区"
+                data-store="维也纳国际酒店(山东聊城东昌湖火车站高铁站店)"
+                data-city="聊城市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="3390.0"
+                data-payment-current="3557.9"
+                data-redeem-nights="13.0"
+                data-payment-nights="15.0"
+                data-redeem-growth="1.5799086757990866"
+                data-payment-growth="-0.3364602760164118">
+              <td class="rank">06</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>聊宁片区</strong></td>
+              <td><strong>维也纳国际酒店(山东聊城东昌湖火车站高铁站店)</strong><small>聊城市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">3,390</td>
+              <td class="num">3,558</td>
+              <td class="num">13</td>
+              <td class="num">15</td>
+              <td class="num positive">+158.0%</td>
+              <td class="num negative">-33.6%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="聊宁片区"
+                data-store="白玉兰酒店(梁山水泊东路龙城广场店)"
+                data-city="济宁市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="3237.05"
+                data-payment-current="5433.499999999997"
+                data-redeem-nights="18.0"
+                data-payment-nights="33.0"
+                data-redeem-growth="0.22801593323217006"
+                data-payment-growth="0.19496371233780496">
+              <td class="rank">07</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>聊宁片区</strong></td>
+              <td><strong>白玉兰酒店(梁山水泊东路龙城广场店)</strong><small>济宁市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">3,237</td>
+              <td class="num">5,433</td>
+              <td class="num">18</td>
+              <td class="num">33</td>
+              <td class="num positive">+22.8%</td>
+              <td class="num positive">+19.5%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="聊宁片区"
+                data-store="维也纳国际酒店(聊城开发区钢管城店)"
+                data-city="聊城市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="2778.0"
+                data-payment-current="2596.8"
+                data-redeem-nights="12.0"
+                data-payment-nights="13.0"
+                data-redeem-growth="0.0"
+                data-payment-growth="-0.1253620747726507">
+              <td class="rank">08</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>聊宁片区</strong></td>
+              <td><strong>维也纳国际酒店(聊城开发区钢管城店)</strong><small>聊城市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">2,778</td>
+              <td class="num">2,597</td>
+              <td class="num">12</td>
+              <td class="num">13</td>
+              <td class="num neutral">基期较低</td>
+              <td class="num negative">-12.5%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="聊宁片区"
+                data-store="潮漫酒店(聊城开发区店)"
+                data-city="聊城市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="1936.0"
+                data-payment-current="2529.8"
+                data-redeem-nights="7.0"
+                data-payment-nights="14.0"
+                data-redeem-growth="-0.12753492564218116"
+                data-payment-growth="-0.3040248700101791">
+              <td class="rank">09</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>聊宁片区</strong></td>
+              <td><strong>潮漫酒店(聊城开发区店)</strong><small>聊城市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">1,936</td>
+              <td class="num">2,530</td>
+              <td class="num">7</td>
+              <td class="num">14</td>
+              <td class="num negative">-12.8%</td>
+              <td class="num negative">-30.4%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="聊宁片区"
+                data-store="维也纳3好酒店(山东济宁梁山拳铺店)"
+                data-city="济宁市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="1749.0"
+                data-payment-current="1073.1"
+                data-redeem-nights="11.0"
+                data-payment-nights="7.0"
+                data-redeem-growth="4.5"
+                data-payment-growth="-0.5609426782864859">
+              <td class="rank">10</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>聊宁片区</strong></td>
+              <td><strong>维也纳3好酒店(山东济宁梁山拳铺店)</strong><small>济宁市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">1,749</td>
+              <td class="num">1,073</td>
+              <td class="num">11</td>
+              <td class="num">7</td>
+              <td class="num positive">+450.0%</td>
+              <td class="num negative">-56.1%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="聊宁片区"
+                data-store="白玉兰酒店(聊城开发区振华购物中心店)"
+                data-city="聊城市"
+                data-provider="未绑定服务商"
+                data-redeem-current="1515.0"
+                data-payment-current="2359.2"
+                data-redeem-nights="5.0"
+                data-payment-nights="11.0"
+                data-redeem-growth="2.1962025316455698"
+                data-payment-growth="1.2256603773584902">
+              <td class="rank">11</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>聊宁片区</strong></td>
+              <td><strong>白玉兰酒店(聊城开发区振华购物中心店)</strong><small>聊城市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">1,515</td>
+              <td class="num">2,359</td>
+              <td class="num">5</td>
+              <td class="num">11</td>
+              <td class="num positive">+219.6%</td>
+              <td class="num positive">+122.6%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="聊宁片区"
+                data-store="希岸酒店(聊城开发区当代购物中心店)"
+                data-city="聊城市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="1505.0"
+                data-payment-current="3236.7000000000003"
+                data-redeem-nights="9.0"
+                data-payment-nights="18.0"
+                data-redeem-growth="0.4013035381750465"
+                data-payment-growth="1.0191515907673114">
+              <td class="rank">12</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>聊宁片区</strong></td>
+              <td><strong>希岸酒店(聊城开发区当代购物中心店)</strong><small>聊城市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">1,505</td>
+              <td class="num">3,237</td>
+              <td class="num">9</td>
+              <td class="num">18</td>
+              <td class="num positive">+40.1%</td>
+              <td class="num positive">+101.9%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="聊宁片区"
+                data-store="维也纳酒店(5.0山东聊城茌平建设东路店)"
+                data-city="聊城市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="1491.0"
+                data-payment-current="1809.0"
+                data-redeem-nights="9.0"
+                data-payment-nights="11.0"
+                data-redeem-growth="2.9654255319148937"
+                data-payment-growth="-0.05574694644534928">
+              <td class="rank">13</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>聊宁片区</strong></td>
+              <td><strong>维也纳酒店(5.0山东聊城茌平建设东路店)</strong><small>聊城市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">1,491</td>
+              <td class="num">1,809</td>
+              <td class="num">9</td>
+              <td class="num">11</td>
+              <td class="num positive">+296.5%</td>
+              <td class="num negative">-5.6%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="聊宁片区"
+                data-store="麗枫酒店(东阿阿胶街店)"
+                data-city="聊城市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="1480.0"
+                data-payment-current="1678.9"
+                data-redeem-nights="6.0"
+                data-payment-nights="7.0"
+                data-redeem-growth="0.38706654170571686"
+                data-payment-growth="-0.19589060778772927">
+              <td class="rank">14</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>聊宁片区</strong></td>
+              <td><strong>麗枫酒店(东阿阿胶街店)</strong><small>聊城市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">1,480</td>
+              <td class="num">1,679</td>
+              <td class="num">6</td>
+              <td class="num">7</td>
+              <td class="num positive">+38.7%</td>
+              <td class="num negative">-19.6%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="聊宁片区"
+                data-store="麗枫酒店(济宁嘉祥高铁站汽车总站店)"
+                data-city="济宁市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="1443.0"
+                data-payment-current="2779.9"
+                data-redeem-nights="7.0"
+                data-payment-nights="13.0"
+                data-redeem-growth="-0.24092582851130984"
+                data-payment-growth="0.825279054497702">
+              <td class="rank">15</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>聊宁片区</strong></td>
+              <td><strong>麗枫酒店(济宁嘉祥高铁站汽车总站店)</strong><small>济宁市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">1,443</td>
+              <td class="num">2,780</td>
+              <td class="num">7</td>
+              <td class="num">13</td>
+              <td class="num negative">-24.1%</td>
+              <td class="num positive">+82.5%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="聊宁片区"
+                data-store="锦江之星(阳谷汽车站店)"
+                data-city="聊城市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="1423.0"
+                data-payment-current="2150.8"
+                data-redeem-nights="10.0"
+                data-payment-nights="16.0"
+                data-redeem-growth="-0.37478031634446396"
+                data-payment-growth="-0.38948025774220096">
+              <td class="rank">16</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>聊宁片区</strong></td>
+              <td><strong>锦江之星(阳谷汽车站店)</strong><small>聊城市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">1,423</td>
+              <td class="num">2,151</td>
+              <td class="num">10</td>
+              <td class="num">16</td>
+              <td class="num negative">-37.5%</td>
+              <td class="num negative">-38.9%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="聊宁片区"
+                data-store="非繁城品(聊城市中心五星百货店)"
+                data-city="聊城市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="1383.0"
+                data-payment-current="2872.9"
+                data-redeem-nights="7.0"
+                data-payment-nights="17.0"
+                data-redeem-growth="-0.3230543318649045"
+                data-payment-growth="-0.4363326008475905">
+              <td class="rank">17</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>聊宁片区</strong></td>
+              <td><strong>非繁城品(聊城市中心五星百货店)</strong><small>聊城市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">1,383</td>
+              <td class="num">2,873</td>
+              <td class="num">7</td>
+              <td class="num">17</td>
+              <td class="num negative">-32.3%</td>
+              <td class="num negative">-43.6%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="聊宁片区"
+                data-store="IU酒店(嘉祥兖兰路火车站店)"
+                data-city="济宁市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="1329.0"
+                data-payment-current="1844.0"
+                data-redeem-nights="13.0"
+                data-payment-nights="18.0"
+                data-redeem-growth="0.3424242424242425"
+                data-payment-growth="0.8626262626262626">
+              <td class="rank">18</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>聊宁片区</strong></td>
+              <td><strong>IU酒店(嘉祥兖兰路火车站店)</strong><small>济宁市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">1,329</td>
+              <td class="num">1,844</td>
+              <td class="num">13</td>
+              <td class="num">18</td>
+              <td class="num positive">+34.2%</td>
+              <td class="num positive">+86.3%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="聊宁片区"
+                data-store="希岸酒店(聊城火车站东昌湖景区店)"
+                data-city="聊城市"
+                data-provider="未绑定服务商"
+                data-redeem-current="1304.0"
+                data-payment-current="194.9"
+                data-redeem-nights="4.0"
+                data-payment-nights="1.0"
+                data-redeem-growth="0.9261447562776957"
+                data-payment-growth="-0.9378844376454091">
+              <td class="rank">19</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>聊宁片区</strong></td>
+              <td><strong>希岸酒店(聊城火车站东昌湖景区店)</strong><small>聊城市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">1,304</td>
+              <td class="num">195</td>
+              <td class="num">4</td>
+              <td class="num">1</td>
+              <td class="num positive">+92.6%</td>
+              <td class="num negative">-93.8%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="聊宁片区"
+                data-store="白玉兰酒店(聊城火车站东昌湖店)"
+                data-city="聊城市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="1294.0"
+                data-payment-current="1322.9"
+                data-redeem-nights="6.0"
+                data-payment-nights="7.0"
+                data-redeem-growth="0.02292490118577084"
+                data-payment-growth="-0.7353088297084776">
+              <td class="rank">20</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>聊宁片区</strong></td>
+              <td><strong>白玉兰酒店(聊城火车站东昌湖店)</strong><small>聊城市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">1,294</td>
+              <td class="num">1,323</td>
+              <td class="num">6</td>
+              <td class="num">7</td>
+              <td class="num positive">+2.3%</td>
+              <td class="num negative">-73.5%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="聊宁片区"
+                data-store="维也纳酒店(聊城临清市运河文化广场店)"
+                data-city="聊城市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="1284.0"
+                data-payment-current="2696.9"
+                data-redeem-nights="5.0"
+                data-payment-nights="12.0"
+                data-redeem-growth="-0.05934065934065935"
+                data-payment-growth="-0.2967299468029624">
+              <td class="rank">21</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>聊宁片区</strong></td>
+              <td><strong>维也纳酒店(聊城临清市运河文化广场店)</strong><small>聊城市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">1,284</td>
+              <td class="num">2,697</td>
+              <td class="num">5</td>
+              <td class="num">12</td>
+              <td class="num negative">-5.9%</td>
+              <td class="num negative">-29.7%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="聊宁片区"
+                data-store="白玉兰酒店(冠县武训大道三中店)"
+                data-city="聊城市"
+                data-provider="未绑定服务商"
+                data-redeem-current="1283.0"
+                data-payment-current="2748.8"
+                data-redeem-nights="8.0"
+                data-payment-nights="17.0"
+                data-redeem-growth="0.2920443101711985"
+                data-payment-growth="0.44142632406921867">
+              <td class="rank">22</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>聊宁片区</strong></td>
+              <td><strong>白玉兰酒店(冠县武训大道三中店)</strong><small>聊城市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">1,283</td>
+              <td class="num">2,749</td>
+              <td class="num">8</td>
+              <td class="num">17</td>
+              <td class="num positive">+29.2%</td>
+              <td class="num positive">+44.1%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="聊宁片区"
+                data-store="维也纳3好酒店(东阿府前街店)"
+                data-city="聊城市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="1272.0"
+                data-payment-current="795.0"
+                data-redeem-nights="8.0"
+                data-payment-nights="5.0"
+                data-redeem-growth="0.3072970195272353"
+                data-payment-growth="-0.7426351570087406">
+              <td class="rank">23</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>聊宁片区</strong></td>
+              <td><strong>维也纳3好酒店(东阿府前街店)</strong><small>聊城市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">1,272</td>
+              <td class="num">795</td>
+              <td class="num">8</td>
+              <td class="num">5</td>
+              <td class="num positive">+30.7%</td>
+              <td class="num negative">-74.3%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="聊宁片区"
+                data-store="希岸·轻雅酒店(聊城阳谷新世界广场店)"
+                data-city="聊城市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="1121.0"
+                data-payment-current="722.8"
+                data-redeem-nights="7.0"
+                data-payment-nights="5.0"
+                data-redeem-growth="1.251004016064257"
+                data-payment-growth="-0.21091703056768563">
+              <td class="rank">24</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>聊宁片区</strong></td>
+              <td><strong>希岸·轻雅酒店(聊城阳谷新世界广场店)</strong><small>聊城市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">1,121</td>
+              <td class="num">723</td>
+              <td class="num">7</td>
+              <td class="num">5</td>
+              <td class="num positive">+125.1%</td>
+              <td class="num negative">-21.1%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="聊宁片区"
+                data-store="潮漫酒店(聊城茌平枣乡街店)"
+                data-city="聊城市"
+                data-provider="河南叁伍柒科技有限公司"
+                data-redeem-current="1094.0"
+                data-payment-current="894.9"
+                data-redeem-nights="6.0"
+                data-payment-nights="5.0"
+                data-redeem-growth="-0.09810387469084914"
+                data-payment-growth="-0.5287271578282164">
+              <td class="rank">25</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>聊宁片区</strong></td>
+              <td><strong>潮漫酒店(聊城茌平枣乡街店)</strong><small>聊城市 · 有返回记录</small></td>
+              <td><span class="provider">河南叁伍柒科技有限公司</span></td>
+              <td class="num">1,094</td>
+              <td class="num">895</td>
+              <td class="num">6</td>
+              <td class="num">5</td>
+              <td class="num negative">-9.8%</td>
+              <td class="num negative">-52.9%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="聊宁片区"
+                data-store="7天酒店(新7天济宁梁山钢材市场店)"
+                data-city="济宁市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="1054.0"
+                data-payment-current="823.0"
+                data-redeem-nights="8.0"
+                data-payment-nights="7.0"
+                data-redeem-growth="0.0"
+                data-payment-growth="-0.1480331262939959">
+              <td class="rank">26</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>聊宁片区</strong></td>
+              <td><strong>7天酒店(新7天济宁梁山钢材市场店)</strong><small>济宁市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">1,054</td>
+              <td class="num">823</td>
+              <td class="num">8</td>
+              <td class="num">7</td>
+              <td class="num neutral">基期较低</td>
+              <td class="num negative">-14.8%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="聊宁片区"
+                data-store="白玉兰酒店(聊城黑龙江路东昌学院店)"
+                data-city="聊城市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="1047.0"
+                data-payment-current="2188.1"
+                data-redeem-nights="5.0"
+                data-payment-nights="15.0"
+                data-redeem-growth="0.1417666303162486"
+                data-payment-growth="-0.21853571428571428">
+              <td class="rank">27</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>聊宁片区</strong></td>
+              <td><strong>白玉兰酒店(聊城黑龙江路东昌学院店)</strong><small>聊城市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">1,047</td>
+              <td class="num">2,188</td>
+              <td class="num">5</td>
+              <td class="num">15</td>
+              <td class="num positive">+14.2%</td>
+              <td class="num negative">-21.9%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="聊宁片区"
+                data-store="锦江之星(济宁汶上县酒店)"
+                data-city="济宁市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="1043.0"
+                data-payment-current="1162.0"
+                data-redeem-nights="7.0"
+                data-payment-nights="8.0"
+                data-redeem-growth="0.9828897338403042"
+                data-payment-growth="0.0641025641025641">
+              <td class="rank">28</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>聊宁片区</strong></td>
+              <td><strong>锦江之星(济宁汶上县酒店)</strong><small>济宁市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">1,043</td>
+              <td class="num">1,162</td>
+              <td class="num">7</td>
+              <td class="num">8</td>
+              <td class="num positive">+98.3%</td>
+              <td class="num positive">+6.4%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="聊宁片区"
+                data-store="维也纳酒店(聊城高新区月季公园店)"
+                data-city="聊城市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="974.0"
+                data-payment-current="1411.9"
+                data-redeem-nights="6.0"
+                data-payment-nights="8.0"
+                data-redeem-growth="1.3357314148681056"
+                data-payment-growth="-0.34235409194652755">
+              <td class="rank">29</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>聊宁片区</strong></td>
+              <td><strong>维也纳酒店(聊城高新区月季公园店)</strong><small>聊城市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">974</td>
+              <td class="num">1,412</td>
+              <td class="num">6</td>
+              <td class="num">8</td>
+              <td class="num positive">+133.6%</td>
+              <td class="num negative">-34.2%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="聊宁片区"
+                data-store="白玉兰商务酒店(济宁嘉祥曾子大道店)"
+                data-city="济宁市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="951.0"
+                data-payment-current="2899.8"
+                data-redeem-nights="5.0"
+                data-payment-nights="16.0"
+                data-redeem-growth="-0.3578663065496286"
+                data-payment-growth="0.32109339407744875">
+              <td class="rank">30</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>聊宁片区</strong></td>
+              <td><strong>白玉兰商务酒店(济宁嘉祥曾子大道店)</strong><small>济宁市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">951</td>
+              <td class="num">2,900</td>
+              <td class="num">5</td>
+              <td class="num">16</td>
+              <td class="num negative">-35.8%</td>
+              <td class="num positive">+32.1%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="聊宁片区"
+                data-store="非繁·轻居酒店(聊城综合楼花园路店)"
+                data-city="聊城市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="852.0"
+                data-payment-current="881.6999999999999"
+                data-redeem-nights="4.0"
+                data-payment-nights="4.0"
+                data-redeem-growth="1.3027027027027027"
+                data-payment-growth="0.9006251347273118">
+              <td class="rank">31</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>聊宁片区</strong></td>
+              <td><strong>非繁·轻居酒店(聊城综合楼花园路店)</strong><small>聊城市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">852</td>
+              <td class="num">882</td>
+              <td class="num">4</td>
+              <td class="num">4</td>
+              <td class="num positive">+130.3%</td>
+              <td class="num positive">+90.1%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="聊宁片区"
+                data-store="维也纳智好酒店(嘉祥一中得力广场店)"
+                data-city="济宁市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="850.0"
+                data-payment-current="1114.9"
+                data-redeem-nights="4.0"
+                data-payment-nights="6.0"
+                data-redeem-growth="0.11548556430446189"
+                data-payment-growth="-0.5426614160308475">
+              <td class="rank">32</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>聊宁片区</strong></td>
+              <td><strong>维也纳智好酒店(嘉祥一中得力广场店)</strong><small>济宁市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">850</td>
+              <td class="num">1,115</td>
+              <td class="num">4</td>
+              <td class="num">6</td>
+              <td class="num positive">+11.5%</td>
+              <td class="num negative">-54.3%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="聊宁片区"
+                data-store="7天酒店(济宁嘉祥古城街店)"
+                data-city="济宁市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="837.0"
+                data-payment-current="1282.9"
+                data-redeem-nights="8.0"
+                data-payment-nights="13.0"
+                data-redeem-growth="-0.4638052530429212"
+                data-payment-growth="-0.6874558433015812">
+              <td class="rank">33</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>聊宁片区</strong></td>
+              <td><strong>7天酒店(济宁嘉祥古城街店)</strong><small>济宁市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">837</td>
+              <td class="num">1,283</td>
+              <td class="num">8</td>
+              <td class="num">13</td>
+              <td class="num negative">-46.4%</td>
+              <td class="num negative">-68.7%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="聊宁片区"
+                data-store="非繁·城品酒店(阳谷狮子楼店)"
+                data-city="聊城市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="795.0"
+                data-payment-current="1121.0"
+                data-redeem-nights="5.0"
+                data-payment-nights="7.0"
+                data-redeem-growth="0.4695009242144177"
+                data-payment-growth="-0.4185684647302904">
+              <td class="rank">34</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>聊宁片区</strong></td>
+              <td><strong>非繁·城品酒店(阳谷狮子楼店)</strong><small>聊城市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">795</td>
+              <td class="num">1,121</td>
+              <td class="num">5</td>
+              <td class="num">7</td>
+              <td class="num positive">+47.0%</td>
+              <td class="num negative">-41.9%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="聊宁片区"
+                data-store="维也纳酒店(5.0聊城阳谷店)"
+                data-city="聊城市"
+                data-provider="未绑定服务商"
+                data-redeem-current="751.0"
+                data-payment-current="974.5999999999999"
+                data-redeem-nights="4.0"
+                data-payment-nights="5.0"
+                data-redeem-growth="1.0297297297297296"
+                data-payment-growth="1.1710848741367785">
+              <td class="rank">35</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>聊宁片区</strong></td>
+              <td><strong>维也纳酒店(5.0聊城阳谷店)</strong><small>聊城市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">751</td>
+              <td class="num">975</td>
+              <td class="num">4</td>
+              <td class="num">5</td>
+              <td class="num positive">+103.0%</td>
+              <td class="num positive">+117.1%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="聊宁片区"
+                data-store="维也纳酒店(聊城大学湖南路店)"
+                data-city="聊城市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="598.0"
+                data-payment-current="1066.0"
+                data-redeem-nights="2.0"
+                data-payment-nights="4.0"
+                data-redeem-growth="0.30567685589519655"
+                data-payment-growth="0.13888888888888884">
+              <td class="rank">36</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>聊宁片区</strong></td>
+              <td><strong>维也纳酒店(聊城大学湖南路店)</strong><small>聊城市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">598</td>
+              <td class="num">1,066</td>
+              <td class="num">2</td>
+              <td class="num">4</td>
+              <td class="num positive">+30.6%</td>
+              <td class="num positive">+13.9%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="聊宁片区"
+                data-store="麗枫酒店(高唐双隆购物广场店)"
+                data-city="聊城市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="590.0"
+                data-payment-current="609.0"
+                data-redeem-nights="4.0"
+                data-payment-nights="5.0"
+                data-redeem-growth="-0.6740331491712708"
+                data-payment-growth="-0.8246321306188269">
+              <td class="rank">37</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>聊宁片区</strong></td>
+              <td><strong>麗枫酒店(高唐双隆购物广场店)</strong><small>聊城市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">590</td>
+              <td class="num">609</td>
+              <td class="num">4</td>
+              <td class="num">5</td>
+              <td class="num negative">-67.4%</td>
+              <td class="num negative">-82.5%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="聊宁片区"
+                data-store="麗枫酒店(聊城临清店)"
+                data-city="聊城市"
+                data-provider="未绑定服务商"
+                data-redeem-current="559.0"
+                data-payment-current="648.9"
+                data-redeem-nights="1.0"
+                data-payment-nights="2.0"
+                data-redeem-growth="0.28801843317972353"
+                data-payment-growth="-0.3239920825085947">
+              <td class="rank">38</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>聊宁片区</strong></td>
+              <td><strong>麗枫酒店(聊城临清店)</strong><small>聊城市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">559</td>
+              <td class="num">649</td>
+              <td class="num">1</td>
+              <td class="num">2</td>
+              <td class="num positive">+28.8%</td>
+              <td class="num negative">-32.4%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="聊宁片区"
+                data-store="维也纳3好酒店(山东聊城万达广场店)"
+                data-city="聊城市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="523.0"
+                data-payment-current="959.8"
+                data-redeem-nights="3.0"
+                data-payment-nights="6.0"
+                data-redeem-growth="-0.5245454545454545"
+                data-payment-growth="-0.28708311669018816">
+              <td class="rank">39</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>聊宁片区</strong></td>
+              <td><strong>维也纳3好酒店(山东聊城万达广场店)</strong><small>聊城市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">523</td>
+              <td class="num">960</td>
+              <td class="num">3</td>
+              <td class="num">6</td>
+              <td class="num negative">-52.5%</td>
+              <td class="num negative">-28.7%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="聊宁片区"
+                data-store="麗枫酒店(聊城万达广场店)"
+                data-city="聊城市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="299.0"
+                data-payment-current="544.9"
+                data-redeem-nights="1.0"
+                data-payment-nights="2.0"
+                data-redeem-growth="-0.8882660687593423"
+                data-payment-growth="-0.8412157239851968">
+              <td class="rank">40</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>聊宁片区</strong></td>
+              <td><strong>麗枫酒店(聊城万达广场店)</strong><small>聊城市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">299</td>
+              <td class="num">545</td>
+              <td class="num">1</td>
+              <td class="num">2</td>
+              <td class="num negative">-88.8%</td>
+              <td class="num negative">-84.1%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="聊宁片区"
+                data-store="潮漫酒店(济宁汶上宝相寺店)"
+                data-city="济宁市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="209.0"
+                data-payment-current="537.0"
+                data-redeem-nights="1.0"
+                data-payment-nights="3.0"
+                data-redeem-growth="-0.5618448637316562"
+                data-payment-growth="-0.6784431137724551">
+              <td class="rank">41</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>聊宁片区</strong></td>
+              <td><strong>潮漫酒店(济宁汶上宝相寺店)</strong><small>济宁市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">209</td>
+              <td class="num">537</td>
+              <td class="num">1</td>
+              <td class="num">3</td>
+              <td class="num negative">-56.2%</td>
+              <td class="num negative">-67.8%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="聊宁片区"
+                data-store="希岸酒店(临清运河文化广场店)"
+                data-city="聊城市"
+                data-provider="未绑定服务商"
+                data-redeem-current="180.0"
+                data-payment-current="311.0"
+                data-redeem-nights="1.0"
+                data-payment-nights="2.0"
+                data-redeem-growth="-0.7235023041474654"
+                data-payment-growth="-0.5294295657436828">
+              <td class="rank">42</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>聊宁片区</strong></td>
+              <td><strong>希岸酒店(临清运河文化广场店)</strong><small>聊城市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">180</td>
+              <td class="num">311</td>
+              <td class="num">1</td>
+              <td class="num">2</td>
+              <td class="num negative">-72.4%</td>
+              <td class="num negative">-52.9%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="聊宁片区"
+                data-store="希岸酒店(聊城市中心东昌湖店)"
+                data-city="聊城市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="179.0"
+                data-payment-current="1353.0"
+                data-redeem-nights="1.0"
+                data-payment-nights="7.0"
+                data-redeem-growth="-0.7858851674641149"
+                data-payment-growth="-0.31666666666666665">
+              <td class="rank">43</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>聊宁片区</strong></td>
+              <td><strong>希岸酒店(聊城市中心东昌湖店)</strong><small>聊城市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">179</td>
+              <td class="num">1,353</td>
+              <td class="num">1</td>
+              <td class="num">7</td>
+              <td class="num negative">-78.6%</td>
+              <td class="num negative">-31.7%</td>
+            </tr>
+            </tbody>
+        </table>
+      </div>
+    </article>
+      <article class="panel local-panel" data-panel="growth" style="display:none">
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>#</th><th>门店 / 服务商</th><th>本期支付</th><th>上期支付</th><th>增减额</th><th>经营渠道拆解</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="rank">01</td>
+              <td><strong>希岸酒店(聊城开发区当代购物中心店)</strong><small>聊城市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">3,237</td>
+              <td class="num">1,603</td>
+              <td class="num positive">+1,634</td>
+              <td class="channel-stack"><span class="channel-chip positive">短视频 +10</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">02</td>
+              <td><strong>白玉兰酒店(聊城开发区振华购物中心店)</strong><small>聊城市 · 未绑定服务商</small></td>
+              <td class="num">2,359</td>
+              <td class="num">1,060</td>
+              <td class="num positive">+1,299</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">03</td>
+              <td><strong>麗枫酒店(济宁嘉祥高铁站汽车总站店)</strong><small>济宁市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">2,780</td>
+              <td class="num">1,523</td>
+              <td class="num positive">+1,257</td>
+              <td class="channel-stack"><span class="channel-chip positive">短视频 +199</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">04</td>
+              <td><strong>白玉兰商务酒店(聊城临清新汽车站店)</strong><small>聊城市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">1.20万</td>
+              <td class="num">1.11万</td>
+              <td class="num positive">+918</td>
+              <td class="channel-stack"><span class="channel-chip positive">短视频 +925</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">05</td>
+              <td><strong>白玉兰酒店(梁山水泊东路龙城广场店)</strong><small>济宁市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">5,433</td>
+              <td class="num">4,547</td>
+              <td class="num positive">+886</td>
+              <td class="channel-stack"><span class="channel-chip negative">短视频 -122</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">06</td>
+              <td><strong>IU酒店(嘉祥兖兰路火车站店)</strong><small>济宁市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">1,844</td>
+              <td class="num">990</td>
+              <td class="num positive">+854</td>
+              <td class="channel-stack"><span class="channel-chip negative">短视频 -99</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">07</td>
+              <td><strong>白玉兰酒店(冠县武训大道三中店)</strong><small>聊城市 · 未绑定服务商</small></td>
+              <td class="num">2,749</td>
+              <td class="num">1,907</td>
+              <td class="num positive">+842</td>
+              <td class="channel-stack"><span class="channel-chip positive">自播 +557</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">08</td>
+              <td><strong>白玉兰商务酒店(济宁嘉祥曾子大道店)</strong><small>济宁市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">2,900</td>
+              <td class="num">2,195</td>
+              <td class="num positive">+705</td>
+              <td class="channel-stack"><span class="channel-chip positive">短视频 +30</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">09</td>
+              <td><strong>维也纳酒店(5.0聊城阳谷店)</strong><small>聊城市 · 未绑定服务商</small></td>
+              <td class="num">975</td>
+              <td class="num">449</td>
+              <td class="num positive">+526</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">10</td>
+              <td><strong>非繁·轻居酒店(聊城综合楼花园路店)</strong><small>聊城市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">882</td>
+              <td class="num">464</td>
+              <td class="num positive">+418</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+            </tbody>
+        </table>
+      </div>
+    </article>
+      <article class="panel local-panel" data-panel="decline" style="display:none">
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>#</th><th>门店 / 服务商</th><th>本期支付</th><th>上期支付</th><th>增减额</th><th>经营渠道拆解</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="rank">01</td>
+              <td><strong>麗枫酒店(聊城临清市温泉路高铁站店)</strong><small>聊城市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">7,862</td>
+              <td class="num">1.86万</td>
+              <td class="num negative">-1.08万</td>
+              <td class="channel-stack"><span class="channel-chip negative">短视频 -2,792</span><span class="channel-chip negative">自播 -189</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">02</td>
+              <td><strong>康铂酒店(聊城万达广场店)</strong><small>聊城市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">7,789</td>
+              <td class="num">1.41万</td>
+              <td class="num negative">-6,291</td>
+              <td class="channel-stack"><span class="channel-chip negative">短视频 -756</span><span class="channel-chip positive">自播 +269</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">03</td>
+              <td><strong>白玉兰酒店(聊城火车站东昌湖店)</strong><small>聊城市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">1,323</td>
+              <td class="num">4,998</td>
+              <td class="num negative">-3,675</td>
+              <td class="channel-stack"><span class="channel-chip negative">短视频 -219</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">04</td>
+              <td><strong>麗枫酒店(聊城东昌湖店)</strong><small>聊城市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">7,481</td>
+              <td class="num">1.07万</td>
+              <td class="num negative">-3,189</td>
+              <td class="channel-stack"><span class="channel-chip negative">短视频 -438</span><span class="channel-chip negative">自播 -199</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">05</td>
+              <td><strong>希岸酒店(聊城火车站东昌湖景区店)</strong><small>聊城市 · 未绑定服务商</small></td>
+              <td class="num">195</td>
+              <td class="num">3,138</td>
+              <td class="num negative">-2,943</td>
+              <td class="channel-stack"><span class="channel-chip negative">短视频 -169</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">06</td>
+              <td><strong>麗枫酒店(聊城万达广场店)</strong><small>聊城市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">545</td>
+              <td class="num">3,432</td>
+              <td class="num negative">-2,887</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">07</td>
+              <td><strong>麗枫酒店(高唐双隆购物广场店)</strong><small>聊城市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">609</td>
+              <td class="num">3,473</td>
+              <td class="num negative">-2,864</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">08</td>
+              <td><strong>7天酒店(济宁嘉祥古城街店)</strong><small>济宁市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">1,283</td>
+              <td class="num">4,105</td>
+              <td class="num negative">-2,822</td>
+              <td class="channel-stack"><span class="channel-chip negative">短视频 -149</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">09</td>
+              <td><strong>维也纳酒店(聊城铁塔金鼎店)</strong><small>聊城市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">4,863</td>
+              <td class="num">7,661</td>
+              <td class="num negative">-2,798</td>
+              <td class="channel-stack"><span class="channel-chip negative">短视频 -299</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">10</td>
+              <td><strong>维也纳3好酒店(东阿府前街店)</strong><small>聊城市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">795</td>
+              <td class="num">3,089</td>
+              <td class="num negative">-2,294</td>
+              <td class="channel-stack"><span class="channel-chip negative">短视频 -159</span></td>
+            </tr>
+            </tbody>
+        </table>
+      </div>
+    </article>
+    </section>
+
+    <section class="section" id="attribution">
+      <div class="section-head"><div><h2>增长归因</h2><p>保留全部交易体裁，分别查看支付与核销增减及绑定服务商贡献</p></div></div>
+      <div class="grid-2 equal"><article class="panel"><div class="panel-head"><div><h2>经营渠道变化</h2><p>本期对比上期 · 支付和核销 · 服务商明细 · 单位：元</p></div></div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr>
+            <th><button class="sort-trigger channel-sort-trigger" type="button" data-sort-key="channel" onclick="sortChannelTable('channel')" title="按渠道名称排序">经营渠道 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger channel-sort-trigger" type="button" data-sort-key="payment-current" onclick="sortChannelTable('payment-current')" title="按本期支付额排序">本期支付 <span class="sort-indicator"></span></button></th>
+            <th>上期支付</th>
+            <th><button class="sort-trigger channel-sort-trigger" type="button" data-sort-key="payment-delta" onclick="sortChannelTable('payment-delta')" title="按支付增减排序">支付增减 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger channel-sort-trigger" type="button" data-sort-key="payment-growth" onclick="sortChannelTable('payment-growth')" title="按支付增长率排序">支付增长率 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger channel-sort-trigger" type="button" data-sort-key="redeem-current" onclick="sortChannelTable('redeem-current')" title="按本期核销额排序">本期核销 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger channel-sort-trigger" type="button" data-sort-key="redeem-previous" onclick="sortChannelTable('redeem-previous')" title="按上期核销额排序">上期核销 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger channel-sort-trigger" type="button" data-sort-key="redeem-delta" onclick="sortChannelTable('redeem-delta')" title="按核销增减排序">核销增减 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger channel-sort-trigger" type="button" data-sort-key="redeem-growth" onclick="sortChannelTable('redeem-growth')" title="按核销增长率排序">核销增长率 <span class="sort-indicator"></span></button></th>
+            <th>绑定服务商及增减</th>
+          </tr></thead>
+          <tbody id="channel-attribution-body">
+            <tr data-channel="自播"
+                data-payment-current="2645.0"
+                data-payment-delta="-895.0"
+                data-payment-growth="-0.2528248587570622"
+                data-redeem-current="936.0"
+                data-redeem-previous="328.0"
+                data-redeem-delta="608.0"
+                data-redeem-growth="1.8536585365853657">
+              <td><strong>自播</strong></td>
+              <td class="num">2,645</td>
+              <td class="num">3,540</td>
+              <td class="num negative">-895</td>
+              <td class="num">-25.3%</td>
+              <td class="num">936</td>
+              <td class="num">328</td>
+              <td class="num positive">+608</td>
+              <td class="num">+185.4%</td>
+              <td class="channel-stack"><span class="channel-chip negative">杭州四库传媒有限公司 支付 -1,283 · 核销 +449</span><span class="channel-chip positive">未绑定服务商 支付 +557 · 核销 +159</span><span class="channel-chip negative">河南叁伍柒科技有限公司 支付 -169 · 核销 0</span></td>
+            </tr>
+
+            <tr data-channel="短视频"
+                data-payment-current="4862.799999999999"
+                data-payment-delta="-5075.1"
+                data-payment-growth="-0.5106813310659194"
+                data-redeem-current="1822.0"
+                data-redeem-previous="2669.0"
+                data-redeem-delta="-847.0"
+                data-redeem-growth="-0.31734732109404273">
+              <td><strong>短视频</strong></td>
+              <td class="num">4,863</td>
+              <td class="num">9,938</td>
+              <td class="num negative">-5,075</td>
+              <td class="num">-51.1%</td>
+              <td class="num">1,822</td>
+              <td class="num">2,669</td>
+              <td class="num negative">-847</td>
+              <td class="num">-31.7%</td>
+              <td class="channel-stack"><span class="channel-chip negative">杭州四库传媒有限公司 支付 -4,568 · 核销 -867</span><span class="channel-chip negative">河南叁伍柒科技有限公司 支付 -338 · 核销 +20</span><span class="channel-chip negative">未绑定服务商 支付 -169 · 核销 0</span></td>
+            </tr>
+
+            <tr data-channel="其他"
+                data-payment-current="35459.40000000001"
+                data-payment-delta="-20597.40000000001"
+                data-payment-growth="-0.36743802714389695"
+                data-redeem-current="28989.1"
+                data-redeem-previous="16611.0"
+                data-redeem-delta="12378.099999999999"
+                data-redeem-growth="0.7451748841129371">
+              <td><strong>其他</strong></td>
+              <td class="num">3.55万</td>
+              <td class="num">5.61万</td>
+              <td class="num negative">-2.06万</td>
+              <td class="num">-36.7%</td>
+              <td class="num">2.90万</td>
+              <td class="num">1.66万</td>
+              <td class="num positive">+1.24万</td>
+              <td class="num">+74.5%</td>
+              <td class="channel-stack"><span class="channel-chip negative">杭州四库传媒有限公司 支付 -1.89万 · 核销 +1.23万</span><span class="channel-chip negative">未绑定服务商 支付 -1,283 · 核销 +827</span><span class="channel-chip negative">河南叁伍柒科技有限公司 支付 -378 · 核销 -706</span></td>
+            </tr>
+
+            <tr data-channel="搜索结果卡"
+                data-payment-current="54074.50000000006"
+                data-payment-delta="-20144.39999999976"
+                data-payment-growth="-0.2714187356589738"
+                data-redeem-current="45080.15"
+                data-redeem-previous="35602.0"
+                data-redeem-delta="9478.150000000001"
+                data-redeem-growth="0.2662252120667379">
+              <td><strong>搜索结果卡</strong></td>
+              <td class="num">5.41万</td>
+              <td class="num">7.42万</td>
+              <td class="num negative">-2.01万</td>
+              <td class="num">-27.1%</td>
+              <td class="num">4.51万</td>
+              <td class="num">3.56万</td>
+              <td class="num positive">+9,478</td>
+              <td class="num">+26.6%</td>
+              <td class="channel-stack"><span class="channel-chip negative">杭州四库传媒有限公司 支付 -2.00万 · 核销 +7,735</span><span class="channel-chip negative">未绑定服务商 支付 -151 · 核销 +1,007</span><span class="channel-chip positive">河南叁伍柒科技有限公司 支付 +30 · 核销 +736</span></td>
+            </tr>
+
+            <tr data-channel="获客卡"
+                data-payment-current="6132.199999999999"
+                data-payment-delta="-1802.800000000001"
+                data-payment-growth="-0.22719596723377455"
+                data-redeem-current="2787.0"
+                data-redeem-previous="956.0"
+                data-redeem-delta="1831.0"
+                data-redeem-growth="1.9152719665271967">
+              <td><strong>获客卡</strong></td>
+              <td class="num">6,132</td>
+              <td class="num">7,935</td>
+              <td class="num negative">-1,803</td>
+              <td class="num">-22.7%</td>
+              <td class="num">2,787</td>
+              <td class="num">956</td>
+              <td class="num positive">+1,831</td>
+              <td class="num">+191.5%</td>
+              <td class="channel-stack"><span class="channel-chip negative">杭州四库传媒有限公司 支付 -1,763 · 核销 +2,000</span><span class="channel-chip negative">河南叁伍柒科技有限公司 支付 -149 · 核销 -169</span><span class="channel-chip positive">未绑定服务商 支付 +109 · 核销 0</span></td>
+            </tr>
+            </tbody>
+        </table>
+      </div>
+    </article>
+      <article class="panel"><div class="panel-head"><div><h2>增长 / 下滑摘要</h2><p>按支付 GMV 增减额排序</p></div></div>
+        <div class="insights">
+          <div class="insight"><b>最大增长门店</b><p>希岸酒店(聊城开发区当代购物中心店) · +1,634 · 杭州四库传媒有限公司</p><span class="tag good">短视频</span></div>
+          <div class="insight"><b>最大下滑门店</b><p>麗枫酒店(聊城临清市温泉路高铁站店) · -1.08万 · 杭州四库传媒有限公司</p><span class="tag warn">短视频</span></div>
+        </div>
+      </article></div>
+    </section>
+
+    <section class="section" id="providers">
+      <div class="section-head"><div><h2>头部服务商表现</h2><p>按绑定门店数展示前 8 家主要服务商</p></div></div>
+      <div class="grid-2"><article class="panel"><div class="panel-head"><div><h2>服务商累计表现</h2><p>支付、核销、绑定规模与单店产出 · 金额单位：万元</p></div></div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>#</th><th>服务商</th><th>绑定门店</th><th>动销门店</th><th>支付 GMV</th><th>支付增长率</th><th>核销 GMV</th><th>核销增长率</th><th>平均单店支付</th><th>单店支付增长率</th><th>平均单店核销</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="rank">01</td>
+              <td><strong>杭州四库传媒有限公司</strong></td>
+              <td class="num">36家</td>
+              <td class="num">36家</td>
+              <td class="num">9.50万</td>
+              <td class="num negative">-32.9%</td>
+              <td class="num">7.29万</td>
+              <td class="num positive">+42.0%</td>
+              <td class="num">2,640</td>
+              <td class="num negative">-32.9%</td>
+              <td class="num">2,026</td>
+            </tr>
+
+            <tr>
+              <td class="rank">02</td>
+              <td><strong>未绑定服务商</strong></td>
+              <td class="num">0家</td>
+              <td class="num">6家</td>
+              <td class="num">7,237</td>
+              <td class="num negative">-11.5%</td>
+              <td class="num">5,592</td>
+              <td class="num positive">+55.4%</td>
+              <td class="num">1,206</td>
+              <td class="num negative">-11.5%</td>
+              <td class="num">932</td>
+            </tr>
+
+            <tr>
+              <td class="rank">03</td>
+              <td><strong>河南叁伍柒科技有限公司</strong></td>
+              <td class="num">1家</td>
+              <td class="num">1家</td>
+              <td class="num">895</td>
+              <td class="num negative">-52.9%</td>
+              <td class="num">1,094</td>
+              <td class="num negative">-9.8%</td>
+              <td class="num">895</td>
+              <td class="num negative">-52.9%</td>
+              <td class="num">1,094</td>
+            </tr>
+            </tbody>
+        </table>
+      </div>
+    </article>
+      <article class="panel"><div class="panel-head"><div><h2>服务商水平</h2><p>平均单店支付产出柱状图 · 单位：万元</p></div></div>
+        <div class="insights"><div class="insight"><b>杭州四库传媒有限公司</b><p>2,640 /家支付 · 2,026 /家核销 · 36家动销</p><div class="bar-wrap"><span class="segment-bar calendar" style="width:100.0%"></span></div><span class="tag warn">单店产出 -32.9%</span></div><div class="insight"><b>未绑定服务商</b><p>1,206 /家支付 · 932 /家核销 · 6家动销</p><div class="bar-wrap"><span class="segment-bar calendar" style="width:45.7%"></span></div><span class="tag warn">单店产出 -11.5%</span></div><div class="insight"><b>河南叁伍柒科技有限公司</b><p>895 /家支付 · 1,094 /家核销 · 1家动销</p><div class="bar-wrap"><span class="segment-bar calendar" style="width:33.9%"></span></div><span class="tag warn">单店产出 -52.9%</span></div></div>
+      </article></div>
+    </section>
+
+    <section class="section" id="voucher">
+      <div class="section-head"><div><h2>通兑商品</h2><p>省区合计 · 仅展示支付与核销趋势，不拆分 SKU</p></div></div>
+      <div class="kpis">
+        <article class="kpi"><span class="kpi-label">通兑支付 GMV</span><b class="kpi-value">5,464</b><div class="kpi-foot"><span>本期 7 天累计</span><span>支付券 19张</span></div></article>
+        <article class="kpi"><span class="kpi-label">通兑核销 GMV</span><b class="kpi-value">924</b><div class="kpi-foot"><span>本期 7 天累计</span><span>核销券 6张</span></div></article>
+      </div>
+      <article class="panel" style="margin-top:16px">
+        <div class="panel-head trend-panel-head"><div class="trend-heading"><h2>支付与核销趋势</h2><span class="trend-range">10-03–10-09 · 单位：万元</span></div><div class="legend"><span><i style="background:var(--blue)"></i>支付</span><span><i style="background:var(--orange)"></i>核销</span></div></div>
+        <div class="chart-scroll">
+      <svg class="chart-svg" viewBox="0 0 760 300" role="img"
+           aria-label="支付与核销日趋势，单位万元">
+        <line x1="54" y1="34.0" x2="736" y2="34.0" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="104.6" x2="736" y2="104.6" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="175.2" x2="736" y2="175.2" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="248.0" x2="736" y2="248.0" stroke="#ECEEF3" stroke-width="1"/><text x="44" y="38.0" text-anchor="end" class="axis-label">0.3</text><text x="44" y="145.0" text-anchor="end" class="axis-label">0.1</text><text x="44" y="252.0" text-anchor="end" class="axis-label">0.0</text>
+        <path d="M54.0 107.7 L167.7 34.0 L281.3 224.6 L395.0 248.0 L508.7 224.6 L622.3 212.9 L736.0 224.6" fill="none" stroke="#1677FF"
+              stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M54.0 248.0 L167.7 222.9 L281.3 235.5 L395.0 235.5 L508.7 248.0 L622.3 248.0 L736.0 220.4" fill="none" stroke="#FF8A3D"
+              stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle class="trend-point payment-point" cx="54.0" cy="107.7" r="5" fill="#1677FF"/><text x="58.0" y="95.7" text-anchor="start" class="point-label payment-label" fill="#1677FF">0.2万</text><circle class="trend-point payment-point" cx="167.7" cy="34.0" r="5" fill="#1677FF"/><text x="167.7" y="22.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.3万</text><circle class="trend-point payment-point" cx="281.3" cy="224.6" r="5" fill="#1677FF"/><text x="281.3" y="212.6" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="395.0" cy="248.0" r="5" fill="#1677FF"/><text x="395.0" y="236.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="508.7" cy="224.6" r="5" fill="#1677FF"/><text x="508.7" y="212.6" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="622.3" cy="212.9" r="5" fill="#1677FF"/><text x="622.3" y="200.9" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="736.0" cy="224.6" r="5" fill="#1677FF"/><text x="732.0" y="212.6" text-anchor="end" class="point-label payment-label" fill="#1677FF">0.0万</text>
+        <circle class="trend-point redeem-point" cx="54.0" cy="248.0" r="5" fill="#FF8A3D"/><text x="58.0" y="272.0" text-anchor="start" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="167.7" cy="222.9" r="5" fill="#FF8A3D"/><text x="167.7" y="246.9" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="281.3" cy="235.5" r="5" fill="#FF8A3D"/><text x="281.3" y="259.5" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="395.0" cy="235.5" r="5" fill="#FF8A3D"/><text x="395.0" y="259.5" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="508.7" cy="248.0" r="5" fill="#FF8A3D"/><text x="508.7" y="272.0" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="622.3" cy="248.0" r="5" fill="#FF8A3D"/><text x="622.3" y="272.0" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="736.0" cy="220.4" r="5" fill="#FF8A3D"/><text x="732.0" y="244.4" text-anchor="end" class="point-label redeem-label" fill="#FF8A3D">0.0万</text>
+        <text x="54.0" y="288" text-anchor="middle" class="axis-label">10-03</text><text x="167.7" y="288" text-anchor="middle" class="axis-label">10-04</text><text x="281.3" y="288" text-anchor="middle" class="axis-label">10-05</text><text x="395.0" y="288" text-anchor="middle" class="axis-label">10-06</text><text x="508.7" y="288" text-anchor="middle" class="axis-label">10-07</text><text x="622.3" y="288" text-anchor="middle" class="axis-label">10-08</text><text x="736.0" y="288" text-anchor="middle" class="axis-label">10-09</text>
+      </svg>
+    </div>
+      </article>
+    </section>
+
+
+    <section class="section" id="merchant-live">
+      <div class="section-head"><div><h2>商家自播</h2><p>商家官号 · 近 7 日对比前 7 日 · 数据来源：生意经</p></div></div>
+      <div class="kpis">
+        <article class="kpi"><span class="kpi-label">直播成交金额</span><b class="kpi-value">2,506</b><div class="kpi-foot"><span class="negative">-26.1%</span><span>较前 7 日 3,391</span></div></article>
+        <article class="kpi"><span class="kpi-label">直播场次</span><b class="kpi-value">86<small style="font-size:14px">场</small></b><div class="kpi-foot"><span class="negative">-5.5%</span><span>较前 7 日 91场</span></div></article>
+        <article class="kpi"><span class="kpi-label">直播时长</span><b class="kpi-value">130.9小时</b><div class="kpi-foot"><span class="negative">-17.9%</span><span>较前 7 日 159.5小时</span></div></article>
+        <article class="kpi"><span class="kpi-label">开播账号</span><b class="kpi-value">14<small style="font-size:14px">个</small></b><div class="kpi-foot"><span class="negative">-3个</span><span>较前 7 日</span></div></article>
+      </div>
+      <article class="panel" style="margin-top:16px">
+        <div class="panel-head trend-panel-head"><div class="trend-heading"><h2>直播成交与时长每日趋势</h2><span class="trend-range">10-03–10-09</span></div></div>
+        <div class="chart-scroll merchant-trend-scroll">
+      <div class="merchant-trend-canvas">
+        <svg class="chart-svg merchant-amount-chart" viewBox="0 0 760 245"
+             role="img" aria-label="商家官号直播成交金额每日趋势，单位万元">
+          <line x1="54" y1="34.0" x2="736" y2="34.0" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="122.5" x2="736" y2="122.5" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="211.0" x2="736" y2="211.0" stroke="#ECEEF3" stroke-width="1"/><text x="44" y="38.0" text-anchor="end" class="axis-label">0.1</text><text x="44" y="126.5" text-anchor="end" class="axis-label">0.1</text><text x="44" y="215.0" text-anchor="end" class="axis-label">0.0</text>
+          <path d="M54.0 34.0 L167.7 103.9 L281.3 190.4 L395.0 211.0 L508.7 190.4 L622.3 211.0 L736.0 211.0" fill="none" stroke="#8B6DFF"
+                stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle class="merchant-live-point" cx="54.0" cy="34.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="58.0" y="22.0" text-anchor="start" fill="#8B6DFF">0.1万</text><circle class="merchant-live-point" cx="167.7" cy="103.9" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="167.7" y="91.9" text-anchor="middle" fill="#8B6DFF">0.1万</text><circle class="merchant-live-point" cx="281.3" cy="190.4" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="281.3" y="178.4" text-anchor="middle" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="395.0" cy="211.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="395.0" y="199.0" text-anchor="middle" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="508.7" cy="190.4" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="508.7" y="178.4" text-anchor="middle" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="622.3" cy="211.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="622.3" y="199.0" text-anchor="middle" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="736.0" cy="211.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="732.0" y="199.0" text-anchor="end" fill="#8B6DFF">0.0万</text>
+        </svg>
+        <div class="merchant-subchart-title">每日直播时长 <span>单位：小时</span></div>
+        <svg class="chart-svg merchant-duration-chart" viewBox="0 0 760 155"
+             role="img" aria-label="商家官号每日直播时长，单位小时">
+          <line x1="54" y1="28.0" x2="736" y2="28.0" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="121.0" x2="736" y2="121.0" stroke="#ECEEF3" stroke-width="1"/><rect class="merchant-duration-bar" x="31.6" y="37.0" width="44.8" height="84.0" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="54.0" y="30.0" text-anchor="middle" fill="#00A7A0">21.4h</text><rect class="merchant-duration-bar" x="145.3" y="62.8" width="44.8" height="58.2" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="167.7" y="55.8" text-anchor="middle" fill="#00A7A0">14.8h</text><rect class="merchant-duration-bar" x="258.9" y="50.0" width="44.8" height="71.0" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="281.3" y="43.0" text-anchor="middle" fill="#00A7A0">18.1h</text><rect class="merchant-duration-bar" x="372.6" y="44.9" width="44.8" height="76.1" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="395.0" y="37.9" text-anchor="middle" fill="#00A7A0">19.4h</text><rect class="merchant-duration-bar" x="486.3" y="58.8" width="44.8" height="62.2" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="508.7" y="51.8" text-anchor="middle" fill="#00A7A0">15.9h</text><rect class="merchant-duration-bar" x="599.9" y="28.0" width="44.8" height="93.0" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="622.3" y="21.0" text-anchor="middle" fill="#00A7A0">23.7h</text><rect class="merchant-duration-bar" x="713.6" y="51.8" width="44.8" height="69.2" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="736.0" y="44.8" text-anchor="middle" fill="#00A7A0">17.6h</text><text x="54.0" y="145" text-anchor="middle" class="axis-label">10-03</text><text x="167.7" y="145" text-anchor="middle" class="axis-label">10-04</text><text x="281.3" y="145" text-anchor="middle" class="axis-label">10-05</text><text x="395.0" y="145" text-anchor="middle" class="axis-label">10-06</text><text x="508.7" y="145" text-anchor="middle" class="axis-label">10-07</text><text x="622.3" y="145" text-anchor="middle" class="axis-label">10-08</text><text x="736.0" y="145" text-anchor="middle" class="axis-label">10-09</text>
+        </svg>
+      </div>
+    </div>
+      </article>
+      <div class="grid-2 equal">
+        <article class="panel"><div class="panel-head"><div><h2>城市自播排名</h2><p>固定区域城市全集 · 可筛选零开播城市并点击业务列排序</p></div></div>
+      <div class="filter-bar merchant-filter-bar">
+        <input id="merchant-city-search" type="search" placeholder="搜索城市"
+               aria-label="搜索城市">
+        <select id="merchant-city-status-filter" aria-label="按开播状态筛选城市">
+          <option value="">全部状态</option>
+          <option value="有开播">有开播</option>
+          <option value="零开播">零开播</option>
+        </select>
+        <span id="merchant-city-result-count" class="filter-count"></span>
+      </div>
+      <div class="table-scroll">
+        <table class="merchant-table">
+          <thead><tr>
+            <th>#</th>
+            <th><button class="sort-trigger merchant-city-sort-trigger" type="button" data-sort-key="city-name" onclick="sortMerchantCityTable('city-name')" title="按城市排序">城市 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-city-sort-trigger" type="button" data-sort-key="city-live-amount" onclick="sortMerchantCityTable('city-live-amount')" title="按直播成交金额排序">直播成交金额 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-city-sort-trigger" type="button" data-sort-key="city-live-sessions" onclick="sortMerchantCityTable('city-live-sessions')" title="按直播场次排序">直播场次 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-city-sort-trigger" type="button" data-sort-key="city-live-hours" onclick="sortMerchantCityTable('city-live-hours')" title="按直播时长排序">直播时长 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-city-sort-trigger" type="button" data-sort-key="city-account-count" onclick="sortMerchantCityTable('city-account-count')" title="按账号数排序">账号数 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-city-sort-trigger" type="button" data-sort-key="city-live-account-count" onclick="sortMerchantCityTable('city-live-account-count')" title="按开播账号排序">开播账号 <span class="sort-indicator">↕</span></button></th>
+          </tr></thead>
+          <tbody id="merchant-city-body">
+        <tr data-city-name="聊城市"
+            data-city-status="有开播"
+            data-city-live-amount="2506.0"
+            data-city-live-sessions="78.0"
+            data-city-live-hours="122.14166666666667"
+            data-city-account-count="17.0"
+            data-city-live-account-count="12.0">
+          <td class="rank">01</td>
+          <td><strong>聊城市</strong><small><span class="live-status 有开播">有开播</span></small></td>
+          <td class="num">2,506</td>
+          <td class="num">78</td>
+          <td class="num">122.1小时</td>
+          <td class="num">17</td>
+          <td class="num">12</td>
+        </tr>
+
+        <tr data-city-name="济宁市"
+            data-city-status="有开播"
+            data-city-live-amount="0.0"
+            data-city-live-sessions="8.0"
+            data-city-live-hours="8.805277777777778"
+            data-city-account-count="4.0"
+            data-city-live-account-count="2.0">
+          <td class="rank">02</td>
+          <td><strong>济宁市</strong><small><span class="live-status 有开播">有开播</span></small></td>
+          <td class="num">0</td>
+          <td class="num">8</td>
+          <td class="num">8.8小时</td>
+          <td class="num">4</td>
+          <td class="num">2</td>
+        </tr>
+        </tbody>
+        </table>
+      </div>
+    </article>
+        <article class="panel"><div class="panel-head"><div><h2>账号明细</h2><p>14 日出现账号全集 · “未直播”为近 7 日直播场次等于 0</p></div></div>
+      <div class="filter-bar merchant-filter-bar">
+        <input id="merchant-account-search" type="search"
+               placeholder="搜索账号、ID 或门店" aria-label="搜索账号、ID 或门店">
+        <select id="merchant-account-city-filter" aria-label="按城市筛选账号">
+          <option value="">全部城市</option><option value="济宁市">济宁市</option><option value="聊城市">聊城市</option>
+        </select>
+        <select id="merchant-account-status-filter" aria-label="按直播状态筛选账号">
+          <option value="">全部状态</option>
+          <option value="已直播">已直播</option>
+          <option value="未直播">未直播</option>
+        </select>
+        <span id="merchant-account-result-count" class="filter-count"></span>
+      </div>
+      <div class="table-scroll">
+        <table class="merchant-table">
+          <thead><tr>
+            <th>#</th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-name" onclick="sortMerchantAccountTable('account-name')" title="按抖音号排序">抖音号 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-city" onclick="sortMerchantAccountTable('account-city')" title="按城市 / 门店排序">城市 / 门店 <span class="sort-indicator">↕</span></button></th>
+            <th>一级省区 / 二级片区</th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-live-amount" onclick="sortMerchantAccountTable('account-live-amount')" title="按直播成交金额排序">直播成交金额 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-live-sessions" onclick="sortMerchantAccountTable('account-live-sessions')" title="按直播场次排序">直播场次 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-live-hours" onclick="sortMerchantAccountTable('account-live-hours')" title="按直播时长排序">直播时长 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-total-amount" onclick="sortMerchantAccountTable('account-total-amount')" title="按总成交金额排序">总成交金额 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-redeem-amount" onclick="sortMerchantAccountTable('account-redeem-amount')" title="按总核销金额排序">总核销金额 <span class="sort-indicator">↕</span></button></th>
+          </tr></thead>
+          <tbody id="merchant-account-body">
+        <tr data-account-name="冠县白玉兰酒店"
+            data-account-id="33058837961"
+            data-account-city="聊城市"
+            data-account-store="白玉兰酒店(冠县武训大道三中店)"
+            data-account-province="鲁西省区"
+            data-account-area="聊宁片区"
+            data-account-status="已直播"
+            data-account-live-amount="1272.0"
+            data-account-live-sessions="14.0"
+            data-account-live-hours="26.541944444444443"
+            data-account-total-amount="1272.0"
+            data-account-redeem-amount="318.0">
+          <td class="rank">01</td>
+          <td><strong>冠县白玉兰酒店</strong><small>33058837961 · <span class="live-status 已直播">已直播</span></small></td>
+          <td>聊城市<small>白玉兰酒店(冠县武训大道三中店)</small></td>
+          <td>鲁西省区<small>聊宁片区</small></td>
+          <td class="num">1,272</td>
+          <td class="num">14</td>
+          <td class="num">26.5小时</td>
+          <td class="num">1,272</td>
+          <td class="num">318</td>
+        </tr>
+
+        <tr data-account-name="丽枫酒店(聊城临清市温泉路高铁站店)"
+            data-account-id="23731887100"
+            data-account-city="聊城市"
+            data-account-store="麗枫酒店(聊城临清市温泉路高铁站店)"
+            data-account-province="鲁西省区"
+            data-account-area="聊宁片区"
+            data-account-status="已直播"
+            data-account-live-amount="965.0"
+            data-account-live-sessions="6.0"
+            data-account-live-hours="13.480277777777777"
+            data-account-total-amount="965.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">02</td>
+          <td><strong>丽枫酒店(聊城临清市温泉路高铁站店)</strong><small>23731887100 · <span class="live-status 已直播">已直播</span></small></td>
+          <td>聊城市<small>麗枫酒店(聊城临清市温泉路高铁站店)</small></td>
+          <td>鲁西省区<small>聊宁片区</small></td>
+          <td class="num">965</td>
+          <td class="num">6</td>
+          <td class="num">13.5小时</td>
+          <td class="num">965</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="康铂酒店(聊城万达广场店)专用号"
+            data-account-id="JJ06355036000"
+            data-account-city="聊城市"
+            data-account-store="康铂酒店(聊城万达广场店)"
+            data-account-province="鲁西省区"
+            data-account-area="聊宁片区"
+            data-account-status="已直播"
+            data-account-live-amount="269.0"
+            data-account-live-sessions="16.0"
+            data-account-live-hours="14.405"
+            data-account-total-amount="269.0"
+            data-account-redeem-amount="269.0">
+          <td class="rank">03</td>
+          <td><strong>康铂酒店(聊城万达广场店)专用号</strong><small>JJ06355036000 · <span class="live-status 已直播">已直播</span></small></td>
+          <td>聊城市<small>康铂酒店(聊城万达广场店)</small></td>
+          <td>鲁西省区<small>聊宁片区</small></td>
+          <td class="num">269</td>
+          <td class="num">16</td>
+          <td class="num">14.4小时</td>
+          <td class="num">269</td>
+          <td class="num">269</td>
+        </tr>
+
+        <tr data-account-name="白玉兰酒店(聊城开发区黑龙江路店)专用号"
+            data-account-id="65568324956"
+            data-account-city="聊城市"
+            data-account-store="白玉兰酒店(聊城黑龙江路东昌学院店)"
+            data-account-province="鲁西省区"
+            data-account-area="聊宁片区"
+            data-account-status="已直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="8.0"
+            data-account-live-hours="15.180277777777777"
+            data-account-total-amount="237.9"
+            data-account-redeem-amount="349.0">
+          <td class="rank">04</td>
+          <td><strong>白玉兰酒店(聊城开发区黑龙江路店)专用号</strong><small>65568324956 · <span class="live-status 已直播">已直播</span></small></td>
+          <td>聊城市<small>白玉兰酒店(聊城黑龙江路东昌学院店)</small></td>
+          <td>鲁西省区<small>聊宁片区</small></td>
+          <td class="num">0</td>
+          <td class="num">8</td>
+          <td class="num">15.2小时</td>
+          <td class="num">238</td>
+          <td class="num">349</td>
+        </tr>
+
+        <tr data-account-name="潮漫酒店(济宁汶上宝相寺店)专用号"
+            data-account-id="58040897396"
+            data-account-city="济宁市"
+            data-account-store="潮漫酒店(济宁汶上宝相寺店)"
+            data-account-province="鲁西省区"
+            data-account-area="聊宁片区"
+            data-account-status="已直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="7.0"
+            data-account-live-hours="7.544444444444444"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">05</td>
+          <td><strong>潮漫酒店(济宁汶上宝相寺店)专用号</strong><small>58040897396 · <span class="live-status 已直播">已直播</span></small></td>
+          <td>济宁市<small>潮漫酒店(济宁汶上宝相寺店)</small></td>
+          <td>鲁西省区<small>聊宁片区</small></td>
+          <td class="num">0</td>
+          <td class="num">7</td>
+          <td class="num">7.5小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="维也纳酒店（聊城茌平建设东路店）"
+            data-account-id="46508092989"
+            data-account-city="聊城市"
+            data-account-store="维也纳酒店(5.0山东聊城茌平建设东路店)"
+            data-account-province="鲁西省区"
+            data-account-area="聊宁片区"
+            data-account-status="已直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="7.0"
+            data-account-live-hours="12.285555555555554"
+            data-account-total-amount="79.0"
+            data-account-redeem-amount="79.0">
+          <td class="rank">06</td>
+          <td><strong>维也纳酒店（聊城茌平建设东路店）</strong><small>46508092989 · <span class="live-status 已直播">已直播</span></small></td>
+          <td>聊城市<small>维也纳酒店(5.0山东聊城茌平建设东路店)</small></td>
+          <td>鲁西省区<small>聊宁片区</small></td>
+          <td class="num">0</td>
+          <td class="num">7</td>
+          <td class="num">12.3小时</td>
+          <td class="num">79</td>
+          <td class="num">79</td>
+        </tr>
+
+        <tr data-account-name="麗枫酒店(东阿阿胶街店)专用号"
+            data-account-id="51950111851"
+            data-account-city="聊城市"
+            data-account-store="麗枫酒店(东阿阿胶街店)"
+            data-account-province="鲁西省区"
+            data-account-area="聊宁片区"
+            data-account-status="已直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="6.0"
+            data-account-live-hours="6.636666666666667"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">07</td>
+          <td><strong>麗枫酒店(东阿阿胶街店)专用号</strong><small>51950111851 · <span class="live-status 已直播">已直播</span></small></td>
+          <td>聊城市<small>麗枫酒店(东阿阿胶街店)</small></td>
+          <td>鲁西省区<small>聊宁片区</small></td>
+          <td class="num">0</td>
+          <td class="num">6</td>
+          <td class="num">6.6小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="非繁城品(聊城市中心五星百货店)专用号"
+            data-account-id="61337899072"
+            data-account-city="聊城市"
+            data-account-store="非繁城品(聊城市中心五星百货店)"
+            data-account-province="鲁西省区"
+            data-account-area="聊宁片区"
+            data-account-status="已直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="5.0"
+            data-account-live-hours="8.163333333333334"
+            data-account-total-amount="278.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">08</td>
+          <td><strong>非繁城品(聊城市中心五星百货店)专用号</strong><small>61337899072 · <span class="live-status 已直播">已直播</span></small></td>
+          <td>聊城市<small>非繁城品(聊城市中心五星百货店)</small></td>
+          <td>鲁西省区<small>聊宁片区</small></td>
+          <td class="num">0</td>
+          <td class="num">5</td>
+          <td class="num">8.2小时</td>
+          <td class="num">278</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="麗枫酒店(高唐双隆购物广场店)专用号"
+            data-account-id="53530186648"
+            data-account-city="聊城市"
+            data-account-store="麗枫酒店(高唐双隆购物广场店)"
+            data-account-province="鲁西省区"
+            data-account-area="聊宁片区"
+            data-account-status="已直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="5.0"
+            data-account-live-hours="4.408888888888889"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">09</td>
+          <td><strong>麗枫酒店(高唐双隆购物广场店)专用号</strong><small>53530186648 · <span class="live-status 已直播">已直播</span></small></td>
+          <td>聊城市<small>麗枫酒店(高唐双隆购物广场店)</small></td>
+          <td>鲁西省区<small>聊宁片区</small></td>
+          <td class="num">0</td>
+          <td class="num">5</td>
+          <td class="num">4.4小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="潮漫酒店(聊城开发区店)专用号"
+            data-account-id="36856360994"
+            data-account-city="聊城市"
+            data-account-store="潮漫酒店(聊城开发区店)"
+            data-account-province="鲁西省区"
+            data-account-area="聊宁片区"
+            data-account-status="已直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="4.0"
+            data-account-live-hours="13.505277777777778"
+            data-account-total-amount="199.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">10</td>
+          <td><strong>潮漫酒店(聊城开发区店)专用号</strong><small>36856360994 · <span class="live-status 已直播">已直播</span></small></td>
+          <td>聊城市<small>潮漫酒店(聊城开发区店)</small></td>
+          <td>鲁西省区<small>聊宁片区</small></td>
+          <td class="num">0</td>
+          <td class="num">4</td>
+          <td class="num">13.5小时</td>
+          <td class="num">199</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="麗枫酒店(聊城万达广场店)专用号"
+            data-account-id="dyzul9diew5a"
+            data-account-city="聊城市"
+            data-account-store="麗枫酒店(聊城万达广场店)"
+            data-account-province="鲁西省区"
+            data-account-area="聊宁片区"
+            data-account-status="已直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="3.0"
+            data-account-live-hours="4.795"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">11</td>
+          <td><strong>麗枫酒店(聊城万达广场店)专用号</strong><small>dyzul9diew5a · <span class="live-status 已直播">已直播</span></small></td>
+          <td>聊城市<small>麗枫酒店(聊城万达广场店)</small></td>
+          <td>鲁西省区<small>聊宁片区</small></td>
+          <td class="num">0</td>
+          <td class="num">3</td>
+          <td class="num">4.8小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="潮漫酒店(聊城茌平枣乡街店)专用号"
+            data-account-id="76493071643"
+            data-account-city="聊城市"
+            data-account-store="潮漫酒店(聊城茌平枣乡街店)"
+            data-account-province="鲁西省区"
+            data-account-area="聊宁片区"
+            data-account-status="已直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="2.0"
+            data-account-live-hours="0.7027777777777778"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">12</td>
+          <td><strong>潮漫酒店(聊城茌平枣乡街店)专用号</strong><small>76493071643 · <span class="live-status 已直播">已直播</span></small></td>
+          <td>聊城市<small>潮漫酒店(聊城茌平枣乡街店)</small></td>
+          <td>鲁西省区<small>聊宁片区</small></td>
+          <td class="num">0</td>
+          <td class="num">2</td>
+          <td class="num">0.7小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="临清白玉兰商务酒店"
+            data-account-id="56935335612"
+            data-account-city="聊城市"
+            data-account-store="白玉兰商务酒店(聊城临清新汽车站店)"
+            data-account-province="鲁西省区"
+            data-account-area="聊宁片区"
+            data-account-status="已直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="2.0"
+            data-account-live-hours="2.0366666666666666"
+            data-account-total-amount="378.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">13</td>
+          <td><strong>临清白玉兰商务酒店</strong><small>56935335612 · <span class="live-status 已直播">已直播</span></small></td>
+          <td>聊城市<small>白玉兰商务酒店(聊城临清新汽车站店)</small></td>
+          <td>鲁西省区<small>聊宁片区</small></td>
+          <td class="num">0</td>
+          <td class="num">2</td>
+          <td class="num">2.0小时</td>
+          <td class="num">378</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="白玉兰商务酒店(济宁嘉祥曾子大道店)"
+            data-account-id="jxbyl"
+            data-account-city="济宁市"
+            data-account-store="白玉兰商务酒店(济宁嘉祥曾子大道店)"
+            data-account-province="鲁西省区"
+            data-account-area="聊宁片区"
+            data-account-status="已直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="1.0"
+            data-account-live-hours="1.2608333333333333"
+            data-account-total-amount="169.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">14</td>
+          <td><strong>白玉兰商务酒店(济宁嘉祥曾子大道店)</strong><small>jxbyl · <span class="live-status 已直播">已直播</span></small></td>
+          <td>济宁市<small>白玉兰商务酒店(济宁嘉祥曾子大道店)</small></td>
+          <td>鲁西省区<small>聊宁片区</small></td>
+          <td class="num">0</td>
+          <td class="num">1</td>
+          <td class="num">1.3小时</td>
+          <td class="num">169</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="白玉兰酒店（梁山水泊东路龙城广场店）"
+            data-account-id="98297028334"
+            data-account-city="济宁市"
+            data-account-store="白玉兰酒店(梁山水泊东路龙城广场店)"
+            data-account-province="鲁西省区"
+            data-account-area="聊宁片区"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">15</td>
+          <td><strong>白玉兰酒店（梁山水泊东路龙城广场店）</strong><small>98297028334 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>济宁市<small>白玉兰酒店(梁山水泊东路龙城广场店)</small></td>
+          <td>鲁西省区<small>聊宁片区</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="锦江之星(阳谷汽车站店)专用号"
+            data-account-id="97135759000"
+            data-account-city="聊城市"
+            data-account-store="锦江之星(阳谷汽车站店)"
+            data-account-province="鲁西省区"
+            data-account-area="聊宁片区"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="258.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">16</td>
+          <td><strong>锦江之星(阳谷汽车站店)专用号</strong><small>97135759000 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>聊城市<small>锦江之星(阳谷汽车站店)</small></td>
+          <td>鲁西省区<small>聊宁片区</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">258</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="维也纳国际酒店(聊城东昌湖火车站店)"
+            data-account-id="92987987636"
+            data-account-city="聊城市"
+            data-account-store="维也纳国际酒店(山东聊城东昌湖火车站高铁站店)"
+            data-account-province="鲁西省区"
+            data-account-area="聊宁片区"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">17</td>
+          <td><strong>维也纳国际酒店(聊城东昌湖火车站店)</strong><small>92987987636 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>聊城市<small>维也纳国际酒店(山东聊城东昌湖火车站高铁站店)</small></td>
+          <td>鲁西省区<small>聊宁片区</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="麗枫酒店(聊城东昌湖店)专用号"
+            data-account-id="80434333788"
+            data-account-city="聊城市"
+            data-account-store="麗枫酒店(聊城东昌湖店)"
+            data-account-province="鲁西省区"
+            data-account-area="聊宁片区"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="358.0"
+            data-account-redeem-amount="179.0">
+          <td class="rank">18</td>
+          <td><strong>麗枫酒店(聊城东昌湖店)专用号</strong><small>80434333788 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>聊城市<small>麗枫酒店(聊城东昌湖店)</small></td>
+          <td>鲁西省区<small>聊宁片区</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">358</td>
+          <td class="num">179</td>
+        </tr>
+
+        <tr data-account-name="希岸酒店(聊城火车站东昌湖景区店)"
+            data-account-id="51275537807"
+            data-account-city="聊城市"
+            data-account-store="希岸酒店(聊城火车站东昌湖景区店)"
+            data-account-province="鲁西省区"
+            data-account-area="聊宁片区"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">19</td>
+          <td><strong>希岸酒店(聊城火车站东昌湖景区店)</strong><small>51275537807 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>聊城市<small>希岸酒店(聊城火车站东昌湖景区店)</small></td>
+          <td>鲁西省区<small>聊宁片区</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="麗枫酒店（济宁嘉祥高铁站汽车总站店）"
+            data-account-id="47356522572"
+            data-account-city="济宁市"
+            data-account-store="麗枫酒店(济宁嘉祥高铁站汽车总站店)"
+            data-account-province="鲁西省区"
+            data-account-area="聊宁片区"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="199.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">20</td>
+          <td><strong>麗枫酒店（济宁嘉祥高铁站汽车总站店）</strong><small>47356522572 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>济宁市<small>麗枫酒店(济宁嘉祥高铁站汽车总站店)</small></td>
+          <td>鲁西省区<small>聊宁片区</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">199</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="维也纳酒店（聊城大学湖南路店）"
+            data-account-id="46254156404"
+            data-account-city="聊城市"
+            data-account-store="维也纳酒店(聊城大学湖南路店)"
+            data-account-province="鲁西省区"
+            data-account-area="聊宁片区"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">21</td>
+          <td><strong>维也纳酒店（聊城大学湖南路店）</strong><small>46254156404 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>聊城市<small>维也纳酒店(聊城大学湖南路店)</small></td>
+          <td>鲁西省区<small>聊宁片区</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+        </tbody>
+        </table>
+      </div>
+    </article>
+      </div>
+    </section>
+
+
+  </main>
+</div>
+<nav class="mobile-nav">
+  <button class="active" data-target="overview">总览</button><button data-target="provinces">组织</button><button data-target="stores">门店</button><button data-target="attribution">归因</button><button data-target="providers">服务商</button><button data-target="voucher">通兑</button><button data-target="merchant-live">自播</button>
+</nav>
+<script>
+const navItems=[...document.querySelectorAll('[data-target]')];
+const sections=[...document.querySelectorAll('.section')];
+function showSection(id){
+  sections.forEach(s=>s.classList.toggle('active',s.id===id));
+  navItems.forEach(n=>n.classList.toggle('active',n.dataset.target===id));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+navItems.forEach(item=>item.addEventListener('click',()=>{if(item.dataset.target)showSection(item.dataset.target)}));
+document.getElementById('organization-province-filter')
+  ?.addEventListener('change',event=>{
+    if(event.target.value)window.location.href=event.target.value;
+  });
+document.getElementById('organization-area-filter')
+  ?.addEventListener('change',event=>{
+    if(event.target.value)window.location.href=event.target.value;
+  });
+document.querySelectorAll('[data-local]').forEach(tab=>tab.addEventListener('click',()=>{
+  const panel=tab.dataset.local;
+  const parent=tab.closest('.section');
+  parent.querySelectorAll('[data-local]').forEach(t=>t.classList.toggle('active',t===tab));
+  parent.querySelectorAll('.local-panel').forEach(p=>p.style.display=p.dataset.panel===panel?'block':'none');
+}));
+let storeSortKey='';
+let storeSortDirection='desc';
+function sortStoreTable(nextKey){
+  const body=document.getElementById('store-all-body');
+  if(!body)return;
+  if(nextKey===storeSortKey)storeSortDirection=storeSortDirection==='asc'?'desc':'asc';
+  else{storeSortKey=nextKey;storeSortDirection='desc';}
+  const stringKeys=new Set(['province','area','store','provider']);
+  const rows=[...body.querySelectorAll('tr')];
+  rows.sort((a,b)=>{
+    const rawA=a.getAttribute('data-'+storeSortKey);
+    const rawB=b.getAttribute('data-'+storeSortKey);
+    const result=stringKeys.has(storeSortKey)
+      ?rawA.localeCompare(rawB,'zh-CN')
+      :(Number(rawA)-Number(rawB));
+    return storeSortDirection==='asc'?result:-result;
+  });
+  rows.forEach((row,index)=>{
+    body.appendChild(row);
+    const rank=row.querySelector('.rank');
+    if(rank)rank.textContent=String(index+1).padStart(2,'0');
+  });
+  document.querySelectorAll('.store-sort-trigger').forEach(button=>{
+    const active=button.dataset.sortKey===storeSortKey;
+    button.classList.toggle('active',active);
+    const indicator=button.querySelector('.sort-indicator');
+    if(indicator)indicator.textContent=active?(storeSortDirection==='asc'?'↑':'↓'):'↕';
+  });
+  filterStoreTable();
+}
+function filterStoreTable(){
+  const body=document.getElementById('store-all-body');
+  if(!body)return;
+  const query=(document.getElementById('store-search')?.value||'').trim().toLocaleLowerCase('zh-CN');
+  const province=document.getElementById('province-filter')?.value||'';
+  const area=document.getElementById('area-filter')?.value||'';
+  let visible=0;
+  body.querySelectorAll('tr').forEach(row=>{
+    const haystack=[
+      row.dataset.store||'',
+      row.dataset.city||'',
+      row.dataset.area||'',
+      row.dataset.provider||''
+    ].join(' ').toLocaleLowerCase('zh-CN');
+    const matches=(!query||haystack.includes(query))
+      &&(!province||row.dataset.province===province)
+      &&(!area||row.dataset.area===area);
+    row.hidden=!matches;
+    if(matches){
+      visible+=1;
+      const rank=row.querySelector('.rank');
+      if(rank)rank.textContent=String(visible).padStart(2,'0');
+    }
+  });
+  const count=document.getElementById('store-result-count');
+  if(count)count.textContent=`显示 ${visible} / ${body.querySelectorAll('tr').length} 家`;
+}
+document.getElementById('store-search')?.addEventListener('input',filterStoreTable);
+document.getElementById('province-filter')?.addEventListener('change',filterStoreTable);
+document.getElementById('area-filter')?.addEventListener('change',filterStoreTable);
+let merchantCitySortKey='';
+let merchantCitySortDirection='desc';
+function sortMerchantCityTable(nextKey){
+  const body=document.getElementById('merchant-city-body');
+  if(!body)return;
+  if(nextKey===merchantCitySortKey){
+    merchantCitySortDirection=merchantCitySortDirection==='asc'?'desc':'asc';
+  }else{
+    merchantCitySortKey=nextKey;
+    merchantCitySortDirection=nextKey==='city-name'?'asc':'desc';
+  }
+  const stringKeys=new Set(['city-name']);
+  const rows=[...body.querySelectorAll('tr')];
+  rows.sort((a,b)=>{
+    const rawA=a.getAttribute('data-'+merchantCitySortKey)||'';
+    const rawB=b.getAttribute('data-'+merchantCitySortKey)||'';
+    const result=stringKeys.has(merchantCitySortKey)
+      ?rawA.localeCompare(rawB,'zh-CN')
+      :Number(rawA)-Number(rawB);
+    return merchantCitySortDirection==='asc'?result:-result;
+  });
+  rows.forEach(row=>body.appendChild(row));
+  document.querySelectorAll('.merchant-city-sort-trigger').forEach(button=>{
+    const active=button.dataset.sortKey===merchantCitySortKey;
+    button.classList.toggle('active',active);
+    const indicator=button.querySelector('.sort-indicator');
+    if(indicator)indicator.textContent=active
+      ?(merchantCitySortDirection==='asc'?'↑':'↓')
+      :'↕';
+  });
+  filterMerchantCityTable();
+}
+function filterMerchantCityTable(){
+  const body=document.getElementById('merchant-city-body');
+  if(!body)return;
+  const query=(document.getElementById('merchant-city-search')?.value||'')
+    .trim().toLocaleLowerCase('zh-CN');
+  const status=document.getElementById('merchant-city-status-filter')?.value||'';
+  let visible=0;
+  const rows=[...body.querySelectorAll('tr')];
+  rows.forEach(row=>{
+    const city=(row.dataset.cityName||'').toLocaleLowerCase('zh-CN');
+    const matches=(!query||city.includes(query))
+      &&(!status||row.dataset.cityStatus===status);
+    row.hidden=!matches;
+    if(matches){
+      visible+=1;
+      const rank=row.querySelector('.rank');
+      if(rank)rank.textContent=String(visible).padStart(2,'0');
+    }
+  });
+  const count=document.getElementById('merchant-city-result-count');
+  if(count)count.textContent=`显示 ${visible} / ${rows.length} 城`;
+}
+let merchantAccountSortKey='';
+let merchantAccountSortDirection='desc';
+function sortMerchantAccountTable(nextKey){
+  const body=document.getElementById('merchant-account-body');
+  if(!body)return;
+  if(nextKey===merchantAccountSortKey){
+    merchantAccountSortDirection=merchantAccountSortDirection==='asc'?'desc':'asc';
+  }else{
+    merchantAccountSortKey=nextKey;
+    merchantAccountSortDirection=['account-name','account-city'].includes(nextKey)
+      ?'asc'
+      :'desc';
+  }
+  const stringKeys=new Set(['account-name','account-city']);
+  const rows=[...body.querySelectorAll('tr')];
+  rows.sort((a,b)=>{
+    const rawA=a.getAttribute('data-'+merchantAccountSortKey)||'';
+    const rawB=b.getAttribute('data-'+merchantAccountSortKey)||'';
+    const result=stringKeys.has(merchantAccountSortKey)
+      ?rawA.localeCompare(rawB,'zh-CN')
+      :Number(rawA)-Number(rawB);
+    return merchantAccountSortDirection==='asc'?result:-result;
+  });
+  rows.forEach(row=>body.appendChild(row));
+  document.querySelectorAll('.merchant-account-sort-trigger').forEach(button=>{
+    const active=button.dataset.sortKey===merchantAccountSortKey;
+    button.classList.toggle('active',active);
+    const indicator=button.querySelector('.sort-indicator');
+    if(indicator)indicator.textContent=active
+      ?(merchantAccountSortDirection==='asc'?'↑':'↓')
+      :'↕';
+  });
+  filterMerchantAccountTable();
+}
+function filterMerchantAccountTable(){
+  const body=document.getElementById('merchant-account-body');
+  if(!body)return;
+  const query=(document.getElementById('merchant-account-search')?.value||'')
+    .trim().toLocaleLowerCase('zh-CN');
+  const city=document.getElementById('merchant-account-city-filter')?.value||'';
+  const status=document.getElementById('merchant-account-status-filter')?.value||'';
+  let visible=0;
+  const rows=[...body.querySelectorAll('tr')];
+  rows.forEach(row=>{
+    const haystack=[
+      row.dataset.accountName||'',
+      row.dataset.accountId||'',
+      row.dataset.accountStore||'',
+      row.dataset.accountProvince||'',
+      row.dataset.accountArea||''
+    ].join(' ').toLocaleLowerCase('zh-CN');
+    const matches=(!query||haystack.includes(query))
+      &&(!city||row.dataset.accountCity===city)
+      &&(!status||row.dataset.accountStatus===status);
+    row.hidden=!matches;
+    if(matches){
+      visible+=1;
+      const rank=row.querySelector('.rank');
+      if(rank)rank.textContent=String(visible).padStart(2,'0');
+    }
+  });
+  const count=document.getElementById('merchant-account-result-count');
+  if(count)count.textContent=`显示 ${visible} / ${rows.length} 个账号`;
+}
+document.getElementById('merchant-city-search')
+  ?.addEventListener('input',filterMerchantCityTable);
+document.getElementById('merchant-city-status-filter')
+  ?.addEventListener('change',filterMerchantCityTable);
+document.getElementById('merchant-account-search')
+  ?.addEventListener('input',filterMerchantAccountTable);
+document.getElementById('merchant-account-city-filter')
+  ?.addEventListener('change',filterMerchantAccountTable);
+document.getElementById('merchant-account-status-filter')
+  ?.addEventListener('change',filterMerchantAccountTable);
+let channelSortKey='redeem-delta';
+let channelSortDirection='desc';
+function sortChannelTable(nextKey){
+  const body=document.getElementById('channel-attribution-body');
+  if(!body)return;
+  if(nextKey===channelSortKey)channelSortDirection=channelSortDirection==='asc'?'desc':'asc';
+  else{channelSortKey=nextKey;channelSortDirection='desc';}
+  const key=channelSortKey;
+  const rows=[...body.querySelectorAll('tr')];
+  rows.sort((a,b)=>{
+    const av=key==='channel'?a.getAttribute('data-channel'):(Number(a.getAttribute('data-'+key))||0);
+    const bv=key==='channel'?b.getAttribute('data-channel'):(Number(b.getAttribute('data-'+key))||0);
+    const result=key==='channel'?av.localeCompare(bv,'zh-CN'):av-bv;
+    return channelSortDirection==='asc'?result:-result;
+  });
+  rows.forEach(row=>body.appendChild(row));
+  document.querySelectorAll('.channel-sort-trigger').forEach(button=>{
+    const active=button.dataset.sortKey===channelSortKey;
+    button.classList.toggle('active',active);
+    const indicator=button.querySelector('.sort-indicator');
+    if(indicator)indicator.textContent=active?(channelSortDirection==='asc'?'↑':'↓'):'↕';
+  });
+}
+sortStoreTable('redeem-current');
+sortChannelTable('redeem-delta');
+sortMerchantCityTable('city-live-amount');
+sortMerchantAccountTable('account-live-amount');
+document.documentElement.dataset.workbench="{\"region\": \"山河大区 · 鲁西省区 · 聊宁片区\", \"periods\": {\"previous_start\": \"2026-09-26\", \"previous_end\": \"2026-10-02\", \"current_start\": \"2026-10-03\", \"current_end\": \"2026-10-09\"}, \"verification\": {\"detail_row_count\": 1828, \"channel_row_count\": 1924, \"other_region_row_count\": 0, \"provider_count\": 3, \"store_count\": 43, \"voucher_product_count\": 14, \"product_structure_closed\": true, \"master_store_count\": 43, \"data_store_count\": 43, \"zero_data_store_count\": 0, \"organization_province_count\": 1, \"organization_area_count\": 1, \"selected_province\": \"鲁西省区\", \"selected_area\": \"聊宁片区\", \"detail_channel_closure\": {\"意向成交金额\": true, \"意向成交券数\": true, \"意向成交间夜\": true, \"核销金额\": true, \"核销券数\": true, \"核销间夜\": true}, \"passed\": true}, \"organization_navigation\": {\"selected_province\": \"鲁西省区\", \"selected_area\": \"聊宁片区\", \"province_urls\": {\"\": \"workbench_shanhe.html\", \"山西省区\": \"workbench_shanhe__山西省区.html\", \"河南省区\": \"workbench_shanhe__河南省区.html\", \"鲁东省区\": \"workbench_shanhe__鲁东省区.html\", \"鲁西省区\": \"workbench_shanhe__鲁西省区.html\"}, \"area_urls\": {\"山西省区\": {\"山西东片区\": \"workbench_shanhe__山西省区__山西东片区.html\", \"山西中片区\": \"workbench_shanhe__山西省区__山西中片区.html\", \"山西北片区\": \"workbench_shanhe__山西省区__山西北片区.html\", \"山西南片区\": \"workbench_shanhe__山西省区__山西南片区.html\", \"山西西片区\": \"workbench_shanhe__山西省区__山西西片区.html\"}, \"河南省区\": {\"河南东片区\": \"workbench_shanhe__河南省区__河南东片区.html\", \"河南中片区\": \"workbench_shanhe__河南省区__河南中片区.html\", \"河南北片区\": \"workbench_shanhe__河南省区__河南北片区.html\", \"河南南片区\": \"workbench_shanhe__河南省区__河南南片区.html\", \"河南西南片区\": \"workbench_shanhe__河南省区__河南西南片区.html\", \"河南西片区\": \"workbench_shanhe__河南省区__河南西片区.html\", \"郑州中片区\": \"workbench_shanhe__河南省区__郑州中片区.html\", \"郑州北片区\": \"workbench_shanhe__河南省区__郑州北片区.html\", \"郑州南片区\": \"workbench_shanhe__河南省区__郑州南片区.html\"}, \"鲁东省区\": {\"临沂片区\": \"workbench_shanhe__鲁东省区__临沂片区.html\", \"威烟片区\": \"workbench_shanhe__鲁东省区__威烟片区.html\", \"日照片区\": \"workbench_shanhe__鲁东省区__日照片区.html\", \"沂枣片区\": \"workbench_shanhe__鲁东省区__沂枣片区.html\", \"淄博片区\": \"workbench_shanhe__鲁东省区__淄博片区.html\", \"潍坊片区\": \"workbench_shanhe__鲁东省区__潍坊片区.html\", \"烟台片区\": \"workbench_shanhe__鲁东省区__烟台片区.html\", \"青岛前海片区\": \"workbench_shanhe__鲁东省区__青岛前海片区.html\", \"青岛北片区\": \"workbench_shanhe__鲁东省区__青岛北片区.html\", \"青岛西片区\": \"workbench_shanhe__鲁东省区__青岛西片区.html\"}, \"鲁西省区\": {\"德州片区\": \"workbench_shanhe__鲁西省区__德州片区.html\", \"泰安片区\": \"workbench_shanhe__鲁西省区__泰安片区.html\", \"济南东片区\": \"workbench_shanhe__鲁西省区__济南东片区.html\", \"济南中片区\": \"workbench_shanhe__鲁西省区__济南中片区.html\", \"济南北片区\": \"workbench_shanhe__鲁西省区__济南北片区.html\", \"济宁片区\": \"workbench_shanhe__鲁西省区__济宁片区.html\", \"济滨片区\": \"workbench_shanhe__鲁西省区__济滨片区.html\", \"滨东片区\": \"workbench_shanhe__鲁西省区__滨东片区.html\", \"聊宁片区\": \"workbench_shanhe__鲁西省区__聊宁片区.html\", \"菏泽片区\": \"workbench_shanhe__鲁西省区__菏泽片区.html\"}}}}";
+</script>
+</body>
+</html>
