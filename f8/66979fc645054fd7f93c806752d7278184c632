@@ -1,0 +1,20 @@
+docs/workbench_jinhe.html
+  h_8a7325ff3be7f5 59,63,69,6526-6728,6732
+docs/workbench_ludong.html
+  h_8a7325ff3be7f5 59,63,69,7938-8726,8730
+docs/workbench_shanhe.html
+  h_8a7325ff3be7f5 59,63,69,31897-36335,36339
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.21",
+  "base_commit_sha": "f866979fc645054fd7f93c806752d7278184c632",
+  "prompts": {},
+  "humans": {
+    "h_8a7325ff3be7f5": {
+      "author": "yishenweizhong <yishenweizhong@users.noreply.github.com>"
+    }
+  },
+  "attestation_metadata": {},
+  "remote_transcripts": {}
+}
