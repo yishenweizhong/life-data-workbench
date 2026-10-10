@@ -1,0 +1,1884 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>津河省区 · 廊坊片区经营数据工作台</title>
+<style>
+:root {
+  --ink:#17181C; --muted:#737780; --canvas:#F4F5F8; --paper:#FFFFFF;
+  --line:#E8E9EE; --blue:#1677FF; --cyan:#00A7A0;
+  --orange:#FF8A3D; --pink:#E96D8A; --purple:#8B6DFF;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Microsoft YaHei",sans-serif;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--canvas);color:var(--ink);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:none;color:inherit;cursor:pointer}
+.app{display:grid;grid-template-columns:220px minmax(0,1fr);min-height:100vh;max-width:1480px;margin:auto}
+.sidebar{position:sticky;top:0;height:100vh;padding:30px 18px;background:rgba(255,255,255,.58);border-right:1px solid rgba(0,0,0,.05);backdrop-filter:blur(30px) saturate(170%);-webkit-backdrop-filter:blur(30px) saturate(170%)}
+.brand{padding:0 12px 28px;font-size:13px;font-weight:700} .brand span{display:block;color:var(--muted);font-size:11px;font-weight:500;margin-top:5px}
+.nav-label{margin:0 12px 8px;color:var(--muted);font-size:11px;font-weight:700;letter-spacing:.08em}
+.nav-item{display:flex;align-items:center;gap:11px;width:100%;margin:4px 0;padding:11px 12px;border-radius:13px;color:#4B4D55;font-size:13px;font-weight:600;text-align:left;transition:.2s}
+.nav-item:hover{background:rgba(255,255,255,.72)} .nav-item.active{background:rgba(22,119,255,.10);color:var(--blue)}
+.nav-icon{width:20px;text-align:center;font-size:16px}
+.content{min-width:0;padding:30px 34px 70px} .topbar{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:24px}
+.eyebrow{color:var(--muted);font-size:13px;font-weight:600} h1{margin:7px 0 0;font-size:34px;line-height:1.08;letter-spacing:0} h2{margin:0;font-size:20px;letter-spacing:0} h3{margin:0;font-size:15px}
+.top-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap} .glass-pill,.status{padding:9px 13px;border:1px solid rgba(255,255,255,.9);border-radius:14px;background:rgba(255,255,255,.62);box-shadow:0 7px 22px rgba(32,44,70,.06);backdrop-filter:blur(20px);font-size:12px;font-weight:600}
+.status{color:#268A57} .status i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#34C759;margin-right:6px}
+.organization-filters{display:flex;align-items:flex-end;gap:10px;margin:-6px 0 22px;padding:13px 14px;border:1px solid rgba(0,0,0,.045);border-radius:12px;background:rgba(255,255,255,.82)} .organization-filters label{display:grid;gap:5px} .organization-filters label span{color:var(--muted);font-size:10px;font-weight:700} .organization-filters select{min-width:180px;height:38px;padding:0 34px 0 11px;border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--ink);font:inherit;font-size:12px;outline:none} .organization-filters select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(22,119,255,.10)} .organization-filters select:disabled{color:#A2A5AD;background:#F4F5F7}
+.section{display:none;animation:fade .22s ease} .section.active{display:block} @keyframes fade{from{opacity:.2;transform:translateY(4px)}to{opacity:1;transform:none}}
+.section-head{display:flex;justify-content:space-between;align-items:flex-end;margin:30px 0 15px} .section-head p{margin:5px 0 0;color:var(--muted);font-size:12px}
+.glass-tabs{display:flex;gap:4px;padding:4px;margin-bottom:18px;border-radius:15px;background:rgba(118,118,128,.13);backdrop-filter:blur(20px) saturate(170%);width:max-content;max-width:100%;overflow-x:auto;scrollbar-width:none} .glass-tabs::-webkit-scrollbar{display:none}
+.glass-tab{padding:8px 16px;border-radius:11px;font-size:12px;font-weight:600;color:#5D6069} .glass-tab.active{background:rgba(255,255,255,.9);box-shadow:0 5px 14px rgba(31,42,68,.12);color:var(--ink)}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px} .kpi,.panel{border:1px solid rgba(0,0,0,.045);border-radius:19px;background:rgba(255,255,255,.86);box-shadow:0 12px 32px rgba(32,44,70,.055)}
+.kpi{min-height:142px;padding:18px;position:relative;overflow:hidden} .kpi-label{color:var(--muted);font-size:12px;font-weight:700} .kpi-value{display:block;margin-top:14px;font-size:30px;letter-spacing:0} .kpi-foot{display:flex;align-items:baseline;gap:9px;margin-top:11px;color:var(--muted);font-size:12px} .kpi-foot>span:first-child{font-size:16px;font-weight:800} .kpi-foot .positive{color:#15945E} .kpi-foot .negative{color:#D44755} .kpi-foot .neutral{color:var(--muted)}
+.kpi::after{content:"";position:absolute;right:-25px;bottom:-42px;width:120px;height:120px;border-radius:50%;background:rgba(22,119,255,.08)} .kpi:nth-child(2)::after{background:rgba(255,138,61,.10)} .kpi:nth-child(3)::after{background:rgba(0,167,160,.10)} .kpi:nth-child(4)::after{background:rgba(139,109,255,.10)}
+.grid-2{display:grid;grid-template-columns:1fr;gap:16px;margin-top:16px} .grid-2.equal{grid-template-columns:1fr}
+.panel{padding:20px;min-width:0} .panel-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px} .panel-head p{margin:4px 0 0;color:var(--muted);font-size:11px} .trend-panel-head{align-items:flex-start;flex-wrap:wrap} .trend-heading{display:flex;align-items:baseline;gap:14px;white-space:nowrap} .trend-range{color:#5F636D;font-size:15px;font-weight:750} .legend{display:flex;gap:12px;color:var(--muted);font-size:11px;white-space:nowrap} .legend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}
+.chart-scroll{overflow-x:auto} .chart-svg{display:block;width:100%;height:auto;overflow:visible} .axis-label{fill:#858994;font-size:10px} .point-label,.merchant-live-point-label,.merchant-duration-label{font-size:11px;font-weight:750;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.merchant-trend-canvas{min-width:680px} .merchant-amount-chart{margin-bottom:2px} .merchant-subchart-title{margin:0 24px 0 54px;padding-top:13px;border-top:1px solid var(--line);color:#4F535C;font-size:12px;font-weight:750} .merchant-subchart-title span{margin-left:6px;color:var(--muted);font-size:10px;font-weight:600}
+.insights{display:grid;gap:10px} .insight{padding:13px 14px;border-radius:14px;background:#F7F8FA} .insight b{font-size:13px} .insight p{margin:6px 0 0;color:var(--muted);font-size:12px;line-height:1.6} .tag{display:inline-block;margin-top:8px;padding:4px 7px;border-radius:7px;font-size:10px;font-weight:700} .tag.good{color:#23875B;background:#E8F7EF} .tag.warn{color:#C65A61;background:#FFF0F1}
+.sort-trigger{display:inline-flex;align-items:center;gap:4px;border:0;background:transparent;padding:0;color:inherit;font:inherit;font-weight:700;cursor:pointer} .sort-indicator{width:10px;color:#A7ABB5;font-size:12px;line-height:1;opacity:.65} .sort-trigger.active .sort-indicator{color:var(--blue);opacity:1} .sort-trigger:hover{color:var(--blue)} .sort-trigger:hover .sort-indicator{opacity:1}
+.filter-bar{display:flex;align-items:center;gap:10px;margin-bottom:14px} .filter-bar input,.filter-bar select{height:38px;border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--ink);font:inherit;font-size:12px;outline:none} .filter-bar input{min-width:260px;padding:0 12px} .filter-bar select{padding:0 30px 0 10px} .filter-bar input:focus,.filter-bar select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(22,119,255,.10)} .filter-count{margin-left:auto;color:var(--muted);font-size:11px;white-space:nowrap}
+.table-scroll{overflow-x:auto} table{width:100%;border-collapse:collapse;min-width:820px} .merchant-table{min-width:980px} th{padding:11px 10px;text-align:left;color:#858994;font-size:11px;font-weight:700;border-bottom:1px solid var(--line);white-space:nowrap} td{padding:13px 10px;border-bottom:1px solid #F0F1F4;font-size:12px;vertical-align:middle} td small{display:block;margin-top:4px;color:#9A9DA6;font-size:10px;font-weight:500} td.num{font-variant-numeric:tabular-nums;white-space:nowrap} td.rank{width:38px;color:#9A9DA6;font-size:11px;font-weight:800} td strong{font-weight:700} .positive{color:#189963!important} .negative{color:#D85863!important} .provider{display:inline-block;padding:5px 8px;border-radius:8px;background:#F1F5FF;color:#4B6DB8;font-size:11px;white-space:nowrap} .channel-stack{display:flex;flex-wrap:wrap;gap:5px;min-width:175px} .channel-chip{display:inline-flex;padding:4px 7px;border-radius:7px;background:#F4F5F7;color:#646872;font-size:10px;white-space:nowrap} .channel-chip.positive{background:#EAF8F2} .channel-chip.negative{background:#FFF0F1} .live-status{display:inline-block;padding:2px 6px;border-radius:6px;background:#EAF8F2;color:#16835A;font-size:9px;font-weight:750;white-space:nowrap} .live-status.未直播,.live-status.零开播{background:#F0F1F4;color:#747984} .empty,.empty-state{color:#9A9DA6;font-size:12px} .empty-state{padding:28px;text-align:center;background:#F8F9FB;border-radius:12px}
+.bar-wrap{height:12px;display:flex;overflow:hidden;border-radius:8px;background:#EEF0F5;margin:12px 0} .segment-bar{display:block;height:100%} .segment-bar.calendar{background:var(--cyan)} .segment-bar.voucher{background:var(--orange)} .structure-legend{display:flex;gap:16px;color:var(--muted);font-size:11px} .structure-legend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}
+.mobile-nav{display:none}
+@media(max-width:1050px){.app{grid-template-columns:80px minmax(0,1fr)}.sidebar{padding:22px 10px}.brand,.nav-label,.nav-item span:not(.nav-icon){display:none}.nav-item{justify-content:center;padding:13px 8px}.content{padding:24px}.kpis{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.app{display:block}.sidebar{display:none}.content{padding:20px 15px 92px}.topbar{align-items:flex-start;display:block}.top-actions{margin-top:15px;justify-content:space-between;flex-wrap:wrap}.organization-filters{align-items:stretch;display:grid;grid-template-columns:1fr 1fr;margin-top:0}.organization-filters select{min-width:0;width:100%}h1{font-size:30px}.kpis{grid-template-columns:1fr 1fr;gap:10px}.kpi{min-height:120px;padding:14px}.kpi-value{font-size:23px;margin-top:11px}.kpi-foot{display:block}.kpi-foot>span{display:block}.kpi-foot>span:first-child{font-size:15px}.grid-2,.grid-2.equal{grid-template-columns:1fr}.panel{padding:15px;border-radius:16px}.trend-heading{gap:9px;white-space:normal;flex-wrap:wrap}.trend-heading h2{font-size:17px}.trend-range{font-size:13px}.chart-scroll .chart-svg{width:680px;max-width:none}.merchant-trend-scroll .chart-svg{width:100%}.filter-bar{align-items:stretch;flex-wrap:wrap}.filter-bar input{min-width:0;flex:1 1 100%}.filter-bar select{flex:1}.filter-count{align-self:center}.mobile-nav{position:fixed;display:flex;z-index:20;left:14px;right:14px;bottom:15px;justify-content:space-around;padding:9px 7px;border:1px solid rgba(255,255,255,.85);border-radius:20px;background:rgba(255,255,255,.72);box-shadow:0 12px 30px rgba(32,44,70,.15);backdrop-filter:blur(25px) saturate(170%)}.mobile-nav button{padding:6px 8px;border-radius:12px;color:var(--muted);font-size:10px;font-weight:700}.mobile-nav button.active{background:#fff;color:var(--blue);box-shadow:0 4px 10px rgba(31,42,68,.1)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">经营数据工作台<span>津河省区 · 廊坊片区 · 10-03–10-09</span></div>
+    <p class="nav-label">板块</p>
+    <button class="nav-item active" data-target="overview"><span class="nav-icon">⌂</span><span>经营总览</span></button>
+    <button class="nav-item" data-target="provinces"><span class="nav-icon">▦</span><span>组织架构</span></button>
+    <button class="nav-item" data-target="stores"><span class="nav-icon">↗</span><span>门店排名</span></button>
+    <button class="nav-item" data-target="attribution"><span class="nav-icon">◌</span><span>增长归因</span></button>
+    <button class="nav-item" data-target="providers"><span class="nav-icon">◎</span><span>服务商</span></button>
+    <button class="nav-item" data-target="voucher"><span class="nav-icon">◇</span><span>通兑商品</span></button>
+    <button class="nav-item" data-target="merchant-live"><span class="nav-icon">▶</span><span>商家自播</span></button>
+  </aside>
+  <main class="content">
+    <header class="topbar">
+      <div><div class="eyebrow">近 7 日经营数据 · 数据截至 2026-10-09 · 数据来源：生意经</div><h1>津河省区 · 廊坊片区</h1></div>
+      <div class="top-actions"><span class="status"><i></i>数据已校验</span><span class="glass-pill">主数据 35 家 · 1 片区</span><span class="glass-pill">10-03–10-09 对比 09-26–10-02</span></div>
+    </header>
+    <div class="organization-filters"><label><span>一级省区</span><select id="organization-province-filter"><option value="workbench_jinhe.html" selected>津河省区</option></select></label><label><span>二级片区</span><select id="organization-area-filter" ><option value="workbench_jinhe.html">全部二级片区</option><option value="workbench_jinhe__津河省区__唐山北片区.html" >唐山北片区</option><option value="workbench_jinhe__津河省区__唐山南片区.html" >唐山南片区</option><option value="workbench_jinhe__津河省区__廊坊片区.html" selected>廊坊片区</option><option value="workbench_jinhe__津河省区__津东片区.html" >津东片区</option><option value="workbench_jinhe__津河省区__津北片区.html" >津北片区</option><option value="workbench_jinhe__津河省区__津南片区.html" >津南片区</option><option value="workbench_jinhe__津河省区__津西北片区.html" >津西北片区</option><option value="workbench_jinhe__津河省区__津西片区.html" >津西片区</option><option value="workbench_jinhe__津河省区__滨海片区.html" >滨海片区</option><option value="workbench_jinhe__津河省区__秦皇岛片区.html" >秦皇岛片区</option></select></label></div>
+
+    <section class="section active" id="overview">
+      <div class="glass-tabs">
+        <button class="glass-tab active">总体</button><button class="glass-tab" data-target="provinces">组织</button><button class="glass-tab" data-target="stores">门店</button><button class="glass-tab" data-target="providers">服务商</button><button class="glass-tab" data-target="voucher">通兑商品</button><button class="glass-tab" data-target="merchant-live">商家自播</button>
+      </div>
+      <div class="kpis">
+        <article class="kpi"><span class="kpi-label">支付 GMV</span><b class="kpi-value">3.54万</b><div class="kpi-foot"><span class="negative">-12.5%</span><span>较上期 4.05万</span></div></article>
+        <article class="kpi"><span class="kpi-label">核销 GMV</span><b class="kpi-value">2.67万</b><div class="kpi-foot"><span class="negative">-3.0%</span><span>较上期 2.76万</span></div></article>
+        <article class="kpi"><span class="kpi-label">支付间夜</span><b class="kpi-value">168</b><div class="kpi-foot"><span class="negative">-14.7%</span><span>间夜</span></div></article>
+        <article class="kpi"><span class="kpi-label">动销门店</span><b class="kpi-value">27<small style="font-size:14px">家</small></b><div class="kpi-foot"><span class="negative">-3家</span><span>较上期</span></div></article>
+      </div>
+      <div class="grid-2">
+        <article class="panel"><div class="panel-head trend-panel-head"><div class="trend-heading"><h2>支付与核销日趋势</h2><span class="trend-range">10-03–10-09 · 单位：万元</span></div><div class="legend"><span><i style="background:var(--blue)"></i>支付</span><span><i style="background:var(--orange)"></i>核销</span></div></div><div class="chart-scroll">
+      <svg class="chart-svg" viewBox="0 0 760 300" role="img"
+           aria-label="支付与核销日趋势，单位万元">
+        <line x1="54" y1="34.0" x2="736" y2="34.0" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="104.6" x2="736" y2="104.6" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="175.2" x2="736" y2="175.2" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="248.0" x2="736" y2="248.0" stroke="#ECEEF3" stroke-width="1"/><text x="44" y="38.0" text-anchor="end" class="axis-label">0.8</text><text x="44" y="145.0" text-anchor="end" class="axis-label">0.4</text><text x="44" y="252.0" text-anchor="end" class="axis-label">0.0</text>
+        <path d="M54.0 111.6 L167.7 96.2 L281.3 34.0 L395.0 126.6 L508.7 174.3 L622.3 115.1 L736.0 147.9" fill="none" stroke="#1677FF"
+              stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M54.0 164.4 L167.7 138.5 L281.3 173.7 L395.0 84.3 L508.7 117.5 L622.3 196.9 L736.0 158.4" fill="none" stroke="#FF8A3D"
+              stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle class="trend-point payment-point" cx="54.0" cy="111.6" r="5" fill="#1677FF"/><text x="58.0" y="99.6" text-anchor="start" class="point-label payment-label" fill="#1677FF">0.5万</text><circle class="trend-point payment-point" cx="167.7" cy="96.2" r="5" fill="#1677FF"/><text x="167.7" y="84.2" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.6万</text><circle class="trend-point payment-point" cx="281.3" cy="34.0" r="5" fill="#1677FF"/><text x="281.3" y="22.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.8万</text><circle class="trend-point payment-point" cx="395.0" cy="126.6" r="5" fill="#1677FF"/><text x="395.0" y="104.6" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.5万</text><circle class="trend-point payment-point" cx="508.7" cy="174.3" r="5" fill="#1677FF"/><text x="508.7" y="162.3" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.3万</text><circle class="trend-point payment-point" cx="622.3" cy="115.1" r="5" fill="#1677FF"/><text x="622.3" y="103.1" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.5万</text><circle class="trend-point payment-point" cx="736.0" cy="147.9" r="5" fill="#1677FF"/><text x="732.0" y="135.9" text-anchor="end" class="point-label payment-label" fill="#1677FF">0.4万</text>
+        <circle class="trend-point redeem-point" cx="54.0" cy="164.4" r="5" fill="#FF8A3D"/><text x="58.0" y="188.4" text-anchor="start" class="point-label redeem-label" fill="#FF8A3D">0.3万</text><circle class="trend-point redeem-point" cx="167.7" cy="138.5" r="5" fill="#FF8A3D"/><text x="167.7" y="162.5" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.4万</text><circle class="trend-point redeem-point" cx="281.3" cy="173.7" r="5" fill="#FF8A3D"/><text x="281.3" y="197.7" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.3万</text><circle class="trend-point redeem-point" cx="395.0" cy="84.3" r="5" fill="#FF8A3D"/><text x="395.0" y="118.3" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.6万</text><circle class="trend-point redeem-point" cx="508.7" cy="117.5" r="5" fill="#FF8A3D"/><text x="508.7" y="141.5" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.5万</text><circle class="trend-point redeem-point" cx="622.3" cy="196.9" r="5" fill="#FF8A3D"/><text x="622.3" y="220.9" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.2万</text><circle class="trend-point redeem-point" cx="736.0" cy="158.4" r="5" fill="#FF8A3D"/><text x="732.0" y="182.4" text-anchor="end" class="point-label redeem-label" fill="#FF8A3D">0.3万</text>
+        <text x="54.0" y="288" text-anchor="middle" class="axis-label">10-03</text><text x="167.7" y="288" text-anchor="middle" class="axis-label">10-04</text><text x="281.3" y="288" text-anchor="middle" class="axis-label">10-05</text><text x="395.0" y="288" text-anchor="middle" class="axis-label">10-06</text><text x="508.7" y="288" text-anchor="middle" class="axis-label">10-07</text><text x="622.3" y="288" text-anchor="middle" class="axis-label">10-08</text><text x="736.0" y="288" text-anchor="middle" class="axis-label">10-09</text>
+      </svg>
+    </div></article>
+        <aside class="panel"><div class="panel-head"><div><h2>本期重点判断</h2><p>从数据变化直接定位动作</p></div></div><div class="insights">
+          <div class="insight"><b>支付增长主要来自 搜索结果卡</b><p>渠道增量 +2,759，可在增长归因中查看对应服务商。</p><span class="tag good">增长来源</span></div>
+          <div class="insight"><b>维也纳国际酒店(固安新机场店) 需要跟进</b><p>未绑定服务商 · 下降 2,377，优先检查渠道投放变化。</p><span class="tag warn">重点风险</span></div>
+        </div></aside>
+      </div>
+    </section>
+
+    <section class="section" id="provinces"><div class="section-head"><div><h2>组织架构经营对比</h2><p>一级省区与二级片区均按门店总表 POI 归属</p></div></div><article class="panel">
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>省份</th><th>主数据门店</th><th>已绑定门店</th><th>有数据门店</th><th>本期支付</th><th>支付增长率</th><th>本期核销</th><th>核销增长率</th><th>动销门店</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>津河省区</strong></td>
+              <td class="num">35家</td>
+              <td class="num">0家</td>
+              <td class="num">31家</td>
+              <td class="num">3.54万</td>
+              <td class="num negative">-12.5%</td>
+              <td class="num">2.67万</td>
+              <td class="num negative">-3.0%</td>
+              <td class="num">27家</td>
+            </tr>
+            </tbody>
+        </table>
+      </div>
+    </article><article class="panel" style="margin-top:16px"><div class="panel-head"><div><h2>二级片区明细</h2><p>片区不按行政城市推断，以门店总表标注为准</p></div></div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>一级省区</th><th>二级片区</th><th>主数据门店</th><th>有数据门店</th><th>本期支付</th><th>支付增长率</th><th>本期核销</th><th>核销增长率</th><th>动销门店</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>津河省区</strong></td>
+              <td><strong>廊坊片区</strong></td>
+              <td class="num">35家</td>
+              <td class="num">31家</td>
+              <td class="num">3.54万</td>
+              <td class="num negative">-12.5%</td>
+              <td class="num">2.67万</td>
+              <td class="num negative">-3.0%</td>
+              <td class="num">27家</td>
+            </tr>
+            </tbody>
+        </table>
+      </div>
+    </article></section>
+
+    <section class="section" id="stores">
+      <div class="section-head"><div><h2>门店排名</h2><p>全部门店 · 默认按本期核销金额降序，可点击表头重新排序</p></div></div>
+      <div class="glass-tabs"><button class="glass-tab active" data-local="all">全部门店</button><button class="glass-tab" data-local="growth">增长 Top10</button><button class="glass-tab" data-local="decline">下降 Top10</button></div>
+      <article class="panel local-panel" data-panel="all"><div class="filter-bar"><input id="store-search" type="search" placeholder="搜索门店、城市、片区或服务商" aria-label="搜索门店、城市、片区或服务商"><select id="province-filter" aria-label="按省份筛选"><option value="">全部省份</option><option value="津河省区">津河省区</option></select><select id="area-filter" aria-label="按二级片区筛选"><option value="">全部二级片区</option><option value="廊坊片区">廊坊片区</option></select><span id="store-result-count" class="filter-count"></span></div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr>
+            <th>#</th>
+            <th><button class="sort-trigger store-sort-trigger" type="button" data-sort-key="province" onclick="sortStoreTable('province')" title="按省份排序">省份 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger store-sort-trigger" type="button" data-sort-key="area" onclick="sortStoreTable('area')" title="按二级片区排序">二级片区 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger store-sort-trigger" type="button" data-sort-key="store" onclick="sortStoreTable('store')" title="按门店名称排序">门店 / 城市 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger store-sort-trigger" type="button" data-sort-key="provider" onclick="sortStoreTable('provider')" title="按服务商排序">服务商 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger store-sort-trigger" type="button" data-sort-key="redeem-current" onclick="sortStoreTable('redeem-current')" title="按本期核销额排序">本期核销 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger store-sort-trigger" type="button" data-sort-key="payment-current" onclick="sortStoreTable('payment-current')" title="按本期支付额排序">本期支付 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger store-sort-trigger" type="button" data-sort-key="redeem-nights" onclick="sortStoreTable('redeem-nights')" title="按核销间夜排序">核销间夜 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger store-sort-trigger" type="button" data-sort-key="payment-nights" onclick="sortStoreTable('payment-nights')" title="按支付间夜排序">支付间夜 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger store-sort-trigger" type="button" data-sort-key="redeem-growth" onclick="sortStoreTable('redeem-growth')" title="按核销增长率排序">核销增长率 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger store-sort-trigger" type="button" data-sort-key="payment-growth" onclick="sortStoreTable('payment-growth')" title="按支付增长率排序">支付增长率 <span class="sort-indicator"></span></button></th>
+          </tr></thead>
+          <tbody id="store-all-body">
+            <tr data-province="津河省区"
+                data-area="廊坊片区"
+                data-store="麗枫酒店(三河燕郊燕顺路中央美院店)"
+                data-city="廊坊市"
+                data-provider="广西世爵新媒体有限公司"
+                data-redeem-current="5203.1"
+                data-payment-current="6402.7"
+                data-redeem-nights="18.0"
+                data-payment-nights="23.0"
+                data-redeem-growth="0.2762079960755459"
+                data-payment-growth="0.10421840507726299">
+              <td class="rank">01</td>
+              <td><strong>津河省区</strong></td>
+              <td><strong>廊坊片区</strong></td>
+              <td><strong>麗枫酒店(三河燕郊燕顺路中央美院店)</strong><small>廊坊市 · 有返回记录</small></td>
+              <td><span class="provider">广西世爵新媒体有限公司</span></td>
+              <td class="num">5,203</td>
+              <td class="num">6,403</td>
+              <td class="num">18</td>
+              <td class="num">23</td>
+              <td class="num positive">+27.6%</td>
+              <td class="num positive">+10.4%</td>
+            </tr>
+
+            <tr data-province="津河省区"
+                data-area="廊坊片区"
+                data-store="希岸Deluxe酒店(三河金都购物广场店)"
+                data-city="廊坊市"
+                data-provider="未绑定服务商"
+                data-redeem-current="4651.0"
+                data-payment-current="3873.4000000000005"
+                data-redeem-nights="14.0"
+                data-payment-nights="12.0"
+                data-redeem-growth="-0.11962899867499521"
+                data-payment-growth="0.19438791242676534">
+              <td class="rank">02</td>
+              <td><strong>津河省区</strong></td>
+              <td><strong>廊坊片区</strong></td>
+              <td><strong>希岸Deluxe酒店(三河金都购物广场店)</strong><small>廊坊市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">4,651</td>
+              <td class="num">3,873</td>
+              <td class="num">14</td>
+              <td class="num">12</td>
+              <td class="num negative">-12.0%</td>
+              <td class="num positive">+19.4%</td>
+            </tr>
+
+            <tr data-province="津河省区"
+                data-area="廊坊片区"
+                data-store="维也纳国际酒店(霸州裕华东道亿辰大厦店)"
+                data-city="廊坊市"
+                data-provider="北京昱海黑科技有限公司"
+                data-redeem-current="3490.0"
+                data-payment-current="3778.9"
+                data-redeem-nights="17.0"
+                data-payment-nights="18.0"
+                data-redeem-growth="0.13238157040882537"
+                data-payment-growth="-0.3345718360950184">
+              <td class="rank">03</td>
+              <td><strong>津河省区</strong></td>
+              <td><strong>廊坊片区</strong></td>
+              <td><strong>维也纳国际酒店(霸州裕华东道亿辰大厦店)</strong><small>廊坊市 · 有返回记录</small></td>
+              <td><span class="provider">北京昱海黑科技有限公司</span></td>
+              <td class="num">3,490</td>
+              <td class="num">3,779</td>
+              <td class="num">17</td>
+              <td class="num">18</td>
+              <td class="num positive">+13.2%</td>
+              <td class="num negative">-33.5%</td>
+            </tr>
+
+            <tr data-province="津河省区"
+                data-area="廊坊片区"
+                data-store="喆啡酒店(三河燕郊燕灵路沃尔玛店)"
+                data-city="廊坊市"
+                data-provider="青岛三合酒店管理有限公司"
+                data-redeem-current="1843.0"
+                data-payment-current="2941.0"
+                data-redeem-nights="10.0"
+                data-payment-nights="16.0"
+                data-redeem-growth="0.7403210576015109"
+                data-payment-growth="0.24888530298526468">
+              <td class="rank">04</td>
+              <td><strong>津河省区</strong></td>
+              <td><strong>廊坊片区</strong></td>
+              <td><strong>喆啡酒店(三河燕郊燕灵路沃尔玛店)</strong><small>廊坊市 · 有返回记录</small></td>
+              <td><span class="provider">青岛三合酒店管理有限公司</span></td>
+              <td class="num">1,843</td>
+              <td class="num">2,941</td>
+              <td class="num">10</td>
+              <td class="num">16</td>
+              <td class="num positive">+74.0%</td>
+              <td class="num positive">+24.9%</td>
+            </tr>
+
+            <tr data-province="津河省区"
+                data-area="廊坊片区"
+                data-store="维也纳酒店(廊坊高铁站店)"
+                data-city="廊坊市"
+                data-provider="未绑定服务商"
+                data-redeem-current="1629.0"
+                data-payment-current="1312.8000000000002"
+                data-redeem-nights="6.0"
+                data-payment-nights="5.0"
+                data-redeem-growth="5.621951219512195"
+                data-payment-growth="0.21792374060673536">
+              <td class="rank">05</td>
+              <td><strong>津河省区</strong></td>
+              <td><strong>廊坊片区</strong></td>
+              <td><strong>维也纳酒店(廊坊高铁站店)</strong><small>廊坊市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">1,629</td>
+              <td class="num">1,313</td>
+              <td class="num">6</td>
+              <td class="num">5</td>
+              <td class="num positive">+562.2%</td>
+              <td class="num positive">+21.8%</td>
+            </tr>
+
+            <tr data-province="津河省区"
+                data-area="廊坊片区"
+                data-store="7天优品(国际商贸城店)"
+                data-city="廊坊市"
+                data-provider="未绑定服务商"
+                data-redeem-current="1300.0"
+                data-payment-current="1833.2000000000005"
+                data-redeem-nights="9.0"
+                data-payment-nights="12.0"
+                data-redeem-growth="2.5616438356164384"
+                data-payment-growth="3.764033264033266">
+              <td class="rank">06</td>
+              <td><strong>津河省区</strong></td>
+              <td><strong>廊坊片区</strong></td>
+              <td><strong>7天优品(国际商贸城店)</strong><small>廊坊市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">1,300</td>
+              <td class="num">1,833</td>
+              <td class="num">9</td>
+              <td class="num">12</td>
+              <td class="num positive">+256.2%</td>
+              <td class="num positive">+376.4%</td>
+            </tr>
+
+            <tr data-province="津河省区"
+                data-area="廊坊片区"
+                data-store="锦江之星(霸州高铁站益津南路店)"
+                data-city="廊坊市"
+                data-provider="未绑定服务商"
+                data-redeem-current="1030.0"
+                data-payment-current="930.6999999999999"
+                data-redeem-nights="8.0"
+                data-payment-nights="7.0"
+                data-redeem-growth="0.30544993662864384"
+                data-payment-growth="-0.22551385537155721">
+              <td class="rank">07</td>
+              <td><strong>津河省区</strong></td>
+              <td><strong>廊坊片区</strong></td>
+              <td><strong>锦江之星(霸州高铁站益津南路店)</strong><small>廊坊市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">1,030</td>
+              <td class="num">931</td>
+              <td class="num">8</td>
+              <td class="num">7</td>
+              <td class="num positive">+30.5%</td>
+              <td class="num negative">-22.6%</td>
+            </tr>
+
+            <tr data-province="津河省区"
+                data-area="廊坊片区"
+                data-store="麗枫酒店(三河燕郊天洋广场店)"
+                data-city="廊坊市"
+                data-provider="未绑定服务商"
+                data-redeem-current="907.0"
+                data-payment-current="1151.6000000000001"
+                data-redeem-nights="5.0"
+                data-payment-nights="6.0"
+                data-redeem-growth="0.2756680731364276"
+                data-payment-growth="2.70408491476359">
+              <td class="rank">08</td>
+              <td><strong>津河省区</strong></td>
+              <td><strong>廊坊片区</strong></td>
+              <td><strong>麗枫酒店(三河燕郊天洋广场店)</strong><small>廊坊市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">907</td>
+              <td class="num">1,152</td>
+              <td class="num">5</td>
+              <td class="num">6</td>
+              <td class="num positive">+27.6%</td>
+              <td class="num positive">+270.4%</td>
+            </tr>
+
+            <tr data-province="津河省区"
+                data-area="廊坊片区"
+                data-store="廊坊高铁站万达广场锦江都城酒店"
+                data-city="廊坊市"
+                data-provider="未绑定服务商"
+                data-redeem-current="795.0"
+                data-payment-current="1345.5"
+                data-redeem-nights="6.0"
+                data-payment-nights="8.0"
+                data-redeem-growth="-0.6072134387351779"
+                data-payment-growth="0.6574279379157428">
+              <td class="rank">09</td>
+              <td><strong>津河省区</strong></td>
+              <td><strong>廊坊片区</strong></td>
+              <td><strong>廊坊高铁站万达广场锦江都城酒店</strong><small>廊坊市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">795</td>
+              <td class="num">1,346</td>
+              <td class="num">6</td>
+              <td class="num">8</td>
+              <td class="num negative">-60.7%</td>
+              <td class="num positive">+65.7%</td>
+            </tr>
+
+            <tr data-province="津河省区"
+                data-area="廊坊片区"
+                data-store="维也纳国际酒店(固安新机场店)"
+                data-city="廊坊市"
+                data-provider="未绑定服务商"
+                data-redeem-current="732.0"
+                data-payment-current="751.8"
+                data-redeem-nights="3.0"
+                data-payment-nights="3.0"
+                data-redeem-growth="-0.5555555555555556"
+                data-payment-growth="-0.7596777802640412">
+              <td class="rank">10</td>
+              <td><strong>津河省区</strong></td>
+              <td><strong>廊坊片区</strong></td>
+              <td><strong>维也纳国际酒店(固安新机场店)</strong><small>廊坊市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">732</td>
+              <td class="num">752</td>
+              <td class="num">3</td>
+              <td class="num">3</td>
+              <td class="num negative">-55.6%</td>
+              <td class="num negative">-76.0%</td>
+            </tr>
+
+            <tr data-province="津河省区"
+                data-area="廊坊片区"
+                data-store="喆啡酒店(三河燕郊高铁站永旺梦乐城店)"
+                data-city="廊坊市"
+                data-provider="未绑定服务商"
+                data-redeem-current="669.0"
+                data-payment-current="1210.8000000000002"
+                data-redeem-nights="3.0"
+                data-payment-nights="5.0"
+                data-redeem-growth="0.9910714285714286"
+                data-payment-growth="1.6616838865684773">
+              <td class="rank">11</td>
+              <td><strong>津河省区</strong></td>
+              <td><strong>廊坊片区</strong></td>
+              <td><strong>喆啡酒店(三河燕郊高铁站永旺梦乐城店)</strong><small>廊坊市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">669</td>
+              <td class="num">1,211</td>
+              <td class="num">3</td>
+              <td class="num">5</td>
+              <td class="num positive">+99.1%</td>
+              <td class="num positive">+166.2%</td>
+            </tr>
+
+            <tr data-province="津河省区"
+                data-area="廊坊片区"
+                data-store="维也纳国际酒店(河北廊坊大兴国际机场店)"
+                data-city="廊坊市"
+                data-provider="未绑定服务商"
+                data-redeem-current="661.0"
+                data-payment-current="680.8"
+                data-redeem-nights="3.0"
+                data-payment-nights="3.0"
+                data-redeem-growth="-0.4145261293179805"
+                data-payment-growth="-0.6427934309250223">
+              <td class="rank">12</td>
+              <td><strong>津河省区</strong></td>
+              <td><strong>廊坊片区</strong></td>
+              <td><strong>维也纳国际酒店(河北廊坊大兴国际机场店)</strong><small>廊坊市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">661</td>
+              <td class="num">681</td>
+              <td class="num">3</td>
+              <td class="num">3</td>
+              <td class="num negative">-41.5%</td>
+              <td class="num negative">-64.3%</td>
+            </tr>
+
+            <tr data-province="津河省区"
+                data-area="廊坊片区"
+                data-store="维也纳酒店(河北廊坊霸州益津南路店)"
+                data-city="廊坊市"
+                data-provider="北京昱海黑科技有限公司"
+                data-redeem-current="579.0"
+                data-payment-current="980.8"
+                data-redeem-nights="4.0"
+                data-payment-nights="6.0"
+                data-redeem-growth="-0.5292682926829269"
+                data-payment-growth="-0.07340576287198886">
+              <td class="rank">13</td>
+              <td><strong>津河省区</strong></td>
+              <td><strong>廊坊片区</strong></td>
+              <td><strong>维也纳酒店(河北廊坊霸州益津南路店)</strong><small>廊坊市 · 有返回记录</small></td>
+              <td><span class="provider">北京昱海黑科技有限公司</span></td>
+              <td class="num">579</td>
+              <td class="num">981</td>
+              <td class="num">4</td>
+              <td class="num">6</td>
+              <td class="num negative">-52.9%</td>
+              <td class="num negative">-7.3%</td>
+            </tr>
+
+            <tr data-province="津河省区"
+                data-area="廊坊片区"
+                data-store="维也纳酒店(廊坊文安店)"
+                data-city="廊坊市"
+                data-provider="北京昱海黑科技有限公司"
+                data-redeem-current="504.0"
+                data-payment-current="1508.7"
+                data-redeem-nights="2.0"
+                data-payment-nights="6.0"
+                data-redeem-growth="-0.1585976627712855"
+                data-payment-growth="1.4381060116354236">
+              <td class="rank">14</td>
+              <td><strong>津河省区</strong></td>
+              <td><strong>廊坊片区</strong></td>
+              <td><strong>维也纳酒店(廊坊文安店)</strong><small>廊坊市 · 有返回记录</small></td>
+              <td><span class="provider">北京昱海黑科技有限公司</span></td>
+              <td class="num">504</td>
+              <td class="num">1,509</td>
+              <td class="num">2</td>
+              <td class="num">6</td>
+              <td class="num negative">-15.9%</td>
+              <td class="num positive">+143.8%</td>
+            </tr>
+
+            <tr data-province="津河省区"
+                data-area="廊坊片区"
+                data-store="7天酒店(固安大兴国际机场新源街店)"
+                data-city="廊坊市"
+                data-provider="未绑定服务商"
+                data-redeem-current="490.0"
+                data-payment-current="630.5999999999999"
+                data-redeem-nights="3.0"
+                data-payment-nights="4.0"
+                data-redeem-growth="0.016597510373443924"
+                data-payment-growth="0.14737991266375539">
+              <td class="rank">15</td>
+              <td><strong>津河省区</strong></td>
+              <td><strong>廊坊片区</strong></td>
+              <td><strong>7天酒店(固安大兴国际机场新源街店)</strong><small>廊坊市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">490</td>
+              <td class="num">631</td>
+              <td class="num">3</td>
+              <td class="num">4</td>
+              <td class="num positive">+1.7%</td>
+              <td class="num positive">+14.7%</td>
+            </tr>
+
+            <tr data-province="津河省区"
+                data-area="廊坊片区"
+                data-store="派酒店(廊坊固安店)"
+                data-city="廊坊市"
+                data-provider="未绑定服务商"
+                data-redeem-current="424.0"
+                data-payment-current="679.4999999999999"
+                data-redeem-nights="4.0"
+                data-payment-nights="6.0"
+                data-redeem-growth="1.0784313725490198"
+                data-payment-growth="0.04233778186838455">
+              <td class="rank">16</td>
+              <td><strong>津河省区</strong></td>
+              <td><strong>廊坊片区</strong></td>
+              <td><strong>派酒店(廊坊固安店)</strong><small>廊坊市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">424</td>
+              <td class="num">679</td>
+              <td class="num">4</td>
+              <td class="num">6</td>
+              <td class="num positive">+107.8%</td>
+              <td class="num positive">+4.2%</td>
+            </tr>
+
+            <tr data-province="津河省区"
+                data-area="廊坊片区"
+                data-store="麗枫酒店(廊坊市政府店)"
+                data-city="廊坊市"
+                data-provider="未绑定服务商"
+                data-redeem-current="334.0"
+                data-payment-current="786.8"
+                data-redeem-nights="1.0"
+                data-payment-nights="3.0"
+                data-redeem-growth="-0.5756035578144854"
+                data-payment-growth="-0.7419312516399895">
+              <td class="rank">17</td>
+              <td><strong>津河省区</strong></td>
+              <td><strong>廊坊片区</strong></td>
+              <td><strong>麗枫酒店(廊坊市政府店)</strong><small>廊坊市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">334</td>
+              <td class="num">787</td>
+              <td class="num">1</td>
+              <td class="num">3</td>
+              <td class="num negative">-57.6%</td>
+              <td class="num negative">-74.2%</td>
+            </tr>
+
+            <tr data-province="津河省区"
+                data-area="廊坊片区"
+                data-store="锦江都城(永清大兴国际机场酒店)"
+                data-city="廊坊市"
+                data-provider="未绑定服务商"
+                data-redeem-current="299.05"
+                data-payment-current="9.9"
+                data-redeem-nights="1.0"
+                data-payment-nights="0.0"
+                data-redeem-growth="0.0"
+                data-payment-growth="-0.9834475840160508">
+              <td class="rank">18</td>
+              <td><strong>津河省区</strong></td>
+              <td><strong>廊坊片区</strong></td>
+              <td><strong>锦江都城(永清大兴国际机场酒店)</strong><small>廊坊市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">299</td>
+              <td class="num">10</td>
+              <td class="num">1</td>
+              <td class="num">0</td>
+              <td class="num neutral">+0.0%</td>
+              <td class="num negative">-98.3%</td>
+            </tr>
+
+            <tr data-province="津河省区"
+                data-area="廊坊片区"
+                data-store="喆啡酒店(固安北京大兴国际机场店)"
+                data-city="廊坊市"
+                data-provider="未绑定服务商"
+                data-redeem-current="246.0"
+                data-payment-current="420.9"
+                data-redeem-nights="1.0"
+                data-payment-nights="2.0"
+                data-redeem-growth="0.22999999999999998"
+                data-payment-growth="-0.6120737327188941">
+              <td class="rank">19</td>
+              <td><strong>津河省区</strong></td>
+              <td><strong>廊坊片区</strong></td>
+              <td><strong>喆啡酒店(固安北京大兴国际机场店)</strong><small>廊坊市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">246</td>
+              <td class="num">421</td>
+              <td class="num">1</td>
+              <td class="num">2</td>
+              <td class="num positive">+23.0%</td>
+              <td class="num negative">-61.2%</td>
+            </tr>
+
+            <tr data-province="津河省区"
+                data-area="廊坊片区"
+                data-store="7天酒店(文安左各庄南二环大柳河高速口店)"
+                data-city="廊坊市"
+                data-provider="未绑定服务商"
+                data-redeem-current="230.0"
+                data-payment-current="582.8"
+                data-redeem-nights="2.0"
+                data-payment-nights="5.0"
+                data-redeem-growth="0.45569620253164556"
+                data-payment-growth="2.4711137581893983">
+              <td class="rank">20</td>
+              <td><strong>津河省区</strong></td>
+              <td><strong>廊坊片区</strong></td>
+              <td><strong>7天酒店(文安左各庄南二环大柳河高速口店)</strong><small>廊坊市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">230</td>
+              <td class="num">583</td>
+              <td class="num">2</td>
+              <td class="num">5</td>
+              <td class="num positive">+45.6%</td>
+              <td class="num positive">+247.1%</td>
+            </tr>
+
+            <tr data-province="津河省区"
+                data-area="廊坊片区"
+                data-store="潮漫酒店三河燕郊沃尔玛店"
+                data-city="廊坊市"
+                data-provider="未绑定服务商"
+                data-redeem-current="204.0"
+                data-payment-current="558.8"
+                data-redeem-nights="1.0"
+                data-payment-nights="3.0"
+                data-redeem-growth="0.09677419354838701"
+                data-payment-growth="1.8524757529351707">
+              <td class="rank">21</td>
+              <td><strong>津河省区</strong></td>
+              <td><strong>廊坊片区</strong></td>
+              <td><strong>潮漫酒店三河燕郊沃尔玛店</strong><small>廊坊市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">204</td>
+              <td class="num">559</td>
+              <td class="num">1</td>
+              <td class="num">3</td>
+              <td class="num positive">+9.7%</td>
+              <td class="num positive">+185.2%</td>
+            </tr>
+
+            <tr data-province="津河省区"
+                data-area="廊坊片区"
+                data-store="维也纳智好酒店(国际会展中心店)"
+                data-city="廊坊市"
+                data-provider="未绑定服务商"
+                data-redeem-current="188.0"
+                data-payment-current="197.9"
+                data-redeem-nights="1.0"
+                data-payment-nights="1.0"
+                data-redeem-growth="0.0"
+                data-payment-growth="0.0">
+              <td class="rank">22</td>
+              <td><strong>津河省区</strong></td>
+              <td><strong>廊坊片区</strong></td>
+              <td><strong>维也纳智好酒店(国际会展中心店)</strong><small>廊坊市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">188</td>
+              <td class="num">198</td>
+              <td class="num">1</td>
+              <td class="num">1</td>
+              <td class="num neutral">基期较低</td>
+              <td class="num neutral">基期较低</td>
+            </tr>
+
+            <tr data-province="津河省区"
+                data-area="廊坊片区"
+                data-store="锦江之星(廊坊万达广场店)"
+                data-city="廊坊市"
+                data-provider="未绑定服务商"
+                data-redeem-current="183.0"
+                data-payment-current="524.9"
+                data-redeem-nights="1.0"
+                data-payment-nights="3.0"
+                data-redeem-growth="-0.8186412962687677"
+                data-payment-growth="-0.668309636650869">
+              <td class="rank">23</td>
+              <td><strong>津河省区</strong></td>
+              <td><strong>廊坊片区</strong></td>
+              <td><strong>锦江之星(廊坊万达广场店)</strong><small>廊坊市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">183</td>
+              <td class="num">525</td>
+              <td class="num">1</td>
+              <td class="num">3</td>
+              <td class="num negative">-81.9%</td>
+              <td class="num negative">-66.8%</td>
+            </tr>
+
+            <tr data-province="津河省区"
+                data-area="廊坊片区"
+                data-store="锦江之星(廊坊高铁站银河南路酒店)"
+                data-city="廊坊市"
+                data-provider="未绑定服务商"
+                data-redeem-current="150.0"
+                data-payment-current="437.9"
+                data-redeem-nights="1.0"
+                data-payment-nights="3.0"
+                data-redeem-growth="-0.5098039215686274"
+                data-payment-growth="-0.039482342618995414">
+              <td class="rank">24</td>
+              <td><strong>津河省区</strong></td>
+              <td><strong>廊坊片区</strong></td>
+              <td><strong>锦江之星(廊坊高铁站银河南路酒店)</strong><small>廊坊市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">150</td>
+              <td class="num">438</td>
+              <td class="num">1</td>
+              <td class="num">3</td>
+              <td class="num negative">-51.0%</td>
+              <td class="num negative">-3.9%</td>
+            </tr>
+
+            <tr data-province="津河省区"
+                data-area="廊坊片区"
+                data-store="丽枫酒店(廊坊中国医学科学院肿瘤医院店)"
+                data-city="廊坊市"
+                data-provider="未绑定服务商"
+                data-redeem-current="0.0"
+                data-payment-current="1060.9"
+                data-redeem-nights="0.0"
+                data-payment-nights="3.0"
+                data-redeem-growth="0.0"
+                data-payment-growth="0.7740802675585285">
+              <td class="rank">25</td>
+              <td><strong>津河省区</strong></td>
+              <td><strong>廊坊片区</strong></td>
+              <td><strong>丽枫酒店(廊坊中国医学科学院肿瘤医院店)</strong><small>廊坊市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">0</td>
+              <td class="num">1,061</td>
+              <td class="num">0</td>
+              <td class="num">3</td>
+              <td class="num neutral">基期较低</td>
+              <td class="num positive">+77.4%</td>
+            </tr>
+
+            <tr data-province="津河省区"
+                data-area="廊坊片区"
+                data-store="丽枫酒店燕郊海油大街店"
+                data-city="廊坊市"
+                data-provider="未绑定服务商"
+                data-redeem-current="0.0"
+                data-payment-current="596.0"
+                data-redeem-nights="0.0"
+                data-payment-nights="4.0"
+                data-redeem-growth="0.0"
+                data-payment-growth="0.0">
+              <td class="rank">26</td>
+              <td><strong>津河省区</strong></td>
+              <td><strong>廊坊片区</strong></td>
+              <td><strong>丽枫酒店燕郊海油大街店</strong><small>廊坊市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">0</td>
+              <td class="num">596</td>
+              <td class="num">0</td>
+              <td class="num">4</td>
+              <td class="num neutral">基期较低</td>
+              <td class="num neutral">+0.0%</td>
+            </tr>
+
+            <tr data-province="津河省区"
+                data-area="廊坊片区"
+                data-store="麗枫酒店(廊坊永清大兴国际机场店)"
+                data-city="廊坊市"
+                data-provider="未绑定服务商"
+                data-redeem-current="0.0"
+                data-payment-current="233.9"
+                data-redeem-nights="0.0"
+                data-payment-nights="1.0"
+                data-redeem-growth="-1.0"
+                data-payment-growth="0.058850158442734335">
+              <td class="rank">27</td>
+              <td><strong>津河省区</strong></td>
+              <td><strong>廊坊片区</strong></td>
+              <td><strong>麗枫酒店(廊坊永清大兴国际机场店)</strong><small>廊坊市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">0</td>
+              <td class="num">234</td>
+              <td class="num">0</td>
+              <td class="num">1</td>
+              <td class="num negative">-100.0%</td>
+              <td class="num positive">+5.9%</td>
+            </tr>
+
+            <tr data-province="津河省区"
+                data-area="廊坊片区"
+                data-store="麗枫酒店(廊坊固安新机场店)"
+                data-city=""
+                data-provider="未绑定服务商"
+                data-redeem-current="0.0"
+                data-payment-current="0.0"
+                data-redeem-nights="0.0"
+                data-payment-nights="0.0"
+                data-redeem-growth="0.0"
+                data-payment-growth="0.0">
+              <td class="rank">28</td>
+              <td><strong>津河省区</strong></td>
+              <td><strong>廊坊片区</strong></td>
+              <td><strong>麗枫酒店(廊坊固安新机场店)</strong><small> · 无返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num neutral">基期较低</td>
+              <td class="num neutral">基期较低</td>
+            </tr>
+
+            <tr data-province="津河省区"
+                data-area="廊坊片区"
+                data-store="维也纳国际酒店(河北燕郊金燕大街店)"
+                data-city="廊坊市"
+                data-provider="未绑定服务商"
+                data-redeem-current="0.0"
+                data-payment-current="0.0"
+                data-redeem-nights="0.0"
+                data-payment-nights="0.0"
+                data-redeem-growth="-1.0"
+                data-payment-growth="-1.0">
+              <td class="rank">29</td>
+              <td><strong>津河省区</strong></td>
+              <td><strong>廊坊片区</strong></td>
+              <td><strong>维也纳国际酒店(河北燕郊金燕大街店)</strong><small>廊坊市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num negative">-100.0%</td>
+              <td class="num negative">-100.0%</td>
+            </tr>
+
+            <tr data-province="津河省区"
+                data-area="廊坊片区"
+                data-store="派酒店(燕郊大学城店)"
+                data-city=""
+                data-provider="未绑定服务商"
+                data-redeem-current="0.0"
+                data-payment-current="0.0"
+                data-redeem-nights="0.0"
+                data-payment-nights="0.0"
+                data-redeem-growth="0.0"
+                data-payment-growth="0.0">
+              <td class="rank">30</td>
+              <td><strong>津河省区</strong></td>
+              <td><strong>廊坊片区</strong></td>
+              <td><strong>派酒店(燕郊大学城店)</strong><small> · 无返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num neutral">基期较低</td>
+              <td class="num neutral">基期较低</td>
+            </tr>
+
+            <tr data-province="津河省区"
+                data-area="廊坊片区"
+                data-store="喆啡锐品酒店(三河燕郊燕灵路店)"
+                data-city=""
+                data-provider="未绑定服务商"
+                data-redeem-current="0.0"
+                data-payment-current="0.0"
+                data-redeem-nights="0.0"
+                data-payment-nights="0.0"
+                data-redeem-growth="0.0"
+                data-payment-growth="0.0">
+              <td class="rank">31</td>
+              <td><strong>津河省区</strong></td>
+              <td><strong>廊坊片区</strong></td>
+              <td><strong>喆啡锐品酒店(三河燕郊燕灵路店)</strong><small> · 无返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num neutral">基期较低</td>
+              <td class="num neutral">基期较低</td>
+            </tr>
+
+            <tr data-province="津河省区"
+                data-area="廊坊片区"
+                data-store="喆啡酒店(霸州兴华路步行街店)"
+                data-city="廊坊市"
+                data-provider="未绑定服务商"
+                data-redeem-current="0.0"
+                data-payment-current="0.0"
+                data-redeem-nights="0.0"
+                data-payment-nights="0.0"
+                data-redeem-growth="-1.0"
+                data-payment-growth="-1.0">
+              <td class="rank">32</td>
+              <td><strong>津河省区</strong></td>
+              <td><strong>廊坊片区</strong></td>
+              <td><strong>喆啡酒店(霸州兴华路步行街店)</strong><small>廊坊市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num negative">-100.0%</td>
+              <td class="num negative">-100.0%</td>
+            </tr>
+
+            <tr data-province="津河省区"
+                data-area="廊坊片区"
+                data-store="喆啡酒店(廊坊建设路店)"
+                data-city="廊坊市"
+                data-provider="未绑定服务商"
+                data-redeem-current="0.0"
+                data-payment-current="0.0"
+                data-redeem-nights="0.0"
+                data-payment-nights="0.0"
+                data-redeem-growth="0.0"
+                data-payment-growth="-1.0">
+              <td class="rank">33</td>
+              <td><strong>津河省区</strong></td>
+              <td><strong>廊坊片区</strong></td>
+              <td><strong>喆啡酒店(廊坊建设路店)</strong><small>廊坊市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num neutral">基期较低</td>
+              <td class="num negative">-100.0%</td>
+            </tr>
+
+            <tr data-province="津河省区"
+                data-area="廊坊片区"
+                data-store="7天酒店(固安北京大兴机场店)"
+                data-city="廊坊市"
+                data-provider="未绑定服务商"
+                data-redeem-current="0.0"
+                data-payment-current="0.0"
+                data-redeem-nights="0.0"
+                data-payment-nights="0.0"
+                data-redeem-growth="-1.0"
+                data-payment-growth="-1.0">
+              <td class="rank">34</td>
+              <td><strong>津河省区</strong></td>
+              <td><strong>廊坊片区</strong></td>
+              <td><strong>7天酒店(固安北京大兴机场店)</strong><small>廊坊市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num negative">-100.0%</td>
+              <td class="num negative">-100.0%</td>
+            </tr>
+
+            <tr data-province="津河省区"
+                data-area="廊坊片区"
+                data-store="7天酒店(三河燕郊东贸大学城店)"
+                data-city=""
+                data-provider="未绑定服务商"
+                data-redeem-current="0.0"
+                data-payment-current="0.0"
+                data-redeem-nights="0.0"
+                data-payment-nights="0.0"
+                data-redeem-growth="0.0"
+                data-payment-growth="0.0">
+              <td class="rank">35</td>
+              <td><strong>津河省区</strong></td>
+              <td><strong>廊坊片区</strong></td>
+              <td><strong>7天酒店(三河燕郊东贸大学城店)</strong><small> · 无返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num neutral">基期较低</td>
+              <td class="num neutral">基期较低</td>
+            </tr>
+            </tbody>
+        </table>
+      </div>
+    </article>
+      <article class="panel local-panel" data-panel="growth" style="display:none">
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>#</th><th>门店 / 服务商</th><th>本期支付</th><th>上期支付</th><th>增减额</th><th>经营渠道拆解</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="rank">01</td>
+              <td><strong>7天优品(国际商贸城店)</strong><small>廊坊市 · 未绑定服务商</small></td>
+              <td class="num">1,833</td>
+              <td class="num">385</td>
+              <td class="num positive">+1,448</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">02</td>
+              <td><strong>维也纳酒店(廊坊文安店)</strong><small>廊坊市 · 北京昱海黑科技有限公司</small></td>
+              <td class="num">1,509</td>
+              <td class="num">619</td>
+              <td class="num positive">+890</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">03</td>
+              <td><strong>麗枫酒店(三河燕郊天洋广场店)</strong><small>廊坊市 · 未绑定服务商</small></td>
+              <td class="num">1,152</td>
+              <td class="num">311</td>
+              <td class="num positive">+841</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">04</td>
+              <td><strong>喆啡酒店(三河燕郊高铁站永旺梦乐城店)</strong><small>廊坊市 · 未绑定服务商</small></td>
+              <td class="num">1,211</td>
+              <td class="num">455</td>
+              <td class="num positive">+756</td>
+              <td class="channel-stack"><span class="channel-chip negative">短视频 -109</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">05</td>
+              <td><strong>希岸Deluxe酒店(三河金都购物广场店)</strong><small>廊坊市 · 未绑定服务商</small></td>
+              <td class="num">3,873</td>
+              <td class="num">3,243</td>
+              <td class="num positive">+630</td>
+              <td class="channel-stack"><span class="channel-chip negative">短视频 -304</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">06</td>
+              <td><strong>麗枫酒店(三河燕郊燕顺路中央美院店)</strong><small>廊坊市 · 广西世爵新媒体有限公司</small></td>
+              <td class="num">6,403</td>
+              <td class="num">5,798</td>
+              <td class="num positive">+604</td>
+              <td class="channel-stack"><span class="channel-chip negative">自播 -1,493</span><span class="channel-chip positive">短视频 +239</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">07</td>
+              <td><strong>喆啡酒店(三河燕郊燕灵路沃尔玛店)</strong><small>廊坊市 · 青岛三合酒店管理有限公司</small></td>
+              <td class="num">2,941</td>
+              <td class="num">2,355</td>
+              <td class="num positive">+586</td>
+              <td class="channel-stack"><span class="channel-chip positive">短视频 +198</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">08</td>
+              <td><strong>廊坊高铁站万达广场锦江都城酒店</strong><small>廊坊市 · 未绑定服务商</small></td>
+              <td class="num">1,346</td>
+              <td class="num">812</td>
+              <td class="num positive">+534</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">09</td>
+              <td><strong>丽枫酒店(廊坊中国医学科学院肿瘤医院店)</strong><small>廊坊市 · 未绑定服务商</small></td>
+              <td class="num">1,061</td>
+              <td class="num">598</td>
+              <td class="num positive">+463</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">10</td>
+              <td><strong>7天酒店(文安左各庄南二环大柳河高速口店)</strong><small>廊坊市 · 未绑定服务商</small></td>
+              <td class="num">583</td>
+              <td class="num">168</td>
+              <td class="num positive">+415</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+            </tbody>
+        </table>
+      </div>
+    </article>
+      <article class="panel local-panel" data-panel="decline" style="display:none">
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>#</th><th>门店 / 服务商</th><th>本期支付</th><th>上期支付</th><th>增减额</th><th>经营渠道拆解</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="rank">01</td>
+              <td><strong>维也纳国际酒店(固安新机场店)</strong><small>廊坊市 · 未绑定服务商</small></td>
+              <td class="num">752</td>
+              <td class="num">3,128</td>
+              <td class="num negative">-2,377</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">02</td>
+              <td><strong>麗枫酒店(廊坊市政府店)</strong><small>廊坊市 · 未绑定服务商</small></td>
+              <td class="num">787</td>
+              <td class="num">3,049</td>
+              <td class="num negative">-2,262</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">03</td>
+              <td><strong>维也纳国际酒店(霸州裕华东道亿辰大厦店)</strong><small>廊坊市 · 北京昱海黑科技有限公司</small></td>
+              <td class="num">3,779</td>
+              <td class="num">5,679</td>
+              <td class="num negative">-1,900</td>
+              <td class="channel-stack"><span class="channel-chip negative">短视频 -657</span><span class="channel-chip negative">自播 -159</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">04</td>
+              <td><strong>喆啡酒店(霸州兴华路步行街店)</strong><small>廊坊市 · 未绑定服务商</small></td>
+              <td class="num">0</td>
+              <td class="num">1,540</td>
+              <td class="num negative">-1,540</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">05</td>
+              <td><strong>维也纳国际酒店(河北廊坊大兴国际机场店)</strong><small>廊坊市 · 未绑定服务商</small></td>
+              <td class="num">681</td>
+              <td class="num">1,906</td>
+              <td class="num negative">-1,225</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">06</td>
+              <td><strong>锦江之星(廊坊万达广场店)</strong><small>廊坊市 · 未绑定服务商</small></td>
+              <td class="num">525</td>
+              <td class="num">1,583</td>
+              <td class="num negative">-1,058</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">07</td>
+              <td><strong>维也纳国际酒店(河北燕郊金燕大街店)</strong><small>廊坊市 · 未绑定服务商</small></td>
+              <td class="num">0</td>
+              <td class="num">754</td>
+              <td class="num negative">-754</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">08</td>
+              <td><strong>喆啡酒店(固安北京大兴国际机场店)</strong><small>廊坊市 · 未绑定服务商</small></td>
+              <td class="num">421</td>
+              <td class="num">1,085</td>
+              <td class="num negative">-664</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">09</td>
+              <td><strong>锦江都城(永清大兴国际机场酒店)</strong><small>廊坊市 · 未绑定服务商</small></td>
+              <td class="num">10</td>
+              <td class="num">598</td>
+              <td class="num negative">-588</td>
+              <td class="channel-stack"><span class="channel-chip positive">短视频 +10</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">10</td>
+              <td><strong>锦江之星(霸州高铁站益津南路店)</strong><small>廊坊市 · 未绑定服务商</small></td>
+              <td class="num">931</td>
+              <td class="num">1,202</td>
+              <td class="num negative">-271</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+            </tbody>
+        </table>
+      </div>
+    </article>
+    </section>
+
+    <section class="section" id="attribution">
+      <div class="section-head"><div><h2>增长归因</h2><p>保留全部交易体裁，分别查看支付与核销增减及绑定服务商贡献</p></div></div>
+      <div class="grid-2 equal"><article class="panel"><div class="panel-head"><div><h2>经营渠道变化</h2><p>本期对比上期 · 支付和核销 · 服务商明细 · 单位：元</p></div></div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr>
+            <th><button class="sort-trigger channel-sort-trigger" type="button" data-sort-key="channel" onclick="sortChannelTable('channel')" title="按渠道名称排序">经营渠道 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger channel-sort-trigger" type="button" data-sort-key="payment-current" onclick="sortChannelTable('payment-current')" title="按本期支付额排序">本期支付 <span class="sort-indicator"></span></button></th>
+            <th>上期支付</th>
+            <th><button class="sort-trigger channel-sort-trigger" type="button" data-sort-key="payment-delta" onclick="sortChannelTable('payment-delta')" title="按支付增减排序">支付增减 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger channel-sort-trigger" type="button" data-sort-key="payment-growth" onclick="sortChannelTable('payment-growth')" title="按支付增长率排序">支付增长率 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger channel-sort-trigger" type="button" data-sort-key="redeem-current" onclick="sortChannelTable('redeem-current')" title="按本期核销额排序">本期核销 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger channel-sort-trigger" type="button" data-sort-key="redeem-previous" onclick="sortChannelTable('redeem-previous')" title="按上期核销额排序">上期核销 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger channel-sort-trigger" type="button" data-sort-key="redeem-delta" onclick="sortChannelTable('redeem-delta')" title="按核销增减排序">核销增减 <span class="sort-indicator"></span></button></th>
+            <th><button class="sort-trigger channel-sort-trigger" type="button" data-sort-key="redeem-growth" onclick="sortChannelTable('redeem-growth')" title="按核销增长率排序">核销增长率 <span class="sort-indicator"></span></button></th>
+            <th>绑定服务商及增减</th>
+          </tr></thead>
+          <tbody id="channel-attribution-body">
+            <tr data-channel="达播"
+                data-payment-current="0"
+                data-payment-delta="-348.0"
+                data-payment-growth="-1.0"
+                data-redeem-current="0"
+                data-redeem-previous="408.0"
+                data-redeem-delta="-408.0"
+                data-redeem-growth="-1.0">
+              <td><strong>达播</strong></td>
+              <td class="num">0</td>
+              <td class="num">348</td>
+              <td class="num negative">-348</td>
+              <td class="num">-100.0%</td>
+              <td class="num">0</td>
+              <td class="num">408</td>
+              <td class="num negative">-408</td>
+              <td class="num">-100.0%</td>
+              <td class="channel-stack"><span class="channel-chip negative">未绑定服务商 支付 -348 · 核销 -149</span><span class="channel-chip positive">广西世爵新媒体有限公司 支付 0 · 核销 -259</span></td>
+            </tr>
+
+            <tr data-channel="自播"
+                data-payment-current="239.0"
+                data-payment-delta="-1652.0"
+                data-payment-growth="-0.8736118455843469"
+                data-redeem-current="219.0"
+                data-redeem-previous="896.0"
+                data-redeem-delta="-677.0"
+                data-redeem-growth="-0.7555803571428572">
+              <td><strong>自播</strong></td>
+              <td class="num">239</td>
+              <td class="num">1,891</td>
+              <td class="num negative">-1,652</td>
+              <td class="num">-87.4%</td>
+              <td class="num">219</td>
+              <td class="num">896</td>
+              <td class="num negative">-677</td>
+              <td class="num">-75.6%</td>
+              <td class="channel-stack"><span class="channel-chip negative">广西世爵新媒体有限公司 支付 -1,493 · 核销 -677</span><span class="channel-chip negative">北京昱海黑科技有限公司 支付 -159 · 核销 0</span></td>
+            </tr>
+
+            <tr data-channel="短视频"
+                data-payment-current="645.9"
+                data-payment-delta="-623.0000000000001"
+                data-payment-growth="-0.49097643628339516"
+                data-redeem-current="438.0"
+                data-redeem-previous="980.0"
+                data-redeem-delta="-542.0"
+                data-redeem-growth="-0.5530612244897959">
+              <td><strong>短视频</strong></td>
+              <td class="num">646</td>
+              <td class="num">1,269</td>
+              <td class="num negative">-623</td>
+              <td class="num">-49.1%</td>
+              <td class="num">438</td>
+              <td class="num">980</td>
+              <td class="num negative">-542</td>
+              <td class="num">-55.3%</td>
+              <td class="channel-stack"><span class="channel-chip negative">北京昱海黑科技有限公司 支付 -657 · 核销 -259</span><span class="channel-chip negative">未绑定服务商 支付 -403 · 核销 -522</span><span class="channel-chip positive">广西世爵新媒体有限公司 支付 +239 · 核销 +239</span><span class="channel-chip positive">青岛三合酒店管理有限公司 支付 +198 · 核销 0</span></td>
+            </tr>
+
+            <tr data-channel="其他"
+                data-payment-current="7827.699999999995"
+                data-payment-delta="-6479.749999999998"
+                data-payment-growth="-0.4528934226574268"
+                data-redeem-current="6437.0"
+                data-redeem-previous="7654.0"
+                data-redeem-delta="-1217.0"
+                data-redeem-growth="-0.15900182910896266">
+              <td><strong>其他</strong></td>
+              <td class="num">7,828</td>
+              <td class="num">1.43万</td>
+              <td class="num negative">-6,480</td>
+              <td class="num">-45.3%</td>
+              <td class="num">6,437</td>
+              <td class="num">7,654</td>
+              <td class="num negative">-1,217</td>
+              <td class="num">-15.9%</td>
+              <td class="channel-stack"><span class="channel-chip negative">未绑定服务商 支付 -3,828 · 核销 +615</span><span class="channel-chip negative">北京昱海黑科技有限公司 支付 -1,259 · 核销 -1,107</span><span class="channel-chip negative">广西世爵新媒体有限公司 支付 -1,194 · 核销 -626</span><span class="channel-chip negative">青岛三合酒店管理有限公司 支付 -199 · 核销 -99</span></td>
+            </tr>
+
+            <tr data-channel="搜索结果卡"
+                data-payment-current="24815.100000000042"
+                data-payment-delta="2758.5999999999913"
+                data-payment-growth="0.125069707342506"
+                data-redeem-current="18437.15"
+                data-redeem-previous="17431.1"
+                data-redeem-delta="1006.0500000000029"
+                data-redeem-growth="0.057715806805078484">
+              <td><strong>搜索结果卡</strong></td>
+              <td class="num">2.48万</td>
+              <td class="num">2.21万</td>
+              <td class="num positive">+2,759</td>
+              <td class="num">+12.5%</td>
+              <td class="num">1.84万</td>
+              <td class="num">1.74万</td>
+              <td class="num positive">+1,006</td>
+              <td class="num">+5.8%</td>
+              <td class="channel-stack"><span class="channel-chip positive">广西世爵新媒体有限公司 支付 +2,813 · 核销 +2,449</span><span class="channel-chip negative">未绑定服务商 支付 -1,024 · 核销 -2,749</span><span class="channel-chip positive">北京昱海黑科技有限公司 支付 +758 · 核销 +799</span><span class="channel-chip positive">青岛三合酒店管理有限公司 支付 +211 · 核销 +507</span></td>
+            </tr>
+
+            <tr data-channel="获客卡"
+                data-payment-current="1895.8000000000002"
+                data-payment-delta="1269.8000000000002"
+                data-payment-growth="2.0284345047923327"
+                data-redeem-current="1210.0"
+                data-redeem-previous="199.0"
+                data-redeem-delta="1011.0"
+                data-redeem-growth="5.080402010050252">
+              <td><strong>获客卡</strong></td>
+              <td class="num">1,896</td>
+              <td class="num">626</td>
+              <td class="num positive">+1,270</td>
+              <td class="num">+202.8%</td>
+              <td class="num">1,210</td>
+              <td class="num">199</td>
+              <td class="num positive">+1,011</td>
+              <td class="num">+508.0%</td>
+              <td class="channel-stack"><span class="channel-chip positive">未绑定服务商 支付 +426 · 核销 +406</span><span class="channel-chip positive">青岛三合酒店管理有限公司 支付 +376 · 核销 +376</span><span class="channel-chip positive">广西世爵新媒体有限公司 支付 +239 · 核销 0</span><span class="channel-chip positive">北京昱海黑科技有限公司 支付 +229 · 核销 +229</span></td>
+            </tr>
+            </tbody>
+        </table>
+      </div>
+    </article>
+      <article class="panel"><div class="panel-head"><div><h2>增长 / 下滑摘要</h2><p>按支付 GMV 增减额排序</p></div></div>
+        <div class="insights">
+          <div class="insight"><b>最大增长门店</b><p>7天优品(国际商贸城店) · +1,448 · 未绑定服务商</p><span class="tag good">暂无渠道</span></div>
+          <div class="insight"><b>最大下滑门店</b><p>维也纳国际酒店(固安新机场店) · -2,377 · 未绑定服务商</p><span class="tag warn">暂无渠道</span></div>
+        </div>
+      </article></div>
+    </section>
+
+    <section class="section" id="providers">
+      <div class="section-head"><div><h2>头部服务商表现</h2><p>按绑定门店数展示前 8 家主要服务商</p></div></div>
+      <div class="grid-2"><article class="panel"><div class="panel-head"><div><h2>服务商累计表现</h2><p>支付、核销、绑定规模与单店产出 · 金额单位：万元</p></div></div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>#</th><th>服务商</th><th>绑定门店</th><th>动销门店</th><th>支付 GMV</th><th>支付增长率</th><th>核销 GMV</th><th>核销增长率</th><th>平均单店支付</th><th>单店支付增长率</th><th>平均单店核销</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="rank">01</td>
+              <td><strong>未绑定服务商</strong></td>
+              <td class="num">0家</td>
+              <td class="num">22家</td>
+              <td class="num">1.98万</td>
+              <td class="num negative">-20.7%</td>
+              <td class="num">1.51万</td>
+              <td class="num negative">-13.7%</td>
+              <td class="num">901</td>
+              <td class="num negative">-9.9%</td>
+              <td class="num">687</td>
+            </tr>
+
+            <tr>
+              <td class="rank">02</td>
+              <td><strong>广西世爵新媒体有限公司</strong></td>
+              <td class="num">1家</td>
+              <td class="num">1家</td>
+              <td class="num">6,403</td>
+              <td class="num positive">+10.4%</td>
+              <td class="num">5,203</td>
+              <td class="num positive">+27.6%</td>
+              <td class="num">6,403</td>
+              <td class="num positive">+10.4%</td>
+              <td class="num">5,203</td>
+            </tr>
+
+            <tr>
+              <td class="rank">03</td>
+              <td><strong>北京昱海黑科技有限公司</strong></td>
+              <td class="num">3家</td>
+              <td class="num">3家</td>
+              <td class="num">6,268</td>
+              <td class="num negative">-14.8%</td>
+              <td class="num">4,573</td>
+              <td class="num negative">-6.9%</td>
+              <td class="num">2,089</td>
+              <td class="num negative">-14.8%</td>
+              <td class="num">1,524</td>
+            </tr>
+
+            <tr>
+              <td class="rank">04</td>
+              <td><strong>青岛三合酒店管理有限公司</strong></td>
+              <td class="num">1家</td>
+              <td class="num">1家</td>
+              <td class="num">2,941</td>
+              <td class="num positive">+24.9%</td>
+              <td class="num">1,843</td>
+              <td class="num positive">+74.0%</td>
+              <td class="num">2,941</td>
+              <td class="num positive">+24.9%</td>
+              <td class="num">1,843</td>
+            </tr>
+            </tbody>
+        </table>
+      </div>
+    </article>
+      <article class="panel"><div class="panel-head"><div><h2>服务商水平</h2><p>平均单店支付产出柱状图 · 单位：万元</p></div></div>
+        <div class="insights"><div class="insight"><b>未绑定服务商</b><p>901 /家支付 · 687 /家核销 · 22家动销</p><div class="bar-wrap"><span class="segment-bar calendar" style="width:14.1%"></span></div><span class="tag warn">单店产出 -9.9%</span></div><div class="insight"><b>广西世爵新媒体有限公司</b><p>6,403 /家支付 · 5,203 /家核销 · 1家动销</p><div class="bar-wrap"><span class="segment-bar calendar" style="width:100.0%"></span></div><span class="tag good">单店产出 +10.4%</span></div><div class="insight"><b>北京昱海黑科技有限公司</b><p>2,089 /家支付 · 1,524 /家核销 · 3家动销</p><div class="bar-wrap"><span class="segment-bar calendar" style="width:32.6%"></span></div><span class="tag warn">单店产出 -14.8%</span></div><div class="insight"><b>青岛三合酒店管理有限公司</b><p>2,941 /家支付 · 1,843 /家核销 · 1家动销</p><div class="bar-wrap"><span class="segment-bar calendar" style="width:45.9%"></span></div><span class="tag good">单店产出 +24.9%</span></div></div>
+      </article></div>
+    </section>
+
+    <section class="section" id="voucher">
+      <div class="section-head"><div><h2>通兑商品</h2><p>省区合计 · 仅展示支付与核销趋势，不拆分 SKU</p></div></div>
+      <div class="kpis">
+        <article class="kpi"><span class="kpi-label">通兑支付 GMV</span><b class="kpi-value">598</b><div class="kpi-foot"><span>本期 7 天累计</span><span>支付券 1张</span></div></article>
+        <article class="kpi"><span class="kpi-label">通兑核销 GMV</span><b class="kpi-value">897</b><div class="kpi-foot"><span>本期 7 天累计</span><span>核销券 3张</span></div></article>
+      </div>
+      <article class="panel" style="margin-top:16px">
+        <div class="panel-head trend-panel-head"><div class="trend-heading"><h2>支付与核销趋势</h2><span class="trend-range">10-03–10-09 · 单位：万元</span></div><div class="legend"><span><i style="background:var(--blue)"></i>支付</span><span><i style="background:var(--orange)"></i>核销</span></div></div>
+        <div class="chart-scroll">
+      <svg class="chart-svg" viewBox="0 0 760 300" role="img"
+           aria-label="支付与核销日趋势，单位万元">
+        <line x1="54" y1="34.0" x2="736" y2="34.0" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="104.6" x2="736" y2="104.6" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="175.2" x2="736" y2="175.2" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="248.0" x2="736" y2="248.0" stroke="#ECEEF3" stroke-width="1"/><text x="44" y="38.0" text-anchor="end" class="axis-label">0.1</text><text x="44" y="145.0" text-anchor="end" class="axis-label">0.0</text><text x="44" y="252.0" text-anchor="end" class="axis-label">0.0</text>
+        <path d="M54.0 34.0 L167.7 248.0 L281.3 248.0 L395.0 248.0 L508.7 248.0 L622.3 248.0 L736.0 248.0" fill="none" stroke="#1677FF"
+              stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M54.0 141.0 L167.7 248.0 L281.3 248.0 L395.0 141.0 L508.7 141.0 L622.3 248.0 L736.0 248.0" fill="none" stroke="#FF8A3D"
+              stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle class="trend-point payment-point" cx="54.0" cy="34.0" r="5" fill="#1677FF"/><text x="58.0" y="22.0" text-anchor="start" class="point-label payment-label" fill="#1677FF">0.1万</text><circle class="trend-point payment-point" cx="167.7" cy="248.0" r="5" fill="#1677FF"/><text x="167.7" y="236.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="281.3" cy="248.0" r="5" fill="#1677FF"/><text x="281.3" y="236.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="395.0" cy="248.0" r="5" fill="#1677FF"/><text x="395.0" y="236.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="508.7" cy="248.0" r="5" fill="#1677FF"/><text x="508.7" y="236.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="622.3" cy="248.0" r="5" fill="#1677FF"/><text x="622.3" y="236.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="736.0" cy="248.0" r="5" fill="#1677FF"/><text x="732.0" y="236.0" text-anchor="end" class="point-label payment-label" fill="#1677FF">0.0万</text>
+        <circle class="trend-point redeem-point" cx="54.0" cy="141.0" r="5" fill="#FF8A3D"/><text x="58.0" y="165.0" text-anchor="start" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="167.7" cy="248.0" r="5" fill="#FF8A3D"/><text x="167.7" y="272.0" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="281.3" cy="248.0" r="5" fill="#FF8A3D"/><text x="281.3" y="272.0" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="395.0" cy="141.0" r="5" fill="#FF8A3D"/><text x="395.0" y="165.0" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="508.7" cy="141.0" r="5" fill="#FF8A3D"/><text x="508.7" y="165.0" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="622.3" cy="248.0" r="5" fill="#FF8A3D"/><text x="622.3" y="272.0" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="736.0" cy="248.0" r="5" fill="#FF8A3D"/><text x="732.0" y="272.0" text-anchor="end" class="point-label redeem-label" fill="#FF8A3D">0.0万</text>
+        <text x="54.0" y="288" text-anchor="middle" class="axis-label">10-03</text><text x="167.7" y="288" text-anchor="middle" class="axis-label">10-04</text><text x="281.3" y="288" text-anchor="middle" class="axis-label">10-05</text><text x="395.0" y="288" text-anchor="middle" class="axis-label">10-06</text><text x="508.7" y="288" text-anchor="middle" class="axis-label">10-07</text><text x="622.3" y="288" text-anchor="middle" class="axis-label">10-08</text><text x="736.0" y="288" text-anchor="middle" class="axis-label">10-09</text>
+      </svg>
+    </div>
+      </article>
+    </section>
+
+
+    <section class="section" id="merchant-live">
+      <div class="section-head"><div><h2>商家自播</h2><p>商家官号 · 近 7 日对比前 7 日 · 数据来源：生意经</p></div></div>
+      <div class="kpis">
+        <article class="kpi"><span class="kpi-label">直播成交金额</span><b class="kpi-value">239</b><div class="kpi-foot"><span class="negative">-87.4%</span><span>较前 7 日 1,891</span></div></article>
+        <article class="kpi"><span class="kpi-label">直播场次</span><b class="kpi-value">10<small style="font-size:14px">场</small></b><div class="kpi-foot"><span class="negative">-44.4%</span><span>较前 7 日 18场</span></div></article>
+        <article class="kpi"><span class="kpi-label">直播时长</span><b class="kpi-value">14.3小时</b><div class="kpi-foot"><span class="negative">-48.9%</span><span>较前 7 日 28.0小时</span></div></article>
+        <article class="kpi"><span class="kpi-label">开播账号</span><b class="kpi-value">1<small style="font-size:14px">个</small></b><div class="kpi-foot"><span class="negative">-2个</span><span>较前 7 日</span></div></article>
+      </div>
+      <article class="panel" style="margin-top:16px">
+        <div class="panel-head trend-panel-head"><div class="trend-heading"><h2>直播成交与时长每日趋势</h2><span class="trend-range">10-03–10-09</span></div></div>
+        <div class="chart-scroll merchant-trend-scroll">
+      <div class="merchant-trend-canvas">
+        <svg class="chart-svg merchant-amount-chart" viewBox="0 0 760 245"
+             role="img" aria-label="商家官号直播成交金额每日趋势，单位万元">
+          <line x1="54" y1="34.0" x2="736" y2="34.0" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="122.5" x2="736" y2="122.5" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="211.0" x2="736" y2="211.0" stroke="#ECEEF3" stroke-width="1"/><text x="44" y="38.0" text-anchor="end" class="axis-label">0.0</text><text x="44" y="126.5" text-anchor="end" class="axis-label">0.0</text><text x="44" y="215.0" text-anchor="end" class="axis-label">0.0</text>
+          <path d="M54.0 211.0 L167.7 211.0 L281.3 211.0 L395.0 211.0 L508.7 211.0 L622.3 34.0 L736.0 211.0" fill="none" stroke="#8B6DFF"
+                stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle class="merchant-live-point" cx="54.0" cy="211.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="58.0" y="199.0" text-anchor="start" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="167.7" cy="211.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="167.7" y="199.0" text-anchor="middle" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="281.3" cy="211.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="281.3" y="199.0" text-anchor="middle" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="395.0" cy="211.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="395.0" y="199.0" text-anchor="middle" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="508.7" cy="211.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="508.7" y="199.0" text-anchor="middle" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="622.3" cy="34.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="622.3" y="22.0" text-anchor="middle" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="736.0" cy="211.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="732.0" y="199.0" text-anchor="end" fill="#8B6DFF">0.0万</text>
+        </svg>
+        <div class="merchant-subchart-title">每日直播时长 <span>单位：小时</span></div>
+        <svg class="chart-svg merchant-duration-chart" viewBox="0 0 760 155"
+             role="img" aria-label="商家官号每日直播时长，单位小时">
+          <line x1="54" y1="28.0" x2="736" y2="28.0" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="121.0" x2="736" y2="121.0" stroke="#ECEEF3" stroke-width="1"/><rect class="merchant-duration-bar" x="31.6" y="28.0" width="44.8" height="93.0" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="54.0" y="21.0" text-anchor="middle" fill="#00A7A0">4.2h</text><rect class="merchant-duration-bar" x="145.3" y="79.0" width="44.8" height="42.0" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="167.7" y="72.0" text-anchor="middle" fill="#00A7A0">1.9h</text><rect class="merchant-duration-bar" x="258.9" y="121.0" width="44.8" height="0.0" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="281.3" y="114.0" text-anchor="middle" fill="#00A7A0">0.0h</text><rect class="merchant-duration-bar" x="372.6" y="91.1" width="44.8" height="29.9" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="395.0" y="84.1" text-anchor="middle" fill="#00A7A0">1.4h</text><rect class="merchant-duration-bar" x="486.3" y="89.2" width="44.8" height="31.8" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="508.7" y="82.2" text-anchor="middle" fill="#00A7A0">1.4h</text><rect class="merchant-duration-bar" x="599.9" y="79.0" width="44.8" height="42.0" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="622.3" y="72.0" text-anchor="middle" fill="#00A7A0">1.9h</text><rect class="merchant-duration-bar" x="713.6" y="42.7" width="44.8" height="78.3" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="736.0" y="35.7" text-anchor="middle" fill="#00A7A0">3.5h</text><text x="54.0" y="145" text-anchor="middle" class="axis-label">10-03</text><text x="167.7" y="145" text-anchor="middle" class="axis-label">10-04</text><text x="281.3" y="145" text-anchor="middle" class="axis-label">10-05</text><text x="395.0" y="145" text-anchor="middle" class="axis-label">10-06</text><text x="508.7" y="145" text-anchor="middle" class="axis-label">10-07</text><text x="622.3" y="145" text-anchor="middle" class="axis-label">10-08</text><text x="736.0" y="145" text-anchor="middle" class="axis-label">10-09</text>
+        </svg>
+      </div>
+    </div>
+      </article>
+      <div class="grid-2 equal">
+        <article class="panel"><div class="panel-head"><div><h2>城市自播排名</h2><p>固定区域城市全集 · 可筛选零开播城市并点击业务列排序</p></div></div>
+      <div class="filter-bar merchant-filter-bar">
+        <input id="merchant-city-search" type="search" placeholder="搜索城市"
+               aria-label="搜索城市">
+        <select id="merchant-city-status-filter" aria-label="按开播状态筛选城市">
+          <option value="">全部状态</option>
+          <option value="有开播">有开播</option>
+          <option value="零开播">零开播</option>
+        </select>
+        <span id="merchant-city-result-count" class="filter-count"></span>
+      </div>
+      <div class="table-scroll">
+        <table class="merchant-table">
+          <thead><tr>
+            <th>#</th>
+            <th><button class="sort-trigger merchant-city-sort-trigger" type="button" data-sort-key="city-name" onclick="sortMerchantCityTable('city-name')" title="按城市排序">城市 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-city-sort-trigger" type="button" data-sort-key="city-live-amount" onclick="sortMerchantCityTable('city-live-amount')" title="按直播成交金额排序">直播成交金额 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-city-sort-trigger" type="button" data-sort-key="city-live-sessions" onclick="sortMerchantCityTable('city-live-sessions')" title="按直播场次排序">直播场次 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-city-sort-trigger" type="button" data-sort-key="city-live-hours" onclick="sortMerchantCityTable('city-live-hours')" title="按直播时长排序">直播时长 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-city-sort-trigger" type="button" data-sort-key="city-account-count" onclick="sortMerchantCityTable('city-account-count')" title="按账号数排序">账号数 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-city-sort-trigger" type="button" data-sort-key="city-live-account-count" onclick="sortMerchantCityTable('city-live-account-count')" title="按开播账号排序">开播账号 <span class="sort-indicator">↕</span></button></th>
+          </tr></thead>
+          <tbody id="merchant-city-body">
+        <tr data-city-name="廊坊市"
+            data-city-status="有开播"
+            data-city-live-amount="239.0"
+            data-city-live-sessions="10.0"
+            data-city-live-hours="14.311944444444444"
+            data-city-account-count="3.0"
+            data-city-live-account-count="1.0">
+          <td class="rank">01</td>
+          <td><strong>廊坊市</strong><small><span class="live-status 有开播">有开播</span></small></td>
+          <td class="num">239</td>
+          <td class="num">10</td>
+          <td class="num">14.3小时</td>
+          <td class="num">3</td>
+          <td class="num">1</td>
+        </tr>
+        </tbody>
+        </table>
+      </div>
+    </article>
+        <article class="panel"><div class="panel-head"><div><h2>账号明细</h2><p>14 日出现账号全集 · “未直播”为近 7 日直播场次等于 0</p></div></div>
+      <div class="filter-bar merchant-filter-bar">
+        <input id="merchant-account-search" type="search"
+               placeholder="搜索账号、ID 或门店" aria-label="搜索账号、ID 或门店">
+        <select id="merchant-account-city-filter" aria-label="按城市筛选账号">
+          <option value="">全部城市</option><option value="廊坊市">廊坊市</option>
+        </select>
+        <select id="merchant-account-status-filter" aria-label="按直播状态筛选账号">
+          <option value="">全部状态</option>
+          <option value="已直播">已直播</option>
+          <option value="未直播">未直播</option>
+        </select>
+        <span id="merchant-account-result-count" class="filter-count"></span>
+      </div>
+      <div class="table-scroll">
+        <table class="merchant-table">
+          <thead><tr>
+            <th>#</th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-name" onclick="sortMerchantAccountTable('account-name')" title="按抖音号排序">抖音号 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-city" onclick="sortMerchantAccountTable('account-city')" title="按城市 / 门店排序">城市 / 门店 <span class="sort-indicator">↕</span></button></th>
+            <th>一级省区 / 二级片区</th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-live-amount" onclick="sortMerchantAccountTable('account-live-amount')" title="按直播成交金额排序">直播成交金额 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-live-sessions" onclick="sortMerchantAccountTable('account-live-sessions')" title="按直播场次排序">直播场次 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-live-hours" onclick="sortMerchantAccountTable('account-live-hours')" title="按直播时长排序">直播时长 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-total-amount" onclick="sortMerchantAccountTable('account-total-amount')" title="按总成交金额排序">总成交金额 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-redeem-amount" onclick="sortMerchantAccountTable('account-redeem-amount')" title="按总核销金额排序">总核销金额 <span class="sort-indicator">↕</span></button></th>
+          </tr></thead>
+          <tbody id="merchant-account-body">
+        <tr data-account-name="维也纳国际酒店（霸州裕华东道亿辰大厦店）"
+            data-account-id="79685040135"
+            data-account-city="廊坊市"
+            data-account-store="维也纳国际酒店(霸州裕华东道亿辰大厦店)"
+            data-account-province="津河省区"
+            data-account-area="廊坊片区"
+            data-account-status="已直播"
+            data-account-live-amount="239.0"
+            data-account-live-sessions="10.0"
+            data-account-live-hours="14.311944444444444"
+            data-account-total-amount="438.0"
+            data-account-redeem-amount="199.0">
+          <td class="rank">01</td>
+          <td><strong>维也纳国际酒店（霸州裕华东道亿辰大厦店）</strong><small>79685040135 · <span class="live-status 已直播">已直播</span></small></td>
+          <td>廊坊市<small>维也纳国际酒店(霸州裕华东道亿辰大厦店)</small></td>
+          <td>津河省区<small>廊坊片区</small></td>
+          <td class="num">239</td>
+          <td class="num">10</td>
+          <td class="num">14.3小时</td>
+          <td class="num">438</td>
+          <td class="num">199</td>
+        </tr>
+
+        <tr data-account-name="维也纳国际酒店(固安新机场店)专用号"
+            data-account-id="wyngaxjcd123"
+            data-account-city="廊坊市"
+            data-account-store="维也纳国际酒店(固安新机场店)"
+            data-account-province="津河省区"
+            data-account-area="廊坊片区"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">02</td>
+          <td><strong>维也纳国际酒店(固安新机场店)专用号</strong><small>wyngaxjcd123 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>廊坊市<small>维也纳国际酒店(固安新机场店)</small></td>
+          <td>津河省区<small>廊坊片区</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="麗枫酒店(三河燕郊燕顺路中央美院店）"
+            data-account-id="36010185569"
+            data-account-city="廊坊市"
+            data-account-store="麗枫酒店(三河燕郊燕顺路中央美院店)"
+            data-account-province="津河省区"
+            data-account-area="廊坊片区"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="219.0">
+          <td class="rank">03</td>
+          <td><strong>麗枫酒店(三河燕郊燕顺路中央美院店）</strong><small>36010185569 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>廊坊市<small>麗枫酒店(三河燕郊燕顺路中央美院店)</small></td>
+          <td>津河省区<small>廊坊片区</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">219</td>
+        </tr>
+        </tbody>
+        </table>
+      </div>
+    </article>
+      </div>
+    </section>
+
+
+  </main>
+</div>
+<nav class="mobile-nav">
+  <button class="active" data-target="overview">总览</button><button data-target="provinces">组织</button><button data-target="stores">门店</button><button data-target="attribution">归因</button><button data-target="providers">服务商</button><button data-target="voucher">通兑</button><button data-target="merchant-live">自播</button>
+</nav>
+<script>
+const navItems=[...document.querySelectorAll('[data-target]')];
+const sections=[...document.querySelectorAll('.section')];
+function showSection(id, options={}){
+  if(!sections.some(section=>section.id===id))return;
+  const syncHash=options.syncHash!==false;
+  const scroll=options.scroll!==false;
+  sections.forEach(s=>s.classList.toggle('active',s.id===id));
+  navItems.forEach(n=>n.classList.toggle('active',n.dataset.target===id));
+  if(syncHash&&window.location.hash!==`#${id}`){
+    window.history.replaceState(null,'',`#${id}`);
+  }
+  if(scroll)window.scrollTo({top:0,behavior:'smooth'});
+}
+navItems.forEach(item=>item.addEventListener('click',()=>{if(item.dataset.target)showSection(item.dataset.target)}));
+function navigateOrganizationScope(relativeUrl){
+  if(!relativeUrl)return;
+  const activeSection=document.querySelector('.section.active')?.id||'overview';
+  const targetUrl=new URL(relativeUrl,window.location.href);
+  targetUrl.hash=activeSection;
+  window.location.href=targetUrl.href;
+}
+document.getElementById('organization-province-filter')
+  ?.addEventListener('change',event=>{
+    navigateOrganizationScope(event.target.value);
+  });
+document.getElementById('organization-area-filter')
+  ?.addEventListener('change',event=>{
+    navigateOrganizationScope(event.target.value);
+  });
+const initialSection=decodeURIComponent(window.location.hash.slice(1));
+if(initialSection){
+  showSection(initialSection,{syncHash:false,scroll:false});
+}
+document.querySelectorAll('[data-local]').forEach(tab=>tab.addEventListener('click',()=>{
+  const panel=tab.dataset.local;
+  const parent=tab.closest('.section');
+  parent.querySelectorAll('[data-local]').forEach(t=>t.classList.toggle('active',t===tab));
+  parent.querySelectorAll('.local-panel').forEach(p=>p.style.display=p.dataset.panel===panel?'block':'none');
+}));
+let storeSortKey='';
+let storeSortDirection='desc';
+function sortStoreTable(nextKey){
+  const body=document.getElementById('store-all-body');
+  if(!body)return;
+  if(nextKey===storeSortKey)storeSortDirection=storeSortDirection==='asc'?'desc':'asc';
+  else{storeSortKey=nextKey;storeSortDirection='desc';}
+  const stringKeys=new Set(['province','area','store','provider']);
+  const rows=[...body.querySelectorAll('tr')];
+  rows.sort((a,b)=>{
+    const rawA=a.getAttribute('data-'+storeSortKey);
+    const rawB=b.getAttribute('data-'+storeSortKey);
+    const result=stringKeys.has(storeSortKey)
+      ?rawA.localeCompare(rawB,'zh-CN')
+      :(Number(rawA)-Number(rawB));
+    return storeSortDirection==='asc'?result:-result;
+  });
+  rows.forEach((row,index)=>{
+    body.appendChild(row);
+    const rank=row.querySelector('.rank');
+    if(rank)rank.textContent=String(index+1).padStart(2,'0');
+  });
+  document.querySelectorAll('.store-sort-trigger').forEach(button=>{
+    const active=button.dataset.sortKey===storeSortKey;
+    button.classList.toggle('active',active);
+    const indicator=button.querySelector('.sort-indicator');
+    if(indicator)indicator.textContent=active?(storeSortDirection==='asc'?'↑':'↓'):'↕';
+  });
+  filterStoreTable();
+}
+function filterStoreTable(){
+  const body=document.getElementById('store-all-body');
+  if(!body)return;
+  const query=(document.getElementById('store-search')?.value||'').trim().toLocaleLowerCase('zh-CN');
+  const province=document.getElementById('province-filter')?.value||'';
+  const area=document.getElementById('area-filter')?.value||'';
+  let visible=0;
+  body.querySelectorAll('tr').forEach(row=>{
+    const haystack=[
+      row.dataset.store||'',
+      row.dataset.city||'',
+      row.dataset.area||'',
+      row.dataset.provider||''
+    ].join(' ').toLocaleLowerCase('zh-CN');
+    const matches=(!query||haystack.includes(query))
+      &&(!province||row.dataset.province===province)
+      &&(!area||row.dataset.area===area);
+    row.hidden=!matches;
+    if(matches){
+      visible+=1;
+      const rank=row.querySelector('.rank');
+      if(rank)rank.textContent=String(visible).padStart(2,'0');
+    }
+  });
+  const count=document.getElementById('store-result-count');
+  if(count)count.textContent=`显示 ${visible} / ${body.querySelectorAll('tr').length} 家`;
+}
+document.getElementById('store-search')?.addEventListener('input',filterStoreTable);
+document.getElementById('province-filter')?.addEventListener('change',filterStoreTable);
+document.getElementById('area-filter')?.addEventListener('change',filterStoreTable);
+let merchantCitySortKey='';
+let merchantCitySortDirection='desc';
+function sortMerchantCityTable(nextKey){
+  const body=document.getElementById('merchant-city-body');
+  if(!body)return;
+  if(nextKey===merchantCitySortKey){
+    merchantCitySortDirection=merchantCitySortDirection==='asc'?'desc':'asc';
+  }else{
+    merchantCitySortKey=nextKey;
+    merchantCitySortDirection=nextKey==='city-name'?'asc':'desc';
+  }
+  const stringKeys=new Set(['city-name']);
+  const rows=[...body.querySelectorAll('tr')];
+  rows.sort((a,b)=>{
+    const rawA=a.getAttribute('data-'+merchantCitySortKey)||'';
+    const rawB=b.getAttribute('data-'+merchantCitySortKey)||'';
+    const result=stringKeys.has(merchantCitySortKey)
+      ?rawA.localeCompare(rawB,'zh-CN')
+      :Number(rawA)-Number(rawB);
+    return merchantCitySortDirection==='asc'?result:-result;
+  });
+  rows.forEach(row=>body.appendChild(row));
+  document.querySelectorAll('.merchant-city-sort-trigger').forEach(button=>{
+    const active=button.dataset.sortKey===merchantCitySortKey;
+    button.classList.toggle('active',active);
+    const indicator=button.querySelector('.sort-indicator');
+    if(indicator)indicator.textContent=active
+      ?(merchantCitySortDirection==='asc'?'↑':'↓')
+      :'↕';
+  });
+  filterMerchantCityTable();
+}
+function filterMerchantCityTable(){
+  const body=document.getElementById('merchant-city-body');
+  if(!body)return;
+  const query=(document.getElementById('merchant-city-search')?.value||'')
+    .trim().toLocaleLowerCase('zh-CN');
+  const status=document.getElementById('merchant-city-status-filter')?.value||'';
+  let visible=0;
+  const rows=[...body.querySelectorAll('tr')];
+  rows.forEach(row=>{
+    const city=(row.dataset.cityName||'').toLocaleLowerCase('zh-CN');
+    const matches=(!query||city.includes(query))
+      &&(!status||row.dataset.cityStatus===status);
+    row.hidden=!matches;
+    if(matches){
+      visible+=1;
+      const rank=row.querySelector('.rank');
+      if(rank)rank.textContent=String(visible).padStart(2,'0');
+    }
+  });
+  const count=document.getElementById('merchant-city-result-count');
+  if(count)count.textContent=`显示 ${visible} / ${rows.length} 城`;
+}
+let merchantAccountSortKey='';
+let merchantAccountSortDirection='desc';
+function sortMerchantAccountTable(nextKey){
+  const body=document.getElementById('merchant-account-body');
+  if(!body)return;
+  if(nextKey===merchantAccountSortKey){
+    merchantAccountSortDirection=merchantAccountSortDirection==='asc'?'desc':'asc';
+  }else{
+    merchantAccountSortKey=nextKey;
+    merchantAccountSortDirection=['account-name','account-city'].includes(nextKey)
+      ?'asc'
+      :'desc';
+  }
+  const stringKeys=new Set(['account-name','account-city']);
+  const rows=[...body.querySelectorAll('tr')];
+  rows.sort((a,b)=>{
+    const rawA=a.getAttribute('data-'+merchantAccountSortKey)||'';
+    const rawB=b.getAttribute('data-'+merchantAccountSortKey)||'';
+    const result=stringKeys.has(merchantAccountSortKey)
+      ?rawA.localeCompare(rawB,'zh-CN')
+      :Number(rawA)-Number(rawB);
+    return merchantAccountSortDirection==='asc'?result:-result;
+  });
+  rows.forEach(row=>body.appendChild(row));
+  document.querySelectorAll('.merchant-account-sort-trigger').forEach(button=>{
+    const active=button.dataset.sortKey===merchantAccountSortKey;
+    button.classList.toggle('active',active);
+    const indicator=button.querySelector('.sort-indicator');
+    if(indicator)indicator.textContent=active
+      ?(merchantAccountSortDirection==='asc'?'↑':'↓')
+      :'↕';
+  });
+  filterMerchantAccountTable();
+}
+function filterMerchantAccountTable(){
+  const body=document.getElementById('merchant-account-body');
+  if(!body)return;
+  const query=(document.getElementById('merchant-account-search')?.value||'')
+    .trim().toLocaleLowerCase('zh-CN');
+  const city=document.getElementById('merchant-account-city-filter')?.value||'';
+  const status=document.getElementById('merchant-account-status-filter')?.value||'';
+  let visible=0;
+  const rows=[...body.querySelectorAll('tr')];
+  rows.forEach(row=>{
+    const haystack=[
+      row.dataset.accountName||'',
+      row.dataset.accountId||'',
+      row.dataset.accountStore||'',
+      row.dataset.accountProvince||'',
+      row.dataset.accountArea||''
+    ].join(' ').toLocaleLowerCase('zh-CN');
+    const matches=(!query||haystack.includes(query))
+      &&(!city||row.dataset.accountCity===city)
+      &&(!status||row.dataset.accountStatus===status);
+    row.hidden=!matches;
+    if(matches){
+      visible+=1;
+      const rank=row.querySelector('.rank');
+      if(rank)rank.textContent=String(visible).padStart(2,'0');
+    }
+  });
+  const count=document.getElementById('merchant-account-result-count');
+  if(count)count.textContent=`显示 ${visible} / ${rows.length} 个账号`;
+}
+document.getElementById('merchant-city-search')
+  ?.addEventListener('input',filterMerchantCityTable);
+document.getElementById('merchant-city-status-filter')
+  ?.addEventListener('change',filterMerchantCityTable);
+document.getElementById('merchant-account-search')
+  ?.addEventListener('input',filterMerchantAccountTable);
+document.getElementById('merchant-account-city-filter')
+  ?.addEventListener('change',filterMerchantAccountTable);
+document.getElementById('merchant-account-status-filter')
+  ?.addEventListener('change',filterMerchantAccountTable);
+let channelSortKey='redeem-delta';
+let channelSortDirection='desc';
+function sortChannelTable(nextKey){
+  const body=document.getElementById('channel-attribution-body');
+  if(!body)return;
+  if(nextKey===channelSortKey)channelSortDirection=channelSortDirection==='asc'?'desc':'asc';
+  else{channelSortKey=nextKey;channelSortDirection='desc';}
+  const key=channelSortKey;
+  const rows=[...body.querySelectorAll('tr')];
+  rows.sort((a,b)=>{
+    const av=key==='channel'?a.getAttribute('data-channel'):(Number(a.getAttribute('data-'+key))||0);
+    const bv=key==='channel'?b.getAttribute('data-channel'):(Number(b.getAttribute('data-'+key))||0);
+    const result=key==='channel'?av.localeCompare(bv,'zh-CN'):av-bv;
+    return channelSortDirection==='asc'?result:-result;
+  });
+  rows.forEach(row=>body.appendChild(row));
+  document.querySelectorAll('.channel-sort-trigger').forEach(button=>{
+    const active=button.dataset.sortKey===channelSortKey;
+    button.classList.toggle('active',active);
+    const indicator=button.querySelector('.sort-indicator');
+    if(indicator)indicator.textContent=active?(channelSortDirection==='asc'?'↑':'↓'):'↕';
+  });
+}
+sortStoreTable('redeem-current');
+sortChannelTable('redeem-delta');
+sortMerchantCityTable('city-live-amount');
+sortMerchantAccountTable('account-live-amount');
+document.documentElement.dataset.workbench="{\"region\": \"津河省区 · 廊坊片区\", \"periods\": {\"previous_start\": \"2026-09-26\", \"previous_end\": \"2026-10-02\", \"current_start\": \"2026-10-03\", \"current_end\": \"2026-10-09\"}, \"verification\": {\"detail_row_count\": 600, \"channel_row_count\": 602, \"other_region_row_count\": 0, \"provider_count\": 4, \"store_count\": 31, \"voucher_product_count\": 8, \"product_structure_closed\": true, \"master_store_count\": 35, \"data_store_count\": 31, \"zero_data_store_count\": 4, \"organization_province_count\": 1, \"organization_area_count\": 1, \"selected_province\": \"津河省区\", \"selected_area\": \"廊坊片区\", \"detail_channel_closure\": {\"意向成交金额\": true, \"意向成交券数\": true, \"意向成交间夜\": true, \"核销金额\": true, \"核销券数\": true, \"核销间夜\": true}, \"passed\": true}, \"organization_navigation\": {\"selected_province\": \"津河省区\", \"selected_area\": \"廊坊片区\", \"province_urls\": {\"津河省区\": \"workbench_jinhe.html\"}, \"area_urls\": {\"津河省区\": {\"唐山北片区\": \"workbench_jinhe__津河省区__唐山北片区.html\", \"唐山南片区\": \"workbench_jinhe__津河省区__唐山南片区.html\", \"廊坊片区\": \"workbench_jinhe__津河省区__廊坊片区.html\", \"津东片区\": \"workbench_jinhe__津河省区__津东片区.html\", \"津北片区\": \"workbench_jinhe__津河省区__津北片区.html\", \"津南片区\": \"workbench_jinhe__津河省区__津南片区.html\", \"津西北片区\": \"workbench_jinhe__津河省区__津西北片区.html\", \"津西片区\": \"workbench_jinhe__津河省区__津西片区.html\", \"滨海片区\": \"workbench_jinhe__津河省区__滨海片区.html\", \"秦皇岛片区\": \"workbench_jinhe__津河省区__秦皇岛片区.html\"}}}}";
+</script>
+</body>
+</html>
