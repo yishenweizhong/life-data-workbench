@@ -33,15 +33,16 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
 .kpi::after{content:"";position:absolute;right:-25px;bottom:-42px;width:120px;height:120px;border-radius:50%;background:rgba(22,119,255,.08)} .kpi:nth-child(2)::after{background:rgba(255,138,61,.10)} .kpi:nth-child(3)::after{background:rgba(0,167,160,.10)} .kpi:nth-child(4)::after{background:rgba(139,109,255,.10)}
 .grid-2{display:grid;grid-template-columns:1fr;gap:16px;margin-top:16px} .grid-2.equal{grid-template-columns:1fr}
 .panel{padding:20px;min-width:0} .panel-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px} .panel-head p{margin:4px 0 0;color:var(--muted);font-size:11px} .trend-panel-head{align-items:flex-start;flex-wrap:wrap} .trend-heading{display:flex;align-items:baseline;gap:14px;white-space:nowrap} .trend-range{color:#5F636D;font-size:15px;font-weight:750} .legend{display:flex;gap:12px;color:var(--muted);font-size:11px;white-space:nowrap} .legend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}
-.chart-scroll{overflow-x:auto} .chart-svg{display:block;width:100%;height:auto;overflow:visible} .axis-label{fill:#858994;font-size:10px} .point-label{font-size:11px;font-weight:750;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.chart-scroll{overflow-x:auto} .chart-svg{display:block;width:100%;height:auto;overflow:visible} .axis-label{fill:#858994;font-size:10px} .point-label,.merchant-live-point-label,.merchant-duration-label{font-size:11px;font-weight:750;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.merchant-trend-canvas{min-width:680px} .merchant-amount-chart{margin-bottom:2px} .merchant-subchart-title{margin:0 24px 0 54px;padding-top:13px;border-top:1px solid var(--line);color:#4F535C;font-size:12px;font-weight:750} .merchant-subchart-title span{margin-left:6px;color:var(--muted);font-size:10px;font-weight:600}
 .insights{display:grid;gap:10px} .insight{padding:13px 14px;border-radius:14px;background:#F7F8FA} .insight b{font-size:13px} .insight p{margin:6px 0 0;color:var(--muted);font-size:12px;line-height:1.6} .tag{display:inline-block;margin-top:8px;padding:4px 7px;border-radius:7px;font-size:10px;font-weight:700} .tag.good{color:#23875B;background:#E8F7EF} .tag.warn{color:#C65A61;background:#FFF0F1}
 .sort-trigger{display:inline-flex;align-items:center;gap:4px;border:0;background:transparent;padding:0;color:inherit;font:inherit;font-weight:700;cursor:pointer} .sort-indicator{width:10px;color:#A7ABB5;font-size:12px;line-height:1;opacity:.65} .sort-trigger.active .sort-indicator{color:var(--blue);opacity:1} .sort-trigger:hover{color:var(--blue)} .sort-trigger:hover .sort-indicator{opacity:1}
 .filter-bar{display:flex;align-items:center;gap:10px;margin-bottom:14px} .filter-bar input,.filter-bar select{height:38px;border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--ink);font:inherit;font-size:12px;outline:none} .filter-bar input{min-width:260px;padding:0 12px} .filter-bar select{padding:0 30px 0 10px} .filter-bar input:focus,.filter-bar select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(22,119,255,.10)} .filter-count{margin-left:auto;color:var(--muted);font-size:11px;white-space:nowrap}
-.table-scroll{overflow-x:auto} table{width:100%;border-collapse:collapse;min-width:820px} th{padding:11px 10px;text-align:left;color:#858994;font-size:11px;font-weight:700;border-bottom:1px solid var(--line);white-space:nowrap} td{padding:13px 10px;border-bottom:1px solid #F0F1F4;font-size:12px;vertical-align:middle} td small{display:block;margin-top:4px;color:#9A9DA6;font-size:10px;font-weight:500} td.num{font-variant-numeric:tabular-nums;white-space:nowrap} td.rank{width:38px;color:#9A9DA6;font-size:11px;font-weight:800} td strong{font-weight:700} .positive{color:#189963!important} .negative{color:#D85863!important} .provider{display:inline-block;padding:5px 8px;border-radius:8px;background:#F1F5FF;color:#4B6DB8;font-size:11px;white-space:nowrap} .channel-stack{display:flex;flex-wrap:wrap;gap:5px;min-width:175px} .channel-chip{display:inline-flex;padding:4px 7px;border-radius:7px;background:#F4F5F7;color:#646872;font-size:10px;white-space:nowrap} .channel-chip.positive{background:#EAF8F2} .channel-chip.negative{background:#FFF0F1} .empty,.empty-state{color:#9A9DA6;font-size:12px} .empty-state{padding:28px;text-align:center;background:#F8F9FB;border-radius:12px}
+.table-scroll{overflow-x:auto} table{width:100%;border-collapse:collapse;min-width:820px} .merchant-table{min-width:980px} th{padding:11px 10px;text-align:left;color:#858994;font-size:11px;font-weight:700;border-bottom:1px solid var(--line);white-space:nowrap} td{padding:13px 10px;border-bottom:1px solid #F0F1F4;font-size:12px;vertical-align:middle} td small{display:block;margin-top:4px;color:#9A9DA6;font-size:10px;font-weight:500} td.num{font-variant-numeric:tabular-nums;white-space:nowrap} td.rank{width:38px;color:#9A9DA6;font-size:11px;font-weight:800} td strong{font-weight:700} .positive{color:#189963!important} .negative{color:#D85863!important} .provider{display:inline-block;padding:5px 8px;border-radius:8px;background:#F1F5FF;color:#4B6DB8;font-size:11px;white-space:nowrap} .channel-stack{display:flex;flex-wrap:wrap;gap:5px;min-width:175px} .channel-chip{display:inline-flex;padding:4px 7px;border-radius:7px;background:#F4F5F7;color:#646872;font-size:10px;white-space:nowrap} .channel-chip.positive{background:#EAF8F2} .channel-chip.negative{background:#FFF0F1} .live-status{display:inline-block;padding:2px 6px;border-radius:6px;background:#EAF8F2;color:#16835A;font-size:9px;font-weight:750;white-space:nowrap} .live-status.未直播,.live-status.零开播{background:#F0F1F4;color:#747984} .empty,.empty-state{color:#9A9DA6;font-size:12px} .empty-state{padding:28px;text-align:center;background:#F8F9FB;border-radius:12px}
 .bar-wrap{height:12px;display:flex;overflow:hidden;border-radius:8px;background:#EEF0F5;margin:12px 0} .segment-bar{display:block;height:100%} .segment-bar.calendar{background:var(--cyan)} .segment-bar.voucher{background:var(--orange)} .structure-legend{display:flex;gap:16px;color:var(--muted);font-size:11px} .structure-legend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}
 .mobile-nav{display:none}
 @media(max-width:1050px){.app{grid-template-columns:80px minmax(0,1fr)}.sidebar{padding:22px 10px}.brand,.nav-label,.nav-item span:not(.nav-icon){display:none}.nav-item{justify-content:center;padding:13px 8px}.content{padding:24px}.kpis{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:700px){.app{display:block}.sidebar{display:none}.content{padding:20px 15px 92px}.topbar{align-items:flex-start;display:block}.top-actions{margin-top:15px;justify-content:space-between;flex-wrap:wrap}h1{font-size:30px}.kpis{grid-template-columns:1fr 1fr;gap:10px}.kpi{min-height:120px;padding:14px}.kpi-value{font-size:23px;margin-top:11px}.kpi-foot{display:block}.kpi-foot>span{display:block}.kpi-foot>span:first-child{font-size:15px}.grid-2,.grid-2.equal{grid-template-columns:1fr}.panel{padding:15px;border-radius:16px}.trend-heading{gap:9px}.trend-heading h2{font-size:17px}.trend-range{font-size:13px}.chart-scroll .chart-svg{width:680px;max-width:none}.filter-bar{align-items:stretch;flex-wrap:wrap}.filter-bar input{min-width:0;flex:1 1 100%}.filter-bar select{flex:1}.filter-count{align-self:center}.mobile-nav{position:fixed;display:flex;z-index:20;left:14px;right:14px;bottom:15px;justify-content:space-around;padding:9px 7px;border:1px solid rgba(255,255,255,.85);border-radius:20px;background:rgba(255,255,255,.72);box-shadow:0 12px 30px rgba(32,44,70,.15);backdrop-filter:blur(25px) saturate(170%)}.mobile-nav button{padding:6px 8px;border-radius:12px;color:var(--muted);font-size:10px;font-weight:700}.mobile-nav button.active{background:#fff;color:var(--blue);box-shadow:0 4px 10px rgba(31,42,68,.1)}}
+@media(max-width:700px){.app{display:block}.sidebar{display:none}.content{padding:20px 15px 92px}.topbar{align-items:flex-start;display:block}.top-actions{margin-top:15px;justify-content:space-between;flex-wrap:wrap}h1{font-size:30px}.kpis{grid-template-columns:1fr 1fr;gap:10px}.kpi{min-height:120px;padding:14px}.kpi-value{font-size:23px;margin-top:11px}.kpi-foot{display:block}.kpi-foot>span{display:block}.kpi-foot>span:first-child{font-size:15px}.grid-2,.grid-2.equal{grid-template-columns:1fr}.panel{padding:15px;border-radius:16px}.trend-heading{gap:9px;white-space:normal;flex-wrap:wrap}.trend-heading h2{font-size:17px}.trend-range{font-size:13px}.chart-scroll .chart-svg{width:680px;max-width:none}.merchant-trend-scroll .chart-svg{width:100%}.filter-bar{align-items:stretch;flex-wrap:wrap}.filter-bar input{min-width:0;flex:1 1 100%}.filter-bar select{flex:1}.filter-count{align-self:center}.mobile-nav{position:fixed;display:flex;z-index:20;left:14px;right:14px;bottom:15px;justify-content:space-around;padding:9px 7px;border:1px solid rgba(255,255,255,.85);border-radius:20px;background:rgba(255,255,255,.72);box-shadow:0 12px 30px rgba(32,44,70,.15);backdrop-filter:blur(25px) saturate(170%)}.mobile-nav button{padding:6px 8px;border-radius:12px;color:var(--muted);font-size:10px;font-weight:700}.mobile-nav button.active{background:#fff;color:var(--blue);box-shadow:0 4px 10px rgba(31,42,68,.1)}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
 </style>
 </head>
@@ -7945,110 +7946,218 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
         <article class="kpi"><span class="kpi-label">开播账号</span><b class="kpi-value">38<small style="font-size:14px">个</small></b><div class="kpi-foot"><span class="negative">-8个</span><span>较前 7 日</span></div></article>
       </div>
       <article class="panel" style="margin-top:16px">
-        <div class="panel-head trend-panel-head"><div class="trend-heading"><h2>直播成交每日趋势</h2><span class="trend-range">10-03–10-09 · 单位：万元</span></div></div>
-
-      <svg class="chart-svg" viewBox="0 0 760 270" role="img"
-           aria-label="商家官号直播成交金额每日趋势">
-        <line x1="54" y1="24.0" x2="736" y2="24.0" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="91.3" x2="736" y2="91.3" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="158.6" x2="736" y2="158.6" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="228.0" x2="736" y2="228.0" stroke="#ECEEF3" stroke-width="1"/><text x="44" y="28.0" text-anchor="end" class="axis-label">1.0</text><text x="44" y="130.0" text-anchor="end" class="axis-label">0.5</text><text x="44" y="232.0" text-anchor="end" class="axis-label">0.0</text>
-        <path d="M54.0 228.0 L54.0 156.4 L167.7 162.4 L281.3 193.7 L395.0 164.3 L508.7 105.2 L622.3 24.0 L736.0 162.9 L736.0 228.0 Z" fill="#8B6DFF" fill-opacity=".10"/>
-        <path d="M54.0 156.4 L167.7 162.4 L281.3 193.7 L395.0 164.3 L508.7 105.2 L622.3 24.0 L736.0 162.9" fill="none" stroke="#8B6DFF" stroke-width="4"
-              stroke-linecap="round" stroke-linejoin="round"/>
-        <circle cx="736.0" cy="162.9" r="5" fill="#8B6DFF"/>
-        <text x="728.0" y="150.9" text-anchor="end"
-              class="point-label" fill="#8B6DFF">0.3万</text>
-        <text x="54.0" y="258" text-anchor="middle" class="axis-label">10-03</text><text x="167.7" y="258" text-anchor="middle" class="axis-label">10-04</text><text x="281.3" y="258" text-anchor="middle" class="axis-label">10-05</text><text x="395.0" y="258" text-anchor="middle" class="axis-label">10-06</text><text x="508.7" y="258" text-anchor="middle" class="axis-label">10-07</text><text x="622.3" y="258" text-anchor="middle" class="axis-label">10-08</text><text x="736.0" y="258" text-anchor="middle" class="axis-label">10-09</text>
-      </svg>
-
+        <div class="panel-head trend-panel-head"><div class="trend-heading"><h2>直播成交与时长每日趋势</h2><span class="trend-range">10-03–10-09</span></div></div>
+        <div class="chart-scroll merchant-trend-scroll">
+      <div class="merchant-trend-canvas">
+        <svg class="chart-svg merchant-amount-chart" viewBox="0 0 760 245"
+             role="img" aria-label="商家官号直播成交金额每日趋势，单位万元">
+          <line x1="54" y1="34.0" x2="736" y2="34.0" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="122.5" x2="736" y2="122.5" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="211.0" x2="736" y2="211.0" stroke="#ECEEF3" stroke-width="1"/><text x="44" y="38.0" text-anchor="end" class="axis-label">1.0</text><text x="44" y="126.5" text-anchor="end" class="axis-label">0.5</text><text x="44" y="215.0" text-anchor="end" class="axis-label">0.0</text>
+          <path d="M54.0 148.9 L167.7 154.1 L281.3 181.2 L395.0 155.7 L508.7 104.5 L622.3 34.0 L736.0 154.5" fill="none" stroke="#8B6DFF"
+                stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle class="merchant-live-point" cx="54.0" cy="148.9" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="58.0" y="136.9" text-anchor="start" fill="#8B6DFF">0.4万</text><circle class="merchant-live-point" cx="167.7" cy="154.1" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="167.7" y="142.1" text-anchor="middle" fill="#8B6DFF">0.3万</text><circle class="merchant-live-point" cx="281.3" cy="181.2" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="281.3" y="169.2" text-anchor="middle" fill="#8B6DFF">0.2万</text><circle class="merchant-live-point" cx="395.0" cy="155.7" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="395.0" y="143.7" text-anchor="middle" fill="#8B6DFF">0.3万</text><circle class="merchant-live-point" cx="508.7" cy="104.5" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="508.7" y="92.5" text-anchor="middle" fill="#8B6DFF">0.6万</text><circle class="merchant-live-point" cx="622.3" cy="34.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="622.3" y="22.0" text-anchor="middle" fill="#8B6DFF">1.0万</text><circle class="merchant-live-point" cx="736.0" cy="154.5" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="732.0" y="142.5" text-anchor="end" fill="#8B6DFF">0.3万</text>
+        </svg>
+        <div class="merchant-subchart-title">每日直播时长 <span>单位：小时</span></div>
+        <svg class="chart-svg merchant-duration-chart" viewBox="0 0 760 155"
+             role="img" aria-label="商家官号每日直播时长，单位小时">
+          <line x1="54" y1="28.0" x2="736" y2="28.0" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="121.0" x2="736" y2="121.0" stroke="#ECEEF3" stroke-width="1"/><rect class="merchant-duration-bar" x="31.6" y="59.9" width="44.8" height="61.1" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="54.0" y="52.9" text-anchor="middle" fill="#00A7A0">47.1h</text><rect class="merchant-duration-bar" x="145.3" y="70.6" width="44.8" height="50.4" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="167.7" y="63.6" text-anchor="middle" fill="#00A7A0">38.8h</text><rect class="merchant-duration-bar" x="258.9" y="58.7" width="44.8" height="62.3" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="281.3" y="51.7" text-anchor="middle" fill="#00A7A0">48.0h</text><rect class="merchant-duration-bar" x="372.6" y="57.4" width="44.8" height="63.6" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="395.0" y="50.4" text-anchor="middle" fill="#00A7A0">49.0h</text><rect class="merchant-duration-bar" x="486.3" y="59.6" width="44.8" height="61.4" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="508.7" y="52.6" text-anchor="middle" fill="#00A7A0">47.3h</text><rect class="merchant-duration-bar" x="599.9" y="28.4" width="44.8" height="92.6" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="622.3" y="21.4" text-anchor="middle" fill="#00A7A0">71.3h</text><rect class="merchant-duration-bar" x="713.6" y="28.0" width="44.8" height="93.0" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="736.0" y="21.0" text-anchor="middle" fill="#00A7A0">71.6h</text><text x="54.0" y="145" text-anchor="middle" class="axis-label">10-03</text><text x="167.7" y="145" text-anchor="middle" class="axis-label">10-04</text><text x="281.3" y="145" text-anchor="middle" class="axis-label">10-05</text><text x="395.0" y="145" text-anchor="middle" class="axis-label">10-06</text><text x="508.7" y="145" text-anchor="middle" class="axis-label">10-07</text><text x="622.3" y="145" text-anchor="middle" class="axis-label">10-08</text><text x="736.0" y="145" text-anchor="middle" class="axis-label">10-09</text>
+        </svg>
+      </div>
+    </div>
       </article>
       <div class="grid-2 equal">
-        <article class="panel"><div class="panel-head"><div><h2>城市自播排名</h2><p>按近 7 日直播成交金额降序</p></div></div>
+        <article class="panel"><div class="panel-head"><div><h2>城市自播排名</h2><p>固定区域城市全集 · 可筛选零开播城市并点击业务列排序</p></div></div>
+      <div class="filter-bar merchant-filter-bar">
+        <input id="merchant-city-search" type="search" placeholder="搜索城市"
+               aria-label="搜索城市">
+        <select id="merchant-city-status-filter" aria-label="按开播状态筛选城市">
+          <option value="">全部状态</option>
+          <option value="有开播">有开播</option>
+          <option value="零开播">零开播</option>
+        </select>
+        <span id="merchant-city-result-count" class="filter-count"></span>
+      </div>
       <div class="table-scroll">
-        <table>
-          <thead><tr><th>#</th><th>城市</th><th>直播成交金额</th><th>直播场次</th><th>直播时长</th><th>开播账号</th></tr></thead>
-          <tbody>
-        <tr>
+        <table class="merchant-table">
+          <thead><tr>
+            <th>#</th>
+            <th><button class="sort-trigger merchant-city-sort-trigger" type="button" data-sort-key="city-name" onclick="sortMerchantCityTable('city-name')" title="按城市排序">城市 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-city-sort-trigger" type="button" data-sort-key="city-live-amount" onclick="sortMerchantCityTable('city-live-amount')" title="按直播成交金额排序">直播成交金额 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-city-sort-trigger" type="button" data-sort-key="city-live-sessions" onclick="sortMerchantCityTable('city-live-sessions')" title="按直播场次排序">直播场次 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-city-sort-trigger" type="button" data-sort-key="city-live-hours" onclick="sortMerchantCityTable('city-live-hours')" title="按直播时长排序">直播时长 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-city-sort-trigger" type="button" data-sort-key="city-account-count" onclick="sortMerchantCityTable('city-account-count')" title="按账号数排序">账号数 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-city-sort-trigger" type="button" data-sort-key="city-live-account-count" onclick="sortMerchantCityTable('city-live-account-count')" title="按开播账号排序">开播账号 <span class="sort-indicator">↕</span></button></th>
+          </tr></thead>
+          <tbody id="merchant-city-body">
+        <tr data-city-name="临沂市"
+            data-city-status="有开播"
+            data-city-live-amount="14854.5"
+            data-city-live-sessions="44.0"
+            data-city-live-hours="82.00638888888889"
+            data-city-account-count="16.0"
+            data-city-live-account-count="7.0">
           <td class="rank">01</td>
-          <td><strong>临沂市</strong></td>
+          <td><strong>临沂市</strong><small><span class="live-status 有开播">有开播</span></small></td>
           <td class="num">1.49万</td>
           <td class="num">44</td>
           <td class="num">82.0小时</td>
+          <td class="num">16</td>
           <td class="num">7</td>
         </tr>
 
-        <tr>
+        <tr data-city-name="青岛市"
+            data-city-status="有开播"
+            data-city-live-amount="12805.2"
+            data-city-live-sessions="61.0"
+            data-city-live-hours="137.73611111111111"
+            data-city-account-count="21.0"
+            data-city-live-account-count="9.0">
           <td class="rank">02</td>
-          <td><strong>青岛市</strong></td>
+          <td><strong>青岛市</strong><small><span class="live-status 有开播">有开播</span></small></td>
           <td class="num">1.28万</td>
           <td class="num">61</td>
           <td class="num">137.7小时</td>
+          <td class="num">21</td>
           <td class="num">9</td>
         </tr>
 
-        <tr>
+        <tr data-city-name="日照市"
+            data-city-status="有开播"
+            data-city-live-amount="3335.0"
+            data-city-live-sessions="33.0"
+            data-city-live-hours="44.458333333333336"
+            data-city-account-count="14.0"
+            data-city-live-account-count="8.0">
           <td class="rank">03</td>
-          <td><strong>日照市</strong></td>
+          <td><strong>日照市</strong><small><span class="live-status 有开播">有开播</span></small></td>
           <td class="num">3,335</td>
           <td class="num">33</td>
           <td class="num">44.5小时</td>
+          <td class="num">14</td>
           <td class="num">8</td>
         </tr>
 
-        <tr>
+        <tr data-city-name="枣庄市"
+            data-city-status="有开播"
+            data-city-live-amount="638.1"
+            data-city-live-sessions="17.0"
+            data-city-live-hours="31.157777777777778"
+            data-city-account-count="15.0"
+            data-city-live-account-count="8.0">
           <td class="rank">04</td>
-          <td><strong>枣庄市</strong></td>
+          <td><strong>枣庄市</strong><small><span class="live-status 有开播">有开播</span></small></td>
           <td class="num">638</td>
           <td class="num">17</td>
           <td class="num">31.2小时</td>
+          <td class="num">15</td>
           <td class="num">8</td>
         </tr>
 
-        <tr>
+        <tr data-city-name="烟台市"
+            data-city-status="有开播"
+            data-city-live-amount="209.0"
+            data-city-live-sessions="21.0"
+            data-city-live-hours="76.58444444444444"
+            data-city-account-count="11.0"
+            data-city-live-account-count="4.0">
           <td class="rank">05</td>
-          <td><strong>烟台市</strong></td>
+          <td><strong>烟台市</strong><small><span class="live-status 有开播">有开播</span></small></td>
           <td class="num">209</td>
           <td class="num">21</td>
           <td class="num">76.6小时</td>
+          <td class="num">11</td>
           <td class="num">4</td>
         </tr>
 
-        <tr>
+        <tr data-city-name="威海市"
+            data-city-status="有开播"
+            data-city-live-amount="0.0"
+            data-city-live-sessions="1.0"
+            data-city-live-hours="0.04555555555555556"
+            data-city-account-count="7.0"
+            data-city-live-account-count="1.0">
           <td class="rank">06</td>
-          <td><strong>淄博市</strong></td>
+          <td><strong>威海市</strong><small><span class="live-status 有开播">有开播</span></small></td>
+          <td class="num">0</td>
+          <td class="num">1</td>
+          <td class="num">0.0小时</td>
+          <td class="num">7</td>
+          <td class="num">1</td>
+        </tr>
+
+        <tr data-city-name="淄博市"
+            data-city-status="有开播"
+            data-city-live-amount="0.0"
+            data-city-live-sessions="1.0"
+            data-city-live-hours="1.0044444444444445"
+            data-city-account-count="7.0"
+            data-city-live-account-count="1.0">
+          <td class="rank">07</td>
+          <td><strong>淄博市</strong><small><span class="live-status 有开播">有开播</span></small></td>
           <td class="num">0</td>
           <td class="num">1</td>
           <td class="num">1.0小时</td>
+          <td class="num">7</td>
           <td class="num">1</td>
         </tr>
 
-        <tr>
-          <td class="rank">07</td>
-          <td><strong>威海市</strong></td>
-          <td class="num">0</td>
-          <td class="num">1</td>
-          <td class="num">0.0小时</td>
-          <td class="num">1</td>
-        </tr>
-
-        <tr>
+        <tr data-city-name="潍坊市"
+            data-city-status="零开播"
+            data-city-live-amount="0.0"
+            data-city-live-sessions="0.0"
+            data-city-live-hours="0.0"
+            data-city-account-count="6.0"
+            data-city-live-account-count="0.0">
           <td class="rank">08</td>
-          <td><strong>潍坊市</strong></td>
+          <td><strong>潍坊市</strong><small><span class="live-status 零开播">零开播</span></small></td>
           <td class="num">0</td>
           <td class="num">0</td>
           <td class="num">0.0小时</td>
+          <td class="num">6</td>
           <td class="num">0</td>
         </tr>
         </tbody>
         </table>
       </div>
     </article>
-        <article class="panel"><div class="panel-head"><div><h2>账号明细</h2><p>商家官号近 7 日直播与整体成交表现</p></div></div>
+        <article class="panel"><div class="panel-head"><div><h2>账号明细</h2><p>14 日出现账号全集 · “未直播”为近 7 日直播场次等于 0</p></div></div>
+      <div class="filter-bar merchant-filter-bar">
+        <input id="merchant-account-search" type="search"
+               placeholder="搜索账号、ID 或门店" aria-label="搜索账号、ID 或门店">
+        <select id="merchant-account-city-filter" aria-label="按城市筛选账号">
+          <option value="">全部城市</option><option value="临沂市">临沂市</option><option value="威海市">威海市</option><option value="日照市">日照市</option><option value="枣庄市">枣庄市</option><option value="淄博市">淄博市</option><option value="潍坊市">潍坊市</option><option value="烟台市">烟台市</option><option value="青岛市">青岛市</option>
+        </select>
+        <select id="merchant-account-status-filter" aria-label="按直播状态筛选账号">
+          <option value="">全部状态</option>
+          <option value="已直播">已直播</option>
+          <option value="未直播">未直播</option>
+        </select>
+        <span id="merchant-account-result-count" class="filter-count"></span>
+      </div>
       <div class="table-scroll">
-        <table>
-          <thead><tr><th>#</th><th>抖音号</th><th>城市 / 门店</th><th>直播成交金额</th><th>直播场次</th><th>直播时长</th><th>总成交金额</th><th>总核销金额</th></tr></thead>
-          <tbody>
-        <tr>
+        <table class="merchant-table">
+          <thead><tr>
+            <th>#</th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-name" onclick="sortMerchantAccountTable('account-name')" title="按抖音号排序">抖音号 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-city" onclick="sortMerchantAccountTable('account-city')" title="按城市 / 门店排序">城市 / 门店 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-live-amount" onclick="sortMerchantAccountTable('account-live-amount')" title="按直播成交金额排序">直播成交金额 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-live-sessions" onclick="sortMerchantAccountTable('account-live-sessions')" title="按直播场次排序">直播场次 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-live-hours" onclick="sortMerchantAccountTable('account-live-hours')" title="按直播时长排序">直播时长 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-total-amount" onclick="sortMerchantAccountTable('account-total-amount')" title="按总成交金额排序">总成交金额 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-redeem-amount" onclick="sortMerchantAccountTable('account-redeem-amount')" title="按总核销金额排序">总核销金额 <span class="sort-indicator">↕</span></button></th>
+          </tr></thead>
+          <tbody id="merchant-account-body">
+        <tr data-account-name="丽柏酒店（临沂泰盛广场王羲之故居店）"
+            data-account-id="50006093372"
+            data-account-city="临沂市"
+            data-account-store="临沂泰盛广场王羲之故居丽柏酒店"
+            data-account-status="已直播"
+            data-account-live-amount="7291.400000000001"
+            data-account-live-sessions="15.0"
+            data-account-live-hours="31.977499999999996"
+            data-account-total-amount="7291.400000000001"
+            data-account-redeem-amount="8771.300000000001">
           <td class="rank">01</td>
-          <td><strong>丽柏酒店（临沂泰盛广场王羲之故居店）</strong><small>50006093372</small></td>
+          <td><strong>丽柏酒店（临沂泰盛广场王羲之故居店）</strong><small>50006093372 · <span class="live-status 已直播">已直播</span></small></td>
           <td>临沂市<small>临沂泰盛广场王羲之故居丽柏酒店</small></td>
           <td class="num">7,291</td>
           <td class="num">15</td>
@@ -8057,9 +8166,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">8,771</td>
         </tr>
 
-        <tr>
+        <tr data-account-name="丽柏酒店(临沂琅琊古城奥体中心店)"
+            data-account-id="37169426597"
+            data-account-city="临沂市"
+            data-account-store="临沂琅琊古城奥体中心丽柏酒店"
+            data-account-status="已直播"
+            data-account-live-amount="7255.0"
+            data-account-live-sessions="3.0"
+            data-account-live-hours="9.087499999999999"
+            data-account-total-amount="8840.0"
+            data-account-redeem-amount="6178.0">
           <td class="rank">02</td>
-          <td><strong>丽柏酒店(临沂琅琊古城奥体中心店)</strong><small>37169426597</small></td>
+          <td><strong>丽柏酒店(临沂琅琊古城奥体中心店)</strong><small>37169426597 · <span class="live-status 已直播">已直播</span></small></td>
           <td>临沂市<small>临沂琅琊古城奥体中心丽柏酒店</small></td>
           <td class="num">7,255</td>
           <td class="num">3</td>
@@ -8068,9 +8186,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">6,178</td>
         </tr>
 
-        <tr>
+        <tr data-account-name="非繁城品酒店(即墨宝龙广场店)专用号"
+            data-account-id="ZZB777788889999"
+            data-account-city="青岛市"
+            data-account-store="非繁城品酒店(即墨宝龙广场店)"
+            data-account-status="已直播"
+            data-account-live-amount="4746.6"
+            data-account-live-sessions="6.0"
+            data-account-live-hours="7.611388888888889"
+            data-account-total-amount="4974.6"
+            data-account-redeem-amount="1457.4">
           <td class="rank">03</td>
-          <td><strong>非繁城品酒店(即墨宝龙广场店)专用号</strong><small>ZZB777788889999</small></td>
+          <td><strong>非繁城品酒店(即墨宝龙广场店)专用号</strong><small>ZZB777788889999 · <span class="live-status 已直播">已直播</span></small></td>
           <td>青岛市<small>非繁城品酒店(即墨宝龙广场店)</small></td>
           <td class="num">4,747</td>
           <td class="num">6</td>
@@ -8079,9 +8206,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">1,457</td>
         </tr>
 
-        <tr>
+        <tr data-account-name="希岸Deluxe酒店(青岛台东步行街啤酒"
+            data-account-id="931206231"
+            data-account-city="青岛市"
+            data-account-store="希岸Deluxe酒店(青岛台东步行街啤酒博物馆店)"
+            data-account-status="已直播"
+            data-account-live-amount="3900.9"
+            data-account-live-sessions="2.0"
+            data-account-live-hours="2.0769444444444445"
+            data-account-total-amount="3900.9"
+            data-account-redeem-amount="0.0">
           <td class="rank">04</td>
-          <td><strong>希岸Deluxe酒店(青岛台东步行街啤酒</strong><small>931206231</small></td>
+          <td><strong>希岸Deluxe酒店(青岛台东步行街啤酒</strong><small>931206231 · <span class="live-status 已直播">已直播</span></small></td>
           <td>青岛市<small>希岸Deluxe酒店(青岛台东步行街啤酒博物馆店)</small></td>
           <td class="num">3,901</td>
           <td class="num">2</td>
@@ -8090,9 +8226,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">0</td>
         </tr>
 
-        <tr>
+        <tr data-account-name="麗枫酒店(日照万平口风景区店)专用号"
+            data-account-id="LF20180110"
+            data-account-city="日照市"
+            data-account-store="麗枫酒店(日照万平口风景区店)"
+            data-account-status="已直播"
+            data-account-live-amount="3166.0"
+            data-account-live-sessions="6.0"
+            data-account-live-hours="18.09277777777778"
+            data-account-total-amount="3305.0"
+            data-account-redeem-amount="5060.33">
           <td class="rank">05</td>
-          <td><strong>麗枫酒店(日照万平口风景区店)专用号</strong><small>LF20180110</small></td>
+          <td><strong>麗枫酒店(日照万平口风景区店)专用号</strong><small>LF20180110 · <span class="live-status 已直播">已直播</span></small></td>
           <td>日照市<small>麗枫酒店(日照万平口风景区店)</small></td>
           <td class="num">3,166</td>
           <td class="num">6</td>
@@ -8101,9 +8246,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">5,060</td>
         </tr>
 
-        <tr>
+        <tr data-account-name="维也纳国际酒店（青岛西海岸隐珠地铁站店）"
+            data-account-id="97175735277"
+            data-account-city="青岛市"
+            data-account-store="维也纳国际酒店(青岛西海岸隐珠地铁站店)"
+            data-account-status="已直播"
+            data-account-live-amount="2439.1"
+            data-account-live-sessions="15.0"
+            data-account-live-hours="28.01722222222222"
+            data-account-total-amount="2439.1"
+            data-account-redeem-amount="409.0">
           <td class="rank">06</td>
-          <td><strong>维也纳国际酒店（青岛西海岸隐珠地铁站店）</strong><small>97175735277</small></td>
+          <td><strong>维也纳国际酒店（青岛西海岸隐珠地铁站店）</strong><small>97175735277 · <span class="live-status 已直播">已直播</span></small></td>
           <td>青岛市<small>维也纳国际酒店(青岛西海岸隐珠地铁站店)</small></td>
           <td class="num">2,439</td>
           <td class="num">15</td>
@@ -8112,9 +8266,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">409</td>
         </tr>
 
-        <tr>
+        <tr data-account-name="锦江都城酒店（青岛新都心凯德广场店）"
+            data-account-id="45095363549"
+            data-account-city="青岛市"
+            data-account-store="锦江都城酒店(青岛新都心凯德广场店)"
+            data-account-status="已直播"
+            data-account-live-amount="1240.6"
+            data-account-live-sessions="1.0"
+            data-account-live-hours="2.0394444444444444"
+            data-account-total-amount="1240.6"
+            data-account-redeem-amount="0.0">
           <td class="rank">07</td>
-          <td><strong>锦江都城酒店（青岛新都心凯德广场店）</strong><small>45095363549</small></td>
+          <td><strong>锦江都城酒店（青岛新都心凯德广场店）</strong><small>45095363549 · <span class="live-status 已直播">已直播</span></small></td>
           <td>青岛市<small>锦江都城酒店(青岛新都心凯德广场店)</small></td>
           <td class="num">1,241</td>
           <td class="num">1</td>
@@ -8123,9 +8286,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">0</td>
         </tr>
 
-        <tr>
+        <tr data-account-name="麗枫酒店(青岛金沙滩店)"
+            data-account-id="LFJDQDJSTD"
+            data-account-city="青岛市"
+            data-account-store="麗枫酒店(青岛金沙滩店)"
+            data-account-status="已直播"
+            data-account-live-amount="478.0"
+            data-account-live-sessions="14.0"
+            data-account-live-hours="37.14222222222222"
+            data-account-total-amount="478.0"
+            data-account-redeem-amount="0.0">
           <td class="rank">08</td>
-          <td><strong>麗枫酒店(青岛金沙滩店)</strong><small>LFJDQDJSTD</small></td>
+          <td><strong>麗枫酒店(青岛金沙滩店)</strong><small>LFJDQDJSTD · <span class="live-status 已直播">已直播</span></small></td>
           <td>青岛市<small>麗枫酒店(青岛金沙滩店)</small></td>
           <td class="num">478</td>
           <td class="num">14</td>
@@ -8134,9 +8306,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">0</td>
         </tr>
 
-        <tr>
+        <tr data-account-name="丽柏酒店(滕州站真爱商城店)专用号"
+            data-account-id="67594798561"
+            data-account-city="枣庄市"
+            data-account-store="丽柏酒店(滕州站真爱商城店)"
+            data-account-status="已直播"
+            data-account-live-amount="418.0"
+            data-account-live-sessions="7.0"
+            data-account-live-hours="18.156944444444445"
+            data-account-total-amount="816.0"
+            data-account-redeem-amount="448.0">
           <td class="rank">09</td>
-          <td><strong>丽柏酒店(滕州站真爱商城店)专用号</strong><small>67594798561</small></td>
+          <td><strong>丽柏酒店(滕州站真爱商城店)专用号</strong><small>67594798561 · <span class="live-status 已直播">已直播</span></small></td>
           <td>枣庄市<small>丽柏酒店(滕州站真爱商城店)</small></td>
           <td class="num">418</td>
           <td class="num">7</td>
@@ -8145,9 +8326,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">448</td>
         </tr>
 
-        <tr>
+        <tr data-account-name="维也纳国际酒店临沂泰盛广场万象汇店"
+            data-account-id="DH2527778"
+            data-account-city="临沂市"
+            data-account-store="维也纳国际酒店(临沂泰盛广场万象汇店)"
+            data-account-status="已直播"
+            data-account-live-amount="308.1"
+            data-account-live-sessions="7.0"
+            data-account-live-hours="11.827222222222224"
+            data-account-total-amount="308.1"
+            data-account-redeem-amount="19.8">
           <td class="rank">10</td>
-          <td><strong>维也纳国际酒店临沂泰盛广场万象汇店</strong><small>DH2527778</small></td>
+          <td><strong>维也纳国际酒店临沂泰盛广场万象汇店</strong><small>DH2527778 · <span class="live-status 已直播">已直播</span></small></td>
           <td>临沂市<small>维也纳国际酒店(临沂泰盛广场万象汇店)</small></td>
           <td class="num">308</td>
           <td class="num">7</td>
@@ -8156,9 +8346,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">20</td>
         </tr>
 
-        <tr>
+        <tr data-account-name="白玉兰酒店枣庄光明路店"
+            data-account-id="46171766507"
+            data-account-city="枣庄市"
+            data-account-store="白玉兰酒店(枣庄光明路店)"
+            data-account-status="已直播"
+            data-account-live-amount="220.1"
+            data-account-live-sessions="1.0"
+            data-account-live-hours="2.0438888888888886"
+            data-account-total-amount="880.1"
+            data-account-redeem-amount="440.0">
           <td class="rank">11</td>
-          <td><strong>白玉兰酒店枣庄光明路店</strong><small>46171766507</small></td>
+          <td><strong>白玉兰酒店枣庄光明路店</strong><small>46171766507 · <span class="live-status 已直播">已直播</span></small></td>
           <td>枣庄市<small>白玉兰酒店(枣庄光明路店)</small></td>
           <td class="num">220</td>
           <td class="num">1</td>
@@ -8167,9 +8366,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">440</td>
         </tr>
 
-        <tr>
+        <tr data-account-name="白玉兰酒店(牟平实验中学店)专用号"
+            data-account-id="68629413786"
+            data-account-city="烟台市"
+            data-account-store="白玉兰酒店(牟平实验中学店)"
+            data-account-status="已直播"
+            data-account-live-amount="209.0"
+            data-account-live-sessions="16.0"
+            data-account-live-hours="67.66805555555555"
+            data-account-total-amount="209.0"
+            data-account-redeem-amount="395.6">
           <td class="rank">12</td>
-          <td><strong>白玉兰酒店(牟平实验中学店)专用号</strong><small>68629413786</small></td>
+          <td><strong>白玉兰酒店(牟平实验中学店)专用号</strong><small>68629413786 · <span class="live-status 已直播">已直播</span></small></td>
           <td>烟台市<small>白玉兰酒店(牟平实验中学店)</small></td>
           <td class="num">209</td>
           <td class="num">16</td>
@@ -8178,9 +8386,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">396</td>
         </tr>
 
-        <tr>
+        <tr data-account-name="丽怡酒店(日照万象汇万平口景区店)专用号"
+            data-account-id="93771621425"
+            data-account-city="日照市"
+            data-account-store="丽怡酒店(日照万象汇万平口景区店)"
+            data-account-status="已直播"
+            data-account-live-amount="169.0"
+            data-account-live-sessions="8.0"
+            data-account-live-hours="9.632222222222222"
+            data-account-total-amount="169.0"
+            data-account-redeem-amount="0.0">
           <td class="rank">13</td>
-          <td><strong>丽怡酒店(日照万象汇万平口景区店)专用号</strong><small>93771621425</small></td>
+          <td><strong>丽怡酒店(日照万象汇万平口景区店)专用号</strong><small>93771621425 · <span class="live-status 已直播">已直播</span></small></td>
           <td>日照市<small>丽怡酒店(日照万象汇万平口景区店)</small></td>
           <td class="num">169</td>
           <td class="num">8</td>
@@ -8189,9 +8406,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">0</td>
         </tr>
 
-        <tr>
+        <tr data-account-name="希岸轻雅青岛城市阳台海水浴场世博城店"
+            data-account-id="95320552520"
+            data-account-city="青岛市"
+            data-account-store="希岸·轻雅酒店(青岛城市阳台海水浴场世博城店)"
+            data-account-status="已直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="10.0"
+            data-account-live-hours="31.15361111111111"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="388.0">
           <td class="rank">14</td>
-          <td><strong>希岸轻雅青岛城市阳台海水浴场世博城店</strong><small>95320552520</small></td>
+          <td><strong>希岸轻雅青岛城市阳台海水浴场世博城店</strong><small>95320552520 · <span class="live-status 已直播">已直播</span></small></td>
           <td>青岛市<small>希岸·轻雅酒店(青岛城市阳台海水浴场世博城店)</small></td>
           <td class="num">0</td>
           <td class="num">10</td>
@@ -8200,9 +8426,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">388</td>
         </tr>
 
-        <tr>
+        <tr data-account-name="希岸酒店(青岛北站科技大学店)专用号"
+            data-account-id="75210805392"
+            data-account-city="青岛市"
+            data-account-store="希岸酒店(青岛北站科技大学店)"
+            data-account-status="已直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="7.0"
+            data-account-live-hours="12.886666666666667"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
           <td class="rank">15</td>
-          <td><strong>希岸酒店(青岛北站科技大学店)专用号</strong><small>75210805392</small></td>
+          <td><strong>希岸酒店(青岛北站科技大学店)专用号</strong><small>75210805392 · <span class="live-status 已直播">已直播</span></small></td>
           <td>青岛市<small>希岸酒店(青岛北站科技大学店)</small></td>
           <td class="num">0</td>
           <td class="num">7</td>
@@ -8211,9 +8446,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">0</td>
         </tr>
 
-        <tr>
+        <tr data-account-name="潮漫酒店(费县政务中心理工大学店)专用号"
+            data-account-id="41276163688"
+            data-account-city="临沂市"
+            data-account-store="潮漫酒店(费县政务中心理工大学店)"
+            data-account-status="已直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="7.0"
+            data-account-live-hours="8.650277777777777"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
           <td class="rank">16</td>
-          <td><strong>潮漫酒店(费县政务中心理工大学店)专用号</strong><small>41276163688</small></td>
+          <td><strong>潮漫酒店(费县政务中心理工大学店)专用号</strong><small>41276163688 · <span class="live-status 已直播">已直播</span></small></td>
           <td>临沂市<small>潮漫酒店(费县政务中心理工大学店)</small></td>
           <td class="num">0</td>
           <td class="num">7</td>
@@ -8222,9 +8466,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">0</td>
         </tr>
 
-        <tr>
+        <tr data-account-name="麗枫酒店(临沂平邑浚河路店)专用号"
+            data-account-id="86762705576"
+            data-account-city="临沂市"
+            data-account-store="麗枫酒店(临沂平邑浚河路店)"
+            data-account-status="已直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="6.0"
+            data-account-live-hours="12.058333333333334"
+            data-account-total-amount="442.0"
+            data-account-redeem-amount="442.0">
           <td class="rank">17</td>
-          <td><strong>麗枫酒店(临沂平邑浚河路店)专用号</strong><small>86762705576</small></td>
+          <td><strong>麗枫酒店(临沂平邑浚河路店)专用号</strong><small>86762705576 · <span class="live-status 已直播">已直播</span></small></td>
           <td>临沂市<small>麗枫酒店(临沂平邑浚河路店)</small></td>
           <td class="num">0</td>
           <td class="num">6</td>
@@ -8233,9 +8486,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">442</td>
         </tr>
 
-        <tr>
+        <tr data-account-name="白玉兰商务酒店·日照万平口景区海滨五路店"
+            data-account-id="74474994547"
+            data-account-city="日照市"
+            data-account-store="白玉兰商务酒店(日照万平口景区海滨五路店)"
+            data-account-status="已直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="6.0"
+            data-account-live-hours="1.2627777777777778"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
           <td class="rank">18</td>
-          <td><strong>白玉兰商务酒店·日照万平口景区海滨五路店</strong><small>74474994547</small></td>
+          <td><strong>白玉兰商务酒店·日照万平口景区海滨五路店</strong><small>74474994547 · <span class="live-status 已直播">已直播</span></small></td>
           <td>日照市<small>白玉兰商务酒店(日照万平口景区海滨五路店)</small></td>
           <td class="num">0</td>
           <td class="num">6</td>
@@ -8244,9 +8506,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">0</td>
         </tr>
 
-        <tr>
+        <tr data-account-name="丽枫酒店（费县政务中心理工大学店）专用号"
+            data-account-id="55498994380"
+            data-account-city="临沂市"
+            data-account-store="丽枫酒店·(费县政务中心理工大学店)"
+            data-account-status="已直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="5.0"
+            data-account-live-hours="6.939722222222222"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
           <td class="rank">19</td>
-          <td><strong>丽枫酒店（费县政务中心理工大学店）专用号</strong><small>55498994380</small></td>
+          <td><strong>丽枫酒店（费县政务中心理工大学店）专用号</strong><small>55498994380 · <span class="live-status 已直播">已直播</span></small></td>
           <td>临沂市<small>丽枫酒店·(费县政务中心理工大学店)</small></td>
           <td class="num">0</td>
           <td class="num">5</td>
@@ -8255,9 +8526,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">0</td>
         </tr>
 
-        <tr>
+        <tr data-account-name="白玉兰酒店（滕州平行南路店）"
+            data-account-id="baiyulanjiudian."
+            data-account-city="枣庄市"
+            data-account-store="白玉兰商务酒店(滕州平行南路店)"
+            data-account-status="已直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="4.0"
+            data-account-live-hours="5.455555555555556"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
           <td class="rank">20</td>
-          <td><strong>白玉兰酒店（滕州平行南路店）</strong><small>baiyulanjiudian.</small></td>
+          <td><strong>白玉兰酒店（滕州平行南路店）</strong><small>baiyulanjiudian. · <span class="live-status 已直播">已直播</span></small></td>
           <td>枣庄市<small>白玉兰商务酒店(滕州平行南路店)</small></td>
           <td class="num">0</td>
           <td class="num">4</td>
@@ -8266,9 +8546,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">0</td>
         </tr>
 
-        <tr>
+        <tr data-account-name="喆啡酒店（青岛北站李村夜市店）"
+            data-account-id="96872109479"
+            data-account-city="青岛市"
+            data-account-store="喆啡酒店(青岛北站李村夜市店)"
+            data-account-status="已直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="4.0"
+            data-account-live-hours="6.045555555555556"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
           <td class="rank">21</td>
-          <td><strong>喆啡酒店（青岛北站李村夜市店）</strong><small>96872109479</small></td>
+          <td><strong>喆啡酒店（青岛北站李村夜市店）</strong><small>96872109479 · <span class="live-status 已直播">已直播</span></small></td>
           <td>青岛市<small>喆啡酒店(青岛北站李村夜市店)</small></td>
           <td class="num">0</td>
           <td class="num">4</td>
@@ -8277,9 +8566,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">0</td>
         </tr>
 
-        <tr>
+        <tr data-account-name="非繁城品(日照万平口灯塔景区店)专用号"
+            data-account-id="57423824521"
+            data-account-city="日照市"
+            data-account-store="非繁城品(日照万平口灯塔景区店)"
+            data-account-status="已直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="4.0"
+            data-account-live-hours="4.789722222222223"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
           <td class="rank">22</td>
-          <td><strong>非繁城品(日照万平口灯塔景区店)专用号</strong><small>57423824521</small></td>
+          <td><strong>非繁城品(日照万平口灯塔景区店)专用号</strong><small>57423824521 · <span class="live-status 已直播">已直播</span></small></td>
           <td>日照市<small>非繁城品(日照万平口灯塔景区店)</small></td>
           <td class="num">0</td>
           <td class="num">4</td>
@@ -8288,9 +8586,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">0</td>
         </tr>
 
-        <tr>
+        <tr data-account-name="白玉兰商务酒店（日照茶叶科创示范园店）"
+            data-account-id="28584698028"
+            data-account-city="日照市"
+            data-account-store="白玉兰商务酒店(日照茶叶科创示范园店)"
+            data-account-status="已直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="4.0"
+            data-account-live-hours="4.215277777777778"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
           <td class="rank">23</td>
-          <td><strong>白玉兰商务酒店（日照茶叶科创示范园店）</strong><small>28584698028</small></td>
+          <td><strong>白玉兰商务酒店（日照茶叶科创示范园店）</strong><small>28584698028 · <span class="live-status 已直播">已直播</span></small></td>
           <td>日照市<small>白玉兰商务酒店(日照茶叶科创示范园店)</small></td>
           <td class="num">0</td>
           <td class="num">4</td>
@@ -8299,9 +8606,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">0</td>
         </tr>
 
-        <tr>
+        <tr data-account-name="喆啡酒店(日照万平口灯塔景区店)专用号"
+            data-account-id="88454139674"
+            data-account-city="日照市"
+            data-account-store="喆啡酒店(日照万平口灯塔景区店)"
+            data-account-status="已直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="3.0"
+            data-account-live-hours="3.4305555555555554"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
           <td class="rank">24</td>
-          <td><strong>喆啡酒店(日照万平口灯塔景区店)专用号</strong><small>88454139674</small></td>
+          <td><strong>喆啡酒店(日照万平口灯塔景区店)专用号</strong><small>88454139674 · <span class="live-status 已直播">已直播</span></small></td>
           <td>日照市<small>喆啡酒店(日照万平口灯塔景区店)</small></td>
           <td class="num">0</td>
           <td class="num">3</td>
@@ -8310,9 +8626,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">0</td>
         </tr>
 
-        <tr>
+        <tr data-account-name="栖霞市维也纳酒店(牟氏庄园店)专用号"
+            data-account-id="71314644055"
+            data-account-city="烟台市"
+            data-account-store="栖霞市维也纳酒店(牟氏庄园店)"
+            data-account-status="已直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="3.0"
+            data-account-live-hours="6.016944444444444"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
           <td class="rank">25</td>
-          <td><strong>栖霞市维也纳酒店(牟氏庄园店)专用号</strong><small>71314644055</small></td>
+          <td><strong>栖霞市维也纳酒店(牟氏庄园店)专用号</strong><small>71314644055 · <span class="live-status 已直播">已直播</span></small></td>
           <td>烟台市<small>栖霞市维也纳酒店(牟氏庄园店)</small></td>
           <td class="num">0</td>
           <td class="num">3</td>
@@ -8321,9 +8646,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">0</td>
         </tr>
 
-        <tr>
+        <tr data-account-name="丽枫酒店(青岛红岛东方伊甸园店)"
+            data-account-id="42527298996"
+            data-account-city="青岛市"
+            data-account-store="麗枫酒店(青岛红岛高新区览秀城东方伊甸园店)"
+            data-account-status="已直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="2.0"
+            data-account-live-hours="10.763055555555557"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
           <td class="rank">26</td>
-          <td><strong>丽枫酒店(青岛红岛东方伊甸园店)</strong><small>42527298996</small></td>
+          <td><strong>丽枫酒店(青岛红岛东方伊甸园店)</strong><small>42527298996 · <span class="live-status 已直播">已直播</span></small></td>
           <td>青岛市<small>麗枫酒店(青岛红岛高新区览秀城东方伊甸园店)</small></td>
           <td class="num">0</td>
           <td class="num">2</td>
@@ -8332,9 +8666,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">0</td>
         </tr>
 
-        <tr>
+        <tr data-account-name="锦江之星烟台牟平 汽车站北关大街酒店"
+            data-account-id="jinjiangpinshang"
+            data-account-city="烟台市"
+            data-account-store="锦江之星品尚(烟台牟平汽车站北关大街店)"
+            data-account-status="已直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="1.0"
+            data-account-live-hours="2.0238888888888886"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
           <td class="rank">27</td>
-          <td><strong>锦江之星烟台牟平 汽车站北关大街酒店</strong><small>jinjiangpinshang</small></td>
+          <td><strong>锦江之星烟台牟平 汽车站北关大街酒店</strong><small>jinjiangpinshang · <span class="live-status 已直播">已直播</span></small></td>
           <td>烟台市<small>锦江之星品尚(烟台牟平汽车站北关大街店)</small></td>
           <td class="num">0</td>
           <td class="num">1</td>
@@ -8343,9 +8686,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">0</td>
         </tr>
 
-        <tr>
+        <tr data-account-name="白玉兰酒店(日照五莲解放路店)"
+            data-account-id="baiyulanwulian"
+            data-account-city="日照市"
+            data-account-store="白玉兰酒店(日照五莲解放路店)"
+            data-account-status="已直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="1.0"
+            data-account-live-hours="1.0497222222222222"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
           <td class="rank">28</td>
-          <td><strong>白玉兰酒店(日照五莲解放路店)</strong><small>baiyulanwulian</small></td>
+          <td><strong>白玉兰酒店(日照五莲解放路店)</strong><small>baiyulanwulian · <span class="live-status 已直播">已直播</span></small></td>
           <td>日照市<small>白玉兰酒店(日照五莲解放路店)</small></td>
           <td class="num">0</td>
           <td class="num">1</td>
@@ -8354,9 +8706,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">0</td>
         </tr>
 
-        <tr>
+        <tr data-account-name="喆啡酒店(滕州市政府吾悦广场店)专用号"
+            data-account-id="88104044582"
+            data-account-city="枣庄市"
+            data-account-store="喆啡酒店(滕州市政府吾悦广场店)"
+            data-account-status="已直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="1.0"
+            data-account-live-hours="1.0425000000000002"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
           <td class="rank">29</td>
-          <td><strong>喆啡酒店(滕州市政府吾悦广场店)专用号</strong><small>88104044582</small></td>
+          <td><strong>喆啡酒店(滕州市政府吾悦广场店)专用号</strong><small>88104044582 · <span class="live-status 已直播">已直播</span></small></td>
           <td>枣庄市<small>喆啡酒店(滕州市政府吾悦广场店)</small></td>
           <td class="num">0</td>
           <td class="num">1</td>
@@ -8365,9 +8726,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">0</td>
         </tr>
 
-        <tr>
+        <tr data-account-name="希岸酒店(枣庄市政府光明大厦店)专用号"
+            data-account-id="67639871007"
+            data-account-city="枣庄市"
+            data-account-store="希岸酒店(枣庄市政府光明大厦店)"
+            data-account-status="已直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="1.0"
+            data-account-live-hours="0.8288888888888889"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
           <td class="rank">30</td>
-          <td><strong>希岸酒店(枣庄市政府光明大厦店)专用号</strong><small>67639871007</small></td>
+          <td><strong>希岸酒店(枣庄市政府光明大厦店)专用号</strong><small>67639871007 · <span class="live-status 已直播">已直播</span></small></td>
           <td>枣庄市<small>希岸酒店(枣庄市政府光明大厦店)</small></td>
           <td class="num">0</td>
           <td class="num">1</td>
@@ -8376,9 +8746,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">0</td>
         </tr>
 
-        <tr>
+        <tr data-account-name="白玉兰酒店(枣庄东街口万达广场店)专用号"
+            data-account-id="63343025414"
+            data-account-city="枣庄市"
+            data-account-store="白玉兰酒店(枣庄东街口万达广场店)"
+            data-account-status="已直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="1.0"
+            data-account-live-hours="0.7825000000000001"
+            data-account-total-amount="89.0"
+            data-account-redeem-amount="477.0">
           <td class="rank">31</td>
-          <td><strong>白玉兰酒店(枣庄东街口万达广场店)专用号</strong><small>63343025414</small></td>
+          <td><strong>白玉兰酒店(枣庄东街口万达广场店)专用号</strong><small>63343025414 · <span class="live-status 已直播">已直播</span></small></td>
           <td>枣庄市<small>白玉兰酒店(枣庄东街口万达广场店)</small></td>
           <td class="num">0</td>
           <td class="num">1</td>
@@ -8387,9 +8766,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">477</td>
         </tr>
 
-        <tr>
+        <tr data-account-name="麗枫酒店(威海幸福门威高广场店)专用号"
+            data-account-id="51681213145"
+            data-account-city="威海市"
+            data-account-store="麗枫酒店(威海幸福门威高广场店)"
+            data-account-status="已直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="1.0"
+            data-account-live-hours="0.04555555555555556"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
           <td class="rank">32</td>
-          <td><strong>麗枫酒店(威海幸福门威高广场店)专用号</strong><small>51681213145</small></td>
+          <td><strong>麗枫酒店(威海幸福门威高广场店)专用号</strong><small>51681213145 · <span class="live-status 已直播">已直播</span></small></td>
           <td>威海市<small>麗枫酒店(威海幸福门威高广场店)</small></td>
           <td class="num">0</td>
           <td class="num">1</td>
@@ -8398,9 +8786,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">0</td>
         </tr>
 
-        <tr>
+        <tr data-account-name="丽怡酒店（淄博八大局万象汇店）"
+            data-account-id="50427069235"
+            data-account-city="淄博市"
+            data-account-store="丽怡酒店(淄博柳泉路八大局高新区店)"
+            data-account-status="已直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="1.0"
+            data-account-live-hours="1.0044444444444445"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
           <td class="rank">33</td>
-          <td><strong>丽怡酒店（淄博八大局万象汇店）</strong><small>50427069235</small></td>
+          <td><strong>丽怡酒店（淄博八大局万象汇店）</strong><small>50427069235 · <span class="live-status 已直播">已直播</span></small></td>
           <td>淄博市<small>丽怡酒店(淄博柳泉路八大局高新区店)</small></td>
           <td class="num">0</td>
           <td class="num">1</td>
@@ -8409,9 +8806,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">0</td>
         </tr>
 
-        <tr>
+        <tr data-account-name="7天优品(枣庄台儿庄古城店)专用号"
+            data-account-id="48376207375"
+            data-account-city="枣庄市"
+            data-account-store="7天优品(枣庄台儿庄古城店)"
+            data-account-status="已直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="1.0"
+            data-account-live-hours="1.4638888888888888"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="426.0">
           <td class="rank">34</td>
-          <td><strong>7天优品(枣庄台儿庄古城店)专用号</strong><small>48376207375</small></td>
+          <td><strong>7天优品(枣庄台儿庄古城店)专用号</strong><small>48376207375 · <span class="live-status 已直播">已直播</span></small></td>
           <td>枣庄市<small>7天优品(枣庄台儿庄古城店)</small></td>
           <td class="num">0</td>
           <td class="num">1</td>
@@ -8420,9 +8826,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">426</td>
         </tr>
 
-        <tr>
+        <tr data-account-name="维也纳酒店（临沂南坊琅琊古城奥体中心店）"
+            data-account-id="39770474008"
+            data-account-city="临沂市"
+            data-account-store="维也纳酒店(5.0临沂南坊琅琊古城奥体中心店)"
+            data-account-status="已直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="1.0"
+            data-account-live-hours="1.4658333333333333"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
           <td class="rank">35</td>
-          <td><strong>维也纳酒店（临沂南坊琅琊古城奥体中心店）</strong><small>39770474008</small></td>
+          <td><strong>维也纳酒店（临沂南坊琅琊古城奥体中心店）</strong><small>39770474008 · <span class="live-status 已直播">已直播</span></small></td>
           <td>临沂市<small>维也纳酒店(5.0临沂南坊琅琊古城奥体中心店)</small></td>
           <td class="num">0</td>
           <td class="num">1</td>
@@ -8431,9 +8846,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">0</td>
         </tr>
 
-        <tr>
+        <tr data-account-name="凯里亚德腾州新兴北路吾悦广场店"
+            data-account-id="32196348663"
+            data-account-city="枣庄市"
+            data-account-store="凯里亚德酒店(滕州新兴北路店)"
+            data-account-status="已直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="1.0"
+            data-account-live-hours="1.3836111111111111"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
           <td class="rank">36</td>
-          <td><strong>凯里亚德腾州新兴北路吾悦广场店</strong><small>32196348663</small></td>
+          <td><strong>凯里亚德腾州新兴北路吾悦广场店</strong><small>32196348663 · <span class="live-status 已直播">已直播</span></small></td>
           <td>枣庄市<small>凯里亚德酒店(滕州新兴北路店)</small></td>
           <td class="num">0</td>
           <td class="num">1</td>
@@ -8442,9 +8866,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">0</td>
         </tr>
 
-        <tr>
+        <tr data-account-name="麗枫酒店(烟台站吾悦广场店)专用号"
+            data-account-id="20161874387"
+            data-account-city="烟台市"
+            data-account-store="麗枫酒店(烟台站吾悦广场店)"
+            data-account-status="已直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="1.0"
+            data-account-live-hours="0.8755555555555555"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
           <td class="rank">37</td>
-          <td><strong>麗枫酒店(烟台站吾悦广场店)专用号</strong><small>20161874387</small></td>
+          <td><strong>麗枫酒店(烟台站吾悦广场店)专用号</strong><small>20161874387 · <span class="live-status 已直播">已直播</span></small></td>
           <td>烟台市<small>麗枫酒店(烟台站吾悦广场店)</small></td>
           <td class="num">0</td>
           <td class="num">1</td>
@@ -8453,9 +8886,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">0</td>
         </tr>
 
-        <tr>
+        <tr data-account-name="维也纳3好酒店（山东日照万平口灯塔景区）"
+            data-account-id="0633_6131999"
+            data-account-city="日照市"
+            data-account-store="维也纳3好酒店(山东日照万平口灯塔景区店)"
+            data-account-status="已直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="1.0"
+            data-account-live-hours="1.985277777777778"
+            data-account-total-amount="129.0"
+            data-account-redeem-amount="0.0">
           <td class="rank">38</td>
-          <td><strong>维也纳3好酒店（山东日照万平口灯塔景区）</strong><small>0633_6131999</small></td>
+          <td><strong>维也纳3好酒店（山东日照万平口灯塔景区）</strong><small>0633_6131999 · <span class="live-status 已直播">已直播</span></small></td>
           <td>日照市<small>维也纳3好酒店(山东日照万平口灯塔景区店)</small></td>
           <td class="num">0</td>
           <td class="num">1</td>
@@ -8464,9 +8906,58 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">0</td>
         </tr>
 
-        <tr>
+        <tr data-account-name="喆啡酒店(青岛栈桥火车站店)专用号"
+            data-account-id="zf1856269321"
+            data-account-city="青岛市"
+            data-account-store="喆啡酒店(青岛栈桥火车站店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
           <td class="rank">39</td>
-          <td><strong>维也纳酒店(5.0临沂临沭顺河西街店)</strong><small>wyn.0539.3101999</small></td>
+          <td><strong>喆啡酒店(青岛栈桥火车站店)专用号</strong><small>zf1856269321 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>青岛市<small>喆啡酒店(青岛栈桥火车站店)</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="白玉兰酒店(枣庄高铁站太行山路店)专用号"
+            data-account-id="yucheng82532"
+            data-account-city="枣庄市"
+            data-account-store="白玉兰酒店(枣庄高铁站太行山路店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">40</td>
+          <td><strong>白玉兰酒店(枣庄高铁站太行山路店)专用号</strong><small>yucheng82532 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>枣庄市<small>白玉兰酒店(枣庄高铁站太行山路店)</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="维也纳酒店(5.0临沂临沭顺河西街店)"
+            data-account-id="wyn.0539.3101999"
+            data-account-city="临沂市"
+            data-account-store="维也纳酒店(5.0临沂临沭顺河西街店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="279.0"
+            data-account-redeem-amount="940.0">
+          <td class="rank">41</td>
+          <td><strong>维也纳酒店(5.0临沂临沭顺河西街店)</strong><small>wyn.0539.3101999 · <span class="live-status 未直播">未直播</span></small></td>
           <td>临沂市<small>维也纳酒店(5.0临沂临沭顺河西街店)</small></td>
           <td class="num">0</td>
           <td class="num">0</td>
@@ -8475,9 +8966,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">940</td>
         </tr>
 
-        <tr>
-          <td class="rank">40</td>
-          <td><strong>维也纳智好酒店(威海欧乐坊高铁北站店)</strong><small>weiyenajiudi58</small></td>
+        <tr data-account-name="维也纳智好酒店(威海欧乐坊高铁北站店)"
+            data-account-id="weiyenajiudi58"
+            data-account-city="威海市"
+            data-account-store="维也纳智好酒店(威海欧乐坊高铁北站店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="329.0">
+          <td class="rank">42</td>
+          <td><strong>维也纳智好酒店(威海欧乐坊高铁北站店)</strong><small>weiyenajiudi58 · <span class="live-status 未直播">未直播</span></small></td>
           <td>威海市<small>维也纳智好酒店(威海欧乐坊高铁北站店)</small></td>
           <td class="num">0</td>
           <td class="num">0</td>
@@ -8486,9 +8986,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">329</td>
         </tr>
 
-        <tr>
-          <td class="rank">41</td>
-          <td><strong>麗枫酒店(临沂沂南君悦购物中心店)专用号</strong><small>lfjdynd123</small></td>
+        <tr data-account-name="麗枫酒店(临沂沂南君悦购物中心店)专用号"
+            data-account-id="lfjdynd123"
+            data-account-city="临沂市"
+            data-account-store="麗枫酒店(临沂沂南君悦购物中心店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="358.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">43</td>
+          <td><strong>麗枫酒店(临沂沂南君悦购物中心店)专用号</strong><small>lfjdynd123 · <span class="live-status 未直播">未直播</span></small></td>
           <td>临沂市<small>麗枫酒店(临沂沂南君悦购物中心店)</small></td>
           <td class="num">0</td>
           <td class="num">0</td>
@@ -8497,9 +9006,58 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">0</td>
         </tr>
 
-        <tr>
-          <td class="rank">42</td>
-          <td><strong>维也纳酒店（5.0奥帆中心北青岛大学店）</strong><small>HeheNeverStop</small></td>
+        <tr data-account-name="锦江之星品尚青岛黄岛泊里董家口店"
+            data-account-id="jinjiang1558"
+            data-account-city="青岛市"
+            data-account-store="锦江之星品尚(青岛黄岛泊里董家口酒店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">44</td>
+          <td><strong>锦江之星品尚青岛黄岛泊里董家口店</strong><small>jinjiang1558 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>青岛市<small>锦江之星品尚(青岛黄岛泊里董家口酒店)</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="维也纳酒店(滕州火车站店)专用号"
+            data-account-id="WYN62666"
+            data-account-city="枣庄市"
+            data-account-store="维也纳酒店(滕州火车站店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">45</td>
+          <td><strong>维也纳酒店(滕州火车站店)专用号</strong><small>WYN62666 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>枣庄市<small>维也纳酒店(滕州火车站店)</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="维也纳酒店（5.0奥帆中心北青岛大学店）"
+            data-account-id="HeheNeverStop"
+            data-account-city="青岛市"
+            data-account-store="青岛维也纳酒店(5.0青岛大学奥帆中心北店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="209.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">46</td>
+          <td><strong>维也纳酒店（5.0奥帆中心北青岛大学店）</strong><small>HeheNeverStop · <span class="live-status 未直播">未直播</span></small></td>
           <td>青岛市<small>青岛维也纳酒店(5.0青岛大学奥帆中心北店)</small></td>
           <td class="num">0</td>
           <td class="num">0</td>
@@ -8508,9 +9066,38 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">0</td>
         </tr>
 
-        <tr>
-          <td class="rank">43</td>
-          <td><strong>白玉兰酒店（青州古城店)</strong><small>98865899382</small></td>
+        <tr data-account-name="麗枫酒店(淄博周村正阳路五洲国际盛世家居"
+            data-account-id="A19953390258"
+            data-account-city="淄博市"
+            data-account-store="麗枫酒店(淄博周村正阳路五洲国际盛世家居广场店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">47</td>
+          <td><strong>麗枫酒店(淄博周村正阳路五洲国际盛世家居</strong><small>A19953390258 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>淄博市<small>麗枫酒店(淄博周村正阳路五洲国际盛世家居广场店)</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="白玉兰酒店（青州古城店)"
+            data-account-id="98865899382"
+            data-account-city="潍坊市"
+            data-account-store="白玉兰(商务)酒店(潍坊青州古城衡王府路店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="318.1"
+            data-account-redeem-amount="0.0">
+          <td class="rank">48</td>
+          <td><strong>白玉兰酒店（青州古城店)</strong><small>98865899382 · <span class="live-status 未直播">未直播</span></small></td>
           <td>潍坊市<small>白玉兰(商务)酒店(潍坊青州古城衡王府路店)</small></td>
           <td class="num">0</td>
           <td class="num">0</td>
@@ -8519,9 +9106,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">0</td>
         </tr>
 
-        <tr>
-          <td class="rank">44</td>
-          <td><strong>维也纳酒店(青州高铁站店)专用号</strong><small>98739005543</small></td>
+        <tr data-account-name="维也纳酒店(青州高铁站店)专用号"
+            data-account-id="98739005543"
+            data-account-city="潍坊市"
+            data-account-store="维也纳酒店(青州高铁站店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="418.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">49</td>
+          <td><strong>维也纳酒店(青州高铁站店)专用号</strong><small>98739005543 · <span class="live-status 未直播">未直播</span></small></td>
           <td>潍坊市<small>维也纳酒店(青州高铁站店)</small></td>
           <td class="num">0</td>
           <td class="num">0</td>
@@ -8530,9 +9126,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">0</td>
         </tr>
 
-        <tr>
-          <td class="rank">45</td>
-          <td><strong>希岸酒店(威海火炬八街海水浴场山大店)</strong><small>98627559683</small></td>
+        <tr data-account-name="希岸酒店(威海火炬八街海水浴场山大店)"
+            data-account-id="98627559683"
+            data-account-city="威海市"
+            data-account-store="希岸酒店(威海火炬八街海水浴场山大店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="747.0"
+            data-account-redeem-amount="1942.4">
+          <td class="rank">50</td>
+          <td><strong>希岸酒店(威海火炬八街海水浴场山大店)</strong><small>98627559683 · <span class="live-status 未直播">未直播</span></small></td>
           <td>威海市<small>希岸酒店(威海火炬八街海水浴场山大店)</small></td>
           <td class="num">0</td>
           <td class="num">0</td>
@@ -8541,9 +9146,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">1,942</td>
         </tr>
 
-        <tr>
-          <td class="rank">46</td>
-          <td><strong>维也纳国际酒店5.0(青岛北站店)官方号</strong><small>97140100260</small></td>
+        <tr data-account-name="维也纳国际酒店5.0(青岛北站店)官方号"
+            data-account-id="97140100260"
+            data-account-city="青岛市"
+            data-account-store="维也纳国际酒店(青岛北站店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="517.8"
+            data-account-redeem-amount="517.8">
+          <td class="rank">51</td>
+          <td><strong>维也纳国际酒店5.0(青岛北站店)官方号</strong><small>97140100260 · <span class="live-status 未直播">未直播</span></small></td>
           <td>青岛市<small>维也纳国际酒店(青岛北站店)</small></td>
           <td class="num">0</td>
           <td class="num">0</td>
@@ -8552,9 +9166,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">518</td>
         </tr>
 
-        <tr>
-          <td class="rank">47</td>
-          <td><strong>丽柏酒店(青岛西海岸城市阳台海滨公园店)</strong><small>97110057794</small></td>
+        <tr data-account-name="丽柏酒店(青岛西海岸城市阳台海滨公园店)"
+            data-account-id="97110057794"
+            data-account-city="青岛市"
+            data-account-store="丽柏酒店(青岛西海岸城市阳台海滨公园店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="359.1"
+            data-account-redeem-amount="0.0">
+          <td class="rank">52</td>
+          <td><strong>丽柏酒店(青岛西海岸城市阳台海滨公园店)</strong><small>97110057794 · <span class="live-status 未直播">未直播</span></small></td>
           <td>青岛市<small>丽柏酒店(青岛西海岸城市阳台海滨公园店)</small></td>
           <td class="num">0</td>
           <td class="num">0</td>
@@ -8563,9 +9186,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">0</td>
         </tr>
 
-        <tr>
-          <td class="rank">48</td>
-          <td><strong>维也纳国际酒店(临沂大学奥体中心店)</strong><small>97044782355</small></td>
+        <tr data-account-name="维也纳国际酒店(临沂大学奥体中心店)"
+            data-account-id="97044782355"
+            data-account-city="临沂市"
+            data-account-store="维也纳国际酒店(临沂大学奥体中心店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="407.9"
+            data-account-redeem-amount="0.0">
+          <td class="rank">53</td>
+          <td><strong>维也纳国际酒店(临沂大学奥体中心店)</strong><small>97044782355 · <span class="live-status 未直播">未直播</span></small></td>
           <td>临沂市<small>维也纳国际酒店(临沂大学奥体中心店)</small></td>
           <td class="num">0</td>
           <td class="num">0</td>
@@ -8574,9 +9206,98 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">0</td>
         </tr>
 
-        <tr>
-          <td class="rank">49</td>
-          <td><strong>希岸酒店（临沂商城会展中心汽车站店）</strong><small>92142965369</small></td>
+        <tr data-account-name="维也纳酒店（临沂国际会展中心店）"
+            data-account-id="96937161506"
+            data-account-city="临沂市"
+            data-account-store="维也纳酒店(临沂国际会展中心沂河路店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">54</td>
+          <td><strong>维也纳酒店（临沂国际会展中心店）</strong><small>96937161506 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>临沂市<small>维也纳酒店(临沂国际会展中心沂河路店)</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="锦江之星(威海韩乐坊不夜城威海站店)"
+            data-account-id="96857614376"
+            data-account-city="威海市"
+            data-account-store="锦江之星(威海韩乐坊不夜城威海站店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">55</td>
+          <td><strong>锦江之星(威海韩乐坊不夜城威海站店)</strong><small>96857614376 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>威海市<small>锦江之星(威海韩乐坊不夜城威海站店)</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="希岸•轻雅酒店日照东夷小镇店"
+            data-account-id="95352976989"
+            data-account-city="日照市"
+            data-account-store="希岸·轻雅酒店(日照东夷小镇第三海水浴场店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">56</td>
+          <td><strong>希岸•轻雅酒店日照东夷小镇店</strong><small>95352976989 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>日照市<small>希岸·轻雅酒店(日照东夷小镇第三海水浴场店)</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="希岸酒店(蓬莱阁海水浴场店)专用号"
+            data-account-id="92144218127"
+            data-account-city="烟台市"
+            data-account-store="希岸酒店(蓬莱阁海水浴场蓬长客港店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">57</td>
+          <td><strong>希岸酒店(蓬莱阁海水浴场店)专用号</strong><small>92144218127 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>烟台市<small>希岸酒店(蓬莱阁海水浴场蓬长客港店)</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="希岸酒店（临沂商城会展中心汽车站店）"
+            data-account-id="92142965369"
+            data-account-city="临沂市"
+            data-account-store="希岸酒店(临沂商城会展中心汽车站店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="6.6">
+          <td class="rank">58</td>
+          <td><strong>希岸酒店（临沂商城会展中心汽车站店）</strong><small>92142965369 · <span class="live-status 未直播">未直播</span></small></td>
           <td>临沂市<small>希岸酒店(临沂商城会展中心汽车站店)</small></td>
           <td class="num">0</td>
           <td class="num">0</td>
@@ -8585,9 +9306,98 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">7</td>
         </tr>
 
-        <tr>
-          <td class="rank">50</td>
-          <td><strong>维也纳酒店(潍坊安丘世贸中心店)专用号</strong><small>82557601833</small></td>
+        <tr data-account-name="锦江之星(威海高铁站韩乐坊店)专用号"
+            data-account-id="89614879266"
+            data-account-city="威海市"
+            data-account-store="锦江之星威海站韩乐坊海上公园店"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">59</td>
+          <td><strong>锦江之星(威海高铁站韩乐坊店)专用号</strong><small>89614879266 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>威海市<small>锦江之星威海站韩乐坊海上公园店</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="（烟台福山区永达街店）维也纳国际酒店"
+            data-account-id="86950518953"
+            data-account-city="烟台市"
+            data-account-store="维也纳国际酒店(烟台福山区永达街店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">60</td>
+          <td><strong>（烟台福山区永达街店）维也纳国际酒店</strong><small>86950518953 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>烟台市<small>维也纳国际酒店(烟台福山区永达街店)</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="喆啡酒店(青岛会展中心店)专用号"
+            data-account-id="84753640549"
+            data-account-city="青岛市"
+            data-account-store="喆啡酒店(青岛会展中心店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">61</td>
+          <td><strong>喆啡酒店(青岛会展中心店)专用号</strong><small>84753640549 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>青岛市<small>喆啡酒店(青岛会展中心店)</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="IU酒店(淄博海岱楼西班 牙风情街店)"
+            data-account-id="83628445801"
+            data-account-city="淄博市"
+            data-account-store="IU酒店(淄博海岱楼西班牙风情街店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">62</td>
+          <td><strong>IU酒店(淄博海岱楼西班 牙风情街店)</strong><small>83628445801 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>淄博市<small>IU酒店(淄博海岱楼西班牙风情街店)</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="维也纳酒店(潍坊安丘世贸中心店)专用号"
+            data-account-id="82557601833"
+            data-account-city="潍坊市"
+            data-account-store="维也纳酒店(潍坊安丘世贸中心店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="99.0"
+            data-account-redeem-amount="99.0">
+          <td class="rank">63</td>
+          <td><strong>维也纳酒店(潍坊安丘世贸中心店)专用号</strong><small>82557601833 · <span class="live-status 未直播">未直播</span></small></td>
           <td>潍坊市<small>维也纳酒店(潍坊安丘世贸中心店)</small></td>
           <td class="num">0</td>
           <td class="num">0</td>
@@ -8596,9 +9406,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">99</td>
         </tr>
 
-        <tr>
-          <td class="rank">51</td>
-          <td><strong>锦江之星品尚（烟台开发区五指山路店）</strong><small>81425174886</small></td>
+        <tr data-account-name="锦江之星品尚（烟台开发区五指山路店）"
+            data-account-id="81425174886"
+            data-account-city="烟台市"
+            data-account-store="锦江之星品尚酒店(烟台开发区五指山路店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="19.8"
+            data-account-redeem-amount="0.0">
+          <td class="rank">64</td>
+          <td><strong>锦江之星品尚（烟台开发区五指山路店）</strong><small>81425174886 · <span class="live-status 未直播">未直播</span></small></td>
           <td>烟台市<small>锦江之星品尚酒店(烟台开发区五指山路店)</small></td>
           <td class="num">0</td>
           <td class="num">0</td>
@@ -8607,9 +9426,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">0</td>
         </tr>
 
-        <tr>
-          <td class="rank">52</td>
-          <td><strong>白玉兰（商务）酒店（岚山港多岛海景区店）</strong><small>77246318643</small></td>
+        <tr data-account-name="白玉兰（商务）酒店（岚山港多岛海景区店）"
+            data-account-id="77246318643"
+            data-account-city="日照市"
+            data-account-store="白玉兰(商务)酒店(日照岚山港多岛海风景区店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="149.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">65</td>
+          <td><strong>白玉兰（商务）酒店（岚山港多岛海景区店）</strong><small>77246318643 · <span class="live-status 未直播">未直播</span></small></td>
           <td>日照市<small>白玉兰(商务)酒店(日照岚山港多岛海风景区店)</small></td>
           <td class="num">0</td>
           <td class="num">0</td>
@@ -8618,9 +9446,38 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">0</td>
         </tr>
 
-        <tr>
-          <td class="rank">53</td>
-          <td><strong>日照岚山多岛海云居酒店</strong><small>73805246332</small></td>
+        <tr data-account-name="维也纳3好酒店（临沂大学博览中心商城店）"
+            data-account-id="74061182376"
+            data-account-city="临沂市"
+            data-account-store="维也纳3好酒店(临沂大学国际博览中心商城店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">66</td>
+          <td><strong>维也纳3好酒店（临沂大学博览中心商城店）</strong><small>74061182376 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>临沂市<small>维也纳3好酒店(临沂大学国际博览中心商城店)</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="日照岚山多岛海云居酒店"
+            data-account-id="73805246332"
+            data-account-city="日照市"
+            data-account-store="日照岚山多岛海云居酒店"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="597.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">67</td>
+          <td><strong>日照岚山多岛海云居酒店</strong><small>73805246332 · <span class="live-status 未直播">未直播</span></small></td>
           <td>日照市<small>日照岚山多岛海云居酒店</small></td>
           <td class="num">0</td>
           <td class="num">0</td>
@@ -8629,9 +9486,78 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">0</td>
         </tr>
 
-        <tr>
-          <td class="rank">54</td>
-          <td><strong>丽枫酒店(高密市政府店)专用号</strong><small>69391925800</small></td>
+        <tr data-account-name="7天优品(淄博博山红叶柿岩珑山路店)"
+            data-account-id="72759580430"
+            data-account-city="淄博市"
+            data-account-store="7天优品(淄博博山红叶柿岩珑山路店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">68</td>
+          <td><strong>7天优品(淄博博山红叶柿岩珑山路店)</strong><small>72759580430 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>淄博市<small>7天优品(淄博博山红叶柿岩珑山路店)</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="IU酒店(淄博高铁站吾悦广场店)"
+            data-account-id="72484754925"
+            data-account-city="淄博市"
+            data-account-store="IU酒店(淄博火车站吾悦广场店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">69</td>
+          <td><strong>IU酒店(淄博高铁站吾悦广场店)</strong><small>72484754925 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>淄博市<small>IU酒店(淄博火车站吾悦广场店)</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="喆啡酒店(青岛五四广场店)专用号"
+            data-account-id="70639462909"
+            data-account-city="青岛市"
+            data-account-store="喆啡酒店(青岛五四广场店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">70</td>
+          <td><strong>喆啡酒店(青岛五四广场店)专用号</strong><small>70639462909 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>青岛市<small>喆啡酒店(青岛五四广场店)</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="丽枫酒店(高密市政府店)专用号"
+            data-account-id="69391925800"
+            data-account-city="潍坊市"
+            data-account-store="丽枫酒店(高密市政府店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="199.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">71</td>
+          <td><strong>丽枫酒店(高密市政府店)专用号</strong><small>69391925800 · <span class="live-status 未直播">未直播</span></small></td>
           <td>潍坊市<small>丽枫酒店(高密市政府店)</small></td>
           <td class="num">0</td>
           <td class="num">0</td>
@@ -8640,9 +9566,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">0</td>
         </tr>
 
-        <tr>
-          <td class="rank">55</td>
-          <td><strong>白玉兰商务酒店（日照万平口景区市政府店）</strong><small>69167199700</small></td>
+        <tr data-account-name="白玉兰商务酒店（日照万平口景区市政府店）"
+            data-account-id="69167199700"
+            data-account-city="日照市"
+            data-account-store="白玉兰商务酒店(日照万平口景区市政府店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="518.0">
+          <td class="rank">72</td>
+          <td><strong>白玉兰商务酒店（日照万平口景区市政府店）</strong><small>69167199700 · <span class="live-status 未直播">未直播</span></small></td>
           <td>日照市<small>白玉兰商务酒店(日照万平口景区市政府店)</small></td>
           <td class="num">0</td>
           <td class="num">0</td>
@@ -8651,9 +9586,38 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">518</td>
         </tr>
 
-        <tr>
-          <td class="rank">56</td>
-          <td><strong>7天连锁酒店(烟台开发区海水浴场店)</strong><small>65381476438</small></td>
+        <tr data-account-name="锦江之星临沂国际会展中心沂河路酒店"
+            data-account-id="68385177370"
+            data-account-city="临沂市"
+            data-account-store="锦江之星酒店(临沂国际会展中心沂河路店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">73</td>
+          <td><strong>锦江之星临沂国际会展中心沂河路酒店</strong><small>68385177370 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>临沂市<small>锦江之星酒店(临沂国际会展中心沂河路店)</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="7天连锁酒店(烟台开发区海水浴场店)"
+            data-account-id="65381476438"
+            data-account-city="烟台市"
+            data-account-store="7天连锁酒店(烟台开发区海水浴场店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="89.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">74</td>
+          <td><strong>7天连锁酒店(烟台开发区海水浴场店)</strong><small>65381476438 · <span class="live-status 未直播">未直播</span></small></td>
           <td>烟台市<small>7天连锁酒店(烟台开发区海水浴场店)</small></td>
           <td class="num">0</td>
           <td class="num">0</td>
@@ -8662,9 +9626,38 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">0</td>
         </tr>
 
-        <tr>
-          <td class="rank">57</td>
-          <td><strong>白玉兰商务酒店(临沂市政府万达广场店)</strong><small>57758406498</small></td>
+        <tr data-account-name="麗枫酒店(滕州市政府吾悦广场店)专用号"
+            data-account-id="61723916865"
+            data-account-city="枣庄市"
+            data-account-store="麗枫酒店(滕州市政府吾悦广场店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">75</td>
+          <td><strong>麗枫酒店(滕州市政府吾悦广场店)专用号</strong><small>61723916865 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>枣庄市<small>麗枫酒店(滕州市政府吾悦广场店)</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="白玉兰商务酒店(临沂市政府万达广场店)"
+            data-account-id="57758406498"
+            data-account-city="临沂市"
+            data-account-store="白玉兰酒店(临沂市政府万达广场店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="237.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">76</td>
+          <td><strong>白玉兰商务酒店(临沂市政府万达广场店)</strong><small>57758406498 · <span class="live-status 未直播">未直播</span></small></td>
           <td>临沂市<small>白玉兰酒店(临沂市政府万达广场店)</small></td>
           <td class="num">0</td>
           <td class="num">0</td>
@@ -8673,9 +9666,138 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">0</td>
         </tr>
 
-        <tr>
-          <td class="rank">58</td>
-          <td><strong>白玉兰商务酒店（威海高铁站韩乐坊店）</strong><small>46274804282</small></td>
+        <tr data-account-name="维也纳3好酒店(山东潍坊临朐店)专用号"
+            data-account-id="55440580889"
+            data-account-city="潍坊市"
+            data-account-store="维也纳3好酒店(山东潍坊临朐店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">77</td>
+          <td><strong>维也纳3好酒店(山东潍坊临朐店)专用号</strong><small>55440580889 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>潍坊市<small>维也纳3好酒店(山东潍坊临朐店)</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="IU酒店(临沂火车站万象汇店)"
+            data-account-id="54394707268"
+            data-account-city="临沂市"
+            data-account-store="IU酒店(临沂火车站万象汇店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">78</td>
+          <td><strong>IU酒店(临沂火车站万象汇店)</strong><small>54394707268 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>临沂市<small>IU酒店(临沂火车站万象汇店)</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="白玉兰酒店（烟台幸福湾金沙滩烟台港店）"
+            data-account-id="53323957303"
+            data-account-city="烟台市"
+            data-account-store="白玉兰酒店(烟台幸福湾金沙滩烟台港店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">79</td>
+          <td><strong>白玉兰酒店（烟台幸福湾金沙滩烟台港店）</strong><small>53323957303 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>烟台市<small>白玉兰酒店(烟台幸福湾金沙滩烟台港店)</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="麗枫酒店(淄博临淄大院区政府店)专用号"
+            data-account-id="51160340695"
+            data-account-city="淄博市"
+            data-account-store="麗枫酒店(淄博临淄大院区政府店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">80</td>
+          <td><strong>麗枫酒店(淄博临淄大院区政府店)专用号</strong><small>51160340695 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>淄博市<small>麗枫酒店(淄博临淄大院区政府店)</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="麗枫酒店(枣庄光明广场店)"
+            data-account-id="49012174110"
+            data-account-city="枣庄市"
+            data-account-store="麗枫酒店(枣庄光明广场店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">81</td>
+          <td><strong>麗枫酒店(枣庄光明广场店)</strong><small>49012174110 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>枣庄市<small>麗枫酒店(枣庄光明广场店)</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="维也纳酒店(日照万平口东夷小镇店)"
+            data-account-id="46844545173"
+            data-account-city="日照市"
+            data-account-store="维也纳酒店(日照万平口东夷小镇店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">82</td>
+          <td><strong>维也纳酒店(日照万平口东夷小镇店)</strong><small>46844545173 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>日照市<small>维也纳酒店(日照万平口东夷小镇店)</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="白玉兰商务酒店（威海高铁站韩乐坊店）"
+            data-account-id="46274804282"
+            data-account-city="威海市"
+            data-account-store="白玉兰(商务)酒店(威海高铁站青岛中路店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="1187.0">
+          <td class="rank">83</td>
+          <td><strong>白玉兰商务酒店（威海高铁站韩乐坊店）</strong><small>46274804282 · <span class="live-status 未直播">未直播</span></small></td>
           <td>威海市<small>白玉兰(商务)酒店(威海高铁站青岛中路店)</small></td>
           <td class="num">0</td>
           <td class="num">0</td>
@@ -8684,9 +9806,158 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">1,187</td>
         </tr>
 
-        <tr>
-          <td class="rank">59</td>
-          <td><strong>麗枫酒店(青岛石老人海水浴场地铁站店)</strong><small>22356151442</small></td>
+        <tr data-account-name="白玉兰酒店青岛市福州南路99号"
+            data-account-id="44688253855"
+            data-account-city="青岛市"
+            data-account-store="白玉兰酒店(青岛五四广场奥帆中心店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">84</td>
+          <td><strong>白玉兰酒店青岛市福州南路99号</strong><small>44688253855 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>青岛市<small>白玉兰酒店(青岛五四广场奥帆中心店)</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="白玉兰酒店(枣庄吾悦广场店)专用号"
+            data-account-id="40646536247"
+            data-account-city="枣庄市"
+            data-account-store="白玉兰酒店(枣庄吾悦广场店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">85</td>
+          <td><strong>白玉兰酒店(枣庄吾悦广场店)专用号</strong><small>40646536247 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>枣庄市<small>白玉兰酒店(枣庄吾悦广场店)</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="白玉兰酒店(烟台蓬莱欧乐堡海水浴场店)"
+            data-account-id="34649326496"
+            data-account-city="烟台市"
+            data-account-store="白玉兰酒店(烟台蓬莱欧乐堡海水浴场店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">86</td>
+          <td><strong>白玉兰酒店(烟台蓬莱欧乐堡海水浴场店)</strong><small>34649326496 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>烟台市<small>白玉兰酒店(烟台蓬莱欧乐堡海水浴场店)</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="亦岚酒店(滕州龙泉广场店)专用号"
+            data-account-id="32162301157"
+            data-account-city="枣庄市"
+            data-account-store="亦岚酒店(滕州龙泉广场店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">87</td>
+          <td><strong>亦岚酒店(滕州龙泉广场店)专用号</strong><small>32162301157 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>枣庄市<small>亦岚酒店(滕州龙泉广场店)</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="青岛白玉兰酒店(火车站栈桥店)官方号"
+            data-account-id="28021257979"
+            data-account-city="青岛市"
+            data-account-store="青岛白玉兰酒店(火车站栈桥店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">88</td>
+          <td><strong>青岛白玉兰酒店(火车站栈桥店)官方号</strong><small>28021257979 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>青岛市<small>青岛白玉兰酒店(火车站栈桥店)</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="希岸酒店(威海乳山南山路店)"
+            data-account-id="27880619055"
+            data-account-city="威海市"
+            data-account-store="希岸酒店(乳山市金帝购物广场南山路店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">89</td>
+          <td><strong>希岸酒店(威海乳山南山路店)</strong><small>27880619055 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>威海市<small>希岸酒店(乳山市金帝购物广场南山路店)</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="7天酒店(青岛北站沧安路地铁站店)"
+            data-account-id="25093808547"
+            data-account-city="青岛市"
+            data-account-store="7天酒店(青岛北站沧安路地铁站店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">90</td>
+          <td><strong>7天酒店(青岛北站沧安路地铁站店)</strong><small>25093808547 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>青岛市<small>7天酒店(青岛北站沧安路地铁站店)</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="麗枫酒店(青岛石老人海水浴场地铁站店)"
+            data-account-id="22356151442"
+            data-account-city="青岛市"
+            data-account-store="麗枫酒店(青岛石老人海水浴场地铁站店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="3128.33">
+          <td class="rank">91</td>
+          <td><strong>麗枫酒店(青岛石老人海水浴场地铁站店)</strong><small>22356151442 · <span class="live-status 未直播">未直播</span></small></td>
           <td>青岛市<small>麗枫酒店(青岛石老人海水浴场地铁站店)</small></td>
           <td class="num">0</td>
           <td class="num">0</td>
@@ -8695,9 +9966,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">3,128</td>
         </tr>
 
-        <tr>
-          <td class="rank">60</td>
-          <td><strong>麗枫酒店(淄博北站柳泉路店)专用号</strong><small>22026153160</small></td>
+        <tr data-account-name="麗枫酒店(淄博北站柳泉路店)专用号"
+            data-account-id="22026153160"
+            data-account-city="淄博市"
+            data-account-store="丽枫酒店(淄博北站柳泉路店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="596.0"
+            data-account-redeem-amount="1146.0">
+          <td class="rank">92</td>
+          <td><strong>麗枫酒店(淄博北站柳泉路店)专用号</strong><small>22026153160 · <span class="live-status 未直播">未直播</span></small></td>
           <td>淄博市<small>丽枫酒店(淄博北站柳泉路店)</small></td>
           <td class="num">0</td>
           <td class="num">0</td>
@@ -8706,9 +9986,98 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">1,146</td>
         </tr>
 
-        <tr>
-          <td class="rank">61</td>
-          <td><strong>凯里亚德酒店(枣庄万达广场店)专用号</strong><small>0632.6877666</small></td>
+        <tr data-account-name="维也纳国际酒店(经典版蓬莱阁景区海水店)"
+            data-account-id="20162029979"
+            data-account-city="烟台市"
+            data-account-store="维也纳国际酒店(经典版蓬莱阁景区海水浴场店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">93</td>
+          <td><strong>维也纳国际酒店(经典版蓬莱阁景区海水店)</strong><small>20162029979 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>烟台市<small>维也纳国际酒店(经典版蓬莱阁景区海水浴场店)</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="希岸Deluxe酒店青岛胶东国际机场店"
+            data-account-id="20149023892"
+            data-account-city="青岛市"
+            data-account-store="希岸Deluxe酒店(青岛胶东国际机场胶东地铁站店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">94</td>
+          <td><strong>希岸Deluxe酒店青岛胶东国际机场店</strong><small>20149023892 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>青岛市<small>希岸Deluxe酒店(青岛胶东国际机场胶东地铁站店)</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="维也纳国际酒店(青州店)专用号"
+            data-account-id="1859659304"
+            data-account-city="潍坊市"
+            data-account-store="维也纳国际酒店(青州店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">95</td>
+          <td><strong>维也纳国际酒店(青州店)专用号</strong><small>1859659304 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>潍坊市<small>维也纳国际酒店(青州店)</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="维也纳国际酒店（日照西站苏宁广场店）"
+            data-account-id="0633.808.5555"
+            data-account-city="日照市"
+            data-account-store="维也纳国际酒店(日照西站苏宁广场店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">96</td>
+          <td><strong>维也纳国际酒店（日照西站苏宁广场店）</strong><small>0633.808.5555 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>日照市<small>维也纳国际酒店(日照西站苏宁广场店)</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0小时</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="凯里亚德酒店(枣庄万达广场店)专用号"
+            data-account-id="0632.6877666"
+            data-account-city="枣庄市"
+            data-account-store="凯里亚德酒店(枣庄万达广场店)"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="404.9"
+            data-account-redeem-amount="0.0">
+          <td class="rank">97</td>
+          <td><strong>凯里亚德酒店(枣庄万达广场店)专用号</strong><small>0632.6877666 · <span class="live-status 未直播">未直播</span></small></td>
           <td>枣庄市<small>凯里亚德酒店(枣庄万达广场店)</small></td>
           <td class="num">0</td>
           <td class="num">0</td>
@@ -8800,6 +10169,132 @@ function filterStoreTable(){
 }
 document.getElementById('store-search')?.addEventListener('input',filterStoreTable);
 document.getElementById('province-filter')?.addEventListener('change',filterStoreTable);
+let merchantCitySortKey='';
+let merchantCitySortDirection='desc';
+function sortMerchantCityTable(nextKey){
+  const body=document.getElementById('merchant-city-body');
+  if(!body)return;
+  if(nextKey===merchantCitySortKey){
+    merchantCitySortDirection=merchantCitySortDirection==='asc'?'desc':'asc';
+  }else{
+    merchantCitySortKey=nextKey;
+    merchantCitySortDirection=nextKey==='city-name'?'asc':'desc';
+  }
+  const stringKeys=new Set(['city-name']);
+  const rows=[...body.querySelectorAll('tr')];
+  rows.sort((a,b)=>{
+    const rawA=a.getAttribute('data-'+merchantCitySortKey)||'';
+    const rawB=b.getAttribute('data-'+merchantCitySortKey)||'';
+    const result=stringKeys.has(merchantCitySortKey)
+      ?rawA.localeCompare(rawB,'zh-CN')
+      :Number(rawA)-Number(rawB);
+    return merchantCitySortDirection==='asc'?result:-result;
+  });
+  rows.forEach(row=>body.appendChild(row));
+  document.querySelectorAll('.merchant-city-sort-trigger').forEach(button=>{
+    const active=button.dataset.sortKey===merchantCitySortKey;
+    button.classList.toggle('active',active);
+    const indicator=button.querySelector('.sort-indicator');
+    if(indicator)indicator.textContent=active
+      ?(merchantCitySortDirection==='asc'?'↑':'↓')
+      :'↕';
+  });
+  filterMerchantCityTable();
+}
+function filterMerchantCityTable(){
+  const body=document.getElementById('merchant-city-body');
+  if(!body)return;
+  const query=(document.getElementById('merchant-city-search')?.value||'')
+    .trim().toLocaleLowerCase('zh-CN');
+  const status=document.getElementById('merchant-city-status-filter')?.value||'';
+  let visible=0;
+  const rows=[...body.querySelectorAll('tr')];
+  rows.forEach(row=>{
+    const city=(row.dataset.cityName||'').toLocaleLowerCase('zh-CN');
+    const matches=(!query||city.includes(query))
+      &&(!status||row.dataset.cityStatus===status);
+    row.hidden=!matches;
+    if(matches){
+      visible+=1;
+      const rank=row.querySelector('.rank');
+      if(rank)rank.textContent=String(visible).padStart(2,'0');
+    }
+  });
+  const count=document.getElementById('merchant-city-result-count');
+  if(count)count.textContent=`显示 ${visible} / ${rows.length} 城`;
+}
+let merchantAccountSortKey='';
+let merchantAccountSortDirection='desc';
+function sortMerchantAccountTable(nextKey){
+  const body=document.getElementById('merchant-account-body');
+  if(!body)return;
+  if(nextKey===merchantAccountSortKey){
+    merchantAccountSortDirection=merchantAccountSortDirection==='asc'?'desc':'asc';
+  }else{
+    merchantAccountSortKey=nextKey;
+    merchantAccountSortDirection=['account-name','account-city'].includes(nextKey)
+      ?'asc'
+      :'desc';
+  }
+  const stringKeys=new Set(['account-name','account-city']);
+  const rows=[...body.querySelectorAll('tr')];
+  rows.sort((a,b)=>{
+    const rawA=a.getAttribute('data-'+merchantAccountSortKey)||'';
+    const rawB=b.getAttribute('data-'+merchantAccountSortKey)||'';
+    const result=stringKeys.has(merchantAccountSortKey)
+      ?rawA.localeCompare(rawB,'zh-CN')
+      :Number(rawA)-Number(rawB);
+    return merchantAccountSortDirection==='asc'?result:-result;
+  });
+  rows.forEach(row=>body.appendChild(row));
+  document.querySelectorAll('.merchant-account-sort-trigger').forEach(button=>{
+    const active=button.dataset.sortKey===merchantAccountSortKey;
+    button.classList.toggle('active',active);
+    const indicator=button.querySelector('.sort-indicator');
+    if(indicator)indicator.textContent=active
+      ?(merchantAccountSortDirection==='asc'?'↑':'↓')
+      :'↕';
+  });
+  filterMerchantAccountTable();
+}
+function filterMerchantAccountTable(){
+  const body=document.getElementById('merchant-account-body');
+  if(!body)return;
+  const query=(document.getElementById('merchant-account-search')?.value||'')
+    .trim().toLocaleLowerCase('zh-CN');
+  const city=document.getElementById('merchant-account-city-filter')?.value||'';
+  const status=document.getElementById('merchant-account-status-filter')?.value||'';
+  let visible=0;
+  const rows=[...body.querySelectorAll('tr')];
+  rows.forEach(row=>{
+    const haystack=[
+      row.dataset.accountName||'',
+      row.dataset.accountId||'',
+      row.dataset.accountStore||''
+    ].join(' ').toLocaleLowerCase('zh-CN');
+    const matches=(!query||haystack.includes(query))
+      &&(!city||row.dataset.accountCity===city)
+      &&(!status||row.dataset.accountStatus===status);
+    row.hidden=!matches;
+    if(matches){
+      visible+=1;
+      const rank=row.querySelector('.rank');
+      if(rank)rank.textContent=String(visible).padStart(2,'0');
+    }
+  });
+  const count=document.getElementById('merchant-account-result-count');
+  if(count)count.textContent=`显示 ${visible} / ${rows.length} 个账号`;
+}
+document.getElementById('merchant-city-search')
+  ?.addEventListener('input',filterMerchantCityTable);
+document.getElementById('merchant-city-status-filter')
+  ?.addEventListener('change',filterMerchantCityTable);
+document.getElementById('merchant-account-search')
+  ?.addEventListener('input',filterMerchantAccountTable);
+document.getElementById('merchant-account-city-filter')
+  ?.addEventListener('change',filterMerchantAccountTable);
+document.getElementById('merchant-account-status-filter')
+  ?.addEventListener('change',filterMerchantAccountTable);
 let channelSortKey='redeem-delta';
 let channelSortDirection='desc';
 function sortChannelTable(nextKey){
@@ -8825,6 +10320,8 @@ function sortChannelTable(nextKey){
 }
 sortStoreTable('redeem-current');
 sortChannelTable('redeem-delta');
+sortMerchantCityTable('city-live-amount');
+sortMerchantAccountTable('account-live-amount');
 document.documentElement.dataset.workbench="{\"region\": \"山东省区\", \"periods\": {\"previous_start\": \"2026-09-26\", \"previous_end\": \"2026-10-02\", \"current_start\": \"2026-10-03\", \"current_end\": \"2026-10-09\"}, \"verification\": {\"detail_row_count\": 12529, \"channel_row_count\": 13246, \"other_region_row_count\": 6841, \"provider_count\": 11, \"store_count\": 328, \"voucher_product_count\": 9, \"product_structure_closed\": true}}";
 </script>
 </body>
