@@ -1282,7 +1282,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
         </select>
         <select id="merchant-account-status-filter" aria-label="按直播状态筛选账号">
           <option value="">全部状态</option>
-          <option value="已直播">已直播</option>
+          <option value="有直播">有直播</option>
           <option value="未直播">未直播</option>
         </select>
         <span id="merchant-account-result-count" class="filter-count"></span>
@@ -1292,7 +1292,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <thead><tr>
             <th>#</th>
             <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-name" onclick="sortMerchantAccountTable('account-name')" title="按抖音号排序">抖音号 <span class="sort-indicator">↕</span></button></th>
-            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-city" onclick="sortMerchantAccountTable('account-city')" title="按城市 / 门店排序">城市 / 门店 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-location" onclick="sortMerchantAccountTable('account-location')" title="按城市 / 门店排序">城市 / 门店 <span class="sort-indicator">↕</span></button></th>
             <th>一级省区 / 二级片区</th>
             <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-live-amount" onclick="sortMerchantAccountTable('account-live-amount')" title="按直播成交金额排序">直播成交金额 <span class="sort-indicator">↕</span></button></th>
             <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-live-sessions" onclick="sortMerchantAccountTable('account-live-sessions')" title="按直播场次排序">直播场次 <span class="sort-indicator">↕</span></button></th>
@@ -1305,16 +1305,17 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
             data-account-id="jjdczh5175"
             data-account-city="唐山市"
             data-account-store="锦江都城酒店(遵化文化南路店)"
+            data-account-location="唐山市 锦江都城酒店(遵化文化南路店)"
             data-account-province="津河省区"
             data-account-area="唐山北片区"
-            data-account-status="已直播"
+            data-account-status="有直播"
             data-account-live-amount="0.0"
             data-account-live-sessions="2.0"
             data-account-live-hours="0.611111111111111"
             data-account-total-amount="320.9"
             data-account-redeem-amount="0.0">
           <td class="rank">01</td>
-          <td><strong>锦江都城酒店(遵化文化南路店)</strong><small>jjdczh5175 · <span class="live-status 已直播">已直播</span></small></td>
+          <td><strong>锦江都城酒店(遵化文化南路店)</strong><small>jjdczh5175 · <span class="live-status 有直播">有直播</span></small></td>
           <td>唐山市<small>锦江都城酒店(遵化文化南路店)</small></td>
           <td>津河省区<small>唐山北片区</small></td>
           <td class="num">0</td>
@@ -1328,6 +1329,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
             data-account-id="Xana03156665566"
             data-account-city="唐山市"
             data-account-store="遵化燕山花园希岸Deluxe酒店"
+            data-account-location="唐山市 遵化燕山花园希岸Deluxe酒店"
             data-account-province="津河省区"
             data-account-area="唐山北片区"
             data-account-status="未直播"
@@ -1522,11 +1524,11 @@ function sortMerchantAccountTable(nextKey){
     merchantAccountSortDirection=merchantAccountSortDirection==='asc'?'desc':'asc';
   }else{
     merchantAccountSortKey=nextKey;
-    merchantAccountSortDirection=['account-name','account-city'].includes(nextKey)
+    merchantAccountSortDirection=['account-name','account-location'].includes(nextKey)
       ?'asc'
       :'desc';
   }
-  const stringKeys=new Set(['account-name','account-city']);
+  const stringKeys=new Set(['account-name','account-location']);
   const rows=[...body.querySelectorAll('tr')];
   rows.sort((a,b)=>{
     const rawA=a.getAttribute('data-'+merchantAccountSortKey)||'';
@@ -1560,6 +1562,7 @@ function filterMerchantAccountTable(){
     const haystack=[
       row.dataset.accountName||'',
       row.dataset.accountId||'',
+      row.dataset.accountCity||'',
       row.dataset.accountStore||'',
       row.dataset.accountProvince||'',
       row.dataset.accountArea||''

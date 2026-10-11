@@ -1549,7 +1549,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
         </select>
         <select id="merchant-account-status-filter" aria-label="按直播状态筛选账号">
           <option value="">全部状态</option>
-          <option value="已直播">已直播</option>
+          <option value="有直播">有直播</option>
           <option value="未直播">未直播</option>
         </select>
         <span id="merchant-account-result-count" class="filter-count"></span>
@@ -1559,7 +1559,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <thead><tr>
             <th>#</th>
             <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-name" onclick="sortMerchantAccountTable('account-name')" title="按抖音号排序">抖音号 <span class="sort-indicator">↕</span></button></th>
-            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-city" onclick="sortMerchantAccountTable('account-city')" title="按城市 / 门店排序">城市 / 门店 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-location" onclick="sortMerchantAccountTable('account-location')" title="按城市 / 门店排序">城市 / 门店 <span class="sort-indicator">↕</span></button></th>
             <th>一级省区 / 二级片区</th>
             <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-live-amount" onclick="sortMerchantAccountTable('account-live-amount')" title="按直播成交金额排序">直播成交金额 <span class="sort-indicator">↕</span></button></th>
             <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-live-sessions" onclick="sortMerchantAccountTable('account-live-sessions')" title="按直播场次排序">直播场次 <span class="sort-indicator">↕</span></button></th>
@@ -1572,6 +1572,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
             data-account-id="98865899382"
             data-account-city="潍坊市"
             data-account-store="白玉兰(商务)酒店(潍坊青州古城衡王府路店)"
+            data-account-location="潍坊市 白玉兰(商务)酒店(潍坊青州古城衡王府路店)"
             data-account-province="鲁东省区"
             data-account-area="潍坊片区"
             data-account-status="未直播"
@@ -1595,6 +1596,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
             data-account-id="98739005543"
             data-account-city="潍坊市"
             data-account-store="维也纳酒店(青州高铁站店)"
+            data-account-location="潍坊市 维也纳酒店(青州高铁站店)"
             data-account-province="鲁东省区"
             data-account-area="潍坊片区"
             data-account-status="未直播"
@@ -1618,6 +1620,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
             data-account-id="82557601833"
             data-account-city="潍坊市"
             data-account-store="维也纳酒店(潍坊安丘世贸中心店)"
+            data-account-location="潍坊市 维也纳酒店(潍坊安丘世贸中心店)"
             data-account-province="鲁东省区"
             data-account-area="潍坊片区"
             data-account-status="未直播"
@@ -1641,6 +1644,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
             data-account-id="69391925800"
             data-account-city="潍坊市"
             data-account-store="丽枫酒店(高密市政府店)"
+            data-account-location="潍坊市 丽枫酒店(高密市政府店)"
             data-account-province="鲁东省区"
             data-account-area="潍坊片区"
             data-account-status="未直播"
@@ -1664,6 +1668,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
             data-account-id="55440580889"
             data-account-city="潍坊市"
             data-account-store="维也纳3好酒店(山东潍坊临朐店)"
+            data-account-location="潍坊市 维也纳3好酒店(山东潍坊临朐店)"
             data-account-province="鲁东省区"
             data-account-area="潍坊片区"
             data-account-status="未直播"
@@ -1687,6 +1692,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
             data-account-id="1859659304"
             data-account-city="潍坊市"
             data-account-store="维也纳国际酒店(青州店)"
+            data-account-location="潍坊市 维也纳国际酒店(青州店)"
             data-account-province="鲁东省区"
             data-account-area="潍坊片区"
             data-account-status="未直播"
@@ -1881,11 +1887,11 @@ function sortMerchantAccountTable(nextKey){
     merchantAccountSortDirection=merchantAccountSortDirection==='asc'?'desc':'asc';
   }else{
     merchantAccountSortKey=nextKey;
-    merchantAccountSortDirection=['account-name','account-city'].includes(nextKey)
+    merchantAccountSortDirection=['account-name','account-location'].includes(nextKey)
       ?'asc'
       :'desc';
   }
-  const stringKeys=new Set(['account-name','account-city']);
+  const stringKeys=new Set(['account-name','account-location']);
   const rows=[...body.querySelectorAll('tr')];
   rows.sort((a,b)=>{
     const rawA=a.getAttribute('data-'+merchantAccountSortKey)||'';
@@ -1919,6 +1925,7 @@ function filterMerchantAccountTable(){
     const haystack=[
       row.dataset.accountName||'',
       row.dataset.accountId||'',
+      row.dataset.accountCity||'',
       row.dataset.accountStore||'',
       row.dataset.accountProvince||'',
       row.dataset.accountArea||''
