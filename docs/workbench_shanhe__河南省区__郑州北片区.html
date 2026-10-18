@@ -14,12 +14,13 @@
 *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--canvas);color:var(--ink);-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:none;color:inherit;cursor:pointer}
 .app{display:grid;grid-template-columns:220px minmax(0,1fr);min-height:100vh;max-width:1480px;margin:auto}
-.sidebar{position:sticky;top:0;height:100vh;padding:30px 18px;background:rgba(255,255,255,.58);border-right:1px solid rgba(0,0,0,.05);backdrop-filter:blur(30px) saturate(170%);-webkit-backdrop-filter:blur(30px) saturate(170%)}
-.brand{padding:0 12px 28px;font-size:13px;font-weight:700} .brand span{display:block;color:var(--muted);font-size:11px;font-weight:500;margin-top:5px}
-.nav-label{margin:0 12px 8px;color:var(--muted);font-size:11px;font-weight:700;letter-spacing:.08em}
-.nav-item{display:flex;align-items:center;gap:11px;width:100%;margin:4px 0;padding:11px 12px;border-radius:13px;color:#4B4D55;font-size:13px;font-weight:600;text-align:left;transition:.2s}
-.nav-item:hover{background:rgba(255,255,255,.72)} .nav-item.active{background:rgba(22,119,255,.10);color:var(--blue)}
-.nav-icon{width:20px;text-align:center;font-size:16px}
+.sidebar{position:sticky;top:0;height:100vh;padding:28px 16px;background:rgba(255,255,255,.82);border-right:1px solid rgba(23,24,28,.07);backdrop-filter:blur(24px) saturate(150%);-webkit-backdrop-filter:blur(24px) saturate(150%)}
+.brand{padding:0 10px 24px;font-size:14px;font-weight:760} .brand span{display:block;color:var(--muted);font-size:11px;font-weight:500;margin-top:5px}
+.nav-label{margin:0 10px 9px;color:#91949C;font-size:10px;font-weight:700;letter-spacing:0}
+.nav-item{position:relative;display:flex;align-items:center;gap:10px;width:100%;margin:3px 0;padding:8px;border-radius:8px;color:#555962;font-size:13px;font-weight:650;text-align:left;transition:background-color .18s ease,color .18s ease}
+.nav-item::before{content:"";position:absolute;left:-16px;width:3px;height:18px;border-radius:0 3px 3px 0;background:transparent;transition:background-color .18s ease}
+.nav-item:hover{background:#F3F5F8;color:#25272D} .nav-item.active{background:#ECEFF4;color:#17181C} .nav-item.active::before{background:var(--blue)}
+.nav-icon{display:grid;place-items:center;width:30px;height:30px;flex:0 0 30px;border:1px solid rgba(23,24,28,.06);border-radius:7px;background:#fff;color:#69707C;box-shadow:0 1px 2px rgba(23,24,28,.05)} .nav-icon svg{width:16px;height:16px} .nav-item.active .nav-icon{border-color:rgba(22,119,255,.16);background:#fff;color:var(--blue)}
 .content{min-width:0;padding:30px 34px 70px} .topbar{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:24px}
 .eyebrow{color:var(--muted);font-size:13px;font-weight:600} h1{margin:7px 0 0;font-size:34px;line-height:1.08;letter-spacing:0} h2{margin:0;font-size:20px;letter-spacing:0} h3{margin:0;font-size:15px}
 .top-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap} .glass-pill,.status{padding:9px 13px;border:1px solid rgba(255,255,255,.9);border-radius:14px;background:rgba(255,255,255,.62);box-shadow:0 7px 22px rgba(32,44,70,.06);backdrop-filter:blur(20px);font-size:12px;font-weight:600}
@@ -31,7 +32,6 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
 .glass-tab{padding:8px 16px;border-radius:11px;font-size:12px;font-weight:600;color:#5D6069} .glass-tab.active{background:rgba(255,255,255,.9);box-shadow:0 5px 14px rgba(31,42,68,.12);color:var(--ink)}
 .kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px} .kpi,.panel{border:1px solid rgba(0,0,0,.045);border-radius:19px;background:rgba(255,255,255,.86);box-shadow:0 12px 32px rgba(32,44,70,.055)}
 .kpi{min-height:142px;padding:18px;position:relative;overflow:hidden} .kpi-label{color:var(--muted);font-size:12px;font-weight:700} .kpi-value{display:block;margin-top:14px;font-size:30px;letter-spacing:0} .kpi-foot{display:flex;align-items:baseline;gap:9px;margin-top:11px;color:var(--muted);font-size:12px} .kpi-foot>span:first-child{font-size:16px;font-weight:800} .kpi-foot .positive{color:#15945E} .kpi-foot .negative{color:#D44755} .kpi-foot .neutral{color:var(--muted)}
-.kpi::after{content:"";position:absolute;right:-25px;bottom:-42px;width:120px;height:120px;border-radius:50%;background:rgba(22,119,255,.08)} .kpi:nth-child(2)::after{background:rgba(255,138,61,.10)} .kpi:nth-child(3)::after{background:rgba(0,167,160,.10)} .kpi:nth-child(4)::after{background:rgba(139,109,255,.10)}
 .grid-2{display:grid;grid-template-columns:1fr;gap:16px;margin-top:16px} .grid-2.equal{grid-template-columns:1fr}
 .panel{padding:20px;min-width:0} .panel-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px} .panel-head p{margin:4px 0 0;color:var(--muted);font-size:11px} .trend-panel-head{align-items:flex-start;flex-wrap:wrap} .trend-heading{display:flex;align-items:baseline;gap:14px;white-space:nowrap} .trend-range{color:#5F636D;font-size:15px;font-weight:750} .legend{display:flex;gap:12px;color:var(--muted);font-size:11px;white-space:nowrap} .legend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}
 .chart-scroll{overflow-x:auto} .chart-svg{display:block;width:100%;height:auto;overflow:visible} .axis-label{fill:#858994;font-size:10px} .point-label,.merchant-live-point-label,.merchant-duration-label{font-size:11px;font-weight:750;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
@@ -41,9 +41,11 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
 .filter-bar{display:flex;align-items:center;gap:10px;margin-bottom:14px} .filter-bar input,.filter-bar select{height:38px;border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--ink);font:inherit;font-size:12px;outline:none} .filter-bar input{min-width:260px;padding:0 12px} .filter-bar select{padding:0 30px 0 10px} .filter-bar input:focus,.filter-bar select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(22,119,255,.10)} .filter-count{margin-left:auto;color:var(--muted);font-size:11px;white-space:nowrap}
 .table-scroll{overflow-x:auto} table{width:100%;border-collapse:collapse;min-width:820px} .merchant-table{min-width:980px} th{padding:11px 10px;text-align:left;color:#858994;font-size:11px;font-weight:700;border-bottom:1px solid var(--line);white-space:nowrap} td{padding:13px 10px;border-bottom:1px solid #F0F1F4;font-size:12px;vertical-align:middle} td small{display:block;margin-top:4px;color:#9A9DA6;font-size:10px;font-weight:500} td.num{font-variant-numeric:tabular-nums;white-space:nowrap} td.rank{width:38px;color:#9A9DA6;font-size:11px;font-weight:800} td strong{font-weight:700} .positive{color:#189963!important} .negative{color:#D85863!important} .provider{display:inline-block;padding:5px 8px;border-radius:8px;background:#F1F5FF;color:#4B6DB8;font-size:11px;white-space:nowrap} .channel-stack{display:flex;flex-wrap:wrap;gap:5px;min-width:175px} .channel-chip{display:inline-flex;padding:4px 7px;border-radius:7px;background:#F4F5F7;color:#646872;font-size:10px;white-space:nowrap} .channel-chip.positive{background:#EAF8F2} .channel-chip.negative{background:#FFF0F1} .live-status{display:inline-block;padding:2px 6px;border-radius:6px;background:#EAF8F2;color:#16835A;font-size:9px;font-weight:750;white-space:nowrap} .live-status.未直播,.live-status.零开播{background:#F0F1F4;color:#747984} .empty,.empty-state{color:#9A9DA6;font-size:12px} .empty-state{padding:28px;text-align:center;background:#F8F9FB;border-radius:12px}
 .bar-wrap{height:12px;display:flex;overflow:hidden;border-radius:8px;background:#EEF0F5;margin:12px 0} .segment-bar{display:block;height:100%} .segment-bar.calendar{background:var(--cyan)} .segment-bar.voucher{background:var(--orange)} .structure-legend{display:flex;gap:16px;color:var(--muted);font-size:11px} .structure-legend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}
+.inventory-summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid rgba(0,0,0,.055);border-radius:8px;background:#fff;margin-bottom:16px} .inventory-summary>div{padding:17px 18px;border-right:1px solid var(--line)} .inventory-summary>div:last-child{border-right:0} .inventory-summary span{display:block;color:var(--muted);font-size:11px;font-weight:700} .inventory-summary strong{display:inline-block;margin-top:8px;font-size:25px;font-variant-numeric:tabular-nums} .inventory-summary small{margin-left:4px;color:var(--muted);font-size:11px} .inventory-summary .risk strong{color:#C93D4F} .inventory-summary .good strong{color:#17865A}
+.inventory-panel{padding-bottom:12px} .inventory-table-scroll{max-height:610px;overflow:auto;border:1px solid var(--line);border-radius:8px} .inventory-table{min-width:1180px} .inventory-table thead{position:sticky;top:0;z-index:3;background:#F7F8FA} .inventory-table th{text-align:center} .inventory-table th.inventory-store{left:0;z-index:4;text-align:left} .inventory-table td.inventory-store{position:sticky;left:0;z-index:2;background:#fff;min-width:270px;max-width:270px} .inventory-table tr:nth-child(even) td.inventory-store{background:#FBFBFC} .inventory-table td{padding:10px 8px} .inventory-date{min-width:60px} .inventory-zero-days{min-width:100px} .inventory-cell{min-width:60px;text-align:center;font-variant-numeric:tabular-nums;font-weight:700;color:#474B54} .inventory-cell.zero{background:#FFF0F1;color:#C93D4F} .inventory-cell.available{background:#F7FBF9;color:#27725A} .inventory-status{display:inline-flex;padding:4px 7px;border-radius:6px;font-size:10px;font-weight:750;white-space:nowrap} .inventory-status.zero{background:#FFF0F1;color:#C93D4F} .inventory-status.healthy{background:#EAF7F0;color:#17865A}
 .mobile-nav{display:none}
-@media(max-width:1050px){.app{grid-template-columns:80px minmax(0,1fr)}.sidebar{padding:22px 10px}.brand,.nav-label,.nav-item span:not(.nav-icon){display:none}.nav-item{justify-content:center;padding:13px 8px}.content{padding:24px}.kpis{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:700px){.app{display:block}.sidebar{display:none}.content{padding:20px 15px 92px}.topbar{align-items:flex-start;display:block}.top-actions{margin-top:15px;justify-content:space-between;flex-wrap:wrap}.organization-filters{align-items:stretch;display:grid;grid-template-columns:1fr 1fr;margin-top:0}.organization-filters select{min-width:0;width:100%}h1{font-size:30px}.kpis{grid-template-columns:1fr 1fr;gap:10px}.kpi{min-height:120px;padding:14px}.kpi-value{font-size:23px;margin-top:11px}.kpi-foot{display:block}.kpi-foot>span{display:block}.kpi-foot>span:first-child{font-size:15px}.grid-2,.grid-2.equal{grid-template-columns:1fr}.panel{padding:15px;border-radius:16px}.trend-heading{gap:9px;white-space:normal;flex-wrap:wrap}.trend-heading h2{font-size:17px}.trend-range{font-size:13px}.chart-scroll .chart-svg{width:680px;max-width:none}.merchant-trend-scroll .chart-svg{width:100%}.filter-bar{align-items:stretch;flex-wrap:wrap}.filter-bar input{min-width:0;flex:1 1 100%}.filter-bar select{flex:1}.filter-count{align-self:center}.mobile-nav{position:fixed;display:flex;z-index:20;left:14px;right:14px;bottom:15px;justify-content:space-around;padding:9px 7px;border:1px solid rgba(255,255,255,.85);border-radius:20px;background:rgba(255,255,255,.72);box-shadow:0 12px 30px rgba(32,44,70,.15);backdrop-filter:blur(25px) saturate(170%)}.mobile-nav button{padding:6px 8px;border-radius:12px;color:var(--muted);font-size:10px;font-weight:700}.mobile-nav button.active{background:#fff;color:var(--blue);box-shadow:0 4px 10px rgba(31,42,68,.1)}}
+@media(max-width:1050px){.app{grid-template-columns:76px minmax(0,1fr)}.sidebar{padding:22px 10px}.brand,.nav-label,.nav-item span:not(.nav-icon){display:none}.nav-item{justify-content:center;padding:8px}.nav-item::before{left:-10px}.content{padding:24px}.kpis{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.app{display:block}.sidebar{display:none}.content{padding:20px 15px 92px}.topbar{align-items:flex-start;display:block}.top-actions{margin-top:15px;justify-content:space-between;flex-wrap:wrap}.organization-filters{align-items:stretch;display:grid;grid-template-columns:1fr 1fr;margin-top:0}.organization-filters select{min-width:0;width:100%}h1{font-size:30px}.kpis{grid-template-columns:1fr 1fr;gap:10px}.kpi{min-height:120px;padding:14px}.kpi-value{font-size:23px;margin-top:11px}.kpi-foot{display:block}.kpi-foot>span{display:block}.kpi-foot>span:first-child{font-size:15px}.grid-2,.grid-2.equal{grid-template-columns:1fr}.panel{padding:15px;border-radius:8px}.trend-heading{gap:9px;white-space:normal;flex-wrap:wrap}.trend-heading h2{font-size:17px}.trend-range{font-size:13px}.chart-scroll .chart-svg{width:680px;max-width:none}.merchant-trend-scroll .chart-svg{width:100%}.filter-bar{align-items:stretch;flex-wrap:wrap}.filter-bar input{min-width:0;flex:1 1 100%}.filter-bar select{flex:1}.filter-count{align-self:center}.inventory-summary{grid-template-columns:1fr 1fr}.inventory-summary>div:nth-child(2){border-right:0}.inventory-summary>div:nth-child(-n+2){border-bottom:1px solid var(--line)}.mobile-nav{position:fixed;display:flex;z-index:20;left:14px;right:14px;bottom:15px;justify-content:space-around;padding:9px 7px;border:1px solid rgba(255,255,255,.85);border-radius:8px;background:rgba(255,255,255,.88);box-shadow:0 12px 30px rgba(32,44,70,.15);backdrop-filter:blur(25px) saturate(170%)}.mobile-nav button{padding:6px 8px;border-radius:6px;color:var(--muted);font-size:10px;font-weight:700}.mobile-nav button.active{background:#fff;color:var(--blue);box-shadow:0 4px 10px rgba(31,42,68,.1)}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
 </style>
 </head>
@@ -52,13 +54,14 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
   <aside class="sidebar">
     <div class="brand">经营数据工作台<span>山河大区 · 河南省区 · 郑州北片区 · 10-11–10-17</span></div>
     <p class="nav-label">板块</p>
-    <button class="nav-item active" data-target="overview"><span class="nav-icon">⌂</span><span>经营总览</span></button>
-    <button class="nav-item" data-target="provinces"><span class="nav-icon">▦</span><span>组织架构</span></button>
-    <button class="nav-item" data-target="stores"><span class="nav-icon">↗</span><span>门店排名</span></button>
-    <button class="nav-item" data-target="attribution"><span class="nav-icon">◌</span><span>增长归因</span></button>
-    <button class="nav-item" data-target="providers"><span class="nav-icon">◎</span><span>服务商</span></button>
-    <button class="nav-item" data-target="voucher"><span class="nav-icon">◇</span><span>通兑商品</span></button>
-    <button class="nav-item" data-target="merchant-live"><span class="nav-icon">▶</span><span>商家自播</span></button>
+    <button class="nav-item active" data-target="overview" aria-label="经营总览"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg></span><span>经营总览</span></button>
+    <button class="nav-item" data-target="provinces"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="6" height="4" x="9" y="2" rx="1"/><rect width="6" height="4" x="3" y="18" rx="1"/><rect width="6" height="4" x="15" y="18" rx="1"/><path d="M12 6v4M6 18v-3h12v3M12 10H6v5M12 10h6v5"/></svg></span><span>组织架构</span></button>
+    <button class="nav-item" data-target="stores" aria-label="门店排名"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 16 4-4 4 2 5-6"/><path d="M18 8h2v2"/></svg></span><span>门店排名</span></button>
+    <button class="nav-item" data-target="attribution" aria-label="增长归因"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="5" r="2"/><circle cx="18" cy="5" r="2"/><circle cx="12" cy="19" r="2"/><path d="M6 7v3c0 2 2 3 4 3h2M18 7v3c0 2-2 3-4 3h-2v4"/></svg></span><span>增长归因</span></button>
+    <button class="nav-item" data-target="providers" aria-label="服务商"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><span>服务商</span></button>
+    <button class="nav-item" data-target="voucher" aria-label="通兑商品"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 0 0 0 6v3a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-3a3 3 0 0 0 0-6V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="m9 9 6 6M15 9h.01M9 15h.01"/></svg></span><span>通兑商品</span></button>
+
+    <button class="nav-item" data-target="merchant-live"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.93 4.93a10 10 0 0 0 0 14.14M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M8.46 8.46a5 5 0 0 0 0 7.08M15.54 8.46a5 5 0 0 1 0 7.08"/><circle cx="12" cy="12" r="1"/></svg></span><span>商家自播</span></button>
   </aside>
   <main class="content">
     <header class="topbar">
@@ -1602,12 +1605,14 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
     </section>
 
 
+
+
     <section class="section" id="merchant-live">
       <div class="section-head"><div><h2>商家自播</h2><p>商家官号 · 近 7 日对比前 7 日 · 数据来源：生意经</p></div></div>
       <div class="kpis">
         <article class="kpi"><span class="kpi-label">直播成交金额</span><b class="kpi-value">5,061</b><div class="kpi-foot"><span class="positive">+204.9%</span><span>较前 7 日 1,660</span></div></article>
         <article class="kpi"><span class="kpi-label">直播场次</span><b class="kpi-value">29<small style="font-size:14px">场</small></b><div class="kpi-foot"><span class="positive">+31.8%</span><span>较前 7 日 22场</span></div></article>
-        <article class="kpi"><span class="kpi-label">直播时长</span><b class="kpi-value">56.9小时</b><div class="kpi-foot"><span class="positive">+6.0%</span><span>较前 7 日 53.7小时</span></div></article>
+        <article class="kpi"><span class="kpi-label">直播时长</span><b class="kpi-value">56.9h</b><div class="kpi-foot"><span class="positive">+6.0%</span><span>较前 7 日 53.7h</span></div></article>
         <article class="kpi"><span class="kpi-label">开播账号</span><b class="kpi-value">9<small style="font-size:14px">个</small></b><div class="kpi-foot"><span class="positive">+4个</span><span>较前 7 日</span></div></article>
       </div>
       <article class="panel" style="margin-top:16px">
@@ -1664,7 +1669,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td><strong>郑州市</strong><small><span class="live-status 有开播">有开播</span></small></td>
           <td class="num">3,709</td>
           <td class="num">10</td>
-          <td class="num">16.2小时</td>
+          <td class="num">16.2h</td>
           <td class="num">4</td>
           <td class="num">4</td>
         </tr>
@@ -1680,7 +1685,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td><strong>三门峡市</strong><small><span class="live-status 有开播">有开播</span></small></td>
           <td class="num">1,173</td>
           <td class="num">12</td>
-          <td class="num">22.4小时</td>
+          <td class="num">22.4h</td>
           <td class="num">4</td>
           <td class="num">3</td>
         </tr>
@@ -1696,7 +1701,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td><strong>焦作市</strong><small><span class="live-status 有开播">有开播</span></small></td>
           <td class="num">179</td>
           <td class="num">7</td>
-          <td class="num">18.4小时</td>
+          <td class="num">18.4h</td>
           <td class="num">2</td>
           <td class="num">2</td>
         </tr>
@@ -1751,7 +1756,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td>河南省区<small>郑州北片区</small></td>
           <td class="num">2,171</td>
           <td class="num">1</td>
-          <td class="num">3.1小时</td>
+          <td class="num">3.1h</td>
           <td class="num">2,469</td>
           <td class="num">338</td>
         </tr>
@@ -1775,7 +1780,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td>河南省区<small>郑州北片区</small></td>
           <td class="num">974</td>
           <td class="num">6</td>
-          <td class="num">15.8小时</td>
+          <td class="num">15.8h</td>
           <td class="num">1,143</td>
           <td class="num">815</td>
         </tr>
@@ -1799,7 +1804,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td>河南省区<small>郑州北片区</small></td>
           <td class="num">822</td>
           <td class="num">4</td>
-          <td class="num">4.7小时</td>
+          <td class="num">4.7h</td>
           <td class="num">822</td>
           <td class="num">0</td>
         </tr>
@@ -1823,7 +1828,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td>河南省区<small>郑州北片区</small></td>
           <td class="num">716</td>
           <td class="num">1</td>
-          <td class="num">3.3小时</td>
+          <td class="num">3.3h</td>
           <td class="num">1,135</td>
           <td class="num">0</td>
         </tr>
@@ -1847,7 +1852,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td>河南省区<small>郑州北片区</small></td>
           <td class="num">199</td>
           <td class="num">2</td>
-          <td class="num">1.0小时</td>
+          <td class="num">1.0h</td>
           <td class="num">199</td>
           <td class="num">0</td>
         </tr>
@@ -1871,7 +1876,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td>河南省区<small>郑州北片区</small></td>
           <td class="num">179</td>
           <td class="num">6</td>
-          <td class="num">17.4小时</td>
+          <td class="num">17.4h</td>
           <td class="num">179</td>
           <td class="num">179</td>
         </tr>
@@ -1895,7 +1900,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td>河南省区<small>郑州北片区</small></td>
           <td class="num">0</td>
           <td class="num">4</td>
-          <td class="num">5.6小时</td>
+          <td class="num">5.6h</td>
           <td class="num">0</td>
           <td class="num">0</td>
         </tr>
@@ -1919,7 +1924,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td>河南省区<small>郑州北片区</small></td>
           <td class="num">0</td>
           <td class="num">4</td>
-          <td class="num">5.1小时</td>
+          <td class="num">5.1h</td>
           <td class="num">0</td>
           <td class="num">0</td>
         </tr>
@@ -1943,7 +1948,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td>河南省区<small>郑州北片区</small></td>
           <td class="num">0</td>
           <td class="num">1</td>
-          <td class="num">1.0小时</td>
+          <td class="num">1.0h</td>
           <td class="num">0</td>
           <td class="num">0</td>
         </tr>
@@ -1967,7 +1972,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td>河南省区<small>郑州北片区</small></td>
           <td class="num">0</td>
           <td class="num">0</td>
-          <td class="num">0.0小时</td>
+          <td class="num">0.0h</td>
           <td class="num">0</td>
           <td class="num">0</td>
         </tr>
@@ -2024,6 +2029,24 @@ document.querySelectorAll('[data-local]').forEach(tab=>tab.addEventListener('cli
   parent.querySelectorAll('[data-local]').forEach(t=>t.classList.toggle('active',t===tab));
   parent.querySelectorAll('.local-panel').forEach(p=>p.style.display=p.dataset.panel===panel?'block':'none');
 }));
+function filterInventoryTable(){
+  const body=document.getElementById('inventory-table-body');
+  if(!body)return;
+  const query=(document.getElementById('inventory-search')?.value||'').trim().toLowerCase();
+  const status=document.getElementById('inventory-status-filter')?.value||'';
+  let visible=0;
+  body.querySelectorAll('tr').forEach(row=>{
+    const matchesQuery=!query||(row.dataset.inventorySearch||'').includes(query);
+    const matchesStatus=!status||row.dataset.inventoryStatus===status;
+    row.style.display=matchesQuery&&matchesStatus?'':'none';
+    if(matchesQuery&&matchesStatus)visible+=1;
+  });
+  const count=document.getElementById('inventory-result-count');
+  if(count)count.textContent=`${visible} 家门店`;
+}
+document.getElementById('inventory-search')?.addEventListener('input',filterInventoryTable);
+document.getElementById('inventory-status-filter')?.addEventListener('change',filterInventoryTable);
+filterInventoryTable();
 let storeSortKey='';
 let storeSortDirection='desc';
 function sortStoreTable(nextKey){
