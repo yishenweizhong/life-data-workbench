@@ -1,0 +1,36 @@
+docs/workbench_ludong.html
+  h_8a7325ff3be7f5 10100-10101,10108-10109,10111,10113-10114,12828
+docs/workbench_ludong__鲁东省区__临沂片区.html
+  h_8a7325ff3be7f5 1486-1487,1494-1495,1497,1499-1500,2134
+docs/workbench_ludong__鲁东省区__威烟片区.html
+  h_8a7325ff3be7f5 1544-1545,1552-1553,1555,1557-1558,2208
+docs/workbench_ludong__鲁东省区__日照片区.html
+  h_8a7325ff3be7f5 1596-1597,1604-1605,1607,1609-1610,2340
+docs/workbench_ludong__鲁东省区__沂枣片区.html
+  h_8a7325ff3be7f5 1538-1539,1546-1547,1549,1551-1552,2346
+docs/workbench_ludong__鲁东省区__淄博片区.html
+  h_8a7325ff3be7f5 1814-1815,1822-1823,1825,1827-1828,2462
+docs/workbench_ludong__鲁东省区__潍坊片区.html
+  h_8a7325ff3be7f5 1463-1464,1471-1472,1474,1476-1477,1967
+docs/workbench_ludong__鲁东省区__烟台片区.html
+  h_8a7325ff3be7f5 1222-1223,1230-1231,1233,1235-1236,1726
+docs/workbench_ludong__鲁东省区__青岛前海片区.html
+  h_8a7325ff3be7f5 1586-1587,1594-1595,1597,1599-1600,2258
+docs/workbench_ludong__鲁东省区__青岛北片区.html
+  h_8a7325ff3be7f5 1598-1599,1606-1607,1609,1611-1612,2150
+docs/workbench_ludong__鲁东省区__青岛西片区.html
+  h_8a7325ff3be7f5 1418-1419,1426-1427,1429,1431-1432,1994
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.21",
+  "base_commit_sha": "205d7c0dbc60a93a26c2dc0de114ef76da290f7c",
+  "prompts": {},
+  "humans": {
+    "h_8a7325ff3be7f5": {
+      "author": "yishenweizhong <yishenweizhong@users.noreply.github.com>"
+    }
+  },
+  "attestation_metadata": {},
+  "remote_transcripts": {}
+}
