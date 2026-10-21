@@ -199,6 +199,7 @@ var HotelCore = (function () {
       if (state.district && state.district !== "全部" && hotel.district !== state.district) return false;
       if (state.brand && state.brand !== "全部" && hotel.brand !== state.brand) return false;
       if (state.provider && state.provider !== "全部" && hotel.provider !== state.provider) return false;
+      if (state.certification && state.certification !== "全部" && hotel.certification !== state.certification) return false;
       if (state.tier && state.tier !== "全部" && hotel.tier !== state.tier) return false;
       if (state.status && state.status !== "全部" && hotel.status !== state.status) return false;
       return true;

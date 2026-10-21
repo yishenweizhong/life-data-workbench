@@ -74,9 +74,9 @@ assert(Math.abs(overRedeemed.paymentGrowth - 0.248) < 0.000001, "percentage grow
 assert(Math.abs(overRedeemed.redeemGrowth + 0.036) < 0.000001, "negative percentage growth should normalize to decimal");
 
 const hotels = [
-  { id: "1", name: "天津海河假日酒店", brand: "洲际", district: "河北区", provider: "服务商甲", tier: "A", status: "正常", paymentNights: 100, redeemNights: 80, paymentGmv: 62000, redeemGmv: 48000, operationScore: 92, tags: ["海河"] },
-  { id: "2", name: "天津滨海万丽酒店", brand: "万豪", district: "滨海新区", provider: "服务商乙", tier: "B", status: "关注", paymentNights: 50, redeemNights: 30, paymentGmv: 28400, redeemGmv: 16000, operationScore: 76, tags: ["会展"] },
-  { id: "3", name: "天津静海国际酒店", brand: "本地品牌", district: "静海区", provider: "服务商甲", tier: "C", status: "风险", paymentNights: 0, redeemNights: 0, paymentGmv: 0, redeemGmv: 0, operationScore: 48, tags: ["待提升"] }
+  { id: "1", name: "天津海河假日酒店", brand: "洲际", district: "河北区", provider: "服务商甲", certification: "已认证", tier: "A", status: "正常", paymentNights: 100, redeemNights: 80, paymentGmv: 62000, redeemGmv: 48000, operationScore: 92, tags: ["海河"] },
+  { id: "2", name: "天津滨海万丽酒店", brand: "万豪", district: "滨海新区", provider: "服务商乙", certification: "未认证", tier: "B", status: "关注", paymentNights: 50, redeemNights: 30, paymentGmv: 28400, redeemGmv: 16000, operationScore: 76, tags: ["会展"] },
+  { id: "3", name: "天津静海国际酒店", brand: "本地品牌", district: "静海区", provider: "服务商甲", certification: "已认证", tier: "C", status: "风险", paymentNights: 0, redeemNights: 0, paymentGmv: 0, redeemGmv: 0, operationScore: 48, tags: ["待提升"] }
 ];
 
 const filtered = HotelCore.filterHotels(hotels, {
@@ -106,6 +106,15 @@ const providerFiltered = HotelCore.filterHotels(hotels, {
   status: "全部"
 });
 assertEqual(providerFiltered.map((hotel) => hotel.id), ["1", "3"], "provider filter should hide other providers");
+
+const certificationFiltered = HotelCore.filterHotels(hotels, {
+  query: "",
+  district: "全部",
+  brand: "全部",
+  provider: "全部",
+  certification: "已认证"
+});
+assertEqual(certificationFiltered.map((hotel) => hotel.id), ["1", "3"], "certification filter should use the real certification field");
 
 const metrics = HotelCore.aggregateMetrics(hotels);
 assertEqual(metrics.hotelCount, 3, "metrics should count hotels");

@@ -1,7 +1,9 @@
+import os
+
 from playwright.sync_api import sync_playwright
 
 
-URL = "http://127.0.0.1:4173/"
+URL = os.environ.get("HOTEL_ATLAS_URL", "http://127.0.0.1:4173/")
 
 
 with sync_playwright() as playwright:
@@ -16,14 +18,20 @@ with sync_playwright() as playwright:
         f"expected 169 visible hotel markers, got {markers.count()}"
     )
     assert page.locator(".amap-hotel-marker .hotel-pin-icon").count() == 169, (
-        "every AMap hotel marker should use the red location-pin icon"
+        "every AMap hotel marker should use the text-free colored location-pin icon"
     )
     assert page.locator(".fallback-marker .hotel-pin-icon").count() == 169, (
-        "the fallback map should use the same red location-pin icon"
+        "the fallback map should use the same text-free location-pin icon"
     )
 
-    pin_fill = page.locator(".hotel-pin-icon path").first.get_attribute("fill")
-    assert pin_fill == "#d92d20", f"expected red pin fill, got {pin_fill}"
+    assert page.locator(".marker-pin-value").count() == 0, (
+        "map pins should not contain derived status letters"
+    )
+    assert page.locator("#tierFilter").count() == 0
+    assert page.locator("#statusFilter").count() == 0
+    assert page.locator("#certificationFilter").count() == 1
+    assert page.locator("#markerMetric option").count() == 2
+    assert "2026-10-20" in page.locator("#sourceLabel").inner_text()
 
     page.select_option("#providerFilter", "北京昱海黑科技有限公司")
     page.wait_for_function(
