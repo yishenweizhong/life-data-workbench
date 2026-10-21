@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#eef1ed">
+  <title>津宿图鉴 · 天津酒店资产地图</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script>
+    window._AMapSecurityConfig = {
+      securityJsCode: "f15db85618f99162031cde609f26c4e2"
+    };
+  </script>
+  <script defer src="https://webapi.amap.com/maps?v=2.0&key=8dc4ee032e25e1f23b07e27f1f086caf&plugin=AMap.Scale,AMap.ToolBar,AMap.Geocoder,AMap.MarkerCluster"></script>
+  <script defer src="./core.js"></script>
+  <script defer src="./mock-data.js"></script>
+  <script defer src="./api.js"></script>
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <div class="app-shell" id="app">
+    <header class="topbar">
+      <div class="brand-lockup">
+        <div class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5V8.7L12 4l8 4.7v10.8"></path>
+            <path d="M8 20v-7h8v7M9 9h.01M12 9h.01M15 9h.01"></path>
+          </svg>
+        </div>
+        <div>
+          <strong>津宿图鉴</strong>
+          <span>天津酒店资产地图</span>
+        </div>
+      </div>
+
+      <div class="source-state" id="sourceState">
+        <span class="source-dot"></span>
+        <span id="sourceLabel">正在加载数据</span>
+      </div>
+
+      <label class="global-search" for="globalSearch">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+          <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.2-3.2"></path>
+        </svg>
+        <input id="globalSearch" type="search" placeholder="搜索酒店、地址、服务商或 POI" autocomplete="off">
+        <kbd>⌘ K</kbd>
+      </label>
+
+      <div class="topbar-actions">
+        <button class="button button-quiet mobile-panel-toggle" id="mobilePanelToggle" type="button" aria-label="打开酒店列表">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+            <path d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+        <button class="button button-quiet" id="exportButton" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3v12m0 0 4-4m-4 4-4-4"></path><path d="M5 20h14"></path>
+          </svg>
+          <span>导出</span>
+        </button>
+        <button class="button button-primary" id="importButton" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 16V4m0 0-4 4m4-4 4 4"></path><path d="M5 20h14"></path>
+          </svg>
+          <span>导入酒店</span>
+        </button>
+        <button class="icon-button" id="settingsButton" type="button" aria-label="数据设置" title="数据设置">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-2.8 2.8-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6v.2h-4V21a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1L4.2 17l.1-.1a1.7 1.7 0 0 0 .3-1.9A1.7 1.7 0 0 0 3 14H2.8v-4H3a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9L4.2 7 7 4.2l.1.1a1.7 1.7 0 0 0 1.9.3A1.7 1.7 0 0 0 10 3V2.8h4V3a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1L19.8 7l-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.6 1h.2v4H21a1.7 1.7 0 0 0-1.6 1Z"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <aside class="control-rail" id="controlRail" aria-label="酒店筛选与列表">
+      <div class="rail-mobile-head">
+        <strong>酒店资产</strong>
+        <button class="icon-button" id="closeMobilePanel" type="button" aria-label="关闭酒店列表">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 6 12 12M18 6 6 18"></path></svg>
+        </button>
+      </div>
+
+      <section class="metric-strip" aria-label="核心经营指标">
+        <div class="metric metric-wide">
+          <span>酒店</span><strong id="metricHotels">--</strong><small>家</small>
+        </div>
+        <div class="metric">
+          <span>支付间夜</span><strong id="metricRooms">--</strong><small>间</small>
+        </div>
+        <div class="metric">
+          <span>核销间夜</span><strong id="metricOccupancy">--</strong><small>间</small>
+        </div>
+        <div class="metric">
+          <span>平均经营分</span><strong id="metricAdr">--</strong><small>分</small>
+        </div>
+        <div class="metric">
+          <span>近7日支付</span><strong id="metricGmv">--</strong><small>万元</small>
+        </div>
+      </section>
+
+      <section class="filter-section">
+        <div class="section-heading">
+          <h2>筛选</h2>
+          <button class="text-button" id="resetFilters" type="button">重置</button>
+        </div>
+        <div class="filter-grid">
+          <label>
+            <span>业务片区</span>
+            <select id="districtFilter"><option>全部</option></select>
+          </label>
+          <label>
+            <span>品牌</span>
+            <select id="brandFilter"><option>全部</option></select>
+          </label>
+          <label class="provider-filter">
+            <span>服务商</span>
+            <select id="providerFilter"><option>全部</option></select>
+          </label>
+          <label>
+            <span>分层</span>
+            <select id="tierFilter">
+              <option>全部</option><option>A</option><option>B</option><option>C</option><option>D</option>
+            </select>
+          </label>
+          <label>
+            <span>状态</span>
+            <select id="statusFilter">
+              <option>全部</option><option>正常</option><option>关注</option><option>风险</option><option>筹备</option>
+            </select>
+          </label>
+        </div>
+      </section>
+
+      <section class="hotel-list-section">
+        <div class="section-heading list-heading">
+          <div><h2>酒店清单</h2><span id="resultCount">0 家</span></div>
+          <select id="sortControl" class="compact-select" aria-label="酒店排序">
+            <option value="gmv">近7日支付由高到低</option>
+            <option value="score">经营分由高到低</option>
+            <option value="nights">支付间夜由高到低</option>
+            <option value="name">酒店名称</option>
+          </select>
+        </div>
+        <div class="hotel-list" id="hotelList" aria-live="polite">
+          <div class="loading-list">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+      </section>
+    </aside>
+
+    <main class="workspace">
+      <div class="workspace-toolbar">
+        <div class="segmented" role="tablist" aria-label="主视图">
+          <button class="segment active" id="mapViewButton" type="button" role="tab" aria-selected="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m3 6 5-3 8 3 5-3v15l-5 3-8-3-5 3Z"></path><path d="M8 3v15M16 6v15"></path>
+            </svg>
+            地图
+          </button>
+          <button class="segment" id="overviewViewButton" type="button" role="tab" aria-selected="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+              <path d="M4 19V9m6 10V5m6 14v-7m4 7H2"></path>
+            </svg>
+            区域概览
+          </button>
+        </div>
+
+        <label class="metric-color-control">
+          <span>标记着色</span>
+          <select id="markerMetric">
+            <option value="status">经营状态</option>
+            <option value="tier">酒店分层</option>
+            <option value="score">经营分</option>
+            <option value="gmv">近7日支付 GMV</option>
+          </select>
+        </label>
+      </div>
+
+      <section class="map-stage" id="mapStage" aria-label="天津酒店地图">
+        <div id="amapContainer"></div>
+        <div class="fallback-map" id="fallbackMap" hidden>
+          <svg class="fallback-map-art" viewBox="0 0 1000 700" preserveAspectRatio="none" aria-hidden="true">
+            <path class="district-shape district-north" d="M70 80 420 40 520 170 350 265 100 240Z"></path>
+            <path class="district-shape district-center" d="M210 250 520 170 670 330 465 470 170 410Z"></path>
+            <path class="district-shape district-east" d="M520 170 925 115 955 430 670 330Z"></path>
+            <path class="district-shape district-south" d="M170 410 465 470 630 665 95 630Z"></path>
+            <path class="district-shape district-coast" d="M670 330 955 430 875 665 630 665Z"></path>
+            <path class="river" d="M90 355 C245 305 310 385 450 340 S690 315 790 410 880 490 950 470"></path>
+            <path class="road road-a" d="M120 170 840 590"></path>
+            <path class="road road-b" d="M250 620 770 95"></path>
+            <path class="road road-c" d="M180 475 875 260"></path>
+            <g class="district-labels">
+              <text x="260" y="145">武清 / 宝坻</text><text x="365" y="350">中心城区</text>
+              <text x="790" y="260">宁河</text><text x="285" y="555">静海 / 西青</text>
+              <text x="780" y="540">滨海新区</text><text x="560" y="585">津南</text>
+            </g>
+          </svg>
+          <div id="fallbackMarkers"></div>
+        </div>
+        <div class="map-message" id="mapMessage">
+          <span class="spinner"></span><span>正在连接高德地图</span>
+        </div>
+        <div class="map-legend" id="mapLegend"></div>
+        <button class="map-reset-button" id="mapResetButton" type="button" title="回到天津全景">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="8"></circle><path d="M12 2v3m0 14v3M2 12h3m14 0h3"></path><circle cx="12" cy="12" r="2"></circle>
+          </svg>
+        </button>
+      </section>
+
+      <section class="overview-stage" id="overviewStage" hidden aria-label="天津区域经营概览">
+        <header>
+          <div><span>区域经营概览</span><h1>天津酒店分布与经营效率</h1></div>
+          <p>按当前筛选范围汇总，比较各业务片区的门店规模、近 7 日支付 GMV 与经营分。</p>
+        </header>
+        <div class="overview-grid">
+          <div class="district-ranking">
+            <div class="overview-panel-head"><h2>片区近 7 日支付 GMV</h2><span>单位：万元</span></div>
+            <div id="districtBars"></div>
+          </div>
+          <div class="status-summary">
+            <div class="overview-panel-head"><h2>经营状态</h2><span id="statusScopeLabel">当前范围</span></div>
+            <div class="status-donut-wrap">
+              <div class="status-donut" id="statusDonut"><div><strong>0</strong><span>家酒店</span></div></div>
+              <div class="status-legend" id="statusLegend"></div>
+            </div>
+            <div class="attention-list" id="attentionList"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <aside class="detail-drawer" id="detailDrawer" aria-label="酒店详情" aria-hidden="true">
+      <div id="detailContent"></div>
+    </aside>
+
+    <div class="mobile-scrim" id="mobileScrim"></div>
+  </div>
+
+  <div class="modal-backdrop" id="importModal" hidden>
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="importTitle">
+      <header class="modal-header">
+        <div><span>批量更新资产</span><h2 id="importTitle">导入天津酒店清单</h2></div>
+        <button class="icon-button modal-close" type="button" data-close-modal="importModal" aria-label="关闭导入窗口">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 6 12 12M18 6 6 18"></path></svg>
+        </button>
+      </header>
+      <div class="import-mode">
+        <label><input type="radio" name="importMode" value="replace" checked><span><strong>替换当前数据</strong><small>适合导入完整天津酒店清单</small></span></label>
+        <label><input type="radio" name="importMode" value="append"><span><strong>追加新酒店</strong><small>自动去除同名同址数据</small></span></label>
+      </div>
+      <label class="drop-zone" id="dropZone" for="fileInput">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 16V4m0 0-4 4m4-4 4 4"></path><path d="M5 20h14"></path>
+        </svg>
+        <strong>拖入 CSV 或 JSON 文件</strong>
+        <span>也可以点击选择文件，单次最多 5,000 家酒店</span>
+        <input id="fileInput" type="file" accept=".csv,.json,text/csv,application/json">
+      </label>
+      <div class="import-preview" id="importPreview">
+        <div class="template-row">
+          <span>需要标准表头？</span>
+          <a href="./hotel-import-template.csv" download>下载导入模板</a>
+        </div>
+      </div>
+      <footer class="modal-footer">
+        <button class="button button-quiet" type="button" data-close-modal="importModal">取消</button>
+        <button class="button button-primary" id="confirmImport" type="button" disabled>确认导入</button>
+      </footer>
+    </section>
+  </div>
+
+  <div class="modal-backdrop" id="settingsModal" hidden>
+    <section class="modal modal-small" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+      <header class="modal-header">
+        <div><span>本地数据</span><h2 id="settingsTitle">数据设置</h2></div>
+        <button class="icon-button modal-close" type="button" data-close-modal="settingsModal" aria-label="关闭设置">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 6 12 12M18 6 6 18"></path></svg>
+        </button>
+      </header>
+      <div class="settings-body">
+        <div class="setting-line"><span>当前数据源</span><strong id="settingsSource">--</strong></div>
+        <div class="setting-line"><span>酒店数量</span><strong id="settingsCount">--</strong></div>
+        <div class="setting-line"><span>基准日期</span><strong>2026-10-18</strong></div>
+        <div class="setting-line"><span>本地更新</span><strong>当前浏览器</strong></div>
+        <p>工作台源数据随产品内置；你在详情页的修改和后续导入会保存在当前浏览器中。</p>
+        <button class="danger-action" id="restoreDemoButton" type="button">恢复工作台源数据</button>
+      </div>
+    </section>
+  </div>
+
+  <div class="toast-region" id="toastRegion" aria-live="polite"></div>
+</body>
+</html>
