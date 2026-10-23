@@ -41,6 +41,13 @@ def integer(value):
 
 
 def load_store_rows(workbench_path):
+    if Path(workbench_path).suffix == ".json":
+        payload = json.loads(Path(workbench_path).read_text(encoding="utf-8"))
+        rows = payload["rows"]
+        period = payload["meta"]["period"]
+        if len(rows) != 387:
+            raise ValueError(f"expected 387 workbench rows, got {len(rows)}")
+        return rows, period
     html = Path(workbench_path).read_text(encoding="utf-8")
     parser = StoreRowParser()
     parser.feed(html)
@@ -262,7 +269,9 @@ def main():
     docs_dir = app_dir.parent
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "--workbench", type=Path, default=docs_dir / "workbench_ludong.html"
+        "--workbench",
+        type=Path,
+        default=app_dir / "data" / "ludong-workbench-2026-10-20.json",
     )
     parser.add_argument(
         "--scores",

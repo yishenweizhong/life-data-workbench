@@ -4,7 +4,7 @@ from pathlib import Path
 
 APP_DIR = Path(__file__).resolve().parents[1]
 SCRIPT_PATH = APP_DIR / "scripts" / "sync_real_data.py"
-WORKBENCH_PATH = APP_DIR.parent / "workbench_ludong.html"
+WORKBENCH_PATH = APP_DIR / "data" / "ludong-workbench-2026-10-20.json"
 SCORE_PATH = APP_DIR.parent / "downloads" / "经营分_鲁东省区_2026-10-20.xlsx"
 ORG_PATH = Path(
     "/Users/bytedance/.trae-cn/attachments/"

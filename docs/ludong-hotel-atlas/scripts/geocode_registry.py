@@ -448,7 +448,11 @@ def main():
     app_dir = script_dir.parent
     docs_dir = app_dir.parent
     parser = argparse.ArgumentParser()
-    parser.add_argument("--workbench", type=Path, default=docs_dir / "workbench_ludong.html")
+    parser.add_argument(
+        "--workbench",
+        type=Path,
+        default=app_dir / "data" / "ludong-workbench-2026-10-20.json",
+    )
     parser.add_argument(
         "--scores",
         type=Path,
