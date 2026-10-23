@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="鲁东省区 387 家酒店真实经营数据地图，支持片区、城市、品牌、服务商、认证与经营分状态筛选。">
+  <title>鲁东酒店经营地图</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script>
+    window._AMapSecurityConfig = {
+      securityJsCode: "f15db85618f99162031cde609f26c4e2"
+    };
+  </script>
+  <script defer src="https://webapi.amap.com/maps?v=2.0&key=8dc4ee032e25e1f23b07e27f1f086caf&plugin=AMap.Scale,AMap.ToolBar"></script>
+  <script defer src="./core.js"></script>
+  <script defer src="./real-data.js"></script>
+  <script defer src="./api.js"></script>
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <div class="app-shell" id="app">
+    <header class="site-header">
+      <div class="global-bar">
+        <a class="brand" href="#" aria-label="鲁东酒店经营地图首页">
+          <span class="brand-symbol" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 20V8l8-4 8 4v12"></path>
+              <path d="M8 20v-6h8v6M8 10h.01M12 10h.01M16 10h.01"></path>
+            </svg>
+          </span>
+          <span>鲁东酒店地图</span>
+        </a>
+        <div class="global-meta">
+          <span>鲁东省区</span>
+          <span class="global-separator"></span>
+          <span id="sourceLabel">正在加载真实数据</span>
+        </div>
+      </div>
+
+      <div class="product-bar">
+        <div class="product-title">
+          <button class="icon-button mobile-only" id="mobilePanelToggle" type="button" aria-label="打开酒店列表" title="酒店列表">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <path d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+          <div>
+            <strong>酒店经营地图</strong>
+            <span>387 家门店经营快照</span>
+          </div>
+        </div>
+
+        <label class="global-search" for="globalSearch">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <circle cx="11" cy="11" r="7"></circle>
+            <path d="m20 20-3.5-3.5"></path>
+          </svg>
+          <input id="globalSearch" type="search" placeholder="搜索门店、地址、服务商或 POI" autocomplete="off">
+          <kbd>⌘ K</kbd>
+        </label>
+
+        <button class="button button-secondary" id="exportButton" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3v12m0 0 4-4m-4 4-4-4"></path>
+            <path d="M5 20h14"></path>
+          </svg>
+          <span>导出当前结果</span>
+        </button>
+      </div>
+    </header>
+
+    <aside class="control-rail" id="controlRail" aria-label="酒店筛选与列表">
+      <div class="rail-mobile-head">
+        <div>
+          <strong>酒店清单</strong>
+          <span>筛选并查看门店详情</span>
+        </div>
+        <button class="icon-button" id="closeMobilePanel" type="button" aria-label="关闭酒店列表" title="关闭">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="m6 6 12 12M18 6 6 18"></path>
+          </svg>
+        </button>
+      </div>
+
+      <section class="metric-strip" aria-label="当前范围经营指标">
+        <div class="metric metric-primary">
+          <span>当前门店</span>
+          <div><strong id="metricHotels">--</strong><small>家</small></div>
+        </div>
+        <div class="metric">
+          <span>支付间夜</span>
+          <div><strong id="metricRooms">--</strong><small>间</small></div>
+        </div>
+        <div class="metric">
+          <span>核销间夜</span>
+          <div><strong id="metricOccupancy">--</strong><small>间</small></div>
+        </div>
+        <div class="metric">
+          <span>平均经营分</span>
+          <div><strong id="metricAdr">--</strong><small>分</small></div>
+        </div>
+        <div class="metric">
+          <span>近 7 日支付</span>
+          <div><strong id="metricGmv">--</strong><small>万元</small></div>
+        </div>
+      </section>
+
+      <section class="filter-section">
+        <div class="section-heading">
+          <h2>筛选</h2>
+          <button class="text-button" id="resetFilters" type="button">全部重置</button>
+        </div>
+        <div class="filter-grid">
+          <label>
+            <span>业务片区</span>
+            <select id="districtFilter"><option>全部</option></select>
+          </label>
+          <label>
+            <span>城市</span>
+            <select id="cityFilter"><option>全部</option></select>
+          </label>
+          <label>
+            <span>品牌</span>
+            <select id="brandFilter"><option>全部</option></select>
+          </label>
+          <label>
+            <span>服务商</span>
+            <select id="providerFilter"><option>全部</option></select>
+          </label>
+          <label>
+            <span>金冠认证</span>
+            <select id="certificationFilter"><option>全部</option></select>
+          </label>
+          <label>
+            <span>经营分状态</span>
+            <select id="scoreAvailabilityFilter">
+              <option>全部</option>
+              <option>有经营分</option>
+              <option>经营分暂缺</option>
+            </select>
+          </label>
+        </div>
+      </section>
+
+      <section class="hotel-list-section">
+        <div class="section-heading list-heading">
+          <div>
+            <h2>门店清单</h2>
+            <span id="resultCount">0 家</span>
+          </div>
+          <select id="sortControl" class="compact-select" aria-label="门店排序">
+            <option value="gmv">支付 GMV 最高</option>
+            <option value="score">经营分最高</option>
+            <option value="scoreLow">经营分最低</option>
+            <option value="nights">支付间夜最多</option>
+          </select>
+        </div>
+        <div class="hotel-list" id="hotelList" aria-live="polite">
+          <div class="loading-list"><span></span><span></span><span></span></div>
+        </div>
+      </section>
+    </aside>
+
+    <main class="workspace">
+      <div class="workspace-toolbar">
+        <div class="segmented" role="tablist" aria-label="主视图">
+          <button class="segment active" id="mapViewButton" type="button" role="tab" aria-selected="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m3 6 5-3 8 3 5-3v15l-5 3-8-3-5 3Z"></path>
+              <path d="M8 3v15M16 6v15"></path>
+            </svg>
+            <span>地图</span>
+          </button>
+          <button class="segment" id="overviewViewButton" type="button" role="tab" aria-selected="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <path d="M4 19V9m6 10V5m6 14v-7m4 7H2"></path>
+            </svg>
+            <span>经营概览</span>
+          </button>
+        </div>
+
+        <label class="metric-color-control">
+          <span>图钉颜色</span>
+          <select id="markerMetric">
+            <option value="score">经营分</option>
+            <option value="gmv">支付 GMV</option>
+          </select>
+        </label>
+      </div>
+
+      <section class="map-stage" id="mapStage" aria-label="鲁东酒店地图">
+        <div id="amapContainer"></div>
+        <div class="fallback-map" id="fallbackMap" hidden>
+          <svg class="fallback-map-art" viewBox="0 0 1000 700" preserveAspectRatio="none" aria-hidden="true">
+            <path class="district-shape district-north" d="M70 80 420 40 520 170 350 265 100 240Z"></path>
+            <path class="district-shape district-center" d="M210 250 520 170 670 330 465 470 170 410Z"></path>
+            <path class="district-shape district-east" d="M520 170 925 115 955 430 670 330Z"></path>
+            <path class="district-shape district-south" d="M170 410 465 470 630 665 95 630Z"></path>
+            <path class="district-shape district-coast" d="M670 330 955 430 875 665 630 665Z"></path>
+            <path class="river" d="M90 355 C245 305 310 385 450 340 S690 315 790 410 880 490 950 470"></path>
+            <path class="road" d="M120 170 840 590"></path>
+            <path class="road" d="M250 620 770 95"></path>
+          </svg>
+          <div id="fallbackMarkers"></div>
+        </div>
+        <div class="map-message" id="mapMessage">
+          <span class="spinner"></span>
+          <span>正在加载地图</span>
+        </div>
+        <div class="map-legend" id="mapLegend"></div>
+        <button class="map-reset-button" id="mapResetButton" type="button" aria-label="回到当前范围" title="回到当前范围">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="8"></circle>
+            <path d="M12 2v3m0 14v3M2 12h3m14 0h3"></path>
+            <circle cx="12" cy="12" r="2"></circle>
+          </svg>
+        </button>
+      </section>
+
+      <section class="overview-stage" id="overviewStage" hidden aria-label="鲁东酒店经营概览">
+        <div class="overview-content">
+          <header class="overview-header">
+            <div>
+              <span>当前筛选范围</span>
+              <h1>经营概览</h1>
+            </div>
+            <p id="overviewSubtitle">按真实经营数据汇总门店规模、支付 GMV 与经营分。</p>
+          </header>
+          <div class="overview-grid">
+            <section class="overview-panel district-ranking">
+              <div class="overview-panel-head">
+                <div><span>片区表现</span><h2>近 7 日支付 GMV</h2></div>
+                <small>单位：万元</small>
+              </div>
+              <div id="districtBars"></div>
+            </section>
+            <section class="overview-panel certification-summary">
+              <div class="overview-panel-head">
+                <div><span>门店质量</span><h2>金冠认证覆盖</h2></div>
+                <small id="certificationScopeLabel">当前范围</small>
+              </div>
+              <div class="certification-body">
+                <div class="certification-donut" id="certificationDonut">
+                  <div><strong>0%</strong><span>认证率</span></div>
+                </div>
+                <div class="certification-legend" id="certificationLegend"></div>
+              </div>
+              <div class="low-score-list">
+                <div class="subsection-title"><span>经营分待提升门店</span><small>最低 5 家</small></div>
+                <div id="attentionList"></div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <aside class="detail-drawer" id="detailDrawer" aria-label="酒店详情" aria-hidden="true">
+      <div id="detailContent"></div>
+    </aside>
+
+    <div class="mobile-scrim" id="mobileScrim"></div>
+  </div>
+
+  <div class="toast-region" id="toastRegion" aria-live="polite"></div>
+</body>
+</html>
