@@ -109,12 +109,13 @@
       : scoreColor(hotel.operationScore);
   }
 
-  function markerGraphic() {
+  function markerGraphic(hotel) {
     return [
       '<svg class="hotel-pin-icon" viewBox="0 0 32 42" aria-hidden="true">',
       '<path class="hotel-pin-shape" d="M16 1.5C8.5 1.5 2.5 7.4 2.5 14.8c0 10 13.5 25.7 13.5 25.7s13.5-15.7 13.5-25.7C29.5 7.4 23.5 1.5 16 1.5Z"></path>',
       '<circle cx="16" cy="14.7" r="6.2" fill="#ffffff"></circle>',
-      "</svg>"
+      "</svg>",
+      '<span class="hotel-marker-name">' + escapeHtml(hotel.name) + "</span>"
     ].join("");
   }
 
@@ -258,10 +259,11 @@
         ' style="left:' + point.x + "%;top:" + point.y + "%;--marker-color:" +
           markerColor(hotel) + '"',
         ' title="' + escapeHtml(hotel.name) + '">',
-        markerGraphic(),
+        markerGraphic(hotel),
         "</button>"
       ].join("");
     }).join("");
+    HotelMapLabels.refresh();
   }
 
   function destroyMapMarkers() {
@@ -294,7 +296,7 @@
         ' data-hotel-id="' + escapeHtml(hotel.id) + '"',
         ' style="--marker-color:' + markerColor(hotel) + '"',
         ' title="' + escapeHtml(hotel.name) + '">',
-        markerGraphic(),
+        markerGraphic(hotel),
         "</div>"
       ].join("");
       var marker = new window.AMap.Marker({
@@ -311,6 +313,7 @@
     });
     if (state.markers.length) state.map.add(state.markers);
     if (shouldFit) fitCurrentMarkers();
+    HotelMapLabels.refresh();
   }
 
   function renderOverview() {
@@ -505,6 +508,7 @@
       var ext = marker.getExtData ? marker.getExtData() : {};
       if (marker.setzIndex) marker.setzIndex(ext.hotelId === state.selectedHotelId ? 150 : 100);
     });
+    HotelMapLabels.refresh();
   }
 
   function selectHotel(hotelId, focusMap) {
@@ -579,6 +583,9 @@
             zooms: [7, 18]
           });
           state.map.addControl(new window.AMap.Scale({ position: "LB" }));
+          state.map.on("moveend", HotelMapLabels.refresh);
+          state.map.on("zoomend", HotelMapLabels.refresh);
+          state.map.on("resize", HotelMapLabels.refresh);
           state.map.addControl(new window.AMap.ToolBar({
             position: "RB",
             liteStyle: true
