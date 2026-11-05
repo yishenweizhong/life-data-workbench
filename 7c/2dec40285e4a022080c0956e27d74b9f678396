@@ -1,0 +1,58 @@
+docs/workbench_jinhe.html
+  h_8a7325ff3be7f5 45,8063,8066-8068,8070,8073,8621
+docs/workbench_jinhe__津河省区__唐山北片区.html
+  h_8a7325ff3be7f5 45,1289,1292-1294,1296,1299,1511
+docs/workbench_jinhe__津河省区__唐山南片区.html
+  h_8a7325ff3be7f5 45,1223,1226-1228,1230,1233,1381
+docs/workbench_jinhe__津河省区__廊坊片区.html
+  h_8a7325ff3be7f5 45,1469,1472-1474,1476,1479,1691
+docs/workbench_jinhe__津河省区__津东片区.html
+  h_8a7325ff3be7f5 45,1355,1358-1359,1362,1365,1625
+docs/workbench_jinhe__津河省区__津北片区.html
+  h_8a7325ff3be7f5 45,1094,1097-1099,1101,1104,1252
+docs/workbench_jinhe__津河省区__津南片区.html
+  h_8a7325ff3be7f5 45,1369,1372-1373,1376,1379,1591
+docs/workbench_jinhe__津河省区__津西北片区.html
+  h_8a7325ff3be7f5 45,1211,1214-1216,1218,1221,1369
+docs/workbench_jinhe__津河省区__津西片区.html
+  h_8a7325ff3be7f5 45,1533,1536-1538,1540,1543,1731
+docs/workbench_jinhe__津河省区__滨海片区.html
+  h_8a7325ff3be7f5 45,1457,1460-1462,1464,1467,1655
+docs/workbench_jinhe__津河省区__秦皇岛片区.html
+  h_8a7325ff3be7f5 45,1437,1440-1442,1444,1447,1659
+docs/workbench_ludong.html
+  h_8a7325ff3be7f5 10168
+docs/workbench_ludong__鲁东省区__临沂片区.html
+  h_8a7325ff3be7f5 1517
+docs/workbench_ludong__鲁东省区__威烟片区.html
+  h_8a7325ff3be7f5 1612
+docs/workbench_ludong__鲁东省区__日照片区.html
+  h_8a7325ff3be7f5 1670
+docs/workbench_ludong__鲁东省区__沂枣片区.html
+  h_8a7325ff3be7f5 1592
+docs/workbench_ludong__鲁东省区__淄博片区.html
+  h_8a7325ff3be7f5 1888
+docs/workbench_ludong__鲁东省区__潍坊片区.html
+  h_8a7325ff3be7f5 1546
+docs/workbench_ludong__鲁东省区__烟台片区.html
+  h_8a7325ff3be7f5 1229
+docs/workbench_ludong__鲁东省区__青岛前海片区.html
+  h_8a7325ff3be7f5 1595
+docs/workbench_ludong__鲁东省区__青岛北片区.html
+  h_8a7325ff3be7f5 1646
+docs/workbench_ludong__鲁东省区__青岛西片区.html
+  h_8a7325ff3be7f5 1472
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.21",
+  "base_commit_sha": "7c2dec40285e4a022080c0956e27d74b9f678396",
+  "prompts": {},
+  "humans": {
+    "h_8a7325ff3be7f5": {
+      "author": "yishenweizhong <yishenweizhong@users.noreply.github.com>"
+    }
+  },
+  "attestation_metadata": {},
+  "remote_transcripts": {}
+}
