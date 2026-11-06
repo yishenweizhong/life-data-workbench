@@ -42,7 +42,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
 .table-scroll{overflow-x:auto} table{width:100%;border-collapse:collapse;min-width:820px} .merchant-table{min-width:980px} th{padding:11px 10px;text-align:left;color:#858994;font-size:11px;font-weight:700;border-bottom:1px solid var(--line);white-space:nowrap} td{padding:13px 10px;border-bottom:1px solid #F0F1F4;font-size:12px;vertical-align:middle} td small{display:block;margin-top:4px;color:#9A9DA6;font-size:10px;font-weight:500} td.num{font-variant-numeric:tabular-nums;white-space:nowrap} td.rank{width:38px;color:#9A9DA6;font-size:11px;font-weight:800} td strong{font-weight:700} .positive{color:#189963!important} .negative{color:#D85863!important} .provider{display:inline-block;padding:5px 8px;border-radius:8px;background:#F1F5FF;color:#4B6DB8;font-size:11px;white-space:nowrap} .channel-stack{display:flex;flex-wrap:wrap;gap:5px;min-width:175px} .channel-chip{display:inline-flex;padding:4px 7px;border-radius:7px;background:#F4F5F7;color:#646872;font-size:10px;white-space:nowrap} .channel-chip.positive{background:#EAF8F2} .channel-chip.negative{background:#FFF0F1} .live-status{display:inline-block;padding:2px 6px;border-radius:6px;background:#EAF8F2;color:#16835A;font-size:9px;font-weight:750;white-space:nowrap} .live-status.未直播,.live-status.零开播{background:#F0F1F4;color:#747984} .empty,.empty-state{color:#9A9DA6;font-size:12px} .empty-state{padding:28px;text-align:center;background:#F8F9FB;border-radius:12px}
 .bar-wrap{height:12px;display:flex;overflow:hidden;border-radius:8px;background:#EEF0F5;margin:12px 0} .segment-bar{display:block;height:100%} .segment-bar.calendar{background:var(--cyan)} .segment-bar.voucher{background:var(--orange)} .structure-legend{display:flex;gap:16px;color:var(--muted);font-size:11px} .structure-legend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}
 .inventory-summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid rgba(0,0,0,.055);border-radius:8px;background:#fff;margin-bottom:16px} .inventory-summary>div{padding:17px 18px;border-right:1px solid var(--line)} .inventory-summary>div:last-child{border-right:0} .inventory-summary span{display:block;color:var(--muted);font-size:11px;font-weight:700} .inventory-summary strong{display:inline-block;margin-top:8px;font-size:25px;font-variant-numeric:tabular-nums} .inventory-summary small{margin-left:4px;color:var(--muted);font-size:11px} .inventory-summary .risk strong{color:#C93D4F} .inventory-summary .good strong{color:#17865A}
-.inventory-panel{padding-bottom:12px} .inventory-table-scroll{max-height:610px;overflow:auto;border:1px solid var(--line);border-radius:8px} .inventory-table{min-width:1180px} .inventory-table thead{position:sticky;top:0;z-index:3;background:#F7F8FA} .inventory-table th{text-align:center} .inventory-table th.inventory-store{left:0;z-index:4;text-align:left} .inventory-table td.inventory-store{position:sticky;left:0;z-index:2;background:#fff;min-width:270px;max-width:270px} .inventory-table tr:nth-child(even) td.inventory-store{background:#FBFBFC} .inventory-table td{padding:10px 8px} .inventory-date{min-width:60px} .inventory-zero-days{min-width:100px} .inventory-cell{min-width:60px;text-align:center;font-variant-numeric:tabular-nums;font-weight:700;color:#474B54} .inventory-cell.zero{background:#FFF0F1;color:#C93D4F} .inventory-cell.available{background:#F7FBF9;color:#27725A} .inventory-status{display:inline-flex;padding:4px 7px;border-radius:6px;font-size:10px;font-weight:750;white-space:nowrap} .inventory-status.zero{background:#FFF0F1;color:#C93D4F} .inventory-status.healthy{background:#EAF7F0;color:#17865A}
+.inventory-panel{padding-bottom:12px} .inventory-note{font-size:12px;color:var(--muted);line-height:1.8;margin:0 0 16px} .inventory-cell.missing,.inventory-status.missing{background:#F1F2F5;color:#747986} .inventory-table-scroll{max-height:610px;overflow:auto;border:1px solid var(--line);border-radius:8px} .inventory-table{min-width:1180px} .inventory-table thead{position:sticky;top:0;z-index:3;background:#F7F8FA} .inventory-table th{text-align:center} .inventory-table th.inventory-store{left:0;z-index:4;text-align:left} .inventory-table td.inventory-store{position:sticky;left:0;z-index:2;background:#fff;min-width:270px;max-width:270px} .inventory-table tr:nth-child(even) td.inventory-store{background:#FBFBFC} .inventory-table td{padding:10px 8px} .inventory-date{min-width:60px} .inventory-zero-days{min-width:100px} .inventory-cell{min-width:60px;text-align:center;font-variant-numeric:tabular-nums;font-weight:700;color:#474B54} .inventory-cell.zero{background:#FFF0F1;color:#C93D4F} .inventory-cell.available{background:#F7FBF9;color:#27725A} .inventory-status{display:inline-flex;padding:4px 7px;border-radius:6px;font-size:10px;font-weight:750;white-space:nowrap} .inventory-status.zero{background:#FFF0F1;color:#C93D4F} .inventory-status.healthy{background:#EAF7F0;color:#17865A}
 .operation-score-summary{margin-top:16px} .score-dimension-panel{margin:0 0 16px} .score-dimensions{display:flex;flex-wrap:wrap;gap:8px} .score-dimension-tag{display:inline-flex;align-items:center;gap:8px;padding:7px 9px;border:1px solid var(--line);border-radius:8px;background:#F8F9FB;font-size:11px} .score-dimension-tag b{font-size:12px} .score-dimension-tag span{color:var(--muted)} .operation-score-panel{padding-bottom:12px} .operation-score-table-scroll{max-height:610px;overflow:auto;border:1px solid var(--line);border-radius:8px} .operation-score-table{min-width:1040px} .operation-score-table thead{position:sticky;top:0;z-index:2;background:#F7F8FA} .operation-score-table td{padding:10px} .score-value{font-size:14px;font-weight:780} .score-value.high{color:#17865A} .score-value.improve{color:#A96817} .score-value.risk{color:#C93D4F} .score-status{display:inline-flex;padding:4px 7px;border-radius:6px;font-size:10px;font-weight:750;white-space:nowrap} .score-status.certified{background:#EAF7F0;color:#17865A} .score-status.uncertified{background:#F0F1F4;color:#747984} .score-dimension{max-width:240px;color:#555962}
 .mobile-nav{display:none}
 @media(max-width:1050px){.app{grid-template-columns:76px minmax(0,1fr)}.sidebar{padding:22px 10px}.brand,.nav-label,.nav-item span:not(.nav-icon){display:none}.nav-item{justify-content:center;padding:8px}.nav-item::before{left:-10px}.content{padding:24px}.kpis{grid-template-columns:repeat(2,1fr)}}
@@ -53,7 +53,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
 <body>
 <div class="app">
   <aside class="sidebar">
-    <div class="brand">经营数据工作台<span>山河大区 · 鲁东省区 · 青岛前海片区 · 10-28–11-03</span></div>
+    <div class="brand">经营数据工作台<span>山河大区 · 鲁东省区 · 青岛前海片区 · 10-30–11-05</span></div>
     <p class="nav-label">板块</p>
     <button class="nav-item active" data-target="overview" aria-label="经营总览"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg></span><span>经营总览</span></button>
     <button class="nav-item" data-target="provinces"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="6" height="4" x="9" y="2" rx="1"/><rect width="6" height="4" x="3" y="18" rx="1"/><rect width="6" height="4" x="15" y="18" rx="1"/><path d="M12 6v4M6 18v-3h12v3M12 10H6v5M12 10h6v5"/></svg></span><span>组织架构</span></button>
@@ -67,8 +67,8 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
   </aside>
   <main class="content">
     <header class="topbar">
-      <div><div class="eyebrow">近 7 日经营数据 · 数据截至 2026-11-03 · 数据来源：生意经</div><h1>山河大区 · 鲁东省区 · 青岛前海片区</h1></div>
-      <div class="top-actions"><span class="status"><i></i>数据已校验</span><span class="glass-pill">主数据 41 家 · 1 片区</span><span class="glass-pill">10-28–11-03 对比 10-21–10-27</span></div>
+      <div><div class="eyebrow">近 7 日经营数据 · 数据截至 2026-11-05 · 数据来源：生意经</div><h1>山河大区 · 鲁东省区 · 青岛前海片区</h1></div>
+      <div class="top-actions"><span class="status"><i></i>数据已校验</span><span class="glass-pill">主数据 41 家 · 1 片区</span><span class="glass-pill">10-30–11-05 对比 10-23–10-29</span></div>
     </header>
     <div class="organization-filters"><label><span>一级省区</span><select id="organization-province-filter"><option value="workbench_shanhe.html" >全部一级省区</option><option value="workbench_shanhe__山西省区.html" >山西省区</option><option value="workbench_shanhe__河南省区.html" >河南省区</option><option value="workbench_shanhe__鲁东省区.html" selected>鲁东省区</option><option value="workbench_shanhe__鲁西省区.html" >鲁西省区</option></select></label><label><span>二级片区</span><select id="organization-area-filter" ><option value="workbench_shanhe__鲁东省区.html">全部二级片区</option><option value="workbench_shanhe__鲁东省区__临沂片区.html" >临沂片区</option><option value="workbench_shanhe__鲁东省区__威烟片区.html" >威烟片区</option><option value="workbench_shanhe__鲁东省区__日照片区.html" >日照片区</option><option value="workbench_shanhe__鲁东省区__沂枣片区.html" >沂枣片区</option><option value="workbench_shanhe__鲁东省区__淄博片区.html" >淄博片区</option><option value="workbench_shanhe__鲁东省区__潍坊片区.html" >潍坊片区</option><option value="workbench_shanhe__鲁东省区__烟台片区.html" >烟台片区</option><option value="workbench_shanhe__鲁东省区__青岛前海片区.html" selected>青岛前海片区</option><option value="workbench_shanhe__鲁东省区__青岛北片区.html" >青岛北片区</option><option value="workbench_shanhe__鲁东省区__青岛西片区.html" >青岛西片区</option></select></label></div>
 
@@ -77,28 +77,28 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
         <button class="glass-tab active">总体</button><button class="glass-tab" data-target="provinces">组织</button><button class="glass-tab" data-target="stores">门店</button><button class="glass-tab" data-target="providers">服务商</button><button class="glass-tab" data-target="voucher">通兑商品</button><button class="glass-tab" data-target="operation-score">经营分</button><button class="glass-tab" data-target="merchant-live">商家自播</button>
       </div>
       <div class="kpis">
-        <article class="kpi"><span class="kpi-label">支付 GMV</span><b class="kpi-value">7.88万</b><div class="kpi-foot"><span class="positive">+50.3%</span><span>较上期 5.24万</span></div></article>
-        <article class="kpi"><span class="kpi-label">核销 GMV</span><b class="kpi-value">3.11万</b><div class="kpi-foot"><span class="positive">+7.2%</span><span>较上期 2.90万</span></div></article>
-        <article class="kpi"><span class="kpi-label">支付间夜</span><b class="kpi-value">506</b><div class="kpi-foot"><span class="positive">+69.8%</span><span>间夜</span></div></article>
-        <article class="kpi"><span class="kpi-label">动销门店</span><b class="kpi-value">23<small style="font-size:14px">家</small></b><div class="kpi-foot"><span class="positive">+3家</span><span>较上期</span></div></article>
+        <article class="kpi"><span class="kpi-label">支付 GMV</span><b class="kpi-value">7.47万</b><div class="kpi-foot"><span class="positive">+19.8%</span><span>较上期 6.24万</span></div></article>
+        <article class="kpi"><span class="kpi-label">核销 GMV</span><b class="kpi-value">2.76万</b><div class="kpi-foot"><span class="negative">-16.2%</span><span>较上期 3.30万</span></div></article>
+        <article class="kpi"><span class="kpi-label">支付间夜</span><b class="kpi-value">458</b><div class="kpi-foot"><span class="positive">+22.1%</span><span>间夜</span></div></article>
+        <article class="kpi"><span class="kpi-label">动销门店</span><b class="kpi-value">23<small style="font-size:14px">家</small></b><div class="kpi-foot"><span class="positive">+1家</span><span>较上期</span></div></article>
       </div>
       <div class="grid-2">
-        <article class="panel"><div class="panel-head trend-panel-head"><div class="trend-heading"><h2>支付与核销日趋势</h2><span class="trend-range">10-28–11-03 · 单位：万元</span></div><div class="legend"><span><i style="background:var(--blue)"></i>支付</span><span><i style="background:var(--orange)"></i>核销</span></div></div><div class="chart-scroll">
+        <article class="panel"><div class="panel-head trend-panel-head"><div class="trend-heading"><h2>支付与核销日趋势</h2><span class="trend-range">10-30–11-05 · 单位：万元</span></div><div class="legend"><span><i style="background:var(--blue)"></i>支付</span><span><i style="background:var(--orange)"></i>核销</span></div></div><div class="chart-scroll">
       <svg class="chart-svg" viewBox="0 0 760 300" role="img"
            aria-label="支付与核销日趋势，单位万元">
         <line x1="54" y1="34.0" x2="736" y2="34.0" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="104.6" x2="736" y2="104.6" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="175.2" x2="736" y2="175.2" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="248.0" x2="736" y2="248.0" stroke="#ECEEF3" stroke-width="1"/><text x="44" y="38.0" text-anchor="end" class="axis-label">1.4</text><text x="44" y="145.0" text-anchor="end" class="axis-label">0.7</text><text x="44" y="252.0" text-anchor="end" class="axis-label">0.0</text>
-        <path d="M54.0 57.9 L167.7 64.5 L281.3 77.7 L395.0 34.0 L508.7 65.7 L622.3 97.1 L736.0 99.3" fill="none" stroke="#1677FF"
+        <path d="M54.0 77.7 L167.7 34.0 L281.3 65.7 L395.0 97.1 L508.7 99.3 L622.3 149.4 L736.0 36.8" fill="none" stroke="#1677FF"
               stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M54.0 191.4 L167.7 174.2 L281.3 160.9 L395.0 177.0 L508.7 141.1 L622.3 195.7 L736.0 205.8" fill="none" stroke="#FF8A3D"
+        <path d="M54.0 160.9 L167.7 177.0 L281.3 141.1 L395.0 195.7 L508.7 205.8 L622.3 201.3 L736.0 219.6" fill="none" stroke="#FF8A3D"
               stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-        <circle class="trend-point payment-point" cx="54.0" cy="57.9" r="5" fill="#1677FF"/><text x="58.0" y="45.9" text-anchor="start" class="point-label payment-label" fill="#1677FF">1.2万</text><circle class="trend-point payment-point" cx="167.7" cy="64.5" r="5" fill="#1677FF"/><text x="167.7" y="52.5" text-anchor="middle" class="point-label payment-label" fill="#1677FF">1.2万</text><circle class="trend-point payment-point" cx="281.3" cy="77.7" r="5" fill="#1677FF"/><text x="281.3" y="65.7" text-anchor="middle" class="point-label payment-label" fill="#1677FF">1.1万</text><circle class="trend-point payment-point" cx="395.0" cy="34.0" r="5" fill="#1677FF"/><text x="395.0" y="22.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">1.4万</text><circle class="trend-point payment-point" cx="508.7" cy="65.7" r="5" fill="#1677FF"/><text x="508.7" y="53.7" text-anchor="middle" class="point-label payment-label" fill="#1677FF">1.2万</text><circle class="trend-point payment-point" cx="622.3" cy="97.1" r="5" fill="#1677FF"/><text x="622.3" y="85.1" text-anchor="middle" class="point-label payment-label" fill="#1677FF">1.0万</text><circle class="trend-point payment-point" cx="736.0" cy="99.3" r="5" fill="#1677FF"/><text x="732.0" y="87.3" text-anchor="end" class="point-label payment-label" fill="#1677FF">0.9万</text>
-        <circle class="trend-point redeem-point" cx="54.0" cy="191.4" r="5" fill="#FF8A3D"/><text x="58.0" y="215.4" text-anchor="start" class="point-label redeem-label" fill="#FF8A3D">0.4万</text><circle class="trend-point redeem-point" cx="167.7" cy="174.2" r="5" fill="#FF8A3D"/><text x="167.7" y="198.2" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.5万</text><circle class="trend-point redeem-point" cx="281.3" cy="160.9" r="5" fill="#FF8A3D"/><text x="281.3" y="184.9" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.6万</text><circle class="trend-point redeem-point" cx="395.0" cy="177.0" r="5" fill="#FF8A3D"/><text x="395.0" y="201.0" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.5万</text><circle class="trend-point redeem-point" cx="508.7" cy="141.1" r="5" fill="#FF8A3D"/><text x="508.7" y="165.1" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.7万</text><circle class="trend-point redeem-point" cx="622.3" cy="195.7" r="5" fill="#FF8A3D"/><text x="622.3" y="219.7" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.3万</text><circle class="trend-point redeem-point" cx="736.0" cy="205.8" r="5" fill="#FF8A3D"/><text x="732.0" y="229.8" text-anchor="end" class="point-label redeem-label" fill="#FF8A3D">0.3万</text>
-        <text x="54.0" y="288" text-anchor="middle" class="axis-label">10-28</text><text x="167.7" y="288" text-anchor="middle" class="axis-label">10-29</text><text x="281.3" y="288" text-anchor="middle" class="axis-label">10-30</text><text x="395.0" y="288" text-anchor="middle" class="axis-label">10-31</text><text x="508.7" y="288" text-anchor="middle" class="axis-label">11-01</text><text x="622.3" y="288" text-anchor="middle" class="axis-label">11-02</text><text x="736.0" y="288" text-anchor="middle" class="axis-label">11-03</text>
+        <circle class="trend-point payment-point" cx="54.0" cy="77.7" r="5" fill="#1677FF"/><text x="58.0" y="65.7" text-anchor="start" class="point-label payment-label" fill="#1677FF">1.1万</text><circle class="trend-point payment-point" cx="167.7" cy="34.0" r="5" fill="#1677FF"/><text x="167.7" y="22.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">1.4万</text><circle class="trend-point payment-point" cx="281.3" cy="65.7" r="5" fill="#1677FF"/><text x="281.3" y="53.7" text-anchor="middle" class="point-label payment-label" fill="#1677FF">1.2万</text><circle class="trend-point payment-point" cx="395.0" cy="97.1" r="5" fill="#1677FF"/><text x="395.0" y="85.1" text-anchor="middle" class="point-label payment-label" fill="#1677FF">1.0万</text><circle class="trend-point payment-point" cx="508.7" cy="99.3" r="5" fill="#1677FF"/><text x="508.7" y="87.3" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.9万</text><circle class="trend-point payment-point" cx="622.3" cy="149.4" r="5" fill="#1677FF"/><text x="622.3" y="137.4" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.6万</text><circle class="trend-point payment-point" cx="736.0" cy="36.8" r="5" fill="#1677FF"/><text x="732.0" y="24.8" text-anchor="end" class="point-label payment-label" fill="#1677FF">1.3万</text>
+        <circle class="trend-point redeem-point" cx="54.0" cy="160.9" r="5" fill="#FF8A3D"/><text x="58.0" y="184.9" text-anchor="start" class="point-label redeem-label" fill="#FF8A3D">0.6万</text><circle class="trend-point redeem-point" cx="167.7" cy="177.0" r="5" fill="#FF8A3D"/><text x="167.7" y="201.0" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.5万</text><circle class="trend-point redeem-point" cx="281.3" cy="141.1" r="5" fill="#FF8A3D"/><text x="281.3" y="165.1" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.7万</text><circle class="trend-point redeem-point" cx="395.0" cy="195.7" r="5" fill="#FF8A3D"/><text x="395.0" y="219.7" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.3万</text><circle class="trend-point redeem-point" cx="508.7" cy="205.8" r="5" fill="#FF8A3D"/><text x="508.7" y="229.8" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.3万</text><circle class="trend-point redeem-point" cx="622.3" cy="201.3" r="5" fill="#FF8A3D"/><text x="622.3" y="225.3" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.3万</text><circle class="trend-point redeem-point" cx="736.0" cy="219.6" r="5" fill="#FF8A3D"/><text x="732.0" y="243.6" text-anchor="end" class="point-label redeem-label" fill="#FF8A3D">0.2万</text>
+        <text x="54.0" y="288" text-anchor="middle" class="axis-label">10-30</text><text x="167.7" y="288" text-anchor="middle" class="axis-label">10-31</text><text x="281.3" y="288" text-anchor="middle" class="axis-label">11-01</text><text x="395.0" y="288" text-anchor="middle" class="axis-label">11-02</text><text x="508.7" y="288" text-anchor="middle" class="axis-label">11-03</text><text x="622.3" y="288" text-anchor="middle" class="axis-label">11-04</text><text x="736.0" y="288" text-anchor="middle" class="axis-label">11-05</text>
       </svg>
     </div></article>
         <aside class="panel"><div class="panel-head"><div><h2>本期重点判断</h2><p>从数据变化直接定位动作</p></div></div><div class="insights">
-          <div class="insight"><b>支付增长主要来自 其他</b><p>渠道增量 +1.17万，可在增长归因中查看对应服务商。</p><span class="tag good">增长来源</span></div>
-          <div class="insight"><b>维也纳国际酒店(青岛北站店) 需要跟进</b><p>未绑定服务商 · 下降 4,842，优先检查渠道投放变化。</p><span class="tag warn">重点风险</span></div>
+          <div class="insight"><b>支付增长主要来自 自播</b><p>渠道增量 +6,260，可在增长归因中查看对应服务商。</p><span class="tag good">增长来源</span></div>
+          <div class="insight"><b>维也纳国际酒店(青岛北站店) 需要跟进</b><p>未绑定服务商 · 下降 2,260，优先检查渠道投放变化。</p><span class="tag warn">重点风险</span></div>
         </div></aside>
       </div>
     </section>
@@ -113,10 +113,10 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
               <td class="num">41家</td>
               <td class="num">0家</td>
               <td class="num">23家</td>
-              <td class="num">7.88万</td>
-              <td class="num positive">+50.3%</td>
-              <td class="num">3.11万</td>
-              <td class="num positive">+7.2%</td>
+              <td class="num">7.47万</td>
+              <td class="num positive">+19.8%</td>
+              <td class="num">2.76万</td>
+              <td class="num negative">-16.2%</td>
               <td class="num">23家</td>
             </tr>
             </tbody>
@@ -132,10 +132,10 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
               <td><strong>青岛前海片区</strong></td>
               <td class="num">41家</td>
               <td class="num">23家</td>
-              <td class="num">7.88万</td>
-              <td class="num positive">+50.3%</td>
-              <td class="num">3.11万</td>
-              <td class="num positive">+7.2%</td>
+              <td class="num">7.47万</td>
+              <td class="num positive">+19.8%</td>
+              <td class="num">2.76万</td>
+              <td class="num negative">-16.2%</td>
               <td class="num">23家</td>
             </tr>
             </tbody>
@@ -168,47 +168,23 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-store="维也纳国际酒店(青岛北站店)"
                 data-city="青岛市"
                 data-provider="未绑定服务商"
-                data-redeem-current="10849.599999999999"
-                data-payment-current="13829.999999999998"
-                data-redeem-nights="48.0"
-                data-payment-nights="63.0"
-                data-redeem-growth="0.165758738140519"
-                data-payment-growth="-0.2593266995854806">
+                data-redeem-current="8919.8"
+                data-payment-current="17055.200000000008"
+                data-redeem-nights="40.0"
+                data-payment-nights="62.0"
+                data-redeem-growth="-0.19454954263474877"
+                data-payment-growth="-0.11699715247217202">
               <td class="rank">01</td>
               <td><strong>鲁东省区</strong></td>
               <td><strong>青岛前海片区</strong></td>
               <td><strong>维也纳国际酒店(青岛北站店)</strong><small>青岛市 · 有返回记录</small></td>
               <td><span class="provider">未绑定服务商</span></td>
-              <td class="num">1.08万</td>
-              <td class="num">1.38万</td>
-              <td class="num">48</td>
-              <td class="num">63</td>
-              <td class="num positive">+16.6%</td>
-              <td class="num negative">-25.9%</td>
-            </tr>
-
-            <tr data-province="鲁东省区"
-                data-area="青岛前海片区"
-                data-store="维也纳3好酒店(山东青岛胶东国际机场空港小镇店)"
-                data-city="青岛市"
-                data-provider="杭州四库传媒有限公司"
-                data-redeem-current="4329.0"
-                data-payment-current="5907.699999999999"
-                data-redeem-nights="29.0"
-                data-payment-nights="39.0"
-                data-redeem-growth="0.4018328422007058"
-                data-payment-growth="0.5353448723946148">
-              <td class="rank">02</td>
-              <td><strong>鲁东省区</strong></td>
-              <td><strong>青岛前海片区</strong></td>
-              <td><strong>维也纳3好酒店(山东青岛胶东国际机场空港小镇店)</strong><small>青岛市 · 有返回记录</small></td>
-              <td><span class="provider">杭州四库传媒有限公司</span></td>
-              <td class="num">4,329</td>
-              <td class="num">5,908</td>
-              <td class="num">29</td>
-              <td class="num">39</td>
-              <td class="num positive">+40.2%</td>
-              <td class="num positive">+53.5%</td>
+              <td class="num">8,920</td>
+              <td class="num">1.71万</td>
+              <td class="num">40</td>
+              <td class="num">62</td>
+              <td class="num negative">-19.5%</td>
+              <td class="num negative">-11.7%</td>
             </tr>
 
             <tr data-province="鲁东省区"
@@ -216,47 +192,47 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-store="喆啡酒店(青岛胶东国际机场胶东地铁站店)"
                 data-city="青岛市"
                 data-provider="杭州四库传媒有限公司"
-                data-redeem-current="4013.15"
-                data-payment-current="6522.299999999999"
-                data-redeem-nights="27.0"
-                data-payment-nights="45.0"
-                data-redeem-growth="0.9073906844106465"
-                data-payment-growth="0.38828462569975075">
-              <td class="rank">03</td>
+                data-redeem-current="3526.2000000000003"
+                data-payment-current="4069.1"
+                data-redeem-nights="24.0"
+                data-payment-nights="28.0"
+                data-redeem-growth="0.26477761836441904"
+                data-payment-growth="-0.3313230243373374">
+              <td class="rank">02</td>
               <td><strong>鲁东省区</strong></td>
               <td><strong>青岛前海片区</strong></td>
               <td><strong>喆啡酒店(青岛胶东国际机场胶东地铁站店)</strong><small>青岛市 · 有返回记录</small></td>
               <td><span class="provider">杭州四库传媒有限公司</span></td>
-              <td class="num">4,013</td>
-              <td class="num">6,522</td>
-              <td class="num">27</td>
-              <td class="num">45</td>
-              <td class="num positive">+90.7%</td>
-              <td class="num positive">+38.8%</td>
+              <td class="num">3,526</td>
+              <td class="num">4,069</td>
+              <td class="num">24</td>
+              <td class="num">28</td>
+              <td class="num positive">+26.5%</td>
+              <td class="num negative">-33.1%</td>
             </tr>
 
             <tr data-province="鲁东省区"
                 data-area="青岛前海片区"
-                data-store="青岛维也纳酒店(5.0青岛大学奥帆中心北店)"
+                data-store="维也纳3好酒店(山东青岛胶东国际机场空港小镇店)"
                 data-city="青岛市"
-                data-provider="青岛三合酒店管理有限公司"
-                data-redeem-current="2178.0"
-                data-payment-current="4348.0"
-                data-redeem-nights="12.0"
-                data-payment-nights="24.0"
-                data-redeem-growth="0.08954477238619307"
-                data-payment-growth="-0.041657482918227906">
-              <td class="rank">04</td>
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="2910.0"
+                data-payment-current="5104.799999999999"
+                data-redeem-nights="20.0"
+                data-payment-nights="34.0"
+                data-redeem-growth="-0.14187136917224508"
+                data-payment-growth="0.22074754286534204">
+              <td class="rank">03</td>
               <td><strong>鲁东省区</strong></td>
               <td><strong>青岛前海片区</strong></td>
-              <td><strong>青岛维也纳酒店(5.0青岛大学奥帆中心北店)</strong><small>青岛市 · 有返回记录</small></td>
-              <td><span class="provider">青岛三合酒店管理有限公司</span></td>
-              <td class="num">2,178</td>
-              <td class="num">4,348</td>
-              <td class="num">12</td>
-              <td class="num">24</td>
-              <td class="num positive">+9.0%</td>
-              <td class="num negative">-4.2%</td>
+              <td><strong>维也纳3好酒店(山东青岛胶东国际机场空港小镇店)</strong><small>青岛市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">2,910</td>
+              <td class="num">5,105</td>
+              <td class="num">20</td>
+              <td class="num">34</td>
+              <td class="num negative">-14.2%</td>
+              <td class="num positive">+22.1%</td>
             </tr>
 
             <tr data-province="鲁东省区"
@@ -264,23 +240,47 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-store="麗枫酒店(青岛北站李村夜市店)"
                 data-city="青岛市"
                 data-provider="青岛三合酒店管理有限公司"
-                data-redeem-current="1503.0"
-                data-payment-current="2159.9"
-                data-redeem-nights="7.0"
+                data-redeem-current="1951.0"
+                data-payment-current="2189.9"
+                data-redeem-nights="9.0"
                 data-payment-nights="10.0"
-                data-redeem-growth="0.7744982290436835"
-                data-payment-growth="0.9892245349051387">
-              <td class="rank">05</td>
+                data-redeem-growth="0.8302063789868668"
+                data-payment-growth="0.44652883281590583">
+              <td class="rank">04</td>
               <td><strong>鲁东省区</strong></td>
               <td><strong>青岛前海片区</strong></td>
               <td><strong>麗枫酒店(青岛北站李村夜市店)</strong><small>青岛市 · 有返回记录</small></td>
               <td><span class="provider">青岛三合酒店管理有限公司</span></td>
-              <td class="num">1,503</td>
-              <td class="num">2,160</td>
-              <td class="num">7</td>
+              <td class="num">1,951</td>
+              <td class="num">2,190</td>
+              <td class="num">9</td>
               <td class="num">10</td>
-              <td class="num positive">+77.4%</td>
-              <td class="num positive">+98.9%</td>
+              <td class="num positive">+83.0%</td>
+              <td class="num positive">+44.7%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="青岛前海片区"
+                data-store="青岛维也纳酒店(5.0青岛大学奥帆中心北店)"
+                data-city="青岛市"
+                data-provider="青岛三合酒店管理有限公司"
+                data-redeem-current="1422.0"
+                data-payment-current="3949.0"
+                data-redeem-nights="8.0"
+                data-payment-nights="22.0"
+                data-redeem-growth="-0.48384754990925594"
+                data-payment-growth="-0.19342320261437906">
+              <td class="rank">05</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>青岛前海片区</strong></td>
+              <td><strong>青岛维也纳酒店(5.0青岛大学奥帆中心北店)</strong><small>青岛市 · 有返回记录</small></td>
+              <td><span class="provider">青岛三合酒店管理有限公司</span></td>
+              <td class="num">1,422</td>
+              <td class="num">3,949</td>
+              <td class="num">8</td>
+              <td class="num">22</td>
+              <td class="num negative">-48.4%</td>
+              <td class="num negative">-19.3%</td>
             </tr>
 
             <tr data-province="鲁东省区"
@@ -288,23 +288,23 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-store="7天酒店(青岛北站沧安路地铁站店)"
                 data-city="青岛市"
                 data-provider="青岛三合酒店管理有限公司"
-                data-redeem-current="1240.5"
-                data-payment-current="4738.199999999999"
+                data-redeem-current="1197.0"
+                data-payment-current="4491.0"
                 data-redeem-nights="12.0"
-                data-payment-nights="49.0"
-                data-redeem-growth="-0.1705115346038114"
-                data-payment-growth="0.5438402137434424">
+                data-payment-nights="48.0"
+                data-redeem-growth="0.036363636363636376"
+                data-payment-growth="0.12604367775744052">
               <td class="rank">06</td>
               <td><strong>鲁东省区</strong></td>
               <td><strong>青岛前海片区</strong></td>
               <td><strong>7天酒店(青岛北站沧安路地铁站店)</strong><small>青岛市 · 有返回记录</small></td>
               <td><span class="provider">青岛三合酒店管理有限公司</span></td>
-              <td class="num">1,240</td>
-              <td class="num">4,738</td>
+              <td class="num">1,197</td>
+              <td class="num">4,491</td>
               <td class="num">12</td>
-              <td class="num">49</td>
-              <td class="num negative">-17.1%</td>
-              <td class="num positive">+54.4%</td>
+              <td class="num">48</td>
+              <td class="num positive">+3.6%</td>
+              <td class="num positive">+12.6%</td>
             </tr>
 
             <tr data-province="鲁东省区"
@@ -312,23 +312,47 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-store="7天优品酒店(青岛五四广场芝泉路地铁站店)"
                 data-city="青岛市"
                 data-provider="杭州四库传媒有限公司"
-                data-redeem-current="1198.0"
-                data-payment-current="2683.2"
-                data-redeem-nights="12.0"
-                data-payment-nights="27.0"
-                data-redeem-growth="0.1301886792452831"
-                data-payment-growth="-0.05584292198881036">
+                data-redeem-current="1070.0"
+                data-payment-current="3870.2"
+                data-redeem-nights="11.0"
+                data-payment-nights="39.0"
+                data-redeem-growth="0.0490196078431373"
+                data-payment-growth="0.2731339846705483">
               <td class="rank">07</td>
               <td><strong>鲁东省区</strong></td>
               <td><strong>青岛前海片区</strong></td>
               <td><strong>7天优品酒店(青岛五四广场芝泉路地铁站店)</strong><small>青岛市 · 有返回记录</small></td>
               <td><span class="provider">杭州四库传媒有限公司</span></td>
-              <td class="num">1,198</td>
-              <td class="num">2,683</td>
-              <td class="num">12</td>
-              <td class="num">27</td>
-              <td class="num positive">+13.0%</td>
-              <td class="num negative">-5.6%</td>
+              <td class="num">1,070</td>
+              <td class="num">3,870</td>
+              <td class="num">11</td>
+              <td class="num">39</td>
+              <td class="num positive">+4.9%</td>
+              <td class="num positive">+27.3%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="青岛前海片区"
+                data-store="喆啡酒店(青岛北站李村夜市店)"
+                data-city="青岛市"
+                data-provider="青岛三合酒店管理有限公司"
+                data-redeem-current="999.0"
+                data-payment-current="1207.9"
+                data-redeem-nights="5.0"
+                data-payment-nights="6.0"
+                data-redeem-growth="1.5100502512562812"
+                data-payment-growth="-0.013072963477408273">
+              <td class="rank">08</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>青岛前海片区</strong></td>
+              <td><strong>喆啡酒店(青岛北站李村夜市店)</strong><small>青岛市 · 有返回记录</small></td>
+              <td><span class="provider">青岛三合酒店管理有限公司</span></td>
+              <td class="num">999</td>
+              <td class="num">1,208</td>
+              <td class="num">5</td>
+              <td class="num">6</td>
+              <td class="num positive">+151.0%</td>
+              <td class="num negative">-1.3%</td>
             </tr>
 
             <tr data-province="鲁东省区"
@@ -337,22 +361,22 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-city="青岛市"
                 data-provider="杭州四库传媒有限公司"
                 data-redeem-current="913.0"
-                data-payment-current="1750.0"
+                data-payment-current="659.0"
                 data-redeem-nights="4.0"
-                data-payment-nights="7.0"
+                data-payment-nights="3.0"
                 data-redeem-growth="-0.026652452025586304"
-                data-payment-growth="0.4379622021364009">
-              <td class="rank">08</td>
+                data-payment-growth="-0.6752094627895515">
+              <td class="rank">09</td>
               <td><strong>鲁东省区</strong></td>
               <td><strong>青岛前海片区</strong></td>
               <td><strong>麗枫酒店(胶州市政府机场店)</strong><small>青岛市 · 有返回记录</small></td>
               <td><span class="provider">杭州四库传媒有限公司</span></td>
               <td class="num">913</td>
-              <td class="num">1,750</td>
+              <td class="num">659</td>
               <td class="num">4</td>
-              <td class="num">7</td>
+              <td class="num">3</td>
               <td class="num negative">-2.7%</td>
-              <td class="num positive">+43.8%</td>
+              <td class="num negative">-67.5%</td>
             </tr>
 
             <tr data-province="鲁东省区"
@@ -360,95 +384,23 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-store="希岸酒店(青岛胶东国际机场店)"
                 data-city="青岛市"
                 data-provider="杭州四库传媒有限公司"
-                data-redeem-current="845.0"
-                data-payment-current="1004.0"
-                data-redeem-nights="5.0"
-                data-payment-nights="6.0"
-                data-redeem-growth="4.0"
-                data-payment-growth="2.0609756097560976">
-              <td class="rank">09</td>
+                data-redeem-current="646.0"
+                data-payment-current="805.0"
+                data-redeem-nights="4.0"
+                data-payment-nights="5.0"
+                data-redeem-growth="0.7554347826086956"
+                data-payment-growth="1.1875">
+              <td class="rank">10</td>
               <td><strong>鲁东省区</strong></td>
               <td><strong>青岛前海片区</strong></td>
               <td><strong>希岸酒店(青岛胶东国际机场店)</strong><small>青岛市 · 有返回记录</small></td>
               <td><span class="provider">杭州四库传媒有限公司</span></td>
-              <td class="num">845</td>
-              <td class="num">1,004</td>
-              <td class="num">5</td>
-              <td class="num">6</td>
-              <td class="num positive">+400.0%</td>
-              <td class="num positive">+206.1%</td>
-            </tr>
-
-            <tr data-province="鲁东省区"
-                data-area="青岛前海片区"
-                data-store="青岛白玉兰酒店(火车站栈桥店)"
-                data-city="青岛市"
-                data-provider="青岛三合酒店管理有限公司"
-                data-redeem-current="800.0"
-                data-payment-current="7560.000000000001"
-                data-redeem-nights="5.0"
-                data-payment-nights="69.0"
-                data-redeem-growth="-0.44979367262723524"
-                data-payment-growth="2.672933974639266">
-              <td class="rank">10</td>
-              <td><strong>鲁东省区</strong></td>
-              <td><strong>青岛前海片区</strong></td>
-              <td><strong>青岛白玉兰酒店(火车站栈桥店)</strong><small>青岛市 · 有返回记录</small></td>
-              <td><span class="provider">青岛三合酒店管理有限公司</span></td>
-              <td class="num">800</td>
-              <td class="num">7,560</td>
-              <td class="num">5</td>
-              <td class="num">69</td>
-              <td class="num negative">-45.0%</td>
-              <td class="num positive">+267.3%</td>
-            </tr>
-
-            <tr data-province="鲁东省区"
-                data-area="青岛前海片区"
-                data-store="喆啡酒店(青岛北站李村夜市店)"
-                data-city="青岛市"
-                data-provider="青岛三合酒店管理有限公司"
-                data-redeem-current="796.0"
-                data-payment-current="1625.9"
-                data-redeem-nights="4.0"
-                data-payment-nights="8.0"
-                data-redeem-growth="1.0"
-                data-payment-growth="0.6179719375062196">
-              <td class="rank">11</td>
-              <td><strong>鲁东省区</strong></td>
-              <td><strong>青岛前海片区</strong></td>
-              <td><strong>喆啡酒店(青岛北站李村夜市店)</strong><small>青岛市 · 有返回记录</small></td>
-              <td><span class="provider">青岛三合酒店管理有限公司</span></td>
-              <td class="num">796</td>
-              <td class="num">1,626</td>
+              <td class="num">646</td>
+              <td class="num">805</td>
               <td class="num">4</td>
-              <td class="num">8</td>
-              <td class="num positive">+100.0%</td>
-              <td class="num positive">+61.8%</td>
-            </tr>
-
-            <tr data-province="鲁东省区"
-                data-area="青岛前海片区"
-                data-store="白玉兰(商务)酒店(青岛奥帆中心小麦岛公园店)"
-                data-city="青岛市"
-                data-provider="未绑定服务商"
-                data-redeem-current="676.05"
-                data-payment-current="884.1"
-                data-redeem-nights="4.0"
-                data-payment-nights="6.0"
-                data-redeem-growth="0.88840782122905"
-                data-payment-growth="-0.4297232793652842">
-              <td class="rank">12</td>
-              <td><strong>鲁东省区</strong></td>
-              <td><strong>青岛前海片区</strong></td>
-              <td><strong>白玉兰(商务)酒店(青岛奥帆中心小麦岛公园店)</strong><small>青岛市 · 有返回记录</small></td>
-              <td><span class="provider">未绑定服务商</span></td>
-              <td class="num">676</td>
-              <td class="num">884</td>
-              <td class="num">4</td>
-              <td class="num">6</td>
-              <td class="num positive">+88.8%</td>
-              <td class="num negative">-43.0%</td>
+              <td class="num">5</td>
+              <td class="num positive">+75.5%</td>
+              <td class="num positive">+118.8%</td>
             </tr>
 
             <tr data-province="鲁东省区"
@@ -456,47 +408,47 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-store="维也纳酒店(5.0青岛胶东国际机场站前大道店)"
                 data-city="青岛市"
                 data-provider="未绑定服务商"
-                data-redeem-current="497.05"
-                data-payment-current="1708.1"
-                data-redeem-nights="3.0"
-                data-payment-nights="12.0"
-                data-redeem-growth="-0.219701726844584"
-                data-payment-growth="0.716683417085427">
-              <td class="rank">13</td>
+                data-redeem-current="636.05"
+                data-payment-current="2449.0"
+                data-redeem-nights="4.0"
+                data-payment-nights="17.0"
+                data-redeem-growth="1.3255941499085924"
+                data-payment-growth="8.138059701492537">
+              <td class="rank">11</td>
               <td><strong>鲁东省区</strong></td>
               <td><strong>青岛前海片区</strong></td>
               <td><strong>维也纳酒店(5.0青岛胶东国际机场站前大道店)</strong><small>青岛市 · 有返回记录</small></td>
               <td><span class="provider">未绑定服务商</span></td>
-              <td class="num">497</td>
-              <td class="num">1,708</td>
-              <td class="num">3</td>
-              <td class="num">12</td>
-              <td class="num negative">-22.0%</td>
-              <td class="num positive">+71.7%</td>
+              <td class="num">636</td>
+              <td class="num">2,449</td>
+              <td class="num">4</td>
+              <td class="num">17</td>
+              <td class="num positive">+132.6%</td>
+              <td class="num positive">+813.8%</td>
             </tr>
 
             <tr data-province="鲁东省区"
                 data-area="青岛前海片区"
-                data-store="白玉兰酒店(青岛北站君峰路地铁站店)"
+                data-store="青岛白玉兰酒店(火车站栈桥店)"
                 data-city="青岛市"
-                data-provider="未绑定服务商"
-                data-redeem-current="404.0"
-                data-payment-current="1468.1000000000001"
-                data-redeem-nights="2.0"
-                data-payment-nights="9.0"
-                data-redeem-growth="-0.22007722007722008"
-                data-payment-growth="1.688827838827839">
-              <td class="rank">14</td>
+                data-provider="青岛三合酒店管理有限公司"
+                data-redeem-current="631.0"
+                data-payment-current="4755.499999999999"
+                data-redeem-nights="4.0"
+                data-payment-nights="41.0"
+                data-redeem-growth="-0.6112138016019717"
+                data-payment-growth="-0.043505370288426715">
+              <td class="rank">12</td>
               <td><strong>鲁东省区</strong></td>
               <td><strong>青岛前海片区</strong></td>
-              <td><strong>白玉兰酒店(青岛北站君峰路地铁站店)</strong><small>青岛市 · 有返回记录</small></td>
-              <td><span class="provider">未绑定服务商</span></td>
-              <td class="num">404</td>
-              <td class="num">1,468</td>
-              <td class="num">2</td>
-              <td class="num">9</td>
-              <td class="num negative">-22.0%</td>
-              <td class="num positive">+168.9%</td>
+              <td><strong>青岛白玉兰酒店(火车站栈桥店)</strong><small>青岛市 · 有返回记录</small></td>
+              <td><span class="provider">青岛三合酒店管理有限公司</span></td>
+              <td class="num">631</td>
+              <td class="num">4,755</td>
+              <td class="num">4</td>
+              <td class="num">41</td>
+              <td class="num negative">-61.1%</td>
+              <td class="num negative">-4.4%</td>
             </tr>
 
             <tr data-province="鲁东省区"
@@ -504,23 +456,23 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-store="维也纳国际酒店(山东青岛火车站东广场栈桥店)"
                 data-city="青岛市"
                 data-provider="未绑定服务商"
-                data-redeem-current="294.0"
-                data-payment-current="1915.7000000000003"
-                data-redeem-nights="1.0"
-                data-payment-nights="7.0"
+                data-redeem-current="622.0"
+                data-payment-current="2182.5000000000005"
+                data-redeem-nights="3.0"
+                data-payment-nights="9.0"
                 data-redeem-growth="0.0"
-                data-payment-growth="0.0">
-              <td class="rank">15</td>
+                data-payment-growth="2.6080343858489017">
+              <td class="rank">13</td>
               <td><strong>鲁东省区</strong></td>
               <td><strong>青岛前海片区</strong></td>
               <td><strong>维也纳国际酒店(山东青岛火车站东广场栈桥店)</strong><small>青岛市 · 有返回记录</small></td>
               <td><span class="provider">未绑定服务商</span></td>
-              <td class="num">294</td>
-              <td class="num">1,916</td>
-              <td class="num">1</td>
-              <td class="num">7</td>
+              <td class="num">622</td>
+              <td class="num">2,183</td>
+              <td class="num">3</td>
+              <td class="num">9</td>
               <td class="num neutral">基期较低</td>
-              <td class="num neutral">基期较低</td>
+              <td class="num positive">+260.8%</td>
             </tr>
 
             <tr data-province="鲁东省区"
@@ -528,23 +480,119 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-store="希岸Deluxe酒店(青岛胶东国际机场胶东地铁站店)"
                 data-city="青岛市"
                 data-provider="未绑定服务商"
-                data-redeem-current="222.0"
-                data-payment-current="1662.9"
-                data-redeem-nights="1.0"
-                data-payment-nights="7.0"
-                data-redeem-growth="-0.8897715988083417"
-                data-payment-growth="-0.3133903133903134">
-              <td class="rank">16</td>
+                data-redeem-current="436.0"
+                data-payment-current="1766.0"
+                data-redeem-nights="2.0"
+                data-payment-nights="9.0"
+                data-redeem-growth="-0.7835153922542204"
+                data-payment-growth="-0.11964107676969093">
+              <td class="rank">14</td>
               <td><strong>鲁东省区</strong></td>
               <td><strong>青岛前海片区</strong></td>
               <td><strong>希岸Deluxe酒店(青岛胶东国际机场胶东地铁站店)</strong><small>青岛市 · 有返回记录</small></td>
               <td><span class="provider">未绑定服务商</span></td>
-              <td class="num">222</td>
-              <td class="num">1,663</td>
+              <td class="num">436</td>
+              <td class="num">1,766</td>
+              <td class="num">2</td>
+              <td class="num">9</td>
+              <td class="num negative">-78.4%</td>
+              <td class="num negative">-12.0%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="青岛前海片区"
+                data-store="白玉兰酒店(青岛北站君峰路地铁站店)"
+                data-city="青岛市"
+                data-provider="未绑定服务商"
+                data-redeem-current="356.0"
+                data-payment-current="1657.9000000000003"
+                data-redeem-nights="2.0"
+                data-payment-nights="10.0"
+                data-redeem-growth="-0.5163043478260869"
+                data-payment-growth="2.036446886446887">
+              <td class="rank">15</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>青岛前海片区</strong></td>
+              <td><strong>白玉兰酒店(青岛北站君峰路地铁站店)</strong><small>青岛市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">356</td>
+              <td class="num">1,658</td>
+              <td class="num">2</td>
+              <td class="num">10</td>
+              <td class="num negative">-51.6%</td>
+              <td class="num positive">+203.6%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="青岛前海片区"
+                data-store="7天优品Premium(青岛火车站海底隧道店)"
+                data-city="青岛市"
+                data-provider="青岛三合酒店管理有限公司"
+                data-redeem-current="320.0"
+                data-payment-current="1566.1"
+                data-redeem-nights="2.0"
+                data-payment-nights="17.0"
+                data-redeem-growth="0.0"
+                data-payment-growth="0.0">
+              <td class="rank">16</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>青岛前海片区</strong></td>
+              <td><strong>7天优品Premium(青岛火车站海底隧道店)</strong><small>青岛市 · 有返回记录</small></td>
+              <td><span class="provider">青岛三合酒店管理有限公司</span></td>
+              <td class="num">320</td>
+              <td class="num">1,566</td>
+              <td class="num">2</td>
+              <td class="num">17</td>
+              <td class="num neutral">基期较低</td>
+              <td class="num neutral">基期较低</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="青岛前海片区"
+                data-store="白玉兰(商务)酒店(青岛奥帆中心小麦岛公园店)"
+                data-city="青岛市"
+                data-provider="未绑定服务商"
+                data-redeem-current="318.05"
+                data-payment-current="566.0"
+                data-redeem-nights="2.0"
+                data-payment-nights="4.0"
+                data-redeem-growth="-0.5557960893854749"
+                data-payment-growth="-0.7180432400119559">
+              <td class="rank">17</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>青岛前海片区</strong></td>
+              <td><strong>白玉兰(商务)酒店(青岛奥帆中心小麦岛公园店)</strong><small>青岛市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">318</td>
+              <td class="num">566</td>
+              <td class="num">2</td>
+              <td class="num">4</td>
+              <td class="num negative">-55.6%</td>
+              <td class="num negative">-71.8%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="青岛前海片区"
+                data-store="喆啡酒店(青岛栈桥火车站店)"
+                data-city="青岛市"
+                data-provider="青岛品和商旅服务有限公司"
+                data-redeem-current="209.0"
+                data-payment-current="4899.0"
+                data-redeem-nights="1.0"
+                data-payment-nights="21.0"
+                data-redeem-growth="-0.8570451436388509"
+                data-payment-growth="2.9995101640950277">
+              <td class="rank">18</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>青岛前海片区</strong></td>
+              <td><strong>喆啡酒店(青岛栈桥火车站店)</strong><small>青岛市 · 有返回记录</small></td>
+              <td><span class="provider">青岛品和商旅服务有限公司</span></td>
+              <td class="num">209</td>
+              <td class="num">4,899</td>
               <td class="num">1</td>
-              <td class="num">7</td>
-              <td class="num negative">-89.0%</td>
-              <td class="num negative">-31.3%</td>
+              <td class="num">21</td>
+              <td class="num negative">-85.7%</td>
+              <td class="num positive">+300.0%</td>
             </tr>
 
             <tr data-province="鲁东省区"
@@ -553,22 +601,22 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-city="青岛市"
                 data-provider="青岛三合酒店管理有限公司"
                 data-redeem-current="195.0"
-                data-payment-current="1149.2"
+                data-payment-current="990.1"
                 data-redeem-nights="1.0"
-                data-payment-nights="7.0"
+                data-payment-nights="6.0"
                 data-redeem-growth="-0.18067226890756305"
-                data-payment-growth="1.6919653314593583">
-              <td class="rank">17</td>
+                data-payment-growth="0.32899328859060395">
+              <td class="rank">19</td>
               <td><strong>鲁东省区</strong></td>
               <td><strong>青岛前海片区</strong></td>
               <td><strong>喆啡酒店(青岛北站李村步行街地铁站店)</strong><small>青岛市 · 有返回记录</small></td>
               <td><span class="provider">青岛三合酒店管理有限公司</span></td>
               <td class="num">195</td>
-              <td class="num">1,149</td>
+              <td class="num">990</td>
               <td class="num">1</td>
-              <td class="num">7</td>
+              <td class="num">6</td>
               <td class="num negative">-18.1%</td>
-              <td class="num positive">+169.2%</td>
+              <td class="num positive">+32.9%</td>
             </tr>
 
             <tr data-province="鲁东省区"
@@ -582,7 +630,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-payment-nights="13.0"
                 data-redeem-growth="0.14093959731543615"
                 data-payment-growth="8.591946308724832">
-              <td class="rank">18</td>
+              <td class="rank">20</td>
               <td><strong>鲁东省区</strong></td>
               <td><strong>青岛前海片区</strong></td>
               <td><strong>锦江之星品尚青岛栈桥河南路店</strong><small>青岛市 · 有返回记录</small></td>
@@ -600,47 +648,23 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-store="喆啡酒店(青岛五四广场店)"
                 data-city="青岛市"
                 data-provider="未绑定服务商"
-                data-redeem-current="0.0"
-                data-payment-current="7896.5"
-                data-redeem-nights="0.0"
-                data-payment-nights="44.0"
+                data-redeem-current="159.0"
+                data-payment-current="6752.5"
+                data-redeem-nights="1.0"
+                data-payment-nights="38.0"
                 data-redeem-growth="0.0"
-                data-payment-growth="0.0">
-              <td class="rank">19</td>
+                data-payment-growth="3.495672436750999">
+              <td class="rank">21</td>
               <td><strong>鲁东省区</strong></td>
               <td><strong>青岛前海片区</strong></td>
               <td><strong>喆啡酒店(青岛五四广场店)</strong><small>青岛市 · 有返回记录</small></td>
               <td><span class="provider">未绑定服务商</span></td>
-              <td class="num">0</td>
-              <td class="num">7,896</td>
-              <td class="num">0</td>
-              <td class="num">44</td>
+              <td class="num">159</td>
+              <td class="num">6,752</td>
+              <td class="num">1</td>
+              <td class="num">38</td>
               <td class="num neutral">基期较低</td>
-              <td class="num neutral">基期较低</td>
-            </tr>
-
-            <tr data-province="鲁东省区"
-                data-area="青岛前海片区"
-                data-store="喆啡酒店(青岛栈桥火车站店)"
-                data-city="青岛市"
-                data-provider="青岛品和商旅服务有限公司"
-                data-redeem-current="0.0"
-                data-payment-current="3824.0"
-                data-redeem-nights="0.0"
-                data-payment-nights="16.0"
-                data-redeem-growth="-1.0"
-                data-payment-growth="0.9217046082717724">
-              <td class="rank">20</td>
-              <td><strong>鲁东省区</strong></td>
-              <td><strong>青岛前海片区</strong></td>
-              <td><strong>喆啡酒店(青岛栈桥火车站店)</strong><small>青岛市 · 有返回记录</small></td>
-              <td><span class="provider">青岛品和商旅服务有限公司</span></td>
-              <td class="num">0</td>
-              <td class="num">3,824</td>
-              <td class="num">0</td>
-              <td class="num">16</td>
-              <td class="num negative">-100.0%</td>
-              <td class="num positive">+92.2%</td>
+              <td class="num positive">+349.6%</td>
             </tr>
 
             <tr data-province="鲁东省区"
@@ -649,46 +673,22 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-city="青岛市"
                 data-provider="广东省粤时代文化科技有限公司"
                 data-redeem-current="0.0"
-                data-payment-current="2444.5"
+                data-payment-current="1351.2"
                 data-redeem-nights="0.0"
-                data-payment-nights="16.0"
+                data-payment-nights="9.0"
                 data-redeem-growth="0.0"
-                data-payment-growth="12.656424581005586">
-              <td class="rank">21</td>
+                data-payment-growth="-0.04258485084673713">
+              <td class="rank">22</td>
               <td><strong>鲁东省区</strong></td>
               <td><strong>青岛前海片区</strong></td>
               <td><strong>喆啡酒店(青岛会展中心店)</strong><small>青岛市 · 有返回记录</small></td>
               <td><span class="provider">广东省粤时代文化科技有限公司</span></td>
               <td class="num">0</td>
-              <td class="num">2,444</td>
+              <td class="num">1,351</td>
               <td class="num">0</td>
-              <td class="num">16</td>
+              <td class="num">9</td>
               <td class="num neutral">基期较低</td>
-              <td class="num positive">+1265.6%</td>
-            </tr>
-
-            <tr data-province="鲁东省区"
-                data-area="青岛前海片区"
-                data-store="7天优品Premium(青岛火车站海底隧道店)"
-                data-city="青岛市"
-                data-provider="青岛三合酒店管理有限公司"
-                data-redeem-current="0.0"
-                data-payment-current="1137.3000000000002"
-                data-redeem-nights="0.0"
-                data-payment-nights="14.0"
-                data-redeem-growth="0.0"
-                data-payment-growth="0.0">
-              <td class="rank">22</td>
-              <td><strong>鲁东省区</strong></td>
-              <td><strong>青岛前海片区</strong></td>
-              <td><strong>7天优品Premium(青岛火车站海底隧道店)</strong><small>青岛市 · 有返回记录</small></td>
-              <td><span class="provider">青岛三合酒店管理有限公司</span></td>
-              <td class="num">0</td>
-              <td class="num">1,137</td>
-              <td class="num">0</td>
-              <td class="num">14</td>
-              <td class="num neutral">基期较低</td>
-              <td class="num neutral">基期较低</td>
+              <td class="num negative">-4.3%</td>
             </tr>
 
             <tr data-province="鲁东省区"
@@ -697,22 +697,22 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-city="青岛市"
                 data-provider="杭州四库传媒有限公司"
                 data-redeem-current="0.0"
-                data-payment-current="1112.2"
+                data-payment-current="943.1"
                 data-redeem-nights="0.0"
-                data-payment-nights="8.0"
+                data-payment-nights="7.0"
                 data-redeem-growth="-1.0"
-                data-payment-growth="0.3921642258104896">
+                data-payment-growth="2.3912261776339445">
               <td class="rank">23</td>
               <td><strong>鲁东省区</strong></td>
               <td><strong>青岛前海片区</strong></td>
               <td><strong>希岸·轻雅酒店(青岛北站君峰路地铁站店)</strong><small>青岛市 · 有返回记录</small></td>
               <td><span class="provider">杭州四库传媒有限公司</span></td>
               <td class="num">0</td>
-              <td class="num">1,112</td>
+              <td class="num">943</td>
               <td class="num">0</td>
-              <td class="num">8</td>
+              <td class="num">7</td>
               <td class="num negative">-100.0%</td>
-              <td class="num positive">+39.2%</td>
+              <td class="num positive">+239.1%</td>
             </tr>
 
             <tr data-province="鲁东省区"
@@ -1158,77 +1158,50 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
             <tr>
               <td class="rank">01</td>
               <td><strong>喆啡酒店(青岛五四广场店)</strong><small>青岛市 · 未绑定服务商</small></td>
-              <td class="num">7,896</td>
-              <td class="num">0</td>
-              <td class="num positive">+7,896</td>
-              <td class="channel-stack"><span class="channel-chip positive">自播 +3,740</span></td>
+              <td class="num">6,752</td>
+              <td class="num">1,502</td>
+              <td class="num positive">+5,250</td>
+              <td class="channel-stack"><span class="channel-chip positive">自播 +925</span></td>
             </tr>
 
             <tr>
               <td class="rank">02</td>
-              <td><strong>青岛白玉兰酒店(火车站栈桥店)</strong><small>青岛市 · 青岛三合酒店管理有限公司</small></td>
-              <td class="num">7,560</td>
-              <td class="num">2,058</td>
-              <td class="num positive">+5,502</td>
-              <td class="channel-stack"><span class="channel-chip positive">短视频 +198</span><span class="channel-chip positive">自播 +99</span></td>
+              <td><strong>喆啡酒店(青岛栈桥火车站店)</strong><small>青岛市 · 青岛品和商旅服务有限公司</small></td>
+              <td class="num">4,899</td>
+              <td class="num">1,225</td>
+              <td class="num positive">+3,674</td>
+              <td class="channel-stack"><span class="channel-chip positive">自播 +1,792</span><span class="channel-chip positive">达播 +956</span></td>
             </tr>
 
             <tr>
               <td class="rank">03</td>
-              <td><strong>喆啡酒店(青岛会展中心店)</strong><small>青岛市 · 广东省粤时代文化科技有限公司</small></td>
-              <td class="num">2,444</td>
-              <td class="num">179</td>
-              <td class="num positive">+2,266</td>
+              <td><strong>维也纳酒店(5.0青岛胶东国际机场站前大道店)</strong><small>青岛市 · 未绑定服务商</small></td>
+              <td class="num">2,449</td>
+              <td class="num">268</td>
+              <td class="num positive">+2,181</td>
               <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
             </tr>
 
             <tr>
               <td class="rank">04</td>
-              <td><strong>维也纳3好酒店(山东青岛胶东国际机场空港小镇店)</strong><small>青岛市 · 杭州四库传媒有限公司</small></td>
-              <td class="num">5,908</td>
-              <td class="num">3,848</td>
-              <td class="num positive">+2,060</td>
-              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
-            </tr>
-
-            <tr>
-              <td class="rank">05</td>
               <td><strong>维也纳国际酒店(山东青岛火车站东广场栈桥店)</strong><small>青岛市 · 未绑定服务商</small></td>
-              <td class="num">1,916</td>
-              <td class="num">0</td>
-              <td class="num positive">+1,916</td>
+              <td class="num">2,183</td>
+              <td class="num">605</td>
+              <td class="num positive">+1,578</td>
               <td class="channel-stack"><span class="channel-chip positive">自播 +478</span></td>
             </tr>
 
             <tr>
+              <td class="rank">05</td>
+              <td><strong>7天优品Premium(青岛火车站海底隧道店)</strong><small>青岛市 · 青岛三合酒店管理有限公司</small></td>
+              <td class="num">1,566</td>
+              <td class="num">0</td>
+              <td class="num positive">+1,566</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+
+            <tr>
               <td class="rank">06</td>
-              <td><strong>喆啡酒店(青岛栈桥火车站店)</strong><small>青岛市 · 青岛品和商旅服务有限公司</small></td>
-              <td class="num">3,824</td>
-              <td class="num">1,990</td>
-              <td class="num positive">+1,834</td>
-              <td class="channel-stack"><span class="channel-chip positive">达播 +956</span><span class="channel-chip positive">自播 +956</span><span class="channel-chip negative">短视频 -259</span></td>
-            </tr>
-
-            <tr>
-              <td class="rank">07</td>
-              <td><strong>喆啡酒店(青岛胶东国际机场胶东地铁站店)</strong><small>青岛市 · 杭州四库传媒有限公司</small></td>
-              <td class="num">6,522</td>
-              <td class="num">4,698</td>
-              <td class="num positive">+1,824</td>
-              <td class="channel-stack"><span class="channel-chip negative">短视频 -298</span><span class="channel-chip positive">达播 +238</span></td>
-            </tr>
-
-            <tr>
-              <td class="rank">08</td>
-              <td><strong>7天酒店(青岛北站沧安路地铁站店)</strong><small>青岛市 · 青岛三合酒店管理有限公司</small></td>
-              <td class="num">4,738</td>
-              <td class="num">3,069</td>
-              <td class="num positive">+1,669</td>
-              <td class="channel-stack"><span class="channel-chip positive">达播 +1,094</span><span class="channel-chip negative">短视频 -537</span></td>
-            </tr>
-
-            <tr>
-              <td class="rank">09</td>
               <td><strong>锦江之星品尚青岛栈桥河南路店</strong><small>青岛市 · 未绑定服务商</small></td>
               <td class="num">1,429</td>
               <td class="num">149</td>
@@ -1237,12 +1210,39 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
             </tr>
 
             <tr>
-              <td class="rank">10</td>
-              <td><strong>7天优品Premium(青岛火车站海底隧道店)</strong><small>青岛市 · 青岛三合酒店管理有限公司</small></td>
-              <td class="num">1,137</td>
-              <td class="num">0</td>
-              <td class="num positive">+1,137</td>
+              <td class="rank">07</td>
+              <td><strong>白玉兰酒店(青岛北站君峰路地铁站店)</strong><small>青岛市 · 未绑定服务商</small></td>
+              <td class="num">1,658</td>
+              <td class="num">546</td>
+              <td class="num positive">+1,112</td>
+              <td class="channel-stack"><span class="channel-chip positive">达播 +318</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">08</td>
+              <td><strong>维也纳3好酒店(山东青岛胶东国际机场空港小镇店)</strong><small>青岛市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">5,105</td>
+              <td class="num">4,182</td>
+              <td class="num positive">+923</td>
               <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">09</td>
+              <td><strong>7天优品酒店(青岛五四广场芝泉路地铁站店)</strong><small>青岛市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">3,870</td>
+              <td class="num">3,040</td>
+              <td class="num positive">+830</td>
+              <td class="channel-stack"><span class="channel-chip positive">短视频 +466</span><span class="channel-chip positive">自播 +99</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">10</td>
+              <td><strong>麗枫酒店(青岛北站李村夜市店)</strong><small>青岛市 · 青岛三合酒店管理有限公司</small></td>
+              <td class="num">2,190</td>
+              <td class="num">1,514</td>
+              <td class="num positive">+676</td>
+              <td class="channel-stack"><span class="channel-chip positive">短视频 +199</span></td>
             </tr>
             </tbody>
         </table>
@@ -1256,46 +1256,82 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
             <tr>
               <td class="rank">01</td>
               <td><strong>维也纳国际酒店(青岛北站店)</strong><small>青岛市 · 未绑定服务商</small></td>
-              <td class="num">1.38万</td>
-              <td class="num">1.87万</td>
-              <td class="num negative">-4,842</td>
-              <td class="channel-stack"><span class="channel-chip negative">自播 -1,296</span><span class="channel-chip negative">短视频 -208</span></td>
+              <td class="num">1.71万</td>
+              <td class="num">1.93万</td>
+              <td class="num negative">-2,260</td>
+              <td class="channel-stack"><span class="channel-chip positive">自播 +1,743</span><span class="channel-chip positive">短视频 +622</span></td>
             </tr>
 
             <tr>
               <td class="rank">02</td>
-              <td><strong>希岸Deluxe酒店(青岛胶东国际机场胶东地铁站店)</strong><small>青岛市 · 未绑定服务商</small></td>
-              <td class="num">1,663</td>
-              <td class="num">2,422</td>
-              <td class="num negative">-759</td>
-              <td class="channel-stack"><span class="channel-chip negative">自播 -398</span></td>
+              <td><strong>喆啡酒店(青岛胶东国际机场胶东地铁站店)</strong><small>青岛市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">4,069</td>
+              <td class="num">6,085</td>
+              <td class="num negative">-2,016</td>
+              <td class="channel-stack"><span class="channel-chip positive">达播 +238</span></td>
             </tr>
 
             <tr>
               <td class="rank">03</td>
               <td><strong>白玉兰(商务)酒店(青岛奥帆中心小麦岛公园店)</strong><small>青岛市 · 未绑定服务商</small></td>
-              <td class="num">884</td>
-              <td class="num">1,550</td>
-              <td class="num negative">-666</td>
+              <td class="num">566</td>
+              <td class="num">2,007</td>
+              <td class="num negative">-1,441</td>
               <td class="channel-stack"><span class="channel-chip positive">短视频 +10</span></td>
             </tr>
 
             <tr>
               <td class="rank">04</td>
-              <td><strong>青岛维也纳酒店(5.0青岛大学奥帆中心北店)</strong><small>青岛市 · 青岛三合酒店管理有限公司</small></td>
-              <td class="num">4,348</td>
-              <td class="num">4,537</td>
-              <td class="num negative">-189</td>
-              <td class="channel-stack"><span class="channel-chip positive">自播 +936</span><span class="channel-chip negative">短视频 -359</span></td>
+              <td><strong>麗枫酒店(胶州市政府机场店)</strong><small>青岛市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">659</td>
+              <td class="num">2,029</td>
+              <td class="num negative">-1,370</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
             </tr>
 
             <tr>
               <td class="rank">05</td>
-              <td><strong>7天优品酒店(青岛五四广场芝泉路地铁站店)</strong><small>青岛市 · 杭州四库传媒有限公司</small></td>
-              <td class="num">2,683</td>
-              <td class="num">2,842</td>
-              <td class="num negative">-159</td>
-              <td class="channel-stack"><span class="channel-chip positive">短视频 +505</span></td>
+              <td><strong>青岛维也纳酒店(5.0青岛大学奥帆中心北店)</strong><small>青岛市 · 青岛三合酒店管理有限公司</small></td>
+              <td class="num">3,949</td>
+              <td class="num">4,896</td>
+              <td class="num negative">-947</td>
+              <td class="channel-stack"><span class="channel-chip positive">自播 +1,125</span><span class="channel-chip negative">短视频 -359</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">06</td>
+              <td><strong>希岸Deluxe酒店(青岛胶东国际机场胶东地铁站店)</strong><small>青岛市 · 未绑定服务商</small></td>
+              <td class="num">1,766</td>
+              <td class="num">2,006</td>
+              <td class="num negative">-240</td>
+              <td class="channel-stack"><span class="channel-chip negative">自播 -199</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">07</td>
+              <td><strong>青岛白玉兰酒店(火车站栈桥店)</strong><small>青岛市 · 青岛三合酒店管理有限公司</small></td>
+              <td class="num">4,755</td>
+              <td class="num">4,972</td>
+              <td class="num negative">-216</td>
+              <td class="channel-stack"><span class="channel-chip negative">短视频 -198</span><span class="channel-chip positive">自播 +99</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">08</td>
+              <td><strong>喆啡酒店(青岛会展中心店)</strong><small>青岛市 · 广东省粤时代文化科技有限公司</small></td>
+              <td class="num">1,351</td>
+              <td class="num">1,411</td>
+              <td class="num negative">-60</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">09</td>
+              <td><strong>喆啡酒店(青岛北站李村夜市店)</strong><small>青岛市 · 青岛三合酒店管理有限公司</small></td>
+              <td class="num">1,208</td>
+              <td class="num">1,224</td>
+              <td class="num negative">-16</td>
+              <td class="channel-stack"><span class="channel-chip negative">短视频 -418</span></td>
             </tr>
             </tbody>
         </table>
@@ -1342,103 +1378,103 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
             </tr>
 
             <tr data-channel="自播"
-                data-payment-current="6427.0"
-                data-payment-delta="4713.0"
-                data-payment-growth="2.749708284714119"
+                data-payment-current="9296.9"
+                data-payment-delta="6259.9"
+                data-payment-growth="2.0612117220941717"
                 data-redeem-current="327.0"
                 data-redeem-previous="746.0"
                 data-redeem-delta="-419.0"
                 data-redeem-growth="-0.561662198391421">
               <td><strong>自播</strong></td>
-              <td class="num">6,427</td>
-              <td class="num">1,714</td>
-              <td class="num positive">+4,713</td>
-              <td class="num">+275.0%</td>
+              <td class="num">9,297</td>
+              <td class="num">3,037</td>
+              <td class="num positive">+6,260</td>
+              <td class="num">+206.1%</td>
               <td class="num">327</td>
               <td class="num">746</td>
               <td class="num negative">-419</td>
               <td class="num">-56.2%</td>
-              <td class="channel-stack"><span class="channel-chip positive">未绑定服务商 支付 +2,722 · 核销 -518</span><span class="channel-chip positive">青岛三合酒店管理有限公司 支付 +1,035 · 核销 +99</span><span class="channel-chip positive">青岛品和商旅服务有限公司 支付 +956 · 核销 0</span></td>
+              <td class="channel-stack"><span class="channel-chip positive">未绑定服务商 支付 +3,145 · 核销 -518</span><span class="channel-chip positive">青岛品和商旅服务有限公司 支付 +1,792 · 核销 0</span><span class="channel-chip positive">青岛三合酒店管理有限公司 支付 +1,224 · 核销 +99</span><span class="channel-chip positive">杭州四库传媒有限公司 支付 +99 · 核销 0</span></td>
             </tr>
 
             <tr data-channel="短视频"
-                data-payment-current="2439.2"
-                data-payment-delta="-12.800000000000182"
-                data-payment-growth="-0.005220228384991921"
-                data-redeem-current="357.0"
-                data-redeem-previous="1084.0"
-                data-redeem-delta="-727.0"
-                data-redeem-growth="-0.6706642066420665">
+                data-payment-current="2109.1"
+                data-payment-delta="459.0"
+                data-payment-growth="0.27816495969941224"
+                data-redeem-current="407.0"
+                data-redeem-previous="327.0"
+                data-redeem-delta="80.0"
+                data-redeem-growth="0.2446483180428134">
               <td><strong>短视频</strong></td>
-              <td class="num">2,439</td>
-              <td class="num">2,452</td>
-              <td class="num negative">-13</td>
-              <td class="num">-0.5%</td>
-              <td class="num">357</td>
-              <td class="num">1,084</td>
-              <td class="num negative">-727</td>
-              <td class="num">-67.1%</td>
-              <td class="channel-stack"><span class="channel-chip negative">未绑定服务商 支付 -198 · 核销 -624</span><span class="channel-chip negative">青岛品和商旅服务有限公司 支付 -259 · 核销 0</span><span class="channel-chip positive">青岛三合酒店管理有限公司 支付 +237 · 核销 -192</span><span class="channel-chip positive">杭州四库传媒有限公司 支付 +207 · 核销 +89</span></td>
+              <td class="num">2,109</td>
+              <td class="num">1,650</td>
+              <td class="num positive">+459</td>
+              <td class="num">+27.8%</td>
+              <td class="num">407</td>
+              <td class="num">327</td>
+              <td class="num positive">+80</td>
+              <td class="num">+24.5%</td>
+              <td class="channel-stack"><span class="channel-chip negative">青岛三合酒店管理有限公司 支付 -639 · 核销 +50</span><span class="channel-chip positive">未绑定服务商 支付 +632 · 核销 -208</span><span class="channel-chip positive">杭州四库传媒有限公司 支付 +466 · 核销 +238</span></td>
             </tr>
 
             <tr data-channel="其他"
-                data-payment-current="32253.399999999994"
-                data-payment-delta="11719.69999999999"
-                data-payment-growth="0.570754418346425"
-                data-redeem-current="10469.199999999999"
-                data-redeem-previous="9633.1"
-                data-redeem-delta="836.0999999999985"
-                data-redeem-growth="0.0867944898319335">
+                data-payment-current="28715.10000000001"
+                data-payment-delta="4608.800000000007"
+                data-payment-growth="0.19118653629963966"
+                data-redeem-current="9045.3"
+                data-redeem-previous="10623.699999999999"
+                data-redeem-delta="-1578.3999999999996"
+                data-redeem-growth="-0.14857347251899056">
               <td><strong>其他</strong></td>
-              <td class="num">3.23万</td>
-              <td class="num">2.05万</td>
-              <td class="num positive">+1.17万</td>
-              <td class="num">+57.1%</td>
-              <td class="num">1.05万</td>
-              <td class="num">9,633</td>
-              <td class="num positive">+836</td>
-              <td class="num">+8.7%</td>
-              <td class="channel-stack"><span class="channel-chip positive">青岛三合酒店管理有限公司 支付 +5,861 · 核销 -679</span><span class="channel-chip positive">杭州四库传媒有限公司 支付 +3,085 · 核销 +1,422</span><span class="channel-chip positive">未绑定服务商 支付 +1,570 · 核销 +838</span><span class="channel-chip positive">广东省粤时代文化科技有限公司 支付 +1,471 · 核销 0</span><span class="channel-chip negative">青岛品和商旅服务有限公司 支付 -267 · 核销 -745</span></td>
+              <td class="num">2.87万</td>
+              <td class="num">2.41万</td>
+              <td class="num positive">+4,609</td>
+              <td class="num">+19.1%</td>
+              <td class="num">9,045</td>
+              <td class="num">1.06万</td>
+              <td class="num negative">-1,578</td>
+              <td class="num">-14.9%</td>
+              <td class="channel-stack"><span class="channel-chip positive">青岛三合酒店管理有限公司 支付 +2,060 · 核销 -774</span><span class="channel-chip positive">未绑定服务商 支付 +1,911 · 核销 -598</span><span class="channel-chip positive">青岛品和商旅服务有限公司 支付 +239 · 核销 -745</span><span class="channel-chip positive">广东省粤时代文化科技有限公司 支付 +675 · 核销 0</span><span class="channel-chip negative">杭州四库传媒有限公司 支付 -276 · 核销 +538</span></td>
             </tr>
 
             <tr data-channel="搜索结果卡"
-                data-payment-current="30058.700000000026"
-                data-payment-delta="5035.000000000007"
-                data-payment-growth="0.20120925362756115"
-                data-redeem-current="17939.149999999998"
-                data-redeem-previous="16925.699999999997"
-                data-redeem-delta="1013.4500000000007"
-                data-redeem-growth="0.05987640097603064">
+                data-payment-current="27990.50000000003"
+                data-payment-delta="-1374.1999999999862"
+                data-payment-growth="-0.04679768565658715"
+                data-redeem-current="16448.699999999997"
+                data-redeem-previous="20117.4"
+                data-redeem-delta="-3668.7000000000044"
+                data-redeem-growth="-0.18236452026603855">
               <td><strong>搜索结果卡</strong></td>
-              <td class="num">3.01万</td>
-              <td class="num">2.50万</td>
-              <td class="num positive">+5,035</td>
-              <td class="num">+20.1%</td>
-              <td class="num">1.79万</td>
-              <td class="num">1.69万</td>
-              <td class="num positive">+1,013</td>
-              <td class="num">+6.0%</td>
-              <td class="channel-stack"><span class="channel-chip positive">青岛三合酒店管理有限公司 支付 +2,250 · 核销 +944</span><span class="channel-chip positive">杭州四库传媒有限公司 支付 +1,240 · 核销 +1,212</span><span class="channel-chip positive">未绑定服务商 支付 +1,197 · 核销 -426</span><span class="channel-chip negative">青岛品和商旅服务有限公司 支付 -30 · 核销 -717</span><span class="channel-chip positive">广东省粤时代文化科技有限公司 支付 +377 · 核销 0</span></td>
+              <td class="num">2.80万</td>
+              <td class="num">2.94万</td>
+              <td class="num negative">-1,374</td>
+              <td class="num">-4.7%</td>
+              <td class="num">1.64万</td>
+              <td class="num">2.01万</td>
+              <td class="num negative">-3,669</td>
+              <td class="num">-18.2%</td>
+              <td class="channel-stack"><span class="channel-chip positive">未绑定服务商 支付 +1,422 · 核销 -2,469</span><span class="channel-chip negative">青岛三合酒店管理有限公司 支付 -1,472 · 核销 +552</span><span class="channel-chip negative">杭州四库传媒有限公司 支付 -938 · 核销 -1,243</span><span class="channel-chip negative">广东省粤时代文化科技有限公司 支付 -596 · 核销 0</span><span class="channel-chip positive">青岛品和商旅服务有限公司 支付 +209 · 核销 -508</span></td>
             </tr>
 
             <tr data-channel="获客卡"
-                data-payment-current="4976.599999999999"
-                data-payment-delta="2282.9999999999995"
-                data-payment-growth="0.8475645975645973"
-                data-redeem-current="1533.9"
-                data-redeem-previous="466.7"
-                data-redeem-delta="1067.2"
-                data-redeem-growth="2.2866938075851726">
+                data-payment-current="3991.4999999999995"
+                data-payment-delta="-205.79999999999973"
+                data-payment-growth="-0.04903152026302615"
+                data-redeem-current="881.0"
+                data-redeem-previous="970.8"
+                data-redeem-delta="-89.79999999999995"
+                data-redeem-growth="-0.09250103007828592">
               <td><strong>获客卡</strong></td>
-              <td class="num">4,977</td>
-              <td class="num">2,694</td>
-              <td class="num positive">+2,283</td>
-              <td class="num">+84.8%</td>
-              <td class="num">1,534</td>
-              <td class="num">467</td>
-              <td class="num positive">+1,067</td>
-              <td class="num">+228.7%</td>
-              <td class="channel-stack"><span class="channel-chip positive">未绑定服务商 支付 +852 · 核销 +600</span><span class="channel-chip positive">青岛品和商旅服务有限公司 支付 +478 · 核销 0</span><span class="channel-chip positive">杭州四库传媒有限公司 支付 +477 · 核销 +189</span><span class="channel-chip positive">广东省粤时代文化科技有限公司 支付 +417 · 核销 0</span><span class="channel-chip positive">青岛三合酒店管理有限公司 支付 +59 · 核销 +278</span></td>
+              <td class="num">3,991</td>
+              <td class="num">4,197</td>
+              <td class="num negative">-206</td>
+              <td class="num">-4.9%</td>
+              <td class="num">881</td>
+              <td class="num">971</td>
+              <td class="num negative">-90</td>
+              <td class="num">-9.3%</td>
+              <td class="channel-stack"><span class="channel-chip positive">青岛品和商旅服务有限公司 支付 +478 · 核销 0</span><span class="channel-chip negative">青岛三合酒店管理有限公司 支付 -457 · 核销 -278</span><span class="channel-chip positive">未绑定服务商 支付 +32 · 核销 +188</span><span class="channel-chip negative">广东省粤时代文化科技有限公司 支付 -139 · 核销 0</span><span class="channel-chip negative">杭州四库传媒有限公司 支付 -120 · 核销 0</span></td>
             </tr>
             </tbody>
         </table>
@@ -1446,8 +1482,8 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
     </article>
       <article class="panel"><div class="panel-head"><div><h2>增长 / 下滑摘要</h2><p>按支付 GMV 增减额排序</p></div></div>
         <div class="insights">
-          <div class="insight"><b>最大增长门店</b><p>喆啡酒店(青岛五四广场店) · +7,896 · 未绑定服务商</p><span class="tag good">自播</span></div>
-          <div class="insight"><b>最大下滑门店</b><p>维也纳国际酒店(青岛北站店) · -4,842 · 未绑定服务商</p><span class="tag warn">自播</span></div>
+          <div class="insight"><b>最大增长门店</b><p>喆啡酒店(青岛五四广场店) · +5,250 · 未绑定服务商</p><span class="tag good">自播</span></div>
+          <div class="insight"><b>最大下滑门店</b><p>维也纳国际酒店(青岛北站店) · -2,260 · 未绑定服务商</p><span class="tag warn">自播</span></div>
         </div>
       </article></div>
     </section>
@@ -1464,12 +1500,12 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
               <td><strong>青岛三合酒店管理有限公司</strong></td>
               <td class="num">7家</td>
               <td class="num">7家</td>
-              <td class="num">2.27万</td>
-              <td class="num positive">+86.5%</td>
-              <td class="num">6,712</td>
-              <td class="num positive">+4.4%</td>
-              <td class="num">3,246</td>
-              <td class="num positive">+59.9%</td>
+              <td class="num">1.91万</td>
+              <td class="num positive">+10.4%</td>
+              <td class="num">6,715</td>
+              <td class="num negative">-7.2%</td>
+              <td class="num">2,736</td>
+              <td class="num negative">-5.3%</td>
               <td class="num">959</td>
             </tr>
 
@@ -1478,13 +1514,13 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
               <td><strong>杭州四库传媒有限公司</strong></td>
               <td class="num">6家</td>
               <td class="num">6家</td>
-              <td class="num">1.90万</td>
-              <td class="num positive">+38.2%</td>
-              <td class="num">1.13万</td>
-              <td class="num positive">+38.7%</td>
-              <td class="num">3,163</td>
-              <td class="num positive">+38.2%</td>
-              <td class="num">1,883</td>
+              <td class="num">1.55万</td>
+              <td class="num negative">-3.3%</td>
+              <td class="num">9,065</td>
+              <td class="num negative">-2.5%</td>
+              <td class="num">2,575</td>
+              <td class="num negative">-3.3%</td>
+              <td class="num">1,511</td>
             </tr>
 
             <tr>
@@ -1492,12 +1528,12 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
               <td><strong>广东省粤时代文化科技有限公司</strong></td>
               <td class="num">1家</td>
               <td class="num">1家</td>
-              <td class="num">2,444</td>
-              <td class="num positive">+1265.6%</td>
+              <td class="num">1,351</td>
+              <td class="num negative">-4.3%</td>
               <td class="num">0</td>
               <td class="num positive">基期较低</td>
-              <td class="num">2,444</td>
-              <td class="num positive">+1265.6%</td>
+              <td class="num">1,351</td>
+              <td class="num negative">-4.3%</td>
               <td class="num">0</td>
             </tr>
 
@@ -1506,13 +1542,13 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
               <td><strong>青岛品和商旅服务有限公司</strong></td>
               <td class="num">1家</td>
               <td class="num">1家</td>
-              <td class="num">3,824</td>
-              <td class="num positive">+92.2%</td>
-              <td class="num">0</td>
-              <td class="num negative">-100.0%</td>
-              <td class="num">3,824</td>
-              <td class="num positive">+92.2%</td>
-              <td class="num">0</td>
+              <td class="num">4,899</td>
+              <td class="num positive">+300.0%</td>
+              <td class="num">209</td>
+              <td class="num negative">-85.7%</td>
+              <td class="num">4,899</td>
+              <td class="num positive">+300.0%</td>
+              <td class="num">209</td>
             </tr>
 
             <tr>
@@ -1520,42 +1556,42 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
               <td><strong>未绑定服务商</strong></td>
               <td class="num">26家</td>
               <td class="num">8家</td>
-              <td class="num">3.08万</td>
-              <td class="num positive">+26.5%</td>
-              <td class="num">1.31万</td>
-              <td class="num positive">+1.0%</td>
-              <td class="num">3,849</td>
-              <td class="num negative">-5.1%</td>
-              <td class="num">1,639</td>
+              <td class="num">3.39万</td>
+              <td class="num positive">+28.3%</td>
+              <td class="num">1.16万</td>
+              <td class="num negative">-22.4%</td>
+              <td class="num">4,232</td>
+              <td class="num positive">+28.3%</td>
+              <td class="num">1,452</td>
             </tr>
             </tbody>
         </table>
       </div>
     </article>
       <article class="panel"><div class="panel-head"><div><h2>服务商水平</h2><p>平均单店支付产出柱状图 · 单位：万元</p></div></div>
-        <div class="insights"><div class="insight"><b>青岛三合酒店管理有限公司</b><p>3,246 /家支付 · 959 /家核销 · 7家动销</p><div class="bar-wrap"><span class="segment-bar calendar" style="width:84.3%"></span></div><span class="tag good">单店产出 +59.9%</span></div><div class="insight"><b>杭州四库传媒有限公司</b><p>3,163 /家支付 · 1,883 /家核销 · 6家动销</p><div class="bar-wrap"><span class="segment-bar calendar" style="width:82.2%"></span></div><span class="tag good">单店产出 +38.2%</span></div><div class="insight"><b>广东省粤时代文化科技有限公司</b><p>2,444 /家支付 · 0 /家核销 · 1家动销</p><div class="bar-wrap"><span class="segment-bar calendar" style="width:63.5%"></span></div><span class="tag good">单店产出 +1265.6%</span></div><div class="insight"><b>青岛品和商旅服务有限公司</b><p>3,824 /家支付 · 0 /家核销 · 1家动销</p><div class="bar-wrap"><span class="segment-bar calendar" style="width:99.3%"></span></div><span class="tag good">单店产出 +92.2%</span></div><div class="insight"><b>未绑定服务商</b><p>3,849 /家支付 · 1,639 /家核销 · 8家动销</p><div class="bar-wrap"><span class="segment-bar calendar" style="width:100.0%"></span></div><span class="tag warn">单店产出 -5.1%</span></div></div>
+        <div class="insights"><div class="insight"><b>青岛三合酒店管理有限公司</b><p>2,736 /家支付 · 959 /家核销 · 7家动销</p><div class="bar-wrap"><span class="segment-bar calendar" style="width:55.8%"></span></div><span class="tag warn">单店产出 -5.3%</span></div><div class="insight"><b>杭州四库传媒有限公司</b><p>2,575 /家支付 · 1,511 /家核销 · 6家动销</p><div class="bar-wrap"><span class="segment-bar calendar" style="width:52.6%"></span></div><span class="tag warn">单店产出 -3.3%</span></div><div class="insight"><b>广东省粤时代文化科技有限公司</b><p>1,351 /家支付 · 0 /家核销 · 1家动销</p><div class="bar-wrap"><span class="segment-bar calendar" style="width:27.6%"></span></div><span class="tag warn">单店产出 -4.3%</span></div><div class="insight"><b>青岛品和商旅服务有限公司</b><p>4,899 /家支付 · 209 /家核销 · 1家动销</p><div class="bar-wrap"><span class="segment-bar calendar" style="width:100.0%"></span></div><span class="tag good">单店产出 +300.0%</span></div><div class="insight"><b>未绑定服务商</b><p>4,232 /家支付 · 1,452 /家核销 · 8家动销</p><div class="bar-wrap"><span class="segment-bar calendar" style="width:86.4%"></span></div><span class="tag good">单店产出 +28.3%</span></div></div>
       </article></div>
     </section>
 
     <section class="section" id="voucher">
       <div class="section-head"><div><h2>通兑商品</h2><p>省区合计 · 仅展示支付与核销趋势，不拆分 SKU</p></div></div>
       <div class="kpis">
-        <article class="kpi"><span class="kpi-label">通兑支付 GMV</span><b class="kpi-value">398</b><div class="kpi-foot"><span>本期 7 天累计</span><span>支付券 1张</span></div></article>
+        <article class="kpi"><span class="kpi-label">通兑支付 GMV</span><b class="kpi-value">0</b><div class="kpi-foot"><span>本期 7 天累计</span><span>支付券 0张</span></div></article>
         <article class="kpi"><span class="kpi-label">通兑核销 GMV</span><b class="kpi-value">0</b><div class="kpi-foot"><span>本期 7 天累计</span><span>核销券 0张</span></div></article>
       </div>
       <article class="panel" style="margin-top:16px">
-        <div class="panel-head trend-panel-head"><div class="trend-heading"><h2>支付与核销趋势</h2><span class="trend-range">10-28–11-03 · 单位：万元</span></div><div class="legend"><span><i style="background:var(--blue)"></i>支付</span><span><i style="background:var(--orange)"></i>核销</span></div></div>
+        <div class="panel-head trend-panel-head"><div class="trend-heading"><h2>支付与核销趋势</h2><span class="trend-range">10-30–11-05 · 单位：万元</span></div><div class="legend"><span><i style="background:var(--blue)"></i>支付</span><span><i style="background:var(--orange)"></i>核销</span></div></div>
         <div class="chart-scroll">
       <svg class="chart-svg" viewBox="0 0 760 300" role="img"
            aria-label="支付与核销日趋势，单位万元">
         <line x1="54" y1="34.0" x2="736" y2="34.0" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="104.6" x2="736" y2="104.6" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="175.2" x2="736" y2="175.2" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="248.0" x2="736" y2="248.0" stroke="#ECEEF3" stroke-width="1"/><text x="44" y="38.0" text-anchor="end" class="axis-label">0.0</text><text x="44" y="145.0" text-anchor="end" class="axis-label">0.0</text><text x="44" y="252.0" text-anchor="end" class="axis-label">0.0</text>
-        <path d="M54.0 248.0 L167.7 34.0 L281.3 248.0 L395.0 248.0 L508.7 248.0 L622.3 248.0 L736.0 248.0" fill="none" stroke="#1677FF"
+        <path d="M54.0 248.0 L167.7 248.0 L281.3 248.0 L395.0 248.0 L508.7 248.0 L622.3 248.0 L736.0 248.0" fill="none" stroke="#1677FF"
               stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M54.0 248.0 L167.7 248.0 L281.3 248.0 L395.0 248.0 L508.7 248.0 L622.3 248.0 L736.0 248.0" fill="none" stroke="#FF8A3D"
               stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-        <circle class="trend-point payment-point" cx="54.0" cy="248.0" r="5" fill="#1677FF"/><text x="58.0" y="236.0" text-anchor="start" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="167.7" cy="34.0" r="5" fill="#1677FF"/><text x="167.7" y="22.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="281.3" cy="248.0" r="5" fill="#1677FF"/><text x="281.3" y="236.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="395.0" cy="248.0" r="5" fill="#1677FF"/><text x="395.0" y="236.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="508.7" cy="248.0" r="5" fill="#1677FF"/><text x="508.7" y="236.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="622.3" cy="248.0" r="5" fill="#1677FF"/><text x="622.3" y="236.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="736.0" cy="248.0" r="5" fill="#1677FF"/><text x="732.0" y="236.0" text-anchor="end" class="point-label payment-label" fill="#1677FF">0.0万</text>
+        <circle class="trend-point payment-point" cx="54.0" cy="248.0" r="5" fill="#1677FF"/><text x="58.0" y="236.0" text-anchor="start" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="167.7" cy="248.0" r="5" fill="#1677FF"/><text x="167.7" y="236.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="281.3" cy="248.0" r="5" fill="#1677FF"/><text x="281.3" y="236.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="395.0" cy="248.0" r="5" fill="#1677FF"/><text x="395.0" y="236.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="508.7" cy="248.0" r="5" fill="#1677FF"/><text x="508.7" y="236.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="622.3" cy="248.0" r="5" fill="#1677FF"/><text x="622.3" y="236.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="736.0" cy="248.0" r="5" fill="#1677FF"/><text x="732.0" y="236.0" text-anchor="end" class="point-label payment-label" fill="#1677FF">0.0万</text>
         <circle class="trend-point redeem-point" cx="54.0" cy="248.0" r="5" fill="#FF8A3D"/><text x="58.0" y="272.0" text-anchor="start" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="167.7" cy="248.0" r="5" fill="#FF8A3D"/><text x="167.7" y="272.0" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="281.3" cy="248.0" r="5" fill="#FF8A3D"/><text x="281.3" y="272.0" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="395.0" cy="248.0" r="5" fill="#FF8A3D"/><text x="395.0" y="272.0" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="508.7" cy="248.0" r="5" fill="#FF8A3D"/><text x="508.7" y="272.0" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="622.3" cy="248.0" r="5" fill="#FF8A3D"/><text x="622.3" y="272.0" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="736.0" cy="248.0" r="5" fill="#FF8A3D"/><text x="732.0" y="272.0" text-anchor="end" class="point-label redeem-label" fill="#FF8A3D">0.0万</text>
-        <text x="54.0" y="288" text-anchor="middle" class="axis-label">10-28</text><text x="167.7" y="288" text-anchor="middle" class="axis-label">10-29</text><text x="281.3" y="288" text-anchor="middle" class="axis-label">10-30</text><text x="395.0" y="288" text-anchor="middle" class="axis-label">10-31</text><text x="508.7" y="288" text-anchor="middle" class="axis-label">11-01</text><text x="622.3" y="288" text-anchor="middle" class="axis-label">11-02</text><text x="736.0" y="288" text-anchor="middle" class="axis-label">11-03</text>
+        <text x="54.0" y="288" text-anchor="middle" class="axis-label">10-30</text><text x="167.7" y="288" text-anchor="middle" class="axis-label">10-31</text><text x="281.3" y="288" text-anchor="middle" class="axis-label">11-01</text><text x="395.0" y="288" text-anchor="middle" class="axis-label">11-02</text><text x="508.7" y="288" text-anchor="middle" class="axis-label">11-03</text><text x="622.3" y="288" text-anchor="middle" class="axis-label">11-04</text><text x="736.0" y="288" text-anchor="middle" class="axis-label">11-05</text>
       </svg>
     </div>
       </article>
@@ -1563,26 +1599,26 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
 
 
     <section class="section" id="operation-score">
-      <div class="section-head"><div><h2>门店经营分</h2><p>中国区全量数据按 POI ID 匹配 · 名称仅用于展示 · 数据截至 2026-11-03</p></div><div class="section-actions"><a class="command-button" href="downloads/经营分_鲁东省区__青岛前海片区_2026-11-03.xlsx" download><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg><span>下载经营分 Excel</span></a></div></div>
+      <div class="section-head"><div><h2>门店经营分</h2><p>中国区全量数据按 POI ID 匹配 · 名称仅用于展示 · 数据截至 2026-11-05</p></div><div class="section-actions"><a class="command-button" href="downloads/经营分_鲁东省区__青岛前海片区_2026-11-05.xlsx" download><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg><span>下载经营分 Excel</span></a></div></div>
       <div class="kpis">
-        <article class="kpi"><span class="kpi-label">平均经营分</span><b class="kpi-value">96.4</b><div class="kpi-foot"><span>满分 120</span><span>仅统计已匹配门店</span></div></article>
+        <article class="kpi"><span class="kpi-label">平均经营分</span><b class="kpi-value">96.9</b><div class="kpi-foot"><span>满分 120</span><span>仅统计已匹配门店</span></div></article>
         <article class="kpi"><span class="kpi-label">经营分覆盖</span><b class="kpi-value">27<small style="font-size:14px"> / 41 家</small></b><div class="kpi-foot"><span>14 家</span><span>未匹配</span></div></article>
-        <article class="kpi"><span class="kpi-label">金冠认证门店</span><b class="kpi-value">20<small style="font-size:14px">家</small></b><div class="kpi-foot"><span>5 家</span><span>近 7 天上涨</span></div></article>
+        <article class="kpi"><span class="kpi-label">金冠认证门店</span><b class="kpi-value">17<small style="font-size:14px">家</small></b><div class="kpi-foot"><span>6 家</span><span>近 7 天上涨</span></div></article>
         <article class="kpi"><span class="kpi-label">风险门店</span><b class="kpi-value">3<small style="font-size:14px">家</small></b><div class="kpi-foot"><span>9 家</span><span>近 7 天下降</span></div></article>
       </div>
       <div class="inventory-summary operation-score-summary">
         <div class="good"><span>高分门店</span><strong>13</strong><small>100–120 分</small></div>
         <div><span>待提升门店</span><strong>11</strong><small>80–99 分</small></div>
         <div class="risk"><span>风险门店</span><strong>3</strong><small>低于 80 分</small></div>
-        <div><span>近 7 天净变化</span><strong>-7</strong><small>分</small></div>
+        <div><span>近 7 天净变化</span><strong>-5</strong><small>分</small></div>
       </div>
       <article class="panel score-dimension-panel">
         <div class="panel-head"><div><h2>待提升项分布</h2><p>同一门店可能同时命中多个维度</p></div></div>
-        <div class="score-dimensions"><span class="score-dimension-tag"><b>拿收益</b><span>26 家</span></span><span class="score-dimension-tag"><b>提质量</b><span>17 家</span></span><span class="score-dimension-tag"><b>稳房源</b><span>17 家</span></span><span class="score-dimension-tag"><b>附加分</b><span>2 家</span></span></div>
+        <div class="score-dimensions"><span class="score-dimension-tag"><b>拿收益</b><span>24 家</span></span><span class="score-dimension-tag"><b>提质量</b><span>17 家</span></span><span class="score-dimension-tag"><b>稳房源</b><span>17 家</span></span><span class="score-dimension-tag"><b>附加分</b><span>3 家</span></span></div>
       </article>
       <article class="panel operation-score-panel">
         <div class="panel-head"><div><h2>门店经营分明细</h2><p>可按门店、POI、片区、认证状态和分数档位筛选，点击业务列排序</p></div></div>
-        <div class="filter-bar operation-score-filter"><input id="operation-score-search" type="search" placeholder="搜索门店或 POI" aria-label="搜索经营分门店"><select id="operation-score-area-filter" aria-label="按片区筛选经营分"><option value="">全部片区</option><option value="青岛前海片区">青岛前海片区</option></select><select id="operation-score-crown-filter" aria-label="按金冠认证筛选"><option value="">全部认证状态</option><option value="已认证">已认证</option><option value="未认证">未认证</option></select><select id="operation-score-tier-filter" aria-label="按经营分档位筛选"><option value="">全部分数档位</option><option value="high">高分</option><option value="improve">待提升</option><option value="risk">风险</option></select><span id="operation-score-result-count" class="filter-count"></span></div><div class="table-scroll operation-score-table-scroll"><table class="operation-score-table"><thead><tr><th>#</th><th>门店 / POI</th><th>一级省区</th><th><button class="sort-trigger operation-score-sort-trigger" type="button" data-sort-key="area" onclick="sortOperationScoreTable('area')" title="按二级片区排序">二级片区 <span class="sort-indicator">↕</span></button></th><th><button class="sort-trigger operation-score-sort-trigger" type="button" data-sort-key="score" onclick="sortOperationScoreTable('score')" title="按经营分排序">经营分 <span class="sort-indicator">↕</span></button></th><th>金冠认证</th><th><button class="sort-trigger operation-score-sort-trigger" type="button" data-sort-key="change" onclick="sortOperationScoreTable('change')" title="按近7天变化排序">近7天变化 <span class="sort-indicator">↕</span></button></th><th>待提升项</th></tr></thead><tbody id="operation-score-table-body"><tr data-score="60.0" data-change="20.0" data-crown="未认证" data-tier="risk" data-area="青岛前海片区" data-search="麗枫酒店(青岛火车站栈桥店) 7478554418535729191"><td class="rank">01</td><td><strong>麗枫酒店(青岛火车站栈桥店)</strong><small> · 7478554418535729191</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value risk">60</td><td><span class="score-status uncertified">未认证</span></td><td class="num positive">+20</td><td class="score-dimension">稳房源,提质量,附加分,拿收益</td></tr><tr data-score="65.0" data-change="-5.0" data-crown="已认证" data-tier="risk" data-area="青岛前海片区" data-search="白玉兰商务酒店（青岛五四广场奥帆中心店） 7278635842548008971"><td class="rank">02</td><td><strong>白玉兰商务酒店（青岛五四广场奥帆中心店）</strong><small> · 7278635842548008971</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value risk">65</td><td><span class="score-status certified">已认证</span></td><td class="num negative">-5</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="70.0" data-change="-10.0" data-crown="已认证" data-tier="risk" data-area="青岛前海片区" data-search="派酒店（青岛台东步行街店） 6852858928619898893"><td class="rank">03</td><td><strong>派酒店（青岛台东步行街店）</strong><small> · 6852858928619898893</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value risk">70</td><td><span class="score-status certified">已认证</span></td><td class="num negative">-10</td><td class="score-dimension">稳房源,附加分,拿收益</td></tr><tr data-score="82.0" data-change="-3.0" data-crown="已认证" data-tier="improve" data-area="青岛前海片区" data-search="希岸·轻雅酒店（青岛北站君峰路地铁站店） 6729852937574664203"><td class="rank">04</td><td><strong>希岸·轻雅酒店（青岛北站君峰路地铁站店）</strong><small>青岛市 · 6729852937574664203</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value improve">82</td><td><span class="score-status certified">已认证</span></td><td class="num negative">-3</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="82.0" data-change="0.0" data-crown="已认证" data-tier="improve" data-area="青岛前海片区" data-search="锦江之星品尚（青岛栈桥火车站酒店） 7274834328603854885"><td class="rank">05</td><td><strong>锦江之星品尚（青岛栈桥火车站酒店）</strong><small>青岛市 · 7274834328603854885</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value improve">82</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="87.0" data-change="0.0" data-crown="已认证" data-tier="improve" data-area="青岛前海片区" data-search="喆啡酒店（青岛北站李村步行街地铁站店） 6725661947091601416"><td class="rank">06</td><td><strong>喆啡酒店（青岛北站李村步行街地铁站店）</strong><small>青岛市 · 6725661947091601416</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value improve">87</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="87.0" data-change="-5.0" data-crown="已认证" data-tier="improve" data-area="青岛前海片区" data-search="白玉兰商务酒店（青岛香港中路奥帆中心小麦岛公园店） 7232891566909327397"><td class="rank">07</td><td><strong>白玉兰商务酒店（青岛香港中路奥帆中心小麦岛公园店）</strong><small>青岛市 · 7232891566909327397</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value improve">87</td><td><span class="score-status certified">已认证</span></td><td class="num negative">-5</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="90.0" data-change="8.0" data-crown="未认证" data-tier="improve" data-area="青岛前海片区" data-search="喆啡酒店（青岛五四广场店） 7232894086988957756"><td class="rank">08</td><td><strong>喆啡酒店（青岛五四广场店）</strong><small>青岛市 · 7232894086988957756</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value improve">90</td><td><span class="score-status uncertified">未认证</span></td><td class="num positive">+8</td><td class="score-dimension">提质量,拿收益</td></tr><tr data-score="90.0" data-change="-5.0" data-crown="已认证" data-tier="improve" data-area="青岛前海片区" data-search="喆啡酒店（青岛北站李村夜市店） 7651426827948591150"><td class="rank">09</td><td><strong>喆啡酒店（青岛北站李村夜市店）</strong><small>青岛市 · 7651426827948591150</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value improve">90</td><td><span class="score-status certified">已认证</span></td><td class="num negative">-5</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="92.0" data-change="0.0" data-crown="已认证" data-tier="improve" data-area="青岛前海片区" data-search="维也纳酒店（青岛胶东国际机场海尔大道店） 6812871199278876687"><td class="rank">10</td><td><strong>维也纳酒店（青岛胶东国际机场海尔大道店）</strong><small> · 6812871199278876687</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value improve">92</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="95.0" data-change="-5.0" data-crown="已认证" data-tier="improve" data-area="青岛前海片区" data-search="7天优品premium（青岛火车站海底隧道店） 6601143928798316551"><td class="rank">11</td><td><strong>7天优品Premium（青岛火车站海底隧道店）</strong><small>青岛市 · 6601143928798316551</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value improve">95</td><td><span class="score-status certified">已认证</span></td><td class="num negative">-5</td><td class="score-dimension">提质量,拿收益</td></tr><tr data-score="95.0" data-change="0.0" data-crown="未认证" data-tier="improve" data-area="青岛前海片区" data-search="喆啡酒店（青岛栈桥火车站店） 7235876836591273984"><td class="rank">12</td><td><strong>喆啡酒店（青岛栈桥火车站店）</strong><small>青岛市 · 7235876836591273984</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value improve">95</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="95.0" data-change="0.0" data-crown="未认证" data-tier="improve" data-area="青岛前海片区" data-search="维也纳酒店(5.0青岛胶东国际机场站前大道店) 7228890176242599936"><td class="rank">13</td><td><strong>维也纳酒店(5.0青岛胶东国际机场站前大道店)</strong><small>青岛市 · 7228890176242599936</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value improve">95</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="97.0" data-change="-5.0" data-crown="已认证" data-tier="improve" data-area="青岛前海片区" data-search="维也纳国际酒店（山东青岛火车站东广场栈桥店） 6781085968133785607"><td class="rank">14</td><td><strong>维也纳国际酒店（山东青岛火车站东广场栈桥店）</strong><small>青岛市 · 6781085968133785607</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value improve">97</td><td><span class="score-status certified">已认证</span></td><td class="num negative">-5</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="100.0" data-change="-10.0" data-crown="已认证" data-tier="high" data-area="青岛前海片区" data-search="希岸deluxe酒店青岛胶东国际机场胶东地铁站店 7109500692364167175"><td class="rank">15</td><td><strong>希岸Deluxe酒店青岛胶东国际机场胶东地铁站店</strong><small>青岛市 · 7109500692364167175</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value high">100</td><td><span class="score-status certified">已认证</span></td><td class="num negative">-10</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="100.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="青岛前海片区" data-search="维也纳酒店（5.0奥帆中心北青岛大学店） 7376243478881945636"><td class="rank">16</td><td><strong>维也纳酒店（5.0奥帆中心北青岛大学店）</strong><small>青岛市 · 7376243478881945636</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value high">100</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">提质量,拿收益</td></tr><tr data-score="100.0" data-change="-5.0" data-crown="已认证" data-tier="high" data-area="青岛前海片区" data-search="麗枫酒店（胶州市政府机场店） 6973404398592460840"><td class="rank">17</td><td><strong>麗枫酒店（胶州市政府机场店）</strong><small>青岛市 · 6973404398592460840</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value high">100</td><td><span class="score-status certified">已认证</span></td><td class="num negative">-5</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="100.0" data-change="0.0" data-crown="未认证" data-tier="high" data-area="青岛前海片区" data-search="麗枫酒店（青岛北站李村夜市店） 7642317032548993039"><td class="rank">18</td><td><strong>麗枫酒店（青岛北站李村夜市店）</strong><small>青岛市 · 7642317032548993039</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value high">100</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="105.0" data-change="5.0" data-crown="已认证" data-tier="high" data-area="青岛前海片区" data-search="希岸酒店（青岛胶东国际机场店） 6804333431967778827"><td class="rank">19</td><td><strong>希岸酒店（青岛胶东国际机场店）</strong><small>青岛市 · 6804333431967778827</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value high">105</td><td><span class="score-status certified">已认证</span></td><td class="num positive">+5</td><td class="score-dimension">拿收益</td></tr><tr data-score="110.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="青岛前海片区" data-search="7天优品（青岛五四广场芝泉路地铁站店） 7234789495265036303"><td class="rank">20</td><td><strong>7天优品（青岛五四广场芝泉路地铁站店）</strong><small>青岛市 · 7234789495265036303</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value high">110</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="110.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="青岛前海片区" data-search="喆啡酒店（青岛会展中心店） 7113409636794894347"><td class="rank">21</td><td><strong>喆啡酒店（青岛会展中心店）</strong><small>青岛市 · 7113409636794894347</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value high">110</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">拿收益</td></tr><tr data-score="110.0" data-change="3.0" data-crown="已认证" data-tier="high" data-area="青岛前海片区" data-search="白玉兰酒店（青岛北站君峰路地铁站店） 7598050158580140068"><td class="rank">22</td><td><strong>白玉兰酒店（青岛北站君峰路地铁站店）</strong><small>青岛市 · 7598050158580140068</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value high">110</td><td><span class="score-status certified">已认证</span></td><td class="num positive">+3</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="115.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="青岛前海片区" data-search="7天智选酒店（青岛北站沧安路地铁站店） 7637053277258909759"><td class="rank">23</td><td><strong>7天智选酒店（青岛北站沧安路地铁站店）</strong><small>青岛市 · 7637053277258909759</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value high">115</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">拿收益</td></tr><tr data-score="115.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="青岛前海片区" data-search="喆啡酒店（青岛胶东国际机场胶东地铁站店） 6687471750382454787"><td class="rank">24</td><td><strong>喆啡酒店（青岛胶东国际机场胶东地铁站店）</strong><small>青岛市 · 6687471750382454787</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value high">115</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">拿收益</td></tr><tr data-score="115.0" data-change="0.0" data-crown="未认证" data-tier="high" data-area="青岛前海片区" data-search="白玉兰酒店（青岛火车站栈桥店） 7591615886084016168"><td class="rank">25</td><td><strong>白玉兰酒店（青岛火车站栈桥店）</strong><small>青岛市 · 7591615886084016168</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value high">115</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">拿收益</td></tr><tr data-score="115.0" data-change="10.0" data-crown="未认证" data-tier="high" data-area="青岛前海片区" data-search="维也纳3好酒店（山东青岛胶东国际机场空港小镇店） 6776917618101143563"><td class="rank">26</td><td><strong>维也纳3好酒店（山东青岛胶东国际机场空港小镇店）</strong><small>青岛市 · 6776917618101143563</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value high">115</td><td><span class="score-status uncertified">未认证</span></td><td class="num positive">+10</td><td class="score-dimension">拿收益</td></tr><tr data-score="120.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="青岛前海片区" data-search="维也纳国际酒店（5.0版青岛李沧和悦店） 7243656889556043780"><td class="rank">27</td><td><strong>维也纳国际酒店（5.0版青岛李沧和悦店）</strong><small>青岛市 · 7243656889556043780</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value high">120</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">无</td></tr></tbody></table></div>
+        <div class="filter-bar operation-score-filter"><input id="operation-score-search" type="search" placeholder="搜索门店或 POI" aria-label="搜索经营分门店"><select id="operation-score-area-filter" aria-label="按片区筛选经营分"><option value="">全部片区</option><option value="青岛前海片区">青岛前海片区</option></select><select id="operation-score-crown-filter" aria-label="按金冠认证筛选"><option value="">全部认证状态</option><option value="已认证">已认证</option><option value="未认证">未认证</option></select><select id="operation-score-tier-filter" aria-label="按经营分档位筛选"><option value="">全部分数档位</option><option value="high">高分</option><option value="improve">待提升</option><option value="risk">风险</option></select><span id="operation-score-result-count" class="filter-count"></span></div><div class="table-scroll operation-score-table-scroll"><table class="operation-score-table"><thead><tr><th>#</th><th>门店 / POI</th><th>一级省区</th><th><button class="sort-trigger operation-score-sort-trigger" type="button" data-sort-key="area" onclick="sortOperationScoreTable('area')" title="按二级片区排序">二级片区 <span class="sort-indicator">↕</span></button></th><th><button class="sort-trigger operation-score-sort-trigger" type="button" data-sort-key="score" onclick="sortOperationScoreTable('score')" title="按经营分排序">经营分 <span class="sort-indicator">↕</span></button></th><th>金冠认证</th><th><button class="sort-trigger operation-score-sort-trigger" type="button" data-sort-key="change" onclick="sortOperationScoreTable('change')" title="按近7天变化排序">近7天变化 <span class="sort-indicator">↕</span></button></th><th>待提升项</th></tr></thead><tbody id="operation-score-table-body"><tr data-score="60.0" data-change="20.0" data-crown="未认证" data-tier="risk" data-area="青岛前海片区" data-search="麗枫酒店(青岛火车站栈桥店) 7478554418535729191"><td class="rank">01</td><td><strong>麗枫酒店(青岛火车站栈桥店)</strong><small> · 7478554418535729191</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value risk">60</td><td><span class="score-status uncertified">未认证</span></td><td class="num positive">+20</td><td class="score-dimension">稳房源,提质量,附加分,拿收益</td></tr><tr data-score="62.0" data-change="-3.0" data-crown="未认证" data-tier="risk" data-area="青岛前海片区" data-search="白玉兰商务酒店（青岛五四广场奥帆中心店） 7278635842548008971"><td class="rank">02</td><td><strong>白玉兰商务酒店（青岛五四广场奥帆中心店）</strong><small> · 7278635842548008971</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value risk">62</td><td><span class="score-status uncertified">未认证</span></td><td class="num negative">-3</td><td class="score-dimension">稳房源,提质量,附加分,拿收益</td></tr><tr data-score="70.0" data-change="-10.0" data-crown="未认证" data-tier="risk" data-area="青岛前海片区" data-search="派酒店（青岛台东步行街店） 6852858928619898893"><td class="rank">03</td><td><strong>派酒店（青岛台东步行街店）</strong><small> · 6852858928619898893</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value risk">70</td><td><span class="score-status uncertified">未认证</span></td><td class="num negative">-10</td><td class="score-dimension">稳房源,附加分,拿收益</td></tr><tr data-score="82.0" data-change="-5.0" data-crown="已认证" data-tier="improve" data-area="青岛前海片区" data-search="锦江之星品尚（青岛栈桥火车站酒店） 7274834328603854885"><td class="rank">04</td><td><strong>锦江之星品尚（青岛栈桥火车站酒店）</strong><small>青岛市 · 7274834328603854885</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value improve">82</td><td><span class="score-status certified">已认证</span></td><td class="num negative">-5</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="87.0" data-change="0.0" data-crown="已认证" data-tier="improve" data-area="青岛前海片区" data-search="喆啡酒店（青岛北站李村步行街地铁站店） 6725661947091601416"><td class="rank">05</td><td><strong>喆啡酒店（青岛北站李村步行街地铁站店）</strong><small>青岛市 · 6725661947091601416</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value improve">87</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="90.0" data-change="0.0" data-crown="未认证" data-tier="improve" data-area="青岛前海片区" data-search="喆啡酒店（青岛五四广场店） 7232894086988957756"><td class="rank">06</td><td><strong>喆啡酒店（青岛五四广场店）</strong><small>青岛市 · 7232894086988957756</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value improve">90</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">提质量,拿收益</td></tr><tr data-score="90.0" data-change="5.0" data-crown="未认证" data-tier="improve" data-area="青岛前海片区" data-search="希岸·轻雅酒店（青岛北站君峰路地铁站店） 6729852937574664203"><td class="rank">07</td><td><strong>希岸·轻雅酒店（青岛北站君峰路地铁站店）</strong><small>青岛市 · 6729852937574664203</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value improve">90</td><td><span class="score-status uncertified">未认证</span></td><td class="num positive">+5</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="92.0" data-change="0.0" data-crown="已认证" data-tier="improve" data-area="青岛前海片区" data-search="白玉兰商务酒店（青岛香港中路奥帆中心小麦岛公园店） 7232891566909327397"><td class="rank">08</td><td><strong>白玉兰商务酒店（青岛香港中路奥帆中心小麦岛公园店）</strong><small>青岛市 · 7232891566909327397</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value improve">92</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="92.0" data-change="-10.0" data-crown="已认证" data-tier="improve" data-area="青岛前海片区" data-search="维也纳国际酒店（山东青岛火车站东广场栈桥店） 6781085968133785607"><td class="rank">09</td><td><strong>维也纳国际酒店（山东青岛火车站东广场栈桥店）</strong><small>青岛市 · 6781085968133785607</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value improve">92</td><td><span class="score-status certified">已认证</span></td><td class="num negative">-10</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="92.0" data-change="0.0" data-crown="已认证" data-tier="improve" data-area="青岛前海片区" data-search="维也纳酒店（青岛胶东国际机场海尔大道店） 6812871199278876687"><td class="rank">10</td><td><strong>维也纳酒店（青岛胶东国际机场海尔大道店）</strong><small> · 6812871199278876687</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value improve">92</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="95.0" data-change="-5.0" data-crown="已认证" data-tier="improve" data-area="青岛前海片区" data-search="7天优品premium（青岛火车站海底隧道店） 6601143928798316551"><td class="rank">11</td><td><strong>7天优品Premium（青岛火车站海底隧道店）</strong><small>青岛市 · 6601143928798316551</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value improve">95</td><td><span class="score-status certified">已认证</span></td><td class="num negative">-5</td><td class="score-dimension">提质量,拿收益</td></tr><tr data-score="95.0" data-change="0.0" data-crown="已认证" data-tier="improve" data-area="青岛前海片区" data-search="喆啡酒店（青岛北站李村夜市店） 7651426827948591150"><td class="rank">12</td><td><strong>喆啡酒店（青岛北站李村夜市店）</strong><small>青岛市 · 7651426827948591150</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value improve">95</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="95.0" data-change="-5.0" data-crown="未认证" data-tier="improve" data-area="青岛前海片区" data-search="喆啡酒店（青岛栈桥火车站店） 7235876836591273984"><td class="rank">13</td><td><strong>喆啡酒店（青岛栈桥火车站店）</strong><small>青岛市 · 7235876836591273984</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value improve">95</td><td><span class="score-status uncertified">未认证</span></td><td class="num negative">-5</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="95.0" data-change="0.0" data-crown="已认证" data-tier="improve" data-area="青岛前海片区" data-search="维也纳酒店(5.0青岛胶东国际机场站前大道店) 7228890176242599936"><td class="rank">14</td><td><strong>维也纳酒店(5.0青岛胶东国际机场站前大道店)</strong><small>青岛市 · 7228890176242599936</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value improve">95</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="100.0" data-change="-10.0" data-crown="已认证" data-tier="high" data-area="青岛前海片区" data-search="希岸deluxe酒店青岛胶东国际机场胶东地铁站店 7109500692364167175"><td class="rank">15</td><td><strong>希岸Deluxe酒店青岛胶东国际机场胶东地铁站店</strong><small>青岛市 · 7109500692364167175</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value high">100</td><td><span class="score-status certified">已认证</span></td><td class="num negative">-10</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="100.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="青岛前海片区" data-search="维也纳酒店（5.0奥帆中心北青岛大学店） 7376243478881945636"><td class="rank">16</td><td><strong>维也纳酒店（5.0奥帆中心北青岛大学店）</strong><small>青岛市 · 7376243478881945636</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value high">100</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">提质量,拿收益</td></tr><tr data-score="100.0" data-change="-5.0" data-crown="已认证" data-tier="high" data-area="青岛前海片区" data-search="麗枫酒店（胶州市政府机场店） 6973404398592460840"><td class="rank">17</td><td><strong>麗枫酒店（胶州市政府机场店）</strong><small>青岛市 · 6973404398592460840</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value high">100</td><td><span class="score-status certified">已认证</span></td><td class="num negative">-5</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="100.0" data-change="0.0" data-crown="未认证" data-tier="high" data-area="青岛前海片区" data-search="麗枫酒店（青岛北站李村夜市店） 7642317032548993039"><td class="rank">18</td><td><strong>麗枫酒店（青岛北站李村夜市店）</strong><small>青岛市 · 7642317032548993039</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value high">100</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="105.0" data-change="5.0" data-crown="已认证" data-tier="high" data-area="青岛前海片区" data-search="希岸酒店（青岛胶东国际机场店） 6804333431967778827"><td class="rank">19</td><td><strong>希岸酒店（青岛胶东国际机场店）</strong><small>青岛市 · 6804333431967778827</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value high">105</td><td><span class="score-status certified">已认证</span></td><td class="num positive">+5</td><td class="score-dimension">拿收益</td></tr><tr data-score="105.0" data-change="-2.0" data-crown="已认证" data-tier="high" data-area="青岛前海片区" data-search="白玉兰酒店（青岛北站君峰路地铁站店） 7598050158580140068"><td class="rank">20</td><td><strong>白玉兰酒店（青岛北站君峰路地铁站店）</strong><small>青岛市 · 7598050158580140068</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value high">105</td><td><span class="score-status certified">已认证</span></td><td class="num negative">-2</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="110.0" data-change="0.0" data-crown="未认证" data-tier="high" data-area="青岛前海片区" data-search="喆啡酒店（青岛会展中心店） 7113409636794894347"><td class="rank">21</td><td><strong>喆啡酒店（青岛会展中心店）</strong><small>青岛市 · 7113409636794894347</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value high">110</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">拿收益</td></tr><tr data-score="115.0" data-change="5.0" data-crown="已认证" data-tier="high" data-area="青岛前海片区" data-search="7天优品（青岛五四广场芝泉路地铁站店） 7234789495265036303"><td class="rank">22</td><td><strong>7天优品（青岛五四广场芝泉路地铁站店）</strong><small>青岛市 · 7234789495265036303</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value high">115</td><td><span class="score-status certified">已认证</span></td><td class="num positive">+5</td><td class="score-dimension">稳房源</td></tr><tr data-score="115.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="青岛前海片区" data-search="7天智选酒店（青岛北站沧安路地铁站店） 7637053277258909759"><td class="rank">23</td><td><strong>7天智选酒店（青岛北站沧安路地铁站店）</strong><small>青岛市 · 7637053277258909759</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value high">115</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">拿收益</td></tr><tr data-score="115.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="青岛前海片区" data-search="喆啡酒店（青岛胶东国际机场胶东地铁站店） 6687471750382454787"><td class="rank">24</td><td><strong>喆啡酒店（青岛胶东国际机场胶东地铁站店）</strong><small>青岛市 · 6687471750382454787</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value high">115</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">拿收益</td></tr><tr data-score="115.0" data-change="10.0" data-crown="未认证" data-tier="high" data-area="青岛前海片区" data-search="维也纳3好酒店（山东青岛胶东国际机场空港小镇店） 6776917618101143563"><td class="rank">25</td><td><strong>维也纳3好酒店（山东青岛胶东国际机场空港小镇店）</strong><small>青岛市 · 6776917618101143563</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value high">115</td><td><span class="score-status uncertified">未认证</span></td><td class="num positive">+10</td><td class="score-dimension">拿收益</td></tr><tr data-score="120.0" data-change="5.0" data-crown="未认证" data-tier="high" data-area="青岛前海片区" data-search="白玉兰酒店（青岛火车站栈桥店） 7591615886084016168"><td class="rank">26</td><td><strong>白玉兰酒店（青岛火车站栈桥店）</strong><small>青岛市 · 7591615886084016168</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value high">120</td><td><span class="score-status uncertified">未认证</span></td><td class="num positive">+5</td><td class="score-dimension">无</td></tr><tr data-score="120.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="青岛前海片区" data-search="维也纳国际酒店（5.0版青岛李沧和悦店） 7243656889556043780"><td class="rank">27</td><td><strong>维也纳国际酒店（5.0版青岛李沧和悦店）</strong><small>青岛市 · 7243656889556043780</small></td><td>鲁东省区</td><td>青岛前海片区</td><td class="num score-value high">120</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">无</td></tr></tbody></table></div>
       </article>
     </section>
 
@@ -1592,27 +1628,28 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
 
     <section class="section" id="merchant-live">
       <div class="section-head"><div><h2>商家自播</h2><p>商家官号 · 近 7 日对比前 7 日 · 数据来源：生意经</p></div></div>
+      <div class="kpis" id="store-live-coverage"><article class="kpi" data-live-metric="total"><span class="kpi-label">总门店</span><b class="kpi-value">41<small style="font-size:14px">家</small></b><div class="kpi-foot">当前组织名单 · POI 去重</div></article><article class="kpi" data-live-metric="live"><span class="kpi-label">已开播门店</span><b class="kpi-value">13<small style="font-size:14px">家</small></b><div class="kpi-foot">周期内至少开播一次</div></article><article class="kpi" data-live-metric="not-live"><span class="kpi-label">未开播门店</span><b class="kpi-value">28<small style="font-size:14px">家</small></b><div class="kpi-foot">未匹配到本期开播记录</div></article><article class="kpi" data-live-metric="rate"><span class="kpi-label">门店开播率</span><b class="kpi-value">31.7%<small style="font-size:14px"></small></b><div class="kpi-foot">已开播门店 ÷ 总门店</div></article></div><p style="font-size:12px;color:var(--muted);line-height:1.7">统计周期：2026-10-30 至 2026-11-05。商家官号直播场次或直播时长大于 0 计为开播，按门店 POI 去重；账号所属门店名称仅接受唯一 POI 匹配。未开播表示未匹配到本期开播记录，未匹配账号可能影响统计结果。</p><article class="panel" style="margin:16px 0"><div class="panel-head"><div><h2>各片区门店开播率</h2><p>与当前省区、片区选择一致</p></div></div><div style="overflow-x:auto"><table id="store-live-area-summary"><thead><tr><th>片区</th><th>总门店</th><th>已开播</th><th>未开播*</th><th>开播率</th></tr></thead><tbody><tr><td>青岛前海片区</td><td>41</td><td>13</td><td>28</td><td>31.7%</td></tr></tbody></table></div></article>
       <div class="kpis">
-        <article class="kpi"><span class="kpi-label">直播成交金额</span><b class="kpi-value">5,678</b><div class="kpi-foot"><span class="positive">+227.5%</span><span>较前 7 日 1,734</span></div></article>
-        <article class="kpi"><span class="kpi-label">直播场次</span><b class="kpi-value">42<small style="font-size:14px">场</small></b><div class="kpi-foot"><span class="positive">+75.0%</span><span>较前 7 日 24场</span></div></article>
-        <article class="kpi"><span class="kpi-label">直播时长</span><b class="kpi-value">56.1h</b><div class="kpi-foot"><span class="positive">+28.5%</span><span>较前 7 日 43.6h</span></div></article>
-        <article class="kpi"><span class="kpi-label">开播账号</span><b class="kpi-value">8<small style="font-size:14px">个</small></b><div class="kpi-foot"><span class="positive">+4个</span><span>较前 7 日</span></div></article>
+        <article class="kpi"><span class="kpi-label">直播成交金额</span><b class="kpi-value">8,463</b><div class="kpi-foot"><span class="positive">+176.8%</span><span>较前 7 日 3,057</span></div></article>
+        <article class="kpi"><span class="kpi-label">直播场次</span><b class="kpi-value">74<small style="font-size:14px">场</small></b><div class="kpi-foot"><span class="positive">+164.3%</span><span>较前 7 日 28场</span></div></article>
+        <article class="kpi"><span class="kpi-label">直播时长</span><b class="kpi-value">92.0h</b><div class="kpi-foot"><span class="positive">+96.7%</span><span>较前 7 日 46.8h</span></div></article>
+        <article class="kpi"><span class="kpi-label">开播账号</span><b class="kpi-value">13<small style="font-size:14px">个</small></b><div class="kpi-foot"><span class="positive">+8个</span><span>较前 7 日</span></div></article>
       </div>
       <article class="panel" style="margin-top:16px">
-        <div class="panel-head trend-panel-head"><div class="trend-heading"><h2>直播成交与时长每日趋势</h2><span class="trend-range">10-28–11-03</span></div></div>
+        <div class="panel-head trend-panel-head"><div class="trend-heading"><h2>直播成交与时长每日趋势</h2><span class="trend-range">10-30–11-05</span></div></div>
         <div class="chart-scroll merchant-trend-scroll">
       <div class="merchant-trend-canvas">
         <svg class="chart-svg merchant-amount-chart" viewBox="0 0 760 245"
              role="img" aria-label="商家官号直播成交金额每日趋势，单位万元">
-          <line x1="54" y1="34.0" x2="736" y2="34.0" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="122.5" x2="736" y2="122.5" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="211.0" x2="736" y2="211.0" stroke="#ECEEF3" stroke-width="1"/><text x="44" y="38.0" text-anchor="end" class="axis-label">0.2</text><text x="44" y="126.5" text-anchor="end" class="axis-label">0.1</text><text x="44" y="215.0" text-anchor="end" class="axis-label">0.0</text>
-          <path d="M54.0 85.7 L167.7 169.6 L281.3 149.3 L395.0 76.2 L508.7 190.3 L622.3 150.0 L736.0 34.0" fill="none" stroke="#8B6DFF"
+          <line x1="54" y1="34.0" x2="736" y2="34.0" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="122.5" x2="736" y2="122.5" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="211.0" x2="736" y2="211.0" stroke="#ECEEF3" stroke-width="1"/><text x="44" y="38.0" text-anchor="end" class="axis-label">0.4</text><text x="44" y="126.5" text-anchor="end" class="axis-label">0.2</text><text x="44" y="215.0" text-anchor="end" class="axis-label">0.0</text>
+          <path d="M54.0 183.3 L167.7 150.4 L281.3 201.7 L395.0 183.6 L508.7 131.5 L622.3 176.1 L736.0 34.0" fill="none" stroke="#8B6DFF"
                 stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle class="merchant-live-point" cx="54.0" cy="85.7" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="58.0" y="73.7" text-anchor="start" fill="#8B6DFF">0.1万</text><circle class="merchant-live-point" cx="167.7" cy="169.6" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="167.7" y="157.6" text-anchor="middle" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="281.3" cy="149.3" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="281.3" y="137.3" text-anchor="middle" fill="#8B6DFF">0.1万</text><circle class="merchant-live-point" cx="395.0" cy="76.2" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="395.0" y="64.2" text-anchor="middle" fill="#8B6DFF">0.1万</text><circle class="merchant-live-point" cx="508.7" cy="190.3" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="508.7" y="178.3" text-anchor="middle" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="622.3" cy="150.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="622.3" y="138.0" text-anchor="middle" fill="#8B6DFF">0.1万</text><circle class="merchant-live-point" cx="736.0" cy="34.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="732.0" y="22.0" text-anchor="end" fill="#8B6DFF">0.2万</text>
+          <circle class="merchant-live-point" cx="54.0" cy="183.3" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="58.0" y="171.3" text-anchor="start" fill="#8B6DFF">0.1万</text><circle class="merchant-live-point" cx="167.7" cy="150.4" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="167.7" y="138.4" text-anchor="middle" fill="#8B6DFF">0.1万</text><circle class="merchant-live-point" cx="281.3" cy="201.7" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="281.3" y="189.7" text-anchor="middle" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="395.0" cy="183.6" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="395.0" y="171.6" text-anchor="middle" fill="#8B6DFF">0.1万</text><circle class="merchant-live-point" cx="508.7" cy="131.5" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="508.7" y="119.5" text-anchor="middle" fill="#8B6DFF">0.2万</text><circle class="merchant-live-point" cx="622.3" cy="176.1" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="622.3" y="164.1" text-anchor="middle" fill="#8B6DFF">0.1万</text><circle class="merchant-live-point" cx="736.0" cy="34.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="732.0" y="22.0" text-anchor="end" fill="#8B6DFF">0.4万</text>
         </svg>
         <div class="merchant-subchart-title">每日直播时长 <span>单位：小时</span></div>
         <svg class="chart-svg merchant-duration-chart" viewBox="0 0 760 155"
              role="img" aria-label="商家官号每日直播时长，单位小时">
-          <line x1="54" y1="28.0" x2="736" y2="28.0" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="121.0" x2="736" y2="121.0" stroke="#ECEEF3" stroke-width="1"/><rect class="merchant-duration-bar" x="31.6" y="93.7" width="44.8" height="27.3" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="54.0" y="86.7" text-anchor="middle" fill="#00A7A0">3.9h</text><rect class="merchant-duration-bar" x="145.3" y="77.5" width="44.8" height="43.5" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="167.7" y="70.5" text-anchor="middle" fill="#00A7A0">6.2h</text><rect class="merchant-duration-bar" x="258.9" y="58.4" width="44.8" height="62.6" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="281.3" y="51.4" text-anchor="middle" fill="#00A7A0">9.0h</text><rect class="merchant-duration-bar" x="372.6" y="62.8" width="44.8" height="58.2" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="395.0" y="55.8" text-anchor="middle" fill="#00A7A0">8.4h</text><rect class="merchant-duration-bar" x="486.3" y="70.0" width="44.8" height="51.0" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="508.7" y="63.0" text-anchor="middle" fill="#00A7A0">7.3h</text><rect class="merchant-duration-bar" x="599.9" y="65.5" width="44.8" height="55.5" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="622.3" y="58.5" text-anchor="middle" fill="#00A7A0">8.0h</text><rect class="merchant-duration-bar" x="713.6" y="28.0" width="44.8" height="93.0" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="736.0" y="21.0" text-anchor="middle" fill="#00A7A0">13.3h</text><text x="54.0" y="145" text-anchor="middle" class="axis-label">10-28</text><text x="167.7" y="145" text-anchor="middle" class="axis-label">10-29</text><text x="281.3" y="145" text-anchor="middle" class="axis-label">10-30</text><text x="395.0" y="145" text-anchor="middle" class="axis-label">10-31</text><text x="508.7" y="145" text-anchor="middle" class="axis-label">11-01</text><text x="622.3" y="145" text-anchor="middle" class="axis-label">11-02</text><text x="736.0" y="145" text-anchor="middle" class="axis-label">11-03</text>
+          <line x1="54" y1="28.0" x2="736" y2="28.0" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="121.0" x2="736" y2="121.0" stroke="#ECEEF3" stroke-width="1"/><rect class="merchant-duration-bar" x="31.6" y="85.9" width="44.8" height="35.1" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="54.0" y="78.9" text-anchor="middle" fill="#00A7A0">9.0h</text><rect class="merchant-duration-bar" x="145.3" y="88.4" width="44.8" height="32.6" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="167.7" y="81.4" text-anchor="middle" fill="#00A7A0">8.4h</text><rect class="merchant-duration-bar" x="258.9" y="92.4" width="44.8" height="28.6" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="281.3" y="85.4" text-anchor="middle" fill="#00A7A0">7.3h</text><rect class="merchant-duration-bar" x="372.6" y="89.9" width="44.8" height="31.1" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="395.0" y="82.9" text-anchor="middle" fill="#00A7A0">8.0h</text><rect class="merchant-duration-bar" x="486.3" y="68.9" width="44.8" height="52.1" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="508.7" y="61.9" text-anchor="middle" fill="#00A7A0">13.3h</text><rect class="merchant-duration-bar" x="599.9" y="28.0" width="44.8" height="93.0" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="622.3" y="21.0" text-anchor="middle" fill="#00A7A0">23.8h</text><rect class="merchant-duration-bar" x="713.6" y="34.2" width="44.8" height="86.8" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="736.0" y="27.2" text-anchor="middle" fill="#00A7A0">22.2h</text><text x="54.0" y="145" text-anchor="middle" class="axis-label">10-30</text><text x="167.7" y="145" text-anchor="middle" class="axis-label">10-31</text><text x="281.3" y="145" text-anchor="middle" class="axis-label">11-01</text><text x="395.0" y="145" text-anchor="middle" class="axis-label">11-02</text><text x="508.7" y="145" text-anchor="middle" class="axis-label">11-03</text><text x="622.3" y="145" text-anchor="middle" class="axis-label">11-04</text><text x="736.0" y="145" text-anchor="middle" class="axis-label">11-05</text>
         </svg>
       </div>
     </div>
@@ -1643,18 +1680,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <tbody id="merchant-city-body">
         <tr data-city-name="青岛市"
             data-city-status="有开播"
-            data-city-live-amount="5678.400000000001"
-            data-city-live-sessions="42.0"
-            data-city-live-hours="56.10916666666666"
-            data-city-account-count="11.0"
-            data-city-live-account-count="8.0">
+            data-city-live-amount="8462.600000000002"
+            data-city-live-sessions="74.0"
+            data-city-live-hours="91.99722222222223"
+            data-city-account-count="15.0"
+            data-city-live-account-count="13.0">
           <td class="rank">01</td>
           <td><strong>青岛市</strong><small><span class="live-status 有开播">有开播</span></small></td>
-          <td class="num">5,678</td>
-          <td class="num">42</td>
-          <td class="num">56.1h</td>
-          <td class="num">11</td>
-          <td class="num">8</td>
+          <td class="num">8,463</td>
+          <td class="num">74</td>
+          <td class="num">92.0h</td>
+          <td class="num">15</td>
+          <td class="num">13</td>
         </tr>
         </tbody>
         </table>
@@ -1688,6 +1725,30 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
             <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-redeem-amount" onclick="sortMerchantAccountTable('account-redeem-amount')" title="按总核销金额排序">总核销金额 <span class="sort-indicator">↕</span></button></th>
           </tr></thead>
           <tbody id="merchant-account-body">
+        <tr data-account-name="维也纳国际酒店5.0(青岛北站店)官方号"
+            data-account-id="97140100260"
+            data-account-city="青岛市"
+            data-account-store="维也纳国际酒店(青岛北站店)"
+            data-account-location="青岛市 维也纳国际酒店(青岛北站店)"
+            data-account-province="鲁东省区"
+            data-account-area="青岛前海片区"
+            data-account-status="有直播"
+            data-account-live-amount="3085.6"
+            data-account-live-sessions="8.0"
+            data-account-live-hours="13.913611111111113"
+            data-account-total-amount="3085.6"
+            data-account-redeem-amount="228.0">
+          <td class="rank">01</td>
+          <td><strong>维也纳国际酒店5.0(青岛北站店)官方号</strong><small>97140100260 · <span class="live-status 有直播">有直播</span></small></td>
+          <td>青岛市<small>维也纳国际酒店(青岛北站店)</small></td>
+          <td>鲁东省区<small>青岛前海片区</small></td>
+          <td class="num">3,086</td>
+          <td class="num">8</td>
+          <td class="num">13.9h</td>
+          <td class="num">3,086</td>
+          <td class="num">228</td>
+        </tr>
+
         <tr data-account-name="喆啡酒店(青岛五四广场店)专用号"
             data-account-id="70639462909"
             data-account-city="青岛市"
@@ -1696,19 +1757,19 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
             data-account-province="鲁东省区"
             data-account-area="青岛前海片区"
             data-account-status="有直播"
-            data-account-live-amount="3753.2"
-            data-account-live-sessions="15.0"
-            data-account-live-hours="14.265833333333333"
-            data-account-total-amount="3753.2"
+            data-account-live-amount="2440.2"
+            data-account-live-sessions="14.0"
+            data-account-live-hours="14.57472222222222"
+            data-account-total-amount="2440.2"
             data-account-redeem-amount="0.0">
-          <td class="rank">01</td>
+          <td class="rank">02</td>
           <td><strong>喆啡酒店(青岛五四广场店)专用号</strong><small>70639462909 · <span class="live-status 有直播">有直播</span></small></td>
           <td>青岛市<small>喆啡酒店(青岛五四广场店)</small></td>
           <td>鲁东省区<small>青岛前海片区</small></td>
-          <td class="num">3,753</td>
-          <td class="num">15</td>
-          <td class="num">14.3h</td>
-          <td class="num">3,753</td>
+          <td class="num">2,440</td>
+          <td class="num">14</td>
+          <td class="num">14.6h</td>
+          <td class="num">2,440</td>
           <td class="num">0</td>
         </tr>
 
@@ -1720,19 +1781,19 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
             data-account-province="鲁东省区"
             data-account-area="青岛前海片区"
             data-account-status="有直播"
-            data-account-live-amount="969.2"
-            data-account-live-sessions="4.0"
-            data-account-live-hours="6.014166666666667"
-            data-account-total-amount="969.2"
+            data-account-live-amount="1811.8000000000002"
+            data-account-live-sessions="7.0"
+            data-account-live-hours="9.087222222222223"
+            data-account-total-amount="1811.8000000000002"
             data-account-redeem-amount="0.0">
-          <td class="rank">02</td>
+          <td class="rank">03</td>
           <td><strong>喆啡酒店(青岛栈桥火车站店)专用号</strong><small>zf1856269321 · <span class="live-status 有直播">有直播</span></small></td>
           <td>青岛市<small>喆啡酒店(青岛栈桥火车站店)</small></td>
           <td>鲁东省区<small>青岛前海片区</small></td>
-          <td class="num">969</td>
-          <td class="num">4</td>
-          <td class="num">6.0h</td>
-          <td class="num">969</td>
+          <td class="num">1,812</td>
+          <td class="num">7</td>
+          <td class="num">9.1h</td>
+          <td class="num">1,812</td>
           <td class="num">0</td>
         </tr>
 
@@ -1744,68 +1805,20 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
             data-account-province="鲁东省区"
             data-account-area="青岛前海片区"
             data-account-status="有直播"
-            data-account-live-amount="936.0"
-            data-account-live-sessions="3.0"
-            data-account-live-hours="3.243055555555556"
-            data-account-total-amount="936.0"
+            data-account-live-amount="1125.0"
+            data-account-live-sessions="9.0"
+            data-account-live-hours="6.976666666666668"
+            data-account-total-amount="1125.0"
             data-account-redeem-amount="0.0">
-          <td class="rank">03</td>
+          <td class="rank">04</td>
           <td><strong>维也纳酒店（5.0奥帆中心北青岛大学店）</strong><small>HeheNeverStop · <span class="live-status 有直播">有直播</span></small></td>
           <td>青岛市<small>青岛维也纳酒店(5.0青岛大学奥帆中心北店)</small></td>
           <td>鲁东省区<small>青岛前海片区</small></td>
-          <td class="num">936</td>
-          <td class="num">3</td>
-          <td class="num">3.2h</td>
-          <td class="num">936</td>
+          <td class="num">1,125</td>
+          <td class="num">9</td>
+          <td class="num">7.0h</td>
+          <td class="num">1,125</td>
           <td class="num">0</td>
-        </tr>
-
-        <tr data-account-name="维也纳国际酒店5.0(青岛北站店)官方号"
-            data-account-id="97140100260"
-            data-account-city="青岛市"
-            data-account-store="维也纳国际酒店(青岛北站店)"
-            data-account-location="青岛市 维也纳国际酒店(青岛北站店)"
-            data-account-province="鲁东省区"
-            data-account-area="青岛前海片区"
-            data-account-status="有直播"
-            data-account-live-amount="20.0"
-            data-account-live-sessions="3.0"
-            data-account-live-hours="6.476111111111111"
-            data-account-total-amount="20.0"
-            data-account-redeem-amount="228.0">
-          <td class="rank">04</td>
-          <td><strong>维也纳国际酒店5.0(青岛北站店)官方号</strong><small>97140100260 · <span class="live-status 有直播">有直播</span></small></td>
-          <td>青岛市<small>维也纳国际酒店(青岛北站店)</small></td>
-          <td>鲁东省区<small>青岛前海片区</small></td>
-          <td class="num">20</td>
-          <td class="num">3</td>
-          <td class="num">6.5h</td>
-          <td class="num">20</td>
-          <td class="num">228</td>
-        </tr>
-
-        <tr data-account-name="喆啡酒店（青岛北站李村夜市店）"
-            data-account-id="96872109479"
-            data-account-city="青岛市"
-            data-account-store="喆啡酒店(青岛北站李村夜市店)"
-            data-account-location="青岛市 喆啡酒店(青岛北站李村夜市店)"
-            data-account-province="鲁东省区"
-            data-account-area="青岛前海片区"
-            data-account-status="有直播"
-            data-account-live-amount="0.0"
-            data-account-live-sessions="8.0"
-            data-account-live-hours="8.676111111111112"
-            data-account-total-amount="0.0"
-            data-account-redeem-amount="6.6">
-          <td class="rank">05</td>
-          <td><strong>喆啡酒店（青岛北站李村夜市店）</strong><small>96872109479 · <span class="live-status 有直播">有直播</span></small></td>
-          <td>青岛市<small>喆啡酒店(青岛北站李村夜市店)</small></td>
-          <td>鲁东省区<small>青岛前海片区</small></td>
-          <td class="num">0</td>
-          <td class="num">8</td>
-          <td class="num">8.7h</td>
-          <td class="num">0</td>
-          <td class="num">7</td>
         </tr>
 
         <tr data-account-name="希岸Deluxe酒店青岛胶东国际机场店"
@@ -1817,41 +1830,41 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
             data-account-area="青岛前海片区"
             data-account-status="有直播"
             data-account-live-amount="0.0"
-            data-account-live-sessions="4.0"
-            data-account-live-hours="11.002500000000001"
+            data-account-live-sessions="9.0"
+            data-account-live-hours="20.727777777777778"
             data-account-total-amount="0.0"
             data-account-redeem-amount="0.0">
-          <td class="rank">06</td>
+          <td class="rank">05</td>
           <td><strong>希岸Deluxe酒店青岛胶东国际机场店</strong><small>20149023892 · <span class="live-status 有直播">有直播</span></small></td>
           <td>青岛市<small>希岸Deluxe酒店(青岛胶东国际机场胶东地铁站店)</small></td>
           <td>鲁东省区<small>青岛前海片区</small></td>
           <td class="num">0</td>
-          <td class="num">4</td>
-          <td class="num">11.0h</td>
+          <td class="num">9</td>
+          <td class="num">20.7h</td>
           <td class="num">0</td>
           <td class="num">0</td>
         </tr>
 
-        <tr data-account-name="麗枫酒店（青岛北站李村夜市店）"
-            data-account-id="84698103680"
+        <tr data-account-name="喆啡酒店（青岛北站李村夜市店）"
+            data-account-id="96872109479"
             data-account-city="青岛市"
-            data-account-store="麗枫酒店(青岛北站李村夜市店)"
-            data-account-location="青岛市 麗枫酒店(青岛北站李村夜市店)"
+            data-account-store="喆啡酒店(青岛北站李村夜市店)"
+            data-account-location="青岛市 喆啡酒店(青岛北站李村夜市店)"
             data-account-province="鲁东省区"
             data-account-area="青岛前海片区"
             data-account-status="有直播"
             data-account-live-amount="0.0"
-            data-account-live-sessions="3.0"
-            data-account-live-hours="4.35361111111111"
+            data-account-live-sessions="6.0"
+            data-account-live-hours="6.797777777777778"
             data-account-total-amount="0.0"
             data-account-redeem-amount="0.0">
-          <td class="rank">07</td>
-          <td><strong>麗枫酒店（青岛北站李村夜市店）</strong><small>84698103680 · <span class="live-status 有直播">有直播</span></small></td>
-          <td>青岛市<small>麗枫酒店(青岛北站李村夜市店)</small></td>
+          <td class="rank">06</td>
+          <td><strong>喆啡酒店（青岛北站李村夜市店）</strong><small>96872109479 · <span class="live-status 有直播">有直播</span></small></td>
+          <td>青岛市<small>喆啡酒店(青岛北站李村夜市店)</small></td>
           <td>鲁东省区<small>青岛前海片区</small></td>
           <td class="num">0</td>
-          <td class="num">3</td>
-          <td class="num">4.4h</td>
+          <td class="num">6</td>
+          <td class="num">6.8h</td>
           <td class="num">0</td>
           <td class="num">0</td>
         </tr>
@@ -1865,19 +1878,163 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
             data-account-area="青岛前海片区"
             data-account-status="有直播"
             data-account-live-amount="0.0"
-            data-account-live-sessions="2.0"
-            data-account-live-hours="2.0777777777777775"
-            data-account-total-amount="89.0"
+            data-account-live-sessions="5.0"
+            data-account-live-hours="4.37"
+            data-account-total-amount="0.0"
             data-account-redeem-amount="89.0">
-          <td class="rank">08</td>
+          <td class="rank">07</td>
           <td><strong>7天优品（青岛五四广场芝泉路地铁站）</strong><small>QQ2497579598 · <span class="live-status 有直播">有直播</span></small></td>
           <td>青岛市<small>7天优品酒店(青岛五四广场芝泉路地铁站店)</small></td>
           <td>鲁东省区<small>青岛前海片区</small></td>
           <td class="num">0</td>
+          <td class="num">5</td>
+          <td class="num">4.4h</td>
+          <td class="num">0</td>
+          <td class="num">89</td>
+        </tr>
+
+        <tr data-account-name="麗枫酒店（青岛北站李村夜市店）"
+            data-account-id="84698103680"
+            data-account-city="青岛市"
+            data-account-store="麗枫酒店(青岛北站李村夜市店)"
+            data-account-location="青岛市 麗枫酒店(青岛北站李村夜市店)"
+            data-account-province="鲁东省区"
+            data-account-area="青岛前海片区"
+            data-account-status="有直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="4.0"
+            data-account-live-hours="5.076666666666666"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">08</td>
+          <td><strong>麗枫酒店（青岛北站李村夜市店）</strong><small>84698103680 · <span class="live-status 有直播">有直播</span></small></td>
+          <td>青岛市<small>麗枫酒店(青岛北站李村夜市店)</small></td>
+          <td>鲁东省区<small>青岛前海片区</small></td>
+          <td class="num">0</td>
+          <td class="num">4</td>
+          <td class="num">5.1h</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="希岸酒店(青岛胶东国际机场店)专用号"
+            data-account-id="36630741850"
+            data-account-city="青岛市"
+            data-account-store="希岸酒店(青岛胶东国际机场店)"
+            data-account-location="青岛市 希岸酒店(青岛胶东国际机场店)"
+            data-account-province="鲁东省区"
+            data-account-area="青岛前海片区"
+            data-account-status="有直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="4.0"
+            data-account-live-hours="1.6472222222222221"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">09</td>
+          <td><strong>希岸酒店(青岛胶东国际机场店)专用号</strong><small>36630741850 · <span class="live-status 有直播">有直播</span></small></td>
+          <td>青岛市<small>希岸酒店(青岛胶东国际机场店)</small></td>
+          <td>鲁东省区<small>青岛前海片区</small></td>
+          <td class="num">0</td>
+          <td class="num">4</td>
+          <td class="num">1.6h</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="维也纳3好酒店青岛胶东国际机场店"
+            data-account-id="qingdaojiaod72"
+            data-account-city="青岛市"
+            data-account-store="维也纳3好酒店(山东青岛胶东国际机场空港小镇店)"
+            data-account-location="青岛市 维也纳3好酒店(山东青岛胶东国际机场空港小镇店)"
+            data-account-province="鲁东省区"
+            data-account-area="青岛前海片区"
+            data-account-status="有直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="3.0"
+            data-account-live-hours="2.4616666666666664"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">10</td>
+          <td><strong>维也纳3好酒店青岛胶东国际机场店</strong><small>qingdaojiaod72 · <span class="live-status 有直播">有直播</span></small></td>
+          <td>青岛市<small>维也纳3好酒店(山东青岛胶东国际机场空港小镇店)</small></td>
+          <td>鲁东省区<small>青岛前海片区</small></td>
+          <td class="num">0</td>
+          <td class="num">3</td>
+          <td class="num">2.5h</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="喆啡酒店(青岛会展中心店)专用号"
+            data-account-id="84753640549"
+            data-account-city="青岛市"
+            data-account-store="喆啡酒店(青岛会展中心店)"
+            data-account-location="青岛市 喆啡酒店(青岛会展中心店)"
+            data-account-province="鲁东省区"
+            data-account-area="青岛前海片区"
+            data-account-status="有直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="2.0"
+            data-account-live-hours="2.135"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">11</td>
+          <td><strong>喆啡酒店(青岛会展中心店)专用号</strong><small>84753640549 · <span class="live-status 有直播">有直播</span></small></td>
+          <td>青岛市<small>喆啡酒店(青岛会展中心店)</small></td>
+          <td>鲁东省区<small>青岛前海片区</small></td>
+          <td class="num">0</td>
           <td class="num">2</td>
           <td class="num">2.1h</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="青岛白玉兰酒店(火车站栈桥店)官方号"
+            data-account-id="28021257979"
+            data-account-city="青岛市"
+            data-account-store="青岛白玉兰酒店(火车站栈桥店)"
+            data-account-location="青岛市 青岛白玉兰酒店(火车站栈桥店)"
+            data-account-province="鲁东省区"
+            data-account-area="青岛前海片区"
+            data-account-status="有直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="2.0"
+            data-account-live-hours="3.1141666666666667"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">12</td>
+          <td><strong>青岛白玉兰酒店(火车站栈桥店)官方号</strong><small>28021257979 · <span class="live-status 有直播">有直播</span></small></td>
+          <td>青岛市<small>青岛白玉兰酒店(火车站栈桥店)</small></td>
+          <td>鲁东省区<small>青岛前海片区</small></td>
+          <td class="num">0</td>
+          <td class="num">2</td>
+          <td class="num">3.1h</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="7天酒店(青岛北站沧安路地铁站店)"
+            data-account-id="25093808547"
+            data-account-city="青岛市"
+            data-account-store="7天酒店(青岛北站沧安路地铁站店)"
+            data-account-location="青岛市 7天酒店(青岛北站沧安路地铁站店)"
+            data-account-province="鲁东省区"
+            data-account-area="青岛前海片区"
+            data-account-status="有直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="1.0"
+            data-account-live-hours="1.1147222222222224"
+            data-account-total-amount="89.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">13</td>
+          <td><strong>7天酒店(青岛北站沧安路地铁站店)</strong><small>25093808547 · <span class="live-status 有直播">有直播</span></small></td>
+          <td>青岛市<small>7天酒店(青岛北站沧安路地铁站店)</small></td>
+          <td>鲁东省区<small>青岛前海片区</small></td>
+          <td class="num">0</td>
+          <td class="num">1</td>
+          <td class="num">1.1h</td>
           <td class="num">89</td>
-          <td class="num">89</td>
+          <td class="num">0</td>
         </tr>
 
         <tr data-account-name="喆啡酒店(青岛胶东国际机场胶东地铁站店)"
@@ -1893,7 +2050,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
             data-account-live-hours="0.0"
             data-account-total-amount="0.0"
             data-account-redeem-amount="149.0">
-          <td class="rank">09</td>
+          <td class="rank">14</td>
           <td><strong>喆啡酒店(青岛胶东国际机场胶东地铁站店)</strong><small>96655014514 · <span class="live-status 未直播">未直播</span></small></td>
           <td>青岛市<small>喆啡酒店(青岛胶东国际机场胶东地铁站店)</small></td>
           <td>鲁东省区<small>青岛前海片区</small></td>
@@ -1917,7 +2074,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
             data-account-live-hours="0.0"
             data-account-total-amount="9.9"
             data-account-redeem-amount="0.0">
-          <td class="rank">10</td>
+          <td class="rank">15</td>
           <td><strong>白玉兰青岛香港中路奥帆中心小麦岛公园店</strong><small>70890244479 · <span class="live-status 未直播">未直播</span></small></td>
           <td>青岛市<small>白玉兰(商务)酒店(青岛奥帆中心小麦岛公园店)</small></td>
           <td>鲁东省区<small>青岛前海片区</small></td>
@@ -1925,30 +2082,6 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">0</td>
           <td class="num">0.0h</td>
           <td class="num">10</td>
-          <td class="num">0</td>
-        </tr>
-
-        <tr data-account-name="7天酒店(青岛北站沧安路地铁站店)"
-            data-account-id="25093808547"
-            data-account-city="青岛市"
-            data-account-store="7天酒店(青岛北站沧安路地铁站店)"
-            data-account-location="青岛市 7天酒店(青岛北站沧安路地铁站店)"
-            data-account-province="鲁东省区"
-            data-account-area="青岛前海片区"
-            data-account-status="未直播"
-            data-account-live-amount="0.0"
-            data-account-live-sessions="0.0"
-            data-account-live-hours="0.0"
-            data-account-total-amount="0.0"
-            data-account-redeem-amount="0.0">
-          <td class="rank">11</td>
-          <td><strong>7天酒店(青岛北站沧安路地铁站店)</strong><small>25093808547 · <span class="live-status 未直播">未直播</span></small></td>
-          <td>青岛市<small>7天酒店(青岛北站沧安路地铁站店)</small></td>
-          <td>鲁东省区<small>青岛前海片区</small></td>
-          <td class="num">0</td>
-          <td class="num">0</td>
-          <td class="num">0.0h</td>
-          <td class="num">0</td>
           <td class="num">0</td>
         </tr>
         </tbody>
@@ -2012,7 +2145,7 @@ function filterInventoryTable(){
   let visible=0;
   body.querySelectorAll('tr').forEach(row=>{
     const matchesQuery=!query||(row.dataset.inventorySearch||'').includes(query);
-    const matchesStatus=!status||row.dataset.inventoryStatus===status;
+    const matchesStatus=!status||(status==='missing'?Number(row.dataset.inventoryMissing)>0:row.dataset.inventoryStatus===status);
     row.style.display=matchesQuery&&matchesStatus?'':'none';
     if(matchesQuery&&matchesStatus)visible+=1;
   });
@@ -2304,7 +2437,7 @@ sortChannelTable('redeem-delta');
 sortMerchantCityTable('city-live-amount');
 sortMerchantAccountTable('account-live-amount');
 sortOperationScoreTable('score');
-document.documentElement.dataset.workbench="{\"region\": \"山河大区 · 鲁东省区 · 青岛前海片区\", \"periods\": {\"previous_start\": \"2026-10-21\", \"previous_end\": \"2026-10-27\", \"current_start\": \"2026-10-28\", \"current_end\": \"2026-11-03\"}, \"verification\": {\"detail_row_count\": 769, \"channel_row_count\": 844, \"other_region_row_count\": 0, \"provider_count\": 5, \"store_count\": 23, \"voucher_product_count\": 14, \"product_structure_closed\": true, \"master_store_count\": 41, \"data_store_count\": 23, \"zero_data_store_count\": 18, \"organization_province_count\": 1, \"organization_area_count\": 1, \"selected_province\": \"鲁东省区\", \"selected_area\": \"青岛前海片区\", \"detail_channel_closure\": {\"意向成交金额\": true, \"意向成交券数\": true, \"意向成交间夜\": true, \"核销金额\": true, \"核销券数\": true, \"核销间夜\": true}, \"provider_binding_counts\": {\"未绑定服务商\": 26, \"杭州四库传媒有限公司\": 6, \"青岛三合酒店管理有限公司\": 7, \"青岛品和商旅服务有限公司\": 1, \"广东省粤时代文化科技有限公司\": 1}, \"bound_store_count\": 15, \"unbound_store_count\": 26, \"passed\": true}, \"organization_navigation\": {\"selected_province\": \"鲁东省区\", \"selected_area\": \"青岛前海片区\", \"province_urls\": {\"\": \"workbench_shanhe.html\", \"山西省区\": \"workbench_shanhe__山西省区.html\", \"河南省区\": \"workbench_shanhe__河南省区.html\", \"鲁东省区\": \"workbench_shanhe__鲁东省区.html\", \"鲁西省区\": \"workbench_shanhe__鲁西省区.html\"}, \"area_urls\": {\"山西省区\": {\"山西东片区\": \"workbench_shanhe__山西省区__山西东片区.html\", \"山西中片区\": \"workbench_shanhe__山西省区__山西中片区.html\", \"山西北片区\": \"workbench_shanhe__山西省区__山西北片区.html\", \"山西南片区\": \"workbench_shanhe__山西省区__山西南片区.html\", \"山西西片区\": \"workbench_shanhe__山西省区__山西西片区.html\"}, \"河南省区\": {\"河南东片区\": \"workbench_shanhe__河南省区__河南东片区.html\", \"河南中片区\": \"workbench_shanhe__河南省区__河南中片区.html\", \"河南北片区\": \"workbench_shanhe__河南省区__河南北片区.html\", \"河南南片区\": \"workbench_shanhe__河南省区__河南南片区.html\", \"河南西南片区\": \"workbench_shanhe__河南省区__河南西南片区.html\", \"河南西片区\": \"workbench_shanhe__河南省区__河南西片区.html\", \"郑州中片区\": \"workbench_shanhe__河南省区__郑州中片区.html\", \"郑州北片区\": \"workbench_shanhe__河南省区__郑州北片区.html\", \"郑州南片区\": \"workbench_shanhe__河南省区__郑州南片区.html\"}, \"鲁东省区\": {\"临沂片区\": \"workbench_shanhe__鲁东省区__临沂片区.html\", \"威烟片区\": \"workbench_shanhe__鲁东省区__威烟片区.html\", \"日照片区\": \"workbench_shanhe__鲁东省区__日照片区.html\", \"沂枣片区\": \"workbench_shanhe__鲁东省区__沂枣片区.html\", \"淄博片区\": \"workbench_shanhe__鲁东省区__淄博片区.html\", \"潍坊片区\": \"workbench_shanhe__鲁东省区__潍坊片区.html\", \"烟台片区\": \"workbench_shanhe__鲁东省区__烟台片区.html\", \"青岛前海片区\": \"workbench_shanhe__鲁东省区__青岛前海片区.html\", \"青岛北片区\": \"workbench_shanhe__鲁东省区__青岛北片区.html\", \"青岛西片区\": \"workbench_shanhe__鲁东省区__青岛西片区.html\"}, \"鲁西省区\": {\"德州片区\": \"workbench_shanhe__鲁西省区__德州片区.html\", \"泰安片区\": \"workbench_shanhe__鲁西省区__泰安片区.html\", \"济南东片区\": \"workbench_shanhe__鲁西省区__济南东片区.html\", \"济南中片区\": \"workbench_shanhe__鲁西省区__济南中片区.html\", \"济南北片区\": \"workbench_shanhe__鲁西省区__济南北片区.html\", \"济宁片区\": \"workbench_shanhe__鲁西省区__济宁片区.html\", \"济滨片区\": \"workbench_shanhe__鲁西省区__济滨片区.html\", \"滨东片区\": \"workbench_shanhe__鲁西省区__滨东片区.html\", \"聊宁片区\": \"workbench_shanhe__鲁西省区__聊宁片区.html\", \"菏泽片区\": \"workbench_shanhe__鲁西省区__菏泽片区.html\"}}}}";
+document.documentElement.dataset.workbench="{\"region\": \"山河大区 · 鲁东省区 · 青岛前海片区\", \"periods\": {\"previous_start\": \"2026-10-23\", \"previous_end\": \"2026-10-29\", \"current_start\": \"2026-10-30\", \"current_end\": \"2026-11-05\"}, \"verification\": {\"detail_row_count\": 807, \"channel_row_count\": 882, \"other_region_row_count\": 0, \"provider_count\": 5, \"store_count\": 23, \"voucher_product_count\": 14, \"product_structure_closed\": true, \"master_store_count\": 41, \"data_store_count\": 23, \"zero_data_store_count\": 18, \"organization_province_count\": 1, \"organization_area_count\": 1, \"selected_province\": \"鲁东省区\", \"selected_area\": \"青岛前海片区\", \"detail_channel_closure\": {\"意向成交金额\": true, \"意向成交券数\": true, \"意向成交间夜\": true, \"核销金额\": true, \"核销券数\": true, \"核销间夜\": true}, \"provider_binding_counts\": {\"未绑定服务商\": 26, \"杭州四库传媒有限公司\": 6, \"青岛三合酒店管理有限公司\": 7, \"青岛品和商旅服务有限公司\": 1, \"广东省粤时代文化科技有限公司\": 1}, \"bound_store_count\": 15, \"unbound_store_count\": 26, \"passed\": true, \"store_live_coverage\": {\"total_stores\": 41, \"live_stores\": 13, \"not_live_stores\": 28, \"live_rate\": 0.3170731707317073, \"start\": \"2026-10-30\", \"end\": \"2026-11-05\"}}, \"organization_navigation\": {\"selected_province\": \"鲁东省区\", \"selected_area\": \"青岛前海片区\", \"province_urls\": {\"\": \"workbench_shanhe.html\", \"山西省区\": \"workbench_shanhe__山西省区.html\", \"河南省区\": \"workbench_shanhe__河南省区.html\", \"鲁东省区\": \"workbench_shanhe__鲁东省区.html\", \"鲁西省区\": \"workbench_shanhe__鲁西省区.html\"}, \"area_urls\": {\"山西省区\": {\"山西东片区\": \"workbench_shanhe__山西省区__山西东片区.html\", \"山西中片区\": \"workbench_shanhe__山西省区__山西中片区.html\", \"山西北片区\": \"workbench_shanhe__山西省区__山西北片区.html\", \"山西南片区\": \"workbench_shanhe__山西省区__山西南片区.html\", \"山西西片区\": \"workbench_shanhe__山西省区__山西西片区.html\"}, \"河南省区\": {\"河南东片区\": \"workbench_shanhe__河南省区__河南东片区.html\", \"河南中片区\": \"workbench_shanhe__河南省区__河南中片区.html\", \"河南北片区\": \"workbench_shanhe__河南省区__河南北片区.html\", \"河南南片区\": \"workbench_shanhe__河南省区__河南南片区.html\", \"河南西南片区\": \"workbench_shanhe__河南省区__河南西南片区.html\", \"河南西片区\": \"workbench_shanhe__河南省区__河南西片区.html\", \"郑州中片区\": \"workbench_shanhe__河南省区__郑州中片区.html\", \"郑州北片区\": \"workbench_shanhe__河南省区__郑州北片区.html\", \"郑州南片区\": \"workbench_shanhe__河南省区__郑州南片区.html\"}, \"鲁东省区\": {\"临沂片区\": \"workbench_shanhe__鲁东省区__临沂片区.html\", \"威烟片区\": \"workbench_shanhe__鲁东省区__威烟片区.html\", \"日照片区\": \"workbench_shanhe__鲁东省区__日照片区.html\", \"沂枣片区\": \"workbench_shanhe__鲁东省区__沂枣片区.html\", \"淄博片区\": \"workbench_shanhe__鲁东省区__淄博片区.html\", \"潍坊片区\": \"workbench_shanhe__鲁东省区__潍坊片区.html\", \"烟台片区\": \"workbench_shanhe__鲁东省区__烟台片区.html\", \"青岛前海片区\": \"workbench_shanhe__鲁东省区__青岛前海片区.html\", \"青岛北片区\": \"workbench_shanhe__鲁东省区__青岛北片区.html\", \"青岛西片区\": \"workbench_shanhe__鲁东省区__青岛西片区.html\"}, \"鲁西省区\": {\"德州片区\": \"workbench_shanhe__鲁西省区__德州片区.html\", \"泰安片区\": \"workbench_shanhe__鲁西省区__泰安片区.html\", \"济南东片区\": \"workbench_shanhe__鲁西省区__济南东片区.html\", \"济南中片区\": \"workbench_shanhe__鲁西省区__济南中片区.html\", \"济南北片区\": \"workbench_shanhe__鲁西省区__济南北片区.html\", \"济宁片区\": \"workbench_shanhe__鲁西省区__济宁片区.html\", \"济滨片区\": \"workbench_shanhe__鲁西省区__济滨片区.html\", \"滨东片区\": \"workbench_shanhe__鲁西省区__滨东片区.html\", \"聊宁片区\": \"workbench_shanhe__鲁西省区__聊宁片区.html\", \"菏泽片区\": \"workbench_shanhe__鲁西省区__菏泽片区.html\"}}}}";
 </script>
 </body>
 </html>

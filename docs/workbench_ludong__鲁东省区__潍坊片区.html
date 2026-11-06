@@ -42,7 +42,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
 .table-scroll{overflow-x:auto} table{width:100%;border-collapse:collapse;min-width:820px} .merchant-table{min-width:980px} th{padding:11px 10px;text-align:left;color:#858994;font-size:11px;font-weight:700;border-bottom:1px solid var(--line);white-space:nowrap} td{padding:13px 10px;border-bottom:1px solid #F0F1F4;font-size:12px;vertical-align:middle} td small{display:block;margin-top:4px;color:#9A9DA6;font-size:10px;font-weight:500} td.num{font-variant-numeric:tabular-nums;white-space:nowrap} td.rank{width:38px;color:#9A9DA6;font-size:11px;font-weight:800} td strong{font-weight:700} .positive{color:#189963!important} .negative{color:#D85863!important} .provider{display:inline-block;padding:5px 8px;border-radius:8px;background:#F1F5FF;color:#4B6DB8;font-size:11px;white-space:nowrap} .channel-stack{display:flex;flex-wrap:wrap;gap:5px;min-width:175px} .channel-chip{display:inline-flex;padding:4px 7px;border-radius:7px;background:#F4F5F7;color:#646872;font-size:10px;white-space:nowrap} .channel-chip.positive{background:#EAF8F2} .channel-chip.negative{background:#FFF0F1} .live-status{display:inline-block;padding:2px 6px;border-radius:6px;background:#EAF8F2;color:#16835A;font-size:9px;font-weight:750;white-space:nowrap} .live-status.未直播,.live-status.零开播{background:#F0F1F4;color:#747984} .empty,.empty-state{color:#9A9DA6;font-size:12px} .empty-state{padding:28px;text-align:center;background:#F8F9FB;border-radius:12px}
 .bar-wrap{height:12px;display:flex;overflow:hidden;border-radius:8px;background:#EEF0F5;margin:12px 0} .segment-bar{display:block;height:100%} .segment-bar.calendar{background:var(--cyan)} .segment-bar.voucher{background:var(--orange)} .structure-legend{display:flex;gap:16px;color:var(--muted);font-size:11px} .structure-legend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}
 .inventory-summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid rgba(0,0,0,.055);border-radius:8px;background:#fff;margin-bottom:16px} .inventory-summary>div{padding:17px 18px;border-right:1px solid var(--line)} .inventory-summary>div:last-child{border-right:0} .inventory-summary span{display:block;color:var(--muted);font-size:11px;font-weight:700} .inventory-summary strong{display:inline-block;margin-top:8px;font-size:25px;font-variant-numeric:tabular-nums} .inventory-summary small{margin-left:4px;color:var(--muted);font-size:11px} .inventory-summary .risk strong{color:#C93D4F} .inventory-summary .good strong{color:#17865A}
-.inventory-panel{padding-bottom:12px} .inventory-table-scroll{max-height:610px;overflow:auto;border:1px solid var(--line);border-radius:8px} .inventory-table{min-width:1180px} .inventory-table thead{position:sticky;top:0;z-index:3;background:#F7F8FA} .inventory-table th{text-align:center} .inventory-table th.inventory-store{left:0;z-index:4;text-align:left} .inventory-table td.inventory-store{position:sticky;left:0;z-index:2;background:#fff;min-width:270px;max-width:270px} .inventory-table tr:nth-child(even) td.inventory-store{background:#FBFBFC} .inventory-table td{padding:10px 8px} .inventory-date{min-width:60px} .inventory-zero-days{min-width:100px} .inventory-cell{min-width:60px;text-align:center;font-variant-numeric:tabular-nums;font-weight:700;color:#474B54} .inventory-cell.zero{background:#FFF0F1;color:#C93D4F} .inventory-cell.available{background:#F7FBF9;color:#27725A} .inventory-status{display:inline-flex;padding:4px 7px;border-radius:6px;font-size:10px;font-weight:750;white-space:nowrap} .inventory-status.zero{background:#FFF0F1;color:#C93D4F} .inventory-status.healthy{background:#EAF7F0;color:#17865A}
+.inventory-panel{padding-bottom:12px} .inventory-note{font-size:12px;color:var(--muted);line-height:1.8;margin:0 0 16px} .inventory-cell.missing,.inventory-status.missing{background:#F1F2F5;color:#747986} .inventory-table-scroll{max-height:610px;overflow:auto;border:1px solid var(--line);border-radius:8px} .inventory-table{min-width:1180px} .inventory-table thead{position:sticky;top:0;z-index:3;background:#F7F8FA} .inventory-table th{text-align:center} .inventory-table th.inventory-store{left:0;z-index:4;text-align:left} .inventory-table td.inventory-store{position:sticky;left:0;z-index:2;background:#fff;min-width:270px;max-width:270px} .inventory-table tr:nth-child(even) td.inventory-store{background:#FBFBFC} .inventory-table td{padding:10px 8px} .inventory-date{min-width:60px} .inventory-zero-days{min-width:100px} .inventory-cell{min-width:60px;text-align:center;font-variant-numeric:tabular-nums;font-weight:700;color:#474B54} .inventory-cell.zero{background:#FFF0F1;color:#C93D4F} .inventory-cell.available{background:#F7FBF9;color:#27725A} .inventory-status{display:inline-flex;padding:4px 7px;border-radius:6px;font-size:10px;font-weight:750;white-space:nowrap} .inventory-status.zero{background:#FFF0F1;color:#C93D4F} .inventory-status.healthy{background:#EAF7F0;color:#17865A}
 .operation-score-summary{margin-top:16px} .score-dimension-panel{margin:0 0 16px} .score-dimensions{display:flex;flex-wrap:wrap;gap:8px} .score-dimension-tag{display:inline-flex;align-items:center;gap:8px;padding:7px 9px;border:1px solid var(--line);border-radius:8px;background:#F8F9FB;font-size:11px} .score-dimension-tag b{font-size:12px} .score-dimension-tag span{color:var(--muted)} .operation-score-panel{padding-bottom:12px} .operation-score-table-scroll{max-height:610px;overflow:auto;border:1px solid var(--line);border-radius:8px} .operation-score-table{min-width:1040px} .operation-score-table thead{position:sticky;top:0;z-index:2;background:#F7F8FA} .operation-score-table td{padding:10px} .score-value{font-size:14px;font-weight:780} .score-value.high{color:#17865A} .score-value.improve{color:#A96817} .score-value.risk{color:#C93D4F} .score-status{display:inline-flex;padding:4px 7px;border-radius:6px;font-size:10px;font-weight:750;white-space:nowrap} .score-status.certified{background:#EAF7F0;color:#17865A} .score-status.uncertified{background:#F0F1F4;color:#747984} .score-dimension{max-width:240px;color:#555962}
 .mobile-nav{display:none}
 @media(max-width:1050px){.app{grid-template-columns:76px minmax(0,1fr)}.sidebar{padding:22px 10px}.brand,.nav-label,.nav-item span:not(.nav-icon){display:none}.nav-item{justify-content:center;padding:8px}.nav-item::before{left:-10px}.content{padding:24px}.kpis{grid-template-columns:repeat(2,1fr)}}
@@ -53,7 +53,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
 <body>
 <div class="app">
   <aside class="sidebar">
-    <div class="brand">经营数据工作台<span>鲁东省区 · 潍坊片区 · 10-28–11-03</span></div>
+    <div class="brand">经营数据工作台<span>鲁东省区 · 潍坊片区 · 10-30–11-05</span></div>
     <p class="nav-label">板块</p>
     <button class="nav-item active" data-target="overview" aria-label="经营总览"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg></span><span>经营总览</span></button>
     <button class="nav-item" data-target="provinces"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="6" height="4" x="9" y="2" rx="1"/><rect width="6" height="4" x="3" y="18" rx="1"/><rect width="6" height="4" x="15" y="18" rx="1"/><path d="M12 6v4M6 18v-3h12v3M12 10H6v5M12 10h6v5"/></svg></span><span>组织架构</span></button>
@@ -67,8 +67,8 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
   </aside>
   <main class="content">
     <header class="topbar">
-      <div><div class="eyebrow">近 7 日经营数据 · 数据截至 2026-11-03 · 数据来源：生意经</div><h1>鲁东省区 · 潍坊片区</h1></div>
-      <div class="top-actions"><span class="status"><i></i>数据已校验</span><span class="glass-pill">主数据 36 家 · 1 片区</span><span class="glass-pill">10-28–11-03 对比 10-21–10-27</span></div>
+      <div><div class="eyebrow">近 7 日经营数据 · 数据截至 2026-11-05 · 数据来源：生意经</div><h1>鲁东省区 · 潍坊片区</h1></div>
+      <div class="top-actions"><span class="status"><i></i>数据已校验</span><span class="glass-pill">主数据 36 家 · 1 片区</span><span class="glass-pill">10-30–11-05 对比 10-23–10-29</span></div>
     </header>
     <div class="organization-filters"><label><span>一级省区</span><select id="organization-province-filter"><option value="workbench_ludong.html" selected>鲁东省区</option></select></label><label><span>二级片区</span><select id="organization-area-filter" ><option value="workbench_ludong.html">全部二级片区</option><option value="workbench_ludong__鲁东省区__临沂片区.html" >临沂片区</option><option value="workbench_ludong__鲁东省区__威烟片区.html" >威烟片区</option><option value="workbench_ludong__鲁东省区__日照片区.html" >日照片区</option><option value="workbench_ludong__鲁东省区__沂枣片区.html" >沂枣片区</option><option value="workbench_ludong__鲁东省区__淄博片区.html" >淄博片区</option><option value="workbench_ludong__鲁东省区__潍坊片区.html" selected>潍坊片区</option><option value="workbench_ludong__鲁东省区__烟台片区.html" >烟台片区</option><option value="workbench_ludong__鲁东省区__青岛前海片区.html" >青岛前海片区</option><option value="workbench_ludong__鲁东省区__青岛北片区.html" >青岛北片区</option><option value="workbench_ludong__鲁东省区__青岛西片区.html" >青岛西片区</option></select></label></div>
 
@@ -77,28 +77,28 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
         <button class="glass-tab active">总体</button><button class="glass-tab" data-target="provinces">组织</button><button class="glass-tab" data-target="stores">门店</button><button class="glass-tab" data-target="providers">服务商</button><button class="glass-tab" data-target="voucher">通兑商品</button><button class="glass-tab" data-target="operation-score">经营分</button><button class="glass-tab" data-target="merchant-live">商家自播</button>
       </div>
       <div class="kpis">
-        <article class="kpi"><span class="kpi-label">支付 GMV</span><b class="kpi-value">7.18万</b><div class="kpi-foot"><span class="positive">+34.2%</span><span>较上期 5.35万</span></div></article>
-        <article class="kpi"><span class="kpi-label">核销 GMV</span><b class="kpi-value">3.48万</b><div class="kpi-foot"><span class="negative">-1.8%</span><span>较上期 3.54万</span></div></article>
-        <article class="kpi"><span class="kpi-label">支付间夜</span><b class="kpi-value">452</b><div class="kpi-foot"><span class="positive">+34.9%</span><span>间夜</span></div></article>
-        <article class="kpi"><span class="kpi-label">动销门店</span><b class="kpi-value">27<small style="font-size:14px">家</small></b><div class="kpi-foot"><span class="positive">+1家</span><span>较上期</span></div></article>
+        <article class="kpi"><span class="kpi-label">支付 GMV</span><b class="kpi-value">7.63万</b><div class="kpi-foot"><span class="positive">+22.4%</span><span>较上期 6.24万</span></div></article>
+        <article class="kpi"><span class="kpi-label">核销 GMV</span><b class="kpi-value">3.34万</b><div class="kpi-foot"><span class="negative">-6.9%</span><span>较上期 3.58万</span></div></article>
+        <article class="kpi"><span class="kpi-label">支付间夜</span><b class="kpi-value">469</b><div class="kpi-foot"><span class="positive">+16.7%</span><span>间夜</span></div></article>
+        <article class="kpi"><span class="kpi-label">动销门店</span><b class="kpi-value">27<small style="font-size:14px">家</small></b><div class="kpi-foot"><span class="positive">+2家</span><span>较上期</span></div></article>
       </div>
       <div class="grid-2">
-        <article class="panel"><div class="panel-head trend-panel-head"><div class="trend-heading"><h2>支付与核销日趋势</h2><span class="trend-range">10-28–11-03 · 单位：万元</span></div><div class="legend"><span><i style="background:var(--blue)"></i>支付</span><span><i style="background:var(--orange)"></i>核销</span></div></div><div class="chart-scroll">
+        <article class="panel"><div class="panel-head trend-panel-head"><div class="trend-heading"><h2>支付与核销日趋势</h2><span class="trend-range">10-30–11-05 · 单位：万元</span></div><div class="legend"><span><i style="background:var(--blue)"></i>支付</span><span><i style="background:var(--orange)"></i>核销</span></div></div><div class="chart-scroll">
       <svg class="chart-svg" viewBox="0 0 760 300" role="img"
            aria-label="支付与核销日趋势，单位万元">
-        <line x1="54" y1="34.0" x2="736" y2="34.0" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="104.6" x2="736" y2="104.6" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="175.2" x2="736" y2="175.2" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="248.0" x2="736" y2="248.0" stroke="#ECEEF3" stroke-width="1"/><text x="44" y="38.0" text-anchor="end" class="axis-label">1.2</text><text x="44" y="145.0" text-anchor="end" class="axis-label">0.6</text><text x="44" y="252.0" text-anchor="end" class="axis-label">0.0</text>
-        <path d="M54.0 41.1 L167.7 96.6 L281.3 81.4 L395.0 34.0 L508.7 48.3 L622.3 35.7 L736.0 121.1" fill="none" stroke="#1677FF"
+        <line x1="54" y1="34.0" x2="736" y2="34.0" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="104.6" x2="736" y2="104.6" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="175.2" x2="736" y2="175.2" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="248.0" x2="736" y2="248.0" stroke="#ECEEF3" stroke-width="1"/><text x="44" y="38.0" text-anchor="end" class="axis-label">1.5</text><text x="44" y="145.0" text-anchor="end" class="axis-label">0.8</text><text x="44" y="252.0" text-anchor="end" class="axis-label">0.0</text>
+        <path d="M54.0 117.4 L167.7 80.2 L281.3 91.4 L395.0 81.6 L508.7 148.5 L622.3 117.7 L736.0 34.0" fill="none" stroke="#1677FF"
               stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M54.0 162.2 L167.7 179.9 L281.3 175.9 L395.0 187.2 L508.7 106.1 L622.3 157.8 L736.0 148.3" fill="none" stroke="#FF8A3D"
+        <path d="M54.0 191.5 L167.7 200.3 L281.3 136.8 L395.0 177.3 L508.7 169.9 L622.3 189.3 L736.0 205.6" fill="none" stroke="#FF8A3D"
               stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-        <circle class="trend-point payment-point" cx="54.0" cy="41.1" r="5" fill="#1677FF"/><text x="58.0" y="29.1" text-anchor="start" class="point-label payment-label" fill="#1677FF">1.2万</text><circle class="trend-point payment-point" cx="167.7" cy="96.6" r="5" fill="#1677FF"/><text x="167.7" y="84.6" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.9万</text><circle class="trend-point payment-point" cx="281.3" cy="81.4" r="5" fill="#1677FF"/><text x="281.3" y="69.4" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.9万</text><circle class="trend-point payment-point" cx="395.0" cy="34.0" r="5" fill="#1677FF"/><text x="395.0" y="22.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">1.2万</text><circle class="trend-point payment-point" cx="508.7" cy="48.3" r="5" fill="#1677FF"/><text x="508.7" y="36.3" text-anchor="middle" class="point-label payment-label" fill="#1677FF">1.1万</text><circle class="trend-point payment-point" cx="622.3" cy="35.7" r="5" fill="#1677FF"/><text x="622.3" y="23.7" text-anchor="middle" class="point-label payment-label" fill="#1677FF">1.2万</text><circle class="trend-point payment-point" cx="736.0" cy="121.1" r="5" fill="#1677FF"/><text x="732.0" y="109.1" text-anchor="end" class="point-label payment-label" fill="#1677FF">0.7万</text>
-        <circle class="trend-point redeem-point" cx="54.0" cy="162.2" r="5" fill="#FF8A3D"/><text x="58.0" y="186.2" text-anchor="start" class="point-label redeem-label" fill="#FF8A3D">0.5万</text><circle class="trend-point redeem-point" cx="167.7" cy="179.9" r="5" fill="#FF8A3D"/><text x="167.7" y="203.9" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.4万</text><circle class="trend-point redeem-point" cx="281.3" cy="175.9" r="5" fill="#FF8A3D"/><text x="281.3" y="199.9" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.4万</text><circle class="trend-point redeem-point" cx="395.0" cy="187.2" r="5" fill="#FF8A3D"/><text x="395.0" y="211.2" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.3万</text><circle class="trend-point redeem-point" cx="508.7" cy="106.1" r="5" fill="#FF8A3D"/><text x="508.7" y="130.1" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.8万</text><circle class="trend-point redeem-point" cx="622.3" cy="157.8" r="5" fill="#FF8A3D"/><text x="622.3" y="181.8" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.5万</text><circle class="trend-point redeem-point" cx="736.0" cy="148.3" r="5" fill="#FF8A3D"/><text x="732.0" y="172.3" text-anchor="end" class="point-label redeem-label" fill="#FF8A3D">0.6万</text>
-        <text x="54.0" y="288" text-anchor="middle" class="axis-label">10-28</text><text x="167.7" y="288" text-anchor="middle" class="axis-label">10-29</text><text x="281.3" y="288" text-anchor="middle" class="axis-label">10-30</text><text x="395.0" y="288" text-anchor="middle" class="axis-label">10-31</text><text x="508.7" y="288" text-anchor="middle" class="axis-label">11-01</text><text x="622.3" y="288" text-anchor="middle" class="axis-label">11-02</text><text x="736.0" y="288" text-anchor="middle" class="axis-label">11-03</text>
+        <circle class="trend-point payment-point" cx="54.0" cy="117.4" r="5" fill="#1677FF"/><text x="58.0" y="105.4" text-anchor="start" class="point-label payment-label" fill="#1677FF">0.9万</text><circle class="trend-point payment-point" cx="167.7" cy="80.2" r="5" fill="#1677FF"/><text x="167.7" y="68.2" text-anchor="middle" class="point-label payment-label" fill="#1677FF">1.2万</text><circle class="trend-point payment-point" cx="281.3" cy="91.4" r="5" fill="#1677FF"/><text x="281.3" y="79.4" text-anchor="middle" class="point-label payment-label" fill="#1677FF">1.1万</text><circle class="trend-point payment-point" cx="395.0" cy="81.6" r="5" fill="#1677FF"/><text x="395.0" y="69.6" text-anchor="middle" class="point-label payment-label" fill="#1677FF">1.2万</text><circle class="trend-point payment-point" cx="508.7" cy="148.5" r="5" fill="#1677FF"/><text x="508.7" y="136.5" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.7万</text><circle class="trend-point payment-point" cx="622.3" cy="117.7" r="5" fill="#1677FF"/><text x="622.3" y="105.7" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.9万</text><circle class="trend-point payment-point" cx="736.0" cy="34.0" r="5" fill="#1677FF"/><text x="732.0" y="22.0" text-anchor="end" class="point-label payment-label" fill="#1677FF">1.5万</text>
+        <circle class="trend-point redeem-point" cx="54.0" cy="191.5" r="5" fill="#FF8A3D"/><text x="58.0" y="215.5" text-anchor="start" class="point-label redeem-label" fill="#FF8A3D">0.4万</text><circle class="trend-point redeem-point" cx="167.7" cy="200.3" r="5" fill="#FF8A3D"/><text x="167.7" y="224.3" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.3万</text><circle class="trend-point redeem-point" cx="281.3" cy="136.8" r="5" fill="#FF8A3D"/><text x="281.3" y="160.8" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.8万</text><circle class="trend-point redeem-point" cx="395.0" cy="177.3" r="5" fill="#FF8A3D"/><text x="395.0" y="201.3" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.5万</text><circle class="trend-point redeem-point" cx="508.7" cy="169.9" r="5" fill="#FF8A3D"/><text x="508.7" y="193.9" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.6万</text><circle class="trend-point redeem-point" cx="622.3" cy="189.3" r="5" fill="#FF8A3D"/><text x="622.3" y="213.3" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.4万</text><circle class="trend-point redeem-point" cx="736.0" cy="205.6" r="5" fill="#FF8A3D"/><text x="732.0" y="229.6" text-anchor="end" class="point-label redeem-label" fill="#FF8A3D">0.3万</text>
+        <text x="54.0" y="288" text-anchor="middle" class="axis-label">10-30</text><text x="167.7" y="288" text-anchor="middle" class="axis-label">10-31</text><text x="281.3" y="288" text-anchor="middle" class="axis-label">11-01</text><text x="395.0" y="288" text-anchor="middle" class="axis-label">11-02</text><text x="508.7" y="288" text-anchor="middle" class="axis-label">11-03</text><text x="622.3" y="288" text-anchor="middle" class="axis-label">11-04</text><text x="736.0" y="288" text-anchor="middle" class="axis-label">11-05</text>
       </svg>
     </div></article>
         <aside class="panel"><div class="panel-head"><div><h2>本期重点判断</h2><p>从数据变化直接定位动作</p></div></div><div class="insights">
-          <div class="insight"><b>支付增长主要来自 其他</b><p>渠道增量 +6,316，可在增长归因中查看对应服务商。</p><span class="tag good">增长来源</span></div>
-          <div class="insight"><b>维也纳酒店(青州高铁站店) 需要跟进</b><p>杭州四库传媒有限公司 · 下降 1,911，优先检查渠道投放变化。</p><span class="tag warn">重点风险</span></div>
+          <div class="insight"><b>支付增长主要来自 其他</b><p>渠道增量 +7,274，可在增长归因中查看对应服务商。</p><span class="tag good">增长来源</span></div>
+          <div class="insight"><b>锦江之星(潍坊泰华城火车站店) 需要跟进</b><p>杭州四库传媒有限公司 · 下降 5,663，优先检查渠道投放变化。</p><span class="tag warn">重点风险</span></div>
         </div></aside>
       </div>
     </section>
@@ -113,10 +113,10 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
               <td class="num">36家</td>
               <td class="num">0家</td>
               <td class="num">28家</td>
-              <td class="num">7.18万</td>
-              <td class="num positive">+34.2%</td>
-              <td class="num">3.48万</td>
-              <td class="num negative">-1.8%</td>
+              <td class="num">7.63万</td>
+              <td class="num positive">+22.4%</td>
+              <td class="num">3.34万</td>
+              <td class="num negative">-6.9%</td>
               <td class="num">27家</td>
             </tr>
             </tbody>
@@ -132,10 +132,10 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
               <td><strong>潍坊片区</strong></td>
               <td class="num">36家</td>
               <td class="num">28家</td>
-              <td class="num">7.18万</td>
-              <td class="num positive">+34.2%</td>
-              <td class="num">3.48万</td>
-              <td class="num negative">-1.8%</td>
+              <td class="num">7.63万</td>
+              <td class="num positive">+22.4%</td>
+              <td class="num">3.34万</td>
+              <td class="num negative">-6.9%</td>
               <td class="num">27家</td>
             </tr>
             </tbody>
@@ -168,23 +168,23 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-store="维也纳国际酒店(高密花园街店)"
                 data-city="潍坊市"
                 data-provider="杭州四库传媒有限公司"
-                data-redeem-current="5328.05"
-                data-payment-current="10715.35"
+                data-redeem-current="5208.05"
+                data-payment-current="9869.35"
                 data-redeem-nights="32.0"
-                data-payment-nights="65.0"
-                data-redeem-growth="1.0845266040688575"
-                data-payment-growth="1.91265052053603">
+                data-payment-nights="61.0"
+                data-redeem-growth="0.4507103064066853"
+                data-payment-growth="0.7084162786269455">
               <td class="rank">01</td>
               <td><strong>鲁东省区</strong></td>
               <td><strong>潍坊片区</strong></td>
               <td><strong>维也纳国际酒店(高密花园街店)</strong><small>潍坊市 · 有返回记录</small></td>
               <td><span class="provider">杭州四库传媒有限公司</span></td>
-              <td class="num">5,328</td>
-              <td class="num">1.07万</td>
+              <td class="num">5,208</td>
+              <td class="num">9,869</td>
               <td class="num">32</td>
-              <td class="num">65</td>
-              <td class="num positive">+108.5%</td>
-              <td class="num positive">+191.3%</td>
+              <td class="num">61</td>
+              <td class="num positive">+45.1%</td>
+              <td class="num positive">+70.8%</td>
             </tr>
 
             <tr data-province="鲁东省区"
@@ -192,23 +192,23 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-store="丽枫酒店(高密市政府店)"
                 data-city="潍坊市"
                 data-provider="威海嗨游信息科技有限公司"
-                data-redeem-current="4235.95"
-                data-payment-current="6479.099999999999"
-                data-redeem-nights="25.0"
-                data-payment-nights="39.0"
-                data-redeem-growth="-0.08865103270223751"
-                data-payment-growth="0.07663802987753199">
+                data-redeem-current="3707.0000000000005"
+                data-payment-current="6052.9"
+                data-redeem-nights="23.0"
+                data-payment-nights="37.0"
+                data-redeem-growth="-0.18383971818582112"
+                data-payment-growth="-0.08221255174296072">
               <td class="rank">02</td>
               <td><strong>鲁东省区</strong></td>
               <td><strong>潍坊片区</strong></td>
               <td><strong>丽枫酒店(高密市政府店)</strong><small>潍坊市 · 有返回记录</small></td>
               <td><span class="provider">威海嗨游信息科技有限公司</span></td>
-              <td class="num">4,236</td>
-              <td class="num">6,479</td>
-              <td class="num">25</td>
-              <td class="num">39</td>
-              <td class="num negative">-8.9%</td>
-              <td class="num positive">+7.7%</td>
+              <td class="num">3,707</td>
+              <td class="num">6,053</td>
+              <td class="num">23</td>
+              <td class="num">37</td>
+              <td class="num negative">-18.4%</td>
+              <td class="num negative">-8.2%</td>
             </tr>
 
             <tr data-province="鲁东省区"
@@ -216,23 +216,23 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-store="维也纳酒店(潍坊安丘世贸中心店)"
                 data-city="潍坊市"
                 data-provider="杭州四库传媒有限公司"
-                data-redeem-current="3543.0"
-                data-payment-current="4747.0"
-                data-redeem-nights="17.0"
-                data-payment-nights="23.0"
-                data-redeem-growth="-0.25676526117054754"
-                data-payment-growth="-0.09493031325668744">
+                data-redeem-current="3105.0"
+                data-payment-current="4546.9"
+                data-redeem-nights="15.0"
+                data-payment-nights="22.0"
+                data-redeem-growth="-0.3567433188315724"
+                data-payment-growth="-0.14128423040604354">
               <td class="rank">03</td>
               <td><strong>鲁东省区</strong></td>
               <td><strong>潍坊片区</strong></td>
               <td><strong>维也纳酒店(潍坊安丘世贸中心店)</strong><small>潍坊市 · 有返回记录</small></td>
               <td><span class="provider">杭州四库传媒有限公司</span></td>
-              <td class="num">3,543</td>
-              <td class="num">4,747</td>
-              <td class="num">17</td>
-              <td class="num">23</td>
-              <td class="num negative">-25.7%</td>
-              <td class="num negative">-9.5%</td>
+              <td class="num">3,105</td>
+              <td class="num">4,547</td>
+              <td class="num">15</td>
+              <td class="num">22</td>
+              <td class="num negative">-35.7%</td>
+              <td class="num negative">-14.1%</td>
             </tr>
 
             <tr data-province="鲁东省区"
@@ -240,95 +240,23 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-store="锦江之星(潍坊泰华城火车站店)"
                 data-city="潍坊市"
                 data-provider="杭州四库传媒有限公司"
-                data-redeem-current="2218.0"
-                data-payment-current="4545.2"
-                data-redeem-nights="22.0"
-                data-payment-nights="45.0"
-                data-redeem-growth="-0.5501926586899208"
-                data-payment-growth="-0.29148415457280485">
+                data-redeem-current="2317.0"
+                data-payment-current="2891.2"
+                data-redeem-nights="23.0"
+                data-payment-nights="29.0"
+                data-redeem-growth="-0.4221945137157107"
+                data-payment-growth="-0.6620100302778784">
               <td class="rank">04</td>
               <td><strong>鲁东省区</strong></td>
               <td><strong>潍坊片区</strong></td>
               <td><strong>锦江之星(潍坊泰华城火车站店)</strong><small>潍坊市 · 有返回记录</small></td>
               <td><span class="provider">杭州四库传媒有限公司</span></td>
-              <td class="num">2,218</td>
-              <td class="num">4,545</td>
-              <td class="num">22</td>
-              <td class="num">45</td>
-              <td class="num negative">-55.0%</td>
-              <td class="num negative">-29.1%</td>
-            </tr>
-
-            <tr data-province="鲁东省区"
-                data-area="潍坊片区"
-                data-store="麗枫酒店(潍坊诸城恐龙公园店)"
-                data-city="潍坊市"
-                data-provider="杭州四库传媒有限公司"
-                data-redeem-current="2164.0"
-                data-payment-current="4268.799999999999"
-                data-redeem-nights="11.0"
-                data-payment-nights="20.0"
-                data-redeem-growth="0.552367288378766"
-                data-payment-growth="0.4470508474576269">
-              <td class="rank">05</td>
-              <td><strong>鲁东省区</strong></td>
-              <td><strong>潍坊片区</strong></td>
-              <td><strong>麗枫酒店(潍坊诸城恐龙公园店)</strong><small>潍坊市 · 有返回记录</small></td>
-              <td><span class="provider">杭州四库传媒有限公司</span></td>
-              <td class="num">2,164</td>
-              <td class="num">4,269</td>
-              <td class="num">11</td>
-              <td class="num">20</td>
-              <td class="num positive">+55.2%</td>
-              <td class="num positive">+44.7%</td>
-            </tr>
-
-            <tr data-province="鲁东省区"
-                data-area="潍坊片区"
-                data-store="维也纳3好酒店(山东潍坊临朐店)"
-                data-city="潍坊市"
-                data-provider="杭州四库传媒有限公司"
-                data-redeem-current="1788.0"
-                data-payment-current="1937.0"
-                data-redeem-nights="12.0"
-                data-payment-nights="13.0"
-                data-redeem-growth="-0.15902356427261177"
-                data-payment-growth="-0.2471822774970851">
-              <td class="rank">06</td>
-              <td><strong>鲁东省区</strong></td>
-              <td><strong>潍坊片区</strong></td>
-              <td><strong>维也纳3好酒店(山东潍坊临朐店)</strong><small>潍坊市 · 有返回记录</small></td>
-              <td><span class="provider">杭州四库传媒有限公司</span></td>
-              <td class="num">1,788</td>
-              <td class="num">1,937</td>
-              <td class="num">12</td>
-              <td class="num">13</td>
-              <td class="num negative">-15.9%</td>
-              <td class="num negative">-24.7%</td>
-            </tr>
-
-            <tr data-province="鲁东省区"
-                data-area="潍坊片区"
-                data-store="白玉兰(商务)酒店(潍坊青州古城衡王府路店)"
-                data-city="潍坊市"
-                data-provider="杭州四库传媒有限公司"
-                data-redeem-current="1781.0"
-                data-payment-current="5538.899999999999"
-                data-redeem-nights="12.0"
-                data-payment-nights="38.0"
-                data-redeem-growth="1.2402515723270442"
-                data-payment-growth="2.1851063829787227">
-              <td class="rank">07</td>
-              <td><strong>鲁东省区</strong></td>
-              <td><strong>潍坊片区</strong></td>
-              <td><strong>白玉兰(商务)酒店(潍坊青州古城衡王府路店)</strong><small>潍坊市 · 有返回记录</small></td>
-              <td><span class="provider">杭州四库传媒有限公司</span></td>
-              <td class="num">1,781</td>
-              <td class="num">5,539</td>
-              <td class="num">12</td>
-              <td class="num">38</td>
-              <td class="num positive">+124.0%</td>
-              <td class="num positive">+218.5%</td>
+              <td class="num">2,317</td>
+              <td class="num">2,891</td>
+              <td class="num">23</td>
+              <td class="num">29</td>
+              <td class="num negative">-42.2%</td>
+              <td class="num negative">-66.2%</td>
             </tr>
 
             <tr data-province="鲁东省区"
@@ -336,71 +264,95 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-store="维也纳国际酒店(青州店)"
                 data-city="潍坊市"
                 data-provider="杭州四库传媒有限公司"
-                data-redeem-current="1730.05"
-                data-payment-current="3492.9"
-                data-redeem-nights="12.0"
-                data-payment-nights="23.0"
-                data-redeem-growth="-0.14901623216920812"
-                data-payment-growth="-0.10247449700644962">
-              <td class="rank">08</td>
+                data-redeem-current="2039.1"
+                data-payment-current="4539.949999999999"
+                data-redeem-nights="13.0"
+                data-payment-nights="28.0"
+                data-redeem-growth="0.23357531760435557"
+                data-payment-growth="0.37166898302012163">
+              <td class="rank">05</td>
               <td><strong>鲁东省区</strong></td>
               <td><strong>潍坊片区</strong></td>
               <td><strong>维也纳国际酒店(青州店)</strong><small>潍坊市 · 有返回记录</small></td>
               <td><span class="provider">杭州四库传媒有限公司</span></td>
-              <td class="num">1,730</td>
-              <td class="num">3,493</td>
-              <td class="num">12</td>
-              <td class="num">23</td>
-              <td class="num negative">-14.9%</td>
-              <td class="num negative">-10.2%</td>
+              <td class="num">2,039</td>
+              <td class="num">4,540</td>
+              <td class="num">13</td>
+              <td class="num">28</td>
+              <td class="num positive">+23.4%</td>
+              <td class="num positive">+37.2%</td>
             </tr>
 
             <tr data-province="鲁东省区"
                 data-area="潍坊片区"
-                data-store="维也纳国际酒店(临朐万达广场店)"
-                data-city="潍坊市"
-                data-provider="未绑定服务商"
-                data-redeem-current="1524.0"
-                data-payment-current="4799.999999999998"
-                data-redeem-nights="8.0"
-                data-payment-nights="26.0"
-                data-redeem-growth="3.404624277456647"
-                data-payment-growth="2.87377935598418">
-              <td class="rank">09</td>
-              <td><strong>鲁东省区</strong></td>
-              <td><strong>潍坊片区</strong></td>
-              <td><strong>维也纳国际酒店(临朐万达广场店)</strong><small>潍坊市 · 有返回记录</small></td>
-              <td><span class="provider">未绑定服务商</span></td>
-              <td class="num">1,524</td>
-              <td class="num">4,800</td>
-              <td class="num">8</td>
-              <td class="num">26</td>
-              <td class="num positive">+340.5%</td>
-              <td class="num positive">+287.4%</td>
-            </tr>
-
-            <tr data-province="鲁东省区"
-                data-area="潍坊片区"
-                data-store="维也纳酒店(潍坊坊子店)"
+                data-store="麗枫酒店(潍坊诸城恐龙公园店)"
                 data-city="潍坊市"
                 data-provider="杭州四库传媒有限公司"
-                data-redeem-current="1463.0"
-                data-payment-current="1943.9"
-                data-redeem-nights="7.0"
-                data-payment-nights="9.0"
-                data-redeem-growth="0.6364653243847875"
-                data-payment-growth="-0.022625571924179244">
-              <td class="rank">10</td>
+                data-redeem-current="1820.0"
+                data-payment-current="5432.699999999999"
+                data-redeem-nights="9.0"
+                data-payment-nights="25.0"
+                data-redeem-growth="0.05937136204889404"
+                data-payment-growth="1.7790168295053448">
+              <td class="rank">06</td>
               <td><strong>鲁东省区</strong></td>
               <td><strong>潍坊片区</strong></td>
-              <td><strong>维也纳酒店(潍坊坊子店)</strong><small>潍坊市 · 有返回记录</small></td>
+              <td><strong>麗枫酒店(潍坊诸城恐龙公园店)</strong><small>潍坊市 · 有返回记录</small></td>
               <td><span class="provider">杭州四库传媒有限公司</span></td>
-              <td class="num">1,463</td>
-              <td class="num">1,944</td>
-              <td class="num">7</td>
+              <td class="num">1,820</td>
+              <td class="num">5,433</td>
               <td class="num">9</td>
-              <td class="num positive">+63.6%</td>
-              <td class="num negative">-2.3%</td>
+              <td class="num">25</td>
+              <td class="num positive">+5.9%</td>
+              <td class="num positive">+177.9%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="潍坊片区"
+                data-store="白玉兰(商务)酒店(潍坊青州古城衡王府路店)"
+                data-city="潍坊市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="1662.0"
+                data-payment-current="4994.0"
+                data-redeem-nights="11.0"
+                data-payment-nights="34.0"
+                data-redeem-growth="0.5489282385834109"
+                data-payment-growth="0.3353298216529854">
+              <td class="rank">07</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>潍坊片区</strong></td>
+              <td><strong>白玉兰(商务)酒店(潍坊青州古城衡王府路店)</strong><small>潍坊市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">1,662</td>
+              <td class="num">4,994</td>
+              <td class="num">11</td>
+              <td class="num">34</td>
+              <td class="num positive">+54.9%</td>
+              <td class="num positive">+33.5%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="潍坊片区"
+                data-store="维也纳3好酒店(山东潍坊临朐店)"
+                data-city="潍坊市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="1639.0"
+                data-payment-current="3080.0"
+                data-redeem-nights="11.0"
+                data-payment-nights="20.0"
+                data-redeem-growth="-0.2143233785532812"
+                data-payment-growth="0.2159494670351363">
+              <td class="rank">08</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>潍坊片区</strong></td>
+              <td><strong>维也纳3好酒店(山东潍坊临朐店)</strong><small>潍坊市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">1,639</td>
+              <td class="num">3,080</td>
+              <td class="num">11</td>
+              <td class="num">20</td>
+              <td class="num negative">-21.4%</td>
+              <td class="num positive">+21.6%</td>
             </tr>
 
             <tr data-province="鲁东省区"
@@ -408,119 +360,23 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-store="锦江之星(潍坊昌邑店)"
                 data-city="潍坊市"
                 data-provider="未绑定服务商"
-                data-redeem-current="1255.1499999999999"
-                data-payment-current="4472.699999999999"
-                data-redeem-nights="9.0"
-                data-payment-nights="32.0"
-                data-redeem-growth="0.08389464594127793"
-                data-payment-growth="0.4687705241035067">
-              <td class="rank">11</td>
+                data-redeem-current="1544.25"
+                data-payment-current="2726.1000000000004"
+                data-redeem-nights="12.0"
+                data-payment-nights="20.0"
+                data-redeem-growth="0.0836842105263158"
+                data-payment-growth="-0.4329721072446281">
+              <td class="rank">09</td>
               <td><strong>鲁东省区</strong></td>
               <td><strong>潍坊片区</strong></td>
               <td><strong>锦江之星(潍坊昌邑店)</strong><small>潍坊市 · 有返回记录</small></td>
               <td><span class="provider">未绑定服务商</span></td>
-              <td class="num">1,255</td>
-              <td class="num">4,473</td>
-              <td class="num">9</td>
-              <td class="num">32</td>
+              <td class="num">1,544</td>
+              <td class="num">2,726</td>
+              <td class="num">12</td>
+              <td class="num">20</td>
               <td class="num positive">+8.4%</td>
-              <td class="num positive">+46.9%</td>
-            </tr>
-
-            <tr data-province="鲁东省区"
-                data-area="潍坊片区"
-                data-store="喆·啡酒店(潍坊火车站泰华城店)"
-                data-city="潍坊市"
-                data-provider="杭州四库传媒有限公司"
-                data-redeem-current="1124.0"
-                data-payment-current="2475.1"
-                data-redeem-nights="6.0"
-                data-payment-nights="14.0"
-                data-redeem-growth="2.1396648044692737"
-                data-payment-growth="3.524862888482632">
-              <td class="rank">12</td>
-              <td><strong>鲁东省区</strong></td>
-              <td><strong>潍坊片区</strong></td>
-              <td><strong>喆·啡酒店(潍坊火车站泰华城店)</strong><small>潍坊市 · 有返回记录</small></td>
-              <td><span class="provider">杭州四库传媒有限公司</span></td>
-              <td class="num">1,124</td>
-              <td class="num">2,475</td>
-              <td class="num">6</td>
-              <td class="num">14</td>
-              <td class="num positive">+214.0%</td>
-              <td class="num positive">+352.5%</td>
-            </tr>
-
-            <tr data-province="鲁东省区"
-                data-area="潍坊片区"
-                data-store="希岸酒店(潍坊泰华城火车站店)"
-                data-city="潍坊市"
-                data-provider="杭州四库传媒有限公司"
-                data-redeem-current="996.0"
-                data-payment-current="2449.3"
-                data-redeem-nights="9.0"
-                data-payment-nights="21.0"
-                data-redeem-growth="1.8703170028818445"
-                data-payment-growth="2.070067686136877">
-              <td class="rank">13</td>
-              <td><strong>鲁东省区</strong></td>
-              <td><strong>潍坊片区</strong></td>
-              <td><strong>希岸酒店(潍坊泰华城火车站店)</strong><small>潍坊市 · 有返回记录</small></td>
-              <td><span class="provider">杭州四库传媒有限公司</span></td>
-              <td class="num">996</td>
-              <td class="num">2,449</td>
-              <td class="num">9</td>
-              <td class="num">21</td>
-              <td class="num positive">+187.0%</td>
-              <td class="num positive">+207.0%</td>
-            </tr>
-
-            <tr data-province="鲁东省区"
-                data-area="潍坊片区"
-                data-store="麗枫酒店(潍坊高新区金马店)"
-                data-city="潍坊市"
-                data-provider="杭州四库传媒有限公司"
-                data-redeem-current="944.0"
-                data-payment-current="2597.7000000000003"
-                data-redeem-nights="5.0"
-                data-payment-nights="14.0"
-                data-redeem-growth="1.0656455142231946"
-                data-payment-growth="7.991692627206648">
-              <td class="rank">14</td>
-              <td><strong>鲁东省区</strong></td>
-              <td><strong>潍坊片区</strong></td>
-              <td><strong>麗枫酒店(潍坊高新区金马店)</strong><small>潍坊市 · 有返回记录</small></td>
-              <td><span class="provider">杭州四库传媒有限公司</span></td>
-              <td class="num">944</td>
-              <td class="num">2,598</td>
-              <td class="num">5</td>
-              <td class="num">14</td>
-              <td class="num positive">+106.6%</td>
-              <td class="num positive">+799.2%</td>
-            </tr>
-
-            <tr data-province="鲁东省区"
-                data-area="潍坊片区"
-                data-store="锦江之星(青州古城博物馆店)"
-                data-city="潍坊市"
-                data-provider="山东辉烁营销策划有限公司"
-                data-redeem-current="870.0"
-                data-payment-current="1987.9"
-                data-redeem-nights="6.0"
-                data-payment-nights="13.0"
-                data-redeem-growth="2.01038062283737"
-                data-payment-growth="0.712378327159962">
-              <td class="rank">15</td>
-              <td><strong>鲁东省区</strong></td>
-              <td><strong>潍坊片区</strong></td>
-              <td><strong>锦江之星(青州古城博物馆店)</strong><small>潍坊市 · 有返回记录</small></td>
-              <td><span class="provider">山东辉烁营销策划有限公司</span></td>
-              <td class="num">870</td>
-              <td class="num">1,988</td>
-              <td class="num">6</td>
-              <td class="num">13</td>
-              <td class="num positive">+201.0%</td>
-              <td class="num positive">+71.2%</td>
+              <td class="num negative">-43.3%</td>
             </tr>
 
             <tr data-province="鲁东省区"
@@ -528,23 +384,167 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-store="维也纳酒店(青州高铁站店)"
                 data-city="潍坊市"
                 data-provider="杭州四库传媒有限公司"
-                data-redeem-current="836.0"
-                data-payment-current="1234.0"
-                data-redeem-nights="4.0"
-                data-payment-nights="6.0"
-                data-redeem-growth="-0.6441038739889315"
-                data-payment-growth="-0.607631160572337">
-              <td class="rank">16</td>
+                data-redeem-current="1433.0"
+                data-payment-current="1871.0"
+                data-redeem-nights="7.0"
+                data-payment-nights="9.0"
+                data-redeem-growth="0.09056316590563163"
+                data-payment-growth="-0.11327014218009479">
+              <td class="rank">10</td>
               <td><strong>鲁东省区</strong></td>
               <td><strong>潍坊片区</strong></td>
               <td><strong>维也纳酒店(青州高铁站店)</strong><small>潍坊市 · 有返回记录</small></td>
               <td><span class="provider">杭州四库传媒有限公司</span></td>
-              <td class="num">836</td>
-              <td class="num">1,234</td>
+              <td class="num">1,433</td>
+              <td class="num">1,871</td>
+              <td class="num">7</td>
+              <td class="num">9</td>
+              <td class="num positive">+9.1%</td>
+              <td class="num negative">-11.3%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="潍坊片区"
+                data-store="维也纳酒店(潍坊坊子店)"
+                data-city="潍坊市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="1366.0"
+                data-payment-current="2440.7000000000003"
+                data-redeem-nights="7.0"
+                data-payment-nights="12.0"
+                data-redeem-growth="0.010355029585798814"
+                data-payment-growth="0.06080493741307369">
+              <td class="rank">11</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>潍坊片区</strong></td>
+              <td><strong>维也纳酒店(潍坊坊子店)</strong><small>潍坊市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">1,366</td>
+              <td class="num">2,441</td>
+              <td class="num">7</td>
+              <td class="num">12</td>
+              <td class="num positive">+1.0%</td>
+              <td class="num positive">+6.1%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="潍坊片区"
+                data-store="维也纳国际酒店(临朐万达广场店)"
+                data-city="潍坊市"
+                data-provider="未绑定服务商"
+                data-redeem-current="1323.0"
+                data-payment-current="3705.9"
+                data-redeem-nights="8.0"
+                data-payment-nights="21.0"
+                data-redeem-growth="0.4683684794672587"
+                data-payment-growth="0.5491597692500625">
+              <td class="rank">12</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>潍坊片区</strong></td>
+              <td><strong>维也纳国际酒店(临朐万达广场店)</strong><small>潍坊市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">1,323</td>
+              <td class="num">3,706</td>
+              <td class="num">8</td>
+              <td class="num">21</td>
+              <td class="num positive">+46.8%</td>
+              <td class="num positive">+54.9%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="潍坊片区"
+                data-store="希岸酒店(潍坊泰华城火车站店)"
+                data-city="潍坊市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="892.0"
+                data-payment-current="2792.3"
+                data-redeem-nights="8.0"
+                data-payment-nights="23.0"
+                data-redeem-growth="1.6867469879518073"
+                data-payment-growth="1.722070579060246">
+              <td class="rank">13</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>潍坊片区</strong></td>
+              <td><strong>希岸酒店(潍坊泰华城火车站店)</strong><small>潍坊市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">892</td>
+              <td class="num">2,792</td>
+              <td class="num">8</td>
+              <td class="num">23</td>
+              <td class="num positive">+168.7%</td>
+              <td class="num positive">+172.2%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="潍坊片区"
+                data-store="麗枫酒店(潍坊高新区金马店)"
+                data-city="潍坊市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="764.0"
+                data-payment-current="2810.6000000000004"
+                data-redeem-nights="4.0"
+                data-payment-nights="15.0"
+                data-redeem-growth="1.7383512544802868"
+                data-payment-growth="5.006839068176962">
+              <td class="rank">14</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>潍坊片区</strong></td>
+              <td><strong>麗枫酒店(潍坊高新区金马店)</strong><small>潍坊市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">764</td>
+              <td class="num">2,811</td>
               <td class="num">4</td>
-              <td class="num">6</td>
-              <td class="num negative">-64.4%</td>
-              <td class="num negative">-60.8%</td>
+              <td class="num">15</td>
+              <td class="num positive">+173.8%</td>
+              <td class="num positive">+500.7%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="潍坊片区"
+                data-store="喆·啡酒店(潍坊火车站泰华城店)"
+                data-city="潍坊市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="756.0"
+                data-payment-current="1949.1"
+                data-redeem-nights="4.0"
+                data-payment-nights="11.0"
+                data-redeem-growth="0.38208409506398544"
+                data-payment-growth="0.24146496815286622">
+              <td class="rank">15</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>潍坊片区</strong></td>
+              <td><strong>喆·啡酒店(潍坊火车站泰华城店)</strong><small>潍坊市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">756</td>
+              <td class="num">1,949</td>
+              <td class="num">4</td>
+              <td class="num">11</td>
+              <td class="num positive">+38.2%</td>
+              <td class="num positive">+24.1%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="潍坊片区"
+                data-store="锦江之星(青州古城博物馆店)"
+                data-city="潍坊市"
+                data-provider="山东辉烁营销策划有限公司"
+                data-redeem-current="688.0"
+                data-payment-current="4850.75"
+                data-redeem-nights="5.0"
+                data-payment-nights="29.0"
+                data-redeem-growth="0.4040816326530612"
+                data-payment-growth="2.022462458720169">
+              <td class="rank">16</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>潍坊片区</strong></td>
+              <td><strong>锦江之星(青州古城博物馆店)</strong><small>潍坊市 · 有返回记录</small></td>
+              <td><span class="provider">山东辉烁营销策划有限公司</span></td>
+              <td class="num">688</td>
+              <td class="num">4,851</td>
+              <td class="num">5</td>
+              <td class="num">29</td>
+              <td class="num positive">+40.4%</td>
+              <td class="num positive">+202.2%</td>
             </tr>
 
             <tr data-province="鲁东省区"
@@ -552,23 +552,47 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-store="白玉兰酒店(潍坊临朐店)"
                 data-city="潍坊市"
                 data-provider="山东辉烁营销策划有限公司"
-                data-redeem-current="683.0"
-                data-payment-current="881.8"
-                data-redeem-nights="5.0"
-                data-payment-nights="6.0"
-                data-redeem-growth="0.010355029585798814"
-                data-payment-growth="0.004671299988606714">
+                data-redeem-current="617.0"
+                data-payment-current="1685.7"
+                data-redeem-nights="4.0"
+                data-payment-nights="10.0"
+                data-redeem-growth="0.07491289198606266"
+                data-payment-growth="1.9124049758120254">
               <td class="rank">17</td>
               <td><strong>鲁东省区</strong></td>
               <td><strong>潍坊片区</strong></td>
               <td><strong>白玉兰酒店(潍坊临朐店)</strong><small>潍坊市 · 有返回记录</small></td>
               <td><span class="provider">山东辉烁营销策划有限公司</span></td>
-              <td class="num">683</td>
-              <td class="num">882</td>
-              <td class="num">5</td>
-              <td class="num">6</td>
-              <td class="num positive">+1.0%</td>
-              <td class="num positive">+0.5%</td>
+              <td class="num">617</td>
+              <td class="num">1,686</td>
+              <td class="num">4</td>
+              <td class="num">10</td>
+              <td class="num positive">+7.5%</td>
+              <td class="num positive">+191.2%</td>
+            </tr>
+
+            <tr data-province="鲁东省区"
+                data-area="潍坊片区"
+                data-store="维也纳酒店(寿光人民广场店)"
+                data-city="潍坊市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="530.0"
+                data-payment-current="1809.0"
+                data-redeem-nights="4.0"
+                data-payment-nights="14.0"
+                data-redeem-growth="-0.19575113808801214"
+                data-payment-growth="1.106182326231226">
+              <td class="rank">18</td>
+              <td><strong>鲁东省区</strong></td>
+              <td><strong>潍坊片区</strong></td>
+              <td><strong>维也纳酒店(寿光人民广场店)</strong><small>潍坊市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">530</td>
+              <td class="num">1,809</td>
+              <td class="num">4</td>
+              <td class="num">14</td>
+              <td class="num negative">-19.6%</td>
+              <td class="num positive">+110.6%</td>
             </tr>
 
             <tr data-province="鲁东省区"
@@ -581,8 +605,8 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-redeem-nights="2.0"
                 data-payment-nights="2.0"
                 data-redeem-growth="0.9612403100775193"
-                data-payment-growth="0.2609112709832133">
-              <td class="rank">18</td>
+                data-payment-growth="1.037984496124031">
+              <td class="rank">19</td>
               <td><strong>鲁东省区</strong></td>
               <td><strong>潍坊片区</strong></td>
               <td><strong>维也纳国际酒店(潍坊高新区旗舰店)</strong><small>潍坊市 · 有返回记录</small></td>
@@ -592,7 +616,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
               <td class="num">2</td>
               <td class="num">2</td>
               <td class="num positive">+96.1%</td>
-              <td class="num positive">+26.1%</td>
+              <td class="num positive">+103.8%</td>
             </tr>
 
             <tr data-province="鲁东省区"
@@ -601,46 +625,46 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-city="潍坊市"
                 data-provider="未绑定服务商"
                 data-redeem-current="474.0"
-                data-payment-current="1081.0"
+                data-payment-current="2231.1"
                 data-redeem-nights="2.0"
-                data-payment-nights="5.0"
+                data-payment-nights="10.0"
                 data-redeem-growth="-0.3398328690807799"
-                data-payment-growth="-0.11458759931198303">
-              <td class="rank">19</td>
+                data-payment-growth="0.8766086298258893">
+              <td class="rank">20</td>
               <td><strong>鲁东省区</strong></td>
               <td><strong>潍坊片区</strong></td>
               <td><strong>麗枫酒店(青州古城店)</strong><small>潍坊市 · 有返回记录</small></td>
               <td><span class="provider">未绑定服务商</span></td>
               <td class="num">474</td>
-              <td class="num">1,081</td>
+              <td class="num">2,231</td>
               <td class="num">2</td>
-              <td class="num">5</td>
+              <td class="num">10</td>
               <td class="num negative">-34.0%</td>
-              <td class="num negative">-11.5%</td>
+              <td class="num positive">+87.7%</td>
             </tr>
 
             <tr data-province="鲁东省区"
                 data-area="潍坊片区"
-                data-store="维也纳酒店(寿光人民广场店)"
+                data-store="凯里亚德酒店(寿光市政府店)"
                 data-city="潍坊市"
-                data-provider="杭州四库传媒有限公司"
-                data-redeem-current="470.0"
-                data-payment-current="1273.9"
-                data-redeem-nights="3.0"
-                data-payment-nights="9.0"
-                data-redeem-growth="-0.02083333333333337"
-                data-payment-growth="0.48300349243306173">
-              <td class="rank">20</td>
+                data-provider="未绑定服务商"
+                data-redeem-current="371.0"
+                data-payment-current="765.6999999999999"
+                data-redeem-nights="2.0"
+                data-payment-nights="4.0"
+                data-redeem-growth="1.3333333333333335"
+                data-payment-growth="0.0">
+              <td class="rank">21</td>
               <td><strong>鲁东省区</strong></td>
               <td><strong>潍坊片区</strong></td>
-              <td><strong>维也纳酒店(寿光人民广场店)</strong><small>潍坊市 · 有返回记录</small></td>
-              <td><span class="provider">杭州四库传媒有限公司</span></td>
-              <td class="num">470</td>
-              <td class="num">1,274</td>
-              <td class="num">3</td>
-              <td class="num">9</td>
-              <td class="num negative">-2.1%</td>
-              <td class="num positive">+48.3%</td>
+              <td><strong>凯里亚德酒店(寿光市政府店)</strong><small>潍坊市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">371</td>
+              <td class="num">766</td>
+              <td class="num">2</td>
+              <td class="num">4</td>
+              <td class="num positive">+133.3%</td>
+              <td class="num neutral">基期较低</td>
             </tr>
 
             <tr data-province="鲁东省区"
@@ -649,70 +673,46 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-city="潍坊市"
                 data-provider="杭州四库传媒有限公司"
                 data-redeem-current="338.0"
-                data-payment-current="338.0"
+                data-payment-current="880.9"
                 data-redeem-nights="2.0"
-                data-payment-nights="2.0"
+                data-payment-nights="5.0"
                 data-redeem-growth="0.0"
                 data-payment-growth="0.0">
-              <td class="rank">21</td>
+              <td class="rank">22</td>
               <td><strong>鲁东省区</strong></td>
               <td><strong>潍坊片区</strong></td>
               <td><strong>维也纳国际酒店(诸城密州路市政府店)</strong><small>潍坊市 · 有返回记录</small></td>
               <td><span class="provider">杭州四库传媒有限公司</span></td>
               <td class="num">338</td>
-              <td class="num">338</td>
+              <td class="num">881</td>
               <td class="num">2</td>
-              <td class="num">2</td>
+              <td class="num">5</td>
               <td class="num neutral">基期较低</td>
               <td class="num neutral">基期较低</td>
             </tr>
 
             <tr data-province="鲁东省区"
                 data-area="潍坊片区"
-                data-store="维也纳酒店(5.0寿光万达广场店)"
+                data-store="维也纳3好酒店(山东诸城东关大街超然台店)"
                 data-city="潍坊市"
-                data-provider="未绑定服务商"
-                data-redeem-current="199.0"
-                data-payment-current="606.9"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="137.0"
+                data-payment-current="1437.9"
                 data-redeem-nights="1.0"
-                data-payment-nights="3.0"
-                data-redeem-growth="-0.7991927346115035"
-                data-payment-growth="-0.6272113022113022">
-              <td class="rank">22</td>
-              <td><strong>鲁东省区</strong></td>
-              <td><strong>潍坊片区</strong></td>
-              <td><strong>维也纳酒店(5.0寿光万达广场店)</strong><small>潍坊市 · 有返回记录</small></td>
-              <td><span class="provider">未绑定服务商</span></td>
-              <td class="num">199</td>
-              <td class="num">607</td>
-              <td class="num">1</td>
-              <td class="num">3</td>
-              <td class="num negative">-79.9%</td>
-              <td class="num negative">-62.7%</td>
-            </tr>
-
-            <tr data-province="鲁东省区"
-                data-area="潍坊片区"
-                data-store="凯里亚德酒店(寿光市政府店)"
-                data-city="潍坊市"
-                data-provider="未绑定服务商"
-                data-redeem-current="170.0"
-                data-payment-current="390.79999999999995"
-                data-redeem-nights="1.0"
-                data-payment-nights="2.0"
-                data-redeem-growth="0.0691823899371069"
-                data-payment-growth="0.0">
+                data-payment-nights="10.0"
+                data-redeem-growth="-0.9188388625592417"
+                data-payment-growth="-0.3973848539457693">
               <td class="rank">23</td>
               <td><strong>鲁东省区</strong></td>
               <td><strong>潍坊片区</strong></td>
-              <td><strong>凯里亚德酒店(寿光市政府店)</strong><small>潍坊市 · 有返回记录</small></td>
-              <td><span class="provider">未绑定服务商</span></td>
-              <td class="num">170</td>
-              <td class="num">391</td>
+              <td><strong>维也纳3好酒店(山东诸城东关大街超然台店)</strong><small>潍坊市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">137</td>
+              <td class="num">1,438</td>
               <td class="num">1</td>
-              <td class="num">2</td>
-              <td class="num positive">+6.9%</td>
-              <td class="num neutral">基期较低</td>
+              <td class="num">10</td>
+              <td class="num negative">-91.9%</td>
+              <td class="num negative">-39.7%</td>
             </tr>
 
             <tr data-province="鲁东省区"
@@ -721,46 +721,46 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-city="潍坊市"
                 data-provider="杭州四库传媒有限公司"
                 data-redeem-current="119.0"
-                data-payment-current="277.1"
+                data-payment-current="356.1"
                 data-redeem-nights="1.0"
-                data-payment-nights="3.0"
+                data-payment-nights="4.0"
                 data-redeem-growth="-0.5"
-                data-payment-growth="0.16428571428571437">
+                data-payment-growth="0.496218487394958">
               <td class="rank">24</td>
               <td><strong>鲁东省区</strong></td>
               <td><strong>潍坊片区</strong></td>
               <td><strong>7天优品(青州开发区万隆购物中心店)</strong><small>潍坊市 · 有返回记录</small></td>
               <td><span class="provider">杭州四库传媒有限公司</span></td>
               <td class="num">119</td>
-              <td class="num">277</td>
+              <td class="num">356</td>
               <td class="num">1</td>
-              <td class="num">3</td>
+              <td class="num">4</td>
               <td class="num negative">-50.0%</td>
-              <td class="num positive">+16.4%</td>
+              <td class="num positive">+49.6%</td>
             </tr>
 
             <tr data-province="鲁东省区"
                 data-area="潍坊片区"
-                data-store="维也纳3好酒店(山东诸城东关大街超然台店)"
+                data-store="希岸·轻雅酒店(潍坊青州古城宋城店)"
                 data-city="潍坊市"
                 data-provider="杭州四库传媒有限公司"
                 data-redeem-current="0.0"
-                data-payment-current="1529.2"
+                data-payment-current="1251.3000000000002"
                 data-redeem-nights="0.0"
-                data-payment-nights="11.0"
-                data-redeem-growth="-1.0"
-                data-payment-growth="-0.3571278429394208">
+                data-payment-nights="9.0"
+                data-redeem-growth="0.0"
+                data-payment-growth="0.0">
               <td class="rank">25</td>
               <td><strong>鲁东省区</strong></td>
               <td><strong>潍坊片区</strong></td>
-              <td><strong>维也纳3好酒店(山东诸城东关大街超然台店)</strong><small>潍坊市 · 有返回记录</small></td>
+              <td><strong>希岸·轻雅酒店(潍坊青州古城宋城店)</strong><small>潍坊市 · 有返回记录</small></td>
               <td><span class="provider">杭州四库传媒有限公司</span></td>
               <td class="num">0</td>
-              <td class="num">1,529</td>
+              <td class="num">1,251</td>
               <td class="num">0</td>
-              <td class="num">11</td>
-              <td class="num negative">-100.0%</td>
-              <td class="num negative">-35.7%</td>
+              <td class="num">9</td>
+              <td class="num neutral">基期较低</td>
+              <td class="num neutral">基期较低</td>
             </tr>
 
             <tr data-province="鲁东省区"
@@ -789,26 +789,26 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
 
             <tr data-province="鲁东省区"
                 data-area="潍坊片区"
-                data-store="希岸·轻雅酒店(潍坊青州古城宋城店)"
+                data-store="维也纳酒店(5.0寿光万达广场店)"
                 data-city="潍坊市"
-                data-provider="杭州四库传媒有限公司"
+                data-provider="未绑定服务商"
                 data-redeem-current="0.0"
-                data-payment-current="556.2"
+                data-payment-current="192.9"
                 data-redeem-nights="0.0"
-                data-payment-nights="4.0"
+                data-payment-nights="1.0"
                 data-redeem-growth="-1.0"
-                data-payment-growth="2.7328859060402686">
+                data-payment-growth="-0.8944170771756978">
               <td class="rank">27</td>
               <td><strong>鲁东省区</strong></td>
               <td><strong>潍坊片区</strong></td>
-              <td><strong>希岸·轻雅酒店(潍坊青州古城宋城店)</strong><small>潍坊市 · 有返回记录</small></td>
-              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td><strong>维也纳酒店(5.0寿光万达广场店)</strong><small>潍坊市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
               <td class="num">0</td>
-              <td class="num">556</td>
+              <td class="num">193</td>
               <td class="num">0</td>
-              <td class="num">4</td>
+              <td class="num">1</td>
               <td class="num negative">-100.0%</td>
-              <td class="num positive">+273.3%</td>
+              <td class="num negative">-89.4%</td>
             </tr>
 
             <tr data-province="鲁东省区"
@@ -1038,91 +1038,91 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
             <tr>
               <td class="rank">01</td>
               <td><strong>维也纳国际酒店(高密花园街店)</strong><small>潍坊市 · 杭州四库传媒有限公司</small></td>
-              <td class="num">1.07万</td>
-              <td class="num">3,679</td>
-              <td class="num positive">+7,036</td>
+              <td class="num">9,869</td>
+              <td class="num">5,777</td>
+              <td class="num positive">+4,092</td>
               <td class="channel-stack"><span class="channel-chip positive">短视频 +169</span></td>
             </tr>
 
             <tr>
               <td class="rank">02</td>
-              <td><strong>白玉兰(商务)酒店(潍坊青州古城衡王府路店)</strong><small>潍坊市 · 杭州四库传媒有限公司</small></td>
-              <td class="num">5,539</td>
-              <td class="num">1,739</td>
-              <td class="num positive">+3,800</td>
-              <td class="channel-stack"><span class="channel-chip positive">达播 +278</span></td>
+              <td><strong>麗枫酒店(潍坊诸城恐龙公园店)</strong><small>潍坊市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">5,433</td>
+              <td class="num">1,955</td>
+              <td class="num positive">+3,478</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
             </tr>
 
             <tr>
               <td class="rank">03</td>
-              <td><strong>维也纳国际酒店(临朐万达广场店)</strong><small>潍坊市 · 未绑定服务商</small></td>
-              <td class="num">4,800</td>
-              <td class="num">1,239</td>
-              <td class="num positive">+3,561</td>
-              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+              <td><strong>锦江之星(青州古城博物馆店)</strong><small>潍坊市 · 山东辉烁营销策划有限公司</small></td>
+              <td class="num">4,851</td>
+              <td class="num">1,605</td>
+              <td class="num positive">+3,246</td>
+              <td class="channel-stack"><span class="channel-chip positive">达播 +278</span><span class="channel-chip positive">短视频 +139</span></td>
             </tr>
 
             <tr>
               <td class="rank">04</td>
               <td><strong>麗枫酒店(潍坊高新区金马店)</strong><small>潍坊市 · 杭州四库传媒有限公司</small></td>
-              <td class="num">2,598</td>
-              <td class="num">289</td>
-              <td class="num positive">+2,309</td>
+              <td class="num">2,811</td>
+              <td class="num">468</td>
+              <td class="num positive">+2,343</td>
               <td class="channel-stack"><span class="channel-chip positive">短视频 +358</span></td>
             </tr>
 
             <tr>
               <td class="rank">05</td>
-              <td><strong>喆·啡酒店(潍坊火车站泰华城店)</strong><small>潍坊市 · 杭州四库传媒有限公司</small></td>
-              <td class="num">2,475</td>
-              <td class="num">547</td>
-              <td class="num positive">+1,928</td>
-              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+              <td><strong>希岸酒店(潍坊泰华城火车站店)</strong><small>潍坊市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">2,792</td>
+              <td class="num">1,026</td>
+              <td class="num positive">+1,767</td>
+              <td class="channel-stack"><span class="channel-chip negative">达播 -327</span><span class="channel-chip positive">短视频 +238</span></td>
             </tr>
 
             <tr>
               <td class="rank">06</td>
-              <td><strong>希岸酒店(潍坊泰华城火车站店)</strong><small>潍坊市 · 杭州四库传媒有限公司</small></td>
-              <td class="num">2,449</td>
-              <td class="num">798</td>
-              <td class="num positive">+1,652</td>
-              <td class="channel-stack"><span class="channel-chip positive">达播 +327</span><span class="channel-chip positive">短视频 +238</span></td>
+              <td><strong>维也纳国际酒店(临朐万达广场店)</strong><small>潍坊市 · 未绑定服务商</small></td>
+              <td class="num">3,706</td>
+              <td class="num">2,392</td>
+              <td class="num positive">+1,314</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
             </tr>
 
             <tr>
               <td class="rank">07</td>
-              <td><strong>锦江之星(潍坊昌邑店)</strong><small>潍坊市 · 未绑定服务商</small></td>
-              <td class="num">4,473</td>
-              <td class="num">3,045</td>
-              <td class="num positive">+1,427</td>
-              <td class="channel-stack"><span class="channel-chip positive">短视频 +417</span></td>
+              <td><strong>白玉兰(商务)酒店(潍坊青州古城衡王府路店)</strong><small>潍坊市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">4,994</td>
+              <td class="num">3,740</td>
+              <td class="num positive">+1,254</td>
+              <td class="channel-stack"><span class="channel-chip positive">达播 +278</span></td>
             </tr>
 
             <tr>
               <td class="rank">08</td>
-              <td><strong>麗枫酒店(潍坊诸城恐龙公园店)</strong><small>潍坊市 · 杭州四库传媒有限公司</small></td>
-              <td class="num">4,269</td>
-              <td class="num">2,950</td>
-              <td class="num positive">+1,319</td>
-              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+              <td><strong>希岸·轻雅酒店(潍坊青州古城宋城店)</strong><small>潍坊市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">1,251</td>
+              <td class="num">0</td>
+              <td class="num positive">+1,251</td>
+              <td class="channel-stack"><span class="channel-chip positive">达播 +278</span></td>
             </tr>
 
             <tr>
               <td class="rank">09</td>
-              <td><strong>锦江之星(青州古城博物馆店)</strong><small>潍坊市 · 山东辉烁营销策划有限公司</small></td>
-              <td class="num">1,988</td>
-              <td class="num">1,161</td>
-              <td class="num positive">+827</td>
-              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+              <td><strong>维也纳国际酒店(青州店)</strong><small>潍坊市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">4,540</td>
+              <td class="num">3,310</td>
+              <td class="num positive">+1,230</td>
+              <td class="channel-stack"><span class="channel-chip negative">短视频 -318</span></td>
             </tr>
 
             <tr>
               <td class="rank">10</td>
-              <td><strong>丽枫酒店(高密市政府店)</strong><small>潍坊市 · 威海嗨游信息科技有限公司</small></td>
-              <td class="num">6,479</td>
-              <td class="num">6,018</td>
-              <td class="num positive">+461</td>
-              <td class="channel-stack"><span class="channel-chip positive">短视频 +169</span><span class="channel-chip positive">达播 +159</span></td>
+              <td><strong>白玉兰酒店(潍坊临朐店)</strong><small>潍坊市 · 山东辉烁营销策划有限公司</small></td>
+              <td class="num">1,686</td>
+              <td class="num">579</td>
+              <td class="num positive">+1,107</td>
+              <td class="channel-stack"><span class="channel-chip positive">短视频 +179</span></td>
             </tr>
             </tbody>
         </table>
@@ -1135,42 +1135,51 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <tbody>
             <tr>
               <td class="rank">01</td>
-              <td><strong>维也纳酒店(青州高铁站店)</strong><small>潍坊市 · 杭州四库传媒有限公司</small></td>
-              <td class="num">1,234</td>
-              <td class="num">3,145</td>
-              <td class="num negative">-1,911</td>
-              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+              <td><strong>锦江之星(潍坊泰华城火车站店)</strong><small>潍坊市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">2,891</td>
+              <td class="num">8,554</td>
+              <td class="num negative">-5,663</td>
+              <td class="channel-stack"><span class="channel-chip negative">短视频 -2,208</span></td>
             </tr>
 
             <tr>
               <td class="rank">02</td>
-              <td><strong>锦江之星(潍坊泰华城火车站店)</strong><small>潍坊市 · 杭州四库传媒有限公司</small></td>
-              <td class="num">4,545</td>
-              <td class="num">6,415</td>
-              <td class="num negative">-1,870</td>
-              <td class="channel-stack"><span class="channel-chip positive">短视频 +307</span></td>
+              <td><strong>锦江之星(潍坊昌邑店)</strong><small>潍坊市 · 未绑定服务商</small></td>
+              <td class="num">2,726</td>
+              <td class="num">4,808</td>
+              <td class="num negative">-2,082</td>
+              <td class="channel-stack"><span class="channel-chip negative">短视频 -695</span></td>
             </tr>
 
             <tr>
               <td class="rank">03</td>
               <td><strong>维也纳酒店(5.0寿光万达广场店)</strong><small>潍坊市 · 未绑定服务商</small></td>
-              <td class="num">607</td>
-              <td class="num">1,628</td>
-              <td class="num negative">-1,021</td>
+              <td class="num">193</td>
+              <td class="num">1,827</td>
+              <td class="num negative">-1,634</td>
               <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
             </tr>
 
             <tr>
               <td class="rank">04</td>
               <td><strong>维也纳3好酒店(山东诸城东关大街超然台店)</strong><small>潍坊市 · 杭州四库传媒有限公司</small></td>
-              <td class="num">1,529</td>
-              <td class="num">2,379</td>
-              <td class="num negative">-850</td>
+              <td class="num">1,438</td>
+              <td class="num">2,386</td>
+              <td class="num negative">-948</td>
               <td class="channel-stack"><span class="channel-chip positive">短视频 +139</span></td>
             </tr>
 
             <tr>
               <td class="rank">05</td>
+              <td><strong>维也纳酒店(潍坊安丘世贸中心店)</strong><small>潍坊市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">4,547</td>
+              <td class="num">5,295</td>
+              <td class="num negative">-748</td>
+              <td class="channel-stack"><span class="channel-chip positive">短视频 +199</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">06</td>
               <td><strong>维也纳酒店(青州古城店)</strong><small>潍坊市 · 未绑定服务商</small></td>
               <td class="num">0</td>
               <td class="num">720</td>
@@ -1179,47 +1188,20 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
             </tr>
 
             <tr>
-              <td class="rank">06</td>
-              <td><strong>维也纳3好酒店(山东潍坊临朐店)</strong><small>潍坊市 · 杭州四库传媒有限公司</small></td>
-              <td class="num">1,937</td>
-              <td class="num">2,573</td>
-              <td class="num negative">-636</td>
-              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
-            </tr>
-
-            <tr>
               <td class="rank">07</td>
-              <td><strong>维也纳酒店(潍坊安丘世贸中心店)</strong><small>潍坊市 · 杭州四库传媒有限公司</small></td>
-              <td class="num">4,747</td>
-              <td class="num">5,245</td>
-              <td class="num negative">-498</td>
-              <td class="channel-stack"><span class="channel-chip positive">短视频 +199</span></td>
+              <td><strong>丽枫酒店(高密市政府店)</strong><small>潍坊市 · 威海嗨游信息科技有限公司</small></td>
+              <td class="num">6,053</td>
+              <td class="num">6,595</td>
+              <td class="num negative">-542</td>
+              <td class="channel-stack"><span class="channel-chip positive">短视频 +487</span><span class="channel-chip positive">自播 +169</span><span class="channel-chip positive">达播 +159</span></td>
             </tr>
 
             <tr>
               <td class="rank">08</td>
-              <td><strong>维也纳国际酒店(青州店)</strong><small>潍坊市 · 杭州四库传媒有限公司</small></td>
-              <td class="num">3,493</td>
-              <td class="num">3,892</td>
-              <td class="num negative">-399</td>
-              <td class="channel-stack"><span class="channel-chip negative">短视频 -361</span></td>
-            </tr>
-
-            <tr>
-              <td class="rank">09</td>
-              <td><strong>麗枫酒店(青州古城店)</strong><small>潍坊市 · 未绑定服务商</small></td>
-              <td class="num">1,081</td>
-              <td class="num">1,221</td>
-              <td class="num negative">-140</td>
-              <td class="channel-stack"><span class="channel-chip positive">短视频 +398</span></td>
-            </tr>
-
-            <tr>
-              <td class="rank">10</td>
-              <td><strong>维也纳酒店(潍坊坊子店)</strong><small>潍坊市 · 杭州四库传媒有限公司</small></td>
-              <td class="num">1,944</td>
-              <td class="num">1,989</td>
-              <td class="num negative">-45</td>
+              <td><strong>维也纳酒店(青州高铁站店)</strong><small>潍坊市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">1,871</td>
+              <td class="num">2,110</td>
+              <td class="num negative">-239</td>
               <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
             </tr>
             </tbody>
@@ -1247,163 +1229,143 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           </tr></thead>
           <tbody id="channel-attribution-body">
             <tr data-channel="达播"
-                data-payment-current="763.9"
-                data-payment-delta="763.9"
-                data-payment-growth="0"
+                data-payment-current="993.0"
+                data-payment-delta="666.0"
+                data-payment-growth="2.036697247706422"
                 data-redeem-current="376.9"
-                data-redeem-previous="149.0"
-                data-redeem-delta="227.89999999999998"
-                data-redeem-growth="1.5295302013422818">
+                data-redeem-previous="0.0"
+                data-redeem-delta="376.9"
+                data-redeem-growth="0">
               <td><strong>达播</strong></td>
-              <td class="num">764</td>
-              <td class="num">0</td>
-              <td class="num positive">+764</td>
-              <td class="num">基期较低</td>
+              <td class="num">993</td>
+              <td class="num">327</td>
+              <td class="num positive">+666</td>
+              <td class="num">+203.7%</td>
               <td class="num">377</td>
-              <td class="num">149</td>
-              <td class="num positive">+228</td>
-              <td class="num">+153.0%</td>
-              <td class="channel-stack"><span class="channel-chip positive">杭州四库传媒有限公司 支付 +605 · 核销 +218</span><span class="channel-chip positive">威海嗨游信息科技有限公司 支付 +159 · 核销 +159</span><span class="channel-chip positive">山东辉烁营销策划有限公司 支付 0 · 核销 -149</span></td>
+              <td class="num">0</td>
+              <td class="num positive">+377</td>
+              <td class="num">基期较低</td>
+              <td class="channel-stack"><span class="channel-chip positive">山东辉烁营销策划有限公司 支付 +278 · 核销 0</span><span class="channel-chip positive">杭州四库传媒有限公司 支付 +229 · 核销 +218</span><span class="channel-chip positive">威海嗨游信息科技有限公司 支付 +159 · 核销 +159</span></td>
             </tr>
 
             <tr data-channel="自播"
-                data-payment-current="298.0"
-                data-payment-delta="149.0"
-                data-payment-growth="1.0"
-                data-redeem-current="0.0"
+                data-payment-current="467.0"
+                data-payment-delta="318.0"
+                data-payment-growth="2.134228187919463"
+                data-redeem-current="159.0"
                 data-redeem-previous="0.0"
-                data-redeem-delta="0.0"
+                data-redeem-delta="159.0"
                 data-redeem-growth="0">
               <td><strong>自播</strong></td>
-              <td class="num">298</td>
+              <td class="num">467</td>
               <td class="num">149</td>
-              <td class="num positive">+149</td>
-              <td class="num">+100.0%</td>
+              <td class="num positive">+318</td>
+              <td class="num">+213.4%</td>
+              <td class="num">159</td>
               <td class="num">0</td>
-              <td class="num">0</td>
-              <td class="num positive">0</td>
+              <td class="num positive">+159</td>
               <td class="num">基期较低</td>
-              <td class="channel-stack"><span class="channel-chip positive">杭州四库传媒有限公司 支付 +149 · 核销 0</span></td>
+              <td class="channel-stack"><span class="channel-chip positive">威海嗨游信息科技有限公司 支付 +169 · 核销 0</span><span class="channel-chip positive">杭州四库传媒有限公司 支付 +149 · 核销 +159</span></td>
             </tr>
 
             <tr data-channel="短视频"
-                data-payment-current="4248.5"
-                data-payment-delta="2033.2999999999997"
-                data-payment-growth="0.9178855182376306"
-                data-redeem-current="933.05"
-                data-redeem-previous="827.0"
-                data-redeem-delta="106.04999999999995"
-                data-redeem-growth="0.12823458282950417">
+                data-payment-current="3170.3"
+                data-payment-delta="-716.1999999999998"
+                data-payment-growth="-0.1842789141901453"
+                data-redeem-current="973.1"
+                data-redeem-previous="727.0"
+                data-redeem-delta="246.10000000000002"
+                data-redeem-growth="0.33851444291609356">
               <td><strong>短视频</strong></td>
-              <td class="num">4,248</td>
-              <td class="num">2,215</td>
-              <td class="num positive">+2,033</td>
-              <td class="num">+91.8%</td>
-              <td class="num">933</td>
-              <td class="num">827</td>
-              <td class="num positive">+106</td>
-              <td class="num">+12.8%</td>
-              <td class="channel-stack"><span class="channel-chip positive">杭州四库传媒有限公司 支付 +1,049 · 核销 +166</span><span class="channel-chip positive">未绑定服务商 支付 +815 · 核销 +139</span><span class="channel-chip positive">威海嗨游信息科技有限公司 支付 +169 · 核销 -199</span></td>
+              <td class="num">3,170</td>
+              <td class="num">3,886</td>
+              <td class="num negative">-716</td>
+              <td class="num">-18.4%</td>
+              <td class="num">973</td>
+              <td class="num">727</td>
+              <td class="num positive">+246</td>
+              <td class="num">+33.9%</td>
+              <td class="channel-stack"><span class="channel-chip negative">杭州四库传媒有限公司 支付 -1,423 · 核销 -32</span><span class="channel-chip positive">威海嗨游信息科技有限公司 支付 +487 · 核销 0</span><span class="channel-chip positive">山东辉烁营销策划有限公司 支付 +318 · 核销 0</span><span class="channel-chip negative">未绑定服务商 支付 -98 · 核销 +278</span></td>
             </tr>
 
             <tr data-channel="其他"
-                data-payment-current="25628.300000000017"
-                data-payment-delta="6316.100000000002"
-                data-payment-growth="0.32705232961547615"
-                data-redeem-current="11767.05"
-                data-redeem-previous="14128.1"
-                data-redeem-delta="-2361.050000000001"
-                data-redeem-growth="-0.16711730522858703">
+                data-payment-current="29260.900000000012"
+                data-payment-delta="7274.199999999997"
+                data-payment-growth="0.33084546566788076"
+                data-redeem-current="11705.05"
+                data-redeem-previous="13876.099999999999"
+                data-redeem-delta="-2171.0499999999993"
+                data-redeem-growth="-0.1564596680623518">
               <td><strong>其他</strong></td>
-              <td class="num">2.56万</td>
-              <td class="num">1.93万</td>
-              <td class="num positive">+6,316</td>
-              <td class="num">+32.7%</td>
-              <td class="num">1.18万</td>
-              <td class="num">1.41万</td>
-              <td class="num negative">-2,361</td>
-              <td class="num">-16.7%</td>
-              <td class="channel-stack"><span class="channel-chip positive">杭州四库传媒有限公司 支付 +4,246 · 核销 -1,202</span><span class="channel-chip positive">未绑定服务商 支付 +1,685 · 核销 -711</span><span class="channel-chip negative">威海嗨游信息科技有限公司 支付 -75 · 核销 -751</span><span class="channel-chip positive">山东辉烁营销策划有限公司 支付 +460 · 核销 +303</span></td>
+              <td class="num">2.93万</td>
+              <td class="num">2.20万</td>
+              <td class="num positive">+7,274</td>
+              <td class="num">+33.1%</td>
+              <td class="num">1.17万</td>
+              <td class="num">1.39万</td>
+              <td class="num negative">-2,171</td>
+              <td class="num">-15.6%</td>
+              <td class="channel-stack"><span class="channel-chip positive">杭州四库传媒有限公司 支付 +5,305 · 核销 -1,440</span><span class="channel-chip positive">山东辉烁营销策划有限公司 支付 +1,968 · 核销 +251</span><span class="channel-chip positive">未绑定服务商 支付 +116 · 核销 -599</span><span class="channel-chip negative">威海嗨游信息科技有限公司 支付 -114 · 核销 -383</span></td>
             </tr>
 
             <tr data-channel="搜索结果卡"
-                data-payment-current="33235.65000000003"
-                data-payment-delta="5198.250000000007"
-                data-payment-growth="0.18540413875751693"
-                data-redeem-current="19344.199999999997"
-                data-redeem-previous="19194.0"
-                data-redeem-delta="150.1999999999971"
-                data-redeem-growth="0.00782536209232032">
+                data-payment-current="36418.95000000003"
+                data-payment-delta="6289.650000000005"
+                data-payment-growth="0.20875526480867457"
+                data-redeem-current="18161.349999999995"
+                data-redeem-previous="20577.0"
+                data-redeem-delta="-2415.650000000005"
+                data-redeem-growth="-0.11739563590416513">
               <td><strong>搜索结果卡</strong></td>
-              <td class="num">3.32万</td>
-              <td class="num">2.80万</td>
-              <td class="num positive">+5,198</td>
-              <td class="num">+18.5%</td>
-              <td class="num">1.93万</td>
-              <td class="num">1.92万</td>
-              <td class="num positive">+150</td>
-              <td class="num">+0.8%</td>
-              <td class="channel-stack"><span class="channel-chip positive">杭州四库传媒有限公司 支付 +4,347 · 核销 -983</span><span class="channel-chip positive">未绑定服务商 支付 +948 · 核销 +658</span><span class="channel-chip negative">威海嗨游信息科技有限公司 支付 -468 · 核销 +41</span><span class="channel-chip positive">山东辉烁营销策划有限公司 支付 +371 · 核销 +434</span></td>
+              <td class="num">3.64万</td>
+              <td class="num">3.01万</td>
+              <td class="num positive">+6,290</td>
+              <td class="num">+20.9%</td>
+              <td class="num">1.82万</td>
+              <td class="num">2.06万</td>
+              <td class="num negative">-2,416</td>
+              <td class="num">-11.7%</td>
+              <td class="channel-stack"><span class="channel-chip positive">杭州四库传媒有限公司 支付 +5,873 · 核销 -1,132</span><span class="channel-chip positive">山东辉烁营销策划有限公司 支付 +2,206 · 核销 -10</span><span class="channel-chip negative">威海嗨游信息科技有限公司 支付 -1,462 · 核销 -949</span><span class="channel-chip negative">未绑定服务商 支付 -328 · 核销 -325</span></td>
             </tr>
 
             <tr data-channel="职人/店员直播"
-                data-payment-current="756.0"
-                data-payment-delta="756.0"
-                data-payment-growth="0"
-                data-redeem-current="0.0"
-                data-redeem-previous="0"
+                data-payment-current="0"
+                data-payment-delta="-756.0"
+                data-payment-growth="-1.0"
+                data-redeem-current="0"
+                data-redeem-previous="0.0"
                 data-redeem-delta="0.0"
                 data-redeem-growth="0">
               <td><strong>职人/店员直播</strong></td>
+              <td class="num">0</td>
               <td class="num">756</td>
-              <td class="num">0</td>
-              <td class="num positive">+756</td>
-              <td class="num">基期较低</td>
-              <td class="num">0</td>
-              <td class="num">0</td>
-              <td class="num positive">0</td>
-              <td class="num">基期较低</td>
-              <td class="channel-stack"><span class="channel-chip positive">杭州四库传媒有限公司 支付 +756 · 核销 0</span></td>
-            </tr>
-
-            <tr data-channel="职人/店员视频"
-                data-payment-current="0"
-                data-payment-delta="0.0"
-                data-payment-growth="0"
-                data-redeem-current="0"
-                data-redeem-previous="179.0"
-                data-redeem-delta="-179.0"
-                data-redeem-growth="-1.0">
-              <td><strong>职人/店员视频</strong></td>
-              <td class="num">0</td>
-              <td class="num">0</td>
-              <td class="num positive">0</td>
-              <td class="num">基期较低</td>
-              <td class="num">0</td>
-              <td class="num">179</td>
-              <td class="num negative">-179</td>
+              <td class="num negative">-756</td>
               <td class="num">-100.0%</td>
-              <td class="channel-stack"><span class="channel-chip positive">杭州四库传媒有限公司 支付 0 · 核销 -179</span></td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num positive">0</td>
+              <td class="num">基期较低</td>
+              <td class="channel-stack"><span class="channel-chip negative">杭州四库传媒有限公司 支付 -756 · 核销 0</span></td>
             </tr>
 
             <tr data-channel="获客卡"
-                data-payment-current="6871.299999999999"
-                data-payment-delta="3075.6999999999994"
-                data-payment-growth="0.8103330171777847"
-                data-redeem-current="2338.0"
-                data-redeem-previous="934.0"
-                data-redeem-delta="1404.0"
-                data-redeem-growth="1.5032119914346893">
+                data-payment-current="6035.799999999999"
+                data-payment-delta="878.7999999999993"
+                data-payment-growth="0.1704091526081053"
+                data-redeem-current="1980.0"
+                data-redeem-previous="656.0"
+                data-redeem-delta="1324.0"
+                data-redeem-growth="2.018292682926829">
               <td><strong>获客卡</strong></td>
-              <td class="num">6,871</td>
-              <td class="num">3,796</td>
-              <td class="num positive">+3,076</td>
-              <td class="num">+81.0%</td>
-              <td class="num">2,338</td>
-              <td class="num">934</td>
-              <td class="num positive">+1,404</td>
-              <td class="num">+150.3%</td>
-              <td class="channel-stack"><span class="channel-chip positive">杭州四库传媒有限公司 支付 +2,241 · 核销 +1,066</span><span class="channel-chip positive">威海嗨游信息科技有限公司 支付 +676 · 核销 +338</span><span class="channel-chip positive">未绑定服务商 支付 +159 · 核销 0</span><span class="channel-chip positive">山东辉烁营销策划有限公司 支付 0 · 核销 0</span></td>
+              <td class="num">6,036</td>
+              <td class="num">5,157</td>
+              <td class="num positive">+879</td>
+              <td class="num">+17.0%</td>
+              <td class="num">1,980</td>
+              <td class="num">656</td>
+              <td class="num positive">+1,324</td>
+              <td class="num">+201.8%</td>
+              <td class="channel-stack"><span class="channel-chip positive">杭州四库传媒有限公司 支付 +1,813 · 核销 +986</span><span class="channel-chip negative">未绑定服务商 支付 -736 · 核销 0</span><span class="channel-chip negative">山东辉烁营销策划有限公司 支付 -417 · 核销 0</span><span class="channel-chip positive">威海嗨游信息科技有限公司 支付 +219 · 核销 +338</span></td>
             </tr>
             </tbody>
         </table>
@@ -1411,8 +1373,8 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
     </article>
       <article class="panel"><div class="panel-head"><div><h2>增长 / 下滑摘要</h2><p>按支付 GMV 增减额排序</p></div></div>
         <div class="insights">
-          <div class="insight"><b>最大增长门店</b><p>维也纳国际酒店(高密花园街店) · +7,036 · 杭州四库传媒有限公司</p><span class="tag good">短视频</span></div>
-          <div class="insight"><b>最大下滑门店</b><p>维也纳酒店(青州高铁站店) · -1,911 · 杭州四库传媒有限公司</p><span class="tag warn">暂无渠道</span></div>
+          <div class="insight"><b>最大增长门店</b><p>维也纳国际酒店(高密花园街店) · +4,092 · 杭州四库传媒有限公司</p><span class="tag good">短视频</span></div>
+          <div class="insight"><b>最大下滑门店</b><p>锦江之星(潍坊泰华城火车站店) · -5,663 · 杭州四库传媒有限公司</p><span class="tag warn">短视频</span></div>
         </div>
       </article></div>
     </section>
@@ -1429,13 +1391,13 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
               <td><strong>杭州四库传媒有限公司</strong></td>
               <td class="num">18家</td>
               <td class="num">18家</td>
-              <td class="num">5.06万</td>
-              <td class="num positive">+36.0%</td>
-              <td class="num">2.48万</td>
-              <td class="num negative">-3.5%</td>
-              <td class="num">2,810</td>
-              <td class="num positive">+28.5%</td>
-              <td class="num">1,380</td>
+              <td class="num">5.36万</td>
+              <td class="num positive">+26.4%</td>
+              <td class="num">2.41万</td>
+              <td class="num negative">-4.9%</td>
+              <td class="num">2,978</td>
+              <td class="num positive">+12.3%</td>
+              <td class="num">1,340</td>
             </tr>
 
             <tr>
@@ -1443,13 +1405,13 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
               <td><strong>山东辉烁营销策划有限公司</strong></td>
               <td class="num">2家</td>
               <td class="num">2家</td>
-              <td class="num">2,870</td>
-              <td class="num positive">+40.8%</td>
-              <td class="num">1,553</td>
-              <td class="num positive">+60.9%</td>
-              <td class="num">1,435</td>
-              <td class="num positive">+40.8%</td>
-              <td class="num">776</td>
+              <td class="num">6,536</td>
+              <td class="num positive">+199.3%</td>
+              <td class="num">1,305</td>
+              <td class="num positive">+22.7%</td>
+              <td class="num">3,268</td>
+              <td class="num positive">+199.3%</td>
+              <td class="num">652</td>
             </tr>
 
             <tr>
@@ -1457,13 +1419,13 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
               <td><strong>威海嗨游信息科技有限公司</strong></td>
               <td class="num">1家</td>
               <td class="num">1家</td>
-              <td class="num">6,479</td>
-              <td class="num positive">+7.7%</td>
-              <td class="num">4,236</td>
-              <td class="num negative">-8.9%</td>
-              <td class="num">6,479</td>
-              <td class="num positive">+7.7%</td>
-              <td class="num">4,236</td>
+              <td class="num">6,053</td>
+              <td class="num negative">-8.2%</td>
+              <td class="num">3,707</td>
+              <td class="num negative">-18.4%</td>
+              <td class="num">6,053</td>
+              <td class="num negative">-8.2%</td>
+              <td class="num">3,707</td>
             </tr>
 
             <tr>
@@ -1471,42 +1433,42 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
               <td><strong>未绑定服务商</strong></td>
               <td class="num">15家</td>
               <td class="num">6家</td>
-              <td class="num">1.19万</td>
-              <td class="num positive">+43.6%</td>
-              <td class="num">4,128</td>
-              <td class="num positive">+2.1%</td>
-              <td class="num">1,980</td>
-              <td class="num positive">+67.6%</td>
-              <td class="num">688</td>
+              <td class="num">1.01万</td>
+              <td class="num negative">-9.3%</td>
+              <td class="num">4,218</td>
+              <td class="num negative">-13.3%</td>
+              <td class="num">1,691</td>
+              <td class="num positive">+5.8%</td>
+              <td class="num">703</td>
             </tr>
             </tbody>
         </table>
       </div>
     </article>
       <article class="panel"><div class="panel-head"><div><h2>服务商水平</h2><p>平均单店支付产出柱状图 · 单位：万元</p></div></div>
-        <div class="insights"><div class="insight"><b>杭州四库传媒有限公司</b><p>2,810 /家支付 · 1,380 /家核销 · 18家动销</p><div class="bar-wrap"><span class="segment-bar calendar" style="width:43.4%"></span></div><span class="tag good">单店产出 +28.5%</span></div><div class="insight"><b>山东辉烁营销策划有限公司</b><p>1,435 /家支付 · 776 /家核销 · 2家动销</p><div class="bar-wrap"><span class="segment-bar calendar" style="width:22.1%"></span></div><span class="tag good">单店产出 +40.8%</span></div><div class="insight"><b>威海嗨游信息科技有限公司</b><p>6,479 /家支付 · 4,236 /家核销 · 1家动销</p><div class="bar-wrap"><span class="segment-bar calendar" style="width:100.0%"></span></div><span class="tag good">单店产出 +7.7%</span></div><div class="insight"><b>未绑定服务商</b><p>1,980 /家支付 · 688 /家核销 · 6家动销</p><div class="bar-wrap"><span class="segment-bar calendar" style="width:30.6%"></span></div><span class="tag good">单店产出 +67.6%</span></div></div>
+        <div class="insights"><div class="insight"><b>杭州四库传媒有限公司</b><p>2,978 /家支付 · 1,340 /家核销 · 18家动销</p><div class="bar-wrap"><span class="segment-bar calendar" style="width:49.2%"></span></div><span class="tag good">单店产出 +12.3%</span></div><div class="insight"><b>山东辉烁营销策划有限公司</b><p>3,268 /家支付 · 652 /家核销 · 2家动销</p><div class="bar-wrap"><span class="segment-bar calendar" style="width:54.0%"></span></div><span class="tag good">单店产出 +199.3%</span></div><div class="insight"><b>威海嗨游信息科技有限公司</b><p>6,053 /家支付 · 3,707 /家核销 · 1家动销</p><div class="bar-wrap"><span class="segment-bar calendar" style="width:100.0%"></span></div><span class="tag warn">单店产出 -8.2%</span></div><div class="insight"><b>未绑定服务商</b><p>1,691 /家支付 · 703 /家核销 · 6家动销</p><div class="bar-wrap"><span class="segment-bar calendar" style="width:27.9%"></span></div><span class="tag good">单店产出 +5.8%</span></div></div>
       </article></div>
     </section>
 
     <section class="section" id="voucher">
       <div class="section-head"><div><h2>通兑商品</h2><p>省区合计 · 仅展示支付与核销趋势，不拆分 SKU</p></div></div>
       <div class="kpis">
-        <article class="kpi"><span class="kpi-label">通兑支付 GMV</span><b class="kpi-value">2,208</b><div class="kpi-foot"><span>本期 7 天累计</span><span>支付券 12张</span></div></article>
-        <article class="kpi"><span class="kpi-label">通兑核销 GMV</span><b class="kpi-value">1,074</b><div class="kpi-foot"><span>本期 7 天累计</span><span>核销券 6张</span></div></article>
+        <article class="kpi"><span class="kpi-label">通兑支付 GMV</span><b class="kpi-value">398</b><div class="kpi-foot"><span>本期 7 天累计</span><span>支付券 2张</span></div></article>
+        <article class="kpi"><span class="kpi-label">通兑核销 GMV</span><b class="kpi-value">696</b><div class="kpi-foot"><span>本期 7 天累计</span><span>核销券 4张</span></div></article>
       </div>
       <article class="panel" style="margin-top:16px">
-        <div class="panel-head trend-panel-head"><div class="trend-heading"><h2>支付与核销趋势</h2><span class="trend-range">10-28–11-03 · 单位：万元</span></div><div class="legend"><span><i style="background:var(--blue)"></i>支付</span><span><i style="background:var(--orange)"></i>核销</span></div></div>
+        <div class="panel-head trend-panel-head"><div class="trend-heading"><h2>支付与核销趋势</h2><span class="trend-range">10-30–11-05 · 单位：万元</span></div><div class="legend"><span><i style="background:var(--blue)"></i>支付</span><span><i style="background:var(--orange)"></i>核销</span></div></div>
         <div class="chart-scroll">
       <svg class="chart-svg" viewBox="0 0 760 300" role="img"
            aria-label="支付与核销日趋势，单位万元">
-        <line x1="54" y1="34.0" x2="736" y2="34.0" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="104.6" x2="736" y2="104.6" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="175.2" x2="736" y2="175.2" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="248.0" x2="736" y2="248.0" stroke="#ECEEF3" stroke-width="1"/><text x="44" y="38.0" text-anchor="end" class="axis-label">0.1</text><text x="44" y="145.0" text-anchor="end" class="axis-label">0.1</text><text x="44" y="252.0" text-anchor="end" class="axis-label">0.0</text>
-        <path d="M54.0 34.0 L167.7 150.4 L281.3 179.5 L395.0 248.0 L508.7 248.0 L622.3 248.0 L736.0 248.0" fill="none" stroke="#1677FF"
+        <line x1="54" y1="34.0" x2="736" y2="34.0" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="104.6" x2="736" y2="104.6" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="175.2" x2="736" y2="175.2" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="248.0" x2="736" y2="248.0" stroke="#ECEEF3" stroke-width="1"/><text x="44" y="38.0" text-anchor="end" class="axis-label">0.0</text><text x="44" y="145.0" text-anchor="end" class="axis-label">0.0</text><text x="44" y="252.0" text-anchor="end" class="axis-label">0.0</text>
+        <path d="M54.0 76.6 L167.7 248.0 L281.3 248.0 L395.0 248.0 L508.7 248.0 L622.3 248.0 L736.0 248.0" fill="none" stroke="#1677FF"
               stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M54.0 217.2 L167.7 213.7 L281.3 248.0 L395.0 213.7 L508.7 162.4 L622.3 248.0 L736.0 248.0" fill="none" stroke="#FF8A3D"
+        <path d="M54.0 248.0 L167.7 162.3 L281.3 34.0 L395.0 248.0 L508.7 248.0 L622.3 248.0 L736.0 248.0" fill="none" stroke="#FF8A3D"
               stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-        <circle class="trend-point payment-point" cx="54.0" cy="34.0" r="5" fill="#1677FF"/><text x="58.0" y="22.0" text-anchor="start" class="point-label payment-label" fill="#1677FF">0.1万</text><circle class="trend-point payment-point" cx="167.7" cy="150.4" r="5" fill="#1677FF"/><text x="167.7" y="138.4" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.1万</text><circle class="trend-point payment-point" cx="281.3" cy="179.5" r="5" fill="#1677FF"/><text x="281.3" y="167.5" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="395.0" cy="248.0" r="5" fill="#1677FF"/><text x="395.0" y="226.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="508.7" cy="248.0" r="5" fill="#1677FF"/><text x="508.7" y="236.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="622.3" cy="248.0" r="5" fill="#1677FF"/><text x="622.3" y="236.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="736.0" cy="248.0" r="5" fill="#1677FF"/><text x="732.0" y="236.0" text-anchor="end" class="point-label payment-label" fill="#1677FF">0.0万</text>
-        <circle class="trend-point redeem-point" cx="54.0" cy="217.2" r="5" fill="#FF8A3D"/><text x="58.0" y="241.2" text-anchor="start" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="167.7" cy="213.7" r="5" fill="#FF8A3D"/><text x="167.7" y="237.7" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="281.3" cy="248.0" r="5" fill="#FF8A3D"/><text x="281.3" y="272.0" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="395.0" cy="213.7" r="5" fill="#FF8A3D"/><text x="395.0" y="247.7" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="508.7" cy="162.4" r="5" fill="#FF8A3D"/><text x="508.7" y="186.4" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="622.3" cy="248.0" r="5" fill="#FF8A3D"/><text x="622.3" y="272.0" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="736.0" cy="248.0" r="5" fill="#FF8A3D"/><text x="732.0" y="272.0" text-anchor="end" class="point-label redeem-label" fill="#FF8A3D">0.0万</text>
-        <text x="54.0" y="288" text-anchor="middle" class="axis-label">10-28</text><text x="167.7" y="288" text-anchor="middle" class="axis-label">10-29</text><text x="281.3" y="288" text-anchor="middle" class="axis-label">10-30</text><text x="395.0" y="288" text-anchor="middle" class="axis-label">10-31</text><text x="508.7" y="288" text-anchor="middle" class="axis-label">11-01</text><text x="622.3" y="288" text-anchor="middle" class="axis-label">11-02</text><text x="736.0" y="288" text-anchor="middle" class="axis-label">11-03</text>
+        <circle class="trend-point payment-point" cx="54.0" cy="76.6" r="5" fill="#1677FF"/><text x="58.0" y="64.6" text-anchor="start" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="167.7" cy="248.0" r="5" fill="#1677FF"/><text x="167.7" y="236.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="281.3" cy="248.0" r="5" fill="#1677FF"/><text x="281.3" y="236.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="395.0" cy="248.0" r="5" fill="#1677FF"/><text x="395.0" y="236.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="508.7" cy="248.0" r="5" fill="#1677FF"/><text x="508.7" y="236.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="622.3" cy="248.0" r="5" fill="#1677FF"/><text x="622.3" y="236.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="736.0" cy="248.0" r="5" fill="#1677FF"/><text x="732.0" y="236.0" text-anchor="end" class="point-label payment-label" fill="#1677FF">0.0万</text>
+        <circle class="trend-point redeem-point" cx="54.0" cy="248.0" r="5" fill="#FF8A3D"/><text x="58.0" y="272.0" text-anchor="start" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="167.7" cy="162.3" r="5" fill="#FF8A3D"/><text x="167.7" y="186.3" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="281.3" cy="34.0" r="5" fill="#FF8A3D"/><text x="281.3" y="58.0" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="395.0" cy="248.0" r="5" fill="#FF8A3D"/><text x="395.0" y="272.0" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="508.7" cy="248.0" r="5" fill="#FF8A3D"/><text x="508.7" y="272.0" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="622.3" cy="248.0" r="5" fill="#FF8A3D"/><text x="622.3" y="272.0" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="736.0" cy="248.0" r="5" fill="#FF8A3D"/><text x="732.0" y="272.0" text-anchor="end" class="point-label redeem-label" fill="#FF8A3D">0.0万</text>
+        <text x="54.0" y="288" text-anchor="middle" class="axis-label">10-30</text><text x="167.7" y="288" text-anchor="middle" class="axis-label">10-31</text><text x="281.3" y="288" text-anchor="middle" class="axis-label">11-01</text><text x="395.0" y="288" text-anchor="middle" class="axis-label">11-02</text><text x="508.7" y="288" text-anchor="middle" class="axis-label">11-03</text><text x="622.3" y="288" text-anchor="middle" class="axis-label">11-04</text><text x="736.0" y="288" text-anchor="middle" class="axis-label">11-05</text>
       </svg>
     </div>
       </article>
@@ -1514,26 +1476,26 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
 
 
     <section class="section" id="operation-score">
-      <div class="section-head"><div><h2>门店经营分</h2><p>中国区全量数据按 POI ID 匹配 · 名称仅用于展示 · 数据截至 2026-11-03</p></div><div class="section-actions"><a class="command-button" href="downloads/经营分_鲁东省区__潍坊片区_2026-11-03.xlsx" download><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg><span>下载经营分 Excel</span></a></div></div>
+      <div class="section-head"><div><h2>门店经营分</h2><p>中国区全量数据按 POI ID 匹配 · 名称仅用于展示 · 数据截至 2026-11-05</p></div><div class="section-actions"><a class="command-button" href="downloads/经营分_鲁东省区__潍坊片区_2026-11-05.xlsx" download><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg><span>下载经营分 Excel</span></a></div></div>
       <div class="kpis">
         <article class="kpi"><span class="kpi-label">平均经营分</span><b class="kpi-value">101.5</b><div class="kpi-foot"><span>满分 120</span><span>仅统计已匹配门店</span></div></article>
         <article class="kpi"><span class="kpi-label">经营分覆盖</span><b class="kpi-value">29<small style="font-size:14px"> / 36 家</small></b><div class="kpi-foot"><span>7 家</span><span>未匹配</span></div></article>
-        <article class="kpi"><span class="kpi-label">金冠认证门店</span><b class="kpi-value">19<small style="font-size:14px">家</small></b><div class="kpi-foot"><span>4 家</span><span>近 7 天上涨</span></div></article>
+        <article class="kpi"><span class="kpi-label">金冠认证门店</span><b class="kpi-value">18<small style="font-size:14px">家</small></b><div class="kpi-foot"><span>5 家</span><span>近 7 天上涨</span></div></article>
         <article class="kpi"><span class="kpi-label">风险门店</span><b class="kpi-value">1<small style="font-size:14px">家</small></b><div class="kpi-foot"><span>8 家</span><span>近 7 天下降</span></div></article>
       </div>
       <div class="inventory-summary operation-score-summary">
-        <div class="good"><span>高分门店</span><strong>18</strong><small>100–120 分</small></div>
-        <div><span>待提升门店</span><strong>10</strong><small>80–99 分</small></div>
+        <div class="good"><span>高分门店</span><strong>19</strong><small>100–120 分</small></div>
+        <div><span>待提升门店</span><strong>9</strong><small>80–99 分</small></div>
         <div class="risk"><span>风险门店</span><strong>1</strong><small>低于 80 分</small></div>
         <div><span>近 7 天净变化</span><strong>-21</strong><small>分</small></div>
       </div>
       <article class="panel score-dimension-panel">
         <div class="panel-head"><div><h2>待提升项分布</h2><p>同一门店可能同时命中多个维度</p></div></div>
-        <div class="score-dimensions"><span class="score-dimension-tag"><b>拿收益</b><span>23 家</span></span><span class="score-dimension-tag"><b>稳房源</b><span>16 家</span></span><span class="score-dimension-tag"><b>提质量</b><span>14 家</span></span><span class="score-dimension-tag"><b>搭门店</b><span>2 家</span></span><span class="score-dimension-tag"><b>附加分</b><span>1 家</span></span></div>
+        <div class="score-dimensions"><span class="score-dimension-tag"><b>拿收益</b><span>25 家</span></span><span class="score-dimension-tag"><b>稳房源</b><span>15 家</span></span><span class="score-dimension-tag"><b>提质量</b><span>14 家</span></span><span class="score-dimension-tag"><b>搭门店</b><span>2 家</span></span><span class="score-dimension-tag"><b>附加分</b><span>1 家</span></span></div>
       </article>
       <article class="panel operation-score-panel">
         <div class="panel-head"><div><h2>门店经营分明细</h2><p>可按门店、POI、片区、认证状态和分数档位筛选，点击业务列排序</p></div></div>
-        <div class="filter-bar operation-score-filter"><input id="operation-score-search" type="search" placeholder="搜索门店或 POI" aria-label="搜索经营分门店"><select id="operation-score-area-filter" aria-label="按片区筛选经营分"><option value="">全部片区</option><option value="潍坊片区">潍坊片区</option></select><select id="operation-score-crown-filter" aria-label="按金冠认证筛选"><option value="">全部认证状态</option><option value="已认证">已认证</option><option value="未认证">未认证</option></select><select id="operation-score-tier-filter" aria-label="按经营分档位筛选"><option value="">全部分数档位</option><option value="high">高分</option><option value="improve">待提升</option><option value="risk">风险</option></select><span id="operation-score-result-count" class="filter-count"></span></div><div class="table-scroll operation-score-table-scroll"><table class="operation-score-table"><thead><tr><th>#</th><th>门店 / POI</th><th>一级省区</th><th><button class="sort-trigger operation-score-sort-trigger" type="button" data-sort-key="area" onclick="sortOperationScoreTable('area')" title="按二级片区排序">二级片区 <span class="sort-indicator">↕</span></button></th><th><button class="sort-trigger operation-score-sort-trigger" type="button" data-sort-key="score" onclick="sortOperationScoreTable('score')" title="按经营分排序">经营分 <span class="sort-indicator">↕</span></button></th><th>金冠认证</th><th><button class="sort-trigger operation-score-sort-trigger" type="button" data-sort-key="change" onclick="sortOperationScoreTable('change')" title="按近7天变化排序">近7天变化 <span class="sort-indicator">↕</span></button></th><th>待提升项</th></tr></thead><tbody id="operation-score-table-body"><tr data-score="57.0" data-change="0.0" data-crown="未认证" data-tier="risk" data-area="潍坊片区" data-search="维也纳酒店（潍坊火车站泰华城店） 6601140706620753927"><td class="rank">01</td><td><strong>维也纳酒店（潍坊火车站泰华城店）</strong><small> · 6601140706620753927</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value risk">57</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,附加分,拿收益</td></tr><tr data-score="87.0" data-change="3.0" data-crown="已认证" data-tier="improve" data-area="潍坊片区" data-search="维也纳国际酒店(潍坊高新区兴茂科技产业园旗舰店) 7612774687734499334"><td class="rank">02</td><td><strong>维也纳国际酒店(潍坊高新区兴茂科技产业园旗舰店)</strong><small>潍坊市 · 7612774687734499334</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value improve">87</td><td><span class="score-status certified">已认证</span></td><td class="num positive">+3</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="90.0" data-change="0.0" data-crown="已认证" data-tier="improve" data-area="潍坊片区" data-search="希岸.轻雅酒店（青州古城店） 6601265692228454403"><td class="rank">03</td><td><strong>希岸.轻雅酒店（青州古城店）</strong><small>潍坊市 · 6601265692228454403</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value improve">90</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">提质量,拿收益</td></tr><tr data-score="90.0" data-change="0.0" data-crown="已认证" data-tier="improve" data-area="潍坊片区" data-search="非繁云居酒店（青州古城店） 7554585575535740963"><td class="rank">04</td><td><strong>非繁云居酒店（青州古城店）</strong><small>潍坊市 · 7554585575535740963</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value improve">90</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">提质量,拿收益</td></tr><tr data-score="92.0" data-change="0.0" data-crown="已认证" data-tier="improve" data-area="潍坊片区" data-search="凯里亚德酒店（寿光市政府店） 6638455504119154701"><td class="rank">05</td><td><strong>凯里亚德酒店（寿光市政府店）</strong><small>潍坊市 · 6638455504119154701</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value improve">92</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="92.0" data-change="0.0" data-crown="未认证" data-tier="improve" data-area="潍坊片区" data-search="维也纳酒店（5.0寿光万达广场店) 6874490692559702030"><td class="rank">06</td><td><strong>维也纳酒店（5.0寿光万达广场店)</strong><small>潍坊市 · 6874490692559702030</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value improve">92</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="92.0" data-change="-5.0" data-crown="未认证" data-tier="improve" data-area="潍坊片区" data-search="维也纳酒店（青州古城店） 6601142759464110094"><td class="rank">07</td><td><strong>维也纳酒店（青州古城店）</strong><small>潍坊市 · 6601142759464110094</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value improve">92</td><td><span class="score-status uncertified">未认证</span></td><td class="num negative">-5</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="92.0" data-change="0.0" data-crown="未认证" data-tier="improve" data-area="潍坊片区" data-search="麗枫酒店（青州古城店） 7496733369987893283"><td class="rank">08</td><td><strong>麗枫酒店（青州古城店）</strong><small>潍坊市 · 7496733369987893283</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value improve">92</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="95.0" data-change="-5.0" data-crown="已认证" data-tier="improve" data-area="潍坊片区" data-search="7天优品（青州开发区万隆购物中心店） 6612108201066235917"><td class="rank">09</td><td><strong>7天优品（青州开发区万隆购物中心店）</strong><small>潍坊市 · 6612108201066235917</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value improve">95</td><td><span class="score-status certified">已认证</span></td><td class="num negative">-5</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="95.0" data-change="3.0" data-crown="已认证" data-tier="improve" data-area="潍坊片区" data-search="白玉兰商务酒店（潍坊临朐店） 7598674335619876864"><td class="rank">10</td><td><strong>白玉兰商务酒店（潍坊临朐店）</strong><small>潍坊市 · 7598674335619876864</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value improve">95</td><td><span class="score-status certified">已认证</span></td><td class="num positive">+3</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="96.0" data-change="-5.0" data-crown="已认证" data-tier="improve" data-area="潍坊片区" data-search="麗枫酒店（潍坊高新区金马路店） 6976840538032965639"><td class="rank">11</td><td><strong>麗枫酒店（潍坊高新区金马路店）</strong><small>潍坊市 · 6976840538032965639</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value improve">96</td><td><span class="score-status certified">已认证</span></td><td class="num negative">-5</td><td class="score-dimension">搭门店,提质量,拿收益</td></tr><tr data-score="100.0" data-change="0.0" data-crown="未认证" data-tier="high" data-area="潍坊片区" data-search="白玉兰商务酒店（青州古城店） 7094819473206544419"><td class="rank">12</td><td><strong>白玉兰商务酒店（青州古城店）</strong><small>潍坊市 · 7094819473206544419</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value high">100</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="100.0" data-change="0.0" data-crown="未认证" data-tier="high" data-area="潍坊片区" data-search="维也纳3好酒店(诸城东关大街超然台店） 7239947133132998715"><td class="rank">13</td><td><strong>维也纳3好酒店(诸城东关大街超然台店）</strong><small>潍坊市 · 7239947133132998715</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value high">100</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">提质量,拿收益</td></tr><tr data-score="101.0" data-change="0.0" data-crown="未认证" data-tier="high" data-area="潍坊片区" data-search="维也纳3好酒店（山东潍坊临朐店） 6824371701640382468"><td class="rank">14</td><td><strong>维也纳3好酒店（山东潍坊临朐店）</strong><small>潍坊市 · 6824371701640382468</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value high">101</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">搭门店,稳房源</td></tr><tr data-score="102.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="潍坊片区" data-search="维也纳酒店（寿光人民广场店） 6826250171895105544"><td class="rank">15</td><td><strong>维也纳酒店（寿光人民广场店）</strong><small>潍坊市 · 6826250171895105544</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value high">102</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="105.0" data-change="-5.0" data-crown="已认证" data-tier="high" data-area="潍坊片区" data-search="希岸酒店（潍坊泰华城火车站店） 6683400621237880839"><td class="rank">16</td><td><strong>希岸酒店（潍坊泰华城火车站店）</strong><small>潍坊市 · 6683400621237880839</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value high">105</td><td><span class="score-status certified">已认证</span></td><td class="num negative">-5</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="105.0" data-change="-5.0" data-crown="已认证" data-tier="high" data-area="潍坊片区" data-search="维也纳国际酒店（诸城密州路市府店） 7277813763514828800"><td class="rank">17</td><td><strong>维也纳国际酒店（诸城密州路市府店）</strong><small>潍坊市 · 7277813763514828800</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value high">105</td><td><span class="score-status certified">已认证</span></td><td class="num negative">-5</td><td class="score-dimension">拿收益</td></tr><tr data-score="107.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="潍坊片区" data-search="维也纳国际酒店（临朐万达广场店） 7229182208345393212"><td class="rank">18</td><td><strong>维也纳国际酒店（临朐万达广场店）</strong><small>潍坊市 · 7229182208345393212</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value high">107</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="110.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="潍坊片区" data-search="喆啡酒店（潍坊火车站泰华城店） 7081617643366516766"><td class="rank">19</td><td><strong>喆啡酒店（潍坊火车站泰华城店）</strong><small>潍坊市 · 7081617643366516766</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value high">110</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">拿收益</td></tr><tr data-score="110.0" data-change="-5.0" data-crown="已认证" data-tier="high" data-area="潍坊片区" data-search="维也纳国际酒店（山东潍坊高密花园街店） 6601259847830734852"><td class="rank">20</td><td><strong>维也纳国际酒店（山东潍坊高密花园街店）</strong><small>潍坊市 · 6601259847830734852</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value high">110</td><td><span class="score-status certified">已认证</span></td><td class="num negative">-5</td><td class="score-dimension">稳房源,提质量</td></tr><tr data-score="110.0" data-change="5.0" data-crown="已认证" data-tier="high" data-area="潍坊片区" data-search="维也纳酒店（5.0潍坊坊子店） 7333827461253171237"><td class="rank">21</td><td><strong>维也纳酒店（5.0潍坊坊子店）</strong><small>潍坊市 · 7333827461253171237</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value high">110</td><td><span class="score-status certified">已认证</span></td><td class="num positive">+5</td><td class="score-dimension">拿收益</td></tr><tr data-score="110.0" data-change="-5.0" data-crown="已认证" data-tier="high" data-area="潍坊片区" data-search="维也纳酒店（青州高铁站店） 7147330578760370183"><td class="rank">22</td><td><strong>维也纳酒店（青州高铁站店）</strong><small>潍坊市 · 7147330578760370183</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value high">110</td><td><span class="score-status certified">已认证</span></td><td class="num negative">-5</td><td class="score-dimension">拿收益</td></tr><tr data-score="110.0" data-change="8.0" data-crown="已认证" data-tier="high" data-area="潍坊片区" data-search="锦江之星5.1（潍坊昌邑店） 7606571340094539839"><td class="rank">23</td><td><strong>锦江之星5.1（潍坊昌邑店）</strong><small>潍坊市 · 7606571340094539839</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value high">110</td><td><span class="score-status certified">已认证</span></td><td class="num positive">+8</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="110.0" data-change="-5.0" data-crown="已认证" data-tier="high" data-area="潍坊片区" data-search="锦江之星（青州古城博物馆店） 7625501294187038772"><td class="rank">24</td><td><strong>锦江之星（青州古城博物馆店）</strong><small>潍坊市 · 7625501294187038772</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value high">110</td><td><span class="score-status certified">已认证</span></td><td class="num negative">-5</td><td class="score-dimension">拿收益</td></tr><tr data-score="115.0" data-change="0.0" data-crown="未认证" data-tier="high" data-area="潍坊片区" data-search="维也纳国际酒店（青州古城店） 6601191648141510669"><td class="rank">25</td><td><strong>维也纳国际酒店（青州古城店）</strong><small>潍坊市 · 6601191648141510669</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value high">115</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">提质量</td></tr><tr data-score="115.0" data-change="0.0" data-crown="未认证" data-tier="high" data-area="潍坊片区" data-search="锦江之星（潍坊泰华城火车站店） 6601143201375979524"><td class="rank">26</td><td><strong>锦江之星（潍坊泰华城火车站店）</strong><small>潍坊市 · 6601143201375979524</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value high">115</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源</td></tr><tr data-score="115.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="潍坊片区" data-search="麗枫酒店（潍坊诸城恐龙公园汽车站店） 6952255158147352616"><td class="rank">27</td><td><strong>麗枫酒店（潍坊诸城恐龙公园汽车站店）</strong><small>潍坊市 · 6952255158147352616</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value high">115</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">拿收益</td></tr><tr data-score="120.0" data-change="0.0" data-crown="未认证" data-tier="high" data-area="潍坊片区" data-search="维也纳酒店（安丘世贸中心店） 7227696218418186296"><td class="rank">28</td><td><strong>维也纳酒店（安丘世贸中心店）</strong><small>潍坊市 · 7227696218418186296</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value high">120</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">无</td></tr><tr data-score="120.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="潍坊片区" data-search="麗枫酒店（高密市政府店） 6644703029226506247"><td class="rank">29</td><td><strong>麗枫酒店（高密市政府店）</strong><small>潍坊市 · 6644703029226506247</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value high">120</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">无</td></tr></tbody></table></div>
+        <div class="filter-bar operation-score-filter"><input id="operation-score-search" type="search" placeholder="搜索门店或 POI" aria-label="搜索经营分门店"><select id="operation-score-area-filter" aria-label="按片区筛选经营分"><option value="">全部片区</option><option value="潍坊片区">潍坊片区</option></select><select id="operation-score-crown-filter" aria-label="按金冠认证筛选"><option value="">全部认证状态</option><option value="已认证">已认证</option><option value="未认证">未认证</option></select><select id="operation-score-tier-filter" aria-label="按经营分档位筛选"><option value="">全部分数档位</option><option value="high">高分</option><option value="improve">待提升</option><option value="risk">风险</option></select><span id="operation-score-result-count" class="filter-count"></span></div><div class="table-scroll operation-score-table-scroll"><table class="operation-score-table"><thead><tr><th>#</th><th>门店 / POI</th><th>一级省区</th><th><button class="sort-trigger operation-score-sort-trigger" type="button" data-sort-key="area" onclick="sortOperationScoreTable('area')" title="按二级片区排序">二级片区 <span class="sort-indicator">↕</span></button></th><th><button class="sort-trigger operation-score-sort-trigger" type="button" data-sort-key="score" onclick="sortOperationScoreTable('score')" title="按经营分排序">经营分 <span class="sort-indicator">↕</span></button></th><th>金冠认证</th><th><button class="sort-trigger operation-score-sort-trigger" type="button" data-sort-key="change" onclick="sortOperationScoreTable('change')" title="按近7天变化排序">近7天变化 <span class="sort-indicator">↕</span></button></th><th>待提升项</th></tr></thead><tbody id="operation-score-table-body"><tr data-score="57.0" data-change="0.0" data-crown="未认证" data-tier="risk" data-area="潍坊片区" data-search="维也纳酒店（潍坊火车站泰华城店） 6601140706620753927"><td class="rank">01</td><td><strong>维也纳酒店（潍坊火车站泰华城店）</strong><small> · 6601140706620753927</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value risk">57</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,附加分,拿收益</td></tr><tr data-score="80.0" data-change="-10.0" data-crown="未认证" data-tier="improve" data-area="潍坊片区" data-search="非繁云居酒店（青州古城店） 7554585575535740963"><td class="rank">02</td><td><strong>非繁云居酒店（青州古城店）</strong><small>潍坊市 · 7554585575535740963</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value improve">80</td><td><span class="score-status uncertified">未认证</span></td><td class="num negative">-10</td><td class="score-dimension">提质量,拿收益</td></tr><tr data-score="87.0" data-change="3.0" data-crown="已认证" data-tier="improve" data-area="潍坊片区" data-search="维也纳国际酒店(潍坊高新区兴茂科技产业园旗舰店) 7612774687734499334"><td class="rank">03</td><td><strong>维也纳国际酒店(潍坊高新区兴茂科技产业园旗舰店)</strong><small>潍坊市 · 7612774687734499334</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value improve">87</td><td><span class="score-status certified">已认证</span></td><td class="num positive">+3</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="90.0" data-change="0.0" data-crown="已认证" data-tier="improve" data-area="潍坊片区" data-search="希岸.轻雅酒店（青州古城店） 6601265692228454403"><td class="rank">04</td><td><strong>希岸.轻雅酒店（青州古城店）</strong><small>潍坊市 · 6601265692228454403</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value improve">90</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">提质量,拿收益</td></tr><tr data-score="92.0" data-change="0.0" data-crown="已认证" data-tier="improve" data-area="潍坊片区" data-search="凯里亚德酒店（寿光市政府店） 6638455504119154701"><td class="rank">05</td><td><strong>凯里亚德酒店（寿光市政府店）</strong><small>潍坊市 · 6638455504119154701</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value improve">92</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="92.0" data-change="0.0" data-crown="未认证" data-tier="improve" data-area="潍坊片区" data-search="维也纳酒店（5.0寿光万达广场店) 6874490692559702030"><td class="rank">06</td><td><strong>维也纳酒店（5.0寿光万达广场店)</strong><small>潍坊市 · 6874490692559702030</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value improve">92</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="92.0" data-change="-5.0" data-crown="未认证" data-tier="improve" data-area="潍坊片区" data-search="维也纳酒店（青州古城店） 6601142759464110094"><td class="rank">07</td><td><strong>维也纳酒店（青州古城店）</strong><small>潍坊市 · 6601142759464110094</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value improve">92</td><td><span class="score-status uncertified">未认证</span></td><td class="num negative">-5</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="92.0" data-change="0.0" data-crown="未认证" data-tier="improve" data-area="潍坊片区" data-search="麗枫酒店（青州古城店） 7496733369987893283"><td class="rank">08</td><td><strong>麗枫酒店（青州古城店）</strong><small>潍坊市 · 7496733369987893283</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value improve">92</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="95.0" data-change="-5.0" data-crown="已认证" data-tier="improve" data-area="潍坊片区" data-search="7天优品（青州开发区万隆购物中心店） 6612108201066235917"><td class="rank">09</td><td><strong>7天优品（青州开发区万隆购物中心店）</strong><small>潍坊市 · 6612108201066235917</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value improve">95</td><td><span class="score-status certified">已认证</span></td><td class="num negative">-5</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="96.0" data-change="-5.0" data-crown="已认证" data-tier="improve" data-area="潍坊片区" data-search="麗枫酒店（潍坊高新区金马路店） 6976840538032965639"><td class="rank">10</td><td><strong>麗枫酒店（潍坊高新区金马路店）</strong><small>潍坊市 · 6976840538032965639</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value improve">96</td><td><span class="score-status certified">已认证</span></td><td class="num negative">-5</td><td class="score-dimension">搭门店,提质量,拿收益</td></tr><tr data-score="100.0" data-change="8.0" data-crown="已认证" data-tier="high" data-area="潍坊片区" data-search="白玉兰商务酒店（潍坊临朐店） 7598674335619876864"><td class="rank">11</td><td><strong>白玉兰商务酒店（潍坊临朐店）</strong><small>潍坊市 · 7598674335619876864</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value high">100</td><td><span class="score-status certified">已认证</span></td><td class="num positive">+8</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="100.0" data-change="5.0" data-crown="未认证" data-tier="high" data-area="潍坊片区" data-search="白玉兰商务酒店（青州古城店） 7094819473206544419"><td class="rank">12</td><td><strong>白玉兰商务酒店（青州古城店）</strong><small>潍坊市 · 7094819473206544419</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value high">100</td><td><span class="score-status uncertified">未认证</span></td><td class="num positive">+5</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="100.0" data-change="0.0" data-crown="未认证" data-tier="high" data-area="潍坊片区" data-search="维也纳3好酒店(诸城东关大街超然台店） 7239947133132998715"><td class="rank">13</td><td><strong>维也纳3好酒店(诸城东关大街超然台店）</strong><small>潍坊市 · 7239947133132998715</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value high">100</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">提质量,拿收益</td></tr><tr data-score="102.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="潍坊片区" data-search="维也纳酒店（寿光人民广场店） 6826250171895105544"><td class="rank">14</td><td><strong>维也纳酒店（寿光人民广场店）</strong><small>潍坊市 · 6826250171895105544</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value high">102</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="105.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="潍坊片区" data-search="希岸酒店（潍坊泰华城火车站店） 6683400621237880839"><td class="rank">15</td><td><strong>希岸酒店（潍坊泰华城火车站店）</strong><small>潍坊市 · 6683400621237880839</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value high">105</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="105.0" data-change="-5.0" data-crown="已认证" data-tier="high" data-area="潍坊片区" data-search="维也纳国际酒店（诸城密州路市府店） 7277813763514828800"><td class="rank">16</td><td><strong>维也纳国际酒店（诸城密州路市府店）</strong><small>潍坊市 · 7277813763514828800</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value high">105</td><td><span class="score-status certified">已认证</span></td><td class="num negative">-5</td><td class="score-dimension">拿收益</td></tr><tr data-score="105.0" data-change="-10.0" data-crown="未认证" data-tier="high" data-area="潍坊片区" data-search="维也纳国际酒店（青州古城店） 6601191648141510669"><td class="rank">17</td><td><strong>维也纳国际酒店（青州古城店）</strong><small>潍坊市 · 6601191648141510669</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value high">105</td><td><span class="score-status uncertified">未认证</span></td><td class="num negative">-10</td><td class="score-dimension">提质量,拿收益</td></tr><tr data-score="107.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="潍坊片区" data-search="维也纳国际酒店（临朐万达广场店） 7229182208345393212"><td class="rank">18</td><td><strong>维也纳国际酒店（临朐万达广场店）</strong><small>潍坊市 · 7229182208345393212</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value high">107</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="110.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="潍坊片区" data-search="喆啡酒店（潍坊火车站泰华城店） 7081617643366516766"><td class="rank">19</td><td><strong>喆啡酒店（潍坊火车站泰华城店）</strong><small>潍坊市 · 7081617643366516766</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value high">110</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">拿收益</td></tr><tr data-score="110.0" data-change="-5.0" data-crown="已认证" data-tier="high" data-area="潍坊片区" data-search="维也纳国际酒店（山东潍坊高密花园街店） 6601259847830734852"><td class="rank">20</td><td><strong>维也纳国际酒店（山东潍坊高密花园街店）</strong><small>潍坊市 · 6601259847830734852</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value high">110</td><td><span class="score-status certified">已认证</span></td><td class="num negative">-5</td><td class="score-dimension">稳房源,提质量</td></tr><tr data-score="110.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="潍坊片区" data-search="维也纳酒店（5.0潍坊坊子店） 7333827461253171237"><td class="rank">21</td><td><strong>维也纳酒店（5.0潍坊坊子店）</strong><small>潍坊市 · 7333827461253171237</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value high">110</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">拿收益</td></tr><tr data-score="110.0" data-change="3.0" data-crown="已认证" data-tier="high" data-area="潍坊片区" data-search="锦江之星5.1（潍坊昌邑店） 7606571340094539839"><td class="rank">22</td><td><strong>锦江之星5.1（潍坊昌邑店）</strong><small>潍坊市 · 7606571340094539839</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value high">110</td><td><span class="score-status certified">已认证</span></td><td class="num positive">+3</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="110.0" data-change="-5.0" data-crown="已认证" data-tier="high" data-area="潍坊片区" data-search="锦江之星（青州古城博物馆店） 7625501294187038772"><td class="rank">23</td><td><strong>锦江之星（青州古城博物馆店）</strong><small>潍坊市 · 7625501294187038772</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value high">110</td><td><span class="score-status certified">已认证</span></td><td class="num negative">-5</td><td class="score-dimension">拿收益</td></tr><tr data-score="111.0" data-change="10.0" data-crown="未认证" data-tier="high" data-area="潍坊片区" data-search="维也纳3好酒店（山东潍坊临朐店） 6824371701640382468"><td class="rank">24</td><td><strong>维也纳3好酒店（山东潍坊临朐店）</strong><small>潍坊市 · 6824371701640382468</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value high">111</td><td><span class="score-status uncertified">未认证</span></td><td class="num positive">+10</td><td class="score-dimension">搭门店,拿收益</td></tr><tr data-score="115.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="潍坊片区" data-search="维也纳酒店（青州高铁站店） 7147330578760370183"><td class="rank">25</td><td><strong>维也纳酒店（青州高铁站店）</strong><small>潍坊市 · 7147330578760370183</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value high">115</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">拿收益</td></tr><tr data-score="115.0" data-change="0.0" data-crown="未认证" data-tier="high" data-area="潍坊片区" data-search="锦江之星（潍坊泰华城火车站店） 6601143201375979524"><td class="rank">26</td><td><strong>锦江之星（潍坊泰华城火车站店）</strong><small>潍坊市 · 6601143201375979524</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value high">115</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源</td></tr><tr data-score="115.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="潍坊片区" data-search="麗枫酒店（潍坊诸城恐龙公园汽车站店） 6952255158147352616"><td class="rank">27</td><td><strong>麗枫酒店（潍坊诸城恐龙公园汽车站店）</strong><small>潍坊市 · 6952255158147352616</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value high">115</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">拿收益</td></tr><tr data-score="120.0" data-change="0.0" data-crown="未认证" data-tier="high" data-area="潍坊片区" data-search="维也纳酒店（安丘世贸中心店） 7227696218418186296"><td class="rank">28</td><td><strong>维也纳酒店（安丘世贸中心店）</strong><small>潍坊市 · 7227696218418186296</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value high">120</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">无</td></tr><tr data-score="120.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="潍坊片区" data-search="麗枫酒店（高密市政府店） 6644703029226506247"><td class="rank">29</td><td><strong>麗枫酒店（高密市政府店）</strong><small>潍坊市 · 6644703029226506247</small></td><td>鲁东省区</td><td>潍坊片区</td><td class="num score-value high">120</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">无</td></tr></tbody></table></div>
       </article>
     </section>
 
@@ -1543,28 +1505,28 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
 
     <section class="section" id="merchant-live">
       <div class="section-head"><div><h2>商家自播</h2><p>商家官号 · 近 7 日对比前 7 日 · 数据来源：生意经</p></div></div>
-      <div class="kpis" id="store-live-coverage"><article class="kpi" data-live-metric="total"><span class="kpi-label">总门店</span><b class="kpi-value">36<small style="font-size:14px">家</small></b><div class="kpi-foot">当前组织名单 · POI 去重</div></article><article class="kpi" data-live-metric="live"><span class="kpi-label">已开播门店</span><b class="kpi-value">2<small style="font-size:14px">家</small></b><div class="kpi-foot">周期内至少开播一次</div></article><article class="kpi" data-live-metric="not-live"><span class="kpi-label">未开播门店</span><b class="kpi-value">34<small style="font-size:14px">家</small></b><div class="kpi-foot">未匹配到本期开播记录</div></article><article class="kpi" data-live-metric="rate"><span class="kpi-label">门店开播率</span><b class="kpi-value">5.6%<small style="font-size:14px"></small></b><div class="kpi-foot">已开播门店 ÷ 总门店</div></article></div><p style="font-size:12px;color:var(--muted);line-height:1.7">统计周期：2026-10-28 至 2026-11-03。商家官号直播场次或直播时长大于 0 计为开播，按门店 POI 去重；账号所属门店名称仅接受唯一 POI 匹配。未开播表示未匹配到本期开播记录，未匹配账号可能影响统计结果。</p><article class="panel" style="margin:16px 0"><div class="panel-head"><div><h2>各片区门店开播率</h2><p>与当前省区、片区选择一致</p></div></div><div style="overflow-x:auto"><table id="store-live-area-summary"><thead><tr><th>片区</th><th>总门店</th><th>已开播</th><th>未开播*</th><th>开播率</th></tr></thead><tbody><tr><td>潍坊片区</td><td>36</td><td>2</td><td>34</td><td>5.6%</td></tr></tbody></table></div></article>
+      <div class="kpis" id="store-live-coverage"><article class="kpi" data-live-metric="total"><span class="kpi-label">总门店</span><b class="kpi-value">36<small style="font-size:14px">家</small></b><div class="kpi-foot">当前组织名单 · POI 去重</div></article><article class="kpi" data-live-metric="live"><span class="kpi-label">已开播门店</span><b class="kpi-value">3<small style="font-size:14px">家</small></b><div class="kpi-foot">周期内至少开播一次</div></article><article class="kpi" data-live-metric="not-live"><span class="kpi-label">未开播门店</span><b class="kpi-value">33<small style="font-size:14px">家</small></b><div class="kpi-foot">未匹配到本期开播记录</div></article><article class="kpi" data-live-metric="rate"><span class="kpi-label">门店开播率</span><b class="kpi-value">8.3%<small style="font-size:14px"></small></b><div class="kpi-foot">已开播门店 ÷ 总门店</div></article></div><p style="font-size:12px;color:var(--muted);line-height:1.7">统计周期：2026-10-30 至 2026-11-05。商家官号直播场次或直播时长大于 0 计为开播，按门店 POI 去重；账号所属门店名称仅接受唯一 POI 匹配。未开播表示未匹配到本期开播记录，未匹配账号可能影响统计结果。</p><article class="panel" style="margin:16px 0"><div class="panel-head"><div><h2>各片区门店开播率</h2><p>与当前省区、片区选择一致</p></div></div><div style="overflow-x:auto"><table id="store-live-area-summary"><thead><tr><th>片区</th><th>总门店</th><th>已开播</th><th>未开播*</th><th>开播率</th></tr></thead><tbody><tr><td>潍坊片区</td><td>36</td><td>3</td><td>33</td><td>8.3%</td></tr></tbody></table></div></article>
       <div class="kpis">
-        <article class="kpi"><span class="kpi-label">直播成交金额</span><b class="kpi-value">298</b><div class="kpi-foot"><span class="positive">+100.0%</span><span>较前 7 日 149</span></div></article>
-        <article class="kpi"><span class="kpi-label">直播场次</span><b class="kpi-value">12<small style="font-size:14px">场</small></b><div class="kpi-foot"><span class="positive">+71.4%</span><span>较前 7 日 7场</span></div></article>
-        <article class="kpi"><span class="kpi-label">直播时长</span><b class="kpi-value">14.9h</b><div class="kpi-foot"><span class="positive">+55.8%</span><span>较前 7 日 9.5h</span></div></article>
-        <article class="kpi"><span class="kpi-label">开播账号</span><b class="kpi-value">2<small style="font-size:14px">个</small></b><div class="kpi-foot"><span class="positive">+1个</span><span>较前 7 日</span></div></article>
+        <article class="kpi"><span class="kpi-label">直播成交金额</span><b class="kpi-value">467</b><div class="kpi-foot"><span class="positive">+213.4%</span><span>较前 7 日 149</span></div></article>
+        <article class="kpi"><span class="kpi-label">直播场次</span><b class="kpi-value">14<small style="font-size:14px">场</small></b><div class="kpi-foot"><span class="positive">+100.0%</span><span>较前 7 日 7场</span></div></article>
+        <article class="kpi"><span class="kpi-label">直播时长</span><b class="kpi-value">19.2h</b><div class="kpi-foot"><span class="positive">+125.7%</span><span>较前 7 日 8.5h</span></div></article>
+        <article class="kpi"><span class="kpi-label">开播账号</span><b class="kpi-value">3<small style="font-size:14px">个</small></b><div class="kpi-foot"><span class="positive">+2个</span><span>较前 7 日</span></div></article>
       </div>
       <article class="panel" style="margin-top:16px">
-        <div class="panel-head trend-panel-head"><div class="trend-heading"><h2>直播成交与时长每日趋势</h2><span class="trend-range">10-28–11-03</span></div></div>
+        <div class="panel-head trend-panel-head"><div class="trend-heading"><h2>直播成交与时长每日趋势</h2><span class="trend-range">10-30–11-05</span></div></div>
         <div class="chart-scroll merchant-trend-scroll">
       <div class="merchant-trend-canvas">
         <svg class="chart-svg merchant-amount-chart" viewBox="0 0 760 245"
              role="img" aria-label="商家官号直播成交金额每日趋势，单位万元">
           <line x1="54" y1="34.0" x2="736" y2="34.0" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="122.5" x2="736" y2="122.5" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="211.0" x2="736" y2="211.0" stroke="#ECEEF3" stroke-width="1"/><text x="44" y="38.0" text-anchor="end" class="axis-label">0.0</text><text x="44" y="126.5" text-anchor="end" class="axis-label">0.0</text><text x="44" y="215.0" text-anchor="end" class="axis-label">0.0</text>
-          <path d="M54.0 211.0 L167.7 211.0 L281.3 211.0 L395.0 211.0 L508.7 34.0 L622.3 34.0 L736.0 211.0" fill="none" stroke="#8B6DFF"
+          <path d="M54.0 211.0 L167.7 211.0 L281.3 54.9 L395.0 54.9 L508.7 211.0 L622.3 34.0 L736.0 211.0" fill="none" stroke="#8B6DFF"
                 stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle class="merchant-live-point" cx="54.0" cy="211.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="58.0" y="199.0" text-anchor="start" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="167.7" cy="211.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="167.7" y="199.0" text-anchor="middle" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="281.3" cy="211.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="281.3" y="199.0" text-anchor="middle" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="395.0" cy="211.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="395.0" y="199.0" text-anchor="middle" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="508.7" cy="34.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="508.7" y="22.0" text-anchor="middle" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="622.3" cy="34.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="622.3" y="22.0" text-anchor="middle" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="736.0" cy="211.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="732.0" y="199.0" text-anchor="end" fill="#8B6DFF">0.0万</text>
+          <circle class="merchant-live-point" cx="54.0" cy="211.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="58.0" y="199.0" text-anchor="start" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="167.7" cy="211.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="167.7" y="199.0" text-anchor="middle" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="281.3" cy="54.9" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="281.3" y="42.9" text-anchor="middle" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="395.0" cy="54.9" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="395.0" y="42.9" text-anchor="middle" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="508.7" cy="211.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="508.7" y="199.0" text-anchor="middle" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="622.3" cy="34.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="622.3" y="22.0" text-anchor="middle" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="736.0" cy="211.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="732.0" y="199.0" text-anchor="end" fill="#8B6DFF">0.0万</text>
         </svg>
         <div class="merchant-subchart-title">每日直播时长 <span>单位：小时</span></div>
         <svg class="chart-svg merchant-duration-chart" viewBox="0 0 760 155"
              role="img" aria-label="商家官号每日直播时长，单位小时">
-          <line x1="54" y1="28.0" x2="736" y2="28.0" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="121.0" x2="736" y2="121.0" stroke="#ECEEF3" stroke-width="1"/><rect class="merchant-duration-bar" x="31.6" y="76.0" width="44.8" height="45.0" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="54.0" y="69.0" text-anchor="middle" fill="#00A7A0">1.7h</text><rect class="merchant-duration-bar" x="145.3" y="98.5" width="44.8" height="22.5" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="167.7" y="91.5" text-anchor="middle" fill="#00A7A0">0.9h</text><rect class="merchant-duration-bar" x="258.9" y="28.0" width="44.8" height="93.0" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="281.3" y="21.0" text-anchor="middle" fill="#00A7A0">3.5h</text><rect class="merchant-duration-bar" x="372.6" y="35.1" width="44.8" height="85.9" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="395.0" y="28.1" text-anchor="middle" fill="#00A7A0">3.3h</text><rect class="merchant-duration-bar" x="486.3" y="85.0" width="44.8" height="36.0" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="508.7" y="78.0" text-anchor="middle" fill="#00A7A0">1.4h</text><rect class="merchant-duration-bar" x="599.9" y="74.3" width="44.8" height="46.7" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="622.3" y="67.3" text-anchor="middle" fill="#00A7A0">1.8h</text><rect class="merchant-duration-bar" x="713.6" y="59.6" width="44.8" height="61.4" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="736.0" y="52.6" text-anchor="middle" fill="#00A7A0">2.3h</text><text x="54.0" y="145" text-anchor="middle" class="axis-label">10-28</text><text x="167.7" y="145" text-anchor="middle" class="axis-label">10-29</text><text x="281.3" y="145" text-anchor="middle" class="axis-label">10-30</text><text x="395.0" y="145" text-anchor="middle" class="axis-label">10-31</text><text x="508.7" y="145" text-anchor="middle" class="axis-label">11-01</text><text x="622.3" y="145" text-anchor="middle" class="axis-label">11-02</text><text x="736.0" y="145" text-anchor="middle" class="axis-label">11-03</text>
+          <line x1="54" y1="28.0" x2="736" y2="28.0" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="121.0" x2="736" y2="121.0" stroke="#ECEEF3" stroke-width="1"/><rect class="merchant-duration-bar" x="31.6" y="48.9" width="44.8" height="72.1" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="54.0" y="41.9" text-anchor="middle" fill="#00A7A0">3.5h</text><rect class="merchant-duration-bar" x="145.3" y="54.4" width="44.8" height="66.6" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="167.7" y="47.4" text-anchor="middle" fill="#00A7A0">3.3h</text><rect class="merchant-duration-bar" x="258.9" y="93.1" width="44.8" height="27.9" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="281.3" y="86.1" text-anchor="middle" fill="#00A7A0">1.4h</text><rect class="merchant-duration-bar" x="372.6" y="84.8" width="44.8" height="36.2" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="395.0" y="77.8" text-anchor="middle" fill="#00A7A0">1.8h</text><rect class="merchant-duration-bar" x="486.3" y="73.4" width="44.8" height="47.6" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="508.7" y="66.4" text-anchor="middle" fill="#00A7A0">2.3h</text><rect class="merchant-duration-bar" x="599.9" y="72.3" width="44.8" height="48.7" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="622.3" y="65.3" text-anchor="middle" fill="#00A7A0">2.4h</text><rect class="merchant-duration-bar" x="713.6" y="28.0" width="44.8" height="93.0" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="736.0" y="21.0" text-anchor="middle" fill="#00A7A0">4.6h</text><text x="54.0" y="145" text-anchor="middle" class="axis-label">10-30</text><text x="167.7" y="145" text-anchor="middle" class="axis-label">10-31</text><text x="281.3" y="145" text-anchor="middle" class="axis-label">11-01</text><text x="395.0" y="145" text-anchor="middle" class="axis-label">11-02</text><text x="508.7" y="145" text-anchor="middle" class="axis-label">11-03</text><text x="622.3" y="145" text-anchor="middle" class="axis-label">11-04</text><text x="736.0" y="145" text-anchor="middle" class="axis-label">11-05</text>
         </svg>
       </div>
     </div>
@@ -1595,18 +1557,18 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <tbody id="merchant-city-body">
         <tr data-city-name="潍坊市"
             data-city-status="有开播"
-            data-city-live-amount="298.0"
-            data-city-live-sessions="12.0"
-            data-city-live-hours="14.85388888888889"
-            data-city-account-count="6.0"
-            data-city-live-account-count="2.0">
+            data-city-live-amount="467.0"
+            data-city-live-sessions="14.0"
+            data-city-live-hours="19.244999999999997"
+            data-city-account-count="8.0"
+            data-city-live-account-count="3.0">
           <td class="rank">01</td>
           <td><strong>潍坊市</strong><small><span class="live-status 有开播">有开播</span></small></td>
-          <td class="num">298</td>
-          <td class="num">12</td>
-          <td class="num">14.9h</td>
-          <td class="num">6</td>
-          <td class="num">2</td>
+          <td class="num">467</td>
+          <td class="num">14</td>
+          <td class="num">19.2h</td>
+          <td class="num">8</td>
+          <td class="num">3</td>
         </tr>
         </tbody>
         </table>
@@ -1650,7 +1612,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
             data-account-status="有直播"
             data-account-live-amount="298.0"
             data-account-live-sessions="9.0"
-            data-account-live-hours="12.92388888888889"
+            data-account-live-hours="12.963888888888889"
             data-account-total-amount="298.0"
             data-account-redeem-amount="0.0">
           <td class="rank">01</td>
@@ -1659,8 +1621,32 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td>鲁东省区<small>潍坊片区</small></td>
           <td class="num">298</td>
           <td class="num">9</td>
-          <td class="num">12.9h</td>
+          <td class="num">13.0h</td>
           <td class="num">298</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="丽枫酒店(高密市政府店)专用号"
+            data-account-id="69391925800"
+            data-account-city="潍坊市"
+            data-account-store="丽枫酒店(高密市政府店)"
+            data-account-location="潍坊市 丽枫酒店(高密市政府店)"
+            data-account-province="鲁东省区"
+            data-account-area="潍坊片区"
+            data-account-status="有直播"
+            data-account-live-amount="169.0"
+            data-account-live-sessions="2.0"
+            data-account-live-hours="4.351111111111111"
+            data-account-total-amount="497.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">02</td>
+          <td><strong>丽枫酒店(高密市政府店)专用号</strong><small>69391925800 · <span class="live-status 有直播">有直播</span></small></td>
+          <td>潍坊市<small>丽枫酒店(高密市政府店)</small></td>
+          <td>鲁东省区<small>潍坊片区</small></td>
+          <td class="num">169</td>
+          <td class="num">2</td>
+          <td class="num">4.4h</td>
+          <td class="num">497</td>
           <td class="num">0</td>
         </tr>
 
@@ -1677,7 +1663,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
             data-account-live-hours="1.9299999999999997"
             data-account-total-amount="0.0"
             data-account-redeem-amount="0.0">
-          <td class="rank">02</td>
+          <td class="rank">03</td>
           <td><strong>锦江之星(潍坊泰华城火车站店)专用号</strong><small>68253180379 · <span class="live-status 有直播">有直播</span></small></td>
           <td>潍坊市<small>锦江之星(潍坊泰华城火车站店)</small></td>
           <td>鲁东省区<small>潍坊片区</small></td>
@@ -1699,17 +1685,17 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
             data-account-live-amount="0.0"
             data-account-live-sessions="0.0"
             data-account-live-hours="0.0"
-            data-account-total-amount="1112.3000000000002"
-            data-account-redeem-amount="139.05">
-          <td class="rank">03</td>
+            data-account-total-amount="556.1"
+            data-account-redeem-amount="278.1">
+          <td class="rank">04</td>
           <td><strong>锦江之星5.1(潍坊昌邑店)</strong><small>jjzxcyd · <span class="live-status 未直播">未直播</span></small></td>
           <td>潍坊市<small>锦江之星(潍坊昌邑店)</small></td>
           <td>鲁东省区<small>潍坊片区</small></td>
           <td class="num">0</td>
           <td class="num">0</td>
           <td class="num">0.0h</td>
-          <td class="num">1,112</td>
-          <td class="num">139</td>
+          <td class="num">556</td>
+          <td class="num">278</td>
         </tr>
 
         <tr data-account-name="希岸酒店(潍坊泰华城火车站店)"
@@ -1725,7 +1711,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
             data-account-live-hours="0.0"
             data-account-total-amount="238.1"
             data-account-redeem-amount="0.0">
-          <td class="rank">04</td>
+          <td class="rank">05</td>
           <td><strong>希岸酒店(潍坊泰华城火车站店)</strong><small>dynhp9thy9n4 · <span class="live-status 未直播">未直播</span></small></td>
           <td>潍坊市<small>希岸酒店(潍坊泰华城火车站店)</small></td>
           <td>鲁东省区<small>潍坊片区</small></td>
@@ -1749,7 +1735,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
             data-account-live-hours="0.0"
             data-account-total-amount="199.0"
             data-account-redeem-amount="199.0">
-          <td class="rank">05</td>
+          <td class="rank">06</td>
           <td><strong>维也纳酒店(潍坊安丘世贸中心店)专用号</strong><small>82557601833 · <span class="live-status 未直播">未直播</span></small></td>
           <td>潍坊市<small>维也纳酒店(潍坊安丘世贸中心店)</small></td>
           <td>鲁东省区<small>潍坊片区</small></td>
@@ -1760,27 +1746,51 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">199</td>
         </tr>
 
-        <tr data-account-name="丽枫酒店(高密市政府店)专用号"
-            data-account-id="69391925800"
+        <tr data-account-name="凯里亚德"
+            data-account-id="76550352844"
             data-account-city="潍坊市"
-            data-account-store="丽枫酒店(高密市政府店)"
-            data-account-location="潍坊市 丽枫酒店(高密市政府店)"
+            data-account-store="凯里亚德酒店(寿光市政府店)"
+            data-account-location="潍坊市 凯里亚德酒店(寿光市政府店)"
             data-account-province="鲁东省区"
             data-account-area="潍坊片区"
             data-account-status="未直播"
             data-account-live-amount="0.0"
             data-account-live-sessions="0.0"
             data-account-live-hours="0.0"
-            data-account-total-amount="169.0"
+            data-account-total-amount="199.0"
             data-account-redeem-amount="0.0">
-          <td class="rank">06</td>
-          <td><strong>丽枫酒店(高密市政府店)专用号</strong><small>69391925800 · <span class="live-status 未直播">未直播</span></small></td>
-          <td>潍坊市<small>丽枫酒店(高密市政府店)</small></td>
+          <td class="rank">07</td>
+          <td><strong>凯里亚德</strong><small>76550352844 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>潍坊市<small>凯里亚德酒店(寿光市政府店)</small></td>
           <td>鲁东省区<small>潍坊片区</small></td>
           <td class="num">0</td>
           <td class="num">0</td>
           <td class="num">0.0h</td>
-          <td class="num">169</td>
+          <td class="num">199</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="白玉兰酒店(潍坊临朐店)专用号"
+            data-account-id="35013873909"
+            data-account-city="潍坊市"
+            data-account-store="白玉兰酒店(潍坊临朐店)"
+            data-account-location="潍坊市 白玉兰酒店(潍坊临朐店)"
+            data-account-province="鲁东省区"
+            data-account-area="潍坊片区"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="179.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">08</td>
+          <td><strong>白玉兰酒店(潍坊临朐店)专用号</strong><small>35013873909 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>潍坊市<small>白玉兰酒店(潍坊临朐店)</small></td>
+          <td>鲁东省区<small>潍坊片区</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0h</td>
+          <td class="num">179</td>
           <td class="num">0</td>
         </tr>
         </tbody>
@@ -1844,7 +1854,7 @@ function filterInventoryTable(){
   let visible=0;
   body.querySelectorAll('tr').forEach(row=>{
     const matchesQuery=!query||(row.dataset.inventorySearch||'').includes(query);
-    const matchesStatus=!status||row.dataset.inventoryStatus===status;
+    const matchesStatus=!status||(status==='missing'?Number(row.dataset.inventoryMissing)>0:row.dataset.inventoryStatus===status);
     row.style.display=matchesQuery&&matchesStatus?'':'none';
     if(matchesQuery&&matchesStatus)visible+=1;
   });
@@ -2136,7 +2146,7 @@ sortChannelTable('redeem-delta');
 sortMerchantCityTable('city-live-amount');
 sortMerchantAccountTable('account-live-amount');
 sortOperationScoreTable('score');
-document.documentElement.dataset.workbench="{\"region\": \"鲁东省区 · 潍坊片区\", \"periods\": {\"previous_start\": \"2026-10-21\", \"previous_end\": \"2026-10-27\", \"current_start\": \"2026-10-28\", \"current_end\": \"2026-11-03\"}, \"verification\": {\"detail_row_count\": 879, \"channel_row_count\": 935, \"other_region_row_count\": 0, \"provider_count\": 4, \"store_count\": 28, \"voucher_product_count\": 10, \"product_structure_closed\": true, \"master_store_count\": 36, \"data_store_count\": 28, \"zero_data_store_count\": 8, \"organization_province_count\": 1, \"organization_area_count\": 1, \"selected_province\": \"鲁东省区\", \"selected_area\": \"潍坊片区\", \"detail_channel_closure\": {\"意向成交金额\": true, \"意向成交券数\": true, \"意向成交间夜\": true, \"核销金额\": true, \"核销券数\": true, \"核销间夜\": true}, \"provider_binding_counts\": {\"杭州四库传媒有限公司\": 18, \"威海嗨游信息科技有限公司\": 1, \"未绑定服务商\": 15, \"山东辉烁营销策划有限公司\": 2}, \"bound_store_count\": 21, \"unbound_store_count\": 15, \"passed\": true}, \"organization_navigation\": {\"selected_province\": \"鲁东省区\", \"selected_area\": \"潍坊片区\", \"province_urls\": {\"鲁东省区\": \"workbench_ludong.html\"}, \"area_urls\": {\"鲁东省区\": {\"临沂片区\": \"workbench_ludong__鲁东省区__临沂片区.html\", \"威烟片区\": \"workbench_ludong__鲁东省区__威烟片区.html\", \"日照片区\": \"workbench_ludong__鲁东省区__日照片区.html\", \"沂枣片区\": \"workbench_ludong__鲁东省区__沂枣片区.html\", \"淄博片区\": \"workbench_ludong__鲁东省区__淄博片区.html\", \"潍坊片区\": \"workbench_ludong__鲁东省区__潍坊片区.html\", \"烟台片区\": \"workbench_ludong__鲁东省区__烟台片区.html\", \"青岛前海片区\": \"workbench_ludong__鲁东省区__青岛前海片区.html\", \"青岛北片区\": \"workbench_ludong__鲁东省区__青岛北片区.html\", \"青岛西片区\": \"workbench_ludong__鲁东省区__青岛西片区.html\"}}}}";
+document.documentElement.dataset.workbench="{\"region\": \"鲁东省区 · 潍坊片区\", \"periods\": {\"previous_start\": \"2026-10-23\", \"previous_end\": \"2026-10-29\", \"current_start\": \"2026-10-30\", \"current_end\": \"2026-11-05\"}, \"verification\": {\"detail_row_count\": 935, \"channel_row_count\": 998, \"other_region_row_count\": 0, \"provider_count\": 4, \"store_count\": 28, \"voucher_product_count\": 10, \"product_structure_closed\": true, \"master_store_count\": 36, \"data_store_count\": 28, \"zero_data_store_count\": 8, \"organization_province_count\": 1, \"organization_area_count\": 1, \"selected_province\": \"鲁东省区\", \"selected_area\": \"潍坊片区\", \"detail_channel_closure\": {\"意向成交金额\": true, \"意向成交券数\": true, \"意向成交间夜\": true, \"核销金额\": true, \"核销券数\": true, \"核销间夜\": true}, \"provider_binding_counts\": {\"杭州四库传媒有限公司\": 18, \"威海嗨游信息科技有限公司\": 1, \"未绑定服务商\": 15, \"山东辉烁营销策划有限公司\": 2}, \"bound_store_count\": 21, \"unbound_store_count\": 15, \"passed\": true, \"store_live_coverage\": {\"total_stores\": 36, \"live_stores\": 3, \"not_live_stores\": 33, \"live_rate\": 0.08333333333333333, \"start\": \"2026-10-30\", \"end\": \"2026-11-05\"}}, \"organization_navigation\": {\"selected_province\": \"鲁东省区\", \"selected_area\": \"潍坊片区\", \"province_urls\": {\"鲁东省区\": \"workbench_ludong.html\"}, \"area_urls\": {\"鲁东省区\": {\"临沂片区\": \"workbench_ludong__鲁东省区__临沂片区.html\", \"威烟片区\": \"workbench_ludong__鲁东省区__威烟片区.html\", \"日照片区\": \"workbench_ludong__鲁东省区__日照片区.html\", \"沂枣片区\": \"workbench_ludong__鲁东省区__沂枣片区.html\", \"淄博片区\": \"workbench_ludong__鲁东省区__淄博片区.html\", \"潍坊片区\": \"workbench_ludong__鲁东省区__潍坊片区.html\", \"烟台片区\": \"workbench_ludong__鲁东省区__烟台片区.html\", \"青岛前海片区\": \"workbench_ludong__鲁东省区__青岛前海片区.html\", \"青岛北片区\": \"workbench_ludong__鲁东省区__青岛北片区.html\", \"青岛西片区\": \"workbench_ludong__鲁东省区__青岛西片区.html\"}}}}";
 </script>
 </body>
 </html>

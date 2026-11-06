@@ -42,7 +42,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
 .table-scroll{overflow-x:auto} table{width:100%;border-collapse:collapse;min-width:820px} .merchant-table{min-width:980px} th{padding:11px 10px;text-align:left;color:#858994;font-size:11px;font-weight:700;border-bottom:1px solid var(--line);white-space:nowrap} td{padding:13px 10px;border-bottom:1px solid #F0F1F4;font-size:12px;vertical-align:middle} td small{display:block;margin-top:4px;color:#9A9DA6;font-size:10px;font-weight:500} td.num{font-variant-numeric:tabular-nums;white-space:nowrap} td.rank{width:38px;color:#9A9DA6;font-size:11px;font-weight:800} td strong{font-weight:700} .positive{color:#189963!important} .negative{color:#D85863!important} .provider{display:inline-block;padding:5px 8px;border-radius:8px;background:#F1F5FF;color:#4B6DB8;font-size:11px;white-space:nowrap} .channel-stack{display:flex;flex-wrap:wrap;gap:5px;min-width:175px} .channel-chip{display:inline-flex;padding:4px 7px;border-radius:7px;background:#F4F5F7;color:#646872;font-size:10px;white-space:nowrap} .channel-chip.positive{background:#EAF8F2} .channel-chip.negative{background:#FFF0F1} .live-status{display:inline-block;padding:2px 6px;border-radius:6px;background:#EAF8F2;color:#16835A;font-size:9px;font-weight:750;white-space:nowrap} .live-status.未直播,.live-status.零开播{background:#F0F1F4;color:#747984} .empty,.empty-state{color:#9A9DA6;font-size:12px} .empty-state{padding:28px;text-align:center;background:#F8F9FB;border-radius:12px}
 .bar-wrap{height:12px;display:flex;overflow:hidden;border-radius:8px;background:#EEF0F5;margin:12px 0} .segment-bar{display:block;height:100%} .segment-bar.calendar{background:var(--cyan)} .segment-bar.voucher{background:var(--orange)} .structure-legend{display:flex;gap:16px;color:var(--muted);font-size:11px} .structure-legend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}
 .inventory-summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid rgba(0,0,0,.055);border-radius:8px;background:#fff;margin-bottom:16px} .inventory-summary>div{padding:17px 18px;border-right:1px solid var(--line)} .inventory-summary>div:last-child{border-right:0} .inventory-summary span{display:block;color:var(--muted);font-size:11px;font-weight:700} .inventory-summary strong{display:inline-block;margin-top:8px;font-size:25px;font-variant-numeric:tabular-nums} .inventory-summary small{margin-left:4px;color:var(--muted);font-size:11px} .inventory-summary .risk strong{color:#C93D4F} .inventory-summary .good strong{color:#17865A}
-.inventory-panel{padding-bottom:12px} .inventory-table-scroll{max-height:610px;overflow:auto;border:1px solid var(--line);border-radius:8px} .inventory-table{min-width:1180px} .inventory-table thead{position:sticky;top:0;z-index:3;background:#F7F8FA} .inventory-table th{text-align:center} .inventory-table th.inventory-store{left:0;z-index:4;text-align:left} .inventory-table td.inventory-store{position:sticky;left:0;z-index:2;background:#fff;min-width:270px;max-width:270px} .inventory-table tr:nth-child(even) td.inventory-store{background:#FBFBFC} .inventory-table td{padding:10px 8px} .inventory-date{min-width:60px} .inventory-zero-days{min-width:100px} .inventory-cell{min-width:60px;text-align:center;font-variant-numeric:tabular-nums;font-weight:700;color:#474B54} .inventory-cell.zero{background:#FFF0F1;color:#C93D4F} .inventory-cell.available{background:#F7FBF9;color:#27725A} .inventory-status{display:inline-flex;padding:4px 7px;border-radius:6px;font-size:10px;font-weight:750;white-space:nowrap} .inventory-status.zero{background:#FFF0F1;color:#C93D4F} .inventory-status.healthy{background:#EAF7F0;color:#17865A}
+.inventory-panel{padding-bottom:12px} .inventory-note{font-size:12px;color:var(--muted);line-height:1.8;margin:0 0 16px} .inventory-cell.missing,.inventory-status.missing{background:#F1F2F5;color:#747986} .inventory-table-scroll{max-height:610px;overflow:auto;border:1px solid var(--line);border-radius:8px} .inventory-table{min-width:1180px} .inventory-table thead{position:sticky;top:0;z-index:3;background:#F7F8FA} .inventory-table th{text-align:center} .inventory-table th.inventory-store{left:0;z-index:4;text-align:left} .inventory-table td.inventory-store{position:sticky;left:0;z-index:2;background:#fff;min-width:270px;max-width:270px} .inventory-table tr:nth-child(even) td.inventory-store{background:#FBFBFC} .inventory-table td{padding:10px 8px} .inventory-date{min-width:60px} .inventory-zero-days{min-width:100px} .inventory-cell{min-width:60px;text-align:center;font-variant-numeric:tabular-nums;font-weight:700;color:#474B54} .inventory-cell.zero{background:#FFF0F1;color:#C93D4F} .inventory-cell.available{background:#F7FBF9;color:#27725A} .inventory-status{display:inline-flex;padding:4px 7px;border-radius:6px;font-size:10px;font-weight:750;white-space:nowrap} .inventory-status.zero{background:#FFF0F1;color:#C93D4F} .inventory-status.healthy{background:#EAF7F0;color:#17865A}
 .operation-score-summary{margin-top:16px} .score-dimension-panel{margin:0 0 16px} .score-dimensions{display:flex;flex-wrap:wrap;gap:8px} .score-dimension-tag{display:inline-flex;align-items:center;gap:8px;padding:7px 9px;border:1px solid var(--line);border-radius:8px;background:#F8F9FB;font-size:11px} .score-dimension-tag b{font-size:12px} .score-dimension-tag span{color:var(--muted)} .operation-score-panel{padding-bottom:12px} .operation-score-table-scroll{max-height:610px;overflow:auto;border:1px solid var(--line);border-radius:8px} .operation-score-table{min-width:1040px} .operation-score-table thead{position:sticky;top:0;z-index:2;background:#F7F8FA} .operation-score-table td{padding:10px} .score-value{font-size:14px;font-weight:780} .score-value.high{color:#17865A} .score-value.improve{color:#A96817} .score-value.risk{color:#C93D4F} .score-status{display:inline-flex;padding:4px 7px;border-radius:6px;font-size:10px;font-weight:750;white-space:nowrap} .score-status.certified{background:#EAF7F0;color:#17865A} .score-status.uncertified{background:#F0F1F4;color:#747984} .score-dimension{max-width:240px;color:#555962}
 .mobile-nav{display:none}
 @media(max-width:1050px){.app{grid-template-columns:76px minmax(0,1fr)}.sidebar{padding:22px 10px}.brand,.nav-label,.nav-item span:not(.nav-icon){display:none}.nav-item{justify-content:center;padding:8px}.nav-item::before{left:-10px}.content{padding:24px}.kpis{grid-template-columns:repeat(2,1fr)}}
@@ -53,7 +53,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
 <body>
 <div class="app">
   <aside class="sidebar">
-    <div class="brand">经营数据工作台<span>山河大区 · 鲁西省区 · 济南中片区 · 10-28–11-03</span></div>
+    <div class="brand">经营数据工作台<span>山河大区 · 鲁西省区 · 济南中片区 · 10-30–11-05</span></div>
     <p class="nav-label">板块</p>
     <button class="nav-item active" data-target="overview" aria-label="经营总览"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg></span><span>经营总览</span></button>
     <button class="nav-item" data-target="provinces"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="6" height="4" x="9" y="2" rx="1"/><rect width="6" height="4" x="3" y="18" rx="1"/><rect width="6" height="4" x="15" y="18" rx="1"/><path d="M12 6v4M6 18v-3h12v3M12 10H6v5M12 10h6v5"/></svg></span><span>组织架构</span></button>
@@ -67,8 +67,8 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
   </aside>
   <main class="content">
     <header class="topbar">
-      <div><div class="eyebrow">近 7 日经营数据 · 数据截至 2026-11-03 · 数据来源：生意经</div><h1>山河大区 · 鲁西省区 · 济南中片区</h1></div>
-      <div class="top-actions"><span class="status"><i></i>数据已校验</span><span class="glass-pill">主数据 37 家 · 1 片区</span><span class="glass-pill">10-28–11-03 对比 10-21–10-27</span></div>
+      <div><div class="eyebrow">近 7 日经营数据 · 数据截至 2026-11-05 · 数据来源：生意经</div><h1>山河大区 · 鲁西省区 · 济南中片区</h1></div>
+      <div class="top-actions"><span class="status"><i></i>数据已校验</span><span class="glass-pill">主数据 37 家 · 1 片区</span><span class="glass-pill">10-30–11-05 对比 10-23–10-29</span></div>
     </header>
     <div class="organization-filters"><label><span>一级省区</span><select id="organization-province-filter"><option value="workbench_shanhe.html" >全部一级省区</option><option value="workbench_shanhe__山西省区.html" >山西省区</option><option value="workbench_shanhe__河南省区.html" >河南省区</option><option value="workbench_shanhe__鲁东省区.html" >鲁东省区</option><option value="workbench_shanhe__鲁西省区.html" selected>鲁西省区</option></select></label><label><span>二级片区</span><select id="organization-area-filter" ><option value="workbench_shanhe__鲁西省区.html">全部二级片区</option><option value="workbench_shanhe__鲁西省区__德州片区.html" >德州片区</option><option value="workbench_shanhe__鲁西省区__泰安片区.html" >泰安片区</option><option value="workbench_shanhe__鲁西省区__济南东片区.html" >济南东片区</option><option value="workbench_shanhe__鲁西省区__济南中片区.html" selected>济南中片区</option><option value="workbench_shanhe__鲁西省区__济南北片区.html" >济南北片区</option><option value="workbench_shanhe__鲁西省区__济宁片区.html" >济宁片区</option><option value="workbench_shanhe__鲁西省区__济滨片区.html" >济滨片区</option><option value="workbench_shanhe__鲁西省区__滨东片区.html" >滨东片区</option><option value="workbench_shanhe__鲁西省区__聊宁片区.html" >聊宁片区</option><option value="workbench_shanhe__鲁西省区__菏泽片区.html" >菏泽片区</option></select></label></div>
 
@@ -77,28 +77,28 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
         <button class="glass-tab active">总体</button><button class="glass-tab" data-target="provinces">组织</button><button class="glass-tab" data-target="stores">门店</button><button class="glass-tab" data-target="providers">服务商</button><button class="glass-tab" data-target="voucher">通兑商品</button><button class="glass-tab" data-target="operation-score">经营分</button><button class="glass-tab" data-target="merchant-live">商家自播</button>
       </div>
       <div class="kpis">
-        <article class="kpi"><span class="kpi-label">支付 GMV</span><b class="kpi-value">5.60万</b><div class="kpi-foot"><span class="positive">+50.2%</span><span>较上期 3.73万</span></div></article>
-        <article class="kpi"><span class="kpi-label">核销 GMV</span><b class="kpi-value">2.17万</b><div class="kpi-foot"><span class="positive">+6.6%</span><span>较上期 2.04万</span></div></article>
-        <article class="kpi"><span class="kpi-label">支付间夜</span><b class="kpi-value">274</b><div class="kpi-foot"><span class="positive">+62.1%</span><span>间夜</span></div></article>
-        <article class="kpi"><span class="kpi-label">动销门店</span><b class="kpi-value">26<small style="font-size:14px">家</small></b><div class="kpi-foot"><span class="negative">-1家</span><span>较上期</span></div></article>
+        <article class="kpi"><span class="kpi-label">支付 GMV</span><b class="kpi-value">6.22万</b><div class="kpi-foot"><span class="positive">+44.9%</span><span>较上期 4.30万</span></div></article>
+        <article class="kpi"><span class="kpi-label">核销 GMV</span><b class="kpi-value">2.24万</b><div class="kpi-foot"><span class="positive">+11.7%</span><span>较上期 2.01万</span></div></article>
+        <article class="kpi"><span class="kpi-label">支付间夜</span><b class="kpi-value">310</b><div class="kpi-foot"><span class="positive">+58.2%</span><span>间夜</span></div></article>
+        <article class="kpi"><span class="kpi-label">动销门店</span><b class="kpi-value">28<small style="font-size:14px">家</small></b><div class="kpi-foot"><span class="positive">+2家</span><span>较上期</span></div></article>
       </div>
       <div class="grid-2">
-        <article class="panel"><div class="panel-head trend-panel-head"><div class="trend-heading"><h2>支付与核销日趋势</h2><span class="trend-range">10-28–11-03 · 单位：万元</span></div><div class="legend"><span><i style="background:var(--blue)"></i>支付</span><span><i style="background:var(--orange)"></i>核销</span></div></div><div class="chart-scroll">
+        <article class="panel"><div class="panel-head trend-panel-head"><div class="trend-heading"><h2>支付与核销日趋势</h2><span class="trend-range">10-30–11-05 · 单位：万元</span></div><div class="legend"><span><i style="background:var(--blue)"></i>支付</span><span><i style="background:var(--orange)"></i>核销</span></div></div><div class="chart-scroll">
       <svg class="chart-svg" viewBox="0 0 760 300" role="img"
            aria-label="支付与核销日趋势，单位万元">
         <line x1="54" y1="34.0" x2="736" y2="34.0" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="104.6" x2="736" y2="104.6" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="175.2" x2="736" y2="175.2" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="248.0" x2="736" y2="248.0" stroke="#ECEEF3" stroke-width="1"/><text x="44" y="38.0" text-anchor="end" class="axis-label">1.2</text><text x="44" y="145.0" text-anchor="end" class="axis-label">0.6</text><text x="44" y="252.0" text-anchor="end" class="axis-label">0.0</text>
-        <path d="M54.0 109.0 L167.7 151.1 L281.3 34.0 L395.0 61.2 L508.7 144.9 L622.3 126.7 L736.0 108.2" fill="none" stroke="#1677FF"
+        <path d="M54.0 34.0 L167.7 61.2 L281.3 144.9 L395.0 126.7 L508.7 108.2 L622.3 104.6 L736.0 43.7" fill="none" stroke="#1677FF"
               stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M54.0 221.9 L167.7 205.2 L281.3 202.7 L395.0 198.8 L508.7 122.2 L622.3 192.4 L736.0 204.0" fill="none" stroke="#FF8A3D"
+        <path d="M54.0 202.7 L167.7 198.8 L281.3 122.2 L395.0 192.4 L508.7 204.0 L622.3 203.4 L736.0 212.0" fill="none" stroke="#FF8A3D"
               stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-        <circle class="trend-point payment-point" cx="54.0" cy="109.0" r="5" fill="#1677FF"/><text x="58.0" y="97.0" text-anchor="start" class="point-label payment-label" fill="#1677FF">0.8万</text><circle class="trend-point payment-point" cx="167.7" cy="151.1" r="5" fill="#1677FF"/><text x="167.7" y="139.1" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.5万</text><circle class="trend-point payment-point" cx="281.3" cy="34.0" r="5" fill="#1677FF"/><text x="281.3" y="22.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">1.2万</text><circle class="trend-point payment-point" cx="395.0" cy="61.2" r="5" fill="#1677FF"/><text x="395.0" y="49.2" text-anchor="middle" class="point-label payment-label" fill="#1677FF">1.0万</text><circle class="trend-point payment-point" cx="508.7" cy="144.9" r="5" fill="#1677FF"/><text x="508.7" y="122.9" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.6万</text><circle class="trend-point payment-point" cx="622.3" cy="126.7" r="5" fill="#1677FF"/><text x="622.3" y="114.7" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.7万</text><circle class="trend-point payment-point" cx="736.0" cy="108.2" r="5" fill="#1677FF"/><text x="732.0" y="96.2" text-anchor="end" class="point-label payment-label" fill="#1677FF">0.8万</text>
-        <circle class="trend-point redeem-point" cx="54.0" cy="221.9" r="5" fill="#FF8A3D"/><text x="58.0" y="245.9" text-anchor="start" class="point-label redeem-label" fill="#FF8A3D">0.1万</text><circle class="trend-point redeem-point" cx="167.7" cy="205.2" r="5" fill="#FF8A3D"/><text x="167.7" y="229.2" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.2万</text><circle class="trend-point redeem-point" cx="281.3" cy="202.7" r="5" fill="#FF8A3D"/><text x="281.3" y="226.7" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.3万</text><circle class="trend-point redeem-point" cx="395.0" cy="198.8" r="5" fill="#FF8A3D"/><text x="395.0" y="222.8" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.3万</text><circle class="trend-point redeem-point" cx="508.7" cy="122.2" r="5" fill="#FF8A3D"/><text x="508.7" y="156.2" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.7万</text><circle class="trend-point redeem-point" cx="622.3" cy="192.4" r="5" fill="#FF8A3D"/><text x="622.3" y="216.4" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.3万</text><circle class="trend-point redeem-point" cx="736.0" cy="204.0" r="5" fill="#FF8A3D"/><text x="732.0" y="228.0" text-anchor="end" class="point-label redeem-label" fill="#FF8A3D">0.2万</text>
-        <text x="54.0" y="288" text-anchor="middle" class="axis-label">10-28</text><text x="167.7" y="288" text-anchor="middle" class="axis-label">10-29</text><text x="281.3" y="288" text-anchor="middle" class="axis-label">10-30</text><text x="395.0" y="288" text-anchor="middle" class="axis-label">10-31</text><text x="508.7" y="288" text-anchor="middle" class="axis-label">11-01</text><text x="622.3" y="288" text-anchor="middle" class="axis-label">11-02</text><text x="736.0" y="288" text-anchor="middle" class="axis-label">11-03</text>
+        <circle class="trend-point payment-point" cx="54.0" cy="34.0" r="5" fill="#1677FF"/><text x="58.0" y="22.0" text-anchor="start" class="point-label payment-label" fill="#1677FF">1.2万</text><circle class="trend-point payment-point" cx="167.7" cy="61.2" r="5" fill="#1677FF"/><text x="167.7" y="49.2" text-anchor="middle" class="point-label payment-label" fill="#1677FF">1.0万</text><circle class="trend-point payment-point" cx="281.3" cy="144.9" r="5" fill="#1677FF"/><text x="281.3" y="122.9" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.6万</text><circle class="trend-point payment-point" cx="395.0" cy="126.7" r="5" fill="#1677FF"/><text x="395.0" y="114.7" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.7万</text><circle class="trend-point payment-point" cx="508.7" cy="108.2" r="5" fill="#1677FF"/><text x="508.7" y="96.2" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.8万</text><circle class="trend-point payment-point" cx="622.3" cy="104.6" r="5" fill="#1677FF"/><text x="622.3" y="92.6" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.8万</text><circle class="trend-point payment-point" cx="736.0" cy="43.7" r="5" fill="#1677FF"/><text x="732.0" y="31.7" text-anchor="end" class="point-label payment-label" fill="#1677FF">1.1万</text>
+        <circle class="trend-point redeem-point" cx="54.0" cy="202.7" r="5" fill="#FF8A3D"/><text x="58.0" y="226.7" text-anchor="start" class="point-label redeem-label" fill="#FF8A3D">0.3万</text><circle class="trend-point redeem-point" cx="167.7" cy="198.8" r="5" fill="#FF8A3D"/><text x="167.7" y="222.8" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.3万</text><circle class="trend-point redeem-point" cx="281.3" cy="122.2" r="5" fill="#FF8A3D"/><text x="281.3" y="156.2" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.7万</text><circle class="trend-point redeem-point" cx="395.0" cy="192.4" r="5" fill="#FF8A3D"/><text x="395.0" y="216.4" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.3万</text><circle class="trend-point redeem-point" cx="508.7" cy="204.0" r="5" fill="#FF8A3D"/><text x="508.7" y="228.0" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.2万</text><circle class="trend-point redeem-point" cx="622.3" cy="203.4" r="5" fill="#FF8A3D"/><text x="622.3" y="227.4" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.2万</text><circle class="trend-point redeem-point" cx="736.0" cy="212.0" r="5" fill="#FF8A3D"/><text x="732.0" y="236.0" text-anchor="end" class="point-label redeem-label" fill="#FF8A3D">0.2万</text>
+        <text x="54.0" y="288" text-anchor="middle" class="axis-label">10-30</text><text x="167.7" y="288" text-anchor="middle" class="axis-label">10-31</text><text x="281.3" y="288" text-anchor="middle" class="axis-label">11-01</text><text x="395.0" y="288" text-anchor="middle" class="axis-label">11-02</text><text x="508.7" y="288" text-anchor="middle" class="axis-label">11-03</text><text x="622.3" y="288" text-anchor="middle" class="axis-label">11-04</text><text x="736.0" y="288" text-anchor="middle" class="axis-label">11-05</text>
       </svg>
     </div></article>
         <aside class="panel"><div class="panel-head"><div><h2>本期重点判断</h2><p>从数据变化直接定位动作</p></div></div><div class="insights">
-          <div class="insight"><b>支付增长主要来自 搜索结果卡</b><p>渠道增量 +1.11万，可在增长归因中查看对应服务商。</p><span class="tag good">增长来源</span></div>
-          <div class="insight"><b>维也纳国际酒店(济南奥林匹克体育中心店) 需要跟进</b><p>杭州四库传媒有限公司 · 下降 1,645，优先检查渠道投放变化。</p><span class="tag warn">重点风险</span></div>
+          <div class="insight"><b>支付增长主要来自 搜索结果卡</b><p>渠道增量 +1.64万，可在增长归因中查看对应服务商。</p><span class="tag good">增长来源</span></div>
+          <div class="insight"><b>丽柏酒店(济南泉城广场趵突泉北门店) 需要跟进</b><p>跃迁策略（青岛）文化传媒有限公司 · 下降 4,244，优先检查渠道投放变化。</p><span class="tag warn">重点风险</span></div>
         </div></aside>
       </div>
     </section>
@@ -113,11 +113,11 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
               <td class="num">37家</td>
               <td class="num">0家</td>
               <td class="num">28家</td>
-              <td class="num">5.60万</td>
-              <td class="num positive">+50.2%</td>
-              <td class="num">2.17万</td>
-              <td class="num positive">+6.6%</td>
-              <td class="num">26家</td>
+              <td class="num">6.22万</td>
+              <td class="num positive">+44.9%</td>
+              <td class="num">2.24万</td>
+              <td class="num positive">+11.7%</td>
+              <td class="num">28家</td>
             </tr>
             </tbody>
         </table>
@@ -132,11 +132,11 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
               <td><strong>济南中片区</strong></td>
               <td class="num">37家</td>
               <td class="num">28家</td>
-              <td class="num">5.60万</td>
-              <td class="num positive">+50.2%</td>
-              <td class="num">2.17万</td>
-              <td class="num positive">+6.6%</td>
-              <td class="num">26家</td>
+              <td class="num">6.22万</td>
+              <td class="num positive">+44.9%</td>
+              <td class="num">2.24万</td>
+              <td class="num positive">+11.7%</td>
+              <td class="num">28家</td>
             </tr>
             </tbody>
         </table>
@@ -168,47 +168,23 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-store="丽柏酒店(济南泉城广场趵突泉北门店)"
                 data-city="济南市"
                 data-provider="跃迁策略（青岛）文化传媒有限公司"
-                data-redeem-current="3330.0"
-                data-payment-current="9055.0"
-                data-redeem-nights="10.0"
-                data-payment-nights="27.0"
-                data-redeem-growth="1.012084592145015"
-                data-payment-growth="0.3686931285709967">
+                data-redeem-current="2413.0"
+                data-payment-current="6384.0"
+                data-redeem-nights="7.0"
+                data-payment-nights="20.0"
+                data-redeem-growth="0.08060904612628761"
+                data-payment-growth="-0.3993112403319595">
               <td class="rank">01</td>
               <td><strong>鲁西省区</strong></td>
               <td><strong>济南中片区</strong></td>
               <td><strong>丽柏酒店(济南泉城广场趵突泉北门店)</strong><small>济南市 · 有返回记录</small></td>
               <td><span class="provider">跃迁策略（青岛）文化传媒有限公司</span></td>
-              <td class="num">3,330</td>
-              <td class="num">9,055</td>
-              <td class="num">10</td>
-              <td class="num">27</td>
-              <td class="num positive">+101.2%</td>
-              <td class="num positive">+36.9%</td>
-            </tr>
-
-            <tr data-province="鲁西省区"
-                data-area="济南中片区"
-                data-store="锦江之星(济南千佛山山师东路地铁站店)"
-                data-city="济南市"
-                data-provider="未绑定服务商"
-                data-redeem-current="2375.0"
-                data-payment-current="5468.7"
-                data-redeem-nights="15.0"
-                data-payment-nights="35.0"
-                data-redeem-growth="0.11137108095460935"
-                data-payment-growth="1.241454217558816">
-              <td class="rank">02</td>
-              <td><strong>鲁西省区</strong></td>
-              <td><strong>济南中片区</strong></td>
-              <td><strong>锦江之星(济南千佛山山师东路地铁站店)</strong><small>济南市 · 有返回记录</small></td>
-              <td><span class="provider">未绑定服务商</span></td>
-              <td class="num">2,375</td>
-              <td class="num">5,469</td>
-              <td class="num">15</td>
-              <td class="num">35</td>
-              <td class="num positive">+11.1%</td>
-              <td class="num positive">+124.1%</td>
+              <td class="num">2,413</td>
+              <td class="num">6,384</td>
+              <td class="num">7</td>
+              <td class="num">20</td>
+              <td class="num positive">+8.1%</td>
+              <td class="num negative">-39.9%</td>
             </tr>
 
             <tr data-province="鲁西省区"
@@ -217,46 +193,22 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-city="济南市"
                 data-provider="杭州四库传媒有限公司"
                 data-redeem-current="2369.0"
-                data-payment-current="5861.5"
+                data-payment-current="6398.6"
                 data-redeem-nights="11.0"
-                data-payment-nights="29.0"
-                data-redeem-growth="0.46869187848729066"
-                data-payment-growth="1.5830689229684474">
-              <td class="rank">03</td>
+                data-payment-nights="32.0"
+                data-redeem-growth="0.3002195389681668"
+                data-payment-growth="0.7282770169894393">
+              <td class="rank">02</td>
               <td><strong>鲁西省区</strong></td>
               <td><strong>济南中片区</strong></td>
               <td><strong>喆啡酒店(济南奥体CBD中央商务区店)</strong><small>济南市 · 有返回记录</small></td>
               <td><span class="provider">杭州四库传媒有限公司</span></td>
               <td class="num">2,369</td>
-              <td class="num">5,862</td>
+              <td class="num">6,399</td>
               <td class="num">11</td>
-              <td class="num">29</td>
-              <td class="num positive">+46.9%</td>
-              <td class="num positive">+158.3%</td>
-            </tr>
-
-            <tr data-province="鲁西省区"
-                data-area="济南中片区"
-                data-store="7天优品酒店(济南泉城广场齐鲁医院店)"
-                data-city="济南市"
-                data-provider="杭州四库传媒有限公司"
-                data-redeem-current="2251.0"
-                data-payment-current="3530.7000000000003"
-                data-redeem-nights="11.0"
-                data-payment-nights="18.0"
-                data-redeem-growth="0.8109412711182622"
-                data-payment-growth="0.6951699635106587">
-              <td class="rank">04</td>
-              <td><strong>鲁西省区</strong></td>
-              <td><strong>济南中片区</strong></td>
-              <td><strong>7天优品酒店(济南泉城广场齐鲁医院店)</strong><small>济南市 · 有返回记录</small></td>
-              <td><span class="provider">杭州四库传媒有限公司</span></td>
-              <td class="num">2,251</td>
-              <td class="num">3,531</td>
-              <td class="num">11</td>
-              <td class="num">18</td>
-              <td class="num positive">+81.1%</td>
-              <td class="num positive">+69.5%</td>
+              <td class="num">32</td>
+              <td class="num positive">+30.0%</td>
+              <td class="num positive">+72.8%</td>
             </tr>
 
             <tr data-province="鲁西省区"
@@ -264,23 +216,143 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-store="希岸Deluxe酒店(济南解放路店)"
                 data-city="济南市"
                 data-provider="未绑定服务商"
-                data-redeem-current="1811.1"
-                data-payment-current="3649.0000000000005"
-                data-redeem-nights="7.0"
-                data-payment-nights="14.0"
-                data-redeem-growth="1.5472573839662447"
-                data-payment-growth="0.6854503464203234">
-              <td class="rank">05</td>
+                data-redeem-current="2289.2"
+                data-payment-current="4202.9"
+                data-redeem-nights="9.0"
+                data-payment-nights="16.0"
+                data-redeem-growth="4.463484486873508"
+                data-payment-growth="1.2558638827760182">
+              <td class="rank">03</td>
               <td><strong>鲁西省区</strong></td>
               <td><strong>济南中片区</strong></td>
               <td><strong>希岸Deluxe酒店(济南解放路店)</strong><small>济南市 · 有返回记录</small></td>
               <td><span class="provider">未绑定服务商</span></td>
-              <td class="num">1,811</td>
-              <td class="num">3,649</td>
-              <td class="num">7</td>
+              <td class="num">2,289</td>
+              <td class="num">4,203</td>
+              <td class="num">9</td>
+              <td class="num">16</td>
+              <td class="num positive">+446.3%</td>
+              <td class="num positive">+125.6%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="济南中片区"
+                data-store="锦江之星(济南千佛山山师东路地铁站店)"
+                data-city="济南市"
+                data-provider="未绑定服务商"
+                data-redeem-current="2276.0"
+                data-payment-current="6543.399999999999"
+                data-redeem-nights="14.0"
+                data-payment-nights="41.0"
+                data-redeem-growth="0.08020882771713334"
+                data-payment-growth="1.2824752337100596">
+              <td class="rank">04</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>济南中片区</strong></td>
+              <td><strong>锦江之星(济南千佛山山师东路地铁站店)</strong><small>济南市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">2,276</td>
+              <td class="num">6,543</td>
               <td class="num">14</td>
-              <td class="num positive">+154.7%</td>
-              <td class="num positive">+68.5%</td>
+              <td class="num">41</td>
+              <td class="num positive">+8.0%</td>
+              <td class="num positive">+128.2%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="济南中片区"
+                data-store="7天优品酒店(济南泉城广场齐鲁医院店)"
+                data-city="济南市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="2271.0"
+                data-payment-current="3576.7000000000003"
+                data-redeem-nights="11.0"
+                data-payment-nights="17.0"
+                data-redeem-growth="0.6060820367751061"
+                data-payment-growth="0.40549355548569643">
+              <td class="rank">05</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>济南中片区</strong></td>
+              <td><strong>7天优品酒店(济南泉城广场齐鲁医院店)</strong><small>济南市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">2,271</td>
+              <td class="num">3,577</td>
+              <td class="num">11</td>
+              <td class="num">17</td>
+              <td class="num positive">+60.6%</td>
+              <td class="num positive">+40.5%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="济南中片区"
+                data-store="维也纳酒店(济南泉城路大明湖店)"
+                data-city="济南市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="2040.0"
+                data-payment-current="2886.0"
+                data-redeem-nights="10.0"
+                data-payment-nights="14.0"
+                data-redeem-growth="0.4540270848182466"
+                data-payment-growth="0.4078048780487804">
+              <td class="rank">06</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>济南中片区</strong></td>
+              <td><strong>维也纳酒店(济南泉城路大明湖店)</strong><small>济南市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">2,040</td>
+              <td class="num">2,886</td>
+              <td class="num">10</td>
+              <td class="num">14</td>
+              <td class="num positive">+45.4%</td>
+              <td class="num positive">+40.8%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="济南中片区"
+                data-store="希岸·轻雅酒店(济南鲁能贵和领秀城店)"
+                data-city="济南市"
+                data-provider="未绑定服务商"
+                data-redeem-current="1175.0"
+                data-payment-current="2733.3000000000006"
+                data-redeem-nights="6.0"
+                data-payment-nights="12.0"
+                data-redeem-growth="0.0"
+                data-payment-growth="0.0">
+              <td class="rank">07</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>济南中片区</strong></td>
+              <td><strong>希岸·轻雅酒店(济南鲁能贵和领秀城店)</strong><small>济南市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">1,175</td>
+              <td class="num">2,733</td>
+              <td class="num">6</td>
+              <td class="num">12</td>
+              <td class="num neutral">基期较低</td>
+              <td class="num neutral">基期较低</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="济南中片区"
+                data-store="凯里亚德酒店(济南齐鲁医院趵突泉店)"
+                data-city="济南市"
+                data-provider="未绑定服务商"
+                data-redeem-current="1106.0"
+                data-payment-current="2905.9"
+                data-redeem-nights="5.0"
+                data-payment-nights="13.0"
+                data-redeem-growth="3.787878787878788"
+                data-payment-growth="5.460426856380614">
+              <td class="rank">08</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>济南中片区</strong></td>
+              <td><strong>凯里亚德酒店(济南齐鲁医院趵突泉店)</strong><small>济南市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">1,106</td>
+              <td class="num">2,906</td>
+              <td class="num">5</td>
+              <td class="num">13</td>
+              <td class="num positive">+378.8%</td>
+              <td class="num positive">+546.0%</td>
             </tr>
 
             <tr data-province="鲁西省区"
@@ -289,118 +361,22 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-city="济南市"
                 data-provider="杭州四库传媒有限公司"
                 data-redeem-current="956.0"
-                data-payment-current="1185.1"
+                data-payment-current="2141.3"
                 data-redeem-nights="4.0"
-                data-payment-nights="5.0"
+                data-payment-nights="9.0"
                 data-redeem-growth="0.0"
-                data-payment-growth="1.4792887029288702">
-              <td class="rank">06</td>
+                data-payment-growth="3.4797071129707113">
+              <td class="rank">09</td>
               <td><strong>鲁西省区</strong></td>
               <td><strong>济南中片区</strong></td>
               <td><strong>济南原拓酒店(趵突泉店)</strong><small>济南市 · 有返回记录</small></td>
               <td><span class="provider">杭州四库传媒有限公司</span></td>
               <td class="num">956</td>
-              <td class="num">1,185</td>
-              <td class="num">4</td>
-              <td class="num">5</td>
-              <td class="num neutral">基期较低</td>
-              <td class="num positive">+147.9%</td>
-            </tr>
-
-            <tr data-province="鲁西省区"
-                data-area="济南中片区"
-                data-store="维也纳酒店(济南舜耕国际会展中心店)"
-                data-city="济南市"
-                data-provider="杭州四库传媒有限公司"
-                data-redeem-current="916.0"
-                data-payment-current="3282.5"
-                data-redeem-nights="4.0"
-                data-payment-nights="18.0"
-                data-redeem-growth="1.0"
-                data-payment-growth="1.2435240243318981">
-              <td class="rank">07</td>
-              <td><strong>鲁西省区</strong></td>
-              <td><strong>济南中片区</strong></td>
-              <td><strong>维也纳酒店(济南舜耕国际会展中心店)</strong><small>济南市 · 有返回记录</small></td>
-              <td><span class="provider">杭州四库传媒有限公司</span></td>
-              <td class="num">916</td>
-              <td class="num">3,282</td>
-              <td class="num">4</td>
-              <td class="num">18</td>
-              <td class="num positive">+100.0%</td>
-              <td class="num positive">+124.4%</td>
-            </tr>
-
-            <tr data-province="鲁西省区"
-                data-area="济南中片区"
-                data-store="凯里亚德酒店(济南齐鲁医院趵突泉店)"
-                data-city="济南市"
-                data-provider="未绑定服务商"
-                data-redeem-current="908.0"
-                data-payment-current="1137.8000000000002"
-                data-redeem-nights="4.0"
-                data-payment-nights="5.0"
-                data-redeem-growth="2.930735930735931"
-                data-payment-growth="1.4799476896251096">
-              <td class="rank">08</td>
-              <td><strong>鲁西省区</strong></td>
-              <td><strong>济南中片区</strong></td>
-              <td><strong>凯里亚德酒店(济南齐鲁医院趵突泉店)</strong><small>济南市 · 有返回记录</small></td>
-              <td><span class="provider">未绑定服务商</span></td>
-              <td class="num">908</td>
-              <td class="num">1,138</td>
-              <td class="num">4</td>
-              <td class="num">5</td>
-              <td class="num positive">+293.1%</td>
-              <td class="num positive">+148.0%</td>
-            </tr>
-
-            <tr data-province="鲁西省区"
-                data-area="济南中片区"
-                data-store="维也纳酒店(济南泉城路大明湖店)"
-                data-city="济南市"
-                data-provider="杭州四库传媒有限公司"
-                data-redeem-current="836.0"
-                data-payment-current="2876.0"
-                data-redeem-nights="4.0"
-                data-payment-nights="14.0"
-                data-redeem-growth="-0.4041339985744833"
-                data-payment-growth="0.08651303362296936">
-              <td class="rank">09</td>
-              <td><strong>鲁西省区</strong></td>
-              <td><strong>济南中片区</strong></td>
-              <td><strong>维也纳酒店(济南泉城路大明湖店)</strong><small>济南市 · 有返回记录</small></td>
-              <td><span class="provider">杭州四库传媒有限公司</span></td>
-              <td class="num">836</td>
-              <td class="num">2,876</td>
-              <td class="num">4</td>
-              <td class="num">14</td>
-              <td class="num negative">-40.4%</td>
-              <td class="num positive">+8.7%</td>
-            </tr>
-
-            <tr data-province="鲁西省区"
-                data-area="济南中片区"
-                data-store="希岸·轻雅酒店(济南鲁能贵和领秀城店)"
-                data-city="济南市"
-                data-provider="未绑定服务商"
-                data-redeem-current="805.0"
-                data-payment-current="2180.4000000000005"
-                data-redeem-nights="4.0"
-                data-payment-nights="9.0"
-                data-redeem-growth="2.851674641148325"
-                data-payment-growth="9.432535885167466">
-              <td class="rank">10</td>
-              <td><strong>鲁西省区</strong></td>
-              <td><strong>济南中片区</strong></td>
-              <td><strong>希岸·轻雅酒店(济南鲁能贵和领秀城店)</strong><small>济南市 · 有返回记录</small></td>
-              <td><span class="provider">未绑定服务商</span></td>
-              <td class="num">805</td>
-              <td class="num">2,180</td>
+              <td class="num">2,141</td>
               <td class="num">4</td>
               <td class="num">9</td>
-              <td class="num positive">+285.2%</td>
-              <td class="num positive">+943.3%</td>
+              <td class="num neutral">基期较低</td>
+              <td class="num positive">+348.0%</td>
             </tr>
 
             <tr data-province="鲁西省区"
@@ -409,22 +385,94 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-city="济南市"
                 data-provider="未绑定服务商"
                 data-redeem-current="748.0"
-                data-payment-current="1050.8000000000002"
+                data-payment-current="882.8"
                 data-redeem-nights="3.0"
-                data-payment-nights="4.0"
-                data-redeem-growth="0.12481203007518804"
-                data-payment-growth="0.5121600230248959">
-              <td class="rank">11</td>
+                data-payment-nights="3.0"
+                data-redeem-growth="2.2951541850220263"
+                data-payment-growth="0.7834343434343434">
+              <td class="rank">10</td>
               <td><strong>鲁西省区</strong></td>
               <td><strong>济南中片区</strong></td>
               <td><strong>希岸·轻雅酒店(济南花园东路地铁站环联夜市店)</strong><small>济南市 · 有返回记录</small></td>
               <td><span class="provider">未绑定服务商</span></td>
               <td class="num">748</td>
-              <td class="num">1,051</td>
+              <td class="num">883</td>
               <td class="num">3</td>
-              <td class="num">4</td>
-              <td class="num positive">+12.5%</td>
-              <td class="num positive">+51.2%</td>
+              <td class="num">3</td>
+              <td class="num positive">+229.5%</td>
+              <td class="num positive">+78.3%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="济南中片区"
+                data-store="维也纳酒店(济南舜耕国际会展中心店)"
+                data-city="济南市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="687.0"
+                data-payment-current="3142.5"
+                data-redeem-nights="3.0"
+                data-payment-nights="18.0"
+                data-redeem-growth="0.0"
+                data-payment-growth="0.7642600494048954">
+              <td class="rank">11</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>济南中片区</strong></td>
+              <td><strong>维也纳酒店(济南舜耕国际会展中心店)</strong><small>济南市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">687</td>
+              <td class="num">3,142</td>
+              <td class="num">3</td>
+              <td class="num">18</td>
+              <td class="num neutral">+0.0%</td>
+              <td class="num positive">+76.4%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="济南中片区"
+                data-store="喆啡酒店(济南燕山立交山东财经大学店)"
+                data-city="济南市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="677.0"
+                data-payment-current="1867.0"
+                data-redeem-nights="3.0"
+                data-payment-nights="9.0"
+                data-redeem-growth="0.13400335008375208"
+                data-payment-growth="0.8801611278952668">
+              <td class="rank">12</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>济南中片区</strong></td>
+              <td><strong>喆啡酒店(济南燕山立交山东财经大学店)</strong><small>济南市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">677</td>
+              <td class="num">1,867</td>
+              <td class="num">3</td>
+              <td class="num">9</td>
+              <td class="num positive">+13.4%</td>
+              <td class="num positive">+88.0%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="济南中片区"
+                data-store="凯里亚德酒店(济南高新万达广场天辰路店)"
+                data-city="济南市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="637.0"
+                data-payment-current="1204.1"
+                data-redeem-nights="3.0"
+                data-payment-nights="6.0"
+                data-redeem-growth="2.047846889952153"
+                data-payment-growth="0.4756127450980392">
+              <td class="rank">13</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>济南中片区</strong></td>
+              <td><strong>凯里亚德酒店(济南高新万达广场天辰路店)</strong><small>济南市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">637</td>
+              <td class="num">1,204</td>
+              <td class="num">3</td>
+              <td class="num">6</td>
+              <td class="num positive">+204.8%</td>
+              <td class="num positive">+47.6%</td>
             </tr>
 
             <tr data-province="鲁西省区"
@@ -433,142 +481,22 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-city="济南市"
                 data-provider="未绑定服务商"
                 data-redeem-current="603.0"
-                data-payment-current="860.9"
+                data-payment-current="1374.9"
                 data-redeem-nights="3.0"
-                data-payment-nights="4.0"
+                data-payment-nights="6.0"
                 data-redeem-growth="4.97029702970297"
-                data-payment-growth="7.523762376237624">
-              <td class="rank">12</td>
+                data-payment-growth="12.612871287128714">
+              <td class="rank">14</td>
               <td><strong>鲁西省区</strong></td>
               <td><strong>济南中片区</strong></td>
               <td><strong>喆啡酒店(济南鲁能贵和领秀城望岳路店)</strong><small>济南市 · 有返回记录</small></td>
               <td><span class="provider">未绑定服务商</span></td>
               <td class="num">603</td>
-              <td class="num">861</td>
+              <td class="num">1,375</td>
               <td class="num">3</td>
-              <td class="num">4</td>
+              <td class="num">6</td>
               <td class="num positive">+497.0%</td>
-              <td class="num positive">+752.4%</td>
-            </tr>
-
-            <tr data-province="鲁西省区"
-                data-area="济南中片区"
-                data-store="锦江之星(济南CBD华润置地广场店)"
-                data-city="济南市"
-                data-provider="杭州四库传媒有限公司"
-                data-redeem-current="597.0"
-                data-payment-current="1885.2"
-                data-redeem-nights="3.0"
-                data-payment-nights="11.0"
-                data-redeem-growth="-0.7321668909825034"
-                data-payment-growth="-0.32313657906074966">
-              <td class="rank">13</td>
-              <td><strong>鲁西省区</strong></td>
-              <td><strong>济南中片区</strong></td>
-              <td><strong>锦江之星(济南CBD华润置地广场店)</strong><small>济南市 · 有返回记录</small></td>
-              <td><span class="provider">杭州四库传媒有限公司</span></td>
-              <td class="num">597</td>
-              <td class="num">1,885</td>
-              <td class="num">3</td>
-              <td class="num">11</td>
-              <td class="num negative">-73.2%</td>
-              <td class="num negative">-32.3%</td>
-            </tr>
-
-            <tr data-province="鲁西省区"
-                data-area="济南中片区"
-                data-store="麗枫酒店(济南CBD万象城店)"
-                data-city="济南市"
-                data-provider="杭州四库传媒有限公司"
-                data-redeem-current="510.0"
-                data-payment-current="1126.7000000000003"
-                data-redeem-nights="2.0"
-                data-payment-nights="5.0"
-                data-redeem-growth="-0.5714285714285714"
-                data-payment-growth="-0.4486420357230242">
-              <td class="rank">14</td>
-              <td><strong>鲁西省区</strong></td>
-              <td><strong>济南中片区</strong></td>
-              <td><strong>麗枫酒店(济南CBD万象城店)</strong><small>济南市 · 有返回记录</small></td>
-              <td><span class="provider">杭州四库传媒有限公司</span></td>
-              <td class="num">510</td>
-              <td class="num">1,127</td>
-              <td class="num">2</td>
-              <td class="num">5</td>
-              <td class="num negative">-57.1%</td>
-              <td class="num negative">-44.9%</td>
-            </tr>
-
-            <tr data-province="鲁西省区"
-                data-area="济南中片区"
-                data-store="喆啡酒店(济南燕山立交山东财经大学店)"
-                data-city="济南市"
-                data-provider="杭州四库传媒有限公司"
-                data-redeem-current="488.0"
-                data-payment-current="1073.0"
-                data-redeem-nights="2.0"
-                data-payment-nights="5.0"
-                data-redeem-growth="-0.18257956448911228"
-                data-payment-growth="0.08056394763343411">
-              <td class="rank">15</td>
-              <td><strong>鲁西省区</strong></td>
-              <td><strong>济南中片区</strong></td>
-              <td><strong>喆啡酒店(济南燕山立交山东财经大学店)</strong><small>济南市 · 有返回记录</small></td>
-              <td><span class="provider">杭州四库传媒有限公司</span></td>
-              <td class="num">488</td>
-              <td class="num">1,073</td>
-              <td class="num">2</td>
-              <td class="num">5</td>
-              <td class="num negative">-18.3%</td>
-              <td class="num positive">+8.1%</td>
-            </tr>
-
-            <tr data-province="鲁西省区"
-                data-area="济南中片区"
-                data-store="凯里亚德酒店(济南高新万达广场天辰路店)"
-                data-city="济南市"
-                data-provider="杭州四库传媒有限公司"
-                data-redeem-current="428.0"
-                data-payment-current="637.0"
-                data-redeem-nights="2.0"
-                data-payment-nights="3.0"
-                data-redeem-growth="1.0478468899521531"
-                data-payment-growth="0.0494233937397035">
-              <td class="rank">16</td>
-              <td><strong>鲁西省区</strong></td>
-              <td><strong>济南中片区</strong></td>
-              <td><strong>凯里亚德酒店(济南高新万达广场天辰路店)</strong><small>济南市 · 有返回记录</small></td>
-              <td><span class="provider">杭州四库传媒有限公司</span></td>
-              <td class="num">428</td>
-              <td class="num">637</td>
-              <td class="num">2</td>
-              <td class="num">3</td>
-              <td class="num positive">+104.8%</td>
-              <td class="num positive">+4.9%</td>
-            </tr>
-
-            <tr data-province="鲁西省区"
-                data-area="济南中片区"
-                data-store="麗枫酒店(济南大观园万达广场店)"
-                data-city="济南市"
-                data-provider="未绑定服务商"
-                data-redeem-current="365.0"
-                data-payment-current="384.79999999999995"
-                data-redeem-nights="2.0"
-                data-payment-nights="2.0"
-                data-redeem-growth="0.5271966527196652"
-                data-payment-growth="0.6100418410041839">
-              <td class="rank">17</td>
-              <td><strong>鲁西省区</strong></td>
-              <td><strong>济南中片区</strong></td>
-              <td><strong>麗枫酒店(济南大观园万达广场店)</strong><small>济南市 · 有返回记录</small></td>
-              <td><span class="provider">未绑定服务商</span></td>
-              <td class="num">365</td>
-              <td class="num">385</td>
-              <td class="num">2</td>
-              <td class="num">2</td>
-              <td class="num positive">+52.7%</td>
-              <td class="num positive">+61.0%</td>
+              <td class="num positive">+1261.3%</td>
             </tr>
 
             <tr data-province="鲁西省区"
@@ -577,22 +505,22 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-city="济南市"
                 data-provider="杭州四库传媒有限公司"
                 data-redeem-current="347.0"
-                data-payment-current="1249.0"
+                data-payment-current="1279.1"
                 data-redeem-nights="3.0"
                 data-payment-nights="11.0"
-                data-redeem-growth="-0.6536926147704591"
-                data-payment-growth="0.398656215005599">
-              <td class="rank">18</td>
+                data-redeem-growth="-0.5573979591836735"
+                data-payment-growth="0.3159465020576131">
+              <td class="rank">15</td>
               <td><strong>鲁西省区</strong></td>
               <td><strong>济南中片区</strong></td>
               <td><strong>7天酒店(济南历山路大明湖超然楼店)</strong><small>济南市 · 有返回记录</small></td>
               <td><span class="provider">杭州四库传媒有限公司</span></td>
               <td class="num">347</td>
-              <td class="num">1,249</td>
+              <td class="num">1,279</td>
               <td class="num">3</td>
               <td class="num">11</td>
-              <td class="num negative">-65.4%</td>
-              <td class="num positive">+39.9%</td>
+              <td class="num negative">-55.7%</td>
+              <td class="num positive">+31.6%</td>
             </tr>
 
             <tr data-province="鲁西省区"
@@ -604,9 +532,9 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-payment-current="445.9"
                 data-redeem-nights="2.0"
                 data-payment-nights="2.0"
-                data-redeem-growth="0.5219298245614035"
-                data-payment-growth="-0.06284153005464488">
-              <td class="rank">19</td>
+                data-redeem-growth="0.0"
+                data-payment-growth="0.0">
+              <td class="rank">16</td>
               <td><strong>鲁西省区</strong></td>
               <td><strong>济南中片区</strong></td>
               <td><strong>维也纳酒店(济南CBD中央商务区店)</strong><small>济南市 · 有返回记录</small></td>
@@ -615,8 +543,8 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
               <td class="num">446</td>
               <td class="num">2</td>
               <td class="num">2</td>
-              <td class="num positive">+52.2%</td>
-              <td class="num negative">-6.3%</td>
+              <td class="num neutral">基期较低</td>
+              <td class="num neutral">基期较低</td>
             </tr>
 
             <tr data-province="鲁西省区"
@@ -628,9 +556,9 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-payment-current="837.0"
                 data-redeem-nights="1.0"
                 data-payment-nights="3.0"
-                data-redeem-growth="-0.8272445820433436"
+                data-redeem-growth="-0.8526927138331574"
                 data-payment-growth="-0.6627719580983078">
-              <td class="rank">20</td>
+              <td class="rank">17</td>
               <td><strong>鲁西省区</strong></td>
               <td><strong>济南中片区</strong></td>
               <td><strong>维也纳国际酒店(济南奥林匹克体育中心店)</strong><small>济南市 · 有返回记录</small></td>
@@ -639,8 +567,32 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
               <td class="num">837</td>
               <td class="num">1</td>
               <td class="num">3</td>
-              <td class="num negative">-82.7%</td>
+              <td class="num negative">-85.3%</td>
               <td class="num negative">-66.3%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="济南中片区"
+                data-store="麗枫酒店(济南CBD万象城店)"
+                data-city="济南市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="267.0"
+                data-payment-current="754.9"
+                data-redeem-nights="1.0"
+                data-payment-nights="3.0"
+                data-redeem-growth="-0.7721843003412969"
+                data-payment-growth="-0.6017409654444739">
+              <td class="rank">18</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>济南中片区</strong></td>
+              <td><strong>麗枫酒店(济南CBD万象城店)</strong><small>济南市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">267</td>
+              <td class="num">755</td>
+              <td class="num">1</td>
+              <td class="num">3</td>
+              <td class="num negative">-77.2%</td>
+              <td class="num negative">-60.2%</td>
             </tr>
 
             <tr data-province="鲁西省区"
@@ -649,22 +601,22 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-city="济南市"
                 data-provider="未绑定服务商"
                 data-redeem-current="227.0"
-                data-payment-current="3099.7999999999997"
+                data-payment-current="2463.6"
                 data-redeem-nights="1.0"
-                data-payment-nights="19.0"
+                data-payment-nights="15.0"
                 data-redeem-growth="0.0"
-                data-payment-growth="3.3287250384024576">
-              <td class="rank">21</td>
+                data-payment-growth="0.8217851068549875">
+              <td class="rank">19</td>
               <td><strong>鲁西省区</strong></td>
               <td><strong>济南中片区</strong></td>
               <td><strong>维纳斯皇家酒店(大明湖地铁站店)</strong><small>济南市 · 有返回记录</small></td>
               <td><span class="provider">未绑定服务商</span></td>
               <td class="num">227</td>
-              <td class="num">3,100</td>
+              <td class="num">2,464</td>
               <td class="num">1</td>
-              <td class="num">19</td>
+              <td class="num">15</td>
               <td class="num neutral">基期较低</td>
-              <td class="num positive">+332.9%</td>
+              <td class="num positive">+82.2%</td>
             </tr>
 
             <tr data-province="鲁西省区"
@@ -672,23 +624,71 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-store="7天优品Premium酒店(济南历下CBD店)"
                 data-city="济南市"
                 data-provider="杭州四库传媒有限公司"
-                data-redeem-current="158.0"
-                data-payment-current="1306.0"
-                data-redeem-nights="1.0"
-                data-payment-nights="9.0"
-                data-redeem-growth="-0.5485714285714286"
-                data-payment-growth="0.824277133677888">
-              <td class="rank">22</td>
+                data-redeem-current="217.0"
+                data-payment-current="2001.2"
+                data-redeem-nights="2.0"
+                data-payment-nights="14.0"
+                data-redeem-growth="-0.38"
+                data-payment-growth="3.1261855670103094">
+              <td class="rank">20</td>
               <td><strong>鲁西省区</strong></td>
               <td><strong>济南中片区</strong></td>
               <td><strong>7天优品Premium酒店(济南历下CBD店)</strong><small>济南市 · 有返回记录</small></td>
               <td><span class="provider">杭州四库传媒有限公司</span></td>
-              <td class="num">158</td>
-              <td class="num">1,306</td>
+              <td class="num">217</td>
+              <td class="num">2,001</td>
+              <td class="num">2</td>
+              <td class="num">14</td>
+              <td class="num negative">-38.0%</td>
+              <td class="num positive">+312.6%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="济南中片区"
+                data-store="锦江之星(济南CBD华润置地广场店)"
+                data-city="济南市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="199.0"
+                data-payment-current="1906.0"
+                data-redeem-nights="1.0"
+                data-payment-nights="10.0"
+                data-redeem-growth="-0.9107222969941677"
+                data-payment-growth="-0.24526807634434156">
+              <td class="rank">21</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>济南中片区</strong></td>
+              <td><strong>锦江之星(济南CBD华润置地广场店)</strong><small>济南市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">199</td>
+              <td class="num">1,906</td>
               <td class="num">1</td>
-              <td class="num">9</td>
-              <td class="num negative">-54.9%</td>
-              <td class="num positive">+82.4%</td>
+              <td class="num">10</td>
+              <td class="num negative">-91.1%</td>
+              <td class="num negative">-24.5%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="济南中片区"
+                data-store="麗枫酒店(济南大观园万达广场店)"
+                data-city="济南市"
+                data-provider="未绑定服务商"
+                data-redeem-current="183.0"
+                data-payment-current="192.9"
+                data-redeem-nights="1.0"
+                data-payment-nights="1.0"
+                data-redeem-growth="-0.5653206650831354"
+                data-payment-growth="0.005211047420531578">
+              <td class="rank">22</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>济南中片区</strong></td>
+              <td><strong>麗枫酒店(济南大观园万达广场店)</strong><small>济南市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">183</td>
+              <td class="num">193</td>
+              <td class="num">1</td>
+              <td class="num">1</td>
+              <td class="num negative">-56.5%</td>
+              <td class="num positive">+0.5%</td>
             </tr>
 
             <tr data-province="鲁西省区"
@@ -697,22 +697,22 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-city="济南市"
                 data-provider="杭州四库传媒有限公司"
                 data-redeem-current="86.0"
-                data-payment-current="945.9"
+                data-payment-current="1644.0"
                 data-redeem-nights="1.0"
-                data-payment-nights="5.0"
-                data-redeem-growth="-0.8798882681564246"
-                data-payment-growth="0.3210893854748602">
+                data-payment-nights="9.0"
+                data-redeem-growth="-0.7597765363128491"
+                data-payment-growth="0.6135047600353323">
               <td class="rank">23</td>
               <td><strong>鲁西省区</strong></td>
               <td><strong>济南中片区</strong></td>
               <td><strong>维也纳3好酒店(济南山东大学兴隆校区店)</strong><small>济南市 · 有返回记录</small></td>
               <td><span class="provider">杭州四库传媒有限公司</span></td>
               <td class="num">86</td>
-              <td class="num">946</td>
+              <td class="num">1,644</td>
               <td class="num">1</td>
-              <td class="num">5</td>
-              <td class="num negative">-88.0%</td>
-              <td class="num positive">+32.1%</td>
+              <td class="num">9</td>
+              <td class="num negative">-76.0%</td>
+              <td class="num positive">+61.4%</td>
             </tr>
 
             <tr data-province="鲁西省区"
@@ -721,46 +721,22 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-city="济南市"
                 data-provider="杭州四库传媒有限公司"
                 data-redeem-current="0.0"
-                data-payment-current="1668.6"
+                data-payment-current="1668.5"
                 data-redeem-nights="0.0"
                 data-payment-nights="12.0"
                 data-redeem-growth="0.0"
-                data-payment-growth="0.0">
+                data-payment-growth="4.999640417116145">
               <td class="rank">24</td>
               <td><strong>鲁西省区</strong></td>
               <td><strong>济南中片区</strong></td>
               <td><strong>麗枫酒店(济南泉城路趵突泉店)</strong><small>济南市 · 有返回记录</small></td>
               <td><span class="provider">杭州四库传媒有限公司</span></td>
               <td class="num">0</td>
-              <td class="num">1,669</td>
+              <td class="num">1,668</td>
               <td class="num">0</td>
               <td class="num">12</td>
               <td class="num neutral">基期较低</td>
-              <td class="num neutral">基期较低</td>
-            </tr>
-
-            <tr data-province="鲁西省区"
-                data-area="济南中片区"
-                data-store="麗枫酒店·(济南大明湖东门历山路店)"
-                data-city="济南市"
-                data-provider="杭州四库传媒有限公司"
-                data-redeem-current="0.0"
-                data-payment-current="788.8"
-                data-redeem-nights="0.0"
-                data-payment-nights="3.0"
-                data-redeem-growth="-1.0"
-                data-payment-growth="0.14818049490538576">
-              <td class="rank">25</td>
-              <td><strong>鲁西省区</strong></td>
-              <td><strong>济南中片区</strong></td>
-              <td><strong>麗枫酒店·(济南大明湖东门历山路店)</strong><small>济南市 · 有返回记录</small></td>
-              <td><span class="provider">杭州四库传媒有限公司</span></td>
-              <td class="num">0</td>
-              <td class="num">789</td>
-              <td class="num">0</td>
-              <td class="num">3</td>
-              <td class="num negative">-100.0%</td>
-              <td class="num positive">+14.8%</td>
+              <td class="num positive">+500.0%</td>
             </tr>
 
             <tr data-province="鲁西省区"
@@ -769,22 +745,70 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-city="济南市"
                 data-provider="杭州四库传媒有限公司"
                 data-redeem-current="0.0"
-                data-payment-current="388.0"
+                data-payment-current="1343.0"
                 data-redeem-nights="0.0"
-                data-payment-nights="2.0"
+                data-payment-nights="7.0"
                 data-redeem-growth="-1.0"
-                data-payment-growth="-0.6390697674418604">
-              <td class="rank">26</td>
+                data-payment-growth="0.0625">
+              <td class="rank">25</td>
               <td><strong>鲁西省区</strong></td>
               <td><strong>济南中片区</strong></td>
               <td><strong>白玉兰酒店(济南齐鲁软件园天辰路店)</strong><small>济南市 · 有返回记录</small></td>
               <td><span class="provider">杭州四库传媒有限公司</span></td>
               <td class="num">0</td>
-              <td class="num">388</td>
+              <td class="num">1,343</td>
+              <td class="num">0</td>
+              <td class="num">7</td>
+              <td class="num negative">-100.0%</td>
+              <td class="num positive">+6.2%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="济南中片区"
+                data-store="麗枫酒店·(济南大明湖东门历山路店)"
+                data-city="济南市"
+                data-provider="杭州四库传媒有限公司"
+                data-redeem-current="0.0"
+                data-payment-current="1017.8"
+                data-redeem-nights="0.0"
+                data-payment-nights="4.0"
+                data-redeem-growth="-1.0"
+                data-payment-growth="0.481513828238719">
+              <td class="rank">26</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>济南中片区</strong></td>
+              <td><strong>麗枫酒店·(济南大明湖东门历山路店)</strong><small>济南市 · 有返回记录</small></td>
+              <td><span class="provider">杭州四库传媒有限公司</span></td>
+              <td class="num">0</td>
+              <td class="num">1,018</td>
+              <td class="num">0</td>
+              <td class="num">4</td>
+              <td class="num negative">-100.0%</td>
+              <td class="num positive">+48.2%</td>
+            </tr>
+
+            <tr data-province="鲁西省区"
+                data-area="济南中片区"
+                data-store="7天优品Premium(济南历下区舜华路齐鲁软件园)"
+                data-city="济南市"
+                data-provider="未绑定服务商"
+                data-redeem-current="0.0"
+                data-payment-current="238.0"
+                data-redeem-nights="0.0"
+                data-payment-nights="2.0"
+                data-redeem-growth="-1.0"
+                data-payment-growth="-0.0004199916001679238">
+              <td class="rank">27</td>
+              <td><strong>鲁西省区</strong></td>
+              <td><strong>济南中片区</strong></td>
+              <td><strong>7天优品Premium(济南历下区舜华路齐鲁软件园)</strong><small>济南市 · 有返回记录</small></td>
+              <td><span class="provider">未绑定服务商</span></td>
+              <td class="num">0</td>
+              <td class="num">238</td>
               <td class="num">0</td>
               <td class="num">2</td>
               <td class="num negative">-100.0%</td>
-              <td class="num negative">-63.9%</td>
+              <td class="num negative">-0.0%</td>
             </tr>
 
             <tr data-province="鲁西省区"
@@ -793,22 +817,22 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-city="济南市"
                 data-provider="杭州四库传媒有限公司"
                 data-redeem-current="0.0"
-                data-payment-current="0.0"
+                data-payment-current="189.0"
                 data-redeem-nights="0.0"
-                data-payment-nights="0.0"
+                data-payment-nights="1.0"
                 data-redeem-growth="-1.0"
-                data-payment-growth="-1.0">
-              <td class="rank">27</td>
+                data-payment-growth="-0.7625628140703518">
+              <td class="rank">28</td>
               <td><strong>鲁西省区</strong></td>
               <td><strong>济南中片区</strong></td>
               <td><strong>维也纳酒店山东国际会展中心(腊山立交桥)店</strong><small>济南市 · 有返回记录</small></td>
               <td><span class="provider">杭州四库传媒有限公司</span></td>
               <td class="num">0</td>
+              <td class="num">189</td>
               <td class="num">0</td>
-              <td class="num">0</td>
-              <td class="num">0</td>
+              <td class="num">1</td>
               <td class="num negative">-100.0%</td>
-              <td class="num negative">-100.0%</td>
+              <td class="num negative">-76.3%</td>
             </tr>
 
             <tr data-province="鲁西省区"
@@ -822,7 +846,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-payment-nights="0.0"
                 data-redeem-growth="0.0"
                 data-payment-growth="0.0">
-              <td class="rank">28</td>
+              <td class="rank">29</td>
               <td><strong>鲁西省区</strong></td>
               <td><strong>济南中片区</strong></td>
               <td><strong>白玉兰商务酒店(济南章丘明水古城百脉泉店)</strong><small> · 无返回记录</small></td>
@@ -846,7 +870,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-payment-nights="0.0"
                 data-redeem-growth="0.0"
                 data-payment-growth="0.0">
-              <td class="rank">29</td>
+              <td class="rank">30</td>
               <td><strong>鲁西省区</strong></td>
               <td><strong>济南中片区</strong></td>
               <td><strong>喆啡酒店(济南高新区万达广场山大科技园店)</strong><small> · 无返回记录</small></td>
@@ -870,7 +894,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-payment-nights="0.0"
                 data-redeem-growth="0.0"
                 data-payment-growth="0.0">
-              <td class="rank">30</td>
+              <td class="rank">31</td>
               <td><strong>鲁西省区</strong></td>
               <td><strong>济南中片区</strong></td>
               <td><strong>IU酒店(济南火车站店)</strong><small> · 无返回记录</small></td>
@@ -881,30 +905,6 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
               <td class="num">0</td>
               <td class="num neutral">基期较低</td>
               <td class="num neutral">基期较低</td>
-            </tr>
-
-            <tr data-province="鲁西省区"
-                data-area="济南中片区"
-                data-store="7天优品Premium(济南历下区舜华路齐鲁软件园)"
-                data-city="济南市"
-                data-provider="未绑定服务商"
-                data-redeem-current="0.0"
-                data-payment-current="0.0"
-                data-redeem-nights="0.0"
-                data-payment-nights="0.0"
-                data-redeem-growth="-1.0"
-                data-payment-growth="-1.0">
-              <td class="rank">31</td>
-              <td><strong>鲁西省区</strong></td>
-              <td><strong>济南中片区</strong></td>
-              <td><strong>7天优品Premium(济南历下区舜华路齐鲁软件园)</strong><small>济南市 · 有返回记录</small></td>
-              <td><span class="provider">未绑定服务商</span></td>
-              <td class="num">0</td>
-              <td class="num">0</td>
-              <td class="num">0</td>
-              <td class="num">0</td>
-              <td class="num negative">-100.0%</td>
-              <td class="num negative">-100.0%</td>
             </tr>
 
             <tr data-province="鲁西省区"
@@ -1061,91 +1061,91 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <tbody>
             <tr>
               <td class="rank">01</td>
-              <td><strong>喆啡酒店(济南奥体CBD中央商务区店)</strong><small>济南市 · 杭州四库传媒有限公司</small></td>
-              <td class="num">5,862</td>
-              <td class="num">2,269</td>
-              <td class="num positive">+3,592</td>
-              <td class="channel-stack"><span class="channel-chip positive">短视频 +418</span></td>
-            </tr>
-
-            <tr>
-              <td class="rank">02</td>
               <td><strong>锦江之星(济南千佛山山师东路地铁站店)</strong><small>济南市 · 未绑定服务商</small></td>
-              <td class="num">5,469</td>
-              <td class="num">2,440</td>
-              <td class="num positive">+3,029</td>
+              <td class="num">6,543</td>
+              <td class="num">2,867</td>
+              <td class="num positive">+3,677</td>
               <td class="channel-stack"><span class="channel-chip negative">达播 -179</span></td>
             </tr>
 
             <tr>
+              <td class="rank">02</td>
+              <td><strong>希岸·轻雅酒店(济南鲁能贵和领秀城店)</strong><small>济南市 · 未绑定服务商</small></td>
+              <td class="num">2,733</td>
+              <td class="num">0</td>
+              <td class="num positive">+2,733</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+
+            <tr>
               <td class="rank">03</td>
-              <td><strong>丽柏酒店(济南泉城广场趵突泉北门店)</strong><small>济南市 · 跃迁策略（青岛）文化传媒有限公司</small></td>
-              <td class="num">9,055</td>
-              <td class="num">6,616</td>
-              <td class="num positive">+2,439</td>
-              <td class="channel-stack"><span class="channel-chip negative">自播 -529</span><span class="channel-chip negative">短视频 -478</span></td>
+              <td><strong>喆啡酒店(济南奥体CBD中央商务区店)</strong><small>济南市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">6,399</td>
+              <td class="num">3,702</td>
+              <td class="num positive">+2,696</td>
+              <td class="channel-stack"><span class="channel-chip positive">短视频 +418</span></td>
             </tr>
 
             <tr>
               <td class="rank">04</td>
-              <td><strong>维纳斯皇家酒店(大明湖地铁站店)</strong><small>济南市 · 未绑定服务商</small></td>
-              <td class="num">3,100</td>
-              <td class="num">716</td>
-              <td class="num positive">+2,384</td>
-              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+              <td><strong>凯里亚德酒店(济南齐鲁医院趵突泉店)</strong><small>济南市 · 未绑定服务商</small></td>
+              <td class="num">2,906</td>
+              <td class="num">450</td>
+              <td class="num positive">+2,456</td>
+              <td class="channel-stack"><span class="channel-chip negative">短视频 -21</span></td>
             </tr>
 
             <tr>
               <td class="rank">05</td>
-              <td><strong>希岸·轻雅酒店(济南鲁能贵和领秀城店)</strong><small>济南市 · 未绑定服务商</small></td>
-              <td class="num">2,180</td>
-              <td class="num">209</td>
-              <td class="num positive">+1,971</td>
-              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
-            </tr>
-
-            <tr>
-              <td class="rank">06</td>
-              <td><strong>维也纳酒店(济南舜耕国际会展中心店)</strong><small>济南市 · 杭州四库传媒有限公司</small></td>
-              <td class="num">3,282</td>
-              <td class="num">1,463</td>
-              <td class="num positive">+1,819</td>
-              <td class="channel-stack"><span class="channel-chip positive">短视频 0</span></td>
-            </tr>
-
-            <tr>
-              <td class="rank">07</td>
-              <td><strong>麗枫酒店(济南泉城路趵突泉店)</strong><small>济南市 · 杭州四库传媒有限公司</small></td>
-              <td class="num">1,669</td>
-              <td class="num">0</td>
-              <td class="num positive">+1,669</td>
-              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
-            </tr>
-
-            <tr>
-              <td class="rank">08</td>
               <td><strong>希岸Deluxe酒店(济南解放路店)</strong><small>济南市 · 未绑定服务商</small></td>
-              <td class="num">3,649</td>
-              <td class="num">2,165</td>
-              <td class="num positive">+1,484</td>
+              <td class="num">4,203</td>
+              <td class="num">1,863</td>
+              <td class="num positive">+2,340</td>
               <td class="channel-stack"><span class="channel-chip positive">自播 +807</span></td>
             </tr>
 
             <tr>
+              <td class="rank">06</td>
+              <td><strong>济南原拓酒店(趵突泉店)</strong><small>济南市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">2,141</td>
+              <td class="num">478</td>
+              <td class="num positive">+1,663</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">07</td>
+              <td><strong>7天优品Premium酒店(济南历下CBD店)</strong><small>济南市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">2,001</td>
+              <td class="num">485</td>
+              <td class="num positive">+1,516</td>
+              <td class="channel-stack"><span class="channel-chip positive">短视频 +316</span><span class="channel-chip positive">自播 +158</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">08</td>
+              <td><strong>麗枫酒店(济南泉城路趵突泉店)</strong><small>济南市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">1,668</td>
+              <td class="num">278</td>
+              <td class="num positive">+1,390</td>
+              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+            </tr>
+
+            <tr>
               <td class="rank">09</td>
-              <td><strong>7天优品酒店(济南泉城广场齐鲁医院店)</strong><small>济南市 · 杭州四库传媒有限公司</small></td>
-              <td class="num">3,531</td>
-              <td class="num">2,083</td>
-              <td class="num positive">+1,448</td>
-              <td class="channel-stack"><span class="channel-chip positive">短视频 +289</span></td>
+              <td><strong>维也纳酒店(济南舜耕国际会展中心店)</strong><small>济南市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">3,142</td>
+              <td class="num">1,781</td>
+              <td class="num positive">+1,361</td>
+              <td class="channel-stack"><span class="channel-chip negative">短视频 -636</span></td>
             </tr>
 
             <tr>
               <td class="rank">10</td>
               <td><strong>喆啡酒店(济南鲁能贵和领秀城望岳路店)</strong><small>济南市 · 未绑定服务商</small></td>
-              <td class="num">861</td>
+              <td class="num">1,375</td>
               <td class="num">101</td>
-              <td class="num positive">+760</td>
+              <td class="num positive">+1,274</td>
               <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
             </tr>
             </tbody>
@@ -1159,6 +1159,15 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <tbody>
             <tr>
               <td class="rank">01</td>
+              <td><strong>丽柏酒店(济南泉城广场趵突泉北门店)</strong><small>济南市 · 跃迁策略（青岛）文化传媒有限公司</small></td>
+              <td class="num">6,384</td>
+              <td class="num">1.06万</td>
+              <td class="num negative">-4,244</td>
+              <td class="channel-stack"><span class="channel-chip negative">自播 -1,845</span><span class="channel-chip positive">达播 +576</span><span class="channel-chip negative">短视频 -169</span></td>
+            </tr>
+
+            <tr>
+              <td class="rank">02</td>
               <td><strong>维也纳国际酒店(济南奥林匹克体育中心店)</strong><small>济南市 · 杭州四库传媒有限公司</small></td>
               <td class="num">837</td>
               <td class="num">2,482</td>
@@ -1167,56 +1176,38 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
             </tr>
 
             <tr>
-              <td class="rank">02</td>
-              <td><strong>维也纳酒店山东国际会展中心(腊山立交桥)店</strong><small>济南市 · 杭州四库传媒有限公司</small></td>
-              <td class="num">0</td>
-              <td class="num">985</td>
-              <td class="num negative">-985</td>
-              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
-            </tr>
-
-            <tr>
               <td class="rank">03</td>
               <td><strong>麗枫酒店(济南CBD万象城店)</strong><small>济南市 · 杭州四库传媒有限公司</small></td>
-              <td class="num">1,127</td>
-              <td class="num">2,044</td>
-              <td class="num negative">-917</td>
+              <td class="num">755</td>
+              <td class="num">1,896</td>
+              <td class="num negative">-1,141</td>
               <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
             </tr>
 
             <tr>
               <td class="rank">04</td>
               <td><strong>锦江之星(济南CBD华润置地广场店)</strong><small>济南市 · 杭州四库传媒有限公司</small></td>
-              <td class="num">1,885</td>
-              <td class="num">2,785</td>
-              <td class="num negative">-900</td>
-              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
+              <td class="num">1,906</td>
+              <td class="num">2,525</td>
+              <td class="num negative">-619</td>
+              <td class="channel-stack"><span class="channel-chip positive">自播 +199</span></td>
             </tr>
 
             <tr>
               <td class="rank">05</td>
-              <td><strong>白玉兰酒店(济南齐鲁软件园天辰路店)</strong><small>济南市 · 杭州四库传媒有限公司</small></td>
-              <td class="num">388</td>
-              <td class="num">1,075</td>
-              <td class="num negative">-687</td>
+              <td><strong>维也纳酒店山东国际会展中心(腊山立交桥)店</strong><small>济南市 · 杭州四库传媒有限公司</small></td>
+              <td class="num">189</td>
+              <td class="num">796</td>
+              <td class="num negative">-607</td>
               <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
             </tr>
 
             <tr>
               <td class="rank">06</td>
               <td><strong>7天优品Premium(济南历下区舜华路齐鲁软件园)</strong><small>济南市 · 未绑定服务商</small></td>
-              <td class="num">0</td>
               <td class="num">238</td>
-              <td class="num negative">-238</td>
-              <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
-            </tr>
-
-            <tr>
-              <td class="rank">07</td>
-              <td><strong>维也纳酒店(济南CBD中央商务区店)</strong><small>济南市 · 未绑定服务商</small></td>
-              <td class="num">446</td>
-              <td class="num">476</td>
-              <td class="num negative">-30</td>
+              <td class="num">238</td>
+              <td class="num negative">-0</td>
               <td class="channel-stack"><span class="empty">暂无经营渠道明细</span></td>
             </tr>
             </tbody>
@@ -1244,123 +1235,143 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           </tr></thead>
           <tbody id="channel-attribution-body">
             <tr data-channel="达播"
-                data-payment-current="0.0"
-                data-payment-delta="-418.0"
-                data-payment-growth="-1.0"
+                data-payment-current="576.0"
+                data-payment-delta="397.0"
+                data-payment-growth="2.217877094972067"
                 data-redeem-current="179.0"
                 data-redeem-previous="239.0"
                 data-redeem-delta="-60.0"
                 data-redeem-growth="-0.2510460251046025">
               <td><strong>达播</strong></td>
-              <td class="num">0</td>
-              <td class="num">418</td>
-              <td class="num negative">-418</td>
-              <td class="num">-100.0%</td>
+              <td class="num">576</td>
+              <td class="num">179</td>
+              <td class="num positive">+397</td>
+              <td class="num">+221.8%</td>
               <td class="num">179</td>
               <td class="num">239</td>
               <td class="num negative">-60</td>
               <td class="num">-25.1%</td>
-              <td class="channel-stack"><span class="channel-chip negative">未绑定服务商 支付 -418 · 核销 -60</span></td>
+              <td class="channel-stack"><span class="channel-chip positive">跃迁策略（青岛）文化传媒有限公司 支付 +576 · 核销 0</span><span class="channel-chip negative">未绑定服务商 支付 -179 · 核销 -60</span></td>
             </tr>
 
             <tr data-channel="自播"
-                data-payment-current="4232.0"
-                data-payment-delta="693.0"
-                data-payment-growth="0.1958180276914383"
-                data-redeem-current="2511.0"
-                data-redeem-previous="1086.0"
-                data-redeem-delta="1425.0"
-                data-redeem-growth="1.3121546961325965">
+                data-payment-current="3674.0"
+                data-payment-delta="-443.0"
+                data-payment-growth="-0.10760262326937087"
+                data-redeem-current="1833.0"
+                data-redeem-previous="1425.0"
+                data-redeem-delta="408.0"
+                data-redeem-growth="0.2863157894736843">
               <td><strong>自播</strong></td>
-              <td class="num">4,232</td>
-              <td class="num">3,539</td>
-              <td class="num positive">+693</td>
-              <td class="num">+19.6%</td>
-              <td class="num">2,511</td>
-              <td class="num">1,086</td>
-              <td class="num positive">+1,425</td>
-              <td class="num">+131.2%</td>
-              <td class="channel-stack"><span class="channel-chip negative">跃迁策略（青岛）文化传媒有限公司 支付 -529 · 核销 +1,675</span><span class="channel-chip positive">杭州四库传媒有限公司 支付 +654 · 核销 -250</span><span class="channel-chip positive">未绑定服务商 支付 +568 · 核销 0</span></td>
+              <td class="num">3,674</td>
+              <td class="num">4,117</td>
+              <td class="num negative">-443</td>
+              <td class="num">-10.8%</td>
+              <td class="num">1,833</td>
+              <td class="num">1,425</td>
+              <td class="num positive">+408</td>
+              <td class="num">+28.6%</td>
+              <td class="channel-stack"><span class="channel-chip negative">跃迁策略（青岛）文化传媒有限公司 支付 -1,845 · 核销 +658</span><span class="channel-chip positive">杭州四库传媒有限公司 支付 +834 · 核销 -250</span><span class="channel-chip positive">未绑定服务商 支付 +568 · 核销 0</span></td>
             </tr>
 
             <tr data-channel="短视频"
-                data-payment-current="1234.0"
-                data-payment-delta="79.90000000000009"
-                data-payment-growth="0.06923143575080148"
-                data-redeem-current="916.0"
-                data-redeem-previous="239.0"
-                data-redeem-delta="677.0"
-                data-redeem-growth="2.8326359832635983">
+                data-payment-current="1629.0"
+                data-payment-delta="305.89999999999986"
+                data-payment-growth="0.23119945582344492"
+                data-redeem-current="677.0"
+                data-redeem-previous="478.0"
+                data-redeem-delta="199.0"
+                data-redeem-growth="0.41631799163179917">
               <td><strong>短视频</strong></td>
-              <td class="num">1,234</td>
-              <td class="num">1,154</td>
-              <td class="num positive">+80</td>
-              <td class="num">+6.9%</td>
-              <td class="num">916</td>
-              <td class="num">239</td>
-              <td class="num positive">+677</td>
-              <td class="num">+283.3%</td>
-              <td class="channel-stack"><span class="channel-chip negative">跃迁策略（青岛）文化传媒有限公司 支付 -478 · 核销 0</span><span class="channel-chip positive">杭州四库传媒有限公司 支付 +349 · 核销 +478</span><span class="channel-chip positive">未绑定服务商 支付 +209 · 核销 +199</span></td>
+              <td class="num">1,629</td>
+              <td class="num">1,323</td>
+              <td class="num positive">+306</td>
+              <td class="num">+23.1%</td>
+              <td class="num">677</td>
+              <td class="num">478</td>
+              <td class="num positive">+199</td>
+              <td class="num">+41.6%</td>
+              <td class="channel-stack"><span class="channel-chip positive">杭州四库传媒有限公司 支付 +496 · 核销 +478</span><span class="channel-chip negative">跃迁策略（青岛）文化传媒有限公司 支付 -169 · 核销 -478</span><span class="channel-chip negative">未绑定服务商 支付 -21 · 核销 +199</span></td>
             </tr>
 
             <tr data-channel="其他"
-                data-payment-current="18728.900000000012"
-                data-payment-delta="5523.7000000000135"
-                data-payment-growth="0.4182973374125356"
-                data-redeem-current="5381.1"
-                data-redeem-previous="6039.0"
-                data-redeem-delta="-657.8999999999996"
-                data-redeem-growth="-0.10894187779433673">
+                data-payment-current="19614.10000000001"
+                data-payment-delta="2130.699999999997"
+                data-payment-growth="0.1218698880080531"
+                data-redeem-current="6208.200000000001"
+                data-redeem-previous="5616.0"
+                data-redeem-delta="592.2000000000007"
+                data-redeem-growth="0.10544871794871802">
               <td><strong>其他</strong></td>
-              <td class="num">1.87万</td>
-              <td class="num">1.32万</td>
-              <td class="num positive">+5,524</td>
-              <td class="num">+41.8%</td>
-              <td class="num">5,381</td>
-              <td class="num">6,039</td>
-              <td class="num negative">-658</td>
-              <td class="num">-10.9%</td>
-              <td class="channel-stack"><span class="channel-chip positive">未绑定服务商 支付 +3,918 · 核销 +922</span><span class="channel-chip positive">跃迁策略（青岛）文化传媒有限公司 支付 +2,837 · 核销 0</span><span class="channel-chip negative">杭州四库传媒有限公司 支付 -1,231 · 核销 -1,580</span></td>
+              <td class="num">1.96万</td>
+              <td class="num">1.75万</td>
+              <td class="num positive">+2,131</td>
+              <td class="num">+12.2%</td>
+              <td class="num">6,208</td>
+              <td class="num">5,616</td>
+              <td class="num positive">+592</td>
+              <td class="num">+10.5%</td>
+              <td class="channel-stack"><span class="channel-chip positive">未绑定服务商 支付 +5,345 · 核销 +1,470</span><span class="channel-chip negative">跃迁策略（青岛）文化传媒有限公司 支付 -3,773 · 核销 0</span><span class="channel-chip positive">杭州四库传媒有限公司 支付 +559 · 核销 -878</span></td>
             </tr>
 
             <tr data-channel="搜索结果卡"
-                data-payment-current="28574.900000000027"
-                data-payment-delta="11087.400000000012"
-                data-payment-growth="0.6340185847033597"
-                data-redeem-current="12667.0"
-                data-redeem-previous="12581.0"
-                data-redeem-delta="86.0"
-                data-redeem-growth="0.006835704633971762">
+                data-payment-current="33804.200000000026"
+                data-payment-delta="16378.200000000015"
+                data-payment-growth="0.9398714564443937"
+                data-redeem-current="13416.0"
+                data-redeem-previous="12094.0"
+                data-redeem-delta="1322.0"
+                data-redeem-growth="0.10931040185215801">
               <td><strong>搜索结果卡</strong></td>
-              <td class="num">2.86万</td>
-              <td class="num">1.75万</td>
-              <td class="num positive">+1.11万</td>
-              <td class="num">+63.4%</td>
-              <td class="num">1.27万</td>
-              <td class="num">1.26万</td>
-              <td class="num positive">+86</td>
-              <td class="num">+0.7%</td>
-              <td class="channel-stack"><span class="channel-chip positive">未绑定服务商 支付 +5,448 · 核销 +2,488</span><span class="channel-chip positive">杭州四库传媒有限公司 支付 +5,030 · 核销 -2,402</span><span class="channel-chip positive">跃迁策略（青岛）文化传媒有限公司 支付 +609 · 核销 0</span></td>
+              <td class="num">3.38万</td>
+              <td class="num">1.74万</td>
+              <td class="num positive">+1.64万</td>
+              <td class="num">+94.0%</td>
+              <td class="num">1.34万</td>
+              <td class="num">1.21万</td>
+              <td class="num positive">+1,322</td>
+              <td class="num">+10.9%</td>
+              <td class="channel-stack"><span class="channel-chip positive">未绑定服务商 支付 +8,405 · 核销 +3,720</span><span class="channel-chip positive">杭州四库传媒有限公司 支付 +7,315 · 核销 -2,398</span><span class="channel-chip positive">跃迁策略（青岛）文化传媒有限公司 支付 +658 · 核销 0</span></td>
+            </tr>
+
+            <tr data-channel="职人/店员视频"
+                data-payment-current="309.0"
+                data-payment-delta="309.0"
+                data-payment-growth="0"
+                data-redeem-current="0.0"
+                data-redeem-previous="0"
+                data-redeem-delta="0.0"
+                data-redeem-growth="0">
+              <td><strong>职人/店员视频</strong></td>
+              <td class="num">309</td>
+              <td class="num">0</td>
+              <td class="num positive">+309</td>
+              <td class="num">基期较低</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num positive">0</td>
+              <td class="num">基期较低</td>
+              <td class="channel-stack"><span class="channel-chip positive">跃迁策略（青岛）文化传媒有限公司 支付 +309 · 核销 0</span></td>
             </tr>
 
             <tr data-channel="获客卡"
-                data-payment-current="3204.3"
-                data-payment-delta="1732.1000000000001"
-                data-payment-growth="1.1765385137888873"
+                data-payment-current="2618.0"
+                data-payment-delta="191.5"
+                data-payment-growth="0.0789202555120545"
                 data-redeem-current="86.0"
                 data-redeem-previous="209.0"
                 data-redeem-delta="-123.0"
                 data-redeem-growth="-0.5885167464114833">
               <td><strong>获客卡</strong></td>
-              <td class="num">3,204</td>
-              <td class="num">1,472</td>
-              <td class="num positive">+1,732</td>
-              <td class="num">+117.7%</td>
+              <td class="num">2,618</td>
+              <td class="num">2,426</td>
+              <td class="num positive">+192</td>
+              <td class="num">+7.9%</td>
               <td class="num">86</td>
               <td class="num">209</td>
               <td class="num negative">-123</td>
               <td class="num">-58.9%</td>
-              <td class="channel-stack"><span class="channel-chip positive">杭州四库传媒有限公司 支付 +917 · 核销 -123</span><span class="channel-chip positive">未绑定服务商 支付 +815 · 核销 0</span></td>
+              <td class="channel-stack"><span class="channel-chip positive">未绑定服务商 支付 +308 · 核销 0</span><span class="channel-chip negative">杭州四库传媒有限公司 支付 -116 · 核销 -123</span></td>
             </tr>
             </tbody>
         </table>
@@ -1368,8 +1379,8 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
     </article>
       <article class="panel"><div class="panel-head"><div><h2>增长 / 下滑摘要</h2><p>按支付 GMV 增减额排序</p></div></div>
         <div class="insights">
-          <div class="insight"><b>最大增长门店</b><p>喆啡酒店(济南奥体CBD中央商务区店) · +3,592 · 杭州四库传媒有限公司</p><span class="tag good">短视频</span></div>
-          <div class="insight"><b>最大下滑门店</b><p>维也纳国际酒店(济南奥林匹克体育中心店) · -1,645 · 杭州四库传媒有限公司</p><span class="tag warn">自播</span></div>
+          <div class="insight"><b>最大增长门店</b><p>锦江之星(济南千佛山山师东路地铁站店) · +3,677 · 未绑定服务商</p><span class="tag good">达播</span></div>
+          <div class="insight"><b>最大下滑门店</b><p>丽柏酒店(济南泉城广场趵突泉北门店) · -4,244 · 跃迁策略（青岛）文化传媒有限公司</p><span class="tag warn">自播</span></div>
         </div>
       </article></div>
     </section>
@@ -1385,14 +1396,14 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
               <td class="rank">01</td>
               <td><strong>杭州四库传媒有限公司</strong></td>
               <td class="num">17家</td>
-              <td class="num">16家</td>
-              <td class="num">2.86万</td>
-              <td class="num positive">+24.9%</td>
-              <td class="num">1.02万</td>
-              <td class="num negative">-27.5%</td>
-              <td class="num">1,790</td>
-              <td class="num positive">+24.9%</td>
-              <td class="num">639</td>
+              <td class="num">17家</td>
+              <td class="num">3.39万</td>
+              <td class="num positive">+36.7%</td>
+              <td class="num">1.10万</td>
+              <td class="num negative">-22.3%</td>
+              <td class="num">1,992</td>
+              <td class="num positive">+36.7%</td>
+              <td class="num">649</td>
             </tr>
 
             <tr>
@@ -1400,56 +1411,56 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
               <td><strong>跃迁策略（青岛）文化传媒有限公司</strong></td>
               <td class="num">1家</td>
               <td class="num">1家</td>
-              <td class="num">9,055</td>
-              <td class="num positive">+36.9%</td>
-              <td class="num">3,330</td>
-              <td class="num positive">+101.2%</td>
-              <td class="num">9,055</td>
-              <td class="num positive">+36.9%</td>
-              <td class="num">3,330</td>
+              <td class="num">6,384</td>
+              <td class="num negative">-39.9%</td>
+              <td class="num">2,413</td>
+              <td class="num positive">+8.1%</td>
+              <td class="num">6,384</td>
+              <td class="num negative">-39.9%</td>
+              <td class="num">2,413</td>
             </tr>
 
             <tr>
               <td class="rank">03</td>
               <td><strong>未绑定服务商</strong></td>
               <td class="num">19家</td>
-              <td class="num">9家</td>
-              <td class="num">1.83万</td>
-              <td class="num positive">+136.2%</td>
-              <td class="num">8,189</td>
-              <td class="num positive">+76.5%</td>
-              <td class="num">2,031</td>
-              <td class="num positive">+162.5%</td>
-              <td class="num">910</td>
+              <td class="num">10家</td>
+              <td class="num">2.20万</td>
+              <td class="num positive">+190.9%</td>
+              <td class="num">8,954</td>
+              <td class="num positive">+147.0%</td>
+              <td class="num">2,198</td>
+              <td class="num positive">+132.7%</td>
+              <td class="num">895</td>
             </tr>
             </tbody>
         </table>
       </div>
     </article>
       <article class="panel"><div class="panel-head"><div><h2>服务商水平</h2><p>平均单店支付产出柱状图 · 单位：万元</p></div></div>
-        <div class="insights"><div class="insight"><b>杭州四库传媒有限公司</b><p>1,790 /家支付 · 639 /家核销 · 16家动销</p><div class="bar-wrap"><span class="segment-bar calendar" style="width:19.8%"></span></div><span class="tag good">单店产出 +24.9%</span></div><div class="insight"><b>跃迁策略（青岛）文化传媒有限公司</b><p>9,055 /家支付 · 3,330 /家核销 · 1家动销</p><div class="bar-wrap"><span class="segment-bar calendar" style="width:100.0%"></span></div><span class="tag good">单店产出 +36.9%</span></div><div class="insight"><b>未绑定服务商</b><p>2,031 /家支付 · 910 /家核销 · 9家动销</p><div class="bar-wrap"><span class="segment-bar calendar" style="width:22.4%"></span></div><span class="tag good">单店产出 +162.5%</span></div></div>
+        <div class="insights"><div class="insight"><b>杭州四库传媒有限公司</b><p>1,992 /家支付 · 649 /家核销 · 17家动销</p><div class="bar-wrap"><span class="segment-bar calendar" style="width:31.2%"></span></div><span class="tag good">单店产出 +36.7%</span></div><div class="insight"><b>跃迁策略（青岛）文化传媒有限公司</b><p>6,384 /家支付 · 2,413 /家核销 · 1家动销</p><div class="bar-wrap"><span class="segment-bar calendar" style="width:100.0%"></span></div><span class="tag warn">单店产出 -39.9%</span></div><div class="insight"><b>未绑定服务商</b><p>2,198 /家支付 · 895 /家核销 · 10家动销</p><div class="bar-wrap"><span class="segment-bar calendar" style="width:34.4%"></span></div><span class="tag good">单店产出 +132.7%</span></div></div>
       </article></div>
     </section>
 
     <section class="section" id="voucher">
       <div class="section-head"><div><h2>通兑商品</h2><p>省区合计 · 仅展示支付与核销趋势，不拆分 SKU</p></div></div>
       <div class="kpis">
-        <article class="kpi"><span class="kpi-label">通兑支付 GMV</span><b class="kpi-value">696</b><div class="kpi-foot"><span>本期 7 天累计</span><span>支付券 2张</span></div></article>
-        <article class="kpi"><span class="kpi-label">通兑核销 GMV</span><b class="kpi-value">2,091</b><div class="kpi-foot"><span>本期 7 天累计</span><span>核销券 9张</span></div></article>
+        <article class="kpi"><span class="kpi-label">通兑支付 GMV</span><b class="kpi-value">0</b><div class="kpi-foot"><span>本期 7 天累计</span><span>支付券 0张</span></div></article>
+        <article class="kpi"><span class="kpi-label">通兑核销 GMV</span><b class="kpi-value">1,852</b><div class="kpi-foot"><span>本期 7 天累计</span><span>核销券 8张</span></div></article>
       </div>
       <article class="panel" style="margin-top:16px">
-        <div class="panel-head trend-panel-head"><div class="trend-heading"><h2>支付与核销趋势</h2><span class="trend-range">10-28–11-03 · 单位：万元</span></div><div class="legend"><span><i style="background:var(--blue)"></i>支付</span><span><i style="background:var(--orange)"></i>核销</span></div></div>
+        <div class="panel-head trend-panel-head"><div class="trend-heading"><h2>支付与核销趋势</h2><span class="trend-range">10-30–11-05 · 单位：万元</span></div><div class="legend"><span><i style="background:var(--blue)"></i>支付</span><span><i style="background:var(--orange)"></i>核销</span></div></div>
         <div class="chart-scroll">
       <svg class="chart-svg" viewBox="0 0 760 300" role="img"
            aria-label="支付与核销日趋势，单位万元">
         <line x1="54" y1="34.0" x2="736" y2="34.0" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="104.6" x2="736" y2="104.6" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="175.2" x2="736" y2="175.2" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="248.0" x2="736" y2="248.0" stroke="#ECEEF3" stroke-width="1"/><text x="44" y="38.0" text-anchor="end" class="axis-label">0.1</text><text x="44" y="145.0" text-anchor="end" class="axis-label">0.0</text><text x="44" y="252.0" text-anchor="end" class="axis-label">0.0</text>
-        <path d="M54.0 141.0 L167.7 199.2 L281.3 248.0 L395.0 248.0 L508.7 248.0 L622.3 248.0 L736.0 248.0" fill="none" stroke="#1677FF"
+        <path d="M54.0 248.0 L167.7 248.0 L281.3 248.0 L395.0 248.0 L508.7 248.0 L622.3 248.0 L736.0 248.0" fill="none" stroke="#1677FF"
               stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M54.0 194.5 L167.7 248.0 L281.3 141.0 L395.0 34.0 L508.7 154.4 L622.3 248.0 L736.0 248.0" fill="none" stroke="#FF8A3D"
+        <path d="M54.0 141.0 L167.7 34.0 L281.3 154.4 L395.0 248.0 L508.7 248.0 L622.3 248.0 L736.0 248.0" fill="none" stroke="#FF8A3D"
               stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-        <circle class="trend-point payment-point" cx="54.0" cy="141.0" r="5" fill="#1677FF"/><text x="58.0" y="129.0" text-anchor="start" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="167.7" cy="199.2" r="5" fill="#1677FF"/><text x="167.7" y="187.2" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="281.3" cy="248.0" r="5" fill="#1677FF"/><text x="281.3" y="236.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="395.0" cy="248.0" r="5" fill="#1677FF"/><text x="395.0" y="236.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="508.7" cy="248.0" r="5" fill="#1677FF"/><text x="508.7" y="236.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="622.3" cy="248.0" r="5" fill="#1677FF"/><text x="622.3" y="236.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="736.0" cy="248.0" r="5" fill="#1677FF"/><text x="732.0" y="236.0" text-anchor="end" class="point-label payment-label" fill="#1677FF">0.0万</text>
-        <circle class="trend-point redeem-point" cx="54.0" cy="194.5" r="5" fill="#FF8A3D"/><text x="58.0" y="218.5" text-anchor="start" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="167.7" cy="248.0" r="5" fill="#FF8A3D"/><text x="167.7" y="272.0" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="281.3" cy="141.0" r="5" fill="#FF8A3D"/><text x="281.3" y="165.0" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="395.0" cy="34.0" r="5" fill="#FF8A3D"/><text x="395.0" y="58.0" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.1万</text><circle class="trend-point redeem-point" cx="508.7" cy="154.4" r="5" fill="#FF8A3D"/><text x="508.7" y="178.4" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="622.3" cy="248.0" r="5" fill="#FF8A3D"/><text x="622.3" y="272.0" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="736.0" cy="248.0" r="5" fill="#FF8A3D"/><text x="732.0" y="272.0" text-anchor="end" class="point-label redeem-label" fill="#FF8A3D">0.0万</text>
-        <text x="54.0" y="288" text-anchor="middle" class="axis-label">10-28</text><text x="167.7" y="288" text-anchor="middle" class="axis-label">10-29</text><text x="281.3" y="288" text-anchor="middle" class="axis-label">10-30</text><text x="395.0" y="288" text-anchor="middle" class="axis-label">10-31</text><text x="508.7" y="288" text-anchor="middle" class="axis-label">11-01</text><text x="622.3" y="288" text-anchor="middle" class="axis-label">11-02</text><text x="736.0" y="288" text-anchor="middle" class="axis-label">11-03</text>
+        <circle class="trend-point payment-point" cx="54.0" cy="248.0" r="5" fill="#1677FF"/><text x="58.0" y="236.0" text-anchor="start" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="167.7" cy="248.0" r="5" fill="#1677FF"/><text x="167.7" y="236.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="281.3" cy="248.0" r="5" fill="#1677FF"/><text x="281.3" y="236.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="395.0" cy="248.0" r="5" fill="#1677FF"/><text x="395.0" y="236.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="508.7" cy="248.0" r="5" fill="#1677FF"/><text x="508.7" y="236.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="622.3" cy="248.0" r="5" fill="#1677FF"/><text x="622.3" y="236.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="736.0" cy="248.0" r="5" fill="#1677FF"/><text x="732.0" y="236.0" text-anchor="end" class="point-label payment-label" fill="#1677FF">0.0万</text>
+        <circle class="trend-point redeem-point" cx="54.0" cy="141.0" r="5" fill="#FF8A3D"/><text x="58.0" y="165.0" text-anchor="start" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="167.7" cy="34.0" r="5" fill="#FF8A3D"/><text x="167.7" y="58.0" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.1万</text><circle class="trend-point redeem-point" cx="281.3" cy="154.4" r="5" fill="#FF8A3D"/><text x="281.3" y="178.4" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="395.0" cy="248.0" r="5" fill="#FF8A3D"/><text x="395.0" y="272.0" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="508.7" cy="248.0" r="5" fill="#FF8A3D"/><text x="508.7" y="272.0" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="622.3" cy="248.0" r="5" fill="#FF8A3D"/><text x="622.3" y="272.0" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="736.0" cy="248.0" r="5" fill="#FF8A3D"/><text x="732.0" y="272.0" text-anchor="end" class="point-label redeem-label" fill="#FF8A3D">0.0万</text>
+        <text x="54.0" y="288" text-anchor="middle" class="axis-label">10-30</text><text x="167.7" y="288" text-anchor="middle" class="axis-label">10-31</text><text x="281.3" y="288" text-anchor="middle" class="axis-label">11-01</text><text x="395.0" y="288" text-anchor="middle" class="axis-label">11-02</text><text x="508.7" y="288" text-anchor="middle" class="axis-label">11-03</text><text x="622.3" y="288" text-anchor="middle" class="axis-label">11-04</text><text x="736.0" y="288" text-anchor="middle" class="axis-label">11-05</text>
       </svg>
     </div>
       </article>
@@ -1457,26 +1468,26 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
 
 
     <section class="section" id="operation-score">
-      <div class="section-head"><div><h2>门店经营分</h2><p>中国区全量数据按 POI ID 匹配 · 名称仅用于展示 · 数据截至 2026-11-03</p></div><div class="section-actions"><a class="command-button" href="downloads/经营分_鲁西省区__济南中片区_2026-11-03.xlsx" download><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg><span>下载经营分 Excel</span></a></div></div>
+      <div class="section-head"><div><h2>门店经营分</h2><p>中国区全量数据按 POI ID 匹配 · 名称仅用于展示 · 数据截至 2026-11-05</p></div><div class="section-actions"><a class="command-button" href="downloads/经营分_鲁西省区__济南中片区_2026-11-05.xlsx" download><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg><span>下载经营分 Excel</span></a></div></div>
       <div class="kpis">
-        <article class="kpi"><span class="kpi-label">平均经营分</span><b class="kpi-value">91.9</b><div class="kpi-foot"><span>满分 120</span><span>仅统计已匹配门店</span></div></article>
+        <article class="kpi"><span class="kpi-label">平均经营分</span><b class="kpi-value">92.5</b><div class="kpi-foot"><span>满分 120</span><span>仅统计已匹配门店</span></div></article>
         <article class="kpi"><span class="kpi-label">经营分覆盖</span><b class="kpi-value">31<small style="font-size:14px"> / 37 家</small></b><div class="kpi-foot"><span>6 家</span><span>未匹配</span></div></article>
-        <article class="kpi"><span class="kpi-label">金冠认证门店</span><b class="kpi-value">16<small style="font-size:14px">家</small></b><div class="kpi-foot"><span>8 家</span><span>近 7 天上涨</span></div></article>
-        <article class="kpi"><span class="kpi-label">风险门店</span><b class="kpi-value">4<small style="font-size:14px">家</small></b><div class="kpi-foot"><span>6 家</span><span>近 7 天下降</span></div></article>
+        <article class="kpi"><span class="kpi-label">金冠认证门店</span><b class="kpi-value">17<small style="font-size:14px">家</small></b><div class="kpi-foot"><span>9 家</span><span>近 7 天上涨</span></div></article>
+        <article class="kpi"><span class="kpi-label">风险门店</span><b class="kpi-value">3<small style="font-size:14px">家</small></b><div class="kpi-foot"><span>6 家</span><span>近 7 天下降</span></div></article>
       </div>
       <div class="inventory-summary operation-score-summary">
-        <div class="good"><span>高分门店</span><strong>12</strong><small>100–120 分</small></div>
-        <div><span>待提升门店</span><strong>15</strong><small>80–99 分</small></div>
-        <div class="risk"><span>风险门店</span><strong>4</strong><small>低于 80 分</small></div>
-        <div><span>近 7 天净变化</span><strong>+10</strong><small>分</small></div>
+        <div class="good"><span>高分门店</span><strong>14</strong><small>100–120 分</small></div>
+        <div><span>待提升门店</span><strong>14</strong><small>80–99 分</small></div>
+        <div class="risk"><span>风险门店</span><strong>3</strong><small>低于 80 分</small></div>
+        <div><span>近 7 天净变化</span><strong>+29</strong><small>分</small></div>
       </div>
       <article class="panel score-dimension-panel">
         <div class="panel-head"><div><h2>待提升项分布</h2><p>同一门店可能同时命中多个维度</p></div></div>
-        <div class="score-dimensions"><span class="score-dimension-tag"><b>拿收益</b><span>29 家</span></span><span class="score-dimension-tag"><b>提质量</b><span>27 家</span></span><span class="score-dimension-tag"><b>稳房源</b><span>21 家</span></span><span class="score-dimension-tag"><b>搭门店</b><span>2 家</span></span></div>
+        <div class="score-dimensions"><span class="score-dimension-tag"><b>拿收益</b><span>30 家</span></span><span class="score-dimension-tag"><b>提质量</b><span>27 家</span></span><span class="score-dimension-tag"><b>稳房源</b><span>21 家</span></span><span class="score-dimension-tag"><b>搭门店</b><span>2 家</span></span><span class="score-dimension-tag"><b>附加分</b><span>1 家</span></span></div>
       </article>
       <article class="panel operation-score-panel">
         <div class="panel-head"><div><h2>门店经营分明细</h2><p>可按门店、POI、片区、认证状态和分数档位筛选，点击业务列排序</p></div></div>
-        <div class="filter-bar operation-score-filter"><input id="operation-score-search" type="search" placeholder="搜索门店或 POI" aria-label="搜索经营分门店"><select id="operation-score-area-filter" aria-label="按片区筛选经营分"><option value="">全部片区</option><option value="济南中片区">济南中片区</option></select><select id="operation-score-crown-filter" aria-label="按金冠认证筛选"><option value="">全部认证状态</option><option value="已认证">已认证</option><option value="未认证">未认证</option></select><select id="operation-score-tier-filter" aria-label="按经营分档位筛选"><option value="">全部分数档位</option><option value="high">高分</option><option value="improve">待提升</option><option value="risk">风险</option></select><span id="operation-score-result-count" class="filter-count"></span></div><div class="table-scroll operation-score-table-scroll"><table class="operation-score-table"><thead><tr><th>#</th><th>门店 / POI</th><th>一级省区</th><th><button class="sort-trigger operation-score-sort-trigger" type="button" data-sort-key="area" onclick="sortOperationScoreTable('area')" title="按二级片区排序">二级片区 <span class="sort-indicator">↕</span></button></th><th><button class="sort-trigger operation-score-sort-trigger" type="button" data-sort-key="score" onclick="sortOperationScoreTable('score')" title="按经营分排序">经营分 <span class="sort-indicator">↕</span></button></th><th>金冠认证</th><th><button class="sort-trigger operation-score-sort-trigger" type="button" data-sort-key="change" onclick="sortOperationScoreTable('change')" title="按近7天变化排序">近7天变化 <span class="sort-indicator">↕</span></button></th><th>待提升项</th></tr></thead><tbody id="operation-score-table-body"><tr data-score="58.0" data-change="0.0" data-crown="未认证" data-tier="risk" data-area="济南中片区" data-search="白玉兰商务酒店（济南泉城广场趵突泉店） 7021348514504378375"><td class="rank">01</td><td><strong>白玉兰商务酒店（济南泉城广场趵突泉店）</strong><small> · 7021348514504378375</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value risk">58</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">搭门店,稳房源,提质量,拿收益</td></tr><tr data-score="70.0" data-change="0.0" data-crown="已认证" data-tier="risk" data-area="济南中片区" data-search="iu酒店（济南火车站大观园老商埠店） 7158681067505862663"><td class="rank">02</td><td><strong>IU酒店（济南火车站大观园老商埠店）</strong><small> · 7158681067505862663</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value risk">70</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="72.0" data-change="0.0" data-crown="未认证" data-tier="risk" data-area="济南中片区" data-search="喆啡酒店（济南大明湖店） 6844915705113069576"><td class="rank">03</td><td><strong>喆啡酒店（济南大明湖店）</strong><small> · 6844915705113069576</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value risk">72</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="79.0" data-change="0.0" data-crown="未认证" data-tier="risk" data-area="济南中片区" data-search="希岸·轻雅酒店（济南花园东路地铁站环联夜市店） 7116631532303091749"><td class="rank">04</td><td><strong>希岸·轻雅酒店（济南花园东路地铁站环联夜市店）</strong><small>济南市 · 7116631532303091749</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value risk">79</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="82.0" data-change="0.0" data-crown="已认证" data-tier="improve" data-area="济南中片区" data-search="7天优品premium（济南齐鲁软件园店） 7235875058416912445"><td class="rank">05</td><td><strong>7天优品Premium（济南齐鲁软件园店）</strong><small>济南市 · 7235875058416912445</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value improve">82</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="82.0" data-change="-3.0" data-crown="已认证" data-tier="improve" data-area="济南中片区" data-search="维也纳酒店(济南千佛山玉函路店) 7020606705365059620"><td class="rank">06</td><td><strong>维也纳酒店(济南千佛山玉函路店)</strong><small>济南市 · 7020606705365059620</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value improve">82</td><td><span class="score-status certified">已认证</span></td><td class="num negative">-3</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="82.0" data-change="0.0" data-crown="已认证" data-tier="improve" data-area="济南中片区" data-search="维纳斯皇家酒店（济南大明湖店） 7398800005836605503"><td class="rank">07</td><td><strong>维纳斯皇家酒店（济南大明湖店）</strong><small>济南市 · 7398800005836605503</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value improve">82</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="82.0" data-change="-5.0" data-crown="未认证" data-tier="improve" data-area="济南中片区" data-search="麗枫酒店·济南泉城路趵突泉店 6601137003289380867"><td class="rank">08</td><td><strong>麗枫酒店·济南泉城路趵突泉店</strong><small>济南市 · 6601137003289380867</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value improve">82</td><td><span class="score-status uncertified">未认证</span></td><td class="num negative">-5</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="82.0" data-change="-8.0" data-crown="未认证" data-tier="improve" data-area="济南中片区" data-search="麗枫酒店（济南大观园老商埠火车站店） 7075918894396868648"><td class="rank">09</td><td><strong>麗枫酒店（济南大观园老商埠火车站店）</strong><small>济南市 · 7075918894396868648</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value improve">82</td><td><span class="score-status uncertified">未认证</span></td><td class="num negative">-8</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="85.0" data-change="-5.0" data-crown="未认证" data-tier="improve" data-area="济南中片区" data-search="白玉兰酒店（济南齐鲁软件园天辰路店） 7255157829273651258"><td class="rank">10</td><td><strong>白玉兰酒店（济南齐鲁软件园天辰路店）</strong><small>济南市 · 7255157829273651258</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value improve">85</td><td><span class="score-status uncertified">未认证</span></td><td class="num negative">-5</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="85.0" data-change="-10.0" data-crown="已认证" data-tier="improve" data-area="济南中片区" data-search="维也纳酒店(济南山东国际会展中心二环西路店） 6969704784299296804"><td class="rank">11</td><td><strong>维也纳酒店(济南山东国际会展中心二环西路店）</strong><small>济南市 · 6969704784299296804</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value improve">85</td><td><span class="score-status certified">已认证</span></td><td class="num negative">-10</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="86.0" data-change="-5.0" data-crown="未认证" data-tier="improve" data-area="济南中片区" data-search="维也纳国际酒店（济南奥体中心龙奥店） 7151376615497271335"><td class="rank">12</td><td><strong>维也纳国际酒店（济南奥体中心龙奥店）</strong><small>济南市 · 7151376615497271335</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value improve">86</td><td><span class="score-status uncertified">未认证</span></td><td class="num negative">-5</td><td class="score-dimension">搭门店,稳房源,提质量,拿收益</td></tr><tr data-score="87.0" data-change="0.0" data-crown="已认证" data-tier="improve" data-area="济南中片区" data-search="希岸·轻雅酒店（济南鲁能领秀城贵和购物中心店） 7116007680002492457"><td class="rank">13</td><td><strong>希岸·轻雅酒店（济南鲁能领秀城贵和购物中心店）</strong><small>济南市 · 7116007680002492457</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value improve">87</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="92.0" data-change="5.0" data-crown="未认证" data-tier="improve" data-area="济南中片区" data-search="凯里亚德酒店（3.0版济南高新万达广场天辰路店） 7037686496480757774"><td class="rank">14</td><td><strong>凯里亚德酒店（3.0版济南高新万达广场天辰路店）</strong><small>济南市 · 7037686496480757774</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value improve">92</td><td><span class="score-status uncertified">未认证</span></td><td class="num positive">+5</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="92.0" data-change="5.0" data-crown="未认证" data-tier="improve" data-area="济南中片区" data-search="喆啡酒店（济南鲁能贵和领秀城望岳路店） 7219622848694847528"><td class="rank">15</td><td><strong>喆啡酒店（济南鲁能贵和领秀城望岳路店）</strong><small>济南市 · 7219622848694847528</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value improve">92</td><td><span class="score-status uncertified">未认证</span></td><td class="num positive">+5</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="95.0" data-change="8.0" data-crown="已认证" data-tier="improve" data-area="济南中片区" data-search="凯里亚德酒店（济南齐鲁医院趵突泉店） 6967292531352602664"><td class="rank">16</td><td><strong>凯里亚德酒店（济南齐鲁医院趵突泉店）</strong><small>济南市 · 6967292531352602664</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value improve">95</td><td><span class="score-status certified">已认证</span></td><td class="num positive">+8</td><td class="score-dimension">提质量,拿收益</td></tr><tr data-score="95.0" data-change="8.0" data-crown="未认证" data-tier="improve" data-area="济南中片区" data-search="维也纳酒店（5.0济南奥体cbd万象城店） 7325695095246686217"><td class="rank">17</td><td><strong>维也纳酒店（5.0济南奥体CBD万象城店）</strong><small>济南市 · 7325695095246686217</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value improve">95</td><td><span class="score-status uncertified">未认证</span></td><td class="num positive">+8</td><td class="score-dimension">提质量,拿收益</td></tr><tr data-score="95.0" data-change="0.0" data-crown="已认证" data-tier="improve" data-area="济南中片区" data-search="麗枫酒店（济南cbd万象城店） 7494899416579606528"><td class="rank">18</td><td><strong>麗枫酒店（济南CBD万象城店）</strong><small>济南市 · 7494899416579606528</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value improve">95</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">提质量,拿收益</td></tr><tr data-score="97.0" data-change="5.0" data-crown="未认证" data-tier="improve" data-area="济南中片区" data-search="喆啡酒店（济南万象城奥体cbd店） 7420676247337830409"><td class="rank">19</td><td><strong>喆啡酒店（济南万象城奥体CBD店）</strong><small>济南市 · 7420676247337830409</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value improve">97</td><td><span class="score-status uncertified">未认证</span></td><td class="num positive">+5</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="100.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="济南中片区" data-search="7天优品premium（济南历下cbd店） 7269352669041395753"><td class="rank">20</td><td><strong>7天优品Premium（济南历下CBD店）</strong><small>济南市 · 7269352669041395753</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value high">100</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="100.0" data-change="0.0" data-crown="未认证" data-tier="high" data-area="济南中片区" data-search="7天酒店（济南历山路大明湖超然楼店） 6601133974842525703"><td class="rank">21</td><td><strong>7天酒店（济南历山路大明湖超然楼店）</strong><small>济南市 · 6601133974842525703</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value high">100</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">提质量,拿收益</td></tr><tr data-score="100.0" data-change="0.0" data-crown="未认证" data-tier="high" data-area="济南中片区" data-search="原拓酒店（济南泉城广场趵突泉店） 7406220806704859172"><td class="rank">22</td><td><strong>原拓酒店（济南泉城广场趵突泉店）</strong><small>济南市 · 7406220806704859172</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value high">100</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="100.0" data-change="5.0" data-crown="已认证" data-tier="high" data-area="济南中片区" data-search="喆啡酒店（济南燕山立交山东财经大学店） 7163207451456571400"><td class="rank">23</td><td><strong>喆啡酒店（济南燕山立交山东财经大学店）</strong><small>济南市 · 7163207451456571400</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value high">100</td><td><span class="score-status certified">已认证</span></td><td class="num positive">+5</td><td class="score-dimension">提质量,拿收益</td></tr><tr data-score="100.0" data-change="0.0" data-crown="未认证" data-tier="high" data-area="济南中片区" data-search="维也纳酒店（济南泉城路大明湖店） 6676969334637725707"><td class="rank">24</td><td><strong>维也纳酒店（济南泉城路大明湖店）</strong><small>济南市 · 6676969334637725707</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value high">100</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">提质量,拿收益</td></tr><tr data-score="100.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="济南中片区" data-search="锦江之星（济南千佛山山师东路地铁站店） 6601142015176476676"><td class="rank">25</td><td><strong>锦江之星（济南千佛山山师东路地铁站店）</strong><small>济南市 · 6601142015176476676</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value high">100</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="100.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="济南中片区" data-search="麗枫酒店·济南大明湖东门历山路店 7320132871060981772"><td class="rank">26</td><td><strong>麗枫酒店·济南大明湖东门历山路店</strong><small>济南市 · 7320132871060981772</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value high">100</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="105.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="济南中片区" data-search="维也纳3好酒店（济南山东大学兴隆校区店） 7298716718577223719"><td class="rank">27</td><td><strong>维也纳3好酒店（济南山东大学兴隆校区店）</strong><small>济南市 · 7298716718577223719</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value high">105</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">提质量,拿收益</td></tr><tr data-score="110.0" data-change="5.0" data-crown="已认证" data-tier="high" data-area="济南中片区" data-search="希岸deluxe酒店济南解放路店 6870673260715968525"><td class="rank">28</td><td><strong>希岸Deluxe酒店济南解放路店</strong><small>济南市 · 6870673260715968525</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value high">110</td><td><span class="score-status certified">已认证</span></td><td class="num positive">+5</td><td class="score-dimension">拿收益</td></tr><tr data-score="110.0" data-change="0.0" data-crown="未认证" data-tier="high" data-area="济南中片区" data-search="济南泉城广场趵突泉丽柏酒店 7517100260498360383"><td class="rank">29</td><td><strong>济南泉城广场趵突泉丽柏酒店</strong><small>济南市 · 7517100260498360383</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value high">110</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">提质量</td></tr><tr data-score="110.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="济南中片区" data-search="锦江之星（5.0济南cbd华润置地广场店） 7391045075913934859"><td class="rank">30</td><td><strong>锦江之星（5.0济南CBD华润置地广场店）</strong><small>济南市 · 7391045075913934859</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value high">110</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="115.0" data-change="5.0" data-crown="已认证" data-tier="high" data-area="济南中片区" data-search="7天优品（济南泉城广场齐鲁医院店） 6601210184658323459"><td class="rank">31</td><td><strong>7天优品（济南泉城广场齐鲁医院店）</strong><small>济南市 · 6601210184658323459</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value high">115</td><td><span class="score-status certified">已认证</span></td><td class="num positive">+5</td><td class="score-dimension">提质量</td></tr></tbody></table></div>
+        <div class="filter-bar operation-score-filter"><input id="operation-score-search" type="search" placeholder="搜索门店或 POI" aria-label="搜索经营分门店"><select id="operation-score-area-filter" aria-label="按片区筛选经营分"><option value="">全部片区</option><option value="济南中片区">济南中片区</option></select><select id="operation-score-crown-filter" aria-label="按金冠认证筛选"><option value="">全部认证状态</option><option value="已认证">已认证</option><option value="未认证">未认证</option></select><select id="operation-score-tier-filter" aria-label="按经营分档位筛选"><option value="">全部分数档位</option><option value="high">高分</option><option value="improve">待提升</option><option value="risk">风险</option></select><span id="operation-score-result-count" class="filter-count"></span></div><div class="table-scroll operation-score-table-scroll"><table class="operation-score-table"><thead><tr><th>#</th><th>门店 / POI</th><th>一级省区</th><th><button class="sort-trigger operation-score-sort-trigger" type="button" data-sort-key="area" onclick="sortOperationScoreTable('area')" title="按二级片区排序">二级片区 <span class="sort-indicator">↕</span></button></th><th><button class="sort-trigger operation-score-sort-trigger" type="button" data-sort-key="score" onclick="sortOperationScoreTable('score')" title="按经营分排序">经营分 <span class="sort-indicator">↕</span></button></th><th>金冠认证</th><th><button class="sort-trigger operation-score-sort-trigger" type="button" data-sort-key="change" onclick="sortOperationScoreTable('change')" title="按近7天变化排序">近7天变化 <span class="sort-indicator">↕</span></button></th><th>待提升项</th></tr></thead><tbody id="operation-score-table-body"><tr data-score="58.0" data-change="0.0" data-crown="未认证" data-tier="risk" data-area="济南中片区" data-search="白玉兰商务酒店（济南泉城广场趵突泉店） 7021348514504378375"><td class="rank">01</td><td><strong>白玉兰商务酒店（济南泉城广场趵突泉店）</strong><small> · 7021348514504378375</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value risk">58</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">搭门店,稳房源,提质量,拿收益</td></tr><tr data-score="65.0" data-change="-5.0" data-crown="未认证" data-tier="risk" data-area="济南中片区" data-search="iu酒店（济南火车站大观园老商埠店） 7158681067505862663"><td class="rank">02</td><td><strong>IU酒店（济南火车站大观园老商埠店）</strong><small> · 7158681067505862663</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value risk">65</td><td><span class="score-status uncertified">未认证</span></td><td class="num negative">-5</td><td class="score-dimension">稳房源,提质量,附加分,拿收益</td></tr><tr data-score="72.0" data-change="0.0" data-crown="未认证" data-tier="risk" data-area="济南中片区" data-search="喆啡酒店（济南大明湖店） 6844915705113069576"><td class="rank">03</td><td><strong>喆啡酒店（济南大明湖店）</strong><small> · 6844915705113069576</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value risk">72</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="82.0" data-change="0.0" data-crown="已认证" data-tier="improve" data-area="济南中片区" data-search="7天优品premium（济南齐鲁软件园店） 7235875058416912445"><td class="rank">04</td><td><strong>7天优品Premium（济南齐鲁软件园店）</strong><small>济南市 · 7235875058416912445</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value improve">82</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="82.0" data-change="0.0" data-crown="已认证" data-tier="improve" data-area="济南中片区" data-search="维纳斯皇家酒店（济南大明湖店） 7398800005836605503"><td class="rank">05</td><td><strong>维纳斯皇家酒店（济南大明湖店）</strong><small>济南市 · 7398800005836605503</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value improve">82</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="82.0" data-change="0.0" data-crown="未认证" data-tier="improve" data-area="济南中片区" data-search="麗枫酒店·济南泉城路趵突泉店 6601137003289380867"><td class="rank">06</td><td><strong>麗枫酒店·济南泉城路趵突泉店</strong><small>济南市 · 6601137003289380867</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value improve">82</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="82.0" data-change="-8.0" data-crown="已认证" data-tier="improve" data-area="济南中片区" data-search="麗枫酒店（济南大观园老商埠火车站店） 7075918894396868648"><td class="rank">07</td><td><strong>麗枫酒店（济南大观园老商埠火车站店）</strong><small>济南市 · 7075918894396868648</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value improve">82</td><td><span class="score-status certified">已认证</span></td><td class="num negative">-8</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="85.0" data-change="-5.0" data-crown="未认证" data-tier="improve" data-area="济南中片区" data-search="白玉兰酒店（济南齐鲁软件园天辰路店） 7255157829273651258"><td class="rank">08</td><td><strong>白玉兰酒店（济南齐鲁软件园天辰路店）</strong><small>济南市 · 7255157829273651258</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value improve">85</td><td><span class="score-status uncertified">未认证</span></td><td class="num negative">-5</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="85.0" data-change="-10.0" data-crown="已认证" data-tier="improve" data-area="济南中片区" data-search="维也纳酒店(济南山东国际会展中心二环西路店） 6969704784299296804"><td class="rank">09</td><td><strong>维也纳酒店(济南山东国际会展中心二环西路店）</strong><small>济南市 · 6969704784299296804</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value improve">85</td><td><span class="score-status certified">已认证</span></td><td class="num negative">-10</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="87.0" data-change="0.0" data-crown="已认证" data-tier="improve" data-area="济南中片区" data-search="希岸·轻雅酒店（济南鲁能领秀城贵和购物中心店） 7116007680002492457"><td class="rank">10</td><td><strong>希岸·轻雅酒店（济南鲁能领秀城贵和购物中心店）</strong><small>济南市 · 7116007680002492457</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value improve">87</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="87.0" data-change="2.0" data-crown="已认证" data-tier="improve" data-area="济南中片区" data-search="维也纳酒店(济南千佛山玉函路店) 7020606705365059620"><td class="rank">11</td><td><strong>维也纳酒店(济南千佛山玉函路店)</strong><small>济南市 · 7020606705365059620</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value improve">87</td><td><span class="score-status certified">已认证</span></td><td class="num positive">+2</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="91.0" data-change="0.0" data-crown="未认证" data-tier="improve" data-area="济南中片区" data-search="维也纳国际酒店（济南奥体中心龙奥店） 7151376615497271335"><td class="rank">12</td><td><strong>维也纳国际酒店（济南奥体中心龙奥店）</strong><small>济南市 · 7151376615497271335</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value improve">91</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">搭门店,稳房源,提质量,拿收益</td></tr><tr data-score="92.0" data-change="5.0" data-crown="未认证" data-tier="improve" data-area="济南中片区" data-search="喆啡酒店（济南鲁能贵和领秀城望岳路店） 7219622848694847528"><td class="rank">13</td><td><strong>喆啡酒店（济南鲁能贵和领秀城望岳路店）</strong><small>济南市 · 7219622848694847528</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value improve">92</td><td><span class="score-status uncertified">未认证</span></td><td class="num positive">+5</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="92.0" data-change="13.0" data-crown="未认证" data-tier="improve" data-area="济南中片区" data-search="希岸·轻雅酒店（济南花园东路地铁站环联夜市店） 7116631532303091749"><td class="rank">14</td><td><strong>希岸·轻雅酒店（济南花园东路地铁站环联夜市店）</strong><small>济南市 · 7116631532303091749</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value improve">92</td><td><span class="score-status uncertified">未认证</span></td><td class="num positive">+13</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="95.0" data-change="8.0" data-crown="已认证" data-tier="improve" data-area="济南中片区" data-search="凯里亚德酒店（济南齐鲁医院趵突泉店） 6967292531352602664"><td class="rank">15</td><td><strong>凯里亚德酒店（济南齐鲁医院趵突泉店）</strong><small>济南市 · 6967292531352602664</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value improve">95</td><td><span class="score-status certified">已认证</span></td><td class="num positive">+8</td><td class="score-dimension">提质量,拿收益</td></tr><tr data-score="95.0" data-change="8.0" data-crown="已认证" data-tier="improve" data-area="济南中片区" data-search="维也纳酒店（5.0济南奥体cbd万象城店） 7325695095246686217"><td class="rank">16</td><td><strong>维也纳酒店（5.0济南奥体CBD万象城店）</strong><small>济南市 · 7325695095246686217</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value improve">95</td><td><span class="score-status certified">已认证</span></td><td class="num positive">+8</td><td class="score-dimension">提质量,拿收益</td></tr><tr data-score="95.0" data-change="0.0" data-crown="已认证" data-tier="improve" data-area="济南中片区" data-search="麗枫酒店（济南cbd万象城店） 7494899416579606528"><td class="rank">17</td><td><strong>麗枫酒店（济南CBD万象城店）</strong><small>济南市 · 7494899416579606528</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value improve">95</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">提质量,拿收益</td></tr><tr data-score="100.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="济南中片区" data-search="7天优品premium（济南历下cbd店） 7269352669041395753"><td class="rank">18</td><td><strong>7天优品Premium（济南历下CBD店）</strong><small>济南市 · 7269352669041395753</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value high">100</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="100.0" data-change="0.0" data-crown="未认证" data-tier="high" data-area="济南中片区" data-search="7天酒店（济南历山路大明湖超然楼店） 6601133974842525703"><td class="rank">19</td><td><strong>7天酒店（济南历山路大明湖超然楼店）</strong><small>济南市 · 6601133974842525703</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value high">100</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">提质量,拿收益</td></tr><tr data-score="100.0" data-change="13.0" data-crown="未认证" data-tier="high" data-area="济南中片区" data-search="凯里亚德酒店（3.0版济南高新万达广场天辰路店） 7037686496480757774"><td class="rank">20</td><td><strong>凯里亚德酒店（3.0版济南高新万达广场天辰路店）</strong><small>济南市 · 7037686496480757774</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value high">100</td><td><span class="score-status uncertified">未认证</span></td><td class="num positive">+13</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="100.0" data-change="-5.0" data-crown="未认证" data-tier="high" data-area="济南中片区" data-search="原拓酒店（济南泉城广场趵突泉店） 7406220806704859172"><td class="rank">21</td><td><strong>原拓酒店（济南泉城广场趵突泉店）</strong><small>济南市 · 7406220806704859172</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value high">100</td><td><span class="score-status uncertified">未认证</span></td><td class="num negative">-5</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="100.0" data-change="8.0" data-crown="未认证" data-tier="high" data-area="济南中片区" data-search="喆啡酒店（济南万象城奥体cbd店） 7420676247337830409"><td class="rank">22</td><td><strong>喆啡酒店（济南万象城奥体CBD店）</strong><small>济南市 · 7420676247337830409</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value high">100</td><td><span class="score-status uncertified">未认证</span></td><td class="num positive">+8</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="100.0" data-change="5.0" data-crown="已认证" data-tier="high" data-area="济南中片区" data-search="喆啡酒店（济南燕山立交山东财经大学店） 7163207451456571400"><td class="rank">23</td><td><strong>喆啡酒店（济南燕山立交山东财经大学店）</strong><small>济南市 · 7163207451456571400</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value high">100</td><td><span class="score-status certified">已认证</span></td><td class="num positive">+5</td><td class="score-dimension">提质量,拿收益</td></tr><tr data-score="100.0" data-change="0.0" data-crown="未认证" data-tier="high" data-area="济南中片区" data-search="维也纳酒店（济南泉城路大明湖店） 6676969334637725707"><td class="rank">24</td><td><strong>维也纳酒店（济南泉城路大明湖店）</strong><small>济南市 · 6676969334637725707</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value high">100</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">提质量,拿收益</td></tr><tr data-score="100.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="济南中片区" data-search="锦江之星（济南千佛山山师东路地铁站店） 6601142015176476676"><td class="rank">25</td><td><strong>锦江之星（济南千佛山山师东路地铁站店）</strong><small>济南市 · 6601142015176476676</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value high">100</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="100.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="济南中片区" data-search="麗枫酒店·济南大明湖东门历山路店 7320132871060981772"><td class="rank">26</td><td><strong>麗枫酒店·济南大明湖东门历山路店</strong><small>济南市 · 7320132871060981772</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value high">100</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="105.0" data-change="-5.0" data-crown="未认证" data-tier="high" data-area="济南中片区" data-search="济南泉城广场趵突泉丽柏酒店 7517100260498360383"><td class="rank">27</td><td><strong>济南泉城广场趵突泉丽柏酒店</strong><small>济南市 · 7517100260498360383</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value high">105</td><td><span class="score-status uncertified">未认证</span></td><td class="num negative">-5</td><td class="score-dimension">提质量,拿收益</td></tr><tr data-score="105.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="济南中片区" data-search="维也纳3好酒店（济南山东大学兴隆校区店） 7298716718577223719"><td class="rank">28</td><td><strong>维也纳3好酒店（济南山东大学兴隆校区店）</strong><small>济南市 · 7298716718577223719</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value high">105</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">提质量,拿收益</td></tr><tr data-score="110.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="济南中片区" data-search="7天优品（济南泉城广场齐鲁医院店） 6601210184658323459"><td class="rank">29</td><td><strong>7天优品（济南泉城广场齐鲁医院店）</strong><small>济南市 · 6601210184658323459</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value high">110</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">提质量</td></tr><tr data-score="110.0" data-change="5.0" data-crown="已认证" data-tier="high" data-area="济南中片区" data-search="希岸deluxe酒店济南解放路店 6870673260715968525"><td class="rank">30</td><td><strong>希岸Deluxe酒店济南解放路店</strong><small>济南市 · 6870673260715968525</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value high">110</td><td><span class="score-status certified">已认证</span></td><td class="num positive">+5</td><td class="score-dimension">拿收益</td></tr><tr data-score="110.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="济南中片区" data-search="锦江之星（5.0济南cbd华润置地广场店） 7391045075913934859"><td class="rank">31</td><td><strong>锦江之星（5.0济南CBD华润置地广场店）</strong><small>济南市 · 7391045075913934859</small></td><td>鲁西省区</td><td>济南中片区</td><td class="num score-value high">110</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,拿收益</td></tr></tbody></table></div>
       </article>
     </section>
 
@@ -1486,27 +1497,28 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
 
     <section class="section" id="merchant-live">
       <div class="section-head"><div><h2>商家自播</h2><p>商家官号 · 近 7 日对比前 7 日 · 数据来源：生意经</p></div></div>
+      <div class="kpis" id="store-live-coverage"><article class="kpi" data-live-metric="total"><span class="kpi-label">总门店</span><b class="kpi-value">37<small style="font-size:14px">家</small></b><div class="kpi-foot">当前组织名单 · POI 去重</div></article><article class="kpi" data-live-metric="live"><span class="kpi-label">已开播门店</span><b class="kpi-value">7<small style="font-size:14px">家</small></b><div class="kpi-foot">周期内至少开播一次</div></article><article class="kpi" data-live-metric="not-live"><span class="kpi-label">未开播门店</span><b class="kpi-value">30<small style="font-size:14px">家</small></b><div class="kpi-foot">未匹配到本期开播记录</div></article><article class="kpi" data-live-metric="rate"><span class="kpi-label">门店开播率</span><b class="kpi-value">18.9%<small style="font-size:14px"></small></b><div class="kpi-foot">已开播门店 ÷ 总门店</div></article></div><p style="font-size:12px;color:var(--muted);line-height:1.7">统计周期：2026-10-30 至 2026-11-05。商家官号直播场次或直播时长大于 0 计为开播，按门店 POI 去重；账号所属门店名称仅接受唯一 POI 匹配。未开播表示未匹配到本期开播记录，未匹配账号可能影响统计结果。</p><article class="panel" style="margin:16px 0"><div class="panel-head"><div><h2>各片区门店开播率</h2><p>与当前省区、片区选择一致</p></div></div><div style="overflow-x:auto"><table id="store-live-area-summary"><thead><tr><th>片区</th><th>总门店</th><th>已开播</th><th>未开播*</th><th>开播率</th></tr></thead><tbody><tr><td>济南中片区</td><td>37</td><td>7</td><td>30</td><td>18.9%</td></tr></tbody></table></div></article>
       <div class="kpis">
-        <article class="kpi"><span class="kpi-label">直播成交金额</span><b class="kpi-value">3,835</b><div class="kpi-foot"><span class="positive">+22.9%</span><span>较前 7 日 3,121</span></div></article>
-        <article class="kpi"><span class="kpi-label">直播场次</span><b class="kpi-value">40<small style="font-size:14px">场</small></b><div class="kpi-foot"><span class="positive">+60.0%</span><span>较前 7 日 25场</span></div></article>
-        <article class="kpi"><span class="kpi-label">直播时长</span><b class="kpi-value">47.3h</b><div class="kpi-foot"><span class="positive">+51.1%</span><span>较前 7 日 31.3h</span></div></article>
-        <article class="kpi"><span class="kpi-label">开播账号</span><b class="kpi-value">7<small style="font-size:14px">个</small></b><div class="kpi-foot"><span class="positive">+2个</span><span>较前 7 日</span></div></article>
+        <article class="kpi"><span class="kpi-label">直播成交金额</span><b class="kpi-value">3,277</b><div class="kpi-foot"><span class="negative">-15.5%</span><span>较前 7 日 3,878</span></div></article>
+        <article class="kpi"><span class="kpi-label">直播场次</span><b class="kpi-value">35<small style="font-size:14px">场</small></b><div class="kpi-foot"><span class="positive">+2.9%</span><span>较前 7 日 34场</span></div></article>
+        <article class="kpi"><span class="kpi-label">直播时长</span><b class="kpi-value">50.5h</b><div class="kpi-foot"><span class="positive">+38.6%</span><span>较前 7 日 36.4h</span></div></article>
+        <article class="kpi"><span class="kpi-label">开播账号</span><b class="kpi-value">7<small style="font-size:14px">个</small></b><div class="kpi-foot"><span class="positive">+1个</span><span>较前 7 日</span></div></article>
       </div>
       <article class="panel" style="margin-top:16px">
-        <div class="panel-head trend-panel-head"><div class="trend-heading"><h2>直播成交与时长每日趋势</h2><span class="trend-range">10-28–11-03</span></div></div>
+        <div class="panel-head trend-panel-head"><div class="trend-heading"><h2>直播成交与时长每日趋势</h2><span class="trend-range">10-30–11-05</span></div></div>
         <div class="chart-scroll merchant-trend-scroll">
       <div class="merchant-trend-canvas">
         <svg class="chart-svg merchant-amount-chart" viewBox="0 0 760 245"
              role="img" aria-label="商家官号直播成交金额每日趋势，单位万元">
           <line x1="54" y1="34.0" x2="736" y2="34.0" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="122.5" x2="736" y2="122.5" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="211.0" x2="736" y2="211.0" stroke="#ECEEF3" stroke-width="1"/><text x="44" y="38.0" text-anchor="end" class="axis-label">0.2</text><text x="44" y="126.5" text-anchor="end" class="axis-label">0.1</text><text x="44" y="215.0" text-anchor="end" class="axis-label">0.0</text>
-          <path d="M54.0 201.9 L167.7 150.8 L281.3 34.0 L395.0 211.0 L508.7 186.4 L622.3 180.2 L736.0 161.8" fill="none" stroke="#8B6DFF"
+          <path d="M54.0 34.0 L167.7 211.0 L281.3 186.4 L395.0 180.2 L508.7 161.8 L622.3 211.0 L736.0 192.8" fill="none" stroke="#8B6DFF"
                 stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle class="merchant-live-point" cx="54.0" cy="201.9" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="58.0" y="189.9" text-anchor="start" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="167.7" cy="150.8" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="167.7" y="138.8" text-anchor="middle" fill="#8B6DFF">0.1万</text><circle class="merchant-live-point" cx="281.3" cy="34.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="281.3" y="22.0" text-anchor="middle" fill="#8B6DFF">0.2万</text><circle class="merchant-live-point" cx="395.0" cy="211.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="395.0" y="199.0" text-anchor="middle" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="508.7" cy="186.4" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="508.7" y="174.4" text-anchor="middle" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="622.3" cy="180.2" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="622.3" y="168.2" text-anchor="middle" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="736.0" cy="161.8" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="732.0" y="149.8" text-anchor="end" fill="#8B6DFF">0.1万</text>
+          <circle class="merchant-live-point" cx="54.0" cy="34.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="58.0" y="22.0" text-anchor="start" fill="#8B6DFF">0.2万</text><circle class="merchant-live-point" cx="167.7" cy="211.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="167.7" y="199.0" text-anchor="middle" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="281.3" cy="186.4" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="281.3" y="174.4" text-anchor="middle" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="395.0" cy="180.2" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="395.0" y="168.2" text-anchor="middle" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="508.7" cy="161.8" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="508.7" y="149.8" text-anchor="middle" fill="#8B6DFF">0.1万</text><circle class="merchant-live-point" cx="622.3" cy="211.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="622.3" y="199.0" text-anchor="middle" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="736.0" cy="192.8" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="732.0" y="180.8" text-anchor="end" fill="#8B6DFF">0.0万</text>
         </svg>
         <div class="merchant-subchart-title">每日直播时长 <span>单位：小时</span></div>
         <svg class="chart-svg merchant-duration-chart" viewBox="0 0 760 155"
              role="img" aria-label="商家官号每日直播时长，单位小时">
-          <line x1="54" y1="28.0" x2="736" y2="28.0" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="121.0" x2="736" y2="121.0" stroke="#ECEEF3" stroke-width="1"/><rect class="merchant-duration-bar" x="31.6" y="28.0" width="44.8" height="93.0" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="54.0" y="21.0" text-anchor="middle" fill="#00A7A0">8.5h</text><rect class="merchant-duration-bar" x="145.3" y="59.6" width="44.8" height="61.4" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="167.7" y="52.6" text-anchor="middle" fill="#00A7A0">5.6h</text><rect class="merchant-duration-bar" x="258.9" y="48.9" width="44.8" height="72.1" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="281.3" y="41.9" text-anchor="middle" fill="#00A7A0">6.6h</text><rect class="merchant-duration-bar" x="372.6" y="80.6" width="44.8" height="40.4" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="395.0" y="73.6" text-anchor="middle" fill="#00A7A0">3.7h</text><rect class="merchant-duration-bar" x="486.3" y="39.0" width="44.8" height="82.0" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="508.7" y="32.0" text-anchor="middle" fill="#00A7A0">7.5h</text><rect class="merchant-duration-bar" x="599.9" y="32.9" width="44.8" height="88.1" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="622.3" y="25.9" text-anchor="middle" fill="#00A7A0">8.1h</text><rect class="merchant-duration-bar" x="713.6" y="42.8" width="44.8" height="78.2" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="736.0" y="35.8" text-anchor="middle" fill="#00A7A0">7.2h</text><text x="54.0" y="145" text-anchor="middle" class="axis-label">10-28</text><text x="167.7" y="145" text-anchor="middle" class="axis-label">10-29</text><text x="281.3" y="145" text-anchor="middle" class="axis-label">10-30</text><text x="395.0" y="145" text-anchor="middle" class="axis-label">10-31</text><text x="508.7" y="145" text-anchor="middle" class="axis-label">11-01</text><text x="622.3" y="145" text-anchor="middle" class="axis-label">11-02</text><text x="736.0" y="145" text-anchor="middle" class="axis-label">11-03</text>
+          <line x1="54" y1="28.0" x2="736" y2="28.0" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="121.0" x2="736" y2="121.0" stroke="#ECEEF3" stroke-width="1"/><rect class="merchant-duration-bar" x="31.6" y="56.1" width="44.8" height="64.9" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="54.0" y="49.1" text-anchor="middle" fill="#00A7A0">6.6h</text><rect class="merchant-duration-bar" x="145.3" y="84.6" width="44.8" height="36.4" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="167.7" y="77.6" text-anchor="middle" fill="#00A7A0">3.7h</text><rect class="merchant-duration-bar" x="258.9" y="47.2" width="44.8" height="73.8" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="281.3" y="40.2" text-anchor="middle" fill="#00A7A0">7.5h</text><rect class="merchant-duration-bar" x="372.6" y="41.7" width="44.8" height="79.3" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="395.0" y="34.7" text-anchor="middle" fill="#00A7A0">8.1h</text><rect class="merchant-duration-bar" x="486.3" y="50.6" width="44.8" height="70.4" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="508.7" y="43.6" text-anchor="middle" fill="#00A7A0">7.2h</text><rect class="merchant-duration-bar" x="599.9" y="28.0" width="44.8" height="93.0" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="622.3" y="21.0" text-anchor="middle" fill="#00A7A0">9.5h</text><rect class="merchant-duration-bar" x="713.6" y="44.5" width="44.8" height="76.5" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="736.0" y="37.5" text-anchor="middle" fill="#00A7A0">7.8h</text><text x="54.0" y="145" text-anchor="middle" class="axis-label">10-30</text><text x="167.7" y="145" text-anchor="middle" class="axis-label">10-31</text><text x="281.3" y="145" text-anchor="middle" class="axis-label">11-01</text><text x="395.0" y="145" text-anchor="middle" class="axis-label">11-02</text><text x="508.7" y="145" text-anchor="middle" class="axis-label">11-03</text><text x="622.3" y="145" text-anchor="middle" class="axis-label">11-04</text><text x="736.0" y="145" text-anchor="middle" class="axis-label">11-05</text>
         </svg>
       </div>
     </div>
@@ -1537,16 +1549,16 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <tbody id="merchant-city-body">
         <tr data-city-name="济南市"
             data-city-status="有开播"
-            data-city-live-amount="3835.0"
-            data-city-live-sessions="40.0"
-            data-city-live-hours="47.3486111111111"
+            data-city-live-amount="3277.0"
+            data-city-live-sessions="35.0"
+            data-city-live-hours="50.466388888888886"
             data-city-account-count="9.0"
             data-city-live-account-count="7.0">
           <td class="rank">01</td>
           <td><strong>济南市</strong><small><span class="live-status 有开播">有开播</span></small></td>
-          <td class="num">3,835</td>
-          <td class="num">40</td>
-          <td class="num">47.3h</td>
+          <td class="num">3,277</td>
+          <td class="num">35</td>
+          <td class="num">50.5h</td>
           <td class="num">9</td>
           <td class="num">7</td>
         </tr>
@@ -1590,20 +1602,20 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
             data-account-province="鲁西省区"
             data-account-area="济南中片区"
             data-account-status="有直播"
-            data-account-live-amount="2592.0"
-            data-account-live-sessions="13.0"
-            data-account-live-hours="20.636666666666667"
-            data-account-total-amount="2592.0"
-            data-account-redeem-amount="2592.0">
+            data-account-live-amount="1934.0"
+            data-account-live-sessions="9.0"
+            data-account-live-hours="20.97472222222222"
+            data-account-total-amount="1934.0"
+            data-account-redeem-amount="1675.0">
           <td class="rank">01</td>
           <td><strong>丽柏酒店（济南泉城广场趵突泉北门店）</strong><small>61501545972 · <span class="live-status 有直播">有直播</span></small></td>
           <td>济南市<small>丽柏酒店(济南泉城广场趵突泉北门店)</small></td>
           <td>鲁西省区<small>济南中片区</small></td>
-          <td class="num">2,592</td>
-          <td class="num">13</td>
-          <td class="num">20.6h</td>
-          <td class="num">2,592</td>
-          <td class="num">2,592</td>
+          <td class="num">1,934</td>
+          <td class="num">9</td>
+          <td class="num">21.0h</td>
+          <td class="num">1,934</td>
+          <td class="num">1,675</td>
         </tr>
 
         <tr data-account-name="希岸Deluxe酒店（济南解放路店）"
@@ -1615,8 +1627,8 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
             data-account-area="济南中片区"
             data-account-status="有直播"
             data-account-live-amount="807.0"
-            data-account-live-sessions="3.0"
-            data-account-live-hours="3.1275000000000004"
+            data-account-live-sessions="6.0"
+            data-account-live-hours="6.510833333333334"
             data-account-total-amount="807.0"
             data-account-redeem-amount="0.0">
           <td class="rank">02</td>
@@ -1624,8 +1636,8 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td>济南市<small>希岸Deluxe酒店(济南解放路店)</small></td>
           <td>鲁西省区<small>济南中片区</small></td>
           <td class="num">807</td>
-          <td class="num">3</td>
-          <td class="num">3.1h</td>
+          <td class="num">6</td>
+          <td class="num">6.5h</td>
           <td class="num">807</td>
           <td class="num">0</td>
         </tr>
@@ -1638,43 +1650,19 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
             data-account-province="鲁西省区"
             data-account-area="济南中片区"
             data-account-status="有直播"
-            data-account-live-amount="436.0"
-            data-account-live-sessions="10.0"
-            data-account-live-hours="7.726388888888889"
-            data-account-total-amount="436.0"
+            data-account-live-amount="337.0"
+            data-account-live-sessions="5.0"
+            data-account-live-hours="5.982500000000001"
+            data-account-total-amount="446.0"
             data-account-redeem-amount="0.0">
           <td class="rank">03</td>
           <td><strong>7天酒店（济南历山路大明湖超然楼店）</strong><small>1385121375 · <span class="live-status 有直播">有直播</span></small></td>
           <td>济南市<small>7天酒店(济南历山路大明湖超然楼店)</small></td>
           <td>鲁西省区<small>济南中片区</small></td>
-          <td class="num">436</td>
-          <td class="num">10</td>
-          <td class="num">7.7h</td>
-          <td class="num">436</td>
-          <td class="num">0</td>
-        </tr>
-
-        <tr data-account-name="喆啡酒店济南CBD店"
-            data-account-id="38891419316"
-            data-account-city="济南市"
-            data-account-store="喆啡酒店(济南奥体CBD中央商务区店)"
-            data-account-location="济南市 喆啡酒店(济南奥体CBD中央商务区店)"
-            data-account-province="鲁西省区"
-            data-account-area="济南中片区"
-            data-account-status="有直播"
-            data-account-live-amount="0.0"
-            data-account-live-sessions="6.0"
-            data-account-live-hours="2.9425000000000003"
-            data-account-total-amount="209.0"
-            data-account-redeem-amount="0.0">
-          <td class="rank">04</td>
-          <td><strong>喆啡酒店济南CBD店</strong><small>38891419316 · <span class="live-status 有直播">有直播</span></small></td>
-          <td>济南市<small>喆啡酒店(济南奥体CBD中央商务区店)</small></td>
-          <td>鲁西省区<small>济南中片区</small></td>
-          <td class="num">0</td>
-          <td class="num">6</td>
-          <td class="num">2.9h</td>
-          <td class="num">209</td>
+          <td class="num">337</td>
+          <td class="num">5</td>
+          <td class="num">6.0h</td>
+          <td class="num">446</td>
           <td class="num">0</td>
         </tr>
 
@@ -1686,19 +1674,19 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
             data-account-province="鲁西省区"
             data-account-area="济南中片区"
             data-account-status="有直播"
-            data-account-live-amount="0.0"
-            data-account-live-sessions="4.0"
-            data-account-live-hours="5.486111111111111"
-            data-account-total-amount="0.0"
+            data-account-live-amount="199.0"
+            data-account-live-sessions="5.0"
+            data-account-live-hours="7.444444444444445"
+            data-account-total-amount="199.0"
             data-account-redeem-amount="0.0">
-          <td class="rank">05</td>
+          <td class="rank">04</td>
           <td><strong>锦江之星(济南华润置地广场CBD店)</strong><small>62418254596 · <span class="live-status 有直播">有直播</span></small></td>
           <td>济南市<small>锦江之星(济南CBD华润置地广场店)</small></td>
           <td>鲁西省区<small>济南中片区</small></td>
-          <td class="num">0</td>
-          <td class="num">4</td>
-          <td class="num">5.5h</td>
-          <td class="num">0</td>
+          <td class="num">199</td>
+          <td class="num">5</td>
+          <td class="num">7.4h</td>
+          <td class="num">199</td>
           <td class="num">0</td>
         </tr>
 
@@ -1711,17 +1699,17 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
             data-account-area="济南中片区"
             data-account-status="有直播"
             data-account-live-amount="0.0"
-            data-account-live-sessions="3.0"
-            data-account-live-hours="6.723333333333334"
+            data-account-live-sessions="4.0"
+            data-account-live-hours="6.473055555555556"
             data-account-total-amount="0.0"
             data-account-redeem-amount="0.0">
-          <td class="rank">06</td>
+          <td class="rank">05</td>
           <td><strong>维也纳酒店（济南奥体CBD万象城店）</strong><small>48576153258 · <span class="live-status 有直播">有直播</span></small></td>
           <td>济南市<small>维也纳酒店(济南CBD中央商务区店)</small></td>
           <td>鲁西省区<small>济南中片区</small></td>
           <td class="num">0</td>
-          <td class="num">3</td>
-          <td class="num">6.7h</td>
+          <td class="num">4</td>
+          <td class="num">6.5h</td>
           <td class="num">0</td>
           <td class="num">0</td>
         </tr>
@@ -1735,18 +1723,42 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
             data-account-area="济南中片区"
             data-account-status="有直播"
             data-account-live-amount="0.0"
-            data-account-live-sessions="1.0"
-            data-account-live-hours="0.706111111111111"
+            data-account-live-sessions="3.0"
+            data-account-live-hours="1.7544444444444443"
             data-account-total-amount="0.0"
             data-account-redeem-amount="0.0">
-          <td class="rank">07</td>
+          <td class="rank">06</td>
           <td><strong>维也纳国际酒店奥体中心店</strong><small>88654804702 · <span class="live-status 有直播">有直播</span></small></td>
           <td>济南市<small>维也纳国际酒店(济南奥林匹克体育中心店)</small></td>
           <td>鲁西省区<small>济南中片区</small></td>
           <td class="num">0</td>
-          <td class="num">1</td>
-          <td class="num">0.7h</td>
+          <td class="num">3</td>
+          <td class="num">1.8h</td>
           <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="喆啡酒店济南CBD店"
+            data-account-id="38891419316"
+            data-account-city="济南市"
+            data-account-store="喆啡酒店(济南奥体CBD中央商务区店)"
+            data-account-location="济南市 喆啡酒店(济南奥体CBD中央商务区店)"
+            data-account-province="鲁西省区"
+            data-account-area="济南中片区"
+            data-account-status="有直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="3.0"
+            data-account-live-hours="1.3263888888888888"
+            data-account-total-amount="209.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">07</td>
+          <td><strong>喆啡酒店济南CBD店</strong><small>38891419316 · <span class="live-status 有直播">有直播</span></small></td>
+          <td>济南市<small>喆啡酒店(济南奥体CBD中央商务区店)</small></td>
+          <td>鲁西省区<small>济南中片区</small></td>
+          <td class="num">0</td>
+          <td class="num">3</td>
+          <td class="num">1.3h</td>
+          <td class="num">209</td>
           <td class="num">0</td>
         </tr>
 
@@ -1761,8 +1773,8 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
             data-account-live-amount="0.0"
             data-account-live-sessions="0.0"
             data-account-live-hours="0.0"
-            data-account-total-amount="208.9"
-            data-account-redeem-amount="202.18">
+            data-account-total-amount="188.0"
+            data-account-redeem-amount="199.0">
           <td class="rank">08</td>
           <td><strong>凯里亚德酒店（泉城趵突泉店）</strong><small>66852190118 · <span class="live-status 未直播">未直播</span></small></td>
           <td>济南市<small>凯里亚德酒店(济南齐鲁医院趵突泉店)</small></td>
@@ -1770,8 +1782,8 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <td class="num">0</td>
           <td class="num">0</td>
           <td class="num">0.0h</td>
-          <td class="num">209</td>
-          <td class="num">202</td>
+          <td class="num">188</td>
+          <td class="num">199</td>
         </tr>
 
         <tr data-account-name="济南原拓酒店(趵突泉店)专用号"
@@ -1858,7 +1870,7 @@ function filterInventoryTable(){
   let visible=0;
   body.querySelectorAll('tr').forEach(row=>{
     const matchesQuery=!query||(row.dataset.inventorySearch||'').includes(query);
-    const matchesStatus=!status||row.dataset.inventoryStatus===status;
+    const matchesStatus=!status||(status==='missing'?Number(row.dataset.inventoryMissing)>0:row.dataset.inventoryStatus===status);
     row.style.display=matchesQuery&&matchesStatus?'':'none';
     if(matchesQuery&&matchesStatus)visible+=1;
   });
@@ -2150,7 +2162,7 @@ sortChannelTable('redeem-delta');
 sortMerchantCityTable('city-live-amount');
 sortMerchantAccountTable('account-live-amount');
 sortOperationScoreTable('score');
-document.documentElement.dataset.workbench="{\"region\": \"山河大区 · 鲁西省区 · 济南中片区\", \"periods\": {\"previous_start\": \"2026-10-21\", \"previous_end\": \"2026-10-27\", \"current_start\": \"2026-10-28\", \"current_end\": \"2026-11-03\"}, \"verification\": {\"detail_row_count\": 502, \"channel_row_count\": 530, \"other_region_row_count\": 0, \"provider_count\": 3, \"store_count\": 28, \"voucher_product_count\": 14, \"product_structure_closed\": true, \"master_store_count\": 37, \"data_store_count\": 28, \"zero_data_store_count\": 9, \"organization_province_count\": 1, \"organization_area_count\": 1, \"selected_province\": \"鲁西省区\", \"selected_area\": \"济南中片区\", \"detail_channel_closure\": {\"意向成交金额\": true, \"意向成交券数\": true, \"意向成交间夜\": true, \"核销金额\": true, \"核销券数\": true, \"核销间夜\": true}, \"provider_binding_counts\": {\"跃迁策略（青岛）文化传媒有限公司\": 1, \"未绑定服务商\": 19, \"杭州四库传媒有限公司\": 17}, \"bound_store_count\": 18, \"unbound_store_count\": 19, \"passed\": true}, \"organization_navigation\": {\"selected_province\": \"鲁西省区\", \"selected_area\": \"济南中片区\", \"province_urls\": {\"\": \"workbench_shanhe.html\", \"山西省区\": \"workbench_shanhe__山西省区.html\", \"河南省区\": \"workbench_shanhe__河南省区.html\", \"鲁东省区\": \"workbench_shanhe__鲁东省区.html\", \"鲁西省区\": \"workbench_shanhe__鲁西省区.html\"}, \"area_urls\": {\"山西省区\": {\"山西东片区\": \"workbench_shanhe__山西省区__山西东片区.html\", \"山西中片区\": \"workbench_shanhe__山西省区__山西中片区.html\", \"山西北片区\": \"workbench_shanhe__山西省区__山西北片区.html\", \"山西南片区\": \"workbench_shanhe__山西省区__山西南片区.html\", \"山西西片区\": \"workbench_shanhe__山西省区__山西西片区.html\"}, \"河南省区\": {\"河南东片区\": \"workbench_shanhe__河南省区__河南东片区.html\", \"河南中片区\": \"workbench_shanhe__河南省区__河南中片区.html\", \"河南北片区\": \"workbench_shanhe__河南省区__河南北片区.html\", \"河南南片区\": \"workbench_shanhe__河南省区__河南南片区.html\", \"河南西南片区\": \"workbench_shanhe__河南省区__河南西南片区.html\", \"河南西片区\": \"workbench_shanhe__河南省区__河南西片区.html\", \"郑州中片区\": \"workbench_shanhe__河南省区__郑州中片区.html\", \"郑州北片区\": \"workbench_shanhe__河南省区__郑州北片区.html\", \"郑州南片区\": \"workbench_shanhe__河南省区__郑州南片区.html\"}, \"鲁东省区\": {\"临沂片区\": \"workbench_shanhe__鲁东省区__临沂片区.html\", \"威烟片区\": \"workbench_shanhe__鲁东省区__威烟片区.html\", \"日照片区\": \"workbench_shanhe__鲁东省区__日照片区.html\", \"沂枣片区\": \"workbench_shanhe__鲁东省区__沂枣片区.html\", \"淄博片区\": \"workbench_shanhe__鲁东省区__淄博片区.html\", \"潍坊片区\": \"workbench_shanhe__鲁东省区__潍坊片区.html\", \"烟台片区\": \"workbench_shanhe__鲁东省区__烟台片区.html\", \"青岛前海片区\": \"workbench_shanhe__鲁东省区__青岛前海片区.html\", \"青岛北片区\": \"workbench_shanhe__鲁东省区__青岛北片区.html\", \"青岛西片区\": \"workbench_shanhe__鲁东省区__青岛西片区.html\"}, \"鲁西省区\": {\"德州片区\": \"workbench_shanhe__鲁西省区__德州片区.html\", \"泰安片区\": \"workbench_shanhe__鲁西省区__泰安片区.html\", \"济南东片区\": \"workbench_shanhe__鲁西省区__济南东片区.html\", \"济南中片区\": \"workbench_shanhe__鲁西省区__济南中片区.html\", \"济南北片区\": \"workbench_shanhe__鲁西省区__济南北片区.html\", \"济宁片区\": \"workbench_shanhe__鲁西省区__济宁片区.html\", \"济滨片区\": \"workbench_shanhe__鲁西省区__济滨片区.html\", \"滨东片区\": \"workbench_shanhe__鲁西省区__滨东片区.html\", \"聊宁片区\": \"workbench_shanhe__鲁西省区__聊宁片区.html\", \"菏泽片区\": \"workbench_shanhe__鲁西省区__菏泽片区.html\"}}}}";
+document.documentElement.dataset.workbench="{\"region\": \"山河大区 · 鲁西省区 · 济南中片区\", \"periods\": {\"previous_start\": \"2026-10-23\", \"previous_end\": \"2026-10-29\", \"current_start\": \"2026-10-30\", \"current_end\": \"2026-11-05\"}, \"verification\": {\"detail_row_count\": 532, \"channel_row_count\": 561, \"other_region_row_count\": 0, \"provider_count\": 3, \"store_count\": 28, \"voucher_product_count\": 14, \"product_structure_closed\": true, \"master_store_count\": 37, \"data_store_count\": 28, \"zero_data_store_count\": 9, \"organization_province_count\": 1, \"organization_area_count\": 1, \"selected_province\": \"鲁西省区\", \"selected_area\": \"济南中片区\", \"detail_channel_closure\": {\"意向成交金额\": true, \"意向成交券数\": true, \"意向成交间夜\": true, \"核销金额\": true, \"核销券数\": true, \"核销间夜\": true}, \"provider_binding_counts\": {\"跃迁策略（青岛）文化传媒有限公司\": 1, \"杭州四库传媒有限公司\": 17, \"未绑定服务商\": 19}, \"bound_store_count\": 18, \"unbound_store_count\": 19, \"passed\": true, \"store_live_coverage\": {\"total_stores\": 37, \"live_stores\": 7, \"not_live_stores\": 30, \"live_rate\": 0.1891891891891892, \"start\": \"2026-10-30\", \"end\": \"2026-11-05\"}}, \"organization_navigation\": {\"selected_province\": \"鲁西省区\", \"selected_area\": \"济南中片区\", \"province_urls\": {\"\": \"workbench_shanhe.html\", \"山西省区\": \"workbench_shanhe__山西省区.html\", \"河南省区\": \"workbench_shanhe__河南省区.html\", \"鲁东省区\": \"workbench_shanhe__鲁东省区.html\", \"鲁西省区\": \"workbench_shanhe__鲁西省区.html\"}, \"area_urls\": {\"山西省区\": {\"山西东片区\": \"workbench_shanhe__山西省区__山西东片区.html\", \"山西中片区\": \"workbench_shanhe__山西省区__山西中片区.html\", \"山西北片区\": \"workbench_shanhe__山西省区__山西北片区.html\", \"山西南片区\": \"workbench_shanhe__山西省区__山西南片区.html\", \"山西西片区\": \"workbench_shanhe__山西省区__山西西片区.html\"}, \"河南省区\": {\"河南东片区\": \"workbench_shanhe__河南省区__河南东片区.html\", \"河南中片区\": \"workbench_shanhe__河南省区__河南中片区.html\", \"河南北片区\": \"workbench_shanhe__河南省区__河南北片区.html\", \"河南南片区\": \"workbench_shanhe__河南省区__河南南片区.html\", \"河南西南片区\": \"workbench_shanhe__河南省区__河南西南片区.html\", \"河南西片区\": \"workbench_shanhe__河南省区__河南西片区.html\", \"郑州中片区\": \"workbench_shanhe__河南省区__郑州中片区.html\", \"郑州北片区\": \"workbench_shanhe__河南省区__郑州北片区.html\", \"郑州南片区\": \"workbench_shanhe__河南省区__郑州南片区.html\"}, \"鲁东省区\": {\"临沂片区\": \"workbench_shanhe__鲁东省区__临沂片区.html\", \"威烟片区\": \"workbench_shanhe__鲁东省区__威烟片区.html\", \"日照片区\": \"workbench_shanhe__鲁东省区__日照片区.html\", \"沂枣片区\": \"workbench_shanhe__鲁东省区__沂枣片区.html\", \"淄博片区\": \"workbench_shanhe__鲁东省区__淄博片区.html\", \"潍坊片区\": \"workbench_shanhe__鲁东省区__潍坊片区.html\", \"烟台片区\": \"workbench_shanhe__鲁东省区__烟台片区.html\", \"青岛前海片区\": \"workbench_shanhe__鲁东省区__青岛前海片区.html\", \"青岛北片区\": \"workbench_shanhe__鲁东省区__青岛北片区.html\", \"青岛西片区\": \"workbench_shanhe__鲁东省区__青岛西片区.html\"}, \"鲁西省区\": {\"德州片区\": \"workbench_shanhe__鲁西省区__德州片区.html\", \"泰安片区\": \"workbench_shanhe__鲁西省区__泰安片区.html\", \"济南东片区\": \"workbench_shanhe__鲁西省区__济南东片区.html\", \"济南中片区\": \"workbench_shanhe__鲁西省区__济南中片区.html\", \"济南北片区\": \"workbench_shanhe__鲁西省区__济南北片区.html\", \"济宁片区\": \"workbench_shanhe__鲁西省区__济宁片区.html\", \"济滨片区\": \"workbench_shanhe__鲁西省区__济滨片区.html\", \"滨东片区\": \"workbench_shanhe__鲁西省区__滨东片区.html\", \"聊宁片区\": \"workbench_shanhe__鲁西省区__聊宁片区.html\", \"菏泽片区\": \"workbench_shanhe__鲁西省区__菏泽片区.html\"}}}}";
 </script>
 </body>
 </html>
