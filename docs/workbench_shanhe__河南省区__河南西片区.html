@@ -68,7 +68,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
   <main class="content">
     <header class="topbar">
       <div><div class="eyebrow">近 7 日经营数据 · 数据截至 2026-11-08 · 数据来源：生意经</div><h1>山河大区 · 河南省区 · 河南西片区</h1></div>
-      <div class="top-actions"><span class="status"><i></i>数据已校验</span><span class="glass-pill">主数据 62 家 · 1 片区</span><span class="glass-pill">11-02–11-08 对比 10-26–11-01</span></div>
+      <div class="top-actions"><span class="status"><i></i>数据已校验</span><span class="glass-pill">主数据 64 家 · 1 片区</span><span class="glass-pill">11-02–11-08 对比 10-26–11-01</span></div>
     </header>
     <div class="organization-filters"><label><span>一级省区</span><select id="organization-province-filter"><option value="workbench_shanhe.html" >全部一级省区</option><option value="workbench_shanhe__山西省区.html" >山西省区</option><option value="workbench_shanhe__河南省区.html" selected>河南省区</option><option value="workbench_shanhe__鲁东省区.html" >鲁东省区</option><option value="workbench_shanhe__鲁西省区.html" >鲁西省区</option></select></label><label><span>二级片区</span><select id="organization-area-filter" ><option value="workbench_shanhe__河南省区.html">全部二级片区</option><option value="workbench_shanhe__河南省区__河南东片区.html" >河南东片区</option><option value="workbench_shanhe__河南省区__河南中片区.html" >河南中片区</option><option value="workbench_shanhe__河南省区__河南北片区.html" >河南北片区</option><option value="workbench_shanhe__河南省区__河南南片区.html" >河南南片区</option><option value="workbench_shanhe__河南省区__河南西南片区.html" >河南西南片区</option><option value="workbench_shanhe__河南省区__河南西片区.html" selected>河南西片区</option><option value="workbench_shanhe__河南省区__郑州中片区.html" >郑州中片区</option><option value="workbench_shanhe__河南省区__郑州北片区.html" >郑州北片区</option><option value="workbench_shanhe__河南省区__郑州南片区.html" >郑州南片区</option></select></label></div>
 
@@ -82,6 +82,8 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
         <article class="kpi"><span class="kpi-label">支付间夜</span><b class="kpi-value">1,593</b><div class="kpi-foot"><span class="positive">+52.1%</span><span>间夜</span></div></article>
         <article class="kpi"><span class="kpi-label">动销门店</span><b class="kpi-value">51<small style="font-size:14px">家</small></b><div class="kpi-foot"><span class="negative">-2家</span><span>较上期</span></div></article>
       </div>
+
+      <div class="insight" id="source-audit-notice" style="margin-top:16px"><b>门店与来源复核</b><p>按11月版复核总表及完整原始报表重算。当前范围 64 家；其中 1 家缺有效 POI，11 家交易源无记录，保留在全集，明细显示“—”。全大区另有60家名称地点差异待确认，仍沿用集团提供的 POI，不按名称猜测换店。</p><a class="command-button" href="downloads/山河省区修正前后对比_2026-11-08.csv" download><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg><span>下载修正前后对比</span></a> <a class="command-button" href="downloads/山河名称地点待确认_2026-11-08.csv" download><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg><span>下载名称地点待确认名单</span></a></div>
       <div class="grid-2">
         <article class="panel"><div class="panel-head trend-panel-head"><div class="trend-heading"><h2>支付与核销日趋势</h2><span class="trend-range">11-02–11-08 · 单位：万元</span></div><div class="legend"><span><i style="background:var(--blue)"></i>支付</span><span><i style="background:var(--orange)"></i>核销</span></div></div><div class="chart-scroll">
       <svg class="chart-svg" viewBox="0 0 760 300" role="img"
@@ -110,7 +112,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
           <tbody>
             <tr>
               <td><strong>河南省区</strong></td>
-              <td class="num">62家</td>
+              <td class="num">64家</td>
               <td class="num">0家</td>
               <td class="num">53家</td>
               <td class="num">26.97万</td>
@@ -130,7 +132,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
             <tr>
               <td><strong>河南省区</strong></td>
               <td><strong>河南西片区</strong></td>
-              <td class="num">62家</td>
+              <td class="num">64家</td>
               <td class="num">53家</td>
               <td class="num">26.97万</td>
               <td class="num positive">+49.5%</td>
@@ -1389,6 +1391,54 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
 
             <tr data-province="河南省区"
                 data-area="河南西片区"
+                data-store="锦江之星（洛阳应天门洛邑古城酒店）"
+                data-city=""
+                data-provider="绑定待核实"
+                data-redeem-current="0.0"
+                data-payment-current="0.0"
+                data-redeem-nights="0.0"
+                data-payment-nights="0.0"
+                data-redeem-growth="0.0"
+                data-payment-growth="0.0">
+              <td class="rank">52</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>河南西片区</strong></td>
+              <td><strong>锦江之星（洛阳应天门洛邑古城酒店）</strong><small> · 无返回记录<br>缺少有效POI；WH编码JJJD1690373；14天交易无法匹配，不代表实际为0</small></td>
+              <td><span class="provider">绑定待核实</span></td>
+              <td class="num">—</td>
+              <td class="num">—</td>
+              <td class="num">—</td>
+              <td class="num">—</td>
+              <td class="num neutral">基期较低</td>
+              <td class="num neutral">基期较低</td>
+            </tr>
+
+            <tr data-province="河南省区"
+                data-area="河南西片区"
+                data-store="锦江之星(洛阳中州东路酒店)"
+                data-city=""
+                data-provider="绑定待核实"
+                data-redeem-current="0.0"
+                data-payment-current="0.0"
+                data-redeem-nights="0.0"
+                data-payment-nights="0.0"
+                data-redeem-growth="0.0"
+                data-payment-growth="0.0">
+              <td class="rank">53</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>河南西片区</strong></td>
+              <td><strong>锦江之星(洛阳中州东路酒店)</strong><small> · 无返回记录<br>14天交易源无该POI；不代表实际为0</small></td>
+              <td><span class="provider">绑定待核实</span></td>
+              <td class="num">—</td>
+              <td class="num">—</td>
+              <td class="num">—</td>
+              <td class="num">—</td>
+              <td class="num neutral">基期较低</td>
+              <td class="num neutral">基期较低</td>
+            </tr>
+
+            <tr data-province="河南省区"
+                data-area="河南西片区"
                 data-store="维也纳智好酒店(济源汤帝路店)"
                 data-city="济源市"
                 data-provider="河南道凯酒店管理有限公司"
@@ -1398,7 +1448,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-payment-nights="0.0"
                 data-redeem-growth="-1.0"
                 data-payment-growth="-1.0">
-              <td class="rank">52</td>
+              <td class="rank">54</td>
               <td><strong>河南省区</strong></td>
               <td><strong>河南西片区</strong></td>
               <td><strong>维也纳智好酒店(济源汤帝路店)</strong><small>济源市 · 有返回记录</small></td>
@@ -1422,15 +1472,39 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-payment-nights="0.0"
                 data-redeem-growth="0.0"
                 data-payment-growth="0.0">
-              <td class="rank">53</td>
+              <td class="rank">55</td>
               <td><strong>河南省区</strong></td>
               <td><strong>河南西片区</strong></td>
-              <td><strong>维也纳国际酒店(洛阳黛眉店)</strong><small> · 无返回记录</small></td>
+              <td><strong>维也纳国际酒店(洛阳黛眉店)</strong><small> · 无返回记录<br>14天交易源无该POI；不代表实际为0</small></td>
               <td><span class="provider">未绑定服务商</span></td>
-              <td class="num">0</td>
-              <td class="num">0</td>
-              <td class="num">0</td>
-              <td class="num">0</td>
+              <td class="num">—</td>
+              <td class="num">—</td>
+              <td class="num">—</td>
+              <td class="num">—</td>
+              <td class="num neutral">基期较低</td>
+              <td class="num neutral">基期较低</td>
+            </tr>
+
+            <tr data-province="河南省区"
+                data-area="河南西片区"
+                data-store="维也纳3好酒店（洛阳应天门洛邑古城店）"
+                data-city=""
+                data-provider="绑定待核实"
+                data-redeem-current="0.0"
+                data-payment-current="0.0"
+                data-redeem-nights="0.0"
+                data-payment-nights="0.0"
+                data-redeem-growth="0.0"
+                data-payment-growth="0.0">
+              <td class="rank">56</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>河南西片区</strong></td>
+              <td><strong>维也纳3好酒店（洛阳应天门洛邑古城店）</strong><small> · 无返回记录<br>14天交易源无该POI；不代表实际为0</small></td>
+              <td><span class="provider">绑定待核实</span></td>
+              <td class="num">—</td>
+              <td class="num">—</td>
+              <td class="num">—</td>
+              <td class="num">—</td>
               <td class="num neutral">基期较低</td>
               <td class="num neutral">基期较低</td>
             </tr>
@@ -1446,7 +1520,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-payment-nights="0.0"
                 data-redeem-growth="-1.0"
                 data-payment-growth="-1.0">
-              <td class="rank">54</td>
+              <td class="rank">57</td>
               <td><strong>河南省区</strong></td>
               <td><strong>河南西片区</strong></td>
               <td><strong>白玉兰酒店(洛阳龙门高铁站文仲大道店)</strong><small>洛阳市 · 有返回记录</small></td>
@@ -1461,79 +1535,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
 
             <tr data-province="河南省区"
                 data-area="河南西片区"
-                data-store="#N/A"
-                data-city=""
-                data-provider="未绑定服务商"
-                data-redeem-current="0.0"
-                data-payment-current="0.0"
-                data-redeem-nights="0.0"
-                data-payment-nights="0.0"
-                data-redeem-growth="0.0"
-                data-payment-growth="0.0">
-              <td class="rank">55</td>
-              <td><strong>河南省区</strong></td>
-              <td><strong>河南西片区</strong></td>
-              <td><strong>#N/A</strong><small> · 无返回记录</small></td>
-              <td><span class="provider">未绑定服务商</span></td>
-              <td class="num">0</td>
-              <td class="num">0</td>
-              <td class="num">0</td>
-              <td class="num">0</td>
-              <td class="num neutral">基期较低</td>
-              <td class="num neutral">基期较低</td>
-            </tr>
-
-            <tr data-province="河南省区"
-                data-area="河南西片区"
-                data-store="#N/A"
-                data-city=""
-                data-provider="未绑定服务商"
-                data-redeem-current="0.0"
-                data-payment-current="0.0"
-                data-redeem-nights="0.0"
-                data-payment-nights="0.0"
-                data-redeem-growth="0.0"
-                data-payment-growth="0.0">
-              <td class="rank">56</td>
-              <td><strong>河南省区</strong></td>
-              <td><strong>河南西片区</strong></td>
-              <td><strong>#N/A</strong><small> · 无返回记录</small></td>
-              <td><span class="provider">未绑定服务商</span></td>
-              <td class="num">0</td>
-              <td class="num">0</td>
-              <td class="num">0</td>
-              <td class="num">0</td>
-              <td class="num neutral">基期较低</td>
-              <td class="num neutral">基期较低</td>
-            </tr>
-
-            <tr data-province="河南省区"
-                data-area="河南西片区"
-                data-store="#N/A"
-                data-city=""
-                data-provider="未绑定服务商"
-                data-redeem-current="0.0"
-                data-payment-current="0.0"
-                data-redeem-nights="0.0"
-                data-payment-nights="0.0"
-                data-redeem-growth="0.0"
-                data-payment-growth="0.0">
-              <td class="rank">57</td>
-              <td><strong>河南省区</strong></td>
-              <td><strong>河南西片区</strong></td>
-              <td><strong>#N/A</strong><small> · 无返回记录</small></td>
-              <td><span class="provider">未绑定服务商</span></td>
-              <td class="num">0</td>
-              <td class="num">0</td>
-              <td class="num">0</td>
-              <td class="num">0</td>
-              <td class="num neutral">基期较低</td>
-              <td class="num neutral">基期较低</td>
-            </tr>
-
-            <tr data-province="河南省区"
-                data-area="河南西片区"
-                data-store="#N/A"
+                data-store="白玉兰酒店(栾川长春路十字街店)"
                 data-city=""
                 data-provider="未绑定服务商"
                 data-redeem-current="0.0"
@@ -1545,21 +1547,21 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
               <td class="rank">58</td>
               <td><strong>河南省区</strong></td>
               <td><strong>河南西片区</strong></td>
-              <td><strong>#N/A</strong><small> · 无返回记录</small></td>
+              <td><strong>白玉兰酒店(栾川长春路十字街店)</strong><small> · 无返回记录<br>14天交易源无该POI；不代表实际为0</small></td>
               <td><span class="provider">未绑定服务商</span></td>
-              <td class="num">0</td>
-              <td class="num">0</td>
-              <td class="num">0</td>
-              <td class="num">0</td>
+              <td class="num">—</td>
+              <td class="num">—</td>
+              <td class="num">—</td>
+              <td class="num">—</td>
               <td class="num neutral">基期较低</td>
               <td class="num neutral">基期较低</td>
             </tr>
 
             <tr data-province="河南省区"
                 data-area="河南西片区"
-                data-store="#N/A"
+                data-store="白玉兰商务酒店（洛阳龙门高铁站泉舜购物中心店）"
                 data-city=""
-                data-provider="未绑定服务商"
+                data-provider="绑定待核实"
                 data-redeem-current="0.0"
                 data-payment-current="0.0"
                 data-redeem-nights="0.0"
@@ -1569,21 +1571,21 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
               <td class="rank">59</td>
               <td><strong>河南省区</strong></td>
               <td><strong>河南西片区</strong></td>
-              <td><strong>#N/A</strong><small> · 无返回记录</small></td>
-              <td><span class="provider">未绑定服务商</span></td>
-              <td class="num">0</td>
-              <td class="num">0</td>
-              <td class="num">0</td>
-              <td class="num">0</td>
+              <td><strong>白玉兰商务酒店（洛阳龙门高铁站泉舜购物中心店）</strong><small> · 无返回记录<br>14天交易源无该POI；不代表实际为0</small></td>
+              <td><span class="provider">绑定待核实</span></td>
+              <td class="num">—</td>
+              <td class="num">—</td>
+              <td class="num">—</td>
+              <td class="num">—</td>
               <td class="num neutral">基期较低</td>
               <td class="num neutral">基期较低</td>
             </tr>
 
             <tr data-province="河南省区"
                 data-area="河南西片区"
-                data-store="#N/A"
+                data-store="白玉兰商务酒店（洛阳应天门九洲池店）"
                 data-city=""
-                data-provider="未绑定服务商"
+                data-provider="绑定待核实"
                 data-redeem-current="0.0"
                 data-payment-current="0.0"
                 data-redeem-nights="0.0"
@@ -1593,21 +1595,21 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
               <td class="rank">60</td>
               <td><strong>河南省区</strong></td>
               <td><strong>河南西片区</strong></td>
-              <td><strong>#N/A</strong><small> · 无返回记录</small></td>
-              <td><span class="provider">未绑定服务商</span></td>
-              <td class="num">0</td>
-              <td class="num">0</td>
-              <td class="num">0</td>
-              <td class="num">0</td>
+              <td><strong>白玉兰商务酒店（洛阳应天门九洲池店）</strong><small> · 无返回记录<br>14天交易源无该POI；不代表实际为0</small></td>
+              <td><span class="provider">绑定待核实</span></td>
+              <td class="num">—</td>
+              <td class="num">—</td>
+              <td class="num">—</td>
+              <td class="num">—</td>
               <td class="num neutral">基期较低</td>
               <td class="num neutral">基期较低</td>
             </tr>
 
             <tr data-province="河南省区"
                 data-area="河南西片区"
-                data-store="#N/A"
+                data-store="希岸酒店（洛阳十字街洛邑古城店）"
                 data-city=""
-                data-provider="未绑定服务商"
+                data-provider="绑定待核实"
                 data-redeem-current="0.0"
                 data-payment-current="0.0"
                 data-redeem-nights="0.0"
@@ -1617,21 +1619,21 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
               <td class="rank">61</td>
               <td><strong>河南省区</strong></td>
               <td><strong>河南西片区</strong></td>
-              <td><strong>#N/A</strong><small> · 无返回记录</small></td>
-              <td><span class="provider">未绑定服务商</span></td>
-              <td class="num">0</td>
-              <td class="num">0</td>
-              <td class="num">0</td>
-              <td class="num">0</td>
+              <td><strong>希岸酒店（洛阳十字街洛邑古城店）</strong><small> · 无返回记录<br>14天交易源无该POI；不代表实际为0</small></td>
+              <td><span class="provider">绑定待核实</span></td>
+              <td class="num">—</td>
+              <td class="num">—</td>
+              <td class="num">—</td>
+              <td class="num">—</td>
               <td class="num neutral">基期较低</td>
               <td class="num neutral">基期较低</td>
             </tr>
 
             <tr data-province="河南省区"
                 data-area="河南西片区"
-                data-store="#N/A"
+                data-store="IU酒店(洛阳偃师白马寺店)"
                 data-city=""
-                data-provider="未绑定服务商"
+                data-provider="绑定待核实"
                 data-redeem-current="0.0"
                 data-payment-current="0.0"
                 data-redeem-nights="0.0"
@@ -1641,12 +1643,60 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
               <td class="rank">62</td>
               <td><strong>河南省区</strong></td>
               <td><strong>河南西片区</strong></td>
-              <td><strong>#N/A</strong><small> · 无返回记录</small></td>
-              <td><span class="provider">未绑定服务商</span></td>
-              <td class="num">0</td>
-              <td class="num">0</td>
-              <td class="num">0</td>
-              <td class="num">0</td>
+              <td><strong>IU酒店(洛阳偃师白马寺店)</strong><small> · 无返回记录<br>14天交易源无该POI；不代表实际为0</small></td>
+              <td><span class="provider">绑定待核实</span></td>
+              <td class="num">—</td>
+              <td class="num">—</td>
+              <td class="num">—</td>
+              <td class="num">—</td>
+              <td class="num neutral">基期较低</td>
+              <td class="num neutral">基期较低</td>
+            </tr>
+
+            <tr data-province="河南省区"
+                data-area="河南西片区"
+                data-store="7天酒店（洛阳明堂景区应天门店）"
+                data-city=""
+                data-provider="绑定待核实"
+                data-redeem-current="0.0"
+                data-payment-current="0.0"
+                data-redeem-nights="0.0"
+                data-payment-nights="0.0"
+                data-redeem-growth="0.0"
+                data-payment-growth="0.0">
+              <td class="rank">63</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>河南西片区</strong></td>
+              <td><strong>7天酒店（洛阳明堂景区应天门店）</strong><small> · 无返回记录<br>14天交易源无该POI；不代表实际为0</small></td>
+              <td><span class="provider">绑定待核实</span></td>
+              <td class="num">—</td>
+              <td class="num">—</td>
+              <td class="num">—</td>
+              <td class="num">—</td>
+              <td class="num neutral">基期较低</td>
+              <td class="num neutral">基期较低</td>
+            </tr>
+
+            <tr data-province="河南省区"
+                data-area="河南西片区"
+                data-store="7天优品（洛阳上海市场地铁站牡丹公园店）"
+                data-city=""
+                data-provider="绑定待核实"
+                data-redeem-current="0.0"
+                data-payment-current="0.0"
+                data-redeem-nights="0.0"
+                data-payment-nights="0.0"
+                data-redeem-growth="0.0"
+                data-payment-growth="0.0">
+              <td class="rank">64</td>
+              <td><strong>河南省区</strong></td>
+              <td><strong>河南西片区</strong></td>
+              <td><strong>7天优品（洛阳上海市场地铁站牡丹公园店）</strong><small> · 无返回记录<br>14天交易源无该POI；不代表实际为0</small></td>
+              <td><span class="provider">绑定待核实</span></td>
+              <td class="num">—</td>
+              <td class="num">—</td>
+              <td class="num">—</td>
+              <td class="num">—</td>
               <td class="num neutral">基期较低</td>
               <td class="num neutral">基期较低</td>
             </tr>
@@ -2135,7 +2185,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
             <tr>
               <td class="rank">07</td>
               <td><strong>未绑定服务商</strong></td>
-              <td class="num">32家</td>
+              <td class="num">25家</td>
               <td class="num">22家</td>
               <td class="num">14.55万</td>
               <td class="num positive">+117.5%</td>
@@ -2144,6 +2194,20 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
               <td class="num">6,616</td>
               <td class="num positive">+127.4%</td>
               <td class="num">1,933</td>
+            </tr>
+
+            <tr>
+              <td class="rank">08</td>
+              <td><strong>绑定待核实</strong></td>
+              <td class="num">9家</td>
+              <td class="num">0家</td>
+              <td class="num">0</td>
+              <td class="num positive">基期较低</td>
+              <td class="num">0</td>
+              <td class="num positive">基期较低</td>
+              <td class="num">0</td>
+              <td class="num positive">基期较低</td>
+              <td class="num">0</td>
             </tr>
             </tbody>
         </table>
@@ -2182,25 +2246,26 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
     <section class="section" id="operation-score">
       <div class="section-head"><div><h2>门店经营分</h2><p>中国区全量数据按 POI ID 匹配 · 名称仅用于展示 · 数据截至 2026-11-08</p></div><div class="section-actions"><a class="command-button" href="downloads/经营分_河南省区__河南西片区_2026-11-08.xlsx" download><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg><span>下载经营分 Excel</span></a></div></div>
       <div class="kpis">
-        <article class="kpi"><span class="kpi-label">平均经营分</span><b class="kpi-value">100.2</b><div class="kpi-foot"><span>满分 120</span><span>仅统计已匹配门店</span></div></article>
-        <article class="kpi"><span class="kpi-label">经营分覆盖</span><b class="kpi-value">54<small style="font-size:14px"> / 62 家</small></b><div class="kpi-foot"><span>8 家</span><span>未匹配</span></div></article>
+        <article class="kpi"><span class="kpi-label">平均经营分</span><b class="kpi-value">99.6</b><div class="kpi-foot"><span>满分 120</span><span>仅统计已匹配门店</span></div></article>
+        <article class="kpi"><span class="kpi-label">经营分覆盖</span><b class="kpi-value">55<small style="font-size:14px"> / 64 家</small></b><div class="kpi-foot"><span>9 家</span><span>未匹配</span></div></article>
         <article class="kpi"><span class="kpi-label">金冠认证门店</span><b class="kpi-value">32<small style="font-size:14px">家</small></b><div class="kpi-foot"><span>14 家</span><span>近 7 天上涨</span></div></article>
-        <article class="kpi"><span class="kpi-label">风险门店</span><b class="kpi-value">0<small style="font-size:14px">家</small></b><div class="kpi-foot"><span>4 家</span><span>近 7 天下降</span></div></article>
+        <article class="kpi"><span class="kpi-label">风险门店</span><b class="kpi-value">1<small style="font-size:14px">家</small></b><div class="kpi-foot"><span>4 家</span><span>近 7 天下降</span></div></article>
       </div>
       <div class="inventory-summary operation-score-summary">
         <div class="good"><span>高分门店</span><strong>34</strong><small>100–120 分</small></div>
         <div><span>待提升门店</span><strong>20</strong><small>80–99 分</small></div>
-        <div class="risk"><span>风险门店</span><strong>0</strong><small>低于 80 分</small></div>
+        <div class="risk"><span>风险门店</span><strong>1</strong><small>低于 80 分</small></div>
         <div><span>近 7 天净变化</span><strong>+56</strong><small>分</small></div>
       </div>
       <article class="panel score-dimension-panel">
         <div class="panel-head"><div><h2>待提升项分布</h2><p>同一门店可能同时命中多个维度</p></div></div>
-        <div class="score-dimensions"><span class="score-dimension-tag"><b>拿收益</b><span>53 家</span></span><span class="score-dimension-tag"><b>稳房源</b><span>43 家</span></span><span class="score-dimension-tag"><b>提质量</b><span>28 家</span></span><span class="score-dimension-tag"><b>搭门店</b><span>1 家</span></span></div>
+        <div class="score-dimensions"><span class="score-dimension-tag"><b>拿收益</b><span>54 家</span></span><span class="score-dimension-tag"><b>稳房源</b><span>44 家</span></span><span class="score-dimension-tag"><b>提质量</b><span>29 家</span></span><span class="score-dimension-tag"><b>搭门店</b><span>1 家</span></span></div>
       </article>
       <article class="panel operation-score-panel">
         <div class="panel-head"><div><h2>门店经营分明细</h2><p>可按门店、POI、片区、认证状态和分数档位筛选，点击业务列排序</p></div></div>
-        <div class="filter-bar operation-score-filter"><input id="operation-score-search" type="search" placeholder="搜索门店或 POI" aria-label="搜索经营分门店"><select id="operation-score-area-filter" aria-label="按片区筛选经营分"><option value="">全部片区</option><option value="河南西片区">河南西片区</option></select><select id="operation-score-crown-filter" aria-label="按金冠认证筛选"><option value="">全部认证状态</option><option value="已认证">已认证</option><option value="未认证">未认证</option></select><select id="operation-score-tier-filter" aria-label="按经营分档位筛选"><option value="">全部分数档位</option><option value="high">高分</option><option value="improve">待提升</option><option value="risk">风险</option></select><span id="operation-score-result-count" class="filter-count"></span></div><div class="table-scroll operation-score-table-scroll"><table class="operation-score-table"><thead><tr><th>#</th><th>门店 / POI</th><th>一级省区</th><th><button class="sort-trigger operation-score-sort-trigger" type="button" data-sort-key="area" onclick="sortOperationScoreTable('area')" title="按二级片区排序">二级片区 <span class="sort-indicator">↕</span></button></th><th><button class="sort-trigger operation-score-sort-trigger" type="button" data-sort-key="score" onclick="sortOperationScoreTable('score')" title="按经营分排序">经营分 <span class="sort-indicator">↕</span></button></th><th>金冠认证</th><th><button class="sort-trigger operation-score-sort-trigger" type="button" data-sort-key="change" onclick="sortOperationScoreTable('change')" title="按近7天变化排序">近7天变化 <span class="sort-indicator">↕</span></button></th><th>待提升项</th></tr></thead><tbody id="operation-score-table-body"><tr data-score="82.0" data-change="0.0" data-crown="已认证" data-tier="improve" data-area="河南西片区" data-search="白玉兰商务酒店（洛阳应天门洛邑古城店） 7352403574061533193"><td class="rank">01</td><td><strong>白玉兰商务酒店（洛阳应天门洛邑古城店）</strong><small>洛阳市 · 7352403574061533193</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value improve">82</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="85.0" data-change="-10.0" data-crown="未认证" data-tier="improve" data-area="河南西片区" data-search="麗枫酒店（洛阳应天门洛邑古城店） 7536810051504195625"><td class="rank">02</td><td><strong>麗枫酒店（洛阳应天门洛邑古城店）</strong><small>洛阳市 · 7536810051504195625</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value improve">85</td><td><span class="score-status uncertified">未认证</span></td><td class="num negative">-10</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="87.0" data-change="0.0" data-crown="已认证" data-tier="improve" data-area="河南西片区" data-search="白玉兰商务酒店（洛阳师范学院新校区店） 7321630001286088739"><td class="rank">03</td><td><strong>白玉兰商务酒店（洛阳师范学院新校区店）</strong><small>洛阳市 · 7321630001286088739</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value improve">87</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="87.0" data-change="0.0" data-crown="未认证" data-tier="improve" data-area="河南西片区" data-search="维也纳酒店（洛阳万达广场店） 7592825201495115810"><td class="rank">04</td><td><strong>维也纳酒店（洛阳万达广场店）</strong><small>洛阳市 · 7592825201495115810</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value improve">87</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="87.0" data-change="0.0" data-crown="未认证" data-tier="improve" data-area="河南西片区" data-search="维也纳酒店（洛阳机场国家牡丹园旗舰店） 7443312211386173467"><td class="rank">05</td><td><strong>维也纳酒店（洛阳机场国家牡丹园旗舰店）</strong><small>洛阳市 · 7443312211386173467</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value improve">87</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="89.0" data-change="0.0" data-crown="未认证" data-tier="improve" data-area="河南西片区" data-search="维也纳国际酒店（洛阳黛眉店） 6730039252379256845"><td class="rank">06</td><td><strong>维也纳国际酒店（洛阳黛眉店）</strong><small> · 6730039252379256845</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value improve">89</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="90.0" data-change="0.0" data-crown="已认证" data-tier="improve" data-area="河南西片区" data-search="凯里亚德酒店（洛阳龙门高铁站大学城店） 6904386033039706112"><td class="rank">07</td><td><strong>凯里亚德酒店（洛阳龙门高铁站大学城店）</strong><small>洛阳市 · 6904386033039706112</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value improve">90</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="90.0" data-change="5.0" data-crown="已认证" data-tier="improve" data-area="河南西片区" data-search="白玉兰商务酒店(洛阳老城十字街洛邑古城地铁站店) 7352403781227415604"><td class="rank">08</td><td><strong>白玉兰商务酒店(洛阳老城十字街洛邑古城地铁站店)</strong><small>洛阳市 · 7352403781227415604</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value improve">90</td><td><span class="score-status certified">已认证</span></td><td class="num positive">+5</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="90.0" data-change="0.0" data-crown="已认证" data-tier="improve" data-area="河南西片区" data-search="白玉兰商务酒店（洛阳牡丹广场地铁站涧西万达店） 7331969175458023436"><td class="rank">09</td><td><strong>白玉兰商务酒店（洛阳牡丹广场地铁站涧西万达店）</strong><small>洛阳市 · 7331969175458023436</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value improve">90</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="92.0" data-change="0.0" data-crown="已认证" data-tier="improve" data-area="河南西片区" data-search="白玉兰商务酒店（洛阳博物馆龙门高铁站店） 6992776845766871048"><td class="rank">10</td><td><strong>白玉兰商务酒店（洛阳博物馆龙门高铁站店）</strong><small>洛阳市 · 6992776845766871048</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value improve">92</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="92.0" data-change="0.0" data-crown="未认证" data-tier="improve" data-area="河南西片区" data-search="维也纳国际酒店（经典版洛阳龙门石窟龙门高铁站店） 7418763586052294671"><td class="rank">11</td><td><strong>维也纳国际酒店（经典版洛阳龙门石窟龙门高铁站店）</strong><small>洛阳市 · 7418763586052294671</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value improve">92</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="95.0" data-change="0.0" data-crown="未认证" data-tier="improve" data-area="河南西片区" data-search="7天优品premium（洛阳火车站王城公园店） 6601140482472953860"><td class="rank">12</td><td><strong>7天优品Premium（洛阳火车站王城公园店）</strong><small>洛阳市 · 6601140482472953860</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value improve">95</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="95.0" data-change="0.0" data-crown="已认证" data-tier="improve" data-area="河南西片区" data-search="7天优品（洛阳伊川龙凤山杜康大道店） 6656928608218531843"><td class="rank">13</td><td><strong>7天优品（洛阳伊川龙凤山杜康大道店）</strong><small>洛阳市 · 6656928608218531843</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value improve">95</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="95.0" data-change="0.0" data-crown="已认证" data-tier="improve" data-area="河南西片区" data-search="7天酒店（新7天洛阳栾川老君山票务中心店） 7516830433864648739"><td class="rank">14</td><td><strong>7天酒店（新7天洛阳栾川老君山票务中心店）</strong><small>洛阳市 · 7516830433864648739</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value improve">95</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="95.0" data-change="0.0" data-crown="已认证" data-tier="improve" data-area="河南西片区" data-search="洛阳应天门洛邑古城九州池丽柏酒店 7563973676819810314"><td class="rank">15</td><td><strong>洛阳应天门洛邑古城九州池丽柏酒店</strong><small>洛阳市 · 7563973676819810314</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value improve">95</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="95.0" data-change="0.0" data-crown="未认证" data-tier="improve" data-area="河南西片区" data-search="维也纳3好酒店（洛阳应天门周王城广场店） 7359436990858659849"><td class="rank">16</td><td><strong>维也纳3好酒店（洛阳应天门周王城广场店）</strong><small>洛阳市 · 7359436990858659849</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value improve">95</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="95.0" data-change="0.0" data-crown="已认证" data-tier="improve" data-area="河南西片区" data-search="维也纳国际酒店（洛阳应天门九洲池店） 7542341710328629291"><td class="rank">17</td><td><strong>维也纳国际酒店（洛阳应天门九洲池店）</strong><small>洛阳市 · 7542341710328629291</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value improve">95</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="97.0" data-change="0.0" data-crown="未认证" data-tier="improve" data-area="河南西片区" data-search="白玉兰商务酒店（洛阳龙门高铁站文仲大道店） 7444810095961049097"><td class="rank">18</td><td><strong>白玉兰商务酒店（洛阳龙门高铁站文仲大道店）</strong><small>洛阳市 · 7444810095961049097</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value improve">97</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="97.0" data-change="5.0" data-crown="未认证" data-tier="improve" data-area="河南西片区" data-search="维也纳国际酒店（洛阳洛邑古城丽景门地铁站店） 7599491632984737855"><td class="rank">19</td><td><strong>维也纳国际酒店（洛阳洛邑古城丽景门地铁站店）</strong><small>洛阳市 · 7599491632984737855</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value improve">97</td><td><span class="score-status uncertified">未认证</span></td><td class="num positive">+5</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="97.0" data-change="0.0" data-crown="未认证" data-tier="improve" data-area="河南西片区" data-search="维也纳酒店（洛阳吉利店） 7090458625865189410"><td class="rank">20</td><td><strong>维也纳酒店（洛阳吉利店）</strong><small>洛阳市 · 7090458625865189410</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value improve">97</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="100.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="河南西片区" data-search="7天优品(洛阳牡丹广场地铁站王城公园店) 6601158375055034375"><td class="rank">21</td><td><strong>7天优品(洛阳牡丹广场地铁站王城公园店)</strong><small>洛阳市 · 6601158375055034375</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">100</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="100.0" data-change="5.0" data-crown="已认证" data-tier="high" data-area="河南西片区" data-search="白玉兰商务酒店（洛阳龙门高铁站店） 7471147637970847807"><td class="rank">22</td><td><strong>白玉兰商务酒店（洛阳龙门高铁站店）</strong><small>洛阳市 · 7471147637970847807</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">100</td><td><span class="score-status certified">已认证</span></td><td class="num positive">+5</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="100.0" data-change="0.0" data-crown="未认证" data-tier="high" data-area="河南西片区" data-search="维也纳3好酒店（洛阳嵩县陆浑湖店） 7237728777650849795"><td class="rank">23</td><td><strong>维也纳3好酒店（洛阳嵩县陆浑湖店）</strong><small>洛阳市 · 7237728777650849795</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">100</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="100.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="河南西片区" data-search="维也纳国际酒店(洛阳万达广场上海市场地铁站店) 7457452291499509787"><td class="rank">24</td><td><strong>维也纳国际酒店(洛阳万达广场上海市场地铁站店)</strong><small>洛阳市 · 7457452291499509787</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">100</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="100.0" data-change="5.0" data-crown="未认证" data-tier="high" data-area="河南西片区" data-search="维也纳智好酒店（济源汤帝路店） 7366931718509201446"><td class="rank">25</td><td><strong>维也纳智好酒店（济源汤帝路店）</strong><small>济源市 · 7366931718509201446</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">100</td><td><span class="score-status uncertified">未认证</span></td><td class="num positive">+5</td><td class="score-dimension">提质量,拿收益</td></tr><tr data-score="100.0" data-change="0.0" data-crown="未认证" data-tier="high" data-area="河南西片区" data-search="维也纳酒店（洛阳偃师体育场偃师火车站店） 7580513327983134720"><td class="rank">26</td><td><strong>维也纳酒店（洛阳偃师体育场偃师火车站店）</strong><small>洛阳市 · 7580513327983134720</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">100</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="100.0" data-change="3.0" data-crown="已认证" data-tier="high" data-area="河南西片区" data-search="维也纳酒店（洛阳龙门高铁大学城店） 6871037679413364740"><td class="rank">27</td><td><strong>维也纳酒店（洛阳龙门高铁大学城店）</strong><small>洛阳市 · 6871037679413364740</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">100</td><td><span class="score-status certified">已认证</span></td><td class="num positive">+3</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="100.0" data-change="5.0" data-crown="已认证" data-tier="high" data-area="河南西片区" data-search="麗枫酒店（洛阳洛邑古城丽景门十字街店） 7555414479362590771"><td class="rank">28</td><td><strong>麗枫酒店（洛阳洛邑古城丽景门十字街店）</strong><small>洛阳市 · 7555414479362590771</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">100</td><td><span class="score-status certified">已认证</span></td><td class="num positive">+5</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="100.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="河南西片区" data-search="麗枫酒店（洛阳龙门高铁站店） 7511607400000915497"><td class="rank">29</td><td><strong>麗枫酒店（洛阳龙门高铁站店）</strong><small>洛阳市 · 7511607400000915497</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">100</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="102.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="河南西片区" data-search="希岸酒店（洛阳龙门高铁站店） 7511155656196360246"><td class="rank">30</td><td><strong>希岸酒店（洛阳龙门高铁站店）</strong><small>洛阳市 · 7511155656196360246</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">102</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="102.0" data-change="10.0" data-crown="未认证" data-tier="high" data-area="河南西片区" data-search="维也纳酒店（洛阳牡丹广场万达店） 6885873791835064335"><td class="rank">31</td><td><strong>维也纳酒店（洛阳牡丹广场万达店）</strong><small>洛阳市 · 6885873791835064335</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">102</td><td><span class="score-status uncertified">未认证</span></td><td class="num positive">+10</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="102.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="河南西片区" data-search="维也纳酒店（洛阳王城公园万达广场店） 6601144057576032263"><td class="rank">32</td><td><strong>维也纳酒店（洛阳王城公园万达广场店）</strong><small>洛阳市 · 6601144057576032263</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">102</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="102.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="河南西片区" data-search="维也纳酒店（洛阳龙门高铁站店） 7279409053594290217"><td class="rank">33</td><td><strong>维也纳酒店（洛阳龙门高铁站店）</strong><small>洛阳市 · 7279409053594290217</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">102</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="103.0" data-change="0.0" data-crown="未认证" data-tier="high" data-area="河南西片区" data-search="维也纳酒店（洛阳洛邑古城店) 7628842787626043392"><td class="rank">34</td><td><strong>维也纳酒店（洛阳洛邑古城店)</strong><small>洛阳市 · 7628842787626043392</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">103</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">搭门店,提质量,拿收益</td></tr><tr data-score="105.0" data-change="0.0" data-crown="未认证" data-tier="high" data-area="河南西片区" data-search="7天优品（济源天坛路信尧城市广场店） 6601139689023883278"><td class="rank">35</td><td><strong>7天优品（济源天坛路信尧城市广场店）</strong><small>济源市 · 6601139689023883278</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">105</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="105.0" data-change="-5.0" data-crown="未认证" data-tier="high" data-area="河南西片区" data-search="7天酒店（智选版洛阳洛邑古城应天门店） 7683105182439196681"><td class="rank">36</td><td><strong>7天酒店（智选版洛阳洛邑古城应天门店）</strong><small>洛阳市 · 7683105182439196681</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">105</td><td><span class="score-status uncertified">未认证</span></td><td class="num negative">-5</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="105.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="河南西片区" data-search="7天酒店（洛阳嵩县陆浑湖店） 7422531895902079039"><td class="rank">37</td><td><strong>7天酒店（洛阳嵩县陆浑湖店）</strong><small>洛阳市 · 7422531895902079039</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">105</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="105.0" data-change="-5.0" data-crown="未认证" data-tier="high" data-area="河南西片区" data-search="喆啡酒店（洛阳龙门高铁站龙门石窟店） 6762500127866259470"><td class="rank">38</td><td><strong>喆啡酒店（洛阳龙门高铁站龙门石窟店）</strong><small>洛阳市 · 6762500127866259470</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">105</td><td><span class="score-status uncertified">未认证</span></td><td class="num negative">-5</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="105.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="河南西片区" data-search="白玉兰商务酒店(洛阳洛邑古城应天门景区店) 7426675236696754230"><td class="rank">39</td><td><strong>白玉兰商务酒店(洛阳洛邑古城应天门景区店)</strong><small>洛阳市 · 7426675236696754230</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">105</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="105.0" data-change="5.0" data-crown="已认证" data-tier="high" data-area="河南西片区" data-search="白玉兰商务酒店（洛阳洛邑古城启明南路地铁站店） 7630752476929558571"><td class="rank">40</td><td><strong>白玉兰商务酒店（洛阳洛邑古城启明南路地铁站店）</strong><small>洛阳市 · 7630752476929558571</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">105</td><td><span class="score-status certified">已认证</span></td><td class="num positive">+5</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="105.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="河南西片区" data-search="白玉兰商务酒店（洛阳龙门石窟龙门高铁站店） 7377967060384483382"><td class="rank">41</td><td><strong>白玉兰商务酒店（洛阳龙门石窟龙门高铁站店）</strong><small>洛阳市 · 7377967060384483382</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">105</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">提质量,拿收益</td></tr><tr data-score="105.0" data-change="-5.0" data-crown="已认证" data-tier="high" data-area="河南西片区" data-search="维也纳智好酒店（洛阳龙门高铁站开元大道关林景区店） 6601145726493788168"><td class="rank">42</td><td><strong>维也纳智好酒店（洛阳龙门高铁站开元大道关林景区店）</strong><small>洛阳市 · 6601145726493788168</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">105</td><td><span class="score-status certified">已认证</span></td><td class="num negative">-5</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="105.0" data-change="5.0" data-crown="已认证" data-tier="high" data-area="河南西片区" data-search="维也纳酒店(5.0洛阳师范学院玉泉新零售街区店) 7307891876906928143"><td class="rank">43</td><td><strong>维也纳酒店(5.0洛阳师范学院玉泉新零售街区店)</strong><small>洛阳市 · 7307891876906928143</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">105</td><td><span class="score-status certified">已认证</span></td><td class="num positive">+5</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="105.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="河南西片区" data-search="麗枫酒店（3.5洛阳栾川老君山店） 7376082006007875610"><td class="rank">44</td><td><strong>麗枫酒店（3.5洛阳栾川老君山店）</strong><small>洛阳市 · 7376082006007875610</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">105</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="107.0" data-change="5.0" data-crown="未认证" data-tier="high" data-area="河南西片区" data-search="维也纳酒店(5.0深化版洛阳汝阳杜康大道店) 7593220618468722722"><td class="rank">45</td><td><strong>维也纳酒店(5.0深化版洛阳汝阳杜康大道店)</strong><small>洛阳市 · 7593220618468722722</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">107</td><td><span class="score-status uncertified">未认证</span></td><td class="num positive">+5</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="110.0" data-change="0.0" data-crown="未认证" data-tier="high" data-area="河南西片区" data-search="7天优品premium（洛阳火车站九州池应天门店） 7304475792421947402"><td class="rank">46</td><td><strong>7天优品Premium（洛阳火车站九州池应天门店）</strong><small>洛阳市 · 7304475792421947402</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">110</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="110.0" data-change="5.0" data-crown="已认证" data-tier="high" data-area="河南西片区" data-search="7天优品（洛阳栾川老君山店） 7399519376229009445"><td class="rank">47</td><td><strong>7天优品（洛阳栾川老君山店）</strong><small>洛阳市 · 7399519376229009445</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">110</td><td><span class="score-status certified">已认证</span></td><td class="num positive">+5</td><td class="score-dimension">提质量,拿收益</td></tr><tr data-score="110.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="河南西片区" data-search="喆啡酒店（4.0洛阳火车站小街天府应天门店） 7464158866465359891"><td class="rank">48</td><td><strong>喆啡酒店（4.0洛阳火车站小街天府应天门店）</strong><small>洛阳市 · 7464158866465359891</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">110</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">提质量,拿收益</td></tr><tr data-score="110.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="河南西片区" data-search="喆啡酒店（洛阳涧西万达牡丹广场地铁站店） 7552722296436181046"><td class="rank">49</td><td><strong>喆啡酒店（洛阳涧西万达牡丹广场地铁站店）</strong><small>洛阳市 · 7552722296436181046</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">110</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">拿收益</td></tr><tr data-score="110.0" data-change="5.0" data-crown="已认证" data-tier="high" data-area="河南西片区" data-search="维也纳酒店（洛阳栾川老君山凤凰天街美食城店） 7388097160966834203"><td class="rank">50</td><td><strong>维也纳酒店（洛阳栾川老君山凤凰天街美食城店）</strong><small>洛阳市 · 7388097160966834203</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">110</td><td><span class="score-status certified">已认证</span></td><td class="num positive">+5</td><td class="score-dimension">拿收益</td></tr><tr data-score="110.0" data-change="13.0" data-crown="已认证" data-tier="high" data-area="河南西片区" data-search="麗枫酒店（洛阳洛邑古城店） 7627108327385729033"><td class="rank">51</td><td><strong>麗枫酒店（洛阳洛邑古城店）</strong><small>洛阳市 · 7627108327385729033</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">110</td><td><span class="score-status certified">已认证</span></td><td class="num positive">+13</td><td class="score-dimension">提质量,拿收益</td></tr><tr data-score="115.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="河南西片区" data-search="维也纳3好酒店（洛阳国家牡丹园店） 6677456781087606791"><td class="rank">52</td><td><strong>维也纳3好酒店（洛阳国家牡丹园店）</strong><small>洛阳市 · 6677456781087606791</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">115</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">拿收益</td></tr><tr data-score="115.0" data-change="5.0" data-crown="未认证" data-tier="high" data-area="河南西片区" data-search="维也纳国际酒店（洛阳大卫天地王城公园店） 7464126546903566399"><td class="rank">53</td><td><strong>维也纳国际酒店（洛阳大卫天地王城公园店）</strong><small>洛阳市 · 7464126546903566399</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">115</td><td><span class="score-status uncertified">未认证</span></td><td class="num positive">+5</td><td class="score-dimension">拿收益</td></tr><tr data-score="120.0" data-change="0.0" data-crown="未认证" data-tier="high" data-area="河南西片区" data-search="维也纳酒店（深化版洛阳偃师万达广场上海国际商贸城店） 7592105370441484288"><td class="rank">54</td><td><strong>维也纳酒店（深化版洛阳偃师万达广场上海国际商贸城店）</strong><small>洛阳市 · 7592105370441484288</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">120</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">无</td></tr></tbody></table></div>
+        <div class="filter-bar operation-score-filter"><input id="operation-score-search" type="search" placeholder="搜索门店或 POI" aria-label="搜索经营分门店"><select id="operation-score-area-filter" aria-label="按片区筛选经营分"><option value="">全部片区</option><option value="河南西片区">河南西片区</option></select><select id="operation-score-crown-filter" aria-label="按金冠认证筛选"><option value="">全部认证状态</option><option value="已认证">已认证</option><option value="未认证">未认证</option></select><select id="operation-score-tier-filter" aria-label="按经营分档位筛选"><option value="">全部分数档位</option><option value="high">高分</option><option value="improve">待提升</option><option value="risk">风险</option></select><span id="operation-score-result-count" class="filter-count"></span></div><div class="table-scroll operation-score-table-scroll"><table class="operation-score-table"><thead><tr><th>#</th><th>门店 / POI</th><th>一级省区</th><th><button class="sort-trigger operation-score-sort-trigger" type="button" data-sort-key="area" onclick="sortOperationScoreTable('area')" title="按二级片区排序">二级片区 <span class="sort-indicator">↕</span></button></th><th><button class="sort-trigger operation-score-sort-trigger" type="button" data-sort-key="score" onclick="sortOperationScoreTable('score')" title="按经营分排序">经营分 <span class="sort-indicator">↕</span></button></th><th>金冠认证</th><th><button class="sort-trigger operation-score-sort-trigger" type="button" data-sort-key="change" onclick="sortOperationScoreTable('change')" title="按近7天变化排序">近7天变化 <span class="sort-indicator">↕</span></button></th><th>待提升项</th></tr></thead><tbody id="operation-score-table-body"><tr data-score="67.0" data-change="0.0" data-crown="未认证" data-tier="risk" data-area="河南西片区" data-search="白玉兰酒店(洛阳栾川长春路十字街店) 6691574497079724039"><td class="rank">01</td><td><strong>白玉兰酒店(洛阳栾川长春路十字街店)</strong><small> · 6691574497079724039</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value risk">67</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="82.0" data-change="0.0" data-crown="已认证" data-tier="improve" data-area="河南西片区" data-search="白玉兰商务酒店（洛阳应天门洛邑古城店） 7352403574061533193"><td class="rank">02</td><td><strong>白玉兰商务酒店（洛阳应天门洛邑古城店）</strong><small>洛阳市 · 7352403574061533193</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value improve">82</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="85.0" data-change="-10.0" data-crown="未认证" data-tier="improve" data-area="河南西片区" data-search="麗枫酒店（洛阳应天门洛邑古城店） 7536810051504195625"><td class="rank">03</td><td><strong>麗枫酒店（洛阳应天门洛邑古城店）</strong><small>洛阳市 · 7536810051504195625</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value improve">85</td><td><span class="score-status uncertified">未认证</span></td><td class="num negative">-10</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="87.0" data-change="0.0" data-crown="已认证" data-tier="improve" data-area="河南西片区" data-search="白玉兰商务酒店（洛阳师范学院新校区店） 7321630001286088739"><td class="rank">04</td><td><strong>白玉兰商务酒店（洛阳师范学院新校区店）</strong><small>洛阳市 · 7321630001286088739</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value improve">87</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="87.0" data-change="0.0" data-crown="未认证" data-tier="improve" data-area="河南西片区" data-search="维也纳酒店（洛阳万达广场店） 7592825201495115810"><td class="rank">05</td><td><strong>维也纳酒店（洛阳万达广场店）</strong><small>洛阳市 · 7592825201495115810</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value improve">87</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="87.0" data-change="0.0" data-crown="未认证" data-tier="improve" data-area="河南西片区" data-search="维也纳酒店（洛阳机场国家牡丹园旗舰店） 7443312211386173467"><td class="rank">06</td><td><strong>维也纳酒店（洛阳机场国家牡丹园旗舰店）</strong><small>洛阳市 · 7443312211386173467</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value improve">87</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="89.0" data-change="0.0" data-crown="未认证" data-tier="improve" data-area="河南西片区" data-search="维也纳国际酒店（洛阳黛眉店） 6730039252379256845"><td class="rank">07</td><td><strong>维也纳国际酒店（洛阳黛眉店）</strong><small> · 6730039252379256845</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value improve">89</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="90.0" data-change="0.0" data-crown="已认证" data-tier="improve" data-area="河南西片区" data-search="凯里亚德酒店（洛阳龙门高铁站大学城店） 6904386033039706112"><td class="rank">08</td><td><strong>凯里亚德酒店（洛阳龙门高铁站大学城店）</strong><small>洛阳市 · 6904386033039706112</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value improve">90</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="90.0" data-change="5.0" data-crown="已认证" data-tier="improve" data-area="河南西片区" data-search="白玉兰商务酒店(洛阳老城十字街洛邑古城地铁站店) 7352403781227415604"><td class="rank">09</td><td><strong>白玉兰商务酒店(洛阳老城十字街洛邑古城地铁站店)</strong><small>洛阳市 · 7352403781227415604</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value improve">90</td><td><span class="score-status certified">已认证</span></td><td class="num positive">+5</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="90.0" data-change="0.0" data-crown="已认证" data-tier="improve" data-area="河南西片区" data-search="白玉兰商务酒店（洛阳牡丹广场地铁站涧西万达店） 7331969175458023436"><td class="rank">10</td><td><strong>白玉兰商务酒店（洛阳牡丹广场地铁站涧西万达店）</strong><small>洛阳市 · 7331969175458023436</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value improve">90</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="92.0" data-change="0.0" data-crown="已认证" data-tier="improve" data-area="河南西片区" data-search="白玉兰商务酒店（洛阳博物馆龙门高铁站店） 6992776845766871048"><td class="rank">11</td><td><strong>白玉兰商务酒店（洛阳博物馆龙门高铁站店）</strong><small>洛阳市 · 6992776845766871048</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value improve">92</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="92.0" data-change="0.0" data-crown="未认证" data-tier="improve" data-area="河南西片区" data-search="维也纳国际酒店（经典版洛阳龙门石窟龙门高铁站店） 7418763586052294671"><td class="rank">12</td><td><strong>维也纳国际酒店（经典版洛阳龙门石窟龙门高铁站店）</strong><small>洛阳市 · 7418763586052294671</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value improve">92</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="95.0" data-change="0.0" data-crown="未认证" data-tier="improve" data-area="河南西片区" data-search="7天优品premium（洛阳火车站王城公园店） 6601140482472953860"><td class="rank">13</td><td><strong>7天优品Premium（洛阳火车站王城公园店）</strong><small>洛阳市 · 6601140482472953860</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value improve">95</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="95.0" data-change="0.0" data-crown="已认证" data-tier="improve" data-area="河南西片区" data-search="7天优品（洛阳伊川龙凤山杜康大道店） 6656928608218531843"><td class="rank">14</td><td><strong>7天优品（洛阳伊川龙凤山杜康大道店）</strong><small>洛阳市 · 6656928608218531843</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value improve">95</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="95.0" data-change="0.0" data-crown="已认证" data-tier="improve" data-area="河南西片区" data-search="7天酒店（新7天洛阳栾川老君山票务中心店） 7516830433864648739"><td class="rank">15</td><td><strong>7天酒店（新7天洛阳栾川老君山票务中心店）</strong><small>洛阳市 · 7516830433864648739</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value improve">95</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="95.0" data-change="0.0" data-crown="已认证" data-tier="improve" data-area="河南西片区" data-search="洛阳应天门洛邑古城九州池丽柏酒店 7563973676819810314"><td class="rank">16</td><td><strong>洛阳应天门洛邑古城九州池丽柏酒店</strong><small>洛阳市 · 7563973676819810314</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value improve">95</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="95.0" data-change="0.0" data-crown="未认证" data-tier="improve" data-area="河南西片区" data-search="维也纳3好酒店（洛阳应天门周王城广场店） 7359436990858659849"><td class="rank">17</td><td><strong>维也纳3好酒店（洛阳应天门周王城广场店）</strong><small>洛阳市 · 7359436990858659849</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value improve">95</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="95.0" data-change="0.0" data-crown="已认证" data-tier="improve" data-area="河南西片区" data-search="维也纳国际酒店（洛阳应天门九洲池店） 7542341710328629291"><td class="rank">18</td><td><strong>维也纳国际酒店（洛阳应天门九洲池店）</strong><small>洛阳市 · 7542341710328629291</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value improve">95</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="97.0" data-change="0.0" data-crown="未认证" data-tier="improve" data-area="河南西片区" data-search="白玉兰商务酒店（洛阳龙门高铁站文仲大道店） 7444810095961049097"><td class="rank">19</td><td><strong>白玉兰商务酒店（洛阳龙门高铁站文仲大道店）</strong><small>洛阳市 · 7444810095961049097</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value improve">97</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="97.0" data-change="5.0" data-crown="未认证" data-tier="improve" data-area="河南西片区" data-search="维也纳国际酒店（洛阳洛邑古城丽景门地铁站店） 7599491632984737855"><td class="rank">20</td><td><strong>维也纳国际酒店（洛阳洛邑古城丽景门地铁站店）</strong><small>洛阳市 · 7599491632984737855</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value improve">97</td><td><span class="score-status uncertified">未认证</span></td><td class="num positive">+5</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="97.0" data-change="0.0" data-crown="未认证" data-tier="improve" data-area="河南西片区" data-search="维也纳酒店（洛阳吉利店） 7090458625865189410"><td class="rank">21</td><td><strong>维也纳酒店（洛阳吉利店）</strong><small>洛阳市 · 7090458625865189410</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value improve">97</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="100.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="河南西片区" data-search="7天优品(洛阳牡丹广场地铁站王城公园店) 6601158375055034375"><td class="rank">22</td><td><strong>7天优品(洛阳牡丹广场地铁站王城公园店)</strong><small>洛阳市 · 6601158375055034375</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">100</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="100.0" data-change="5.0" data-crown="已认证" data-tier="high" data-area="河南西片区" data-search="白玉兰商务酒店（洛阳龙门高铁站店） 7471147637970847807"><td class="rank">23</td><td><strong>白玉兰商务酒店（洛阳龙门高铁站店）</strong><small>洛阳市 · 7471147637970847807</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">100</td><td><span class="score-status certified">已认证</span></td><td class="num positive">+5</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="100.0" data-change="0.0" data-crown="未认证" data-tier="high" data-area="河南西片区" data-search="维也纳3好酒店（洛阳嵩县陆浑湖店） 7237728777650849795"><td class="rank">24</td><td><strong>维也纳3好酒店（洛阳嵩县陆浑湖店）</strong><small>洛阳市 · 7237728777650849795</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">100</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="100.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="河南西片区" data-search="维也纳国际酒店(洛阳万达广场上海市场地铁站店) 7457452291499509787"><td class="rank">25</td><td><strong>维也纳国际酒店(洛阳万达广场上海市场地铁站店)</strong><small>洛阳市 · 7457452291499509787</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">100</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="100.0" data-change="5.0" data-crown="未认证" data-tier="high" data-area="河南西片区" data-search="维也纳智好酒店（济源汤帝路店） 7366931718509201446"><td class="rank">26</td><td><strong>维也纳智好酒店（济源汤帝路店）</strong><small>济源市 · 7366931718509201446</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">100</td><td><span class="score-status uncertified">未认证</span></td><td class="num positive">+5</td><td class="score-dimension">提质量,拿收益</td></tr><tr data-score="100.0" data-change="0.0" data-crown="未认证" data-tier="high" data-area="河南西片区" data-search="维也纳酒店（洛阳偃师体育场偃师火车站店） 7580513327983134720"><td class="rank">27</td><td><strong>维也纳酒店（洛阳偃师体育场偃师火车站店）</strong><small>洛阳市 · 7580513327983134720</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">100</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="100.0" data-change="3.0" data-crown="已认证" data-tier="high" data-area="河南西片区" data-search="维也纳酒店（洛阳龙门高铁大学城店） 6871037679413364740"><td class="rank">28</td><td><strong>维也纳酒店（洛阳龙门高铁大学城店）</strong><small>洛阳市 · 6871037679413364740</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">100</td><td><span class="score-status certified">已认证</span></td><td class="num positive">+3</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="100.0" data-change="5.0" data-crown="已认证" data-tier="high" data-area="河南西片区" data-search="麗枫酒店（洛阳洛邑古城丽景门十字街店） 7555414479362590771"><td class="rank">29</td><td><strong>麗枫酒店（洛阳洛邑古城丽景门十字街店）</strong><small>洛阳市 · 7555414479362590771</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">100</td><td><span class="score-status certified">已认证</span></td><td class="num positive">+5</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="100.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="河南西片区" data-search="麗枫酒店（洛阳龙门高铁站店） 7511607400000915497"><td class="rank">30</td><td><strong>麗枫酒店（洛阳龙门高铁站店）</strong><small>洛阳市 · 7511607400000915497</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">100</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="102.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="河南西片区" data-search="希岸酒店（洛阳龙门高铁站店） 7511155656196360246"><td class="rank">31</td><td><strong>希岸酒店（洛阳龙门高铁站店）</strong><small>洛阳市 · 7511155656196360246</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">102</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="102.0" data-change="10.0" data-crown="未认证" data-tier="high" data-area="河南西片区" data-search="维也纳酒店（洛阳牡丹广场万达店） 6885873791835064335"><td class="rank">32</td><td><strong>维也纳酒店（洛阳牡丹广场万达店）</strong><small>洛阳市 · 6885873791835064335</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">102</td><td><span class="score-status uncertified">未认证</span></td><td class="num positive">+10</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="102.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="河南西片区" data-search="维也纳酒店（洛阳王城公园万达广场店） 6601144057576032263"><td class="rank">33</td><td><strong>维也纳酒店（洛阳王城公园万达广场店）</strong><small>洛阳市 · 6601144057576032263</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">102</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="102.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="河南西片区" data-search="维也纳酒店（洛阳龙门高铁站店） 7279409053594290217"><td class="rank">34</td><td><strong>维也纳酒店（洛阳龙门高铁站店）</strong><small>洛阳市 · 7279409053594290217</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">102</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="103.0" data-change="0.0" data-crown="未认证" data-tier="high" data-area="河南西片区" data-search="维也纳酒店（洛阳洛邑古城店) 7628842787626043392"><td class="rank">35</td><td><strong>维也纳酒店（洛阳洛邑古城店)</strong><small>洛阳市 · 7628842787626043392</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">103</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">搭门店,提质量,拿收益</td></tr><tr data-score="105.0" data-change="0.0" data-crown="未认证" data-tier="high" data-area="河南西片区" data-search="7天优品（济源天坛路信尧城市广场店） 6601139689023883278"><td class="rank">36</td><td><strong>7天优品（济源天坛路信尧城市广场店）</strong><small>济源市 · 6601139689023883278</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">105</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="105.0" data-change="-5.0" data-crown="未认证" data-tier="high" data-area="河南西片区" data-search="7天酒店（智选版洛阳洛邑古城应天门店） 7683105182439196681"><td class="rank">37</td><td><strong>7天酒店（智选版洛阳洛邑古城应天门店）</strong><small>洛阳市 · 7683105182439196681</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">105</td><td><span class="score-status uncertified">未认证</span></td><td class="num negative">-5</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="105.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="河南西片区" data-search="7天酒店（洛阳嵩县陆浑湖店） 7422531895902079039"><td class="rank">38</td><td><strong>7天酒店（洛阳嵩县陆浑湖店）</strong><small>洛阳市 · 7422531895902079039</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">105</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="105.0" data-change="-5.0" data-crown="未认证" data-tier="high" data-area="河南西片区" data-search="喆啡酒店（洛阳龙门高铁站龙门石窟店） 6762500127866259470"><td class="rank">39</td><td><strong>喆啡酒店（洛阳龙门高铁站龙门石窟店）</strong><small>洛阳市 · 6762500127866259470</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">105</td><td><span class="score-status uncertified">未认证</span></td><td class="num negative">-5</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="105.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="河南西片区" data-search="白玉兰商务酒店(洛阳洛邑古城应天门景区店) 7426675236696754230"><td class="rank">40</td><td><strong>白玉兰商务酒店(洛阳洛邑古城应天门景区店)</strong><small>洛阳市 · 7426675236696754230</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">105</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="105.0" data-change="5.0" data-crown="已认证" data-tier="high" data-area="河南西片区" data-search="白玉兰商务酒店（洛阳洛邑古城启明南路地铁站店） 7630752476929558571"><td class="rank">41</td><td><strong>白玉兰商务酒店（洛阳洛邑古城启明南路地铁站店）</strong><small>洛阳市 · 7630752476929558571</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">105</td><td><span class="score-status certified">已认证</span></td><td class="num positive">+5</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="105.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="河南西片区" data-search="白玉兰商务酒店（洛阳龙门石窟龙门高铁站店） 7377967060384483382"><td class="rank">42</td><td><strong>白玉兰商务酒店（洛阳龙门石窟龙门高铁站店）</strong><small>洛阳市 · 7377967060384483382</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">105</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">提质量,拿收益</td></tr><tr data-score="105.0" data-change="-5.0" data-crown="已认证" data-tier="high" data-area="河南西片区" data-search="维也纳智好酒店（洛阳龙门高铁站开元大道关林景区店） 6601145726493788168"><td class="rank">43</td><td><strong>维也纳智好酒店（洛阳龙门高铁站开元大道关林景区店）</strong><small>洛阳市 · 6601145726493788168</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">105</td><td><span class="score-status certified">已认证</span></td><td class="num negative">-5</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="105.0" data-change="5.0" data-crown="已认证" data-tier="high" data-area="河南西片区" data-search="维也纳酒店(5.0洛阳师范学院玉泉新零售街区店) 7307891876906928143"><td class="rank">44</td><td><strong>维也纳酒店(5.0洛阳师范学院玉泉新零售街区店)</strong><small>洛阳市 · 7307891876906928143</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">105</td><td><span class="score-status certified">已认证</span></td><td class="num positive">+5</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="105.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="河南西片区" data-search="麗枫酒店（3.5洛阳栾川老君山店） 7376082006007875610"><td class="rank">45</td><td><strong>麗枫酒店（3.5洛阳栾川老君山店）</strong><small>洛阳市 · 7376082006007875610</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">105</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="107.0" data-change="5.0" data-crown="未认证" data-tier="high" data-area="河南西片区" data-search="维也纳酒店(5.0深化版洛阳汝阳杜康大道店) 7593220618468722722"><td class="rank">46</td><td><strong>维也纳酒店(5.0深化版洛阳汝阳杜康大道店)</strong><small>洛阳市 · 7593220618468722722</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">107</td><td><span class="score-status uncertified">未认证</span></td><td class="num positive">+5</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="110.0" data-change="0.0" data-crown="未认证" data-tier="high" data-area="河南西片区" data-search="7天优品premium（洛阳火车站九州池应天门店） 7304475792421947402"><td class="rank">47</td><td><strong>7天优品Premium（洛阳火车站九州池应天门店）</strong><small>洛阳市 · 7304475792421947402</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">110</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="110.0" data-change="5.0" data-crown="已认证" data-tier="high" data-area="河南西片区" data-search="7天优品（洛阳栾川老君山店） 7399519376229009445"><td class="rank">48</td><td><strong>7天优品（洛阳栾川老君山店）</strong><small>洛阳市 · 7399519376229009445</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">110</td><td><span class="score-status certified">已认证</span></td><td class="num positive">+5</td><td class="score-dimension">提质量,拿收益</td></tr><tr data-score="110.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="河南西片区" data-search="喆啡酒店（4.0洛阳火车站小街天府应天门店） 7464158866465359891"><td class="rank">49</td><td><strong>喆啡酒店（4.0洛阳火车站小街天府应天门店）</strong><small>洛阳市 · 7464158866465359891</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">110</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">提质量,拿收益</td></tr><tr data-score="110.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="河南西片区" data-search="喆啡酒店（洛阳涧西万达牡丹广场地铁站店） 7552722296436181046"><td class="rank">50</td><td><strong>喆啡酒店（洛阳涧西万达牡丹广场地铁站店）</strong><small>洛阳市 · 7552722296436181046</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">110</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">拿收益</td></tr><tr data-score="110.0" data-change="5.0" data-crown="已认证" data-tier="high" data-area="河南西片区" data-search="维也纳酒店（洛阳栾川老君山凤凰天街美食城店） 7388097160966834203"><td class="rank">51</td><td><strong>维也纳酒店（洛阳栾川老君山凤凰天街美食城店）</strong><small>洛阳市 · 7388097160966834203</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">110</td><td><span class="score-status certified">已认证</span></td><td class="num positive">+5</td><td class="score-dimension">拿收益</td></tr><tr data-score="110.0" data-change="13.0" data-crown="已认证" data-tier="high" data-area="河南西片区" data-search="麗枫酒店（洛阳洛邑古城店） 7627108327385729033"><td class="rank">52</td><td><strong>麗枫酒店（洛阳洛邑古城店）</strong><small>洛阳市 · 7627108327385729033</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">110</td><td><span class="score-status certified">已认证</span></td><td class="num positive">+13</td><td class="score-dimension">提质量,拿收益</td></tr><tr data-score="115.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="河南西片区" data-search="维也纳3好酒店（洛阳国家牡丹园店） 6677456781087606791"><td class="rank">53</td><td><strong>维也纳3好酒店（洛阳国家牡丹园店）</strong><small>洛阳市 · 6677456781087606791</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">115</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">拿收益</td></tr><tr data-score="115.0" data-change="5.0" data-crown="未认证" data-tier="high" data-area="河南西片区" data-search="维也纳国际酒店（洛阳大卫天地王城公园店） 7464126546903566399"><td class="rank">54</td><td><strong>维也纳国际酒店（洛阳大卫天地王城公园店）</strong><small>洛阳市 · 7464126546903566399</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">115</td><td><span class="score-status uncertified">未认证</span></td><td class="num positive">+5</td><td class="score-dimension">拿收益</td></tr><tr data-score="120.0" data-change="0.0" data-crown="未认证" data-tier="high" data-area="河南西片区" data-search="维也纳酒店（深化版洛阳偃师万达广场上海国际商贸城店） 7592105370441484288"><td class="rank">55</td><td><strong>维也纳酒店（深化版洛阳偃师万达广场上海国际商贸城店）</strong><small>洛阳市 · 7592105370441484288</small></td><td>河南省区</td><td>河南西片区</td><td class="num score-value high">120</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">无</td></tr></tbody></table></div>
       </article>
+      <details class="panel" id="operation-score-missing" style="margin-top:16px"><summary>查看 9 家缺失经营分的原因</summary><p>缺失分数不填0，不进入平均分或低分门店统计。历史未认领状态需以最新认领结果复核。</p><div class="table-scroll"><table><thead><tr><th>门店 / POI</th><th>片区</th><th>来源与复核说明</th></tr></thead><tbody><tr><td>7天优品（洛阳上海市场地铁站牡丹公园店）<small>6601143449242568718</small></td><td>河南西片区</td><td>中国区经营分源无该POI；不代表实际为0</td></tr><tr><td>IU酒店(洛阳偃师白马寺店)<small>6601144219803355150</small></td><td>河南西片区</td><td>中国区经营分源无该POI；不代表实际为0</td></tr><tr><td>7天酒店（洛阳明堂景区应天门店）<small>6601150385946101763</small></td><td>河南西片区</td><td>中国区经营分源无该POI；不代表实际为0</td></tr><tr><td>锦江之星(洛阳中州东路酒店)<small>7008386623448549413</small></td><td>河南西片区</td><td>中国区经营分源无该POI；不代表实际为0</td></tr><tr><td>维也纳3好酒店（洛阳应天门洛邑古城店）<small>7350580538635192332</small></td><td>河南西片区</td><td>中国区经营分源无该POI；不代表实际为0</td></tr><tr><td>希岸酒店（洛阳十字街洛邑古城店）<small>7360735872817301513</small></td><td>河南西片区</td><td>中国区经营分源无该POI；不代表实际为0</td></tr><tr><td>白玉兰商务酒店（洛阳应天门九洲池店）<small>7603980990872864810</small></td><td>河南西片区</td><td>中国区经营分源无该POI；不代表实际为0</td></tr><tr><td>白玉兰商务酒店（洛阳龙门高铁站泉舜购物中心店）<small>7606945942827763764</small></td><td>河南西片区</td><td>中国区经营分源无该POI；不代表实际为0</td></tr><tr><td>锦江之星（洛阳应天门洛邑古城酒店）<small>WH:JJJD1690373</small></td><td>河南西片区</td><td>缺少有效POI；WH编码JJJD1690373；中国区经营分无法匹配，不代表实际为0</td></tr></tbody></table></div></details>
     </section>
 
 
@@ -2209,7 +2274,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
 
     <section class="section" id="merchant-live">
       <div class="section-head"><div><h2>商家自播</h2><p>商家官号 · 近 7 日对比前 7 日 · 数据来源：生意经</p></div></div>
-      <div class="kpis" id="store-live-coverage"><article class="kpi" data-live-metric="total"><span class="kpi-label">总门店</span><b class="kpi-value">62<small style="font-size:14px">家</small></b><div class="kpi-foot">当前组织名单 · POI 去重</div></article><article class="kpi" data-live-metric="live"><span class="kpi-label">已开播门店</span><b class="kpi-value">20<small style="font-size:14px">家</small></b><div class="kpi-foot">周期内至少开播一次</div></article><article class="kpi" data-live-metric="not-live"><span class="kpi-label">未开播门店</span><b class="kpi-value">42<small style="font-size:14px">家</small></b><div class="kpi-foot">未匹配到本期开播记录</div></article><article class="kpi" data-live-metric="rate"><span class="kpi-label">门店开播率</span><b class="kpi-value">32.3%<small style="font-size:14px"></small></b><div class="kpi-foot">已开播门店 ÷ 总门店</div></article></div><p style="font-size:12px;color:var(--muted);line-height:1.7">统计周期：2026-11-02 至 2026-11-08。商家官号直播场次或直播时长大于 0 计为开播，按门店 POI 去重；账号所属门店名称仅接受唯一 POI 匹配。未开播表示未匹配到本期开播记录，未匹配账号可能影响统计结果。</p><article class="panel" style="margin:16px 0"><div class="panel-head"><div><h2>各片区门店开播率与自播业绩</h2><p>近 7 日 · 与当前省区、片区选择一致</p></div></div><div style="overflow-x:auto"><table id="store-live-area-summary"><thead><tr><th>片区</th><th>总门店</th><th>已开播</th><th>未开播*</th><th>开播率</th><th>直播支付额</th><th>直播时长</th><th>直播场次</th><th>开播账号数</th></tr></thead><tbody><tr><td>河南西片区</td><td>62</td><td>20</td><td>42</td><td>32.3%</td><td>2.61万</td><td>289.5h</td><td>141</td><td>20</td></tr></tbody></table></div></article>
+      <div class="kpis" id="store-live-coverage"><article class="kpi" data-live-metric="total"><span class="kpi-label">总门店</span><b class="kpi-value">64<small style="font-size:14px">家</small></b><div class="kpi-foot">当前组织名单 · POI 去重</div></article><article class="kpi" data-live-metric="live"><span class="kpi-label">已开播门店</span><b class="kpi-value">20<small style="font-size:14px">家</small></b><div class="kpi-foot">周期内至少开播一次</div></article><article class="kpi" data-live-metric="not-live"><span class="kpi-label">未开播门店</span><b class="kpi-value">44<small style="font-size:14px">家</small></b><div class="kpi-foot">未匹配到本期开播记录</div></article><article class="kpi" data-live-metric="rate"><span class="kpi-label">门店开播率</span><b class="kpi-value">31.2%<small style="font-size:14px"></small></b><div class="kpi-foot">已开播门店 ÷ 总门店</div></article></div><p style="font-size:12px;color:var(--muted);line-height:1.7">统计周期：2026-11-02 至 2026-11-08。商家官号直播场次或直播时长大于 0 计为开播，按门店 POI 去重；账号所属门店名称仅接受唯一 POI 匹配。未开播表示未匹配到本期开播记录，未匹配账号可能影响统计结果。</p><article class="panel" style="margin:16px 0"><div class="panel-head"><div><h2>各片区门店开播率与自播业绩</h2><p>近 7 日 · 与当前省区、片区选择一致</p></div></div><div style="overflow-x:auto"><table id="store-live-area-summary"><thead><tr><th>片区</th><th>总门店</th><th>已开播</th><th>未开播*</th><th>开播率</th><th>直播支付额</th><th>直播时长</th><th>直播场次</th><th>开播账号数</th></tr></thead><tbody><tr><td>河南西片区</td><td>64</td><td>20</td><td>44</td><td>31.2%</td><td>2.61万</td><td>289.5h</td><td>141</td><td>20</td></tr></tbody></table></div></article>
       <div class="kpis">
         <article class="kpi"><span class="kpi-label">直播成交金额</span><b class="kpi-value">2.61万</b><div class="kpi-foot"><span class="positive">+42.5%</span><span>较前 7 日 1.83万</span></div></article>
         <article class="kpi"><span class="kpi-label">直播场次</span><b class="kpi-value">141<small style="font-size:14px">场</small></b><div class="kpi-foot"><span class="positive">+2.2%</span><span>较前 7 日 138场</span></div></article>
@@ -3095,10 +3160,10 @@ document.querySelectorAll('[data-local]').forEach(tab=>tab.addEventListener('cli
   parent.querySelectorAll('.local-panel').forEach(p=>p.style.display=p.dataset.panel===panel?'block':'none');
 }));
 function filterInventoryTable(){
-  const body=document.getElementById('inventory-table-body');
-  if(!body)return;
-  const query=(document.getElementById('inventory-search')?.value||'').trim().toLowerCase();
-  const status=document.getElementById('inventory-status-filter')?.value||'';
+  document.querySelectorAll('.inventory-table-body').forEach(body=>{
+  const panel=body.closest('.inventory-group-panel')||document.getElementById('inventory');
+  const query=(panel.querySelector('.inventory-search')?.value||'').trim().toLowerCase();
+  const status=panel.querySelector('.inventory-status-filter')?.value||'';
   let visible=0;
   body.querySelectorAll('tr').forEach(row=>{
     const matchesQuery=!query||(row.dataset.inventorySearch||'').includes(query);
@@ -3106,11 +3171,18 @@ function filterInventoryTable(){
     row.style.display=matchesQuery&&matchesStatus?'':'none';
     if(matchesQuery&&matchesStatus)visible+=1;
   });
-  const count=document.getElementById('inventory-result-count');
+  const count=panel.querySelector('.inventory-result-count');
   if(count)count.textContent=`${visible} 家门店`;
+  });
 }
-document.getElementById('inventory-search')?.addEventListener('input',filterInventoryTable);
-document.getElementById('inventory-status-filter')?.addEventListener('change',filterInventoryTable);
+document.querySelectorAll('.inventory-search').forEach(el=>el.addEventListener('input',filterInventoryTable));
+document.querySelectorAll('.inventory-status-filter').forEach(el=>el.addEventListener('change',filterInventoryTable));
+document.getElementById('inventory-group-filter')?.addEventListener('change',event=>{
+  document.querySelectorAll('.inventory-group-panel').forEach(panel=>{
+    panel.hidden=panel.dataset.inventoryGroup!==event.target.value;
+  });
+  filterInventoryTable();
+});
 filterInventoryTable();
 let operationScoreSortKey='';
 let operationScoreSortDirection='desc';
@@ -3394,7 +3466,7 @@ sortChannelTable('redeem-delta');
 sortMerchantCityTable('city-live-amount');
 sortMerchantAccountTable('account-live-amount');
 sortOperationScoreTable('score');
-document.documentElement.dataset.workbench="{\"region\": \"山河大区 · 河南省区 · 河南西片区\", \"periods\": {\"previous_start\": \"2026-10-26\", \"previous_end\": \"2026-11-01\", \"current_start\": \"2026-11-02\", \"current_end\": \"2026-11-08\"}, \"verification\": {\"detail_row_count\": 2083, \"channel_row_count\": 2299, \"other_region_row_count\": 0, \"provider_count\": 7, \"store_count\": 53, \"voucher_product_count\": 14, \"product_structure_closed\": true, \"master_store_count\": 62, \"data_store_count\": 53, \"zero_data_store_count\": 9, \"organization_province_count\": 1, \"organization_area_count\": 1, \"selected_province\": \"河南省区\", \"selected_area\": \"河南西片区\", \"detail_channel_closure\": {\"意向成交金额\": true, \"意向成交券数\": true, \"意向成交间夜\": true, \"核销金额\": true, \"核销券数\": true, \"核销间夜\": true}, \"provider_binding_counts\": {\"未绑定服务商\": 32, \"河南叁伍柒科技有限公司\": 6, \"广东省粤时代文化科技有限公司\": 1, \"河南道凯酒店管理有限公司\": 10, \"杭州四库传媒有限公司\": 10, \"赣州悦合文化传媒有限公司\": 2, \"深圳市创天烁科技有限公司\": 1}, \"bound_store_count\": 30, \"unbound_store_count\": 32, \"passed\": true, \"store_live_coverage\": {\"total_stores\": 62, \"live_stores\": 20, \"not_live_stores\": 42, \"live_rate\": 0.3225806451612903, \"start\": \"2026-11-02\", \"end\": \"2026-11-08\"}}, \"organization_navigation\": {\"selected_province\": \"河南省区\", \"selected_area\": \"河南西片区\", \"province_urls\": {\"\": \"workbench_shanhe.html\", \"山西省区\": \"workbench_shanhe__山西省区.html\", \"河南省区\": \"workbench_shanhe__河南省区.html\", \"鲁东省区\": \"workbench_shanhe__鲁东省区.html\", \"鲁西省区\": \"workbench_shanhe__鲁西省区.html\"}, \"area_urls\": {\"山西省区\": {\"山西东片区\": \"workbench_shanhe__山西省区__山西东片区.html\", \"山西中片区\": \"workbench_shanhe__山西省区__山西中片区.html\", \"山西北片区\": \"workbench_shanhe__山西省区__山西北片区.html\", \"山西南片区\": \"workbench_shanhe__山西省区__山西南片区.html\", \"山西西片区\": \"workbench_shanhe__山西省区__山西西片区.html\"}, \"河南省区\": {\"河南东片区\": \"workbench_shanhe__河南省区__河南东片区.html\", \"河南中片区\": \"workbench_shanhe__河南省区__河南中片区.html\", \"河南北片区\": \"workbench_shanhe__河南省区__河南北片区.html\", \"河南南片区\": \"workbench_shanhe__河南省区__河南南片区.html\", \"河南西南片区\": \"workbench_shanhe__河南省区__河南西南片区.html\", \"河南西片区\": \"workbench_shanhe__河南省区__河南西片区.html\", \"郑州中片区\": \"workbench_shanhe__河南省区__郑州中片区.html\", \"郑州北片区\": \"workbench_shanhe__河南省区__郑州北片区.html\", \"郑州南片区\": \"workbench_shanhe__河南省区__郑州南片区.html\"}, \"鲁东省区\": {\"临沂片区\": \"workbench_shanhe__鲁东省区__临沂片区.html\", \"威烟片区\": \"workbench_shanhe__鲁东省区__威烟片区.html\", \"日照片区\": \"workbench_shanhe__鲁东省区__日照片区.html\", \"沂枣片区\": \"workbench_shanhe__鲁东省区__沂枣片区.html\", \"淄博片区\": \"workbench_shanhe__鲁东省区__淄博片区.html\", \"潍坊片区\": \"workbench_shanhe__鲁东省区__潍坊片区.html\", \"烟台片区\": \"workbench_shanhe__鲁东省区__烟台片区.html\", \"青岛前海片区\": \"workbench_shanhe__鲁东省区__青岛前海片区.html\", \"青岛北片区\": \"workbench_shanhe__鲁东省区__青岛北片区.html\", \"青岛西片区\": \"workbench_shanhe__鲁东省区__青岛西片区.html\"}, \"鲁西省区\": {\"德州片区\": \"workbench_shanhe__鲁西省区__德州片区.html\", \"泰安片区\": \"workbench_shanhe__鲁西省区__泰安片区.html\", \"济南东片区\": \"workbench_shanhe__鲁西省区__济南东片区.html\", \"济南中片区\": \"workbench_shanhe__鲁西省区__济南中片区.html\", \"济南北片区\": \"workbench_shanhe__鲁西省区__济南北片区.html\", \"济宁片区\": \"workbench_shanhe__鲁西省区__济宁片区.html\", \"济滨片区\": \"workbench_shanhe__鲁西省区__济滨片区.html\", \"滨东片区\": \"workbench_shanhe__鲁西省区__滨东片区.html\", \"聊宁片区\": \"workbench_shanhe__鲁西省区__聊宁片区.html\", \"菏泽片区\": \"workbench_shanhe__鲁西省区__菏泽片区.html\"}}}}";
+document.documentElement.dataset.workbench="{\"region\": \"山河大区 · 河南省区 · 河南西片区\", \"periods\": {\"previous_start\": \"2026-10-26\", \"previous_end\": \"2026-11-01\", \"current_start\": \"2026-11-02\", \"current_end\": \"2026-11-08\"}, \"verification\": {\"detail_row_count\": 2083, \"channel_row_count\": 2299, \"other_region_row_count\": 0, \"provider_count\": 7, \"store_count\": 53, \"voucher_product_count\": 14, \"product_structure_closed\": true, \"master_store_count\": 64, \"data_store_count\": 53, \"zero_data_store_count\": 11, \"organization_province_count\": 1, \"organization_area_count\": 1, \"selected_province\": \"河南省区\", \"selected_area\": \"河南西片区\", \"detail_channel_closure\": {\"意向成交金额\": true, \"意向成交券数\": true, \"意向成交间夜\": true, \"核销金额\": true, \"核销券数\": true, \"核销间夜\": true}, \"provider_binding_counts\": {\"未绑定服务商\": 25, \"河南叁伍柒科技有限公司\": 6, \"广东省粤时代文化科技有限公司\": 1, \"河南道凯酒店管理有限公司\": 10, \"杭州四库传媒有限公司\": 10, \"赣州悦合文化传媒有限公司\": 2, \"深圳市创天烁科技有限公司\": 1, \"绑定待核实\": 9}, \"bound_store_count\": 30, \"unbound_store_count\": 25, \"binding_unknown_store_count\": 9, \"passed\": true, \"store_live_coverage\": {\"total_stores\": 64, \"live_stores\": 20, \"not_live_stores\": 44, \"live_rate\": 0.3125, \"start\": \"2026-11-02\", \"end\": \"2026-11-08\"}}, \"organization_navigation\": {\"selected_province\": \"河南省区\", \"selected_area\": \"河南西片区\", \"province_urls\": {\"\": \"workbench_shanhe.html\", \"山西省区\": \"workbench_shanhe__山西省区.html\", \"河南省区\": \"workbench_shanhe__河南省区.html\", \"鲁东省区\": \"workbench_shanhe__鲁东省区.html\", \"鲁西省区\": \"workbench_shanhe__鲁西省区.html\"}, \"area_urls\": {\"山西省区\": {\"山西东片区\": \"workbench_shanhe__山西省区__山西东片区.html\", \"山西中片区\": \"workbench_shanhe__山西省区__山西中片区.html\", \"山西北片区\": \"workbench_shanhe__山西省区__山西北片区.html\", \"山西南片区\": \"workbench_shanhe__山西省区__山西南片区.html\", \"山西西片区\": \"workbench_shanhe__山西省区__山西西片区.html\"}, \"河南省区\": {\"河南东片区\": \"workbench_shanhe__河南省区__河南东片区.html\", \"河南中片区\": \"workbench_shanhe__河南省区__河南中片区.html\", \"河南北片区\": \"workbench_shanhe__河南省区__河南北片区.html\", \"河南南片区\": \"workbench_shanhe__河南省区__河南南片区.html\", \"河南西南片区\": \"workbench_shanhe__河南省区__河南西南片区.html\", \"河南西片区\": \"workbench_shanhe__河南省区__河南西片区.html\", \"郑州中片区\": \"workbench_shanhe__河南省区__郑州中片区.html\", \"郑州北片区\": \"workbench_shanhe__河南省区__郑州北片区.html\", \"郑州南片区\": \"workbench_shanhe__河南省区__郑州南片区.html\"}, \"鲁东省区\": {\"临沂片区\": \"workbench_shanhe__鲁东省区__临沂片区.html\", \"威烟片区\": \"workbench_shanhe__鲁东省区__威烟片区.html\", \"日照片区\": \"workbench_shanhe__鲁东省区__日照片区.html\", \"沂枣片区\": \"workbench_shanhe__鲁东省区__沂枣片区.html\", \"淄博片区\": \"workbench_shanhe__鲁东省区__淄博片区.html\", \"潍坊片区\": \"workbench_shanhe__鲁东省区__潍坊片区.html\", \"烟台片区\": \"workbench_shanhe__鲁东省区__烟台片区.html\", \"青岛前海片区\": \"workbench_shanhe__鲁东省区__青岛前海片区.html\", \"青岛北片区\": \"workbench_shanhe__鲁东省区__青岛北片区.html\", \"青岛西片区\": \"workbench_shanhe__鲁东省区__青岛西片区.html\"}, \"鲁西省区\": {\"德州片区\": \"workbench_shanhe__鲁西省区__德州片区.html\", \"泰安片区\": \"workbench_shanhe__鲁西省区__泰安片区.html\", \"济南东片区\": \"workbench_shanhe__鲁西省区__济南东片区.html\", \"济南中片区\": \"workbench_shanhe__鲁西省区__济南中片区.html\", \"济南北片区\": \"workbench_shanhe__鲁西省区__济南北片区.html\", \"济宁片区\": \"workbench_shanhe__鲁西省区__济宁片区.html\", \"济滨片区\": \"workbench_shanhe__鲁西省区__济滨片区.html\", \"滨东片区\": \"workbench_shanhe__鲁西省区__滨东片区.html\", \"聊宁片区\": \"workbench_shanhe__鲁西省区__聊宁片区.html\", \"菏泽片区\": \"workbench_shanhe__鲁西省区__菏泽片区.html\"}}}}";
 </script>
 </body>
 </html>
