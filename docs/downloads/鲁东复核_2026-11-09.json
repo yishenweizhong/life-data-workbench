@@ -1,0 +1,86 @@
+{
+  "status": "passed",
+  "reviewed_at": "2026-11-09T17:20:09",
+  "target_date": "2026-11-08",
+  "periods": {
+    "previous_start": "2026-10-26",
+    "previous_end": "2026-11-01",
+    "current_start": "2026-11-02",
+    "current_end": "2026-11-08"
+  },
+  "store_count": 387,
+  "source_trade_store_count": 310,
+  "without_source_trade_store_count": 77,
+  "area_count": 10,
+  "current_totals": {
+    "意向成交金额": 730061.05,
+    "意向成交间夜": 4757.0,
+    "意向成交券数": 4192.0,
+    "核销金额": 352256.87,
+    "核销间夜": 2202.0,
+    "核销券数": 2237.0
+  },
+  "checks": {
+    "原始与看板逐POI逐日六项指标一致": true,
+    "明细与渠道逐POI逐日逐商品闭合": true,
+    "连续14天来源完整": true,
+    "387家台账门店完整保留": true,
+    "10个片区及门店金额与省区闭合": true,
+    "通兑商品双源核验": true,
+    "经营分按POI匹配并保留未匹配状态": true
+  },
+  "pages": [
+    "workbench_ludong.html",
+    "workbench_ludong__鲁东省区__临沂片区.html",
+    "workbench_ludong__鲁东省区__威烟片区.html",
+    "workbench_ludong__鲁东省区__日照片区.html",
+    "workbench_ludong__鲁东省区__沂枣片区.html",
+    "workbench_ludong__鲁东省区__淄博片区.html",
+    "workbench_ludong__鲁东省区__潍坊片区.html",
+    "workbench_ludong__鲁东省区__烟台片区.html",
+    "workbench_ludong__鲁东省区__青岛前海片区.html",
+    "workbench_ludong__鲁东省区__青岛北片区.html",
+    "workbench_ludong__鲁东省区__青岛西片区.html"
+  ],
+  "merchant_live": {
+    "上期直播成交金额": 25898.100000000002,
+    "本期直播成交金额": 57473.899999999994,
+    "直播成交金额增长率": 1.219232298894513,
+    "上期直播场次": 296.0,
+    "本期直播场次": 428.0,
+    "直播场次增长率": 0.44594594594594605,
+    "上期直播时长": 523.313888888889,
+    "本期直播时长": 770.711944444444,
+    "直播时长增长率": 0.47275270312591133,
+    "上期开播账号数": 59,
+    "本期开播账号数": 76,
+    "开播账号增减": 17,
+    "本期总成交金额": 67333.39999999997,
+    "本期总核销金额": 14679.369999999999
+  },
+  "operation_score": {
+    "matched_store_count": 330,
+    "unmatched_store_count": 57,
+    "average_score": 98.5
+  },
+  "live_unmapped_store_count": 8,
+  "live_unmapped_record_count": 46,
+  "source_sha256": {
+    "交易明细_1425店_山河3省_1026-1108.xlsx": "c54f6674f6d747b3d11b549497bd42fcaa28cc865a2b9f2ef6b6c8ba91627927",
+    "交易渠道_1425店_山河3省_1026-1108.xlsx": "5faae8a0d0975a7b8c784634e352c5b1fbfedf4b503eea854360134819d0cdb4"
+  },
+  "limitations": [
+    "77家台账门店的交易源没有对应POI记录；未将缺记录解释为门店实际没有交易。",
+    "57家台账门店的经营分源没有对应POI，继续标为未匹配。",
+    "8家自播所属门店名称无法唯一归属台账，46条记录留待核实。"
+  ],
+  "browser_checks": {
+    "passed": true,
+    "desktop_pages": 11,
+    "mobile_pages": 11,
+    "area_round_trips": 10,
+    "downloads_checked": 11,
+    "all_8_sections_visible": true,
+    "page_errors": []
+  }
+}
