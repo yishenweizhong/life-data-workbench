@@ -61,9 +61,9 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
     <button class="nav-item" data-target="attribution" aria-label="增长归因"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="5" r="2"/><circle cx="18" cy="5" r="2"/><circle cx="12" cy="19" r="2"/><path d="M6 7v3c0 2 2 3 4 3h2M18 7v3c0 2-2 3-4 3h-2v4"/></svg></span><span>增长归因</span></button>
     <button class="nav-item" data-target="providers" aria-label="服务商"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><span>服务商</span></button>
     <button class="nav-item" data-target="voucher" aria-label="通兑商品"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 0 0 0 6v3a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-3a3 3 0 0 0 0-6V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="m9 9 6 6M15 9h.01M9 15h.01"/></svg></span><span>通兑商品</span></button>
+    <button class="nav-item" data-target="operation-score"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 12 19 5"/><path d="M16 5h3v3"/><path d="M7 16h10"/></svg></span><span>门店经营分</span></button>
 
-
-
+    <button class="nav-item" data-target="merchant-live"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.93 4.93a10 10 0 0 0 0 14.14M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M8.46 8.46a5 5 0 0 0 0 7.08M15.54 8.46a5 5 0 0 1 0 7.08"/><circle cx="12" cy="12" r="1"/></svg></span><span>商家自播</span></button>
   </aside>
   <main class="content">
     <header class="topbar">
@@ -74,7 +74,7 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
 
     <section class="section active" id="overview">
       <div class="glass-tabs">
-        <button class="glass-tab active">总体</button><button class="glass-tab" data-target="provinces">组织</button><button class="glass-tab" data-target="stores">门店</button><button class="glass-tab" data-target="providers">服务商</button><button class="glass-tab" data-target="voucher">通兑商品</button>
+        <button class="glass-tab active">总体</button><button class="glass-tab" data-target="provinces">组织</button><button class="glass-tab" data-target="stores">门店</button><button class="glass-tab" data-target="providers">服务商</button><button class="glass-tab" data-target="voucher">通兑商品</button><button class="glass-tab" data-target="operation-score">经营分</button><button class="glass-tab" data-target="merchant-live">商家自播</button>
       </div>
       <div class="kpis">
         <article class="kpi"><span class="kpi-label">支付 GMV</span><b class="kpi-value">6.70万</b><div class="kpi-foot"><span class="positive">+18.3%</span><span>较上期 5.66万</span></div></article>
@@ -1383,9 +1383,9 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
                 data-payment-delta="2443.9000000000015"
                 data-payment-growth="0.12514914558145018"
                 data-redeem-current="13898.0"
-                data-redeem-previous="11147.1"
-                data-redeem-delta="2750.8999999999996"
-                data-redeem-growth="0.24678167415740404">
+                data-redeem-previous="11147.099999999999"
+                data-redeem-delta="2750.9000000000015"
+                data-redeem-growth="0.24678167415740426">
               <td><strong>其他</strong></td>
               <td class="num">2.20万</td>
               <td class="num">1.95万</td>
@@ -1537,21 +1537,21 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
     <section class="section" id="voucher">
       <div class="section-head"><div><h2>通兑商品</h2><p>省区合计 · 仅展示支付与核销趋势，不拆分 SKU</p></div></div>
       <div class="kpis">
-        <article class="kpi"><span class="kpi-label">通兑支付 GMV</span><b class="kpi-value">0</b><div class="kpi-foot"><span>本期 7 天累计</span><span>支付券 0张</span></div></article>
-        <article class="kpi"><span class="kpi-label">通兑核销 GMV</span><b class="kpi-value">0</b><div class="kpi-foot"><span>本期 7 天累计</span><span>核销券 0张</span></div></article>
+        <article class="kpi"><span class="kpi-label">通兑支付 GMV</span><b class="kpi-value">8,464</b><div class="kpi-foot"><span>本期 7 天累计</span><span>支付券 56张</span></div></article>
+        <article class="kpi"><span class="kpi-label">通兑核销 GMV</span><b class="kpi-value">1,790</b><div class="kpi-foot"><span>本期 7 天累计</span><span>核销券 10张</span></div></article>
       </div>
       <article class="panel" style="margin-top:16px">
         <div class="panel-head trend-panel-head"><div class="trend-heading"><h2>支付与核销趋势</h2><span class="trend-range">11-02–11-08 · 单位：万元</span></div><div class="legend"><span><i style="background:var(--blue)"></i>支付</span><span><i style="background:var(--orange)"></i>核销</span></div></div>
         <div class="chart-scroll">
       <svg class="chart-svg" viewBox="0 0 760 300" role="img"
            aria-label="支付与核销日趋势，单位万元">
-        <line x1="54" y1="34.0" x2="736" y2="34.0" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="104.6" x2="736" y2="104.6" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="175.2" x2="736" y2="175.2" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="248.0" x2="736" y2="248.0" stroke="#ECEEF3" stroke-width="1"/><text x="44" y="38.0" text-anchor="end" class="axis-label">0.0</text><text x="44" y="145.0" text-anchor="end" class="axis-label">0.0</text><text x="44" y="252.0" text-anchor="end" class="axis-label">0.0</text>
-        <path d="M54.0 248.0 L167.7 248.0 L281.3 248.0 L395.0 248.0 L508.7 248.0 L622.3 248.0 L736.0 248.0" fill="none" stroke="#1677FF"
+        <line x1="54" y1="34.0" x2="736" y2="34.0" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="104.6" x2="736" y2="104.6" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="175.2" x2="736" y2="175.2" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="248.0" x2="736" y2="248.0" stroke="#ECEEF3" stroke-width="1"/><text x="44" y="38.0" text-anchor="end" class="axis-label">0.2</text><text x="44" y="145.0" text-anchor="end" class="axis-label">0.1</text><text x="44" y="252.0" text-anchor="end" class="axis-label">0.0</text>
+        <path d="M54.0 72.3 L167.7 167.2 L281.3 153.1 L395.0 137.0 L508.7 34.0 L622.3 145.0 L736.0 167.3" fill="none" stroke="#1677FF"
               stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M54.0 248.0 L167.7 248.0 L281.3 248.0 L395.0 248.0 L508.7 248.0 L622.3 248.0 L736.0 248.0" fill="none" stroke="#FF8A3D"
+        <path d="M54.0 248.0 L167.7 227.8 L281.3 229.8 L395.0 227.8 L508.7 189.4 L622.3 211.6 L736.0 219.8" fill="none" stroke="#FF8A3D"
               stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-        <circle class="trend-point payment-point" cx="54.0" cy="248.0" r="5" fill="#1677FF"/><text x="58.0" y="236.0" text-anchor="start" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="167.7" cy="248.0" r="5" fill="#1677FF"/><text x="167.7" y="236.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="281.3" cy="248.0" r="5" fill="#1677FF"/><text x="281.3" y="236.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="395.0" cy="248.0" r="5" fill="#1677FF"/><text x="395.0" y="236.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="508.7" cy="248.0" r="5" fill="#1677FF"/><text x="508.7" y="236.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="622.3" cy="248.0" r="5" fill="#1677FF"/><text x="622.3" y="236.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.0万</text><circle class="trend-point payment-point" cx="736.0" cy="248.0" r="5" fill="#1677FF"/><text x="732.0" y="236.0" text-anchor="end" class="point-label payment-label" fill="#1677FF">0.0万</text>
-        <circle class="trend-point redeem-point" cx="54.0" cy="248.0" r="5" fill="#FF8A3D"/><text x="58.0" y="272.0" text-anchor="start" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="167.7" cy="248.0" r="5" fill="#FF8A3D"/><text x="167.7" y="272.0" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="281.3" cy="248.0" r="5" fill="#FF8A3D"/><text x="281.3" y="272.0" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="395.0" cy="248.0" r="5" fill="#FF8A3D"/><text x="395.0" y="272.0" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="508.7" cy="248.0" r="5" fill="#FF8A3D"/><text x="508.7" y="272.0" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="622.3" cy="248.0" r="5" fill="#FF8A3D"/><text x="622.3" y="272.0" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="736.0" cy="248.0" r="5" fill="#FF8A3D"/><text x="732.0" y="272.0" text-anchor="end" class="point-label redeem-label" fill="#FF8A3D">0.0万</text>
+        <circle class="trend-point payment-point" cx="54.0" cy="72.3" r="5" fill="#1677FF"/><text x="58.0" y="60.3" text-anchor="start" class="point-label payment-label" fill="#1677FF">0.2万</text><circle class="trend-point payment-point" cx="167.7" cy="167.2" r="5" fill="#1677FF"/><text x="167.7" y="155.2" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.1万</text><circle class="trend-point payment-point" cx="281.3" cy="153.1" r="5" fill="#1677FF"/><text x="281.3" y="141.1" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.1万</text><circle class="trend-point payment-point" cx="395.0" cy="137.0" r="5" fill="#1677FF"/><text x="395.0" y="125.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.1万</text><circle class="trend-point payment-point" cx="508.7" cy="34.0" r="5" fill="#1677FF"/><text x="508.7" y="22.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.2万</text><circle class="trend-point payment-point" cx="622.3" cy="145.0" r="5" fill="#1677FF"/><text x="622.3" y="133.0" text-anchor="middle" class="point-label payment-label" fill="#1677FF">0.1万</text><circle class="trend-point payment-point" cx="736.0" cy="167.3" r="5" fill="#1677FF"/><text x="732.0" y="155.3" text-anchor="end" class="point-label payment-label" fill="#1677FF">0.1万</text>
+        <circle class="trend-point redeem-point" cx="54.0" cy="248.0" r="5" fill="#FF8A3D"/><text x="58.0" y="272.0" text-anchor="start" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="167.7" cy="227.8" r="5" fill="#FF8A3D"/><text x="167.7" y="251.8" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="281.3" cy="229.8" r="5" fill="#FF8A3D"/><text x="281.3" y="253.8" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="395.0" cy="227.8" r="5" fill="#FF8A3D"/><text x="395.0" y="251.8" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="508.7" cy="189.4" r="5" fill="#FF8A3D"/><text x="508.7" y="213.4" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.1万</text><circle class="trend-point redeem-point" cx="622.3" cy="211.6" r="5" fill="#FF8A3D"/><text x="622.3" y="235.6" text-anchor="middle" class="point-label redeem-label" fill="#FF8A3D">0.0万</text><circle class="trend-point redeem-point" cx="736.0" cy="219.8" r="5" fill="#FF8A3D"/><text x="732.0" y="243.8" text-anchor="end" class="point-label redeem-label" fill="#FF8A3D">0.0万</text>
         <text x="54.0" y="288" text-anchor="middle" class="axis-label">11-02</text><text x="167.7" y="288" text-anchor="middle" class="axis-label">11-03</text><text x="281.3" y="288" text-anchor="middle" class="axis-label">11-04</text><text x="395.0" y="288" text-anchor="middle" class="axis-label">11-05</text><text x="508.7" y="288" text-anchor="middle" class="axis-label">11-06</text><text x="622.3" y="288" text-anchor="middle" class="axis-label">11-07</text><text x="736.0" y="288" text-anchor="middle" class="axis-label">11-08</text>
       </svg>
     </div>
@@ -1559,15 +1559,592 @@ a{color:inherit;text-decoration:none} button{font:inherit;border:0;background:no
     </section>
 
 
+    <section class="section" id="operation-score">
+      <div class="section-head"><div><h2>门店经营分</h2><p>中国区全量数据按 POI ID 匹配 · 名称仅用于展示 · 数据截至 2026-11-08</p></div><div class="section-actions"><a class="command-button" href="downloads/经营分_鲁东省区__沂枣片区_2026-11-08.xlsx" download><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg><span>下载经营分 Excel</span></a></div></div>
+      <div class="kpis">
+        <article class="kpi"><span class="kpi-label">平均经营分</span><b class="kpi-value">103.0</b><div class="kpi-foot"><span>满分 120</span><span>仅统计已匹配门店</span></div></article>
+        <article class="kpi"><span class="kpi-label">经营分覆盖</span><b class="kpi-value">35<small style="font-size:14px"> / 39 家</small></b><div class="kpi-foot"><span>4 家</span><span>未匹配</span></div></article>
+        <article class="kpi"><span class="kpi-label">金冠认证门店</span><b class="kpi-value">19<small style="font-size:14px">家</small></b><div class="kpi-foot"><span>9 家</span><span>近 7 天上涨</span></div></article>
+        <article class="kpi"><span class="kpi-label">风险门店</span><b class="kpi-value">0<small style="font-size:14px">家</small></b><div class="kpi-foot"><span>5 家</span><span>近 7 天下降</span></div></article>
+      </div>
+      <div class="inventory-summary operation-score-summary">
+        <div class="good"><span>高分门店</span><strong>21</strong><small>100–120 分</small></div>
+        <div><span>待提升门店</span><strong>14</strong><small>80–99 分</small></div>
+        <div class="risk"><span>风险门店</span><strong>0</strong><small>低于 80 分</small></div>
+        <div><span>近 7 天净变化</span><strong>+34</strong><small>分</small></div>
+      </div>
+      <article class="panel score-dimension-panel">
+        <div class="panel-head"><div><h2>待提升项分布</h2><p>同一门店可能同时命中多个维度</p></div></div>
+        <div class="score-dimensions"><span class="score-dimension-tag"><b>拿收益</b><span>29 家</span></span><span class="score-dimension-tag"><b>提质量</b><span>21 家</span></span><span class="score-dimension-tag"><b>稳房源</b><span>15 家</span></span><span class="score-dimension-tag"><b>搭门店</b><span>8 家</span></span></div>
+      </article>
+      <article class="panel operation-score-panel">
+        <div class="panel-head"><div><h2>门店经营分明细</h2><p>可按门店、POI、片区、认证状态和分数档位筛选，点击业务列排序</p></div></div>
+        <div class="filter-bar operation-score-filter"><input id="operation-score-search" type="search" placeholder="搜索门店或 POI" aria-label="搜索经营分门店"><select id="operation-score-area-filter" aria-label="按片区筛选经营分"><option value="">全部片区</option><option value="沂枣片区">沂枣片区</option></select><select id="operation-score-crown-filter" aria-label="按金冠认证筛选"><option value="">全部认证状态</option><option value="已认证">已认证</option><option value="未认证">未认证</option></select><select id="operation-score-tier-filter" aria-label="按经营分档位筛选"><option value="">全部分数档位</option><option value="high">高分</option><option value="improve">待提升</option><option value="risk">风险</option></select><span id="operation-score-result-count" class="filter-count"></span></div><div class="table-scroll operation-score-table-scroll"><table class="operation-score-table"><thead><tr><th>#</th><th>门店 / POI</th><th>一级省区</th><th><button class="sort-trigger operation-score-sort-trigger" type="button" data-sort-key="area" onclick="sortOperationScoreTable('area')" title="按二级片区排序">二级片区 <span class="sort-indicator">↕</span></button></th><th><button class="sort-trigger operation-score-sort-trigger" type="button" data-sort-key="score" onclick="sortOperationScoreTable('score')" title="按经营分排序">经营分 <span class="sort-indicator">↕</span></button></th><th>金冠认证</th><th><button class="sort-trigger operation-score-sort-trigger" type="button" data-sort-key="change" onclick="sortOperationScoreTable('change')" title="按近7天变化排序">近7天变化 <span class="sort-indicator">↕</span></button></th><th>待提升项</th></tr></thead><tbody id="operation-score-table-body"><tr data-score="82.0" data-change="0.0" data-crown="未认证" data-tier="improve" data-area="沂枣片区" data-search="喆啡酒店（滕州市政府吾悦广场店） 7240678096792193061"><td class="rank">01</td><td><strong>喆啡酒店（滕州市政府吾悦广场店）</strong><small>枣庄市 · 7240678096792193061</small></td><td>鲁东省区</td><td>沂枣片区</td><td class="num score-value improve">82</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="86.0" data-change="5.0" data-crown="已认证" data-tier="improve" data-area="沂枣片区" data-search="麗枫酒店（枣庄台儿庄古城店） 7298212596711163943"><td class="rank">02</td><td><strong>麗枫酒店（枣庄台儿庄古城店）</strong><small>枣庄市 · 7298212596711163943</small></td><td>鲁东省区</td><td>沂枣片区</td><td class="num score-value improve">86</td><td><span class="score-status certified">已认证</span></td><td class="num positive">+5</td><td class="score-dimension">搭门店,稳房源,提质量,拿收益</td></tr><tr data-score="87.0" data-change="0.0" data-crown="未认证" data-tier="improve" data-area="沂枣片区" data-search="维也纳酒店（枣庄山亭汉诺路店） 7233727117698009144"><td class="rank">03</td><td><strong>维也纳酒店（枣庄山亭汉诺路店）</strong><small>枣庄市 · 7233727117698009144</small></td><td>鲁东省区</td><td>沂枣片区</td><td class="num score-value improve">87</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="90.0" data-change="0.0" data-crown="未认证" data-tier="improve" data-area="沂枣片区" data-search="维也纳酒店(费县蓝色港湾店) 7665245258367633443"><td class="rank">04</td><td><strong>维也纳酒店(费县蓝色港湾店)</strong><small>临沂市 · 7665245258367633443</small></td><td>鲁东省区</td><td>沂枣片区</td><td class="num score-value improve">90</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">提质量,拿收益</td></tr><tr data-score="95.0" data-change="0.0" data-crown="已认证" data-tier="improve" data-area="沂枣片区" data-search="希岸酒店(枣庄台儿庄古城店) 7231898729182136379"><td class="rank">05</td><td><strong>希岸酒店(枣庄台儿庄古城店)</strong><small>枣庄市 · 7231898729182136379</small></td><td>鲁东省区</td><td>沂枣片区</td><td class="num score-value improve">95</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">提质量,拿收益</td></tr><tr data-score="95.0" data-change="0.0" data-crown="已认证" data-tier="improve" data-area="沂枣片区" data-search="白玉兰商务酒店（枣庄高铁站市政府文体中心店） 7033633086059317279"><td class="rank">06</td><td><strong>白玉兰商务酒店（枣庄高铁站市政府文体中心店）</strong><small>枣庄市 · 7033633086059317279</small></td><td>鲁东省区</td><td>沂枣片区</td><td class="num score-value improve">95</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="95.0" data-change="-5.0" data-crown="未认证" data-tier="improve" data-area="沂枣片区" data-search="维也纳酒店（枣庄市政府高铁站店） 6621524162034796552"><td class="rank">07</td><td><strong>维也纳酒店（枣庄市政府高铁站店）</strong><small>枣庄市 · 6621524162034796552</small></td><td>鲁东省区</td><td>沂枣片区</td><td class="num score-value improve">95</td><td><span class="score-status uncertified">未认证</span></td><td class="num negative">-5</td><td class="score-dimension">提质量,拿收益</td></tr><tr data-score="95.0" data-change="0.0" data-crown="未认证" data-tier="improve" data-area="沂枣片区" data-search="维也纳酒店（枣庄滕州火车站店） 6864139944475035656"><td class="rank">08</td><td><strong>维也纳酒店（枣庄滕州火车站店）</strong><small>枣庄市 · 6864139944475035656</small></td><td>鲁东省区</td><td>沂枣片区</td><td class="num score-value improve">95</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="95.0" data-change="0.0" data-crown="已认证" data-tier="improve" data-area="沂枣片区" data-search="锦江之星风尚（枣庄青檀南路店） 7169870395238156288"><td class="rank">09</td><td><strong>锦江之星风尚（枣庄青檀南路店）</strong><small>枣庄市 · 7169870395238156288</small></td><td>鲁东省区</td><td>沂枣片区</td><td class="num score-value improve">95</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="96.0" data-change="0.0" data-crown="未认证" data-tier="improve" data-area="沂枣片区" data-search="白玉兰商务酒店（临沂郯城人民路郯国古城店） 7062194431620810783"><td class="rank">10</td><td><strong>白玉兰商务酒店（临沂郯城人民路郯国古城店）</strong><small>临沂市 · 7062194431620810783</small></td><td>鲁东省区</td><td>沂枣片区</td><td class="num score-value improve">96</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">搭门店,提质量,拿收益</td></tr><tr data-score="96.0" data-change="0.0" data-crown="已认证" data-tier="improve" data-area="沂枣片区" data-search="白玉兰商务酒店（滕州万达广场店） 6697342337808435211"><td class="rank">11</td><td><strong>白玉兰商务酒店（滕州万达广场店）</strong><small>枣庄市 · 6697342337808435211</small></td><td>鲁东省区</td><td>沂枣片区</td><td class="num score-value improve">96</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">搭门店,提质量,拿收益</td></tr><tr data-score="97.0" data-change="5.0" data-crown="未认证" data-tier="improve" data-area="沂枣片区" data-search="维也纳酒店（5.0山东省临沂市郯城郯东路店） 7354607399531743295"><td class="rank">12</td><td><strong>维也纳酒店（5.0山东省临沂市郯城郯东路店）</strong><small>临沂市 · 7354607399531743295</small></td><td>鲁东省区</td><td>沂枣片区</td><td class="num score-value improve">97</td><td><span class="score-status uncertified">未认证</span></td><td class="num positive">+5</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="97.0" data-change="0.0" data-crown="已认证" data-tier="improve" data-area="沂枣片区" data-search="麗枫酒店（枣庄永安店） 7325348838850431003"><td class="rank">13</td><td><strong>麗枫酒店（枣庄永安店）</strong><small>枣庄市 · 7325348838850431003</small></td><td>鲁东省区</td><td>沂枣片区</td><td class="num score-value improve">97</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,提质量,拿收益</td></tr><tr data-score="98.0" data-change="0.0" data-crown="未认证" data-tier="improve" data-area="沂枣片区" data-search="潮漫酒店（滕州吾悦广场店） 7628486039866181651"><td class="rank">14</td><td><strong>潮漫酒店（滕州吾悦广场店）</strong><small>枣庄市 · 7628486039866181651</small></td><td>鲁东省区</td><td>沂枣片区</td><td class="num score-value improve">98</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">搭门店,稳房源,提质量,拿收益</td></tr><tr data-score="102.0" data-change="0.0" data-crown="未认证" data-tier="high" data-area="沂枣片区" data-search="维也纳酒店（枣庄青檀路店） 6731356836974331917"><td class="rank">15</td><td><strong>维也纳酒店（枣庄青檀路店）</strong><small>枣庄市 · 6731356836974331917</small></td><td>鲁东省区</td><td>沂枣片区</td><td class="num score-value high">102</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="102.0" data-change="5.0" data-crown="已认证" data-tier="high" data-area="沂枣片区" data-search="麗枫酒店（枣庄万达广场高铁站店） 6953368920434673705"><td class="rank">16</td><td><strong>麗枫酒店（枣庄万达广场高铁站店）</strong><small>枣庄市 · 6953368920434673705</small></td><td>鲁东省区</td><td>沂枣片区</td><td class="num score-value high">102</td><td><span class="score-status certified">已认证</span></td><td class="num positive">+5</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="105.0" data-change="0.0" data-crown="未认证" data-tier="high" data-area="沂枣片区" data-search="凯里亚德酒店（枣庄万达广场店） 7261120634028034111"><td class="rank">17</td><td><strong>凯里亚德酒店（枣庄万达广场店）</strong><small>枣庄市 · 7261120634028034111</small></td><td>鲁东省区</td><td>沂枣片区</td><td class="num score-value high">105</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">提质量,拿收益</td></tr><tr data-score="105.0" data-change="-5.0" data-crown="已认证" data-tier="high" data-area="沂枣片区" data-search="白玉兰商务酒店(枣庄峄城区冠世榴园店) 7337996405312604198"><td class="rank">18</td><td><strong>白玉兰商务酒店(枣庄峄城区冠世榴园店)</strong><small>枣庄市 · 7337996405312604198</small></td><td>鲁东省区</td><td>沂枣片区</td><td class="num score-value high">105</td><td><span class="score-status certified">已认证</span></td><td class="num negative">-5</td><td class="score-dimension">拿收益</td></tr><tr data-score="105.0" data-change="-5.0" data-crown="已认证" data-tier="high" data-area="沂枣片区" data-search="白玉兰商务酒店（滕州平行南路真爱商城店） 7640451344536455174"><td class="rank">19</td><td><strong>白玉兰商务酒店（滕州平行南路真爱商城店）</strong><small>枣庄市 · 7640451344536455174</small></td><td>鲁东省区</td><td>沂枣片区</td><td class="num score-value high">105</td><td><span class="score-status certified">已认证</span></td><td class="num negative">-5</td><td class="score-dimension">稳房源,拿收益</td></tr><tr data-score="105.0" data-change="-1.0" data-crown="已认证" data-tier="high" data-area="沂枣片区" data-search="白玉兰酒店（枣庄高铁站枣庄学院店） 7280027354171181115"><td class="rank">20</td><td><strong>白玉兰酒店（枣庄高铁站枣庄学院店）</strong><small>枣庄市 · 7280027354171181115</small></td><td>鲁东省区</td><td>沂枣片区</td><td class="num score-value high">105</td><td><span class="score-status certified">已认证</span></td><td class="num negative">-1</td><td class="score-dimension">提质量,拿收益</td></tr><tr data-score="105.0" data-change="-5.0" data-crown="已认证" data-tier="high" data-area="沂枣片区" data-search="维也纳酒店（5.0临沂临沭顺河西街店） 7081256929019824169"><td class="rank">21</td><td><strong>维也纳酒店（5.0临沂临沭顺河西街店）</strong><small>临沂市 · 7081256929019824169</small></td><td>鲁东省区</td><td>沂枣片区</td><td class="num score-value high">105</td><td><span class="score-status certified">已认证</span></td><td class="num negative">-5</td><td class="score-dimension">提质量,拿收益</td></tr><tr data-score="105.0" data-change="5.0" data-crown="已认证" data-tier="high" data-area="沂枣片区" data-search="麗枫酒店（临沂平邑浚河路店） 7188449665556170810"><td class="rank">22</td><td><strong>麗枫酒店（临沂平邑浚河路店）</strong><small>临沂市 · 7188449665556170810</small></td><td>鲁东省区</td><td>沂枣片区</td><td class="num score-value high">105</td><td><span class="score-status certified">已认证</span></td><td class="num positive">+5</td><td class="score-dimension">提质量,拿收益</td></tr><tr data-score="106.0" data-change="5.0" data-crown="未认证" data-tier="high" data-area="沂枣片区" data-search="白玉兰商务酒店（枣庄吾悦广场店） 7253022140289517607"><td class="rank">23</td><td><strong>白玉兰商务酒店（枣庄吾悦广场店）</strong><small>枣庄市 · 7253022140289517607</small></td><td>鲁东省区</td><td>沂枣片区</td><td class="num score-value high">106</td><td><span class="score-status uncertified">未认证</span></td><td class="num positive">+5</td><td class="score-dimension">搭门店,提质量</td></tr><tr data-score="106.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="沂枣片区" data-search="锦江之星（枣庄薛城福星花园店） 7267131493590239293"><td class="rank">24</td><td><strong>锦江之星（枣庄薛城福星花园店）</strong><small>枣庄市 · 7267131493590239293</small></td><td>鲁东省区</td><td>沂枣片区</td><td class="num score-value high">106</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">搭门店,稳房源,拿收益</td></tr><tr data-score="108.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="沂枣片区" data-search="白玉兰商务酒店（枣庄东街口万达广场店） 7619882672839477291"><td class="rank">25</td><td><strong>白玉兰商务酒店（枣庄东街口万达广场店）</strong><small>枣庄市 · 7619882672839477291</small></td><td>鲁东省区</td><td>沂枣片区</td><td class="num score-value high">108</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">搭门店,稳房源,提质量</td></tr><tr data-score="110.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="沂枣片区" data-search="7天优品(枣庄台儿庄古城东门店) 6621361164536252424"><td class="rank">26</td><td><strong>7天优品(枣庄台儿庄古城东门店)</strong><small>枣庄市 · 6621361164536252424</small></td><td>鲁东省区</td><td>沂枣片区</td><td class="num score-value high">110</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">拿收益</td></tr><tr data-score="110.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="沂枣片区" data-search="维也纳国际酒店（5.0临沂费县探沂店） 7366443462708693029"><td class="rank">27</td><td><strong>维也纳国际酒店（5.0临沂费县探沂店）</strong><small>临沂市 · 7366443462708693029</small></td><td>鲁东省区</td><td>沂枣片区</td><td class="num score-value high">110</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">拿收益</td></tr><tr data-score="111.0" data-change="5.0" data-crown="未认证" data-tier="high" data-area="沂枣片区" data-search="亦岚酒店（滕州龙泉广场店） 7158451063463348259"><td class="rank">28</td><td><strong>亦岚酒店（滕州龙泉广场店）</strong><small>枣庄市 · 7158451063463348259</small></td><td>鲁东省区</td><td>沂枣片区</td><td class="num score-value high">111</td><td><span class="score-status uncertified">未认证</span></td><td class="num positive">+5</td><td class="score-dimension">搭门店,提质量</td></tr><tr data-score="115.0" data-change="5.0" data-crown="已认证" data-tier="high" data-area="沂枣片区" data-search="希岸酒店（枣庄市政府光明大厦店） 7529697907474991156"><td class="rank">29</td><td><strong>希岸酒店（枣庄市政府光明大厦店）</strong><small>枣庄市 · 7529697907474991156</small></td><td>鲁东省区</td><td>沂枣片区</td><td class="num score-value high">115</td><td><span class="score-status certified">已认证</span></td><td class="num positive">+5</td><td class="score-dimension">拿收益</td></tr><tr data-score="115.0" data-change="15.0" data-crown="未认证" data-tier="high" data-area="沂枣片区" data-search="希岸酒店（滕州吾悦广场火车站店） 6775709869518358541"><td class="rank">30</td><td><strong>希岸酒店（滕州吾悦广场火车站店）</strong><small>枣庄市 · 6775709869518358541</small></td><td>鲁东省区</td><td>沂枣片区</td><td class="num score-value high">115</td><td><span class="score-status uncertified">未认证</span></td><td class="num positive">+15</td><td class="score-dimension">稳房源</td></tr><tr data-score="115.0" data-change="0.0" data-crown="未认证" data-tier="high" data-area="沂枣片区" data-search="潮漫酒店（费县政务中心理工大学店） 7461426057422309427"><td class="rank">31</td><td><strong>潮漫酒店（费县政务中心理工大学店）</strong><small>临沂市 · 7461426057422309427</small></td><td>鲁东省区</td><td>沂枣片区</td><td class="num score-value high">115</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">拿收益</td></tr><tr data-score="115.0" data-change="0.0" data-crown="未认证" data-tier="high" data-area="沂枣片区" data-search="麗枫酒店（滕州市政府吾悦广场店） 6987958952315930661"><td class="rank">32</td><td><strong>麗枫酒店（滕州市政府吾悦广场店）</strong><small>枣庄市 · 6987958952315930661</small></td><td>鲁东省区</td><td>沂枣片区</td><td class="num score-value high">115</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">拿收益</td></tr><tr data-score="115.0" data-change="0.0" data-crown="已认证" data-tier="high" data-area="沂枣片区" data-search="麗枫酒店（费县政务中心理工大学店） 7440330085485250623"><td class="rank">33</td><td><strong>麗枫酒店（费县政务中心理工大学店）</strong><small>临沂市 · 7440330085485250623</small></td><td>鲁东省区</td><td>沂枣片区</td><td class="num score-value high">115</td><td><span class="score-status certified">已认证</span></td><td class="num neutral">+0</td><td class="score-dimension">拿收益</td></tr><tr data-score="120.0" data-change="0.0" data-crown="未认证" data-tier="high" data-area="沂枣片区" data-search="凯里亚德酒店（滕州新兴北路吾悦广场店） 7157604127126587396"><td class="rank">34</td><td><strong>凯里亚德酒店（滕州新兴北路吾悦广场店）</strong><small>枣庄市 · 7157604127126587396</small></td><td>鲁东省区</td><td>沂枣片区</td><td class="num score-value high">120</td><td><span class="score-status uncertified">未认证</span></td><td class="num neutral">+0</td><td class="score-dimension">无</td></tr><tr data-score="120.0" data-change="5.0" data-crown="已认证" data-tier="high" data-area="沂枣片区" data-search="麗枫酒店（枣庄光明广场店） 7436951043277064192"><td class="rank">35</td><td><strong>麗枫酒店（枣庄光明广场店）</strong><small>枣庄市 · 7436951043277064192</small></td><td>鲁东省区</td><td>沂枣片区</td><td class="num score-value high">120</td><td><span class="score-status certified">已认证</span></td><td class="num positive">+5</td><td class="score-dimension">无</td></tr></tbody></table></div>
+      </article>
+    </section>
 
 
 
+
+
+    <section class="section" id="merchant-live">
+      <div class="section-head"><div><h2>商家自播</h2><p>商家官号 · 近 7 日对比前 7 日 · 数据来源：生意经</p></div></div>
+      <div class="kpis" id="store-live-coverage"><article class="kpi" data-live-metric="total"><span class="kpi-label">总门店</span><b class="kpi-value">39<small style="font-size:14px">家</small></b><div class="kpi-foot">当前组织名单 · POI 去重</div></article><article class="kpi" data-live-metric="live"><span class="kpi-label">已开播门店</span><b class="kpi-value">14<small style="font-size:14px">家</small></b><div class="kpi-foot">周期内至少开播一次</div></article><article class="kpi" data-live-metric="not-live"><span class="kpi-label">未开播门店</span><b class="kpi-value">25<small style="font-size:14px">家</small></b><div class="kpi-foot">未匹配到本期开播记录</div></article><article class="kpi" data-live-metric="rate"><span class="kpi-label">门店开播率</span><b class="kpi-value">35.9%<small style="font-size:14px"></small></b><div class="kpi-foot">已开播门店 ÷ 总门店</div></article></div><p style="font-size:12px;color:var(--muted);line-height:1.7">统计周期：2026-11-02 至 2026-11-08。商家官号直播场次或直播时长大于 0 计为开播，按门店 POI 去重；账号所属门店名称仅接受唯一 POI 匹配。未开播表示未匹配到本期开播记录，未匹配账号可能影响统计结果。</p><article class="panel" style="margin:16px 0"><div class="panel-head"><div><h2>各片区门店开播率与自播业绩</h2><p>近 7 日 · 与当前省区、片区选择一致</p></div></div><div style="overflow-x:auto"><table id="store-live-area-summary"><thead><tr><th>片区</th><th>总门店</th><th>已开播</th><th>未开播*</th><th>开播率</th><th>直播支付额</th><th>直播时长</th><th>直播场次</th><th>开播账号数</th></tr></thead><tbody><tr><td>沂枣片区</td><td>39</td><td>14</td><td>25</td><td>35.9%</td><td>2,783</td><td>76.7h</td><td>64</td><td>14</td></tr></tbody></table></div></article>
+      <div class="kpis">
+        <article class="kpi"><span class="kpi-label">直播成交金额</span><b class="kpi-value">2,783</b><div class="kpi-foot"><span class="positive">+137.8%</span><span>较前 7 日 1,170</span></div></article>
+        <article class="kpi"><span class="kpi-label">直播场次</span><b class="kpi-value">64<small style="font-size:14px">场</small></b><div class="kpi-foot"><span class="positive">+60.0%</span><span>较前 7 日 40场</span></div></article>
+        <article class="kpi"><span class="kpi-label">直播时长</span><b class="kpi-value">76.7h</b><div class="kpi-foot"><span class="positive">+28.0%</span><span>较前 7 日 59.9h</span></div></article>
+        <article class="kpi"><span class="kpi-label">开播账号</span><b class="kpi-value">14<small style="font-size:14px">个</small></b><div class="kpi-foot"><span class="positive">+2个</span><span>较前 7 日</span></div></article>
+      </div>
+      <article class="panel" style="margin-top:16px">
+        <div class="panel-head trend-panel-head"><div class="trend-heading"><h2>直播成交与时长每日趋势</h2><span class="trend-range">11-02–11-08</span></div></div>
+        <div class="chart-scroll merchant-trend-scroll">
+      <div class="merchant-trend-canvas">
+        <svg class="chart-svg merchant-amount-chart" viewBox="0 0 760 245"
+             role="img" aria-label="商家官号直播成交金额每日趋势，单位万元">
+          <line x1="54" y1="34.0" x2="736" y2="34.0" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="122.5" x2="736" y2="122.5" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="211.0" x2="736" y2="211.0" stroke="#ECEEF3" stroke-width="1"/><text x="44" y="38.0" text-anchor="end" class="axis-label">0.2</text><text x="44" y="126.5" text-anchor="end" class="axis-label">0.1</text><text x="44" y="215.0" text-anchor="end" class="axis-label">0.0</text>
+          <path d="M54.0 198.4 L167.7 211.0 L281.3 211.0 L395.0 197.0 L508.7 34.0 L622.3 193.3 L736.0 196.7" fill="none" stroke="#8B6DFF"
+                stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle class="merchant-live-point" cx="54.0" cy="198.4" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="58.0" y="186.4" text-anchor="start" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="167.7" cy="211.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="167.7" y="199.0" text-anchor="middle" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="281.3" cy="211.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="281.3" y="199.0" text-anchor="middle" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="395.0" cy="197.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="395.0" y="185.0" text-anchor="middle" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="508.7" cy="34.0" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="508.7" y="22.0" text-anchor="middle" fill="#8B6DFF">0.2万</text><circle class="merchant-live-point" cx="622.3" cy="193.3" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="622.3" y="181.3" text-anchor="middle" fill="#8B6DFF">0.0万</text><circle class="merchant-live-point" cx="736.0" cy="196.7" r="5" fill="#8B6DFF"/><text class="merchant-live-point-label" x="732.0" y="184.7" text-anchor="end" fill="#8B6DFF">0.0万</text>
+        </svg>
+        <div class="merchant-subchart-title">每日直播时长 <span>单位：小时</span></div>
+        <svg class="chart-svg merchant-duration-chart" viewBox="0 0 760 155"
+             role="img" aria-label="商家官号每日直播时长，单位小时">
+          <line x1="54" y1="28.0" x2="736" y2="28.0" stroke="#ECEEF3" stroke-width="1"/><line x1="54" y1="121.0" x2="736" y2="121.0" stroke="#ECEEF3" stroke-width="1"/><rect class="merchant-duration-bar" x="31.6" y="38.1" width="44.8" height="82.9" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="54.0" y="31.1" text-anchor="middle" fill="#00A7A0">11.8h</text><rect class="merchant-duration-bar" x="145.3" y="76.9" width="44.8" height="44.1" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="167.7" y="69.9" text-anchor="middle" fill="#00A7A0">6.3h</text><rect class="merchant-duration-bar" x="258.9" y="39.5" width="44.8" height="81.5" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="281.3" y="32.5" text-anchor="middle" fill="#00A7A0">11.6h</text><rect class="merchant-duration-bar" x="372.6" y="28.0" width="44.8" height="93.0" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="395.0" y="21.0" text-anchor="middle" fill="#00A7A0">13.2h</text><rect class="merchant-duration-bar" x="486.3" y="28.4" width="44.8" height="92.6" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="508.7" y="21.4" text-anchor="middle" fill="#00A7A0">13.2h</text><rect class="merchant-duration-bar" x="599.9" y="52.0" width="44.8" height="69.0" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="622.3" y="45.0" text-anchor="middle" fill="#00A7A0">9.8h</text><rect class="merchant-duration-bar" x="713.6" y="45.1" width="44.8" height="75.9" rx="4" fill="#00A7A0" fill-opacity=".82"/><text class="merchant-duration-label" x="736.0" y="38.1" text-anchor="middle" fill="#00A7A0">10.8h</text><text x="54.0" y="145" text-anchor="middle" class="axis-label">11-02</text><text x="167.7" y="145" text-anchor="middle" class="axis-label">11-03</text><text x="281.3" y="145" text-anchor="middle" class="axis-label">11-04</text><text x="395.0" y="145" text-anchor="middle" class="axis-label">11-05</text><text x="508.7" y="145" text-anchor="middle" class="axis-label">11-06</text><text x="622.3" y="145" text-anchor="middle" class="axis-label">11-07</text><text x="736.0" y="145" text-anchor="middle" class="axis-label">11-08</text>
+        </svg>
+      </div>
+    </div>
+      </article>
+      <div class="grid-2 equal">
+        <article class="panel"><div class="panel-head"><div><h2>城市自播排名</h2><p>固定区域城市全集 · 可筛选零开播城市并点击业务列排序</p></div></div>
+      <div class="filter-bar merchant-filter-bar">
+        <input id="merchant-city-search" type="search" placeholder="搜索城市"
+               aria-label="搜索城市">
+        <select id="merchant-city-status-filter" aria-label="按开播状态筛选城市">
+          <option value="">全部状态</option>
+          <option value="有开播">有开播</option>
+          <option value="零开播">零开播</option>
+        </select>
+        <span id="merchant-city-result-count" class="filter-count"></span>
+      </div>
+      <div class="table-scroll">
+        <table class="merchant-table">
+          <thead><tr>
+            <th>#</th>
+            <th><button class="sort-trigger merchant-city-sort-trigger" type="button" data-sort-key="city-name" onclick="sortMerchantCityTable('city-name')" title="按城市排序">城市 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-city-sort-trigger" type="button" data-sort-key="city-live-amount" onclick="sortMerchantCityTable('city-live-amount')" title="按直播成交金额排序">直播成交金额 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-city-sort-trigger" type="button" data-sort-key="city-live-sessions" onclick="sortMerchantCityTable('city-live-sessions')" title="按直播场次排序">直播场次 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-city-sort-trigger" type="button" data-sort-key="city-live-hours" onclick="sortMerchantCityTable('city-live-hours')" title="按直播时长排序">直播时长 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-city-sort-trigger" type="button" data-sort-key="city-account-count" onclick="sortMerchantCityTable('city-account-count')" title="按账号数排序">账号数 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-city-sort-trigger" type="button" data-sort-key="city-live-account-count" onclick="sortMerchantCityTable('city-live-account-count')" title="按开播账号排序">开播账号 <span class="sort-indicator">↕</span></button></th>
+          </tr></thead>
+          <tbody id="merchant-city-body">
+        <tr data-city-name="枣庄市"
+            data-city-status="有开播"
+            data-city-live-amount="1946.6"
+            data-city-live-sessions="48.0"
+            data-city-live-hours="50.97305555555555"
+            data-city-account-count="14.0"
+            data-city-live-account-count="11.0">
+          <td class="rank">01</td>
+          <td><strong>枣庄市</strong><small><span class="live-status 有开播">有开播</span></small></td>
+          <td class="num">1,947</td>
+          <td class="num">48</td>
+          <td class="num">51.0h</td>
+          <td class="num">14</td>
+          <td class="num">11</td>
+        </tr>
+
+        <tr data-city-name="临沂市"
+            data-city-status="有开播"
+            data-city-live-amount="836.0"
+            data-city-live-sessions="16.0"
+            data-city-live-hours="25.72833333333333"
+            data-city-account-count="4.0"
+            data-city-live-account-count="3.0">
+          <td class="rank">02</td>
+          <td><strong>临沂市</strong><small><span class="live-status 有开播">有开播</span></small></td>
+          <td class="num">836</td>
+          <td class="num">16</td>
+          <td class="num">25.7h</td>
+          <td class="num">4</td>
+          <td class="num">3</td>
+        </tr>
+        </tbody>
+        </table>
+      </div>
+    </article>
+        <article class="panel"><div class="panel-head"><div><h2>账号明细</h2><p>14 日出现账号全集 · “未直播”为近 7 日直播场次等于 0</p></div></div>
+      <div class="filter-bar merchant-filter-bar">
+        <input id="merchant-account-search" type="search"
+               placeholder="搜索账号、ID 或门店" aria-label="搜索账号、ID 或门店">
+        <select id="merchant-account-city-filter" aria-label="按城市筛选账号">
+          <option value="">全部城市</option><option value="临沂市">临沂市</option><option value="枣庄市">枣庄市</option>
+        </select>
+        <select id="merchant-account-status-filter" aria-label="按直播状态筛选账号">
+          <option value="">全部状态</option>
+          <option value="有直播">有直播</option>
+          <option value="未直播">未直播</option>
+        </select>
+        <span id="merchant-account-result-count" class="filter-count"></span>
+      </div>
+      <div class="table-scroll">
+        <table class="merchant-table">
+          <thead><tr>
+            <th>#</th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-name" onclick="sortMerchantAccountTable('account-name')" title="按抖音号排序">抖音号 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-location" onclick="sortMerchantAccountTable('account-location')" title="按城市 / 门店排序">城市 / 门店 <span class="sort-indicator">↕</span></button></th>
+            <th>一级省区 / 二级片区</th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-live-amount" onclick="sortMerchantAccountTable('account-live-amount')" title="按直播成交金额排序">直播成交金额 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-live-sessions" onclick="sortMerchantAccountTable('account-live-sessions')" title="按直播场次排序">直播场次 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-live-hours" onclick="sortMerchantAccountTable('account-live-hours')" title="按直播时长排序">直播时长 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-total-amount" onclick="sortMerchantAccountTable('account-total-amount')" title="按总成交金额排序">总成交金额 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-redeem-amount" onclick="sortMerchantAccountTable('account-redeem-amount')" title="按总核销金额排序">总核销金额 <span class="sort-indicator">↕</span></button></th>
+          </tr></thead>
+          <tbody id="merchant-account-body">
+        <tr data-account-name="白玉兰酒店(枣庄东街口万达广场店)专用号"
+            data-account-id="63343025414"
+            data-account-city="枣庄市"
+            data-account-store="白玉兰酒店(枣庄东街口万达广场店)"
+            data-account-location="枣庄市 白玉兰酒店(枣庄东街口万达广场店)"
+            data-account-province="鲁东省区"
+            data-account-area="沂枣片区"
+            data-account-status="有直播"
+            data-account-live-amount="1463.0"
+            data-account-live-sessions="11.0"
+            data-account-live-hours="4.889166666666667"
+            data-account-total-amount="1661.0"
+            data-account-redeem-amount="377.0">
+          <td class="rank">01</td>
+          <td><strong>白玉兰酒店(枣庄东街口万达广场店)专用号</strong><small>63343025414 · <span class="live-status 有直播">有直播</span></small></td>
+          <td>枣庄市<small>白玉兰酒店(枣庄东街口万达广场店)</small></td>
+          <td>鲁东省区<small>沂枣片区</small></td>
+          <td class="num">1,463</td>
+          <td class="num">11</td>
+          <td class="num">4.9h</td>
+          <td class="num">1,661</td>
+          <td class="num">377</td>
+        </tr>
+
+        <tr data-account-name="麗枫酒店(临沂平邑浚河路店)专用号"
+            data-account-id="86762705576"
+            data-account-city="临沂市"
+            data-account-store="麗枫酒店(临沂平邑浚河路店)"
+            data-account-location="临沂市 麗枫酒店(临沂平邑浚河路店)"
+            data-account-province="鲁东省区"
+            data-account-area="沂枣片区"
+            data-account-status="有直播"
+            data-account-live-amount="836.0"
+            data-account-live-sessions="6.0"
+            data-account-live-hours="12.062222222222221"
+            data-account-total-amount="1045.0"
+            data-account-redeem-amount="627.0">
+          <td class="rank">02</td>
+          <td><strong>麗枫酒店(临沂平邑浚河路店)专用号</strong><small>86762705576 · <span class="live-status 有直播">有直播</span></small></td>
+          <td>临沂市<small>麗枫酒店(临沂平邑浚河路店)</small></td>
+          <td>鲁东省区<small>沂枣片区</small></td>
+          <td class="num">836</td>
+          <td class="num">6</td>
+          <td class="num">12.1h</td>
+          <td class="num">1,045</td>
+          <td class="num">627</td>
+        </tr>
+
+        <tr data-account-name="希岸酒店(枣庄市政府光明大厦店)专用号"
+            data-account-id="67639871007"
+            data-account-city="枣庄市"
+            data-account-store="希岸酒店(枣庄市政府光明大厦店)"
+            data-account-location="枣庄市 希岸酒店(枣庄市政府光明大厦店)"
+            data-account-province="鲁东省区"
+            data-account-area="沂枣片区"
+            data-account-status="有直播"
+            data-account-live-amount="169.0"
+            data-account-live-sessions="2.0"
+            data-account-live-hours="1.54"
+            data-account-total-amount="169.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">03</td>
+          <td><strong>希岸酒店(枣庄市政府光明大厦店)专用号</strong><small>67639871007 · <span class="live-status 有直播">有直播</span></small></td>
+          <td>枣庄市<small>希岸酒店(枣庄市政府光明大厦店)</small></td>
+          <td>鲁东省区<small>沂枣片区</small></td>
+          <td class="num">169</td>
+          <td class="num">2</td>
+          <td class="num">1.5h</td>
+          <td class="num">169</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="麗枫酒店(台儿庄古城店)"
+            data-account-id="LF0632_6187555"
+            data-account-city="枣庄市"
+            data-account-store="麗枫酒店(台儿庄古城店)"
+            data-account-location="枣庄市 麗枫酒店(台儿庄古城店)"
+            data-account-province="鲁东省区"
+            data-account-area="沂枣片区"
+            data-account-status="有直播"
+            data-account-live-amount="165.6"
+            data-account-live-sessions="7.0"
+            data-account-live-hours="9.446666666666667"
+            data-account-total-amount="324.6"
+            data-account-redeem-amount="0.0">
+          <td class="rank">04</td>
+          <td><strong>麗枫酒店(台儿庄古城店)</strong><small>LF0632_6187555 · <span class="live-status 有直播">有直播</span></small></td>
+          <td>枣庄市<small>麗枫酒店(台儿庄古城店)</small></td>
+          <td>鲁东省区<small>沂枣片区</small></td>
+          <td class="num">166</td>
+          <td class="num">7</td>
+          <td class="num">9.4h</td>
+          <td class="num">325</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="凯里亚德滕州新兴北路吾悦广场店"
+            data-account-id="32196348663"
+            data-account-city="枣庄市"
+            data-account-store="凯里亚德酒店(滕州市政府吾悦广场店)"
+            data-account-location="枣庄市 凯里亚德酒店(滕州市政府吾悦广场店)"
+            data-account-province="鲁东省区"
+            data-account-area="沂枣片区"
+            data-account-status="有直播"
+            data-account-live-amount="149.0"
+            data-account-live-sessions="3.0"
+            data-account-live-hours="2.0572222222222223"
+            data-account-total-amount="149.0"
+            data-account-redeem-amount="149.0">
+          <td class="rank">05</td>
+          <td><strong>凯里亚德滕州新兴北路吾悦广场店</strong><small>32196348663 · <span class="live-status 有直播">有直播</span></small></td>
+          <td>枣庄市<small>凯里亚德酒店(滕州市政府吾悦广场店)</small></td>
+          <td>鲁东省区<small>沂枣片区</small></td>
+          <td class="num">149</td>
+          <td class="num">3</td>
+          <td class="num">2.1h</td>
+          <td class="num">149</td>
+          <td class="num">149</td>
+        </tr>
+
+        <tr data-account-name="7天优品(枣庄台儿庄古城店)专用号"
+            data-account-id="48376207375"
+            data-account-city="枣庄市"
+            data-account-store="7天优品(枣庄台儿庄古城店)"
+            data-account-location="枣庄市 7天优品(枣庄台儿庄古城店)"
+            data-account-province="鲁东省区"
+            data-account-area="沂枣片区"
+            data-account-status="有直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="10.0"
+            data-account-live-hours="16.691944444444445"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">06</td>
+          <td><strong>7天优品(枣庄台儿庄古城店)专用号</strong><small>48376207375 · <span class="live-status 有直播">有直播</span></small></td>
+          <td>枣庄市<small>7天优品(枣庄台儿庄古城店)</small></td>
+          <td>鲁东省区<small>沂枣片区</small></td>
+          <td class="num">0</td>
+          <td class="num">10</td>
+          <td class="num">16.7h</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="丽枫酒店（费县政务中心理工大学店）专用号"
+            data-account-id="55498994380"
+            data-account-city="临沂市"
+            data-account-store="丽枫酒店·(费县政务中心理工大学店)"
+            data-account-location="临沂市 丽枫酒店·(费县政务中心理工大学店)"
+            data-account-province="鲁东省区"
+            data-account-area="沂枣片区"
+            data-account-status="有直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="8.0"
+            data-account-live-hours="13.158333333333333"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">07</td>
+          <td><strong>丽枫酒店（费县政务中心理工大学店）专用号</strong><small>55498994380 · <span class="live-status 有直播">有直播</span></small></td>
+          <td>临沂市<small>丽枫酒店·(费县政务中心理工大学店)</small></td>
+          <td>鲁东省区<small>沂枣片区</small></td>
+          <td class="num">0</td>
+          <td class="num">8</td>
+          <td class="num">13.2h</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="白玉兰酒店（滕州平行南路店）"
+            data-account-id="baiyulanjiudian."
+            data-account-city="枣庄市"
+            data-account-store="白玉兰商务酒店(滕州平行南路店)"
+            data-account-location="枣庄市 白玉兰商务酒店(滕州平行南路店)"
+            data-account-province="鲁东省区"
+            data-account-area="沂枣片区"
+            data-account-status="有直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="7.0"
+            data-account-live-hours="6.841666666666667"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">08</td>
+          <td><strong>白玉兰酒店（滕州平行南路店）</strong><small>baiyulanjiudian. · <span class="live-status 有直播">有直播</span></small></td>
+          <td>枣庄市<small>白玉兰商务酒店(滕州平行南路店)</small></td>
+          <td>鲁东省区<small>沂枣片区</small></td>
+          <td class="num">0</td>
+          <td class="num">7</td>
+          <td class="num">6.8h</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="维也纳酒店(枣庄青檀路店)专用号"
+            data-account-id="WYN2771001"
+            data-account-city="枣庄市"
+            data-account-store="维也纳酒店(枣庄青檀路店)"
+            data-account-location="枣庄市 维也纳酒店(枣庄青檀路店)"
+            data-account-province="鲁东省区"
+            data-account-area="沂枣片区"
+            data-account-status="有直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="2.0"
+            data-account-live-hours="2.2319444444444443"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">09</td>
+          <td><strong>维也纳酒店(枣庄青檀路店)专用号</strong><small>WYN2771001 · <span class="live-status 有直播">有直播</span></small></td>
+          <td>枣庄市<small>维也纳酒店(枣庄青檀路店)</small></td>
+          <td>鲁东省区<small>沂枣片区</small></td>
+          <td class="num">0</td>
+          <td class="num">2</td>
+          <td class="num">2.2h</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="喆啡酒店(滕州市政府吾悦广场店)专用号"
+            data-account-id="88104044582"
+            data-account-city="枣庄市"
+            data-account-store="喆啡酒店(滕州市政府吾悦广场店)"
+            data-account-location="枣庄市 喆啡酒店(滕州市政府吾悦广场店)"
+            data-account-province="鲁东省区"
+            data-account-area="沂枣片区"
+            data-account-status="有直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="2.0"
+            data-account-live-hours="2.405277777777778"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">10</td>
+          <td><strong>喆啡酒店(滕州市政府吾悦广场店)专用号</strong><small>88104044582 · <span class="live-status 有直播">有直播</span></small></td>
+          <td>枣庄市<small>喆啡酒店(滕州市政府吾悦广场店)</small></td>
+          <td>鲁东省区<small>沂枣片区</small></td>
+          <td class="num">0</td>
+          <td class="num">2</td>
+          <td class="num">2.4h</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="维也纳国际酒店(临沂费县探沂店)"
+            data-account-id="64544272471"
+            data-account-city="临沂市"
+            data-account-store="维也纳国际酒店(临沂费县探沂店)"
+            data-account-location="临沂市 维也纳国际酒店(临沂费县探沂店)"
+            data-account-province="鲁东省区"
+            data-account-area="沂枣片区"
+            data-account-status="有直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="2.0"
+            data-account-live-hours="0.5077777777777777"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">11</td>
+          <td><strong>维也纳国际酒店(临沂费县探沂店)</strong><small>64544272471 · <span class="live-status 有直播">有直播</span></small></td>
+          <td>临沂市<small>维也纳国际酒店(临沂费县探沂店)</small></td>
+          <td>鲁东省区<small>沂枣片区</small></td>
+          <td class="num">0</td>
+          <td class="num">2</td>
+          <td class="num">0.5h</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="麗枫酒店(枣庄光明广场店)"
+            data-account-id="49012174110"
+            data-account-city="枣庄市"
+            data-account-store="麗枫酒店(枣庄光明广场店)"
+            data-account-location="枣庄市 麗枫酒店(枣庄光明广场店)"
+            data-account-province="鲁东省区"
+            data-account-area="沂枣片区"
+            data-account-status="有直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="2.0"
+            data-account-live-hours="2.8319444444444444"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">12</td>
+          <td><strong>麗枫酒店(枣庄光明广场店)</strong><small>49012174110 · <span class="live-status 有直播">有直播</span></small></td>
+          <td>枣庄市<small>麗枫酒店(枣庄光明广场店)</small></td>
+          <td>鲁东省区<small>沂枣片区</small></td>
+          <td class="num">0</td>
+          <td class="num">2</td>
+          <td class="num">2.8h</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="锦江之星风尚酒店(枣庄青檀南路店)专用号"
+            data-account-id="47971808802"
+            data-account-city="枣庄市"
+            data-account-store="锦江之星风尚酒店(枣庄青檀南路店)"
+            data-account-location="枣庄市 锦江之星风尚酒店(枣庄青檀南路店)"
+            data-account-province="鲁东省区"
+            data-account-area="沂枣片区"
+            data-account-status="有直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="1.0"
+            data-account-live-hours="1.271111111111111"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">13</td>
+          <td><strong>锦江之星风尚酒店(枣庄青檀南路店)专用号</strong><small>47971808802 · <span class="live-status 有直播">有直播</span></small></td>
+          <td>枣庄市<small>锦江之星风尚酒店(枣庄青檀南路店)</small></td>
+          <td>鲁东省区<small>沂枣片区</small></td>
+          <td class="num">0</td>
+          <td class="num">1</td>
+          <td class="num">1.3h</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="白玉兰酒店(枣庄吾悦广场店)专用号"
+            data-account-id="40646536247"
+            data-account-city="枣庄市"
+            data-account-store="白玉兰酒店(枣庄吾悦广场店)"
+            data-account-location="枣庄市 白玉兰酒店(枣庄吾悦广场店)"
+            data-account-province="鲁东省区"
+            data-account-area="沂枣片区"
+            data-account-status="有直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="1.0"
+            data-account-live-hours="0.7661111111111111"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">14</td>
+          <td><strong>白玉兰酒店(枣庄吾悦广场店)专用号</strong><small>40646536247 · <span class="live-status 有直播">有直播</span></small></td>
+          <td>枣庄市<small>白玉兰酒店(枣庄吾悦广场店)</small></td>
+          <td>鲁东省区<small>沂枣片区</small></td>
+          <td class="num">0</td>
+          <td class="num">1</td>
+          <td class="num">0.8h</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="希岸酒店(台儿庄古城店)专用号"
+            data-account-id="73631038280"
+            data-account-city="枣庄市"
+            data-account-store="希岸酒店(台儿庄古城店)"
+            data-account-location="枣庄市 希岸酒店(台儿庄古城店)"
+            data-account-province="鲁东省区"
+            data-account-area="沂枣片区"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="169.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">15</td>
+          <td><strong>希岸酒店(台儿庄古城店)专用号</strong><small>73631038280 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>枣庄市<small>希岸酒店(台儿庄古城店)</small></td>
+          <td>鲁东省区<small>沂枣片区</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0h</td>
+          <td class="num">169</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="潮漫酒店(滕州吾悦广场店)专用号"
+            data-account-id="71175665382"
+            data-account-city="枣庄市"
+            data-account-store="潮漫酒店(滕州吾悦广场店)"
+            data-account-location="枣庄市 潮漫酒店(滕州吾悦广场店)"
+            data-account-province="鲁东省区"
+            data-account-area="沂枣片区"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="526.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">16</td>
+          <td><strong>潮漫酒店(滕州吾悦广场店)专用号</strong><small>71175665382 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>枣庄市<small>潮漫酒店(滕州吾悦广场店)</small></td>
+          <td>鲁东省区<small>沂枣片区</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0h</td>
+          <td class="num">526</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="潮漫酒店(费县政务中心理工大学店)专用号"
+            data-account-id="41276163688"
+            data-account-city="临沂市"
+            data-account-store="潮漫酒店(费县政务中心理工大学店)"
+            data-account-location="临沂市 潮漫酒店(费县政务中心理工大学店)"
+            data-account-province="鲁东省区"
+            data-account-area="沂枣片区"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="0.0"
+            data-account-redeem-amount="0.0">
+          <td class="rank">17</td>
+          <td><strong>潮漫酒店(费县政务中心理工大学店)专用号</strong><small>41276163688 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>临沂市<small>潮漫酒店(费县政务中心理工大学店)</small></td>
+          <td>鲁东省区<small>沂枣片区</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0h</td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+        </tr>
+
+        <tr data-account-name="凯里亚德酒店(枣庄万达广场店)专用号"
+            data-account-id="0632.6877666"
+            data-account-city="枣庄市"
+            data-account-store="凯里亚德酒店(枣庄万达广场店)"
+            data-account-location="枣庄市 凯里亚德酒店(枣庄万达广场店)"
+            data-account-province="鲁东省区"
+            data-account-area="沂枣片区"
+            data-account-status="未直播"
+            data-account-live-amount="0.0"
+            data-account-live-sessions="0.0"
+            data-account-live-hours="0.0"
+            data-account-total-amount="139.0"
+            data-account-redeem-amount="139.0">
+          <td class="rank">18</td>
+          <td><strong>凯里亚德酒店(枣庄万达广场店)专用号</strong><small>0632.6877666 · <span class="live-status 未直播">未直播</span></small></td>
+          <td>枣庄市<small>凯里亚德酒店(枣庄万达广场店)</small></td>
+          <td>鲁东省区<small>沂枣片区</small></td>
+          <td class="num">0</td>
+          <td class="num">0</td>
+          <td class="num">0.0h</td>
+          <td class="num">139</td>
+          <td class="num">139</td>
+        </tr>
+        </tbody>
+        </table>
+      </div>
+    </article>
+      </div>
+    </section>
 
 
   </main>
 </div>
 <nav class="mobile-nav">
-  <button class="active" data-target="overview">总览</button><button data-target="provinces">组织</button><button data-target="stores">门店</button><button data-target="attribution">归因</button><button data-target="providers">服务商</button><button data-target="voucher">通兑</button>
+  <button class="active" data-target="overview">总览</button><button data-target="provinces">组织</button><button data-target="stores">门店</button><button data-target="attribution">归因</button><button data-target="providers">服务商</button><button data-target="voucher">通兑</button><button data-target="operation-score">经营分</button><button data-target="merchant-live">自播</button>
 </nav>
 <script>
 const navItems=[...document.querySelectorAll('[data-target]')];
@@ -1909,7 +2486,7 @@ sortChannelTable('redeem-delta');
 sortMerchantCityTable('city-live-amount');
 sortMerchantAccountTable('account-live-amount');
 sortOperationScoreTable('score');
-document.documentElement.dataset.workbench="{\"region\": \"鲁东省区 · 沂枣片区\", \"periods\": {\"previous_start\": \"2026-10-26\", \"previous_end\": \"2026-11-01\", \"current_start\": \"2026-11-02\", \"current_end\": \"2026-11-08\"}, \"verification\": {\"detail_row_count\": 885, \"channel_row_count\": 941, \"other_region_row_count\": 0, \"provider_count\": 5, \"store_count\": 35, \"voucher_product_count\": 10, \"product_structure_closed\": true, \"master_store_count\": 39, \"data_store_count\": 35, \"zero_data_store_count\": 4, \"organization_province_count\": 1, \"organization_area_count\": 1, \"selected_province\": \"鲁东省区\", \"selected_area\": \"沂枣片区\", \"detail_channel_closure\": {\"意向成交金额\": true, \"意向成交券数\": true, \"意向成交间夜\": true, \"核销金额\": true, \"核销券数\": true, \"核销间夜\": true}, \"provider_binding_counts\": {\"杭州四库传媒有限公司\": 27, \"山东辉烁营销策划有限公司\": 1, \"青岛三合酒店管理有限公司\": 1, \"未绑定服务商\": 9, \"山东满住酒店管理有限公司\": 1}, \"bound_store_count\": 30, \"unbound_store_count\": 9, \"passed\": true}, \"organization_navigation\": {\"selected_province\": \"鲁东省区\", \"selected_area\": \"沂枣片区\", \"province_urls\": {\"鲁东省区\": \"workbench_ludong.html\"}, \"area_urls\": {\"鲁东省区\": {\"临沂片区\": \"workbench_ludong__鲁东省区__临沂片区.html\", \"威烟片区\": \"workbench_ludong__鲁东省区__威烟片区.html\", \"日照片区\": \"workbench_ludong__鲁东省区__日照片区.html\", \"沂枣片区\": \"workbench_ludong__鲁东省区__沂枣片区.html\", \"淄博片区\": \"workbench_ludong__鲁东省区__淄博片区.html\", \"潍坊片区\": \"workbench_ludong__鲁东省区__潍坊片区.html\", \"烟台片区\": \"workbench_ludong__鲁东省区__烟台片区.html\", \"青岛前海片区\": \"workbench_ludong__鲁东省区__青岛前海片区.html\", \"青岛北片区\": \"workbench_ludong__鲁东省区__青岛北片区.html\", \"青岛西片区\": \"workbench_ludong__鲁东省区__青岛西片区.html\"}}}}";
+document.documentElement.dataset.workbench="{\"region\": \"鲁东省区 · 沂枣片区\", \"periods\": {\"previous_start\": \"2026-10-26\", \"previous_end\": \"2026-11-01\", \"current_start\": \"2026-11-02\", \"current_end\": \"2026-11-08\"}, \"verification\": {\"detail_row_count\": 885, \"channel_row_count\": 941, \"other_region_row_count\": 0, \"provider_count\": 5, \"store_count\": 35, \"voucher_product_count\": 16, \"product_structure_closed\": true, \"master_store_count\": 39, \"data_store_count\": 35, \"zero_data_store_count\": 4, \"organization_province_count\": 1, \"organization_area_count\": 1, \"selected_province\": \"鲁东省区\", \"selected_area\": \"沂枣片区\", \"detail_channel_closure\": {\"意向成交金额\": true, \"意向成交券数\": true, \"意向成交间夜\": true, \"核销金额\": true, \"核销券数\": true, \"核销间夜\": true}, \"provider_binding_counts\": {\"杭州四库传媒有限公司\": 27, \"山东辉烁营销策划有限公司\": 1, \"青岛三合酒店管理有限公司\": 1, \"未绑定服务商\": 9, \"山东满住酒店管理有限公司\": 1}, \"bound_store_count\": 30, \"unbound_store_count\": 9, \"passed\": true, \"store_live_coverage\": {\"total_stores\": 39, \"live_stores\": 14, \"not_live_stores\": 25, \"live_rate\": 0.358974358974359, \"start\": \"2026-11-02\", \"end\": \"2026-11-08\"}}, \"organization_navigation\": {\"selected_province\": \"鲁东省区\", \"selected_area\": \"沂枣片区\", \"province_urls\": {\"鲁东省区\": \"workbench_ludong.html\"}, \"area_urls\": {\"鲁东省区\": {\"临沂片区\": \"workbench_ludong__鲁东省区__临沂片区.html\", \"威烟片区\": \"workbench_ludong__鲁东省区__威烟片区.html\", \"日照片区\": \"workbench_ludong__鲁东省区__日照片区.html\", \"沂枣片区\": \"workbench_ludong__鲁东省区__沂枣片区.html\", \"淄博片区\": \"workbench_ludong__鲁东省区__淄博片区.html\", \"潍坊片区\": \"workbench_ludong__鲁东省区__潍坊片区.html\", \"烟台片区\": \"workbench_ludong__鲁东省区__烟台片区.html\", \"青岛前海片区\": \"workbench_ludong__鲁东省区__青岛前海片区.html\", \"青岛北片区\": \"workbench_ludong__鲁东省区__青岛北片区.html\", \"青岛西片区\": \"workbench_ludong__鲁东省区__青岛西片区.html\"}}}}";
 </script>
 </body>
 </html>
