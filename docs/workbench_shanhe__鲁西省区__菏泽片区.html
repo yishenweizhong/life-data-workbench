@@ -440,21 +440,26 @@ td { border-color: var(--line); padding: 15px 12px; }
 .wb-dialog-footer small { color: var(--muted); font-size: 11px; }
 .wb-wave-canvas { position: fixed; z-index: 90; pointer-events: none; }
 .wb-wave-launch {
-  position:fixed;z-index:91;inset:0;pointer-events:none;overflow:hidden;
+  position:fixed;z-index:91;top:0;pointer-events:none;overflow:hidden;
 }
 .wb-wave-launch i {
   position:absolute;width:160px;height:160px;border-radius:50%;
-  background:radial-gradient(circle,transparent 44%,#99b5ff3d 48%,#bd91ed66 50%,#f5bf9966 52%,transparent 57%);
-  animation:wb-wave-prime .75s cubic-bezier(.16,1,.3,1) both;
-}
-@keyframes wb-wave-prime {
-  0%{transform:scale(.15);opacity:0}
-  22%{opacity:.8}
-  100%{transform:scale(1.35);opacity:.12}
+  border:1px solid #93b6fb8f;
+  background:radial-gradient(circle,transparent 65%,#6c9cf01c 67%,#c38ce626 69%,#f4bc8f24 71%,transparent 73%);
+  box-shadow:inset 0 0 12px #abd0ff30,0 0 14px #9caff530;
+  will-change:transform,opacity;
 }
 .wb-brief-window{cursor:grab;touch-action:pan-y}
 .wb-brief[data-scrubbing="true"] .wb-brief-window{cursor:grabbing;user-select:none}
 .wb-brief-track{will-change:transform}
+.wb-brief[data-static="false"] .wb-brief-window {
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 26px,#000 calc(100% - 26px),transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 26px,#000 calc(100% - 26px),transparent);
+}
+.wb-brief[data-static="false"] .wb-brief-item::before {
+  content:"";display:inline-block;flex:none;width:5px;height:5px;border-radius:50%;
+  margin-right:12px;background:var(--accent);box-shadow:0 0 0 3px var(--accent-soft);
+}
 .wb-wave-reflect { box-shadow: 0 0 0 1px var(--accent), 0 0 22px #b4c7ff36; }
 @supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .sidebar, .mobile-nav { background: var(--glass); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
@@ -3505,13 +3510,16 @@ SOFTWARE. */
   let brief, track, group, viewport, toggle, animation, resizeObserver, visibilityObserver;
   let hovered = false, focused = false, inView = true, rebuilding = false;
   let rateFrame = 0, playbackRate = 0, savedPhase = 0, marqueeDrag;
-  const baseSpeed = 32;
+  const baseSpeed = 38;
   function stopRate() { cancelAnimationFrame(rateFrame); rateFrame = 0; }
   function applyRate(value) {
     playbackRate = value;
     if (animation) {
-      if (typeof animation.updatePlaybackRate === "function") animation.updatePlaybackRate(value);
-      else animation.playbackRate = value;
+      // Infinite WAAPI effects cannot be played backward in Chromium.
+      // Negative inertia is advanced locally by the short ramp below.
+      const nativeRate=Math.max(0,value);
+      if (typeof animation.updatePlaybackRate === "function") animation.updatePlaybackRate(nativeRate);
+      else animation.playbackRate = nativeRate;
     }
     if (brief) brief.dataset.playbackRate = String(Math.round(value * 1000) / 1000);
   }
@@ -3522,14 +3530,14 @@ SOFTWARE. */
     brief.id = "wb-brief";
     brief.className = "wb-brief";
     brief.dataset.static = "true";
-    brief.dataset.marqueeVersion = "v5";
+    brief.dataset.marqueeVersion = "v6";
     brief.setAttribute("aria-label", "本期重点提示");
     brief.innerHTML = '<span class="wb-brief-label">本期关注</span><div class="wb-brief-window"><div class="wb-brief-track"><ul class="wb-brief-group"></ul></div></div><button id="wb-marquee-toggle" type="button" class="wb-marquee-toggle" aria-controls="wb-brief">暂停</button>';
     track = brief.querySelector(".wb-brief-track");
     group = brief.querySelector(".wb-brief-group");
     viewport = brief.querySelector(".wb-brief-window");
     toggle = brief.querySelector("#wb-marquee-toggle");
-    viewport.title = "悬停减速，横向拖动查看";
+    viewport.title = "悬停平滑减速，左右拖动，松手惯性回归";
     for (const headline of headlines) {
       const item = document.createElement("li");
       item.className = "wb-brief-item";
@@ -3597,7 +3605,12 @@ SOFTWARE. */
       brief.dataset.scrubbing="false";
       if(d.active){
         const velocity=event.type==="pointerup"&&event.timeStamp-d.stamp<120?d.velocity:0;
-        applyRate(Math.max(0,Math.min(2,-velocity*1000/baseSpeed)));
+        // Leave one full cycle behind the playhead so a rightward throw can
+        // reverse briefly without hitting the start of an infinite animation.
+        const duration=Number(brief.dataset.duration);
+        animation.currentTime=((animation.currentTime%duration)+duration)%duration+duration;
+        applyRate(Math.max(-3,Math.min(3,-velocity*1000/baseSpeed)));
+        brief.dataset.releaseRate=String(playbackRate);
       }
       syncPlayback();
     };
@@ -3668,20 +3681,28 @@ SOFTWARE. */
       applyRate(0);animation.pause();return;
     }
     const target=running?1:0;
-    if(!target && playbackRate<.003){applyRate(0);animation.pause();return;}
-    if(playbackRate<.001){
+    if(!target && Math.abs(playbackRate)<.003){applyRate(0);animation.pause();return;}
+    if(Math.abs(playbackRate)<.001){
       // A zero-rate infinite animation has no reverse end to start from.
       animation.playbackRate=.001;applyRate(.001);
     }
-    animation.play();
+    if(playbackRate>=0)animation.play();
+    else animation.pause();
     let last=performance.now();
     function ramp(now){
-      const dt=Math.min((now-last)/1000,.05);last=now;
-      const next=playbackRate+(target-playbackRate)*(1-Math.exp(-dt/.115));
+      const dt=Math.max(0,Math.min((now-last)/1000,.05));last=now;
+      const next=playbackRate+(target-playbackRate)*(1-Math.exp(-dt/(running ? .24 : .16)));
       if(Math.abs(next-target)<.003){
         applyRate(target);if(!target)animation.pause();rateFrame=0;return;
       }
-      applyRate(next);rateFrame=requestAnimationFrame(ramp);
+      if(next<0){
+        const duration=Number(brief.dataset.duration);
+        animation.currentTime=((animation.currentTime+next*dt*1000)%duration+duration)%duration+duration;
+        animation.pause();
+      }
+      applyRate(next);
+      if(next>0 && animation.playState==="paused")animation.play();
+      rateFrame=requestAnimationFrame(ramp);
     }
     rateFrame=requestAnimationFrame(ramp);
   }
@@ -3848,9 +3869,32 @@ SOFTWARE. */
   // The original page stays live. Only a short-lived band from a local snapshot
   // is placed over the visible content; navigation and window frames are excluded.
   let waveToken = 0, waveFrame = 0, waveResources, waveLaunch;
+  function launchWave(origin, left, width, height, cx, cy) {
+    // This feedback starts in the same input frame, before snapshot rendering.
+    // Its rings are a separate optical accent; the shader below does refraction.
+    const layer=document.createElement("div");
+    layer.className="wb-wave-launch";layer.setAttribute("aria-hidden","true");
+    layer.dataset.reason=origin?.reason||"appearance-change";
+    layer.dataset.waveVersion="v6";
+    Object.assign(layer.style,{left:`${left}px`,width:`${width}px`,height:`${height}px`});
+    const radius=Math.min(540,Math.max(width,height)*.62);
+    for(let index=0;index<3;index++){
+      const ring=document.createElement("i");
+      Object.assign(ring.style,{left:`${cx-80}px`,top:`${cy-80}px`});
+      layer.append(ring);
+      const animation=ring.animate([
+        {transform:"scale(.12)",opacity:0},
+        {transform:`scale(${radius/80*.35})`,opacity:.65,offset:.24},
+        {transform:`scale(${radius/80})`,opacity:0}
+      ],{duration:920+index*100,delay:index*65,easing:"cubic-bezier(.16,1,.3,1)",fill:"both"});
+      if(index===2)animation.finished.then(()=>{layer.remove();if(waveLaunch===layer)waveLaunch=null;}).catch(()=>{});
+    }
+    waveLaunch=layer;document.body.append(layer);
+  }
   function cancelWave(reason="cancelled") {
     root.dataset.waveState="idle";root.dataset.waveEnd=typeof reason==="string"?reason:reason?.type||"cancelled";
     waveToken++; cancelAnimationFrame(waveFrame); waveFrame = 0;
+    waveLaunch?.querySelectorAll("i").forEach(node=>node.getAnimations().forEach(animation=>animation.cancel()));
     waveLaunch?.remove();waveLaunch=null;
     if (waveResources) {
       const { canvas, gl, texture, program, buffer, shaders } = waveResources;
@@ -3871,9 +3915,10 @@ SOFTWARE. */
         const content = document.querySelector(".content"), bounds = content.getBoundingClientRect();
         const left = Math.max(0, bounds.left), width = Math.min(innerWidth, bounds.right) - left;
         const height = innerHeight;
-        if(width<=0)return;
+        if(width<=0){cancelWave("empty-content");return;}
         const cx = origin ? Math.max(0, Math.min(width, origin.x - left)) : width * .43;
         const cy = origin ? Math.max(0, Math.min(height, origin.y)) : Math.min(height * .48, 470);
+        launchWave(origin,left,width,height,cx,cy);
         canvas = document.createElement("canvas");
         gl = canvas.getContext("webgl", { alpha: true, premultipliedAlpha: false, antialias: false, preserveDrawingBuffer: false });
         if (!gl || typeof html2canvas !== "function") throw new Error("Renderer unavailable");
@@ -3887,6 +3932,9 @@ SOFTWARE. */
           backgroundColor: getComputedStyle(document.body).backgroundColor, logging: false,
            ignoreElements: node => node.matches?.(".sidebar, .mobile-nav, dialog, .wb-wave-canvas, .wb-wave-launch, .wb-pane-ghost, .wb-selection, .section:not(.active)"),
           onclone: cloned => {
+            // Large workbenches include thousands of rows in hidden sections.
+            // Exclude them before style traversal, keeping the visible page exact.
+            cloned.querySelectorAll(".section:not(.active)").forEach(node=>node.remove());
             // Freeze moving text at its actual current position during capture.
             const original = document.querySelector(".wb-brief-track");
             const copy = cloned.querySelector(".wb-brief-track");
@@ -3909,21 +3957,21 @@ SOFTWARE. */
           void main(){
             vec2 delta=uv*size-center;
             float distance=length(delta), q=distance-radius;
-            float band=52.0, env=exp(-pow(q/band,2.0));
+            float band=64.0, env=exp(-pow(q/band,2.0));
             vec2 direction=delta/max(distance,1.0);
-            float shift=sin(q/band*2.0)*18.0*env*decay;
+            float shift=sin(q/band*2.3)*26.0*env*decay;
             vec2 offset=direction*shift/size;
             vec3 rgb=vec3(
-              texture2D(image,clamp(uv+offset*1.06,vec2(0),vec2(1))).r,
+              texture2D(image,clamp(uv+offset*1.12,vec2(0),vec2(1))).r,
               texture2D(image,clamp(uv+offset,vec2(0),vec2(1))).g,
-              texture2D(image,clamp(uv+offset*.94,vec2(0),vec2(1))).b);
+              texture2D(image,clamp(uv+offset*.88,vec2(0),vec2(1))).b);
             float a=exp(-pow((q+28.0)/6.5,2.0));
             float b=exp(-pow((q+10.0)/6.0,2.0));
             float c=exp(-pow((q-9.0)/6.0,2.0));
             float d=exp(-pow((q-27.0)/6.5,2.0));
             float rings=a+b+c+d;
             vec3 colour=(ca*a+cb*b+cc*c+cd*d)/max(rings,.001);
-            rgb=mix(rgb,colour,clamp(rings*(.36+dark*.08),0.0,.52));
+            rgb=mix(rgb,colour,clamp(rings*(.48+dark*.08),0.0,.62));
             rgb+=vec3(.06)*exp(-pow(q/3.0,2.0))*decay;
             gl_FragColor=vec4(rgb,env*decay*.97);
           }`;
@@ -3955,10 +4003,10 @@ SOFTWARE. */
         gl.uniform2f(sizeU, width, height); gl.uniform2f(centerU, cx, cy);
         gl.uniform1f(uniform("dark"), preferences.appearance === "dark" ? 1 : 0);
         const palettes = {
-          aurora: [[.12,.36,.57],[.26,.49,.69],[.48,.67,.8],[.7,.82,.91]],
-          halo: [[.51,.4,.29],[.64,.52,.4],[.79,.68,.55],[.9,.82,.71]],
-          frost: [[.13,.42,.4],[.25,.55,.52],[.46,.69,.65],[.69,.82,.78]],
-          spark: [[.29,.33,.38],[.43,.48,.54],[.62,.66,.7],[.8,.82,.85]]
+          aurora: [[.18,.49,.96],[.48,.37,.89],[.83,.51,.73],[.98,.76,.56]],
+          halo: [[.7,.47,.25],[.92,.65,.38],[.87,.46,.49],[.62,.51,.8]],
+          frost: [[.1,.59,.57],[.29,.77,.69],[.29,.58,.89],[.65,.56,.9]],
+          spark: [[.38,.49,.88],[.57,.43,.87],[.84,.53,.73],[.69,.79,.97]]
         };
         ["ca","cb","cc","cd"].forEach((name, i) => gl.uniform3fv(uniform(name), palettes[preferences.palette][i]));
         gl.viewport(0, 0, canvas.width, canvas.height);
@@ -3969,7 +4017,6 @@ SOFTWARE. */
         snapshot.width = 0; snapshot.height = 0;
         waveResources = { canvas, gl, program, texture, buffer, shaders };
         document.body.append(canvas);
-        waveLaunch?.remove();waveLaunch=null;
         canvas.addEventListener("webglcontextlost", event => {
           event.preventDefault();
           if (waveResources?.canvas !== canvas) return;
@@ -3977,31 +4024,32 @@ SOFTWARE. */
         }, { once: true });
         canvas.dataset.reason = origin?.reason || "appearance-change";
         canvas.dataset.originX=String(left+cx);canvas.dataset.originY=String(cy);
-        canvas.dataset.waveVersion="v5";
+        canvas.dataset.waveVersion="v6";
         root.dataset.waveState="rendering";
-        const panels = [...content.querySelectorAll(".section.active :is(.kpi,.panel)")].map(node => {
-          const rect = node.getBoundingClientRect();
-          return { node, distance: Math.hypot(rect.left - left + rect.width / 2 - cx, rect.top + rect.height / 2 - cy) };
-        });
         const maxRadius = Math.max(...[0,width].flatMap(x=>[0,height].map(y=>Math.hypot(x-cx,y-cy))));
         let beginning, frames = 0;
         function render(now) {
           if (token !== waveToken) return;
           beginning ??= now;
-          const t = (now - beginning) / 1900;
+          const t = (now - beginning) / 1450;
           if (t >= 1) { cancelWave(); return; }
           const radius = (1-Math.pow(1-t,1.45)) * (maxRadius + 80);
           const decay = Math.min(1,t*14) * Math.pow(1-t, .65);
           gl.uniform1f(radiusU, radius); gl.uniform1f(decayU, decay); gl.drawArrays(gl.TRIANGLES, 0, 6);
           canvas.dataset.frames = String(++frames);
-          panels.forEach(({node, distance}) => node.classList.toggle("wb-wave-reflect", Math.abs(distance - radius) < 48));
+          // No panel-wide shadow changes during the shader animation.
           waveFrame = requestAnimationFrame(render);
         }
         waveFrame = requestAnimationFrame(render);
       } catch (error) {
         root.dataset.waveFailure=error?.message||"Renderer unavailable";
         if (token === waveToken) {
-          cancelWave(); canvas?.remove();
+          root.dataset.waveState="fallback";canvas?.remove();
+          // Immediate rings finish normally if the GPU or texture is unavailable.
+          if(waveLaunch)waveLaunch.querySelector("i:last-child").getAnimations()[0]?.finished.then(()=>{
+            if(token===waveToken)cancelWave("fallback-complete");
+          }).catch(()=>{});
+          else cancelWave("fallback-complete");
         }
       } finally {
         if (gl && waveResources?.canvas !== canvas) gl.getExtension("WEBGL_lose_context")?.loseContext();
