@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>鲁东省区经营数据工作台</title>
 <style>
 :root {
@@ -863,6 +863,84 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
 }
 @media(prefers-reduced-motion:reduce){.wb-store-open:after,.wb-dock-target{transition:none}}
 @media print{#wb-store-detail,#wb-trend-float,.wb-float-open,.wb-dock-target,.wb-chart-probe{display:none!important}.wb-store-open:after{display:none}.wb-store-open{font:inherit!important}}
+/* Touch controls and reading continuity; report tables retain their layout. */
+html { -webkit-tap-highlight-color: transparent; scrollbar-gutter: stable; }
+button, a.command-button { touch-action: manipulation; -webkit-user-select: none; user-select: none; }
+.table-scroll, .inventory-table-scroll, .operation-score-table-scroll {
+  overscroll-behavior-x: contain;
+}
+.wb-account-scope {
+  color: var(--muted); font-size: 12px; line-height: 1.8;
+  border-left: 3px solid var(--accent); padding: 8px 12px;
+  margin: 0 0 16px; background: var(--accent-soft); border-radius: 0 8px 8px 0;
+}
+.wb-filter-open { display: none; }
+.wb-native-filter {
+  position: fixed; inset: auto 0 0; margin: 0; width: 100%; max-width: none;
+  max-height: calc(100dvh - env(safe-area-inset-top) - 32px);
+  padding: 0 20px calc(20px + env(safe-area-inset-bottom));
+  background: var(--paper); color: var(--ink); border: 1px solid var(--line);
+  border-bottom: 0; border-radius: 26px 26px 0 0; overflow-y: auto;
+  overscroll-behavior: contain; box-shadow: 0 -12px 60px #07376f24;
+  transform-origin: bottom center;
+}
+.wb-native-filter::backdrop { background: #11223c55; }
+.wb-filter-handle { padding: 12px 0 18px; cursor: grab; touch-action: none; user-select: none; }
+.wb-filter-handle::before {
+  content: ""; display: block; width: 34px; height: 5px; margin: 0 auto 18px;
+  border-radius: 3px; background: var(--muted); opacity: .4;
+}
+.wb-filter-handle h2 { margin: 0; font-size: 20px; }
+.wb-filter-fields { display: grid; gap: 16px; }
+.wb-filter-field { display: grid; gap: 7px; font-size: 13px; color: var(--muted); }
+.wb-filter-field select { width: 100%; margin: 0; min-width: 0; height: 48px; font-size: 16px; }
+.wb-filter-result { color: var(--muted); font-size: 12px; margin: 16px 0 12px; min-height: 18px; }
+.wb-filter-footer { display: flex; gap: 10px; }
+.wb-filter-footer button { min-height: 48px; border-radius: 14px; padding: 10px 18px; font-size: 15px; }
+.wb-filter-reset { border: 1px solid var(--line); background: var(--glass-solid); }
+.wb-filter-done { flex: 1; color: #fff; background: var(--accent); }
+[data-appearance="dark"] .wb-filter-done { background: var(--brand-mid); }
+[data-appearance="dark"] .wb-native-filter select { background: var(--glass-solid); color: var(--ink); }
+@media (pointer: coarse) {
+  .filter-bar input, .filter-bar select, .organization-filters select { font-size: 16px; }
+  .wb-spatial-close, .wb-detail-nav, .wb-float-tools button { min-height: 44px; min-width: 44px; }
+  .sort-trigger { min-height: 44px; }
+}
+@media (max-width: 700px) {
+  .content {
+    padding-left: max(14px, env(safe-area-inset-left));
+    padding-right: max(14px, env(safe-area-inset-right));
+    padding-top: max(22px, env(safe-area-inset-top));
+  }
+  .filter-bar[data-wb-filter-sheet] { gap: 10px; }
+  .filter-bar[data-wb-filter-sheet] > input[type="search"] { flex: 1 1 160px; width: 0; }
+  .wb-filter-open {
+    display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+    min-height: 44px; max-width: 45%; padding: 9px 12px; border-radius: 12px;
+    border: 1px solid var(--line); background: var(--glass-solid);
+    color: var(--accent); font-size: 13px; font-weight: 650;
+  }
+  .wb-filter-open span { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+  .wb-filter-open svg { width: 16px; height: 16px; flex-shrink: 0; }
+  .mobile-nav { scroll-padding: 8px; overscroll-behavior-x: contain; }
+  .mobile-nav button { min-width: 52px; }
+  #wb-store-detail[open] { align-items: flex-end; }
+  .wb-detail-shell {
+    width: 100%; border-bottom: 0; border-radius: 26px 26px 0 0;
+    max-height: calc(100dvh - env(safe-area-inset-top) - 28px);
+  }
+  .wb-detail-footer { padding-bottom: calc(14px + env(safe-area-inset-bottom)); }
+  .wb-detail-handle { min-height: 62px; }
+  .wb-detail-content { max-height: calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 190px); }
+  .wb-detail-nav { min-height: 44px; }
+  .wb-store-open:after { opacity: .6; transform: none; }
+  .wb-dialog {
+    inset: auto 0 0; margin: 0; width: 100%; max-width: none;
+    border-radius: 26px 26px 0 0; max-height: calc(100dvh - 32px);
+    padding-bottom: calc(20px + env(safe-area-inset-bottom)); transform-origin: bottom center;
+  }
+}
+@media print { .wb-filter-open, .wb-native-filter { display: none!important; } }
 </style>
 <!-- workbench-presentation-v1:style:end -->
 </head>
@@ -11169,7 +11247,7 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
 
 
     <section class="section" id="merchant-live">
-      <div class="section-head"><div><h2>商家自播</h2><p>商家官号 · 近 7 日对比前 7 日 · 数据来源：生意经</p></div></div>
+      <div class="section-head"><div><h2>商家自播</h2><p>商家官号与职人/店员 · 近 7 日对比前 7 日 · 数据来源：生意经</p></div></div>
       <div class="kpis" id="store-live-coverage"><article class="kpi" data-live-metric="total"><span class="kpi-label">总门店</span><b class="kpi-value">395<small style="font-size:14px">家</small></b><div class="kpi-foot">当前组织名单 · POI 去重</div></article><article class="kpi" data-live-metric="live"><span class="kpi-label">已开播门店</span><b class="kpi-value">97<small style="font-size:14px">家</small></b><div class="kpi-foot">周期内至少开播一次</div></article><article class="kpi" data-live-metric="not-live"><span class="kpi-label">未开播门店</span><b class="kpi-value">298<small style="font-size:14px">家</small></b><div class="kpi-foot">未匹配到本期开播记录</div></article><article class="kpi" data-live-metric="rate"><span class="kpi-label">门店开播率</span><b class="kpi-value">24.6%<small style="font-size:14px"></small></b><div class="kpi-foot">已开播门店 ÷ 总门店</div></article></div><p style="font-size:12px;color:var(--muted);line-height:1.7">统计周期：2026-11-06 至 2026-11-12。商家官号直播场次或直播时长大于 0 计为开播，按门店 POI 去重；账号所属门店名称仅接受唯一 POI 匹配。未开播表示未匹配到本期开播记录，未匹配账号可能影响统计结果。</p><article class="panel" style="margin:16px 0"><div class="panel-head"><div><h2>各片区门店开播率与自播业绩</h2><p>近 7 日 · 与当前省区、片区选择一致</p></div></div><div style="overflow-x:auto"><table id="store-live-area-summary"><thead><tr><th>片区</th><th>总门店</th><th>已开播</th><th>未开播*</th><th>开播率</th><th>直播支付额</th><th>直播时长</th><th>直播场次</th><th>开播账号数</th></tr></thead><tbody><tr><td>临沂片区</td><td>39</td><td>14</td><td>25</td><td>35.9%</td><td>3.69万</td><td>142.9h</td><td>88</td><td>14</td></tr><tr><td>威烟片区</td><td>39</td><td>9</td><td>30</td><td>23.1%</td><td>1.50万</td><td>130.4h</td><td>55</td><td>9</td></tr><tr><td>日照片区</td><td>42</td><td>7</td><td>35</td><td>16.7%</td><td>248</td><td>204.5h</td><td>62</td><td>7</td></tr><tr><td>沂枣片区</td><td>40</td><td>16</td><td>24</td><td>40.0%</td><td>3,135</td><td>107.2h</td><td>90</td><td>16</td></tr><tr><td>淄博片区</td><td>51</td><td>5</td><td>46</td><td>9.8%</td><td>1,791</td><td>8.9h</td><td>12</td><td>5</td></tr><tr><td>潍坊片区</td><td>37</td><td>3</td><td>34</td><td>8.1%</td><td>417</td><td>24.6h</td><td>12</td><td>3</td></tr><tr><td>烟台片区</td><td>28</td><td>6</td><td>22</td><td>21.4%</td><td>358</td><td>74.1h</td><td>45</td><td>6</td></tr><tr><td>青岛前海片区</td><td>43</td><td>20</td><td>23</td><td>46.5%</td><td>8,354</td><td>256.0h</td><td>158</td><td>20</td></tr><tr><td>青岛北片区</td><td>41</td><td>6</td><td>35</td><td>14.6%</td><td>5,488</td><td>40.2h</td><td>20</td><td>6</td></tr><tr><td>青岛西片区</td><td>35</td><td>11</td><td>24</td><td>31.4%</td><td>4,971</td><td>146.0h</td><td>56</td><td>11</td></tr></tbody></table></div></article>
       <div class="kpis">
         <article class="kpi"><span class="kpi-label">直播成交金额</span><b class="kpi-value">7.67万</b><div class="kpi-foot"><span class="positive">+66.7%</span><span>较前 7 日 4.60万</span></div></article>
@@ -11351,7 +11429,9 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
         </table>
       </div>
     </article>
-        <article class="panel"><div class="panel-head"><div><h2>账号明细</h2><p>14 日出现账号全集 · “未直播”为近 7 日直播场次等于 0</p></div></div>
+        <article class="panel"><div class="panel-head"><div><h2>账号明细</h2><p>14 日出现账号全集 · 金额、场次与时长统计近7日 · “未直播”为近7日直播场次等于0</p></div></div>
+        <p class="wb-account-scope">金额单位：元。账号核销金额包含直播、视频等归因来源，不等于直播核销或门店全渠道核销。搜索、其他账号带来的核销，若未归因到该账号，不计入此列；核销发生在近7日，不要求成交也发生在近7日。</p>
+
       <div class="filter-bar merchant-filter-bar">
         <input id="merchant-account-search" type="search"
                placeholder="搜索账号、ID 或门店" aria-label="搜索账号、ID 或门店">
@@ -11375,8 +11455,8 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
             <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-live-amount" onclick="sortMerchantAccountTable('account-live-amount')" title="按直播成交金额排序">直播成交金额 <span class="sort-indicator">↕</span></button></th>
             <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-live-sessions" onclick="sortMerchantAccountTable('account-live-sessions')" title="按直播场次排序">直播场次 <span class="sort-indicator">↕</span></button></th>
             <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-live-hours" onclick="sortMerchantAccountTable('account-live-hours')" title="按直播时长排序">直播时长 <span class="sort-indicator">↕</span></button></th>
-            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-total-amount" onclick="sortMerchantAccountTable('account-total-amount')" title="按总成交金额排序">总成交金额 <span class="sort-indicator">↕</span></button></th>
-            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-redeem-amount" onclick="sortMerchantAccountTable('account-redeem-amount')" title="按总核销金额排序">总核销金额 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-total-amount" onclick="sortMerchantAccountTable('account-total-amount')" title="按账号成交金额（近7日）排序">账号成交金额（近7日） <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-redeem-amount" onclick="sortMerchantAccountTable('account-redeem-amount')" title="按账号核销金额（近7日）排序">账号核销金额（近7日） <span class="sort-indicator">↕</span></button></th>
           </tr></thead>
           <tbody id="merchant-account-body">
         <tr data-account-name="锦江之星(威海韩乐坊不夜城威海站店)"
@@ -11396,11 +11476,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>锦江之星(威海韩乐坊不夜城威海站店)</strong><small>96857614376 · <span class="live-status 有直播">有直播</span></small></td>
           <td>威海市<small>锦江之星(威海韩乐坊不夜城威海站店)</small></td>
           <td>鲁东省区<small>威烟片区</small></td>
-          <td class="num">1.25万</td>
+          <td class="num">12,505.00</td>
           <td class="num">8</td>
           <td class="num">22.8h</td>
-          <td class="num">1.29万</td>
-          <td class="num">185</td>
+          <td class="num">12,862.10</td>
+          <td class="num">185.33</td>
         </tr>
 
         <tr data-account-name="丽柏酒店(临沂琅琊古城奥体中心店)"
@@ -11420,11 +11500,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>丽柏酒店(临沂琅琊古城奥体中心店)</strong><small>37169426597 · <span class="live-status 有直播">有直播</span></small></td>
           <td>临沂市<small>临沂北城新区万达广场丽柏酒店</small></td>
           <td>鲁东省区<small>临沂片区</small></td>
-          <td class="num">1.15万</td>
+          <td class="num">11,531.00</td>
           <td class="num">13</td>
           <td class="num">24.8h</td>
-          <td class="num">1.30万</td>
-          <td class="num">9,825</td>
+          <td class="num">13,025.00</td>
+          <td class="num">9,825.00</td>
         </tr>
 
         <tr data-account-name="维也纳国际酒店(临沂大学奥体中心店)"
@@ -11444,11 +11524,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>维也纳国际酒店(临沂大学奥体中心店)</strong><small>97044782355 · <span class="live-status 有直播">有直播</span></small></td>
           <td>临沂市<small>维也纳国际酒店(临沂大学奥体中心店)</small></td>
           <td>鲁东省区<small>临沂片区</small></td>
-          <td class="num">1.07万</td>
+          <td class="num">10,699.40</td>
           <td class="num">14</td>
           <td class="num">19.4h</td>
-          <td class="num">1.10万</td>
-          <td class="num">945</td>
+          <td class="num">11,022.90</td>
+          <td class="num">945.00</td>
         </tr>
 
         <tr data-account-name="丽柏酒店（临沂泰盛广场王羲之故居店）"
@@ -11468,11 +11548,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>丽柏酒店（临沂泰盛广场王羲之故居店）</strong><small>50006093372 · <span class="live-status 有直播">有直播</span></small></td>
           <td>临沂市<small>临沂泰盛广场王羲之故居丽柏酒店</small></td>
           <td>鲁东省区<small>临沂片区</small></td>
-          <td class="num">1.01万</td>
+          <td class="num">10,095.40</td>
           <td class="num">17</td>
           <td class="num">31.0h</td>
-          <td class="num">1.01万</td>
-          <td class="num">8,774</td>
+          <td class="num">10,095.40</td>
+          <td class="num">8,774.40</td>
         </tr>
 
         <tr data-account-name="白玉兰商务酒店(临沂市政府万达广场店)"
@@ -11492,11 +11572,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>白玉兰商务酒店(临沂市政府万达广场店)</strong><small>57758406498 · <span class="live-status 有直播">有直播</span></small></td>
           <td>临沂市<small>白玉兰酒店(临沂市政府万达广场店)</small></td>
           <td>鲁东省区<small>临沂片区</small></td>
-          <td class="num">3,090</td>
+          <td class="num">3,090.00</td>
           <td class="num">13</td>
           <td class="num">25.4h</td>
-          <td class="num">3,090</td>
-          <td class="num">1,678</td>
+          <td class="num">3,090.00</td>
+          <td class="num">1,678.00</td>
         </tr>
 
         <tr data-account-name="喆啡酒店(青岛五四广场店)专用号"
@@ -11516,11 +11596,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>喆啡酒店(青岛五四广场店)专用号</strong><small>70639462909 · <span class="live-status 有直播">有直播</span></small></td>
           <td>青岛市<small>喆啡酒店(青岛五四广场店)</small></td>
           <td>鲁东省区<small>青岛前海片区</small></td>
-          <td class="num">3,006</td>
+          <td class="num">3,006.20</td>
           <td class="num">13</td>
           <td class="num">17.8h</td>
-          <td class="num">3,006</td>
-          <td class="num">0</td>
+          <td class="num">3,006.20</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="非繁城品酒店(即墨宝龙广场店)专用号"
@@ -11540,11 +11620,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>非繁城品酒店(即墨宝龙广场店)专用号</strong><small>ZZB777788889999 · <span class="live-status 有直播">有直播</span></small></td>
           <td>青岛市<small>非繁城品酒店(即墨宝龙广场店)</small></td>
           <td>鲁东省区<small>青岛西片区</small></td>
-          <td class="num">2,975</td>
+          <td class="num">2,975.00</td>
           <td class="num">3</td>
           <td class="num">3.3h</td>
-          <td class="num">2,975</td>
-          <td class="num">364</td>
+          <td class="num">2,975.00</td>
+          <td class="num">363.60</td>
         </tr>
 
         <tr data-account-name="锦江都城酒店（青岛新都心凯德广场店）"
@@ -11564,11 +11644,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>锦江都城酒店（青岛新都心凯德广场店）</strong><small>45095363549 · <span class="live-status 有直播">有直播</span></small></td>
           <td>青岛市<small>锦江都城酒店(青岛新都心凯德广场店)</small></td>
           <td>鲁东省区<small>青岛北片区</small></td>
-          <td class="num">2,612</td>
+          <td class="num">2,612.40</td>
           <td class="num">1</td>
           <td class="num">2.0h</td>
-          <td class="num">2,612</td>
-          <td class="num">406</td>
+          <td class="num">2,612.40</td>
+          <td class="num">405.80</td>
         </tr>
 
         <tr data-account-name="麗枫酒店(青岛石老人海水浴场地铁站店)"
@@ -11588,11 +11668,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>麗枫酒店(青岛石老人海水浴场地铁站店)</strong><small>22356151442 · <span class="live-status 有直播">有直播</span></small></td>
           <td>青岛市<small>麗枫酒店(青岛石老人海水浴场地铁站店)</small></td>
           <td>鲁东省区<small>青岛前海片区</small></td>
-          <td class="num">2,445</td>
+          <td class="num">2,445.20</td>
           <td class="num">6</td>
           <td class="num">4.3h</td>
-          <td class="num">2,445</td>
-          <td class="num">268</td>
+          <td class="num">2,445.20</td>
+          <td class="num">268.00</td>
         </tr>
 
         <tr data-account-name="希岸Deluxe酒店(青岛台东步行街啤酒"
@@ -11612,11 +11692,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>希岸Deluxe酒店(青岛台东步行街啤酒</strong><small>931206231 · <span class="live-status 有直播">有直播</span></small></td>
           <td>青岛市<small>希岸Deluxe酒店(青岛台东步行街啤酒博物馆店)</small></td>
           <td>鲁东省区<small>青岛北片区</small></td>
-          <td class="num">2,181</td>
+          <td class="num">2,181.00</td>
           <td class="num">1</td>
           <td class="num">2.1h</td>
-          <td class="num">2,181</td>
-          <td class="num">596</td>
+          <td class="num">2,181.00</td>
+          <td class="num">596.50</td>
         </tr>
 
         <tr data-account-name="麗枫酒店(淄博北站柳泉路店)专用号"
@@ -11636,11 +11716,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>麗枫酒店(淄博北站柳泉路店)专用号</strong><small>22026153160 · <span class="live-status 有直播">有直播</span></small></td>
           <td>淄博市<small>丽枫酒店(淄博北站柳泉路店)</small></td>
           <td>鲁东省区<small>淄博片区</small></td>
-          <td class="num">1,791</td>
+          <td class="num">1,791.00</td>
           <td class="num">4</td>
           <td class="num">4.3h</td>
-          <td class="num">2,237</td>
-          <td class="num">1,004</td>
+          <td class="num">2,237.00</td>
+          <td class="num">1,004.00</td>
         </tr>
 
         <tr data-account-name="希岸酒店(威海火炬八街海水浴场山大店)"
@@ -11660,11 +11740,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>希岸酒店(威海火炬八街海水浴场山大店)</strong><small>98627559683 · <span class="live-status 有直播">有直播</span></small></td>
           <td>威海市<small>希岸酒店(威海火炬八街海水浴场山大店)</small></td>
           <td>鲁东省区<small>威烟片区</small></td>
-          <td class="num">1,585</td>
+          <td class="num">1,585.00</td>
           <td class="num">3</td>
           <td class="num">3.1h</td>
-          <td class="num">1,585</td>
-          <td class="num">399</td>
+          <td class="num">1,585.00</td>
+          <td class="num">399.00</td>
         </tr>
 
         <tr data-account-name="白玉兰酒店(枣庄东街口万达广场店)专用号"
@@ -11684,11 +11764,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>白玉兰酒店(枣庄东街口万达广场店)专用号</strong><small>63343025414 · <span class="live-status 有直播">有直播</span></small></td>
           <td>枣庄市<small>白玉兰酒店(枣庄东街口万达广场店)</small></td>
           <td>鲁东省区<small>沂枣片区</small></td>
-          <td class="num">1,463</td>
+          <td class="num">1,463.00</td>
           <td class="num">19</td>
           <td class="num">10.0h</td>
-          <td class="num">1,691</td>
-          <td class="num">221</td>
+          <td class="num">1,690.90</td>
+          <td class="num">221.18</td>
         </tr>
 
         <tr data-account-name="维也纳酒店(5.0临沂泰盛广场涑河店）"
@@ -11708,11 +11788,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>维也纳酒店(5.0临沂泰盛广场涑河店）</strong><small>94621450939 · <span class="live-status 有直播">有直播</span></small></td>
           <td>临沂市<small>维也纳酒店(5.0临沂市中心泰盛广场店)</small></td>
           <td>鲁东省区<small>临沂片区</small></td>
-          <td class="num">1,181</td>
+          <td class="num">1,181.10</td>
           <td class="num">6</td>
           <td class="num">11.4h</td>
-          <td class="num">1,181</td>
-          <td class="num">59</td>
+          <td class="num">1,181.10</td>
+          <td class="num">59.40</td>
         </tr>
 
         <tr data-account-name="维也纳国际酒店5.0(青岛北站店)官方号"
@@ -11732,11 +11812,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>维也纳国际酒店5.0(青岛北站店)官方号</strong><small>97140100260 · <span class="live-status 有直播">有直播</span></small></td>
           <td>青岛市<small>维也纳国际酒店(青岛北站店)</small></td>
           <td>鲁东省区<small>青岛前海片区</small></td>
-          <td class="num">1,023</td>
+          <td class="num">1,023.20</td>
           <td class="num">8</td>
           <td class="num">18.3h</td>
-          <td class="num">1,231</td>
-          <td class="num">1,196</td>
+          <td class="num">1,231.20</td>
+          <td class="num">1,196.00</td>
         </tr>
 
         <tr data-account-name="麗枫酒店(临沂平邑浚河路店)专用号"
@@ -11756,11 +11836,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>麗枫酒店(临沂平邑浚河路店)专用号</strong><small>86762705576 · <span class="live-status 有直播">有直播</span></small></td>
           <td>临沂市<small>麗枫酒店(临沂平邑浚河路店)</small></td>
           <td>鲁东省区<small>沂枣片区</small></td>
-          <td class="num">836</td>
+          <td class="num">836.00</td>
           <td class="num">7</td>
           <td class="num">14.1h</td>
-          <td class="num">836</td>
-          <td class="num">627</td>
+          <td class="num">836.00</td>
+          <td class="num">627.00</td>
         </tr>
 
         <tr data-account-name="维也纳国际酒店（山东青岛金沙滩自贸区店）"
@@ -11780,11 +11860,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>维也纳国际酒店（山东青岛金沙滩自贸区店）</strong><small>43936678673 · <span class="live-status 有直播">有直播</span></small></td>
           <td>青岛市<small>维也纳国际酒店(山东青岛金沙滩自贸区店)</small></td>
           <td>鲁东省区<small>青岛西片区</small></td>
-          <td class="num">833</td>
+          <td class="num">833.00</td>
           <td class="num">9</td>
           <td class="num">47.7h</td>
-          <td class="num">833</td>
-          <td class="num">357</td>
+          <td class="num">833.00</td>
+          <td class="num">357.00</td>
         </tr>
 
         <tr data-account-name="维也纳国际酒店（青岛西海岸隐珠地铁站店）"
@@ -11804,11 +11884,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>维也纳国际酒店（青岛西海岸隐珠地铁站店）</strong><small>97175735277 · <span class="live-status 有直播">有直播</span></small></td>
           <td>青岛市<small>维也纳国际酒店(青岛西海岸隐珠地铁站店)</small></td>
           <td>鲁东省区<small>青岛西片区</small></td>
-          <td class="num">716</td>
+          <td class="num">716.10</td>
           <td class="num">7</td>
           <td class="num">21.5h</td>
-          <td class="num">716</td>
-          <td class="num">0</td>
+          <td class="num">716.10</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="白玉兰商务酒店（威海火炬八街山东大学店）"
@@ -11828,11 +11908,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>白玉兰商务酒店（威海火炬八街山东大学店）</strong><small>67393764357 · <span class="live-status 有直播">有直播</span></small></td>
           <td>威海市<small>白玉兰商务酒店(威海火炬八街山东大学店)</small></td>
           <td>鲁东省区<small>威烟片区</small></td>
-          <td class="num">712</td>
+          <td class="num">712.00</td>
           <td class="num">7</td>
           <td class="num">6.3h</td>
-          <td class="num">712</td>
-          <td class="num">0</td>
+          <td class="num">712.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="希岸酒店(青岛北站科技大学店)专用号"
@@ -11852,11 +11932,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>希岸酒店(青岛北站科技大学店)专用号</strong><small>75210805392 · <span class="live-status 有直播">有直播</span></small></td>
           <td>青岛市<small>希岸酒店(青岛北站科技大学店)</small></td>
           <td>鲁东省区<small>青岛北片区</small></td>
-          <td class="num">695</td>
+          <td class="num">695.00</td>
           <td class="num">14</td>
           <td class="num">29.8h</td>
-          <td class="num">695</td>
-          <td class="num">0</td>
+          <td class="num">695.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="维也纳酒店（5.0奥帆中心北青岛大学店）"
@@ -11876,11 +11956,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>维也纳酒店（5.0奥帆中心北青岛大学店）</strong><small>HeheNeverStop · <span class="live-status 有直播">有直播</span></small></td>
           <td>青岛市<small>青岛维也纳酒店(5.0青岛大学奥帆中心北店)</small></td>
           <td>鲁东省区<small>青岛前海片区</small></td>
-          <td class="num">507</td>
+          <td class="num">507.00</td>
           <td class="num">11</td>
           <td class="num">18.4h</td>
-          <td class="num">507</td>
-          <td class="num">0</td>
+          <td class="num">507.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="麗枫酒店(枣庄光明广场店)"
@@ -11900,11 +11980,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>麗枫酒店(枣庄光明广场店)</strong><small>49012174110 · <span class="live-status 有直播">有直播</span></small></td>
           <td>枣庄市<small>麗枫酒店(枣庄光明广场店)</small></td>
           <td>鲁东省区<small>沂枣片区</small></td>
-          <td class="num">478</td>
+          <td class="num">478.10</td>
           <td class="num">2</td>
           <td class="num">3.9h</td>
-          <td class="num">478</td>
-          <td class="num">0</td>
+          <td class="num">478.10</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="非繁云居酒店(青州古城店)专用号"
@@ -11924,11 +12004,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>非繁云居酒店(青州古城店)专用号</strong><small>39294721595 · <span class="live-status 有直播">有直播</span></small></td>
           <td>潍坊市<small>非繁云居酒店(青州古城店)</small></td>
           <td>鲁东省区<small>潍坊片区</small></td>
-          <td class="num">417</td>
+          <td class="num">417.00</td>
           <td class="num">7</td>
           <td class="num">10.6h</td>
-          <td class="num">566</td>
-          <td class="num">139</td>
+          <td class="num">566.00</td>
+          <td class="num">139.00</td>
         </tr>
 
         <tr data-account-name="青岛白玉兰酒店(火车站栈桥店)官方号"
@@ -11948,11 +12028,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>青岛白玉兰酒店(火车站栈桥店)官方号</strong><small>28021257979 · <span class="live-status 有直播">有直播</span></small></td>
           <td>青岛市<small>青岛白玉兰酒店(火车站栈桥店)</small></td>
           <td>鲁东省区<small>青岛前海片区</small></td>
-          <td class="num">378</td>
+          <td class="num">378.00</td>
           <td class="num">11</td>
           <td class="num">11.0h</td>
-          <td class="num">378</td>
-          <td class="num">378</td>
+          <td class="num">378.00</td>
+          <td class="num">378.00</td>
         </tr>
 
         <tr data-account-name="喆啡酒店青岛北站李村步行街地铁站店"
@@ -11972,11 +12052,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>喆啡酒店青岛北站李村步行街地铁站店</strong><small>dya7f0sukewp · <span class="live-status 有直播">有直播</span></small></td>
           <td>青岛市<small>喆啡酒店(青岛北站李村步行街地铁站店)</small></td>
           <td>鲁东省区<small>青岛前海片区</small></td>
-          <td class="num">358</td>
+          <td class="num">358.10</td>
           <td class="num">6</td>
           <td class="num">9.7h</td>
-          <td class="num">358</td>
-          <td class="num">0</td>
+          <td class="num">358.10</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="喆啡酒店(青岛石油大学吾悦广场店)"
@@ -11996,11 +12076,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>喆啡酒店(青岛石油大学吾悦广场店)</strong><small>73829629416 · <span class="live-status 有直播">有直播</span></small></td>
           <td>青岛市<small>喆啡酒店(青岛石油大学吾悦广场店)</small></td>
           <td>鲁东省区<small>青岛西片区</small></td>
-          <td class="num">278</td>
+          <td class="num">278.00</td>
           <td class="num">7</td>
           <td class="num">12.6h</td>
-          <td class="num">278</td>
-          <td class="num">139</td>
+          <td class="num">278.00</td>
+          <td class="num">139.00</td>
         </tr>
 
         <tr data-account-name="锦江之星烟台牟平 汽车站北关大街酒店"
@@ -12020,11 +12100,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>锦江之星烟台牟平 汽车站北关大街酒店</strong><small>jinjiangpinshang · <span class="live-status 有直播">有直播</span></small></td>
           <td>烟台市<small>锦江之星品尚(烟台牟平汽车站北关大街店)</small></td>
           <td>鲁东省区<small>威烟片区</small></td>
-          <td class="num">238</td>
+          <td class="num">238.00</td>
           <td class="num">8</td>
           <td class="num">15.4h</td>
-          <td class="num">238</td>
-          <td class="num">0</td>
+          <td class="num">238.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="喆啡酒店(青岛会展中心店)专用号"
@@ -12044,11 +12124,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>喆啡酒店(青岛会展中心店)专用号</strong><small>84753640549 · <span class="live-status 有直播">有直播</span></small></td>
           <td>青岛市<small>喆啡酒店(青岛会展中心青岛二中地铁站店)</small></td>
           <td>鲁东省区<small>青岛前海片区</small></td>
-          <td class="num">189</td>
+          <td class="num">189.10</td>
           <td class="num">16</td>
           <td class="num">20.7h</td>
-          <td class="num">189</td>
-          <td class="num">0</td>
+          <td class="num">189.10</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="喆啡酒店（青岛北站李村夜市店）"
@@ -12068,11 +12148,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>喆啡酒店（青岛北站李村夜市店）</strong><small>96872109479 · <span class="live-status 有直播">有直播</span></small></td>
           <td>青岛市<small>喆啡酒店(青岛北站李村夜市店)</small></td>
           <td>鲁东省区<small>青岛前海片区</small></td>
-          <td class="num">189</td>
+          <td class="num">189.00</td>
           <td class="num">11</td>
           <td class="num">11.0h</td>
-          <td class="num">189</td>
-          <td class="num">0</td>
+          <td class="num">189.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="凯里亚德滕州新兴北路吾悦广场店"
@@ -12092,11 +12172,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>凯里亚德滕州新兴北路吾悦广场店</strong><small>32196348663 · <span class="live-status 有直播">有直播</span></small></td>
           <td>枣庄市<small>凯里亚德酒店(滕州市政府吾悦广场店)</small></td>
           <td>鲁东省区<small>沂枣片区</small></td>
-          <td class="num">189</td>
+          <td class="num">189.00</td>
           <td class="num">6</td>
           <td class="num">4.6h</td>
-          <td class="num">189</td>
-          <td class="num">189</td>
+          <td class="num">189.00</td>
+          <td class="num">189.00</td>
         </tr>
 
         <tr data-account-name="维也纳酒店(5.0烟台蓬莱阁海水浴场店）"
@@ -12116,11 +12196,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>维也纳酒店(5.0烟台蓬莱阁海水浴场店）</strong><small>ytplwynjd · <span class="live-status 有直播">有直播</span></small></td>
           <td>烟台市<small>维也纳酒店(5.0烟台蓬莱阁海水浴场店)</small></td>
           <td>鲁东省区<small>烟台片区</small></td>
-          <td class="num">179</td>
+          <td class="num">179.00</td>
           <td class="num">16</td>
           <td class="num">28.0h</td>
-          <td class="num">179</td>
-          <td class="num">0</td>
+          <td class="num">179.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="维也纳酒店(龙口高铁站保利广场店)专用号"
@@ -12140,11 +12220,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>维也纳酒店(龙口高铁站保利广场店)专用号</strong><small>74800527708 · <span class="live-status 有直播">有直播</span></small></td>
           <td>烟台市<small>维也纳酒店(龙口高铁站保利广场店)</small></td>
           <td>鲁东省区<small>烟台片区</small></td>
-          <td class="num">179</td>
+          <td class="num">179.00</td>
           <td class="num">12</td>
           <td class="num">10.4h</td>
-          <td class="num">179</td>
-          <td class="num">0</td>
+          <td class="num">179.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="维也纳酒店（青岛金沙滩国际啤酒城店）"
@@ -12164,11 +12244,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>维也纳酒店（青岛金沙滩国际啤酒城店）</strong><small>36262059371 · <span class="live-status 有直播">有直播</span></small></td>
           <td>青岛市<small>维也纳酒店(青岛金沙滩店)</small></td>
           <td>鲁东省区<small>青岛西片区</small></td>
-          <td class="num">169</td>
+          <td class="num">169.00</td>
           <td class="num">13</td>
           <td class="num">25.2h</td>
-          <td class="num">169</td>
-          <td class="num">169</td>
+          <td class="num">169.00</td>
+          <td class="num">169.00</td>
         </tr>
 
         <tr data-account-name="维也纳酒店（青岛胶东国际机场站前大道店）"
@@ -12188,11 +12268,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>维也纳酒店（青岛胶东国际机场站前大道店）</strong><small>67339944134 · <span class="live-status 有直播">有直播</span></small></td>
           <td>青岛市<small>维也纳酒店(5.0青岛胶东国际机场站前大道店)</small></td>
           <td>鲁东省区<small>青岛前海片区</small></td>
-          <td class="num">169</td>
+          <td class="num">169.00</td>
           <td class="num">8</td>
           <td class="num">23.6h</td>
-          <td class="num">169</td>
-          <td class="num">0</td>
+          <td class="num">169.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="希岸酒店(枣庄市政府光明大厦店)专用号"
@@ -12212,11 +12292,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>希岸酒店(枣庄市政府光明大厦店)专用号</strong><small>67639871007 · <span class="live-status 有直播">有直播</span></small></td>
           <td>枣庄市<small>希岸酒店(枣庄市政府光明大厦店)</small></td>
           <td>鲁东省区<small>沂枣片区</small></td>
-          <td class="num">169</td>
+          <td class="num">169.00</td>
           <td class="num">3</td>
           <td class="num">2.4h</td>
-          <td class="num">358</td>
-          <td class="num">169</td>
+          <td class="num">358.00</td>
+          <td class="num">169.00</td>
         </tr>
 
         <tr data-account-name="维也纳3好酒店（临沂大学博览中心商城店）"
@@ -12236,11 +12316,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>维也纳3好酒店（临沂大学博览中心商城店）</strong><small>74061182376 · <span class="live-status 有直播">有直播</span></small></td>
           <td>临沂市<small>维也纳3好酒店(临沂大学国际博览中心商城店)</small></td>
           <td>鲁东省区<small>临沂片区</small></td>
-          <td class="num">159</td>
+          <td class="num">159.00</td>
           <td class="num">1</td>
           <td class="num">2.0h</td>
-          <td class="num">159</td>
-          <td class="num">0</td>
+          <td class="num">159.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="维也纳3好酒店（山东日照万平口灯塔景区）"
@@ -12260,11 +12340,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>维也纳3好酒店（山东日照万平口灯塔景区）</strong><small>0633_6131999 · <span class="live-status 有直播">有直播</span></small></td>
           <td>日照市<small>维也纳3好酒店(山东日照万平口灯塔景区店)</small></td>
           <td>鲁东省区<small>日照片区</small></td>
-          <td class="num">129</td>
+          <td class="num">129.00</td>
           <td class="num">6</td>
           <td class="num">54.6h</td>
-          <td class="num">129</td>
-          <td class="num">0</td>
+          <td class="num">129.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="白玉兰商务酒店（日照茶叶科创示范园店）"
@@ -12284,11 +12364,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>白玉兰商务酒店（日照茶叶科创示范园店）</strong><small>28584698028 · <span class="live-status 有直播">有直播</span></small></td>
           <td>日照市<small>白玉兰商务酒店(日照茶叶科创示范园店)</small></td>
           <td>鲁东省区<small>日照片区</small></td>
-          <td class="num">119</td>
+          <td class="num">119.00</td>
           <td class="num">18</td>
           <td class="num">22.6h</td>
-          <td class="num">119</td>
-          <td class="num">0</td>
+          <td class="num">119.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="维也纳国际酒店临沂泰盛广场万象汇店"
@@ -12308,11 +12388,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>维也纳国际酒店临沂泰盛广场万象汇店</strong><small>DH2527778 · <span class="live-status 有直播">有直播</span></small></td>
           <td>临沂市<small>维也纳国际酒店(临沂泰盛广场万象汇店)</small></td>
           <td>鲁东省区<small>临沂片区</small></td>
-          <td class="num">101</td>
+          <td class="num">101.40</td>
           <td class="num">5</td>
           <td class="num">4.6h</td>
-          <td class="num">101</td>
-          <td class="num">219</td>
+          <td class="num">101.40</td>
+          <td class="num">219.00</td>
         </tr>
 
         <tr data-account-name="7天酒店(青岛北站沧安路地铁站店)"
@@ -12332,11 +12412,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>7天酒店(青岛北站沧安路地铁站店)</strong><small>25093808547 · <span class="live-status 有直播">有直播</span></small></td>
           <td>青岛市<small>7天酒店(青岛北站沧安路地铁站店)</small></td>
           <td>鲁东省区<small>青岛前海片区</small></td>
-          <td class="num">89</td>
+          <td class="num">89.00</td>
           <td class="num">5</td>
           <td class="num">30.9h</td>
-          <td class="num">178</td>
-          <td class="num">0</td>
+          <td class="num">178.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="丽枫酒店（费县政务中心理工大学店）专用号"
@@ -12356,11 +12436,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>丽枫酒店（费县政务中心理工大学店）专用号</strong><small>55498994380 · <span class="live-status 有直播">有直播</span></small></td>
           <td>临沂市<small>丽枫酒店·(费县政务中心理工大学店)</small></td>
           <td>鲁东省区<small>沂枣片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">15</td>
           <td class="num">22.0h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="白玉兰酒店(日照五莲解放路店)"
@@ -12380,11 +12460,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>白玉兰酒店(日照五莲解放路店)</strong><small>baiyulanwulian · <span class="live-status 有直播">有直播</span></small></td>
           <td>日照市<small>白玉兰酒店(日照五莲解放路店)</small></td>
           <td>鲁东省区<small>日照片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">14</td>
           <td class="num">15.8h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="白玉兰酒店（威海火炬八街国际海水浴场店）"
@@ -12404,11 +12484,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>白玉兰酒店（威海火炬八街国际海水浴场店）</strong><small>66595817333 · <span class="live-status 有直播">有直播</span></small></td>
           <td>威海市<small>白玉兰酒店(威海火炬八街国际海水浴场店)</small></td>
           <td>鲁东省区<small>威烟片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">11</td>
           <td class="num">2.0h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="希岸Deluxe酒店青岛胶东国际机场店"
@@ -12428,11 +12508,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>希岸Deluxe酒店青岛胶东国际机场店</strong><small>20149023892 · <span class="live-status 有直播">有直播</span></small></td>
           <td>青岛市<small>希岸Deluxe酒店(青岛胶东国际机场胶东地铁站店)</small></td>
           <td>鲁东省区<small>青岛前海片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">10</td>
           <td class="num">18.4h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="白玉兰酒店（滕州平行南路店）"
@@ -12452,11 +12532,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>白玉兰酒店（滕州平行南路店）</strong><small>baiyulanjiudian. · <span class="live-status 有直播">有直播</span></small></td>
           <td>枣庄市<small>白玉兰商务酒店(滕州平行南路店)</small></td>
           <td>鲁东省区<small>沂枣片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">9</td>
           <td class="num">6.1h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="白玉兰酒店(牟平实验中学店)专用号"
@@ -12476,11 +12556,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>白玉兰酒店(牟平实验中学店)专用号</strong><small>68629413786 · <span class="live-status 有直播">有直播</span></small></td>
           <td>烟台市<small>白玉兰酒店(牟平实验中学店)</small></td>
           <td>鲁东省区<small>威烟片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">9</td>
           <td class="num">65.8h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="麗枫酒店(胶州市政府机场店)专用号"
@@ -12500,11 +12580,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>麗枫酒店(胶州市政府机场店)专用号</strong><small>lfjdjzszfjcd · <span class="live-status 有直播">有直播</span></small></td>
           <td>青岛市<small>麗枫酒店(胶州市政府机场店)</small></td>
           <td>鲁东省区<small>青岛前海片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">8</td>
           <td class="num">6.3h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="白玉兰商务酒店(烟台龙口港和平路店)"
@@ -12524,11 +12604,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>白玉兰商务酒店(烟台龙口港和平路店)</strong><small>BYL1650874 · <span class="live-status 有直播">有直播</span></small></td>
           <td>烟台市<small>白玉兰商务酒店(烟台龙口港和平路店)</small></td>
           <td>鲁东省区<small>烟台片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">8</td>
           <td class="num">16.5h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="希岸酒店(青岛胶东国际机场店)专用号"
@@ -12548,11 +12628,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>希岸酒店(青岛胶东国际机场店)专用号</strong><small>36630741850 · <span class="live-status 有直播">有直播</span></small></td>
           <td>青岛市<small>希岸酒店(青岛胶东国际机场店)</small></td>
           <td>鲁东省区<small>青岛前海片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">8</td>
           <td class="num">13.6h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="希岸·轻雅酒店(青岛北站君峰路地铁站店)"
@@ -12572,11 +12652,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>希岸·轻雅酒店(青岛北站君峰路地铁站店)</strong><small>346015143 · <span class="live-status 有直播">有直播</span></small></td>
           <td>青岛市<small>希岸·轻雅酒店(青岛北站君峰路地铁站店)</small></td>
           <td>鲁东省区<small>青岛前海片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">8</td>
           <td class="num">0.4h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="喆啡酒店(青岛栈桥火车站店)专用号"
@@ -12596,11 +12676,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>喆啡酒店(青岛栈桥火车站店)专用号</strong><small>zf1856269321 · <span class="live-status 有直播">有直播</span></small></td>
           <td>青岛市<small>喆啡酒店(青岛栈桥火车站店)</small></td>
           <td>鲁东省区<small>青岛前海片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">7</td>
           <td class="num">27.5h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="7天优品（青岛五四广场芝泉路地铁站）"
@@ -12620,11 +12700,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>7天优品（青岛五四广场芝泉路地铁站）</strong><small>QQ2497579598 · <span class="live-status 有直播">有直播</span></small></td>
           <td>青岛市<small>7天优品酒店(青岛五四广场芝泉路地铁站店)</small></td>
           <td>鲁东省区<small>青岛前海片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">7</td>
           <td class="num">7.1h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="维也纳酒店（临沂国际会展中心店）"
@@ -12644,11 +12724,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>维也纳酒店（临沂国际会展中心店）</strong><small>96937161506 · <span class="live-status 有直播">有直播</span></small></td>
           <td>临沂市<small>维也纳酒店(临沂国际会展中心沂河路店)</small></td>
           <td>鲁东省区<small>临沂片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">7</td>
           <td class="num">11.1h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="丽怡酒店(日照万象汇万平口景区店)专用号"
@@ -12668,11 +12748,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>丽怡酒店(日照万象汇万平口景区店)专用号</strong><small>93771621425 · <span class="live-status 有直播">有直播</span></small></td>
           <td>日照市<small>丽怡酒店(日照万象汇万平口景区店)</small></td>
           <td>鲁东省区<small>日照片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">7</td>
           <td class="num">84.7h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="麗枫酒店（青岛北站李村夜市店）"
@@ -12692,11 +12772,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>麗枫酒店（青岛北站李村夜市店）</strong><small>84698103680 · <span class="live-status 有直播">有直播</span></small></td>
           <td>青岛市<small>麗枫酒店(青岛北站李村夜市店)</small></td>
           <td>鲁东省区<small>青岛前海片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">7</td>
           <td class="num">11.5h</td>
-          <td class="num">199</td>
-          <td class="num">199</td>
+          <td class="num">199.00</td>
+          <td class="num">199.00</td>
         </tr>
 
         <tr data-account-name="栖霞市维也纳酒店(牟氏庄园店)专用号"
@@ -12716,11 +12796,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>栖霞市维也纳酒店(牟氏庄园店)专用号</strong><small>71314644055 · <span class="live-status 有直播">有直播</span></small></td>
           <td>烟台市<small>栖霞市维也纳酒店(牟氏庄园店)</small></td>
           <td>鲁东省区<small>威烟片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">7</td>
           <td class="num">13.7h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="7天优品(枣庄台儿庄古城店)专用号"
@@ -12740,11 +12820,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>7天优品(枣庄台儿庄古城店)专用号</strong><small>48376207375 · <span class="live-status 有直播">有直播</span></small></td>
           <td>枣庄市<small>7天优品(枣庄台儿庄古城店)</small></td>
           <td>鲁东省区<small>沂枣片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">7</td>
           <td class="num">12.0h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="希岸轻雅青岛城市阳台海水浴场世博城店"
@@ -12764,11 +12844,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>希岸轻雅青岛城市阳台海水浴场世博城店</strong><small>95320552520 · <span class="live-status 有直播">有直播</span></small></td>
           <td>青岛市<small>希岸·轻雅酒店(青岛城市阳台海水浴场世博城店)</small></td>
           <td>鲁东省区<small>青岛西片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">6</td>
           <td class="num">22.0h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="喆啡酒店(日照万平口灯塔景区店)专用号"
@@ -12788,11 +12868,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>喆啡酒店(日照万平口灯塔景区店)专用号</strong><small>88454139674 · <span class="live-status 有直播">有直播</span></small></td>
           <td>日照市<small>喆啡酒店(日照万平口灯塔景区店)</small></td>
           <td>鲁东省区<small>日照片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">6</td>
           <td class="num">4.3h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="麗枫酒店(日照岚山多岛海景区店)"
@@ -12812,11 +12892,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>麗枫酒店(日照岚山多岛海景区店)</strong><small>21484247241 · <span class="live-status 有直播">有直播</span></small></td>
           <td>日照市<small>麗枫酒店(日照岚山多岛海景区店)</small></td>
           <td>鲁东省区<small>日照片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">6</td>
           <td class="num">10.8h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="麗枫酒店(烟台站吾悦广场店)专用号"
@@ -12836,11 +12916,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>麗枫酒店(烟台站吾悦广场店)专用号</strong><small>20161874387 · <span class="live-status 有直播">有直播</span></small></td>
           <td>烟台市<small>麗枫酒店(烟台站吾悦广场店)</small></td>
           <td>鲁东省区<small>烟台片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">6</td>
           <td class="num">11.9h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="麗枫酒店(台儿庄古城店)"
@@ -12860,11 +12940,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>麗枫酒店(台儿庄古城店)</strong><small>LF0632_6187555 · <span class="live-status 有直播">有直播</span></small></td>
           <td>枣庄市<small>麗枫酒店(台儿庄古城店)</small></td>
           <td>鲁东省区<small>沂枣片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">5</td>
           <td class="num">9.8h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="日照岚山多岛海云居酒店"
@@ -12884,11 +12964,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>日照岚山多岛海云居酒店</strong><small>73805246332 · <span class="live-status 有直播">有直播</span></small></td>
           <td>日照市<small>日照岚山多岛海云居酒店</small></td>
           <td>鲁东省区<small>日照片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">5</td>
           <td class="num">11.8h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="潮漫酒店(费县政务中心理工大学店)专用号"
@@ -12908,11 +12988,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>潮漫酒店(费县政务中心理工大学店)专用号</strong><small>41276163688 · <span class="live-status 有直播">有直播</span></small></td>
           <td>临沂市<small>潮漫酒店(费县政务中心理工大学店)</small></td>
           <td>鲁东省区<small>沂枣片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">5</td>
           <td class="num">9.8h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="维也纳3好酒店青岛胶东国际机场店"
@@ -12932,11 +13012,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>维也纳3好酒店青岛胶东国际机场店</strong><small>qingdaojiaod72 · <span class="live-status 有直播">有直播</span></small></td>
           <td>青岛市<small>维也纳3好酒店(山东青岛胶东国际机场空港小镇店)</small></td>
           <td>鲁东省区<small>青岛前海片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">4</td>
           <td class="num">3.5h</td>
-          <td class="num">0</td>
-          <td class="num">159</td>
+          <td class="num">0.00</td>
+          <td class="num">159.00</td>
         </tr>
 
         <tr data-account-name="丽柏酒店(青岛西海岸城市阳台海滨公园店)"
@@ -12956,11 +13036,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>丽柏酒店(青岛西海岸城市阳台海滨公园店)</strong><small>97110057794 · <span class="live-status 有直播">有直播</span></small></td>
           <td>青岛市<small>丽柏酒店(青岛西海岸城市阳台海滨公园店)</small></td>
           <td>鲁东省区<small>青岛西片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">4</td>
           <td class="num">4.1h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="麗枫酒店(沂水万德广场店)"
@@ -12980,11 +13060,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>麗枫酒店(沂水万德广场店)</strong><small>91807956363 · <span class="live-status 有直播">有直播</span></small></td>
           <td>临沂市<small>麗枫酒店(沂水万德广场店)</small></td>
           <td>鲁东省区<small>临沂片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">4</td>
           <td class="num">3.1h</td>
-          <td class="num">139</td>
-          <td class="num">0</td>
+          <td class="num">139.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="丽怡酒店（淄博八大局万象汇店）"
@@ -13004,11 +13084,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>丽怡酒店（淄博八大局万象汇店）</strong><small>50427069235 · <span class="live-status 有直播">有直播</span></small></td>
           <td>淄博市<small>丽怡酒店(淄博柳泉路八大局高新区店)</small></td>
           <td>鲁东省区<small>淄博片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">4</td>
           <td class="num">2.3h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="锦江之星品尚青岛黄岛泊里董家口店"
@@ -13028,11 +13108,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>锦江之星品尚青岛黄岛泊里董家口店</strong><small>jinjiang1558 · <span class="live-status 有直播">有直播</span></small></td>
           <td>青岛市<small>锦江之星品尚(青岛黄岛泊里董家口酒店)</small></td>
           <td>鲁东省区<small>青岛西片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">3</td>
           <td class="num">3.0h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="白玉兰酒店(枣庄高铁站六盘山路店)专用号"
@@ -13052,11 +13132,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>白玉兰酒店(枣庄高铁站六盘山路店)专用号</strong><small>91754151274 · <span class="live-status 有直播">有直播</span></small></td>
           <td>枣庄市<small>白玉兰商务酒店(枣庄高铁站市政府文体中心店)</small></td>
           <td>鲁东省区<small>沂枣片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">3</td>
           <td class="num">4.5h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="白玉兰青岛香港中路奥帆中心小麦岛公园店"
@@ -13076,11 +13156,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>白玉兰青岛香港中路奥帆中心小麦岛公园店</strong><small>70890244479 · <span class="live-status 有直播">有直播</span></small></td>
           <td>青岛市<small>白玉兰(商务)酒店(青岛奥帆中心小麦岛公园店)</small></td>
           <td>鲁东省区<small>青岛前海片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">3</td>
           <td class="num">1.4h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="丽枫酒店(高密市政府店)专用号"
@@ -13100,11 +13180,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>丽枫酒店(高密市政府店)专用号</strong><small>69391925800 · <span class="live-status 有直播">有直播</span></small></td>
           <td>潍坊市<small>丽枫酒店(高密市政府店)</small></td>
           <td>鲁东省区<small>潍坊片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">3</td>
           <td class="num">4.0h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="维也纳国际酒店(临沂费县探沂店)"
@@ -13124,11 +13204,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>维也纳国际酒店(临沂费县探沂店)</strong><small>64544272471 · <span class="live-status 有直播">有直播</span></small></td>
           <td>临沂市<small>维也纳国际酒店(临沂费县探沂店)</small></td>
           <td>鲁东省区<small>沂枣片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">3</td>
           <td class="num">0.8h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="麗枫酒店-临沂市政府琅琊奥体中心店"
@@ -13148,11 +13228,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>麗枫酒店-临沂市政府琅琊奥体中心店</strong><small>22059284611 · <span class="live-status 有直播">有直播</span></small></td>
           <td>临沂市<small>麗枫酒店(临沂市政府五洲湖武汉路店)</small></td>
           <td>鲁东省区<small>临沂片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">3</td>
           <td class="num">6.2h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="维也纳酒店(枣庄青檀路店)专用号"
@@ -13172,11 +13252,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>维也纳酒店(枣庄青檀路店)专用号</strong><small>WYN2771001 · <span class="live-status 有直播">有直播</span></small></td>
           <td>枣庄市<small>维也纳酒店(枣庄青檀路店)</small></td>
           <td>鲁东省区<small>沂枣片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">2</td>
           <td class="num">3.2h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="维也纳酒店(青州高铁站店)专用号"
@@ -13196,11 +13276,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>维也纳酒店(青州高铁站店)专用号</strong><small>98739005543 · <span class="live-status 有直播">有直播</span></small></td>
           <td>潍坊市<small>维也纳酒店(青州高铁站店)</small></td>
           <td>鲁东省区<small>潍坊片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">2</td>
           <td class="num">10.0h</td>
-          <td class="num">219</td>
-          <td class="num">219</td>
+          <td class="num">219.00</td>
+          <td class="num">219.00</td>
         </tr>
 
         <tr data-account-name="维也纳国际酒店（临沂沂水开先国际店）"
@@ -13220,11 +13300,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>维也纳国际酒店（临沂沂水开先国际店）</strong><small>78499051246 · <span class="live-status 有直播">有直播</span></small></td>
           <td>临沂市<small>维也纳国际酒店(沂水开先国际店)</small></td>
           <td>鲁东省区<small>临沂片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">2</td>
           <td class="num">0.1h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="7天优品(淄博博山红叶柿岩珑山路店)"
@@ -13244,11 +13324,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>7天优品(淄博博山红叶柿岩珑山路店)</strong><small>72759580430 · <span class="live-status 有直播">有直播</span></small></td>
           <td>淄博市<small>7天优品(淄博博山红叶柿岩珑山路店)</small></td>
           <td>鲁东省区<small>淄博片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">2</td>
           <td class="num">1.2h</td>
-          <td class="num">248</td>
-          <td class="num">0</td>
+          <td class="num">248.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="7天连锁酒店(烟台开发区海水浴场店)"
@@ -13268,11 +13348,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>7天连锁酒店(烟台开发区海水浴场店)</strong><small>65381476438 · <span class="live-status 有直播">有直播</span></small></td>
           <td>烟台市<small>7天连锁酒店(烟台开发区海水浴场店)</small></td>
           <td>鲁东省区<small>烟台片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">2</td>
           <td class="num">6.5h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="希岸轻雅（青岛北站水清沟地铁站店）"
@@ -13292,11 +13372,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>希岸轻雅（青岛北站水清沟地铁站店）</strong><small>62509709095 · <span class="live-status 有直播">有直播</span></small></td>
           <td>青岛市<small>希岸·轻雅酒店(青岛北站水清沟地铁站店)</small></td>
           <td>鲁东省区<small>青岛北片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">2</td>
           <td class="num">2.4h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="锦江之星(青岛即墨潮海开发区店)专用号"
@@ -13316,11 +13396,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>锦江之星(青岛即墨潮海开发区店)专用号</strong><small>52472513287 · <span class="live-status 有直播">有直播</span></small></td>
           <td>青岛市<small>锦江之星(青岛即墨潮海开发区店)</small></td>
           <td>鲁东省区<small>青岛西片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">2</td>
           <td class="num">2.2h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="白玉兰酒店(枣庄吾悦广场店)专用号"
@@ -13340,11 +13420,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>白玉兰酒店(枣庄吾悦广场店)专用号</strong><small>40646536247 · <span class="live-status 有直播">有直播</span></small></td>
           <td>枣庄市<small>白玉兰酒店(枣庄吾悦广场店)</small></td>
           <td>鲁东省区<small>沂枣片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">2</td>
           <td class="num">1.5h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="维也纳酒店(临沂经开区店)"
@@ -13364,11 +13444,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>维也纳酒店(临沂经开区店)</strong><small>wyn2760002 · <span class="live-status 有直播">有直播</span></small></td>
           <td>临沂市<small>维也纳酒店(临沂河东经开区启阳国际机场店)</small></td>
           <td>鲁东省区<small>临沂片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">1</td>
           <td class="num">1.2h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="派酒店(青岛台东步行街店)"
@@ -13388,11 +13468,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>派酒店(青岛台东步行街店)</strong><small>pai83661688 · <span class="live-status 有直播">有直播</span></small></td>
           <td>青岛市<small>派酒店(青岛台东步行街店)</small></td>
           <td>鲁东省区<small>青岛前海片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">1</td>
           <td class="num">0.6h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="潮漫酒店(威海韩乐坊不夜城店)"
@@ -13412,11 +13492,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>潮漫酒店(威海韩乐坊不夜城店)</strong><small>92705206578 · <span class="live-status 有直播">有直播</span></small></td>
           <td>威海市<small>潮漫酒店(威海站韩乐坊不夜城店)</small></td>
           <td>鲁东省区<small>威烟片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">1</td>
           <td class="num">1.2h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="希岸酒店（临沂商城会展中心汽车站店）"
@@ -13436,11 +13516,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>希岸酒店（临沂商城会展中心汽车站店）</strong><small>92142965369 · <span class="live-status 有直播">有直播</span></small></td>
           <td>临沂市<small>希岸酒店(临沂商城会展中心汽车站店)</small></td>
           <td>鲁东省区<small>临沂片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">1</td>
           <td class="num">1.0h</td>
-          <td class="num">149</td>
-          <td class="num">0</td>
+          <td class="num">149.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="喆啡酒店(滕州市政府吾悦广场店)专用号"
@@ -13460,11 +13540,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>喆啡酒店(滕州市政府吾悦广场店)专用号</strong><small>88104044582 · <span class="live-status 有直播">有直播</span></small></td>
           <td>枣庄市<small>喆啡酒店(滕州市政府吾悦广场店)</small></td>
           <td>鲁东省区<small>沂枣片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">1</td>
           <td class="num">1.1h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="锦江之星威海刘公岛景区威高广场店"
@@ -13484,11 +13564,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>锦江之星威海刘公岛景区威高广场店</strong><small>83266069912 · <span class="live-status 有直播">有直播</span></small></td>
           <td>威海市<small>锦江之星(威海刘公岛景区百货大楼酒店)</small></td>
           <td>鲁东省区<small>威烟片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">1</td>
           <td class="num">0.0h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="白玉兰商务酒店（烟台蓬莱阁景区登州路店"
@@ -13508,11 +13588,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>白玉兰商务酒店（烟台蓬莱阁景区登州路店</strong><small>75931328296 · <span class="live-status 有直播">有直播</span></small></td>
           <td>烟台市<small>白玉兰商务酒店(烟台蓬莱阁景区登州路店)</small></td>
           <td>鲁东省区<small>烟台片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">1</td>
           <td class="num">0.9h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="锦江之星(青岛栈桥中山路酒店)专用号"
@@ -13532,11 +13612,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>锦江之星(青岛栈桥中山路酒店)专用号</strong><small>68789282166 · <span class="live-status 有直播">有直播</span></small></td>
           <td>青岛市<small>锦江之星(青岛栈桥中山路酒店)</small></td>
           <td>鲁东省区<small>青岛北片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">1</td>
           <td class="num">0.0h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="7天酒店(淄博北站工业职业学院店)专用号"
@@ -13556,11 +13636,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>7天酒店(淄博北站工业职业学院店)专用号</strong><small>53039989429 · <span class="live-status 有直播">有直播</span></small></td>
           <td>淄博市<small>7天酒店(淄博北站工业职业学院店)</small></td>
           <td>鲁东省区<small>淄博片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">1</td>
           <td class="num">1.0h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="锦江之星风尚酒店(枣庄青檀南路店)专用号"
@@ -13580,11 +13660,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>锦江之星风尚酒店(枣庄青檀南路店)专用号</strong><small>47971808802 · <span class="live-status 有直播">有直播</span></small></td>
           <td>枣庄市<small>锦江之星风尚酒店(枣庄青檀南路店)</small></td>
           <td>鲁东省区<small>沂枣片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">1</td>
           <td class="num">1.3h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="白玉兰商务酒店（淄博周村古商城步行街店）"
@@ -13604,11 +13684,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>白玉兰商务酒店（淄博周村古商城步行街店）</strong><small>45837510804 · <span class="live-status 有直播">有直播</span></small></td>
           <td>淄博市<small>白玉兰商务酒店(淄博周村古商城步行街店)</small></td>
           <td>鲁东省区<small>淄博片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">1</td>
           <td class="num">0.2h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="丽枫酒店(青岛红岛东方伊甸园店)"
@@ -13628,11 +13708,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>丽枫酒店(青岛红岛东方伊甸园店)</strong><small>42527298996 · <span class="live-status 有直播">有直播</span></small></td>
           <td>青岛市<small>麗枫酒店(青岛红岛高新区览秀城东方伊甸园店)</small></td>
           <td>鲁东省区<small>青岛北片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">1</td>
           <td class="num">3.9h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="维也纳酒店（临沂南坊琅琊古城奥体中心店）"
@@ -13652,11 +13732,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>维也纳酒店（临沂南坊琅琊古城奥体中心店）</strong><small>39770474008 · <span class="live-status 有直播">有直播</span></small></td>
           <td>临沂市<small>维也纳酒店(5.0临沂南坊琅琊古城奥体中心店)</small></td>
           <td>鲁东省区<small>临沂片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">1</td>
           <td class="num">1.6h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="潮漫酒店(青岛西海岸新区店)专用号"
@@ -13676,11 +13756,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>潮漫酒店(青岛西海岸新区店)专用号</strong><small>36084009249 · <span class="live-status 有直播">有直播</span></small></td>
           <td>青岛市<small>潮漫酒店(青岛西海岸城市阳台海水浴场隐珠地铁站店)</small></td>
           <td>鲁东省区<small>青岛西片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">1</td>
           <td class="num">2.3h</td>
-          <td class="num">238</td>
-          <td class="num">0</td>
+          <td class="num">238.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="白玉兰商务酒店(青岛世界博览城店)专用号"
@@ -13700,11 +13780,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>白玉兰商务酒店(青岛世界博览城店)专用号</strong><small>31634073941 · <span class="live-status 有直播">有直播</span></small></td>
           <td>青岛市<small>白玉兰商务酒店(青岛世界博览城店)</small></td>
           <td>鲁东省区<small>青岛西片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">1</td>
           <td class="num">2.0h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="麗枫酒店(临沂沂南君悦购物中心店)专用号"
@@ -13724,11 +13804,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>麗枫酒店(临沂沂南君悦购物中心店)专用号</strong><small>lfjdynd123 · <span class="live-status 未直播">未直播</span></small></td>
           <td>临沂市<small>麗枫酒店(临沂沂南君悦购物中心店)</small></td>
           <td>鲁东省区<small>临沂片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">0</td>
           <td class="num">0.0h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="麗枫酒店(烟台莱阳市中心店)专用号"
@@ -13748,11 +13828,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>麗枫酒店(烟台莱阳市中心店)专用号</strong><small>lf15666550053 · <span class="live-status 未直播">未直播</span></small></td>
           <td>烟台市<small>麗枫酒店(烟台莱阳市中心店)</small></td>
           <td>鲁东省区<small>威烟片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">0</td>
           <td class="num">0.0h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="锦江之星5.1(潍坊昌邑店)"
@@ -13772,11 +13852,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>锦江之星5.1(潍坊昌邑店)</strong><small>jjzxcyd · <span class="live-status 未直播">未直播</span></small></td>
           <td>潍坊市<small>锦江之星(潍坊昌邑店)</small></td>
           <td>鲁东省区<small>潍坊片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">0</td>
           <td class="num">0.0h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="希岸酒店(潍坊泰华城火车站店)"
@@ -13796,11 +13876,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>希岸酒店(潍坊泰华城火车站店)</strong><small>dynhp9thy9n4 · <span class="live-status 未直播">未直播</span></small></td>
           <td>潍坊市<small>希岸酒店(潍坊泰华城火车站店)</small></td>
           <td>鲁东省区<small>潍坊片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">0</td>
           <td class="num">0.0h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="麗枫酒店(青岛金沙滩店)"
@@ -13820,11 +13900,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>麗枫酒店(青岛金沙滩店)</strong><small>LFJDQDJSTD · <span class="live-status 未直播">未直播</span></small></td>
           <td>青岛市<small>麗枫酒店(青岛金沙滩店)</small></td>
           <td>鲁东省区<small>青岛西片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">0</td>
           <td class="num">0.0h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="白玉兰酒店（青州古城店)"
@@ -13844,11 +13924,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>白玉兰酒店（青州古城店)</strong><small>98865899382 · <span class="live-status 未直播">未直播</span></small></td>
           <td>潍坊市<small>白玉兰(商务)酒店(潍坊青州古城衡王府路店)</small></td>
           <td>鲁东省区<small>潍坊片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">0</td>
           <td class="num">0.0h</td>
-          <td class="num">497</td>
-          <td class="num">0</td>
+          <td class="num">497.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="维也纳国际酒店(临朐万达广场店)"
@@ -13868,11 +13948,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>维也纳国际酒店(临朐万达广场店)</strong><small>98392825203 · <span class="live-status 未直播">未直播</span></small></td>
           <td>潍坊市<small>维也纳国际酒店(临朐万达广场店)</small></td>
           <td>鲁东省区<small>潍坊片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">0</td>
           <td class="num">0.0h</td>
-          <td class="num">10</td>
-          <td class="num">0</td>
+          <td class="num">9.90</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="锦江之星(青岛即墨古城宝龙广场店)专用号"
@@ -13892,11 +13972,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>锦江之星(青岛即墨古城宝龙广场店)专用号</strong><small>97087380402 · <span class="live-status 未直播">未直播</span></small></td>
           <td>青岛市<small>锦江之星(青岛即墨古城宝龙广场店)</small></td>
           <td>鲁东省区<small>青岛西片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">0</td>
           <td class="num">0.0h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="喆啡酒店(青岛胶东国际机场胶东地铁站店)"
@@ -13916,11 +13996,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>喆啡酒店(青岛胶东国际机场胶东地铁站店)</strong><small>96655014514 · <span class="live-status 未直播">未直播</span></small></td>
           <td>青岛市<small>喆啡酒店(青岛胶东国际机场胶东地铁站店)</small></td>
           <td>鲁东省区<small>青岛前海片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">0</td>
           <td class="num">0.0h</td>
-          <td class="num">149</td>
-          <td class="num">149</td>
+          <td class="num">149.00</td>
+          <td class="num">149.00</td>
         </tr>
 
         <tr data-account-name="希岸酒店(淄博临淄区政府火车站店)专用号"
@@ -13940,11 +14020,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>希岸酒店(淄博临淄区政府火车站店)专用号</strong><small>96181750443 · <span class="live-status 未直播">未直播</span></small></td>
           <td>淄博市<small>希岸酒店(淄博临淄区政府火车站店)</small></td>
           <td>鲁东省区<small>淄博片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">0</td>
           <td class="num">0.0h</td>
-          <td class="num">179</td>
-          <td class="num">0</td>
+          <td class="num">179.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="麗枫酒店·青岛即墨蓝谷博览中心山东大学店"
@@ -13964,11 +14044,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>麗枫酒店·青岛即墨蓝谷博览中心山东大学店</strong><small>93724630338 · <span class="live-status 未直播">未直播</span></small></td>
           <td>青岛市<small>麗枫酒店(蓝谷路店)</small></td>
           <td>鲁东省区<small>青岛西片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">0</td>
           <td class="num">0.0h</td>
-          <td class="num">199</td>
-          <td class="num">0</td>
+          <td class="num">199.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="锦江之星（淄博沂源酒店）"
@@ -13988,11 +14068,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>锦江之星（淄博沂源酒店）</strong><small>91689251154 · <span class="live-status 未直播">未直播</span></small></td>
           <td>淄博市<small>锦江之星(淄博沂源店)</small></td>
           <td>鲁东省区<small>淄博片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">0</td>
           <td class="num">0.0h</td>
-          <td class="num">149</td>
-          <td class="num">141</td>
+          <td class="num">148.90</td>
+          <td class="num">140.77</td>
         </tr>
 
         <tr data-account-name="非繁云居酒店(淄博沂源康源路店)专用号"
@@ -14012,11 +14092,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>非繁云居酒店(淄博沂源康源路店)专用号</strong><small>85796990417 · <span class="live-status 未直播">未直播</span></small></td>
           <td>淄博市<small>非繁云居酒店(淄博沂源康源路店)</small></td>
           <td>鲁东省区<small>淄博片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">0</td>
           <td class="num">0.0h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="希岸轻雅酒店(青岛莱西市政府店)专用号"
@@ -14036,11 +14116,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>希岸轻雅酒店(青岛莱西市政府店)专用号</strong><small>84507507061 · <span class="live-status 未直播">未直播</span></small></td>
           <td>青岛市<small>希岸轻雅酒店(青岛莱西市政府店)</small></td>
           <td>鲁东省区<small>青岛北片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">0</td>
           <td class="num">0.0h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="维也纳酒店(潍坊安丘世贸中心店)专用号"
@@ -14060,11 +14140,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>维也纳酒店(潍坊安丘世贸中心店)专用号</strong><small>82557601833 · <span class="live-status 未直播">未直播</span></small></td>
           <td>潍坊市<small>维也纳酒店(潍坊安丘世贸中心店)</small></td>
           <td>鲁东省区<small>潍坊片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">0</td>
           <td class="num">0.0h</td>
-          <td class="num">199</td>
-          <td class="num">199</td>
+          <td class="num">199.00</td>
+          <td class="num">199.00</td>
         </tr>
 
         <tr data-account-name="凯里亚德"
@@ -14084,11 +14164,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>凯里亚德</strong><small>76550352844 · <span class="live-status 未直播">未直播</span></small></td>
           <td>潍坊市<small>凯里亚德酒店(寿光市政府店)</small></td>
           <td>鲁东省区<small>潍坊片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">0</td>
           <td class="num">0.0h</td>
-          <td class="num">0</td>
-          <td class="num">199</td>
+          <td class="num">0.00</td>
+          <td class="num">199.00</td>
         </tr>
 
         <tr data-account-name="麗枫酒店（淄博北京路琉璃馆牧羊村店）"
@@ -14108,11 +14188,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>麗枫酒店（淄博北京路琉璃馆牧羊村店）</strong><small>75676231779 · <span class="live-status 未直播">未直播</span></small></td>
           <td>淄博市<small>麗枫酒店(淄博北京路琉璃馆牧羊村店)</small></td>
           <td>鲁东省区<small>淄博片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">0</td>
           <td class="num">0.0h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="希岸酒店(台儿庄古城店)专用号"
@@ -14132,11 +14212,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>希岸酒店(台儿庄古城店)专用号</strong><small>73631038280 · <span class="live-status 未直播">未直播</span></small></td>
           <td>枣庄市<small>希岸酒店(台儿庄古城店)</small></td>
           <td>鲁东省区<small>沂枣片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">0</td>
           <td class="num">0.0h</td>
-          <td class="num">169</td>
-          <td class="num">0</td>
+          <td class="num">169.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="潮漫酒店(滕州吾悦广场店)专用号"
@@ -14156,11 +14236,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>潮漫酒店(滕州吾悦广场店)专用号</strong><small>71175665382 · <span class="live-status 未直播">未直播</span></small></td>
           <td>枣庄市<small>潮漫酒店(滕州吾悦广场店)</small></td>
           <td>鲁东省区<small>沂枣片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">0</td>
           <td class="num">0.0h</td>
-          <td class="num">913</td>
-          <td class="num">0</td>
+          <td class="num">913.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="锦江之星(潍坊泰华城火车站店)专用号"
@@ -14180,11 +14260,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>锦江之星(潍坊泰华城火车站店)专用号</strong><small>68253180379 · <span class="live-status 未直播">未直播</span></small></td>
           <td>潍坊市<small>锦江之星(潍坊泰华城火车站店)</small></td>
           <td>鲁东省区<small>潍坊片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">0</td>
           <td class="num">0.0h</td>
-          <td class="num">99</td>
-          <td class="num">99</td>
+          <td class="num">99.00</td>
+          <td class="num">99.00</td>
         </tr>
 
         <tr data-account-name="维也纳3好酒店（诸城东关大街超然台店）"
@@ -14204,11 +14284,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>维也纳3好酒店（诸城东关大街超然台店）</strong><small>65241434371 · <span class="live-status 未直播">未直播</span></small></td>
           <td>潍坊市<small>维也纳3好酒店(山东诸城东关大街超然台店)</small></td>
           <td>鲁东省区<small>潍坊片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">0</td>
           <td class="num">0.0h</td>
-          <td class="num">139</td>
-          <td class="num">139</td>
+          <td class="num">139.00</td>
+          <td class="num">139.00</td>
         </tr>
 
         <tr data-account-name="锦江之星酒店(临沂商城中心大学城店)"
@@ -14228,11 +14308,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>锦江之星酒店(临沂商城中心大学城店)</strong><small>63293702776 · <span class="live-status 未直播">未直播</span></small></td>
           <td>临沂市<small>锦江之星酒店(临沂商城中心大学城店)</small></td>
           <td>鲁东省区<small>临沂片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">0</td>
           <td class="num">0.0h</td>
-          <td class="num">159</td>
-          <td class="num">0</td>
+          <td class="num">159.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="维也纳酒店(威海文登文山路店)专用号"
@@ -14252,11 +14332,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>维也纳酒店(威海文登文山路店)专用号</strong><small>55879054483 · <span class="live-status 未直播">未直播</span></small></td>
           <td>威海市<small>维也纳酒店(威海文登文山路店)</small></td>
           <td>鲁东省区<small>威烟片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">0</td>
           <td class="num">0.0h</td>
-          <td class="num">0</td>
-          <td class="num">139</td>
+          <td class="num">0.00</td>
+          <td class="num">139.00</td>
         </tr>
 
         <tr data-account-name="维也纳3好酒店(山东潍坊临朐店)专用号"
@@ -14276,11 +14356,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>维也纳3好酒店(山东潍坊临朐店)专用号</strong><small>55440580889 · <span class="live-status 未直播">未直播</span></small></td>
           <td>潍坊市<small>维也纳3好酒店(山东潍坊临朐店)</small></td>
           <td>鲁东省区<small>潍坊片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">0</td>
           <td class="num">0.0h</td>
-          <td class="num">149</td>
-          <td class="num">149</td>
+          <td class="num">149.00</td>
+          <td class="num">149.00</td>
         </tr>
 
         <tr data-account-name="IU酒店(临沂火车站万象汇店)"
@@ -14300,11 +14380,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>IU酒店(临沂火车站万象汇店)</strong><small>54394707268 · <span class="live-status 未直播">未直播</span></small></td>
           <td>临沂市<small>IU酒店(临沂火车站万象汇店)</small></td>
           <td>鲁东省区<small>临沂片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">0</td>
           <td class="num">0.0h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="锦江之星酒店(枣庄薛城福星花园店)专用号"
@@ -14324,11 +14404,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>锦江之星酒店(枣庄薛城福星花园店)专用号</strong><small>50841409412 · <span class="live-status 未直播">未直播</span></small></td>
           <td>枣庄市<small>锦江之星酒店(枣庄薛城福星花园店)</small></td>
           <td>鲁东省区<small>沂枣片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">0</td>
           <td class="num">0.0h</td>
-          <td class="num">218</td>
-          <td class="num">109</td>
+          <td class="num">218.00</td>
+          <td class="num">109.00</td>
         </tr>
 
         <tr data-account-name="锦江之星(青州古城博物馆店)"
@@ -14348,11 +14428,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>锦江之星(青州古城博物馆店)</strong><small>50497377961 · <span class="live-status 未直播">未直播</span></small></td>
           <td>潍坊市<small>锦江之星(青州古城博物馆店)</small></td>
           <td>鲁东省区<small>潍坊片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">0</td>
           <td class="num">0.0h</td>
-          <td class="num">181</td>
-          <td class="num">0</td>
+          <td class="num">181.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="维也纳酒店(日照万平口东夷小镇店)"
@@ -14372,11 +14452,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>维也纳酒店(日照万平口东夷小镇店)</strong><small>46844545173 · <span class="live-status 未直播">未直播</span></small></td>
           <td>日照市<small>维也纳酒店(日照万平口东夷小镇店)</small></td>
           <td>鲁东省区<small>日照片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">0</td>
           <td class="num">0.0h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="麗枫酒店（青岛即墨北站服装城店）"
@@ -14396,11 +14476,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>麗枫酒店（青岛即墨北站服装城店）</strong><small>46679038018 · <span class="live-status 未直播">未直播</span></small></td>
           <td>青岛市<small>丽枫酒店(青岛即墨北站服装城店)</small></td>
           <td>鲁东省区<small>青岛西片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">0</td>
           <td class="num">0.0h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="白玉兰酒店(潍坊临朐店)专用号"
@@ -14420,11 +14500,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>白玉兰酒店(潍坊临朐店)专用号</strong><small>35013873909 · <span class="live-status 未直播">未直播</span></small></td>
           <td>潍坊市<small>白玉兰酒店(潍坊临朐店)</small></td>
           <td>鲁东省区<small>潍坊片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">0</td>
           <td class="num">0.0h</td>
-          <td class="num">10</td>
-          <td class="num">0</td>
+          <td class="num">9.90</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="凯里亚德酒店（威海幸福门威高广场店）"
@@ -14444,11 +14524,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>凯里亚德酒店（威海幸福门威高广场店）</strong><small>21923082259 · <span class="live-status 未直播">未直播</span></small></td>
           <td>威海市<small>凯里亚德酒店(威海幸福门威高广场店)</small></td>
           <td>鲁东省区<small>威烟片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">0</td>
           <td class="num">0.0h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="维也纳智好酒店(山东烟台泰山路店)"
@@ -14468,11 +14548,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>维也纳智好酒店(山东烟台泰山路店)</strong><small>2127657799 · <span class="live-status 未直播">未直播</span></small></td>
           <td>烟台市<small>维也纳智好酒店(山东烟台泰山路店)</small></td>
           <td>鲁东省区<small>烟台片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">0</td>
           <td class="num">0.0h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="维也纳国际酒店（日照西站苏宁广场店）"
@@ -14492,11 +14572,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>维也纳国际酒店（日照西站苏宁广场店）</strong><small>0633.808.5555 · <span class="live-status 未直播">未直播</span></small></td>
           <td>日照市<small>维也纳国际酒店(日照西站苏宁广场店)</small></td>
           <td>鲁东省区<small>日照片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">0</td>
           <td class="num">0.0h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="凯里亚德酒店(枣庄万达广场店)专用号"
@@ -14516,11 +14596,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>凯里亚德酒店(枣庄万达广场店)专用号</strong><small>0632.6877666 · <span class="live-status 未直播">未直播</span></small></td>
           <td>枣庄市<small>凯里亚德酒店(枣庄万达广场店)</small></td>
           <td>鲁东省区<small>沂枣片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">0</td>
           <td class="num">0.0h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
         </tbody>
         </table>
@@ -15410,10 +15490,13 @@ SOFTWARE. */
     });
     listen(handle, "pointermove", event => {
       if (!drag || event.pointerId !== drag.id) return;
+      const mobileSheet = matchMedia("(max-width: 700px)").matches;
       const boundX = Math.max(0, (innerWidth - dialog.offsetWidth) / 2 - 16);
       const boundY = Math.max(0, (innerHeight - dialog.offsetHeight) / 2 - 16);
-      position.x = resist(drag.x + event.clientX - drag.startX, boundX);
-      position.y = resist(drag.y + event.clientY - drag.startY, boundY);
+      position.x = mobileSheet ? (event.clientX - drag.startX) * .05 :
+        resist(drag.x + event.clientX - drag.startX, boundX);
+      const y = drag.y + event.clientY - drag.startY;
+      position.y = mobileSheet && y > 0 ? y : resist(y, boundY);
       paintPosition();
       const now = performance.now();
       drag.samples.push({ x: position.x, y: position.y, t: now });
@@ -15426,7 +15509,10 @@ SOFTWARE. */
       const stale = performance.now() - last.t > 80;
       position.vx = event.type === "pointerup" && !stale ? (last.x - first.x) / seconds : 0;
       position.vy = event.type === "pointerup" && !stale ? (last.y - first.y) / seconds : 0;
-      finishDrag(); settlePosition();
+      finishDrag();
+      if (event.type === "pointerup" && matchMedia("(max-width: 700px)").matches && position.y > 100)
+        closeSettings();
+      else settlePosition();
     };
     listen(handle, "pointerup", release); listen(handle, "pointercancel", release);
     listen(handle, "lostpointercapture", event => { if (drag && drag.id === event.pointerId) release(event); });
@@ -15966,6 +16052,14 @@ SOFTWARE. */
   const labels = ["本期核销", "本期支付", "核销间夜", "支付间夜", "核销增长率", "支付增长率"];
   let detail, shell, detailRow, opener, detailToken = 0, detailDrag;
   const ds = { x: 0, y: 0, sx: 1, sy: 1, tilt: 0 };
+  function detailOrigin() {
+    const source = opener?.getBoundingClientRect();
+    const box = { left: shell.offsetLeft, top: shell.offsetTop };
+    const mobile = matchMedia("(max-width: 700px)").matches;
+    shell.style.transformOrigin = mobile ? "50% 100%" :
+      source ? `${source.left + source.width / 2 - box.left}px ${source.top + source.height / 2 - box.top}px` : "center";
+    return mobile ? 38 : source ? Math.max(-24, Math.min(24, source.top - box.top)) : 10;
+  }
   function paintDetail() {
     shell.style.transform = `translate3d(${ds.x}px,${ds.y}px,0) rotate(${ds.tilt}deg) scale(${ds.sx},${ds.sy})`;
     detail.style.setProperty("--wb-backdrop", String(clamp(.26 - Math.max(ds.y, 0) / 1200, .08, .26)));
@@ -15998,7 +16092,7 @@ SOFTWARE. */
     opener = button; updateDetail(row);
     Object.assign(ds,{x:0,y:0,sx:1,sy:1,tilt:0}); paintDetail();
     if (!detail.open) detail.showModal();
-    ds.y = 10; ds.sx = ds.sy = .975;
+    ds.y = detailOrigin(); ds.sx = ds.sy = .94;
     detail.dataset.motion = "opening"; paintDetail();
     if(enabled())shell.animate([{opacity:.6},{opacity:1}],{duration:180,fill:"none"});
     spring(ds,{x:0,y:0,sx:1,sy:1,tilt:0},paintDetail,()=>{
@@ -16018,7 +16112,8 @@ SOFTWARE. */
     if (!detail?.open) return;
     if (immediate || !enabled()) { finishDetail(); return; }
     stop(ds); clearFlights();
-    const goal = {x:ds.x*.3,y:Math.max(10,ds.y+12),sx:.975,sy:.975,tilt:0};
+    const y = detailOrigin();
+    const goal = {x:ds.x*.3,y:Math.max(y,ds.y+12),sx:.94,sy:.94,tilt:0};
     detail.dataset.motion="closing";
     shell.animate([{opacity:1},{opacity:0}],{duration:150,fill:"forwards"});
     spring(ds,goal,paintDetail,finishDetail,.15,true);
@@ -16275,6 +16370,246 @@ SOFTWARE. */
     reset();controls.forEach(c=>c.stop());controls.clear();
     if(!e.persisted){if(!floating.hidden)restoreFloat(true);cleanup.splice(0).forEach(fn=>fn());}
   });
+})();
+</script>
+<script id="workbench-native-script">
+/* Keep original form nodes and handlers, even when displayed in a mobile sheet. */
+(() => {
+  "use strict";
+  const root = document.documentElement;
+  if (root.dataset.wbNative) return;
+  root.dataset.wbNative = "v1";
+  const mobile = matchMedia("(max-width: 700px)");
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+  const motionEnabled = () => !reduced.matches && root.dataset.effects !== "off" && !document.hidden;
+  const cleanup = [];
+  const listen = (node, type, fn, options) => {
+    node.addEventListener(type, fn, options);
+    cleanup.push(() => node.removeEventListener(type, fn, options));
+  };
+  const fields = [...document.querySelectorAll('.filter-bar input[type="search"], .filter-bar select')];
+  const fieldKeys = new Map(fields.map((node, index) => [node, node.id || `filter-${index}`]));
+  const tabs = [...document.querySelectorAll("[data-local]")];
+  const scrollers = [...document.querySelectorAll(".table-scroll, .inventory-table-scroll, .operation-score-table-scroll")];
+  const storageKey = `wb-reading-v1:${location.pathname}`;
+  let restored = {};
+  try {
+    const saved = JSON.parse(sessionStorage.getItem(storageKey) || "{}");
+    if (saved.version === 1 && Date.now() - saved.savedAt < 12 * 60 * 60 * 1000) restored = saved;
+  } catch (_) {}
+  function saveReading() {
+    const route = document.querySelector(".section.active")?.id;
+    const state = {
+      version: 1, savedAt: Date.now(), route, y: scrollY,
+      fields: Object.fromEntries(fields.map(node => [fieldKeys.get(node), node.value])),
+      tabs: Object.fromEntries(tabs.filter(node => node.classList.contains("active"))
+        .map(node => [node.closest(".section").id, node.dataset.local])),
+      x: scrollers.map(node => node.scrollLeft)
+    };
+    try { sessionStorage.setItem(storageKey, JSON.stringify(state)); } catch (_) {}
+  }
+  for (const node of fields) {
+    const value = restored.fields?.[fieldKeys.get(node)];
+    if (typeof value === "string" &&
+        (node.tagName !== "SELECT" || [...node.options].some(option => option.value === value))) {
+      node.value = value;
+      node.dispatchEvent(new Event(node.tagName === "SELECT" ? "change" : "input", { bubbles: true }));
+    }
+    if (node.type === "search") {
+      node.setAttribute("enterkeyhint", "search");
+      listen(node, "keydown", event => { if (event.key === "Enter" && !event.isComposing) node.blur(); });
+    }
+  }
+  tabs.forEach(tab => {
+    if (restored.tabs?.[tab.closest(".section").id] === tab.dataset.local) tab.click();
+  });
+  listen(document, "input", event => { if (fieldKeys.has(event.target) && !event.isComposing) saveReading(); });
+  listen(document, "compositionend", event => { if (fieldKeys.has(event.target)) saveReading(); });
+  listen(document, "change", event => { if (fieldKeys.has(event.target)) saveReading(); });
+  listen(document, "click", event => { if (event.target.closest?.("[data-local], [data-target]")) saveReading(); });
+
+  const pendingScrollers = new Set(scrollers);
+  function restoreHorizontal() {
+    for (const node of pendingScrollers) {
+      if (!node.getClientRects().length) continue;
+      node.scrollLeft = restored.x?.[scrollers.indexOf(node)] || 0;
+      pendingScrollers.delete(node);
+    }
+  }
+  requestAnimationFrame(() => {
+    restoreHorizontal();
+    if (restored.route === document.querySelector(".section.active")?.id && restored.y)
+      window.scrollTo({ top: restored.y, behavior: "instant" });
+  });
+
+  const sheets = [];
+  document.querySelectorAll(".filter-bar").forEach((bar, index) => {
+    const selects = [...bar.querySelectorAll("select")];
+    if (!selects.length || typeof HTMLDialogElement === "undefined") return;
+    bar.dataset.wbFilterSheet = "true";
+    const button = document.createElement("button");
+    button.type = "button"; button.className = "wb-filter-open";
+    button.setAttribute("aria-haspopup", "dialog");
+    button.setAttribute("aria-controls", `wb-native-filter-${index}`);
+    button.innerHTML = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h14"/><circle cx="7" cy="5" r="2"/><circle cx="13" cy="10" r="2"/></svg><span>筛选</span>';
+    const dialog = document.createElement("dialog");
+    dialog.id = `wb-native-filter-${index}`; dialog.className = "wb-native-filter";
+    dialog.setAttribute("aria-labelledby", `wb-filter-title-${index}`);
+    const title = bar.closest(".panel")?.querySelector("h2")?.textContent || "门店";
+    dialog.innerHTML = `<header class="wb-filter-handle"><h2 id="wb-filter-title-${index}"></h2></header>
+      <div class="wb-filter-fields"></div><p class="wb-filter-result" aria-live="polite"></p>
+      <footer class="wb-filter-footer"><button class="wb-filter-reset" type="button">重置筛选</button><button class="wb-filter-done" type="button">完成</button></footer>`;
+    dialog.querySelector("h2").textContent = `${title}筛选`;
+    const anchors = selects.map(select => {
+      const anchor = document.createComment("original-filter-position");
+      select.before(anchor);
+      const label = document.createElement("label"); label.className = "wb-filter-field";
+      const text = document.createElement("span");
+      text.textContent = select.getAttribute("aria-label")?.replace(/^按/, "").replace(/筛选.*$/, "") ||
+        select.options[0]?.textContent.replace(/^全部/, "") || "条件";
+      label.append(text);
+      return { select, anchor, label };
+    });
+    const result = bar.querySelector(".filter-count");
+    const resultCopy = dialog.querySelector(".wb-filter-result");
+    function syncSummary() {
+      const selected = selects.filter(select => select.value);
+      button.querySelector("span").textContent = selected.length ? `筛选 · ${selected.length}` : "筛选";
+      button.setAttribute("aria-label", selected.length ?
+        `筛选，${selected.map(select => select.selectedOptions[0]?.textContent).join("，")}` : `${title}筛选`);
+      resultCopy.textContent = result?.textContent || "条件立即生效";
+    }
+    selects.forEach(select => listen(select, "change", syncSummary));
+    if (result) {
+      const observer = new MutationObserver(syncSummary);
+      observer.observe(result, { childList: true, characterData: true, subtree: true });
+      cleanup.push(() => observer.disconnect());
+    }
+    bar.append(button, dialog);
+    let animation, generation = 0, drag;
+    function stop() {
+      const current = animation && getComputedStyle(dialog);
+      const transform = current?.transform, opacity = current?.opacity;
+      generation++; animation?.cancel(); animation = null;
+      if (current) { dialog.style.transform = transform; dialog.style.opacity = opacity; }
+    }
+    function settle(closing = false, immediate = false) {
+      stop();
+      dialog.dataset.motion = closing ? "closing" : "opening";
+      const finish = () => {
+        animation = null; dialog.style.transform = ""; dialog.style.opacity = "";
+        dialog.dataset.motion = "idle";
+        if (closing && dialog.open) dialog.close();
+      };
+      if (immediate || !motionEnabled() || typeof dialog.animate !== "function") { finish(); return; }
+      const token = generation;
+      const start = getComputedStyle(dialog).transform;
+      animation = dialog.animate([
+        { transform: start === "none" ? "translateY(0)" : start, opacity: closing ? 1 : .85 },
+        { transform: closing ? `translateY(${dialog.offsetHeight}px)` : "translateY(0)", opacity: closing ? .3 : 1 }
+      ], { duration: closing ? 160 : 220, easing: "cubic-bezier(.16,1,.3,1)" });
+      animation.onfinish = () => { if (generation === token) finish(); };
+    }
+    function close(immediate = false) { if (dialog.open) settle(true, immediate); }
+    function arrange() {
+      close(true);
+      anchors.forEach(({ select, anchor, label }) => {
+        if (mobile.matches) {
+          label.append(select); dialog.querySelector(".wb-filter-fields").append(label);
+        } else anchor.after(select);
+      });
+      syncSummary();
+    }
+    listen(button, "click", () => {
+      if (!mobile.matches) return;
+      stop();
+      if (!dialog.open) { dialog.style.transform = "translateY(36px)"; dialog.showModal(); }
+      syncSummary(); settle();
+    });
+    listen(dialog.querySelector(".wb-filter-done"), "click", () => close());
+    listen(dialog.querySelector(".wb-filter-reset"), "click", () => {
+      selects.forEach(select => {
+        select.value = select.options[0]?.value || "";
+        select.dispatchEvent(new Event("change", { bubbles: true }));
+      });
+    });
+    listen(dialog, "cancel", event => { event.preventDefault(); close(true); });
+    listen(dialog, "close", () => {
+      stop(); drag = null; dialog.style.transform = ""; dialog.dataset.motion = "idle";
+      if (mobile.matches && button.getClientRects().length) button.focus({ preventScroll: true });
+    });
+    listen(dialog, "click", event => { if (event.target === dialog) {
+      const rect = dialog.getBoundingClientRect();
+      if (event.clientY < rect.top || event.clientY > rect.bottom) close();
+    }});
+    const handle = dialog.querySelector(".wb-filter-handle");
+    listen(handle, "pointerdown", event => {
+      if (event.button !== 0 || !event.isPrimary) return;
+      const rect = dialog.getBoundingClientRect();
+      stop();
+      const y = Math.max(0, rect.top - (innerHeight - dialog.offsetHeight));
+      drag = { id: event.pointerId, start: event.clientY - y, y };
+      dialog.style.transform = `translateY(${y}px)`;
+      handle.setPointerCapture(event.pointerId); dialog.dataset.motion = "tracking";
+    });
+    listen(handle, "pointermove", event => {
+      if (!drag || event.pointerId !== drag.id) return;
+      drag.y = Math.max(0, event.clientY - drag.start);
+      dialog.style.transform = `translateY(${drag.y}px)`;
+    });
+    const release = event => {
+      if (!drag || event.pointerId !== drag.id) return;
+      const dismiss = event.type === "pointerup" && drag.y > Math.min(120, dialog.offsetHeight * .3);
+      drag = null;
+      if (handle.hasPointerCapture(event.pointerId)) handle.releasePointerCapture(event.pointerId);
+      settle(dismiss);
+    };
+    listen(handle, "pointerup", release);
+    listen(handle, "pointercancel", release);
+    listen(handle, "lostpointercapture", release);
+    listen(mobile, "change", arrange);
+    sheets.push({ close, dialog, stop });
+    arrange();
+  });
+  function revealNavigation() {
+    const nav = document.querySelector(".mobile-nav");
+    const selected = nav?.querySelector("button.active");
+    if (!selected || !mobile.matches) return;
+    const n = selected.getBoundingClientRect(), h = nav.getBoundingClientRect();
+    if (n.left < h.left + 8 || n.right > h.right - 8)
+      nav.scrollTo({ left: selected.offsetLeft - (nav.clientWidth - selected.offsetWidth) / 2, behavior: "instant" });
+  }
+  const routeObserver = new MutationObserver(() => {
+    sheets.forEach(sheet => { if (!sheet.dialog.closest(".section")?.classList.contains("active")) sheet.close(true); });
+    revealNavigation(); restoreHorizontal();
+  });
+  document.querySelectorAll(".section").forEach(section => routeObserver.observe(section, { attributes: true, attributeFilter: ["class"] }));
+  cleanup.push(() => routeObserver.disconnect());
+  listen(window, "resize", revealNavigation);
+  listen(reduced, "change", () => sheets.forEach(sheet => sheet.close(true)));
+  const effects = new MutationObserver(() => sheets.forEach(sheet => sheet.close(true)));
+  effects.observe(root, { attributes: true, attributeFilter: ["data-effects"] });
+  cleanup.push(() => effects.disconnect());
+  listen(document, "visibilitychange", () => { if (document.hidden) sheets.forEach(sheet => sheet.close(true)); });
+  requestAnimationFrame(revealNavigation);
+  let priorOverflow, scrollLocked = false;
+  function syncScrollLock() {
+    const open = !!document.querySelector("dialog[open]");
+    if (open && !scrollLocked) {
+      priorOverflow = root.style.overflow; root.style.overflow = "hidden"; scrollLocked = true;
+    } else if (!open && scrollLocked) {
+      root.style.overflow = priorOverflow; scrollLocked = false;
+    }
+  }
+  const dialogsObserver = new MutationObserver(syncScrollLock);
+  dialogsObserver.observe(document.body, { subtree: true, attributes: true, attributeFilter: ["open"] });
+  syncScrollLock();
+  cleanup.push(() => { dialogsObserver.disconnect(); if (scrollLocked) root.style.overflow = priorOverflow; });
+  listen(window, "pagehide", event => {
+    saveReading(); sheets.forEach(sheet => sheet.close(true));
+    if (!event.persisted) cleanup.splice(0).forEach(fn => fn());
+  });
+  listen(window, "pageshow", revealNavigation);
 })();
 </script>
 <!-- workbench-presentation-v1:script:end -->

@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>山河大区 · 鲁西省区 · 滨东片区经营数据工作台</title>
 <style>
 :root {
@@ -863,6 +863,84 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
 }
 @media(prefers-reduced-motion:reduce){.wb-store-open:after,.wb-dock-target{transition:none}}
 @media print{#wb-store-detail,#wb-trend-float,.wb-float-open,.wb-dock-target,.wb-chart-probe{display:none!important}.wb-store-open:after{display:none}.wb-store-open{font:inherit!important}}
+/* Touch controls and reading continuity; report tables retain their layout. */
+html { -webkit-tap-highlight-color: transparent; scrollbar-gutter: stable; }
+button, a.command-button { touch-action: manipulation; -webkit-user-select: none; user-select: none; }
+.table-scroll, .inventory-table-scroll, .operation-score-table-scroll {
+  overscroll-behavior-x: contain;
+}
+.wb-account-scope {
+  color: var(--muted); font-size: 12px; line-height: 1.8;
+  border-left: 3px solid var(--accent); padding: 8px 12px;
+  margin: 0 0 16px; background: var(--accent-soft); border-radius: 0 8px 8px 0;
+}
+.wb-filter-open { display: none; }
+.wb-native-filter {
+  position: fixed; inset: auto 0 0; margin: 0; width: 100%; max-width: none;
+  max-height: calc(100dvh - env(safe-area-inset-top) - 32px);
+  padding: 0 20px calc(20px + env(safe-area-inset-bottom));
+  background: var(--paper); color: var(--ink); border: 1px solid var(--line);
+  border-bottom: 0; border-radius: 26px 26px 0 0; overflow-y: auto;
+  overscroll-behavior: contain; box-shadow: 0 -12px 60px #07376f24;
+  transform-origin: bottom center;
+}
+.wb-native-filter::backdrop { background: #11223c55; }
+.wb-filter-handle { padding: 12px 0 18px; cursor: grab; touch-action: none; user-select: none; }
+.wb-filter-handle::before {
+  content: ""; display: block; width: 34px; height: 5px; margin: 0 auto 18px;
+  border-radius: 3px; background: var(--muted); opacity: .4;
+}
+.wb-filter-handle h2 { margin: 0; font-size: 20px; }
+.wb-filter-fields { display: grid; gap: 16px; }
+.wb-filter-field { display: grid; gap: 7px; font-size: 13px; color: var(--muted); }
+.wb-filter-field select { width: 100%; margin: 0; min-width: 0; height: 48px; font-size: 16px; }
+.wb-filter-result { color: var(--muted); font-size: 12px; margin: 16px 0 12px; min-height: 18px; }
+.wb-filter-footer { display: flex; gap: 10px; }
+.wb-filter-footer button { min-height: 48px; border-radius: 14px; padding: 10px 18px; font-size: 15px; }
+.wb-filter-reset { border: 1px solid var(--line); background: var(--glass-solid); }
+.wb-filter-done { flex: 1; color: #fff; background: var(--accent); }
+[data-appearance="dark"] .wb-filter-done { background: var(--brand-mid); }
+[data-appearance="dark"] .wb-native-filter select { background: var(--glass-solid); color: var(--ink); }
+@media (pointer: coarse) {
+  .filter-bar input, .filter-bar select, .organization-filters select { font-size: 16px; }
+  .wb-spatial-close, .wb-detail-nav, .wb-float-tools button { min-height: 44px; min-width: 44px; }
+  .sort-trigger { min-height: 44px; }
+}
+@media (max-width: 700px) {
+  .content {
+    padding-left: max(14px, env(safe-area-inset-left));
+    padding-right: max(14px, env(safe-area-inset-right));
+    padding-top: max(22px, env(safe-area-inset-top));
+  }
+  .filter-bar[data-wb-filter-sheet] { gap: 10px; }
+  .filter-bar[data-wb-filter-sheet] > input[type="search"] { flex: 1 1 160px; width: 0; }
+  .wb-filter-open {
+    display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+    min-height: 44px; max-width: 45%; padding: 9px 12px; border-radius: 12px;
+    border: 1px solid var(--line); background: var(--glass-solid);
+    color: var(--accent); font-size: 13px; font-weight: 650;
+  }
+  .wb-filter-open span { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+  .wb-filter-open svg { width: 16px; height: 16px; flex-shrink: 0; }
+  .mobile-nav { scroll-padding: 8px; overscroll-behavior-x: contain; }
+  .mobile-nav button { min-width: 52px; }
+  #wb-store-detail[open] { align-items: flex-end; }
+  .wb-detail-shell {
+    width: 100%; border-bottom: 0; border-radius: 26px 26px 0 0;
+    max-height: calc(100dvh - env(safe-area-inset-top) - 28px);
+  }
+  .wb-detail-footer { padding-bottom: calc(14px + env(safe-area-inset-bottom)); }
+  .wb-detail-handle { min-height: 62px; }
+  .wb-detail-content { max-height: calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 190px); }
+  .wb-detail-nav { min-height: 44px; }
+  .wb-store-open:after { opacity: .6; transform: none; }
+  .wb-dialog {
+    inset: auto 0 0; margin: 0; width: 100%; max-width: none;
+    border-radius: 26px 26px 0 0; max-height: calc(100dvh - 32px);
+    padding-bottom: calc(20px + env(safe-area-inset-bottom)); transform-origin: bottom center;
+  }
+}
+@media print { .wb-filter-open, .wb-native-filter { display: none!important; } }
 </style>
 <!-- workbench-presentation-v1:style:end -->
 </head>
@@ -2567,7 +2645,7 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
 
 
     <section class="section" id="merchant-live">
-      <div class="section-head"><div><h2>商家自播</h2><p>商家官号 · 近 7 日对比前 7 日 · 数据来源：生意经</p></div></div>
+      <div class="section-head"><div><h2>商家自播</h2><p>商家官号与职人/店员 · 近 7 日对比前 7 日 · 数据来源：生意经</p></div></div>
       <div class="kpis" id="store-live-coverage"><article class="kpi" data-live-metric="total"><span class="kpi-label">总门店</span><b class="kpi-value">44<small style="font-size:14px">家</small></b><div class="kpi-foot">当前组织名单 · POI 去重</div></article><article class="kpi" data-live-metric="live"><span class="kpi-label">已开播门店</span><b class="kpi-value">14<small style="font-size:14px">家</small></b><div class="kpi-foot">周期内至少开播一次</div></article><article class="kpi" data-live-metric="not-live"><span class="kpi-label">未开播门店</span><b class="kpi-value">30<small style="font-size:14px">家</small></b><div class="kpi-foot">未匹配到本期开播记录</div></article><article class="kpi" data-live-metric="rate"><span class="kpi-label">门店开播率</span><b class="kpi-value">31.8%<small style="font-size:14px"></small></b><div class="kpi-foot">已开播门店 ÷ 总门店</div></article></div><p style="font-size:12px;color:var(--muted);line-height:1.7">统计周期：2026-11-06 至 2026-11-12。商家官号直播场次或直播时长大于 0 计为开播，按门店 POI 去重；账号所属门店名称仅接受唯一 POI 匹配。未开播表示未匹配到本期开播记录，未匹配账号可能影响统计结果。</p><article class="panel" style="margin:16px 0"><div class="panel-head"><div><h2>各片区门店开播率与自播业绩</h2><p>近 7 日 · 与当前省区、片区选择一致</p></div></div><div style="overflow-x:auto"><table id="store-live-area-summary"><thead><tr><th>片区</th><th>总门店</th><th>已开播</th><th>未开播*</th><th>开播率</th><th>直播支付额</th><th>直播时长</th><th>直播场次</th><th>开播账号数</th></tr></thead><tbody><tr><td>滨东片区</td><td>44</td><td>14</td><td>30</td><td>31.8%</td><td>2,327</td><td>202.8h</td><td>94</td><td>14</td></tr></tbody></table></div></article>
       <div class="kpis">
         <article class="kpi"><span class="kpi-label">直播成交金额</span><b class="kpi-value">2,327</b><div class="kpi-foot"><span class="negative">-0.5%</span><span>较前 7 日 2,338</span></div></article>
@@ -2653,7 +2731,9 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
         </table>
       </div>
     </article>
-        <article class="panel"><div class="panel-head"><div><h2>账号明细</h2><p>14 日出现账号全集 · “未直播”为近 7 日直播场次等于 0</p></div></div>
+        <article class="panel"><div class="panel-head"><div><h2>账号明细</h2><p>14 日出现账号全集 · 金额、场次与时长统计近7日 · “未直播”为近7日直播场次等于0</p></div></div>
+        <p class="wb-account-scope">金额单位：元。账号核销金额包含直播、视频等归因来源，不等于直播核销或门店全渠道核销。搜索、其他账号带来的核销，若未归因到该账号，不计入此列；核销发生在近7日，不要求成交也发生在近7日。</p>
+
       <div class="filter-bar merchant-filter-bar">
         <input id="merchant-account-search" type="search"
                placeholder="搜索账号、ID 或门店" aria-label="搜索账号、ID 或门店">
@@ -2677,8 +2757,8 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
             <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-live-amount" onclick="sortMerchantAccountTable('account-live-amount')" title="按直播成交金额排序">直播成交金额 <span class="sort-indicator">↕</span></button></th>
             <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-live-sessions" onclick="sortMerchantAccountTable('account-live-sessions')" title="按直播场次排序">直播场次 <span class="sort-indicator">↕</span></button></th>
             <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-live-hours" onclick="sortMerchantAccountTable('account-live-hours')" title="按直播时长排序">直播时长 <span class="sort-indicator">↕</span></button></th>
-            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-total-amount" onclick="sortMerchantAccountTable('account-total-amount')" title="按总成交金额排序">总成交金额 <span class="sort-indicator">↕</span></button></th>
-            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-redeem-amount" onclick="sortMerchantAccountTable('account-redeem-amount')" title="按总核销金额排序">总核销金额 <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-total-amount" onclick="sortMerchantAccountTable('account-total-amount')" title="按账号成交金额（近7日）排序">账号成交金额（近7日） <span class="sort-indicator">↕</span></button></th>
+            <th><button class="sort-trigger merchant-account-sort-trigger" type="button" data-sort-key="account-redeem-amount" onclick="sortMerchantAccountTable('account-redeem-amount')" title="按账号核销金额（近7日）排序">账号核销金额（近7日） <span class="sort-indicator">↕</span></button></th>
           </tr></thead>
           <tbody id="merchant-account-body">
         <tr data-account-name="维也纳国际酒店(东营广饶孙武路店)专用号"
@@ -2698,11 +2778,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>维也纳国际酒店(东营广饶孙武路店)专用号</strong><small>1533888jd · <span class="live-status 有直播">有直播</span></small></td>
           <td>东营市<small>维也纳国际酒店(东营广饶孙武路店)</small></td>
           <td>鲁西省区<small>滨东片区</small></td>
-          <td class="num">1,145</td>
+          <td class="num">1,145.00</td>
           <td class="num">7</td>
           <td class="num">75.3h</td>
-          <td class="num">1,145</td>
-          <td class="num">916</td>
+          <td class="num">1,145.00</td>
+          <td class="num">916.00</td>
         </tr>
 
         <tr data-account-name="麗枫酒店(滨州黄河八路航空学院店)"
@@ -2722,11 +2802,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>麗枫酒店(滨州黄河八路航空学院店)</strong><small>lfjdbzhhbl · <span class="live-status 有直播">有直播</span></small></td>
           <td>滨州市<small>麗枫酒店(滨州黄河八路人民医院店)</small></td>
           <td>鲁西省区<small>滨东片区</small></td>
-          <td class="num">636</td>
+          <td class="num">636.00</td>
           <td class="num">9</td>
           <td class="num">20.3h</td>
-          <td class="num">805</td>
-          <td class="num">477</td>
+          <td class="num">805.00</td>
+          <td class="num">477.00</td>
         </tr>
 
         <tr data-account-name="白玉兰酒店(滨州渤海五路店)"
@@ -2746,11 +2826,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>白玉兰酒店(滨州渤海五路店)</strong><small>binzhoubaiyulan · <span class="live-status 有直播">有直播</span></small></td>
           <td>滨州市<small>白玉兰酒店(滨州渤海五路蒲园景区店)</small></td>
           <td>鲁西省区<small>滨东片区</small></td>
-          <td class="num">288</td>
+          <td class="num">288.00</td>
           <td class="num">14</td>
           <td class="num">22.0h</td>
-          <td class="num">288</td>
-          <td class="num">288</td>
+          <td class="num">288.00</td>
+          <td class="num">288.00</td>
         </tr>
 
         <tr data-account-name="喆啡酒店(东营府前大街店)"
@@ -2770,11 +2850,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>喆啡酒店(东营府前大街店)</strong><small>22646020687 · <span class="live-status 有直播">有直播</span></small></td>
           <td>东营市<small>喆啡酒店(东营府前大街店)</small></td>
           <td>鲁西省区<small>滨东片区</small></td>
-          <td class="num">149</td>
+          <td class="num">149.00</td>
           <td class="num">5</td>
           <td class="num">8.9h</td>
-          <td class="num">149</td>
-          <td class="num">0</td>
+          <td class="num">149.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="7天优品酒店(滨州博兴乐安大街店)"
@@ -2794,11 +2874,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>7天优品酒店(滨州博兴乐安大街店)</strong><small>76303693197 · <span class="live-status 有直播">有直播</span></small></td>
           <td>滨州市<small>7天优品酒店(博兴乐安大街店)</small></td>
           <td>鲁西省区<small>滨东片区</small></td>
-          <td class="num">109</td>
+          <td class="num">109.00</td>
           <td class="num">8</td>
           <td class="num">4.3h</td>
-          <td class="num">109</td>
-          <td class="num">109</td>
+          <td class="num">109.00</td>
+          <td class="num">109.00</td>
         </tr>
 
         <tr data-account-name="维纳斯皇家酒店(滨州市科技馆万达广场店)"
@@ -2818,11 +2898,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>维纳斯皇家酒店(滨州市科技馆万达广场店)</strong><small>weinasihuang82 · <span class="live-status 有直播">有直播</span></small></td>
           <td>滨州市<small>维纳斯皇家酒店(滨州市科技馆万达广场店)</small></td>
           <td>鲁西省区<small>滨东片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">15</td>
           <td class="num">22.8h</td>
-          <td class="num">90</td>
-          <td class="num">0</td>
+          <td class="num">90.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="白玉兰商务酒店(滨州无棣埕口镇政府店)"
@@ -2842,11 +2922,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>白玉兰商务酒店(滨州无棣埕口镇政府店)</strong><small>78746507146 · <span class="live-status 有直播">有直播</span></small></td>
           <td>滨州市<small>白玉兰商务酒店(滨州无棣埕口镇政府店)</small></td>
           <td>鲁西省区<small>滨东片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">12</td>
           <td class="num">22.8h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="白玉兰酒店(圣豪购物广场无棣古城店)"
@@ -2866,11 +2946,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>白玉兰酒店(圣豪购物广场无棣古城店)</strong><small>77129208195 · <span class="live-status 有直播">有直播</span></small></td>
           <td>滨州市<small>白玉兰酒店(圣豪购物中心无棣古城店)</small></td>
           <td>鲁西省区<small>滨东片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">9</td>
           <td class="num">12.0h</td>
-          <td class="num">318</td>
-          <td class="num">0</td>
+          <td class="num">318.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="希岸酒店(滨州渤海十路航空学院店)"
@@ -2890,11 +2970,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>希岸酒店(滨州渤海十路航空学院店)</strong><small>21689022698 · <span class="live-status 有直播">有直播</span></small></td>
           <td>滨州市<small>希岸酒店(滨州渤海十路航空学院店)</small></td>
           <td>鲁西省区<small>滨东片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">6</td>
           <td class="num">5.0h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="希岸酒店(滨州无棣通力国际店)"
@@ -2914,11 +2994,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>希岸酒店(滨州无棣通力国际店)</strong><small>W2752h · <span class="live-status 有直播">有直播</span></small></td>
           <td>滨州市<small>希岸酒店(滨州无棣通力国际店)</small></td>
           <td>鲁西省区<small>滨东片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">4</td>
           <td class="num">3.7h</td>
-          <td class="num">268</td>
-          <td class="num">139</td>
+          <td class="num">268.00</td>
+          <td class="num">139.00</td>
         </tr>
 
         <tr data-account-name="维也纳国际酒店滨州帝堡广场店"
@@ -2938,11 +3018,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>维也纳国际酒店滨州帝堡广场店</strong><small>832200113 · <span class="live-status 有直播">有直播</span></small></td>
           <td>滨州市<small>维也纳国际酒店(山东滨州帝堡国际广场店)</small></td>
           <td>鲁西省区<small>滨东片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">2</td>
           <td class="num">3.7h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="丽枫酒店(东营垦利区政府店)"
@@ -2962,11 +3042,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>丽枫酒店(东营垦利区政府店)</strong><small>lfjdklqzfd · <span class="live-status 有直播">有直播</span></small></td>
           <td>东营市<small>丽枫酒店(东营垦利区政府店)</small></td>
           <td>鲁西省区<small>滨东片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">1</td>
           <td class="num">1.0h</td>
-          <td class="num">378</td>
-          <td class="num">378</td>
+          <td class="num">378.00</td>
+          <td class="num">378.00</td>
         </tr>
 
         <tr data-account-name="维也纳酒店(5.0滨州无棣古城店)"
@@ -2986,11 +3066,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>维也纳酒店(5.0滨州无棣古城店)</strong><small>84387881376 · <span class="live-status 有直播">有直播</span></small></td>
           <td>滨州市<small>维也纳酒店(5.0滨州无棣古城店)</small></td>
           <td>鲁西省区<small>滨东片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">1</td>
           <td class="num">1.0h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="喆啡酒店(滨州沾化汽车站店)专用号"
@@ -3010,11 +3090,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>喆啡酒店(滨州沾化汽车站店)专用号</strong><small>82216889493 · <span class="live-status 有直播">有直播</span></small></td>
           <td>滨州市<small>喆啡酒店(滨州沾化汽车站店)</small></td>
           <td>鲁西省区<small>滨东片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">1</td>
           <td class="num">0.2h</td>
-          <td class="num">278</td>
-          <td class="num">278</td>
+          <td class="num">278.00</td>
+          <td class="num">278.00</td>
         </tr>
 
         <tr data-account-name="维也纳酒店（沾化润泽广场店）"
@@ -3034,11 +3114,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>维也纳酒店（沾化润泽广场店）</strong><small>86070640139 · <span class="live-status 未直播">未直播</span></small></td>
           <td>滨州市<small>维也纳酒店(滨州沾化润泽广场店)</small></td>
           <td>鲁西省区<small>滨东片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">0</td>
           <td class="num">0.0h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="维也纳酒店(东营东城万达广场店）"
@@ -3058,11 +3138,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>维也纳酒店(东营东城万达广场店）</strong><small>65161312534 · <span class="live-status 未直播">未直播</span></small></td>
           <td>东营市<small>维也纳酒店(东营东城万达广场店)</small></td>
           <td>鲁西省区<small>滨东片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">0</td>
           <td class="num">0.0h</td>
-          <td class="num">298</td>
-          <td class="num">0</td>
+          <td class="num">298.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="康铂酒店东营金融港"
@@ -3082,11 +3162,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>康铂酒店东营金融港</strong><small>61070964223 · <span class="live-status 未直播">未直播</span></small></td>
           <td>东营市<small>康铂酒店(东营金融港店)</small></td>
           <td>鲁西省区<small>滨东片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">0</td>
           <td class="num">0.0h</td>
-          <td class="num">0</td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
+          <td class="num">0.00</td>
         </tr>
 
         <tr data-account-name="34845709801"
@@ -3106,11 +3186,11 @@ h1 { font-size: 40px; font-weight: 680; margin-top: 9px; line-height: 1.23; lett
           <td><strong>34845709801</strong><small>34845709801 · <span class="live-status 未直播">未直播</span></small></td>
           <td>东营市<small>麗枫酒店(东营济南路银座振华中心医院店)</small></td>
           <td>鲁西省区<small>滨东片区</small></td>
-          <td class="num">0</td>
+          <td class="num">0.00</td>
           <td class="num">0</td>
           <td class="num">0.0h</td>
-          <td class="num">239</td>
-          <td class="num">239</td>
+          <td class="num">239.00</td>
+          <td class="num">239.00</td>
         </tr>
         </tbody>
         </table>
@@ -4000,10 +4080,13 @@ SOFTWARE. */
     });
     listen(handle, "pointermove", event => {
       if (!drag || event.pointerId !== drag.id) return;
+      const mobileSheet = matchMedia("(max-width: 700px)").matches;
       const boundX = Math.max(0, (innerWidth - dialog.offsetWidth) / 2 - 16);
       const boundY = Math.max(0, (innerHeight - dialog.offsetHeight) / 2 - 16);
-      position.x = resist(drag.x + event.clientX - drag.startX, boundX);
-      position.y = resist(drag.y + event.clientY - drag.startY, boundY);
+      position.x = mobileSheet ? (event.clientX - drag.startX) * .05 :
+        resist(drag.x + event.clientX - drag.startX, boundX);
+      const y = drag.y + event.clientY - drag.startY;
+      position.y = mobileSheet && y > 0 ? y : resist(y, boundY);
       paintPosition();
       const now = performance.now();
       drag.samples.push({ x: position.x, y: position.y, t: now });
@@ -4016,7 +4099,10 @@ SOFTWARE. */
       const stale = performance.now() - last.t > 80;
       position.vx = event.type === "pointerup" && !stale ? (last.x - first.x) / seconds : 0;
       position.vy = event.type === "pointerup" && !stale ? (last.y - first.y) / seconds : 0;
-      finishDrag(); settlePosition();
+      finishDrag();
+      if (event.type === "pointerup" && matchMedia("(max-width: 700px)").matches && position.y > 100)
+        closeSettings();
+      else settlePosition();
     };
     listen(handle, "pointerup", release); listen(handle, "pointercancel", release);
     listen(handle, "lostpointercapture", event => { if (drag && drag.id === event.pointerId) release(event); });
@@ -4556,6 +4642,14 @@ SOFTWARE. */
   const labels = ["本期核销", "本期支付", "核销间夜", "支付间夜", "核销增长率", "支付增长率"];
   let detail, shell, detailRow, opener, detailToken = 0, detailDrag;
   const ds = { x: 0, y: 0, sx: 1, sy: 1, tilt: 0 };
+  function detailOrigin() {
+    const source = opener?.getBoundingClientRect();
+    const box = { left: shell.offsetLeft, top: shell.offsetTop };
+    const mobile = matchMedia("(max-width: 700px)").matches;
+    shell.style.transformOrigin = mobile ? "50% 100%" :
+      source ? `${source.left + source.width / 2 - box.left}px ${source.top + source.height / 2 - box.top}px` : "center";
+    return mobile ? 38 : source ? Math.max(-24, Math.min(24, source.top - box.top)) : 10;
+  }
   function paintDetail() {
     shell.style.transform = `translate3d(${ds.x}px,${ds.y}px,0) rotate(${ds.tilt}deg) scale(${ds.sx},${ds.sy})`;
     detail.style.setProperty("--wb-backdrop", String(clamp(.26 - Math.max(ds.y, 0) / 1200, .08, .26)));
@@ -4588,7 +4682,7 @@ SOFTWARE. */
     opener = button; updateDetail(row);
     Object.assign(ds,{x:0,y:0,sx:1,sy:1,tilt:0}); paintDetail();
     if (!detail.open) detail.showModal();
-    ds.y = 10; ds.sx = ds.sy = .975;
+    ds.y = detailOrigin(); ds.sx = ds.sy = .94;
     detail.dataset.motion = "opening"; paintDetail();
     if(enabled())shell.animate([{opacity:.6},{opacity:1}],{duration:180,fill:"none"});
     spring(ds,{x:0,y:0,sx:1,sy:1,tilt:0},paintDetail,()=>{
@@ -4608,7 +4702,8 @@ SOFTWARE. */
     if (!detail?.open) return;
     if (immediate || !enabled()) { finishDetail(); return; }
     stop(ds); clearFlights();
-    const goal = {x:ds.x*.3,y:Math.max(10,ds.y+12),sx:.975,sy:.975,tilt:0};
+    const y = detailOrigin();
+    const goal = {x:ds.x*.3,y:Math.max(y,ds.y+12),sx:.94,sy:.94,tilt:0};
     detail.dataset.motion="closing";
     shell.animate([{opacity:1},{opacity:0}],{duration:150,fill:"forwards"});
     spring(ds,goal,paintDetail,finishDetail,.15,true);
@@ -4865,6 +4960,246 @@ SOFTWARE. */
     reset();controls.forEach(c=>c.stop());controls.clear();
     if(!e.persisted){if(!floating.hidden)restoreFloat(true);cleanup.splice(0).forEach(fn=>fn());}
   });
+})();
+</script>
+<script id="workbench-native-script">
+/* Keep original form nodes and handlers, even when displayed in a mobile sheet. */
+(() => {
+  "use strict";
+  const root = document.documentElement;
+  if (root.dataset.wbNative) return;
+  root.dataset.wbNative = "v1";
+  const mobile = matchMedia("(max-width: 700px)");
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+  const motionEnabled = () => !reduced.matches && root.dataset.effects !== "off" && !document.hidden;
+  const cleanup = [];
+  const listen = (node, type, fn, options) => {
+    node.addEventListener(type, fn, options);
+    cleanup.push(() => node.removeEventListener(type, fn, options));
+  };
+  const fields = [...document.querySelectorAll('.filter-bar input[type="search"], .filter-bar select')];
+  const fieldKeys = new Map(fields.map((node, index) => [node, node.id || `filter-${index}`]));
+  const tabs = [...document.querySelectorAll("[data-local]")];
+  const scrollers = [...document.querySelectorAll(".table-scroll, .inventory-table-scroll, .operation-score-table-scroll")];
+  const storageKey = `wb-reading-v1:${location.pathname}`;
+  let restored = {};
+  try {
+    const saved = JSON.parse(sessionStorage.getItem(storageKey) || "{}");
+    if (saved.version === 1 && Date.now() - saved.savedAt < 12 * 60 * 60 * 1000) restored = saved;
+  } catch (_) {}
+  function saveReading() {
+    const route = document.querySelector(".section.active")?.id;
+    const state = {
+      version: 1, savedAt: Date.now(), route, y: scrollY,
+      fields: Object.fromEntries(fields.map(node => [fieldKeys.get(node), node.value])),
+      tabs: Object.fromEntries(tabs.filter(node => node.classList.contains("active"))
+        .map(node => [node.closest(".section").id, node.dataset.local])),
+      x: scrollers.map(node => node.scrollLeft)
+    };
+    try { sessionStorage.setItem(storageKey, JSON.stringify(state)); } catch (_) {}
+  }
+  for (const node of fields) {
+    const value = restored.fields?.[fieldKeys.get(node)];
+    if (typeof value === "string" &&
+        (node.tagName !== "SELECT" || [...node.options].some(option => option.value === value))) {
+      node.value = value;
+      node.dispatchEvent(new Event(node.tagName === "SELECT" ? "change" : "input", { bubbles: true }));
+    }
+    if (node.type === "search") {
+      node.setAttribute("enterkeyhint", "search");
+      listen(node, "keydown", event => { if (event.key === "Enter" && !event.isComposing) node.blur(); });
+    }
+  }
+  tabs.forEach(tab => {
+    if (restored.tabs?.[tab.closest(".section").id] === tab.dataset.local) tab.click();
+  });
+  listen(document, "input", event => { if (fieldKeys.has(event.target) && !event.isComposing) saveReading(); });
+  listen(document, "compositionend", event => { if (fieldKeys.has(event.target)) saveReading(); });
+  listen(document, "change", event => { if (fieldKeys.has(event.target)) saveReading(); });
+  listen(document, "click", event => { if (event.target.closest?.("[data-local], [data-target]")) saveReading(); });
+
+  const pendingScrollers = new Set(scrollers);
+  function restoreHorizontal() {
+    for (const node of pendingScrollers) {
+      if (!node.getClientRects().length) continue;
+      node.scrollLeft = restored.x?.[scrollers.indexOf(node)] || 0;
+      pendingScrollers.delete(node);
+    }
+  }
+  requestAnimationFrame(() => {
+    restoreHorizontal();
+    if (restored.route === document.querySelector(".section.active")?.id && restored.y)
+      window.scrollTo({ top: restored.y, behavior: "instant" });
+  });
+
+  const sheets = [];
+  document.querySelectorAll(".filter-bar").forEach((bar, index) => {
+    const selects = [...bar.querySelectorAll("select")];
+    if (!selects.length || typeof HTMLDialogElement === "undefined") return;
+    bar.dataset.wbFilterSheet = "true";
+    const button = document.createElement("button");
+    button.type = "button"; button.className = "wb-filter-open";
+    button.setAttribute("aria-haspopup", "dialog");
+    button.setAttribute("aria-controls", `wb-native-filter-${index}`);
+    button.innerHTML = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h14"/><circle cx="7" cy="5" r="2"/><circle cx="13" cy="10" r="2"/></svg><span>筛选</span>';
+    const dialog = document.createElement("dialog");
+    dialog.id = `wb-native-filter-${index}`; dialog.className = "wb-native-filter";
+    dialog.setAttribute("aria-labelledby", `wb-filter-title-${index}`);
+    const title = bar.closest(".panel")?.querySelector("h2")?.textContent || "门店";
+    dialog.innerHTML = `<header class="wb-filter-handle"><h2 id="wb-filter-title-${index}"></h2></header>
+      <div class="wb-filter-fields"></div><p class="wb-filter-result" aria-live="polite"></p>
+      <footer class="wb-filter-footer"><button class="wb-filter-reset" type="button">重置筛选</button><button class="wb-filter-done" type="button">完成</button></footer>`;
+    dialog.querySelector("h2").textContent = `${title}筛选`;
+    const anchors = selects.map(select => {
+      const anchor = document.createComment("original-filter-position");
+      select.before(anchor);
+      const label = document.createElement("label"); label.className = "wb-filter-field";
+      const text = document.createElement("span");
+      text.textContent = select.getAttribute("aria-label")?.replace(/^按/, "").replace(/筛选.*$/, "") ||
+        select.options[0]?.textContent.replace(/^全部/, "") || "条件";
+      label.append(text);
+      return { select, anchor, label };
+    });
+    const result = bar.querySelector(".filter-count");
+    const resultCopy = dialog.querySelector(".wb-filter-result");
+    function syncSummary() {
+      const selected = selects.filter(select => select.value);
+      button.querySelector("span").textContent = selected.length ? `筛选 · ${selected.length}` : "筛选";
+      button.setAttribute("aria-label", selected.length ?
+        `筛选，${selected.map(select => select.selectedOptions[0]?.textContent).join("，")}` : `${title}筛选`);
+      resultCopy.textContent = result?.textContent || "条件立即生效";
+    }
+    selects.forEach(select => listen(select, "change", syncSummary));
+    if (result) {
+      const observer = new MutationObserver(syncSummary);
+      observer.observe(result, { childList: true, characterData: true, subtree: true });
+      cleanup.push(() => observer.disconnect());
+    }
+    bar.append(button, dialog);
+    let animation, generation = 0, drag;
+    function stop() {
+      const current = animation && getComputedStyle(dialog);
+      const transform = current?.transform, opacity = current?.opacity;
+      generation++; animation?.cancel(); animation = null;
+      if (current) { dialog.style.transform = transform; dialog.style.opacity = opacity; }
+    }
+    function settle(closing = false, immediate = false) {
+      stop();
+      dialog.dataset.motion = closing ? "closing" : "opening";
+      const finish = () => {
+        animation = null; dialog.style.transform = ""; dialog.style.opacity = "";
+        dialog.dataset.motion = "idle";
+        if (closing && dialog.open) dialog.close();
+      };
+      if (immediate || !motionEnabled() || typeof dialog.animate !== "function") { finish(); return; }
+      const token = generation;
+      const start = getComputedStyle(dialog).transform;
+      animation = dialog.animate([
+        { transform: start === "none" ? "translateY(0)" : start, opacity: closing ? 1 : .85 },
+        { transform: closing ? `translateY(${dialog.offsetHeight}px)` : "translateY(0)", opacity: closing ? .3 : 1 }
+      ], { duration: closing ? 160 : 220, easing: "cubic-bezier(.16,1,.3,1)" });
+      animation.onfinish = () => { if (generation === token) finish(); };
+    }
+    function close(immediate = false) { if (dialog.open) settle(true, immediate); }
+    function arrange() {
+      close(true);
+      anchors.forEach(({ select, anchor, label }) => {
+        if (mobile.matches) {
+          label.append(select); dialog.querySelector(".wb-filter-fields").append(label);
+        } else anchor.after(select);
+      });
+      syncSummary();
+    }
+    listen(button, "click", () => {
+      if (!mobile.matches) return;
+      stop();
+      if (!dialog.open) { dialog.style.transform = "translateY(36px)"; dialog.showModal(); }
+      syncSummary(); settle();
+    });
+    listen(dialog.querySelector(".wb-filter-done"), "click", () => close());
+    listen(dialog.querySelector(".wb-filter-reset"), "click", () => {
+      selects.forEach(select => {
+        select.value = select.options[0]?.value || "";
+        select.dispatchEvent(new Event("change", { bubbles: true }));
+      });
+    });
+    listen(dialog, "cancel", event => { event.preventDefault(); close(true); });
+    listen(dialog, "close", () => {
+      stop(); drag = null; dialog.style.transform = ""; dialog.dataset.motion = "idle";
+      if (mobile.matches && button.getClientRects().length) button.focus({ preventScroll: true });
+    });
+    listen(dialog, "click", event => { if (event.target === dialog) {
+      const rect = dialog.getBoundingClientRect();
+      if (event.clientY < rect.top || event.clientY > rect.bottom) close();
+    }});
+    const handle = dialog.querySelector(".wb-filter-handle");
+    listen(handle, "pointerdown", event => {
+      if (event.button !== 0 || !event.isPrimary) return;
+      const rect = dialog.getBoundingClientRect();
+      stop();
+      const y = Math.max(0, rect.top - (innerHeight - dialog.offsetHeight));
+      drag = { id: event.pointerId, start: event.clientY - y, y };
+      dialog.style.transform = `translateY(${y}px)`;
+      handle.setPointerCapture(event.pointerId); dialog.dataset.motion = "tracking";
+    });
+    listen(handle, "pointermove", event => {
+      if (!drag || event.pointerId !== drag.id) return;
+      drag.y = Math.max(0, event.clientY - drag.start);
+      dialog.style.transform = `translateY(${drag.y}px)`;
+    });
+    const release = event => {
+      if (!drag || event.pointerId !== drag.id) return;
+      const dismiss = event.type === "pointerup" && drag.y > Math.min(120, dialog.offsetHeight * .3);
+      drag = null;
+      if (handle.hasPointerCapture(event.pointerId)) handle.releasePointerCapture(event.pointerId);
+      settle(dismiss);
+    };
+    listen(handle, "pointerup", release);
+    listen(handle, "pointercancel", release);
+    listen(handle, "lostpointercapture", release);
+    listen(mobile, "change", arrange);
+    sheets.push({ close, dialog, stop });
+    arrange();
+  });
+  function revealNavigation() {
+    const nav = document.querySelector(".mobile-nav");
+    const selected = nav?.querySelector("button.active");
+    if (!selected || !mobile.matches) return;
+    const n = selected.getBoundingClientRect(), h = nav.getBoundingClientRect();
+    if (n.left < h.left + 8 || n.right > h.right - 8)
+      nav.scrollTo({ left: selected.offsetLeft - (nav.clientWidth - selected.offsetWidth) / 2, behavior: "instant" });
+  }
+  const routeObserver = new MutationObserver(() => {
+    sheets.forEach(sheet => { if (!sheet.dialog.closest(".section")?.classList.contains("active")) sheet.close(true); });
+    revealNavigation(); restoreHorizontal();
+  });
+  document.querySelectorAll(".section").forEach(section => routeObserver.observe(section, { attributes: true, attributeFilter: ["class"] }));
+  cleanup.push(() => routeObserver.disconnect());
+  listen(window, "resize", revealNavigation);
+  listen(reduced, "change", () => sheets.forEach(sheet => sheet.close(true)));
+  const effects = new MutationObserver(() => sheets.forEach(sheet => sheet.close(true)));
+  effects.observe(root, { attributes: true, attributeFilter: ["data-effects"] });
+  cleanup.push(() => effects.disconnect());
+  listen(document, "visibilitychange", () => { if (document.hidden) sheets.forEach(sheet => sheet.close(true)); });
+  requestAnimationFrame(revealNavigation);
+  let priorOverflow, scrollLocked = false;
+  function syncScrollLock() {
+    const open = !!document.querySelector("dialog[open]");
+    if (open && !scrollLocked) {
+      priorOverflow = root.style.overflow; root.style.overflow = "hidden"; scrollLocked = true;
+    } else if (!open && scrollLocked) {
+      root.style.overflow = priorOverflow; scrollLocked = false;
+    }
+  }
+  const dialogsObserver = new MutationObserver(syncScrollLock);
+  dialogsObserver.observe(document.body, { subtree: true, attributes: true, attributeFilter: ["open"] });
+  syncScrollLock();
+  cleanup.push(() => { dialogsObserver.disconnect(); if (scrollLocked) root.style.overflow = priorOverflow; });
+  listen(window, "pagehide", event => {
+    saveReading(); sheets.forEach(sheet => sheet.close(true));
+    if (!event.persisted) cleanup.splice(0).forEach(fn => fn());
+  });
+  listen(window, "pageshow", revealNavigation);
 })();
 </script>
 <!-- workbench-presentation-v1:script:end -->
