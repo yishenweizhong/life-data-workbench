@@ -943,6 +943,1576 @@ button, a.command-button { touch-action: manipulation; -webkit-user-select: none
 @media print { .wb-filter-open, .wb-native-filter { display: none!important; } }
 </style>
 <!-- workbench-presentation-v1:style:end -->
+<!-- jj-redo-v1:style:start -->
+<style id="jj-redo-style">
+/* 生意经基础看板 · 视觉重做层 v1
+   只覆盖展示与交互，不改动任何业务数据、指标口径与导出逻辑。 */
+
+html[data-jj-redo="v1"] {
+  --jj-a: #2f5bff;
+  --jj-b: #7c5cff;
+  --jj-c: #ff8a5b;
+  --jj-mint: #2fb59f;
+  --jj-canvas: #f2efe9;
+  --jj-ink: #14171d;
+  --jj-muted: #6f7480;
+  --jj-line: rgba(20, 23, 29, .10);
+  --jj-glass: rgba(255, 255, 255, .62);
+  --jj-glass-strong: rgba(255, 255, 255, .84);
+  --jj-shadow: 0 18px 50px rgba(20, 23, 29, .08);
+  --canvas: var(--jj-canvas);
+  --paper: #fff;
+  --ink: var(--jj-ink);
+  --muted: var(--jj-muted);
+  --line: var(--jj-line);
+  --accent: var(--jj-a);
+  --accent-soft: #eaefff;
+  --glass: var(--jj-glass);
+  --glass-solid: #f7f5f0;
+  --shadow: var(--jj-shadow);
+  --blue: var(--jj-a);
+  --orange: var(--jj-c);
+  --chart-secondary: var(--jj-c);
+  --ui-ease-out: cubic-bezier(.22, 1, .36, 1);
+  --jj-spring: cubic-bezier(.34, 1.56, .64, 1);
+  background: var(--jj-canvas);
+}
+html[data-jj-redo="v1"][data-palette="halo"] {
+  --jj-a: #d97706; --jj-b: #f0a13a; --jj-c: #ef6a5b; --jj-mint: #c28a3d;
+  --accent-soft: #fbf0df;
+}
+html[data-jj-redo="v1"][data-palette="frost"] {
+  --jj-a: #0f9d8f; --jj-b: #22b8a6; --jj-c: #84bf3f; --jj-mint: #1d9e8d;
+  --accent-soft: #e4f5f0;
+}
+html[data-jj-redo="v1"][data-palette="spark"] {
+  --jj-a: #6d45e8; --jj-b: #b23bd6; --jj-c: #eaa53c; --jj-mint: #8b5cf6;
+  --accent-soft: #f0e9ff;
+}
+html[data-jj-redo="v1"][data-appearance="dark"] {
+  color-scheme: dark;
+  --jj-canvas: #080b12;
+  --jj-ink: #f1f5fb;
+  --jj-muted: #98a4b6;
+  --jj-line: rgba(255, 255, 255, .10);
+  --jj-glass: rgba(17, 23, 34, .62);
+  --jj-glass-strong: rgba(22, 29, 42, .86);
+  --jj-shadow: 0 24px 70px rgba(0, 0, 0, .42);
+  --canvas: var(--jj-canvas);
+  --paper: #111722;
+  --ink: var(--jj-ink);
+  --muted: var(--jj-muted);
+  --line: var(--jj-line);
+  --glass: var(--jj-glass);
+  --glass-solid: #151c28;
+  --accent-soft: rgba(124, 92, 255, .16);
+  --shadow: var(--jj-shadow);
+}
+
+/* ---------- 环境光与纸张底 ---------- */
+html[data-jj-redo="v1"] body {
+  background: var(--jj-canvas);
+  color: var(--jj-ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+.jj-ambient {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    radial-gradient(1200px 700px at 82% -12%, rgba(124, 92, 255, .16), transparent 62%),
+    radial-gradient(900px 620px at 6% 18%, rgba(255, 138, 91, .14), transparent 64%),
+    radial-gradient(1000px 760px at 68% 104%, rgba(47, 181, 159, .12), transparent 66%),
+    linear-gradient(180deg, #f6f3ed, #f0ede6 68%, #eeeae2);
+}
+.jj-ambient span {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: .55;
+  will-change: transform;
+}
+.jj-ambient span:nth-child(1) {
+  width: 46vw; height: 46vw; left: -12vw; top: -14vw;
+  background: radial-gradient(circle, rgba(47, 91, 255, .40), rgba(47, 91, 255, 0) 68%);
+  animation: jj-drift-a 34s ease-in-out infinite alternate;
+}
+.jj-ambient span:nth-child(2) {
+  width: 40vw; height: 40vw; right: -10vw; top: 4vh;
+  background: radial-gradient(circle, rgba(124, 92, 255, .34), rgba(124, 92, 255, 0) 68%);
+  animation: jj-drift-b 42s ease-in-out infinite alternate;
+}
+.jj-ambient span:nth-child(3) {
+  width: 34vw; height: 34vw; right: 16vw; bottom: -16vw;
+  background: radial-gradient(circle, rgba(255, 138, 91, .28), rgba(255, 138, 91, 0) 68%);
+  animation: jj-drift-c 38s ease-in-out infinite alternate;
+}
+@keyframes jj-drift-a { to { transform: translate3d(7vw, 5vh, 0) scale(1.08); } }
+@keyframes jj-drift-b { to { transform: translate3d(-6vw, 8vh, 0) scale(.94); } }
+@keyframes jj-drift-c { to { transform: translate3d(-4vw, -6vh, 0) scale(1.1); } }
+html[data-jj-redo="v1"][data-appearance="dark"] .jj-ambient {
+  background:
+    radial-gradient(1100px 700px at 84% -10%, rgba(109, 69, 232, .30), transparent 62%),
+    radial-gradient(900px 620px at 2% 16%, rgba(255, 138, 91, .13), transparent 64%),
+    radial-gradient(900px 700px at 72% 106%, rgba(15, 157, 143, .16), transparent 66%),
+    linear-gradient(180deg, #090d15, #080b12 70%);
+}
+html[data-jj-redo="v1"][data-appearance="dark"] .jj-ambient span { opacity: .5; }
+
+/* ---------- 应用骨架 ---------- */
+html[data-jj-redo="v1"] .app {
+  position: relative;
+  z-index: 1;
+  max-width: 1840px;
+  grid-template-columns: 228px minmax(0, 1fr);
+  gap: 24px;
+  padding: 18px;
+}
+html[data-jj-redo="v1"] .content { padding: 18px 8px 64px 0; }
+
+/* ---------- 玻璃导航 ---------- */
+html[data-jj-redo="v1"] .sidebar {
+  position: sticky;
+  top: 18px;
+  height: calc(100dvh - 36px);
+  padding: 24px 12px 18px;
+  border-radius: 26px;
+  border: 1px solid rgba(255, 232, 205, .20);
+  background:
+    radial-gradient(520px 340px at 82% -8%, rgba(255, 178, 110, .20), transparent 70%),
+    linear-gradient(168deg, rgba(44, 37, 31, .95), rgba(32, 28, 24, .91) 52%, rgba(40, 34, 29, .86));
+  color: #f4ecdf;
+  box-shadow:
+    0 30px 80px rgba(40, 27, 16, .34),
+    inset 0 1px 0 rgba(255, 242, 224, .22),
+    inset 0 -1px 0 rgba(255, 255, 255, .04);
+  overflow: hidden auto;
+  isolation: isolate;
+}
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  html[data-jj-redo="v1"] .sidebar {
+    background:
+      radial-gradient(520px 340px at 82% -8%, rgba(255, 178, 110, .22), transparent 70%),
+      linear-gradient(168deg, rgba(44, 37, 31, .85), rgba(32, 28, 24, .77) 52%, rgba(40, 34, 29, .71));
+    -webkit-backdrop-filter: blur(30px) saturate(1.18) brightness(1.03);
+    backdrop-filter: blur(30px) saturate(1.18) brightness(1.03);
+  }
+}
+html[data-jj-redo="v1"] .sidebar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(460px 300px at var(--jj-mx, 30%) var(--jj-my, 0%), rgba(255, 240, 218, .30), transparent 62%),
+    linear-gradient(135deg, rgba(255, 196, 140, .16), transparent 42%, rgba(124, 92, 255, .10) 74%, rgba(47, 91, 255, .12));
+  opacity: var(--jj-spec, .7);
+  transition: opacity .35s ease;
+}
+html[data-jj-redo="v1"] .sidebar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(118deg, rgba(255, 255, 255, .085), transparent 28%, transparent 72%, rgba(255, 196, 140, .055));
+  mix-blend-mode: screen;
+  opacity: .65;
+}
+html[data-jj-redo="v1"] .sidebar > *:not(.wb-selection):not(.jj-seg-glow) { position: relative; z-index: 1; }
+html[data-jj-redo="v1"] .sidebar > .wb-selection { position: absolute; z-index: 2; }
+html[data-jj-redo="v1"] .brand {
+  padding: 2px 10px 20px;
+  color: #fff9f0;
+  font-size: 15px;
+  font-weight: 720;
+  letter-spacing: -.2px;
+}
+html[data-jj-redo="v1"] .brand span {
+  display: block;
+  margin-top: 2px;
+  color: rgba(244, 236, 223, .62);
+  font-size: 11px;
+  letter-spacing: .02em;
+}
+html[data-jj-redo="v1"] .wb-brand-logo {
+  width: 58px;
+  height: 58px;
+  margin-bottom: 14px;
+  border: 1px solid rgba(255, 238, 214, .38);
+  border-radius: 16px;
+  box-shadow: 0 10px 28px rgba(20, 12, 6, .30);
+}
+html[data-jj-redo="v1"] .nav-label {
+  margin: 0 10px 10px;
+  color: rgba(244, 236, 223, .46);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+html[data-jj-redo="v1"] .sidebar .nav-item {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  height: 48px;
+  min-height: 48px;
+  margin: 0 0 6px;
+  padding: 0 12px;
+  border-radius: 15px;
+  color: rgba(244, 236, 223, .72);
+  font-size: 13px;
+  line-height: 1.25;
+  font-weight: 600;
+}
+html[data-jj-redo="v1"] .sidebar .nav-icon { color: rgba(244, 236, 223, .68); }
+html[data-jj-redo="v1"] .sidebar .nav-item:hover { background: rgba(255, 240, 220, .09); color: #fff; }
+html[data-jj-redo="v1"] .sidebar .nav-item.active { color: #1b1611; }
+html[data-jj-redo="v1"] .sidebar .nav-item.active .nav-icon {
+  color: #2f5bff;
+  background: linear-gradient(150deg, rgba(255, 196, 140, .28), rgba(47, 91, 255, .10));
+}
+html[data-jj-redo="v1"] .sidebar .wb-selection {
+  border-radius: 15px;
+  border: 0;
+  background: linear-gradient(180deg, #fffdf8, #f7eedf);
+  box-shadow:
+    0 14px 32px rgba(28, 18, 8, .42),
+    inset 0 1px 0 #fff,
+    inset 0 -1px 0 rgba(190, 150, 105, .16);
+  overflow: hidden;
+}
+html[data-jj-redo="v1"] .sidebar .wb-selection::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(125deg, rgba(255, 204, 150, .88), rgba(255, 250, 240, .60) 40%, rgba(124, 92, 255, .48) 74%, rgba(47, 91, 255, .42));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 3;
+}
+html[data-jj-redo="v1"] .sidebar .wb-selection::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(110deg, transparent 18%, rgba(255, 196, 140, .20) 42%, rgba(124, 92, 255, .12) 60%, transparent 84%);
+}
+html[data-jj-redo="v1"] .sidebar .wb-segment-copy {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  height: 48px;
+  min-height: 48px;
+  margin: 0;
+  padding: 0 12px;
+  font-size: 13px;
+  line-height: 1.25;
+  color: #1b1611;
+  font-weight: 650;
+}
+html[data-jj-redo="v1"] .sidebar .wb-segment-copy .nav-icon {
+  color: #2f5bff;
+  background: linear-gradient(150deg, rgba(255, 196, 140, .28), rgba(47, 91, 255, .10));
+  border-radius: 9px;
+}
+html[data-jj-redo="v1"] .sidebar .wb-segment-copy.is-active-copy .nav-icon {
+  transform: scale(1.08);
+  transition: transform .5s var(--jj-spring);
+}
+html[data-jj-redo="v1"] .sidebar .nav-item.active .nav-icon {
+  transform: none;
+}
+html[data-jj-redo="v1"] .wb-sidebar-bottom { padding: 24px 10px 4px; }
+html[data-jj-redo="v1"] .wb-sidebar-bottom p { color: rgba(217, 225, 238, .42); }
+html[data-jj-redo="v1"] .wb-mini-palette button { border-color: rgba(22, 27, 38, .9); box-shadow: 0 0 0 1px rgba(255, 255, 255, .16), 0 4px 12px rgba(0, 0, 0, .28); }
+html[data-jj-redo="v1"] .wb-mini-palette button[aria-pressed="true"] { outline-color: #fff; }
+html[data-jj-redo="v1"] .wb-swatch-aurora { background: linear-gradient(135deg, #2f5bff, #7c5cff 58%, #ff8a5b); }
+html[data-jj-redo="v1"] .wb-swatch-halo { background: linear-gradient(135deg, #d97706, #f0a13a 60%, #ef6a5b); }
+html[data-jj-redo="v1"] .wb-swatch-frost { background: linear-gradient(135deg, #0f9d8f, #22b8a6 60%, #84bf3f); }
+html[data-jj-redo="v1"] .wb-swatch-spark { background: linear-gradient(135deg, #6d45e8, #b23bd6 60%, #eaa53c); }
+
+/* ---------- 顶栏 ---------- */
+html[data-jj-redo="v1"] .topbar {
+  margin-bottom: 22px;
+  align-items: flex-end;
+  gap: 22px;
+}
+html[data-jj-redo="v1"] .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--jj-muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .04em;
+}
+html[data-jj-redo="v1"] .eyebrow::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--jj-a), var(--jj-b));
+  box-shadow: 0 0 0 4px rgba(47, 91, 255, .12);
+}
+html[data-jj-redo="v1"] h1 {
+  margin-top: 8px;
+  font-size: 36px;
+  font-weight: 720;
+  letter-spacing: -1.4px;
+  line-height: 1.16;
+}
+html[data-jj-redo="v1"] h1::after {
+  content: "";
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  margin-left: 10px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--jj-b), var(--jj-c));
+  vertical-align: 6px;
+}
+html[data-jj-redo="v1"] .top-actions { max-width: 62%; gap: 8px; }
+html[data-jj-redo="v1"] .status,
+html[data-jj-redo="v1"] .glass-pill {
+  border: 1px solid rgba(255, 255, 255, .72);
+  background: var(--jj-glass-strong);
+  color: var(--jj-muted);
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-size: 11px;
+  box-shadow: 0 6px 18px rgba(20, 23, 29, .06), inset 0 1px 0 #fff;
+}
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  html[data-jj-redo="v1"] .status,
+  html[data-jj-redo="v1"] .glass-pill {
+    -webkit-backdrop-filter: blur(16px) saturate(1.2);
+    backdrop-filter: blur(16px) saturate(1.2);
+  }
+}
+html[data-jj-redo="v1"] .status { color: #0e7a52; }
+html[data-jj-redo="v1"] .status i { box-shadow: 0 0 0 4px rgba(14, 122, 82, .12); }
+html[data-jj-redo="v1"] .wb-display-open {
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, .8);
+  background: var(--jj-glass-strong);
+  color: var(--jj-ink);
+  box-shadow: 0 8px 22px rgba(20, 23, 29, .08), inset 0 1px 0 #fff;
+  padding: 9px 14px;
+}
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  html[data-jj-redo="v1"] .wb-display-open {
+    -webkit-backdrop-filter: blur(16px) saturate(1.2);
+    backdrop-filter: blur(16px) saturate(1.2);
+  }
+}
+
+/* ---------- 筛选与选项卡 ---------- */
+html[data-jj-redo="v1"] .organization-filters {
+  margin-bottom: 18px;
+  padding: 14px 16px;
+  border: 1px solid rgba(255, 255, 255, .78);
+  border-radius: 18px;
+  background: var(--jj-glass-strong);
+  box-shadow: 0 12px 34px rgba(20, 23, 29, .06), inset 0 1px 0 #fff;
+}
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  html[data-jj-redo="v1"] .organization-filters {
+    -webkit-backdrop-filter: blur(18px) saturate(1.2);
+    backdrop-filter: blur(18px) saturate(1.2);
+  }
+}
+html[data-jj-redo="v1"] .organization-filters label span { color: var(--jj-muted); font-size: 10px; letter-spacing: .06em; text-transform: uppercase; }
+html[data-jj-redo="v1"] .organization-filters select,
+html[data-jj-redo="v1"] .filter-bar input,
+html[data-jj-redo="v1"] .filter-bar select {
+  height: 42px;
+  border: 1px solid rgba(20, 23, 29, .12);
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, .78);
+  color: var(--jj-ink);
+  box-shadow: inset 0 1px 2px rgba(20, 23, 29, .04);
+  font-size: 13px;
+}
+html[data-jj-redo="v1"] .organization-filters :is(select, input):focus,
+html[data-jj-redo="v1"] .filter-bar :is(select, input):focus {
+  border-color: color-mix(in srgb, var(--jj-a) 55%, transparent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--jj-a) 14%, transparent), inset 0 1px 2px rgba(20, 23, 29, .04);
+  outline: none;
+}
+html[data-jj-redo="v1"] .glass-tabs {
+  position: relative;
+  --jj-gx: 50%;
+  --jj-gy: 50%;
+  --jj-glow: .35;
+  margin-bottom: 20px;
+  padding: 5px;
+  border: 1px solid rgba(255, 255, 255, .66);
+  border-radius: 15px;
+  background: rgba(20, 23, 29, .055);
+  box-shadow: inset 0 1px 3px rgba(20, 23, 29, .06);
+}
+html[data-jj-redo="v1"] .glass-tabs::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(180px 80px at var(--jj-gx) var(--jj-gy), rgba(255, 255, 255, .55), rgba(124, 92, 255, .10) 48%, transparent 74%);
+  opacity: var(--jj-glow, .35);
+  transition: opacity .3s ease;
+}
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  html[data-jj-redo="v1"] .glass-tabs {
+    -webkit-backdrop-filter: blur(14px) saturate(1.15);
+    backdrop-filter: blur(14px) saturate(1.15);
+  }
+}
+html[data-jj-redo="v1"] .glass-tabs > .glass-tab { position: relative; z-index: 1; }
+html[data-jj-redo="v1"] .glass-tab {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 38px;
+  min-height: 38px;
+  margin: 0;
+  padding: 0 15px;
+  border-radius: 11px;
+  color: var(--jj-muted);
+  font-size: 12px;
+  line-height: 1.2;
+  font-weight: 600;
+}
+html[data-jj-redo="v1"] .glass-tabs .wb-selection {
+  border-radius: 11px;
+  border: 0;
+  background: linear-gradient(#fff, #fff);
+  box-shadow: 0 6px 18px rgba(20, 23, 29, .10), inset 0 1px 0 #fff;
+}
+html[data-jj-redo="v1"] .glass-tabs .wb-selection::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(120deg, rgba(47, 91, 255, .55), rgba(124, 92, 255, .42) 50%, rgba(255, 138, 91, .45));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 3;
+}
+html[data-jj-redo="v1"] .glass-tabs .wb-selection::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(105deg, transparent 25%, rgba(124, 92, 255, .10) 50%, rgba(255, 138, 91, .10) 62%, transparent 85%);
+}
+html[data-jj-redo="v1"] .glass-tabs .wb-segment-copy {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 38px;
+  min-height: 38px;
+  margin: 0;
+  padding: 0 15px;
+  font-size: 12px;
+  line-height: 1.2;
+  color: var(--jj-ink);
+  font-weight: 650;
+}
+
+/* ---------- KPI 与面板 ---------- */
+html[data-jj-redo="v1"] .kpis { gap: 14px; }
+html[data-jj-redo="v1"] .kpi {
+  position: relative;
+  min-height: 154px;
+  padding: 20px 20px 18px;
+  border: 1px solid rgba(255, 255, 255, .82);
+  border-radius: 20px;
+  background:
+    radial-gradient(320px 180px at 100% -10%, color-mix(in srgb, var(--jj-b) 13%, transparent), transparent 70%),
+    linear-gradient(180deg, rgba(255, 255, 255, .96), rgba(255, 255, 255, .80));
+  box-shadow: 0 16px 40px rgba(20, 23, 29, .07), inset 0 1px 0 #fff;
+  overflow: hidden;
+  transition: transform .45s var(--jj-spring), box-shadow .3s ease, border-color .3s ease;
+}
+html[data-jj-redo="v1"] .kpi::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(260px 150px at var(--jj-kx, 80%) var(--jj-ky, 0%), rgba(255, 255, 255, .55), transparent 60%);
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+html[data-jj-redo="v1"] .kpi:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 255, 255, .95);
+  box-shadow: 0 24px 54px rgba(20, 23, 29, .11), inset 0 1px 0 #fff;
+}
+html[data-jj-redo="v1"] .kpi:hover::after { opacity: 1; }
+html[data-jj-redo="v1"] #overview .kpi:first-child {
+  border-top: 1px solid rgba(255, 255, 255, .82);
+  background:
+    radial-gradient(340px 200px at 100% -20%, color-mix(in srgb, var(--jj-b) 26%, transparent), transparent 68%),
+    radial-gradient(300px 180px at 0% 110%, color-mix(in srgb, var(--jj-c) 18%, transparent), transparent 70%),
+    linear-gradient(180deg, rgba(255, 255, 255, .97), rgba(255, 255, 255, .82));
+}
+html[data-jj-redo="v1"] .kpi-label {
+  color: var(--jj-muted);
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: .02em;
+}
+html[data-jj-redo="v1"] .kpi-value {
+  margin-top: 16px;
+  font-size: 34px;
+  font-weight: 720;
+  letter-spacing: -1.2px;
+  line-height: 1.1;
+}
+html[data-jj-redo="v1"] #overview .kpi:first-child .kpi-value {
+  background: linear-gradient(120deg, var(--jj-ink) 12%, var(--jj-a) 52%, var(--jj-b) 78%, var(--jj-c));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+html[data-jj-redo="v1"] .kpi-foot { margin-top: 13px; gap: 8px; color: var(--jj-muted); font-size: 11px; }
+html[data-jj-redo="v1"] .kpi-foot > span:first-child {
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+html[data-jj-redo="v1"] .kpi-foot .positive { background: rgba(14, 143, 98, .10); }
+html[data-jj-redo="v1"] .kpi-foot .negative { background: rgba(213, 72, 95, .10); }
+html[data-jj-redo="v1"] .panel {
+  position: relative;
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, .82);
+  border-radius: 22px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .95), rgba(255, 255, 255, .80));
+  box-shadow: 0 18px 48px rgba(20, 23, 29, .07), inset 0 1px 0 #fff;
+}
+html[data-jj-redo="v1"] .panel::before {
+  content: "";
+  position: absolute;
+  inset: 0 18% auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--jj-b) 40%, transparent), transparent);
+  pointer-events: none;
+}
+html[data-jj-redo="v1"] .panel-head { margin-bottom: 16px; }
+html[data-jj-redo="v1"] .panel-head h2,
+html[data-jj-redo="v1"] .section-head h2 { letter-spacing: -.4px; }
+html[data-jj-redo="v1"] .panel-head p,
+html[data-jj-redo="v1"] .section-head p,
+html[data-jj-redo="v1"] .trend-range,
+html[data-jj-redo="v1"] .legend,
+html[data-jj-redo="v1"] .filter-count { color: var(--jj-muted); }
+html[data-jj-redo="v1"] .legend i { box-shadow: 0 0 0 4px color-mix(in srgb, currentColor 10%, transparent); }
+html[data-jj-redo="v1"] .insights { gap: 14px; }
+html[data-jj-redo="v1"] .insight {
+  position: relative;
+  padding: 16px 16px 16px 18px;
+  border: 1px solid rgba(20, 23, 29, .07);
+  border-radius: 16px;
+  background: linear-gradient(150deg, rgba(255, 255, 255, .90), rgba(247, 246, 242, .72));
+  overflow: hidden;
+}
+html[data-jj-redo="v1"] .insight::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 16px; bottom: 16px;
+  width: 3px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, var(--jj-a), var(--jj-b));
+}
+html[data-jj-redo="v1"] .insight b { font-size: 13.5px; }
+html[data-jj-redo="v1"] .insight p { color: var(--jj-muted); font-size: 12px; }
+html[data-jj-redo="v1"] .tag { border-radius: 999px; padding: 3px 9px; font-weight: 650; }
+html[data-jj-redo="v1"] .tag.good { color: #0e7a52; background: rgba(14, 143, 98, .10); }
+html[data-jj-redo="v1"] .tag.warn { color: #b83a4e; background: rgba(213, 72, 95, .10); }
+
+/* ---------- 表格 ---------- */
+html[data-jj-redo="v1"] .section-head { margin-top: 24px; margin-bottom: 16px; }
+html[data-jj-redo="v1"] .filter-bar { gap: 9px; margin-bottom: 12px; }
+html[data-jj-redo="v1"] th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: rgba(247, 245, 240, .92);
+  color: var(--jj-muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 13px 12px;
+  border-bottom: 1px solid var(--jj-line);
+}
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  html[data-jj-redo="v1"] th { -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+}
+html[data-jj-redo="v1"] td { padding: 14px 12px; border-bottom: 1px solid rgba(20, 23, 29, .06); font-size: 12px; }
+html[data-jj-redo="v1"] tbody tr { transition: background-color .18s ease; }
+html[data-jj-redo="v1"] tbody tr:hover td { background: color-mix(in srgb, var(--jj-a) 5%, transparent); }
+html[data-jj-redo="v1"] .provider,
+html[data-jj-redo="v1"] .score-dimension-tag,
+html[data-jj-redo="v1"] .channel-chip {
+  background: color-mix(in srgb, var(--jj-a) 7%, transparent);
+  color: color-mix(in srgb, var(--jj-a) 72%, var(--jj-ink));
+  border-radius: 999px;
+  padding: 3px 9px;
+}
+html[data-jj-redo="v1"] .command-button {
+  border-radius: 12px;
+  border: 1px solid rgba(20, 23, 29, .10);
+  background: var(--jj-glass-strong);
+  color: var(--jj-ink);
+  box-shadow: 0 8px 20px rgba(20, 23, 29, .06), inset 0 1px 0 #fff;
+}
+html[data-jj-redo="v1"] .command-button:hover { border-color: color-mix(in srgb, var(--jj-a) 40%, transparent); color: var(--jj-a); }
+html[data-jj-redo="v1"] .sort-trigger { color: var(--jj-muted); }
+html[data-jj-redo="v1"] .empty-state { border-radius: 16px; background: rgba(255, 255, 255, .6); }
+
+/* ---------- 图表 ---------- */
+html[data-jj-redo="v1"] .chart-scroll {
+  border-radius: 14px;
+  background:
+    radial-gradient(600px 220px at 18% 0%, color-mix(in srgb, var(--jj-a) 6%, transparent), transparent 70%),
+    linear-gradient(180deg, rgba(250, 249, 246, .55), rgba(255, 255, 255, 0));
+  padding: 4px 0 0;
+}
+html[data-jj-redo="v1"] .chart-svg { overflow: visible; }
+html[data-jj-redo="v1"] .chart-svg .jj-line {
+  stroke-width: 3.6;
+  filter: drop-shadow(0 6px 10px color-mix(in srgb, var(--jj-a) 22%, transparent));
+}
+html[data-jj-redo="v1"] .chart-svg .jj-line[data-jj-line="1"] {
+  filter: drop-shadow(0 6px 10px rgba(255, 138, 91, .22));
+}
+html[data-jj-redo="v1"] .chart-svg .jj-line[data-jj-line="2"] {
+  filter: drop-shadow(0 6px 10px rgba(124, 92, 255, .22));
+}
+html[data-jj-redo="v1"] .chart-svg .jj-area { opacity: 0; }
+html[data-jj-redo="v1"] .chart-svg .trend-point {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: r .18s var(--ui-ease-out), filter .18s ease;
+}
+html[data-jj-redo="v1"] .chart-svg .trend-point.is-hot {
+  r: 7;
+  filter: drop-shadow(0 0 10px color-mix(in srgb, var(--jj-a) 60%, transparent));
+}
+html[data-jj-redo="v1"] .chart-svg .point-label { font-weight: 650; }
+html[data-jj-redo="v1"] .chart-svg .axis-label { font-size: 12px; }
+html[data-jj-redo="v1"] .wb-chart-probe {
+  padding: 10px 13px;
+  border: 1px solid rgba(255, 255, 255, .20);
+  border-radius: 13px;
+  background: rgba(18, 23, 34, .88);
+  color: #f2f5fb;
+  box-shadow: 0 16px 40px rgba(5, 9, 18, .34), inset 0 1px 0 rgba(255, 255, 255, .12);
+  font-size: 11px;
+  line-height: 1.7;
+}
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  html[data-jj-redo="v1"] .wb-chart-probe {
+    -webkit-backdrop-filter: blur(18px) saturate(1.3);
+    backdrop-filter: blur(18px) saturate(1.3);
+  }
+}
+html[data-jj-redo="v1"] .wb-chart-probe b { font-size: 12px; letter-spacing: .02em; }
+html[data-jj-redo="v1"] .wb-float-open {
+  border-radius: 999px;
+  border-color: rgba(20, 23, 29, .10);
+  background: rgba(255, 255, 255, .7);
+  padding: 7px 11px;
+}
+html[data-jj-redo="v1"] .wb-float-open:hover { color: var(--jj-a); border-color: color-mix(in srgb, var(--jj-a) 40%, transparent); }
+
+/* ---------- 滚动简报 ---------- */
+html[data-jj-redo="v1"] .wb-brief {
+  margin-top: 16px;
+  border: 1px solid rgba(255, 255, 255, .7);
+  border-radius: 16px;
+  background:
+    linear-gradient(120deg, color-mix(in srgb, var(--jj-a) 8%, transparent), transparent 42%, color-mix(in srgb, var(--jj-c) 7%, transparent)),
+    var(--jj-glass-strong);
+  box-shadow: 0 10px 28px rgba(20, 23, 29, .05), inset 0 1px 0 #fff;
+}
+html[data-jj-redo="v1"] .wb-brief-label {
+  color: var(--jj-a);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+html[data-jj-redo="v1"] .wb-brief-item { font-size: 12px; }
+html[data-jj-redo="v1"] .wb-marquee-toggle { border-radius: 999px; border-color: rgba(20, 23, 29, .10); background: rgba(255, 255, 255, .72); }
+
+/* ---------- 设置弹窗 ---------- */
+html[data-jj-redo="v1"] .wb-dialog {
+  width: min(500px, calc(100% - 32px));
+  padding: 0 28px 24px;
+  border: 1px solid rgba(255, 255, 255, .75);
+  border-radius: 28px;
+  background:
+    radial-gradient(500px 240px at 100% -10%, color-mix(in srgb, var(--jj-b) 16%, transparent), transparent 68%),
+    linear-gradient(180deg, rgba(255, 255, 255, .94), rgba(250, 248, 243, .86));
+  color: var(--jj-ink);
+  box-shadow: 0 50px 130px rgba(6, 10, 20, .38), inset 0 1px 0 #fff;
+  overflow: hidden auto;
+}
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  html[data-jj-redo="v1"] .wb-dialog {
+    -webkit-backdrop-filter: blur(34px) saturate(1.4);
+    backdrop-filter: blur(34px) saturate(1.4);
+  }
+}
+html[data-jj-redo="v1"] .wb-dialog::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--jj-a), var(--jj-b) 55%, var(--jj-c), transparent);
+  opacity: .8;
+}
+html[data-jj-redo="v1"] .wb-dialog::backdrop {
+  background: rgba(8, 12, 20, .44);
+  -webkit-backdrop-filter: blur(16px) saturate(.9);
+  backdrop-filter: blur(16px) saturate(.9);
+}
+html[data-jj-redo="v1"] .wb-dialog[open] .wb-dialog-handle { animation: jj-sheet-in .58s var(--jj-spring) both; }
+html[data-jj-redo="v1"] .wb-dialog[open] .wb-choice,
+html[data-jj-redo="v1"] .wb-dialog[open] .wb-setting,
+html[data-jj-redo="v1"] .wb-dialog[open] .wb-dialog-footer { animation: jj-rise-in .55s var(--ui-ease-out) both; }
+html[data-jj-redo="v1"] .wb-dialog[open] .wb-choice:nth-of-type(1) { animation-delay: .04s; }
+html[data-jj-redo="v1"] .wb-dialog[open] .wb-choice:nth-of-type(2) { animation-delay: .08s; }
+html[data-jj-redo="v1"] .wb-dialog[open] .wb-setting { animation-delay: .12s; }
+html[data-jj-redo="v1"] .wb-dialog[open] .wb-dialog-footer { animation-delay: .16s; }
+@keyframes jj-sheet-in {
+  0% { opacity: 0; transform: translateY(14px) scale(.97); }
+  100% { opacity: 1; transform: none; }
+}
+@keyframes jj-rise-in {
+  0% { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: none; }
+}
+html[data-jj-redo="v1"] .wb-dialog-handle { position: relative; padding-top: 30px; }
+html[data-jj-redo="v1"] .wb-dialog-handle::before {
+  content: "";
+  position: absolute;
+  top: 11px;
+  left: 50%;
+  width: 44px;
+  height: 5px;
+  margin-left: -22px;
+  border-radius: 999px;
+  background: rgba(20, 23, 29, .16);
+}
+html[data-jj-redo="v1"] .wb-dialog h2 { font-size: 25px; letter-spacing: -.7px; }
+html[data-jj-redo="v1"] .wb-dialog-note,
+html[data-jj-redo="v1"] .wb-setting small { color: var(--jj-muted); }
+html[data-jj-redo="v1"] .wb-choice label span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-sizing: border-box;
+  border-radius: 14px;
+  border: 1px solid rgba(20, 23, 29, .10);
+  background: rgba(255, 255, 255, .66);
+  min-height: 52px;
+  padding: 0 12px;
+  line-height: 1.2;
+}
+html[data-jj-redo="v1"] .wb-choice input:checked + span {
+  box-shadow: 0 0 0 2px var(--jj-a), 0 8px 20px color-mix(in srgb, var(--jj-a) 16%, transparent);
+  color: var(--jj-a);
+}
+html[data-jj-redo="v1"] .wb-choice i { box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .5), 0 4px 12px rgba(20, 23, 29, .18); }
+html[data-jj-redo="v1"] .wb-setting input { background: rgba(20, 23, 29, .18); }
+html[data-jj-redo="v1"] .wb-setting input:checked { background: linear-gradient(135deg, var(--jj-a), var(--jj-b)); }
+html[data-jj-redo="v1"] .wb-dialog-footer button {
+  border-radius: 12px;
+  background: linear-gradient(120deg, var(--jj-a), var(--jj-b));
+  box-shadow: 0 10px 26px color-mix(in srgb, var(--jj-a) 26%, transparent);
+  border: 0;
+  font-weight: 650;
+}
+
+/* ---------- 门店详情与浮窗 ---------- */
+html[data-jj-redo="v1"] #wb-store-detail::backdrop {
+  background: rgba(8, 12, 20, .48);
+  -webkit-backdrop-filter: blur(16px) saturate(.9);
+  backdrop-filter: blur(16px) saturate(.9);
+}
+html[data-jj-redo="v1"] .wb-detail-shell {
+  width: min(680px, calc(100vw - 28px));
+  border: 1px solid rgba(255, 255, 255, .78);
+  border-radius: 28px;
+  background:
+    radial-gradient(560px 260px at 100% -10%, color-mix(in srgb, var(--jj-b) 15%, transparent), transparent 68%),
+    linear-gradient(180deg, rgba(255, 255, 255, .96), rgba(250, 248, 243, .90));
+  box-shadow: 0 50px 130px rgba(6, 10, 20, .40), inset 0 1px 0 #fff;
+  overflow: hidden;
+}
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  html[data-jj-redo="v1"] .wb-detail-shell {
+    -webkit-backdrop-filter: blur(30px) saturate(1.35);
+    backdrop-filter: blur(30px) saturate(1.35);
+  }
+}
+html[data-jj-redo="v1"] .wb-detail-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--jj-a), var(--jj-b) 55%, var(--jj-c), transparent);
+  z-index: 2;
+}
+html[data-jj-redo="v1"] #wb-store-detail[open] .wb-detail-content { animation: jj-sheet-in .55s var(--jj-spring) both; }
+html[data-jj-redo="v1"] #wb-store-detail[open] .wb-detail-metric { animation: jj-rise-in .5s var(--ui-ease-out) both; }
+html[data-jj-redo="v1"] #wb-store-detail[open] .wb-detail-metric:nth-child(2) { animation-delay: .03s; }
+html[data-jj-redo="v1"] #wb-store-detail[open] .wb-detail-metric:nth-child(3) { animation-delay: .06s; }
+html[data-jj-redo="v1"] #wb-store-detail[open] .wb-detail-metric:nth-child(4) { animation-delay: .09s; }
+html[data-jj-redo="v1"] #wb-store-detail[open] .wb-detail-metric:nth-child(5) { animation-delay: .12s; }
+html[data-jj-redo="v1"] #wb-store-detail[open] .wb-detail-metric:nth-child(6) { animation-delay: .15s; }
+html[data-jj-redo="v1"] .wb-detail-handle {
+  min-height: 68px;
+  border-bottom: 1px solid rgba(20, 23, 29, .08);
+  background: linear-gradient(180deg, rgba(255, 255, 255, .6), transparent);
+}
+html[data-jj-redo="v1"] .wb-handle-mark i { background: rgba(20, 23, 29, .18); width: 34px; }
+html[data-jj-redo="v1"] .wb-spatial-close { background: rgba(20, 23, 29, .06); color: var(--jj-muted); transition: transform .35s var(--jj-spring), background-color .2s; }
+html[data-jj-redo="v1"] .wb-spatial-close:hover { background: rgba(20, 23, 29, .10); transform: rotate(90deg); }
+html[data-jj-redo="v1"] .wb-detail-eyebrow { color: var(--jj-a); letter-spacing: .10em; text-transform: uppercase; }
+html[data-jj-redo="v1"] #wb-detail-title { font-size: 27px; letter-spacing: -.9px; }
+html[data-jj-redo="v1"] .wb-detail-values { border-top-color: rgba(20, 23, 29, .08); }
+html[data-jj-redo="v1"] .wb-detail-metric { border-bottom-color: rgba(20, 23, 29, .07); }
+html[data-jj-redo="v1"] .wb-detail-number {
+  background: linear-gradient(120deg, var(--jj-ink), color-mix(in srgb, var(--jj-a) 60%, var(--jj-ink)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+html[data-jj-redo="v1"] .wb-detail-number.positive { background: none; color: #0e8f62; -webkit-text-fill-color: #0e8f62; }
+html[data-jj-redo="v1"] .wb-detail-number.negative { background: none; color: #d5485f; -webkit-text-fill-color: #d5485f; }
+html[data-jj-redo="v1"] .wb-detail-footer { background: rgba(247, 245, 240, .72); border-top-color: rgba(20, 23, 29, .08); }
+html[data-jj-redo="v1"] .wb-detail-nav { border-radius: 999px; border-color: rgba(20, 23, 29, .10); background: rgba(255, 255, 255, .8); padding: 9px 14px; }
+html[data-jj-redo="v1"] .wb-detail-nav:hover:not(:disabled) { border-color: color-mix(in srgb, var(--jj-a) 40%, transparent); color: var(--jj-a); }
+html[data-jj-redo="v1"] #wb-trend-float {
+  border: 1px solid rgba(255, 255, 255, .7);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, .82);
+  box-shadow: 0 24px 60px rgba(6, 10, 20, .22), inset 0 1px 0 #fff;
+}
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  html[data-jj-redo="v1"] #wb-trend-float {
+    -webkit-backdrop-filter: blur(24px) saturate(1.3);
+    backdrop-filter: blur(24px) saturate(1.3);
+  }
+}
+html[data-jj-redo="v1"] .wb-float-dock button[aria-pressed="true"] { background: color-mix(in srgb, var(--jj-a) 12%, transparent); color: var(--jj-a); }
+
+/* ---------- 选中态弹簧拖尾 ---------- */
+html[data-jj-redo="v1"] .jj-seg-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: 16px;
+  background: radial-gradient(70% 80% at 50% 50%, rgba(255, 196, 140, .55), rgba(124, 92, 255, .22) 58%, transparent 78%);
+  filter: blur(14px);
+  opacity: 0;
+  transition: transform .5s var(--jj-spring), width .5s var(--jj-spring), height .5s var(--jj-spring), opacity .3s ease;
+  will-change: transform, width, height;
+}
+html[data-jj-redo="v1"] .jj-seg-glow.is-init { transition: none; }
+html[data-jj-redo="v1"] .glass-tabs .jj-seg-glow {
+  border-radius: 13px;
+  background: radial-gradient(70% 80% at 50% 50%, rgba(124, 92, 255, .34), rgba(47, 91, 255, .16) 58%, transparent 78%);
+  filter: blur(11px);
+}
+html[data-jj-redo="v1"] .mobile-nav .jj-seg-glow {
+  border-radius: 16px;
+  background: radial-gradient(70% 80% at 50% 50%, rgba(47, 91, 255, .26), rgba(124, 92, 255, .16) 58%, transparent 78%);
+  filter: blur(10px);
+}
+
+/* ---------- 板块切换内容过渡 ---------- */
+html[data-jj-redo="v1"] .content > .section.active {
+  animation: jj-section-enter .46s var(--ui-ease-out) both;
+}
+@keyframes jj-section-enter {
+  0% { opacity: .55; translate: 0 12px; }
+  100% { opacity: 1; translate: 0 0; }
+}
+
+/* ---------- 按压回弹（独立 scale 属性，不抢 transform） ---------- */
+html[data-jj-redo="v1"] button,
+html[data-jj-redo="v1"] .command-button,
+html[data-jj-redo="v1"] .nav-item,
+html[data-jj-redo="v1"] .glass-tab,
+html[data-jj-redo="v1"] .mobile-nav button {
+  scale: 1;
+  transition: scale .38s var(--jj-spring), background-color .18s ease, color .18s ease, border-color .18s ease, box-shadow .2s ease;
+}
+html[data-jj-redo="v1"] .mobile-nav button {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  min-height: 44px;
+  margin: 0;
+  padding: 0 10px;
+  line-height: 1.2;
+}
+html[data-jj-redo="v1"] .mobile-nav .wb-segment-copy {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  min-height: 44px;
+  margin: 0;
+  padding: 0 10px;
+  line-height: 1.2;
+}
+html[data-jj-redo="v1"] button:active:not(:disabled),
+html[data-jj-redo="v1"] .command-button:active,
+html[data-jj-redo="v1"] .nav-item:active,
+html[data-jj-redo="v1"] .glass-tab:active,
+html[data-jj-redo="v1"] .mobile-nav button:active {
+  scale: .952 .915;
+  transition-duration: .07s;
+}
+html[data-jj-redo="v1"] button:focus-visible,
+html[data-jj-redo="v1"] a:focus-visible,
+html[data-jj-redo="v1"] input:focus-visible,
+html[data-jj-redo="v1"] select:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--jj-a) 65%, transparent);
+  outline-offset: 3px;
+}
+
+/* ---------- 深色适配 ---------- */
+html[data-jj-redo="v1"][data-appearance="dark"] .jj-ambient { color: #fff; }
+html[data-jj-redo="v1"][data-appearance="dark"] .kpi,
+html[data-jj-redo="v1"][data-appearance="dark"] .panel,
+html[data-jj-redo="v1"][data-appearance="dark"] .organization-filters,
+html[data-jj-redo="v1"][data-appearance="dark"] .wb-display-open,
+html[data-jj-redo="v1"][data-appearance="dark"] .glass-pill,
+html[data-jj-redo="v1"][data-appearance="dark"] .status {
+  border-color: rgba(255, 255, 255, .10);
+  background: linear-gradient(180deg, rgba(24, 31, 44, .92), rgba(17, 23, 34, .84));
+  box-shadow: 0 18px 50px rgba(0, 0, 0, .35), inset 0 1px 0 rgba(255, 255, 255, .08);
+}
+html[data-jj-redo="v1"][data-appearance="dark"] #overview .kpi:first-child {
+  border-top-color: rgba(255, 255, 255, .10);
+  background:
+    radial-gradient(340px 200px at 100% -20%, color-mix(in srgb, var(--jj-b) 30%, transparent), transparent 68%),
+    linear-gradient(180deg, rgba(26, 33, 47, .95), rgba(17, 23, 34, .86));
+}
+html[data-jj-redo="v1"][data-appearance="dark"] .organization-filters select,
+html[data-jj-redo="v1"][data-appearance="dark"] .filter-bar input,
+html[data-jj-redo="v1"][data-appearance="dark"] .filter-bar select {
+  background-color: rgba(255, 255, 255, .06);
+  border-color: rgba(255, 255, 255, .12);
+  color: var(--jj-ink);
+}
+html[data-jj-redo="v1"][data-appearance="dark"] .glass-tabs { background: rgba(255, 255, 255, .06); border-color: rgba(255, 255, 255, .08); }
+html[data-jj-redo="v1"][data-appearance="dark"] .glass-tabs .wb-selection {
+  background: linear-gradient(#202838, #1a2230);
+  border: 0;
+}
+html[data-jj-redo="v1"][data-appearance="dark"] .glass-tabs::after {
+  background: radial-gradient(180px 80px at var(--jj-gx) var(--jj-gy), rgba(255, 255, 255, .14), rgba(124, 92, 255, .12) 48%, transparent 74%);
+}
+html[data-jj-redo="v1"][data-appearance="dark"] .glass-tabs .wb-segment-copy { color: #f1f5fb; }
+html[data-jj-redo="v1"][data-appearance="dark"] .insight { background: linear-gradient(150deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, .02)); border-color: rgba(255, 255, 255, .08); }
+html[data-jj-redo="v1"][data-appearance="dark"] th { background: rgba(17, 23, 34, .9); }
+html[data-jj-redo="v1"][data-appearance="dark"] .chart-scroll { background: radial-gradient(600px 220px at 18% 0%, rgba(124, 92, 255, .10), transparent 70%); }
+html[data-jj-redo="v1"][data-appearance="dark"] .wb-dialog,
+html[data-jj-redo="v1"][data-appearance="dark"] .wb-detail-shell {
+  border-color: rgba(255, 255, 255, .12);
+  background:
+    radial-gradient(500px 260px at 100% -10%, rgba(124, 92, 255, .22), transparent 68%),
+    linear-gradient(180deg, rgba(24, 31, 44, .96), rgba(14, 19, 29, .94));
+}
+html[data-jj-redo="v1"][data-appearance="dark"] .wb-choice label span { background: rgba(255, 255, 255, .05); border-color: rgba(255, 255, 255, .12); }
+html[data-jj-redo="v1"][data-appearance="dark"] .wb-detail-footer { background: rgba(10, 15, 24, .55); }
+html[data-jj-redo="v1"][data-appearance="dark"] .wb-detail-nav { background: rgba(255, 255, 255, .06); border-color: rgba(255, 255, 255, .12); }
+html[data-jj-redo="v1"][data-appearance="dark"] .wb-detail-number { background: linear-gradient(120deg, #fff, color-mix(in srgb, var(--jj-a) 60%, #fff)); -webkit-background-clip: text; background-clip: text; }
+html[data-jj-redo="v1"][data-appearance="dark"] .wb-chart-probe { border-color: rgba(255, 255, 255, .14); }
+html[data-jj-redo="v1"][data-appearance="dark"] :is(.wb-float-open, .wb-marquee-toggle, .command-button, .sort-trigger) {
+  background: rgba(255, 255, 255, .07);
+  border-color: rgba(255, 255, 255, .14);
+  color: var(--jj-ink);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .08);
+}
+html[data-jj-redo="v1"][data-appearance="dark"] .wb-float-open[aria-pressed="true"] {
+  background: color-mix(in srgb, var(--jj-a) 18%, transparent);
+  color: var(--jj-a);
+}
+html[data-jj-redo="v1"][data-appearance="dark"] .wb-brief { background: linear-gradient(120deg, rgba(124, 92, 255, .12), rgba(255, 255, 255, .03) 50%, rgba(255, 138, 91, .08)), var(--jj-glass-strong); }
+html[data-jj-redo="v1"][data-appearance="dark"] .wb-choice label span { color: var(--jj-muted); }
+html[data-jj-redo="v1"][data-appearance="dark"] .wb-choice input:checked + span { color: var(--jj-a); }
+
+/* ---------- 响应式 ---------- */
+@media (max-width: 1180px) {
+  html[data-jj-redo="v1"] .sidebar .nav-item,
+  html[data-jj-redo="v1"] .sidebar .wb-segment-copy { justify-content: center; padding-left: 0; padding-right: 0; gap: 0; }
+  html[data-jj-redo="v1"] h1 { font-size: 31px; }
+  html[data-jj-redo="v1"] .top-actions { max-width: 100%; }
+}
+@media (max-width: 700px) {
+  html[data-jj-redo="v1"] .app { padding: 0; }
+  html[data-jj-redo="v1"] .content { padding: 20px 14px calc(112px + env(safe-area-inset-bottom)); }
+  html[data-jj-redo="v1"] h1 { font-size: 30px; }
+  html[data-jj-redo="v1"] .kpi { min-height: 146px; padding: 16px; border-radius: 18px; }
+  html[data-jj-redo="v1"] .kpi-value { font-size: 29px; }
+  html[data-jj-redo="v1"] .panel { padding: 17px; border-radius: 18px; }
+  html[data-jj-redo="v1"] .glass-tabs { border-radius: 13px; }
+  html[data-jj-redo="v1"] .mobile-nav {
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, .5);
+    background: rgba(255, 255, 255, .82);
+    box-shadow: 0 18px 40px rgba(20, 23, 29, .18), inset 0 1px 0 #fff;
+  }
+  @supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    html[data-jj-redo="v1"] .mobile-nav { -webkit-backdrop-filter: blur(22px) saturate(1.3); backdrop-filter: blur(22px) saturate(1.3); }
+  }
+  html[data-jj-redo="v1"] .mobile-nav .wb-selection { border-radius: 16px; background: #fff; box-shadow: 0 6px 16px rgba(20, 23, 29, .12); }
+  html[data-jj-redo="v1"] .wb-dialog { border-radius: 26px; padding: 0 22px 20px; }
+  html[data-jj-redo="v1"] .wb-detail-shell { border-radius: 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html[data-jj-redo="v1"] .jj-ambient span { animation: none; }
+  html[data-jj-redo="v1"] .content > .section.active { animation: none; }
+  html[data-jj-redo="v1"] .jj-seg-glow { transition: none; }
+  html[data-jj-redo="v1"] .kpi,
+  html[data-jj-redo="v1"] button,
+  html[data-jj-redo="v1"] .command-button,
+  html[data-jj-redo="v1"] .nav-item,
+  html[data-jj-redo="v1"] .glass-tab { transition: none; }
+  html[data-jj-redo="v1"] .wb-dialog[open] .wb-dialog-handle,
+  html[data-jj-redo="v1"] .wb-dialog[open] .wb-choice,
+  html[data-jj-redo="v1"] .wb-dialog[open] .wb-setting,
+  html[data-jj-redo="v1"] .wb-dialog[open] .wb-dialog-footer,
+  html[data-jj-redo="v1"] #wb-store-detail[open] .wb-detail-content,
+  html[data-jj-redo="v1"] #wb-store-detail[open] .wb-detail-metric { animation: none; }
+}
+html[data-jj-redo="v1"][data-effects="off"] .jj-ambient span,
+html[data-jj-redo="v1"][data-effects="off"] .content > .section.active { animation: none; }
+html[data-jj-redo="v1"][data-effects="off"] .wb-dialog[open] *,
+html[data-jj-redo="v1"][data-effects="off"] #wb-store-detail[open] * { animation: none !important; }
+</style>
+<!-- jj-redo-v1:style:end -->
+<!-- jj-theme-v1:style:start -->
+<style id="jj-theme-style">
+/* 生意经基础看板 · 主题全站联动层 v1
+   四套配色只改变 token，所有表面、图表、选中态、按钮、弹窗、hover 均引用 token。
+   文字黑白灰与正负值红绿属于语义色，刻意不随配色变化。 */
+
+/* ---------- 四套配色：基础色 ---------- */
+html[data-jj-redo="v1"][data-palette="aurora"],
+html[data-jj-redo="v1"]:not([data-palette]) {
+  --jj-a: #2f5bff;
+  --jj-b: #7c5cff;
+  --jj-c: #ff8a5b;
+  --jj-c-soft: #ffc46b;
+  --jj-mint: #2fb59f;
+  --jj-paper: #f4f6fb;
+  --jj-side-base: #1b2140;
+  --jj-side-deep: #12172c;
+  --jj-side-text: #f2f5ff;
+}
+html[data-jj-redo="v1"][data-palette="halo"] {
+  --jj-a: #bf7414;
+  --jj-b: #e0a340;
+  --jj-c: #e96852;
+  --jj-c-soft: #ffcf8a;
+  --jj-mint: #b98a3d;
+  --jj-paper: #f8f2e6;
+  --jj-side-base: #2c2520;
+  --jj-side-deep: #1e1a16;
+  --jj-side-text: #f8f0e4;
+}
+html[data-jj-redo="v1"][data-palette="frost"] {
+  --jj-a: #0f8f83;
+  --jj-b: #2fb59f;
+  --jj-c: #7fae3f;
+  --jj-c-soft: #b8d98a;
+  --jj-mint: #0f8f83;
+  --jj-paper: #eff7f3;
+  --jj-side-base: #162a27;
+  --jj-side-deep: #0f1f1c;
+  --jj-side-text: #eef8f4;
+}
+html[data-jj-redo="v1"][data-palette="spark"] {
+  --jj-a: #6d45e8;
+  --jj-b: #b23bd6;
+  --jj-c: #eaa53c;
+  --jj-c-soft: #ffd08a;
+  --jj-mint: #8b5cf6;
+  --jj-paper: #f5f0fa;
+  --jj-side-base: #241b33;
+  --jj-side-deep: #181124;
+  --jj-side-text: #f6efff;
+}
+
+/* ---------- 全站 token ---------- */
+html[data-jj-redo="v1"] {
+  --jj-positive: #0e8f62;
+  --jj-negative: #d5485f;
+  --jj-warning: #b45309;
+  --jj-ink: #15171c;
+  --jj-muted: #6b7280;
+
+  --jj-canvas: color-mix(in srgb, var(--jj-a) 11%, var(--jj-paper));
+  --jj-canvas-top: color-mix(in srgb, var(--jj-a) 4%, #fbfaf7);
+  --jj-canvas-2: color-mix(in srgb, var(--jj-a) 15%, var(--jj-paper));
+  --jj-ambient-1: color-mix(in srgb, var(--jj-b) 30%, transparent);
+  --jj-ambient-2: color-mix(in srgb, var(--jj-c) 22%, transparent);
+  --jj-ambient-3: color-mix(in srgb, var(--jj-a) 20%, transparent);
+  --jj-ambient-bg:
+    radial-gradient(1200px 700px at 82% -12%, color-mix(in srgb, var(--jj-b) 24%, transparent), transparent 62%),
+    radial-gradient(900px 620px at 6% 18%, color-mix(in srgb, var(--jj-c) 18%, transparent), transparent 64%),
+    radial-gradient(1000px 760px at 68% 104%, color-mix(in srgb, var(--jj-a) 18%, transparent), transparent 66%),
+    linear-gradient(180deg, var(--jj-canvas-top), var(--jj-canvas) 68%, var(--jj-canvas-2));
+
+  --jj-surface: color-mix(in srgb, var(--jj-a) 3%, #fff);
+  --jj-surface-2: color-mix(in srgb, var(--jj-a) 7%, #fff);
+  --jj-surface-3: color-mix(in srgb, var(--jj-a) 11%, #fff);
+  --jj-glass-strong: color-mix(in srgb, var(--jj-a) 5%, rgba(255, 255, 255, .86));
+  --jj-glass-soft: color-mix(in srgb, var(--jj-a) 4%, rgba(255, 255, 255, .64));
+  --jj-glass-border: color-mix(in srgb, var(--jj-a) 12%, rgba(255, 255, 255, .80));
+  --jj-card-border: color-mix(in srgb, var(--jj-a) 12%, rgba(255, 255, 255, .82));
+  --jj-border: color-mix(in srgb, var(--jj-a) 18%, transparent);
+  --jj-border-soft: color-mix(in srgb, var(--jj-a) 10%, transparent);
+  --jj-shadow: 0 18px 48px color-mix(in srgb, var(--jj-a) 12%, transparent);
+  --jj-shadow-soft: 0 10px 28px color-mix(in srgb, var(--jj-a) 9%, transparent);
+  --jj-shadow-strong: 0 24px 60px color-mix(in srgb, var(--jj-a) 16%, transparent);
+
+  --jj-side-bg: linear-gradient(168deg,
+    color-mix(in srgb, var(--jj-a) 16%, var(--jj-side-base)),
+    var(--jj-side-deep) 52%,
+    color-mix(in srgb, var(--jj-a) 9%, var(--jj-side-base)));
+  --jj-side-bg-blur: linear-gradient(168deg,
+    color-mix(in srgb, var(--jj-a) 15%, rgba(24, 28, 38, .82)),
+    rgba(14, 18, 26, .74) 52%,
+    color-mix(in srgb, var(--jj-a) 8%, rgba(24, 28, 38, .70)));
+  --jj-side-border: color-mix(in srgb, var(--jj-a) 35%, rgba(255, 255, 255, .18));
+  --jj-side-muted: color-mix(in srgb, var(--jj-side-text) 60%, transparent);
+  --jj-side-label: color-mix(in srgb, var(--jj-side-text) 46%, transparent);
+  --jj-side-nav: color-mix(in srgb, var(--jj-side-text) 72%, transparent);
+  --jj-side-icon: color-mix(in srgb, var(--jj-side-text) 68%, transparent);
+  --jj-side-hover: color-mix(in srgb, var(--jj-a) 22%, transparent);
+  --jj-side-specular:
+    radial-gradient(460px 300px at var(--jj-mx, 30%) var(--jj-my, 0%), color-mix(in srgb, var(--jj-a) 35%, rgba(255, 255, 255, .22)), transparent 62%),
+    linear-gradient(135deg, color-mix(in srgb, var(--jj-a) 18%, transparent), transparent 42%, color-mix(in srgb, var(--jj-b) 12%, transparent));
+  --jj-side-glare: linear-gradient(118deg, rgba(255, 255, 255, .09), transparent 28%, transparent 72%, color-mix(in srgb, var(--jj-a) 10%, transparent));
+  --jj-side-shadow: 0 30px 80px rgba(8, 10, 16, .36);
+
+  --jj-pill-bg: linear-gradient(180deg, color-mix(in srgb, var(--jj-a) 3%, #fff), color-mix(in srgb, var(--jj-a) 12%, var(--jj-paper)));
+  --jj-pill-text: #171a20;
+  --jj-pill-icon: var(--jj-a);
+  --jj-pill-icon-bg: linear-gradient(150deg, color-mix(in srgb, var(--jj-a) 22%, transparent), color-mix(in srgb, var(--jj-b) 12%, transparent));
+  --jj-pill-ring: linear-gradient(125deg, color-mix(in srgb, var(--jj-a) 72%, transparent), color-mix(in srgb, var(--jj-b) 55%, transparent) 46%, color-mix(in srgb, var(--jj-c) 55%, transparent));
+  --jj-pill-sheen: linear-gradient(110deg, transparent 18%, color-mix(in srgb, var(--jj-b) 16%, transparent) 44%, color-mix(in srgb, var(--jj-a) 14%, transparent) 60%, transparent 84%);
+  --jj-pill-shadow: 0 14px 32px color-mix(in srgb, var(--jj-a) 22%, rgba(8, 10, 16, .40)), inset 0 1px 0 #fff;
+
+  --jj-tab-track: color-mix(in srgb, var(--jj-a) 10%, rgba(20, 23, 29, .055));
+  --jj-tab-track-border: color-mix(in srgb, var(--jj-a) 10%, rgba(255, 255, 255, .70));
+  --jj-tab-track-shadow: inset 0 1px 3px color-mix(in srgb, var(--jj-a) 10%, transparent);
+  --jj-tab-pill: color-mix(in srgb, var(--jj-a) 2%, #fff);
+  --jj-tab-pill-shadow: 0 6px 18px color-mix(in srgb, var(--jj-a) 16%, transparent), inset 0 1px 0 #fff;
+  --jj-tab-ring: linear-gradient(120deg, color-mix(in srgb, var(--jj-a) 55%, transparent), color-mix(in srgb, var(--jj-b) 42%, transparent) 50%, color-mix(in srgb, var(--jj-c) 45%, transparent));
+  --jj-tab-specular: radial-gradient(180px 80px at var(--jj-gx) var(--jj-gy), color-mix(in srgb, var(--jj-a) 10%, rgba(255, 255, 255, .60)), color-mix(in srgb, var(--jj-b) 10%, transparent) 48%, transparent 74%);
+  --jj-tab-text: var(--jj-muted);
+  --jj-tab-active: var(--jj-ink);
+
+  --jj-button-bg: color-mix(in srgb, var(--jj-a) 4%, rgba(255, 255, 255, .82));
+  --jj-button-text: var(--jj-ink);
+  --jj-button-border: color-mix(in srgb, var(--jj-a) 22%, transparent);
+  --jj-button-hover: color-mix(in srgb, var(--jj-a) 9%, transparent);
+  --jj-input-bg: color-mix(in srgb, var(--jj-a) 3%, rgba(255, 255, 255, .82));
+  --jj-toggle-bg: color-mix(in srgb, var(--jj-a) 24%, transparent);
+  --jj-handle-bg: linear-gradient(180deg, color-mix(in srgb, var(--jj-a) 5%, transparent), transparent);
+  --jj-close-bg: color-mix(in srgb, var(--jj-a) 10%, transparent);
+  --jj-metric-border: var(--jj-border-soft);
+  --jj-empty-bg: var(--jj-surface-2);
+  --jj-input-border: color-mix(in srgb, var(--jj-a) 18%, transparent);
+  --jj-focus-ring: color-mix(in srgb, var(--jj-a) 16%, transparent);
+  --jj-table-head: color-mix(in srgb, var(--jj-a) 7%, var(--jj-paper));
+  --jj-row-hover: color-mix(in srgb, var(--jj-a) 6%, transparent);
+
+  --jj-chart-bg:
+    radial-gradient(600px 220px at 18% 0%, color-mix(in srgb, var(--jj-a) 9%, transparent), transparent 70%),
+    linear-gradient(180deg, color-mix(in srgb, var(--jj-a) 3%, transparent), transparent);
+  --jj-chart-grid: color-mix(in srgb, var(--jj-a) 14%, transparent);
+  --jj-chart-crosshair: color-mix(in srgb, var(--jj-a) 45%, transparent);
+  --jj-chart-axis: var(--jj-muted);
+  --jj-chart-area-a: color-mix(in srgb, var(--jj-a) 24%, transparent);
+  --jj-chart-area-b: color-mix(in srgb, var(--jj-b) 20%, transparent);
+  --jj-chart-area-c: color-mix(in srgb, var(--jj-c) 20%, transparent);
+  --jj-chart-shadow-a: color-mix(in srgb, var(--jj-a) 24%, transparent);
+  --jj-chart-shadow-b: color-mix(in srgb, var(--jj-b) 24%, transparent);
+  --jj-chart-shadow-c: color-mix(in srgb, var(--jj-c) 24%, transparent);
+  --jj-probe-bg: color-mix(in srgb, var(--jj-a) 10%, rgba(18, 23, 34, .92));
+  --jj-probe-text: #f2f5fb;
+
+  --jj-kpi-bg:
+    radial-gradient(320px 180px at 100% -10%, color-mix(in srgb, var(--jj-b) 14%, transparent), transparent 70%),
+    linear-gradient(180deg, color-mix(in srgb, var(--jj-a) 2%, #fff), color-mix(in srgb, var(--jj-a) 6%, #fff));
+  --jj-kpi-feature-bg:
+    radial-gradient(340px 200px at 100% -20%, color-mix(in srgb, var(--jj-b) 26%, transparent), transparent 68%),
+    radial-gradient(300px 180px at 0% 110%, color-mix(in srgb, var(--jj-c) 18%, transparent), transparent 70%),
+    linear-gradient(180deg, color-mix(in srgb, var(--jj-a) 3%, #fff), color-mix(in srgb, var(--jj-a) 8%, #fff));
+  --jj-kpi-specular: radial-gradient(260px 150px at var(--jj-kx, 80%) var(--jj-ky, 0%), rgba(255, 255, 255, .55), transparent 60%);
+  --jj-panel-bg: linear-gradient(180deg, color-mix(in srgb, var(--jj-a) 2%, #fff), color-mix(in srgb, var(--jj-a) 6%, #fff));
+  --jj-panel-hairline: linear-gradient(90deg, transparent, color-mix(in srgb, var(--jj-b) 45%, transparent), transparent);
+  --jj-insight-bg: linear-gradient(150deg, color-mix(in srgb, var(--jj-a) 4%, #fff), color-mix(in srgb, var(--jj-a) 8%, var(--jj-paper)));
+
+  --jj-dialog-bg:
+    radial-gradient(500px 240px at 100% -10%, color-mix(in srgb, var(--jj-b) 18%, transparent), transparent 68%),
+    linear-gradient(180deg, color-mix(in srgb, var(--jj-a) 3%, #fff), color-mix(in srgb, var(--jj-a) 8%, var(--jj-paper)));
+  --jj-dialog-border: color-mix(in srgb, var(--jj-a) 10%, rgba(255, 255, 255, .78));
+  --jj-dialog-shadow: 0 50px 130px color-mix(in srgb, var(--jj-a) 25%, rgba(6, 10, 20, .40));
+  --jj-backdrop: color-mix(in srgb, var(--jj-a) 12%, rgba(8, 12, 20, .50));
+  --jj-brief-bg:
+    linear-gradient(120deg, color-mix(in srgb, var(--jj-a) 9%, transparent), transparent 42%, color-mix(in srgb, var(--jj-c) 8%, transparent)),
+    var(--jj-glass-strong);
+  --jj-glow-bg: radial-gradient(70% 80% at 50% 50%, color-mix(in srgb, var(--jj-a) 45%, transparent), color-mix(in srgb, var(--jj-b) 22%, transparent) 58%, transparent 78%);
+  --jj-glow-soft: radial-gradient(70% 80% at 50% 50%, color-mix(in srgb, var(--jj-a) 32%, transparent), color-mix(in srgb, var(--jj-b) 16%, transparent) 58%, transparent 78%);
+}
+
+/* ---------- 深色：只换 token，组件规则共用 ---------- */
+html[data-jj-redo="v1"][data-appearance="dark"] {
+  --jj-ink: #f1f5fb;
+  --jj-muted: #98a4b6;
+  --jj-canvas: color-mix(in srgb, var(--jj-a) 7%, #080b12);
+  --jj-canvas-top: color-mix(in srgb, var(--jj-a) 5%, #0b0f17);
+  --jj-canvas-2: color-mix(in srgb, var(--jj-a) 10%, #070a10);
+  --jj-surface: color-mix(in srgb, var(--jj-a) 7%, #111722);
+  --jj-surface-2: color-mix(in srgb, var(--jj-a) 10%, #0f1520);
+  --jj-surface-3: color-mix(in srgb, var(--jj-a) 14%, #121a26);
+  --jj-glass-strong: color-mix(in srgb, var(--jj-a) 8%, rgba(17, 23, 34, .90));
+  --jj-glass-soft: color-mix(in srgb, var(--jj-a) 7%, rgba(17, 23, 34, .68));
+  --jj-glass-border: color-mix(in srgb, var(--jj-a) 20%, rgba(255, 255, 255, .12));
+  --jj-card-border: color-mix(in srgb, var(--jj-a) 18%, rgba(255, 255, 255, .12));
+  --jj-border: color-mix(in srgb, var(--jj-a) 26%, rgba(255, 255, 255, .12));
+  --jj-border-soft: color-mix(in srgb, var(--jj-a) 18%, rgba(255, 255, 255, .08));
+  --jj-shadow: 0 24px 70px rgba(0, 0, 0, .42);
+  --jj-shadow-soft: 0 14px 36px rgba(0, 0, 0, .34);
+  --jj-shadow-strong: 0 30px 80px rgba(0, 0, 0, .50);
+  --jj-side-base: #0e121c;
+  --jj-side-deep: #080b12;
+  --jj-side-text: #f2f5ff;
+  --jj-tab-track: color-mix(in srgb, var(--jj-a) 12%, rgba(255, 255, 255, .06));
+  --jj-tab-track-border: color-mix(in srgb, var(--jj-a) 18%, rgba(255, 255, 255, .10));
+  --jj-tab-track-shadow: inset 0 1px 3px rgba(0, 0, 0, .28);
+  --jj-tab-pill: color-mix(in srgb, var(--jj-a) 14%, #1a2230);
+  --jj-tab-pill-shadow: 0 8px 22px rgba(0, 0, 0, .34), inset 0 1px 0 rgba(255, 255, 255, .12);
+  --jj-tab-text: var(--jj-muted);
+  --jj-tab-active: var(--jj-ink);
+  --jj-pill-bg: linear-gradient(180deg, #fff, color-mix(in srgb, var(--jj-a) 10%, #f2eee6));
+  --jj-pill-text: #171a20;
+  --jj-button-bg: color-mix(in srgb, var(--jj-a) 9%, rgba(255, 255, 255, .06));
+  --jj-button-text: var(--jj-ink);
+  --jj-button-border: color-mix(in srgb, var(--jj-a) 26%, rgba(255, 255, 255, .12));
+  --jj-button-hover: color-mix(in srgb, var(--jj-a) 16%, transparent);
+  --jj-input-bg: color-mix(in srgb, var(--jj-a) 8%, rgba(255, 255, 255, .05));
+  --jj-toggle-bg: color-mix(in srgb, var(--jj-a) 30%, rgba(255, 255, 255, .12));
+  --jj-handle-bg: linear-gradient(180deg, color-mix(in srgb, var(--jj-a) 10%, transparent), transparent);
+  --jj-close-bg: color-mix(in srgb, var(--jj-a) 16%, transparent);
+  --jj-empty-bg: var(--jj-surface-2);
+  --jj-input-border: color-mix(in srgb, var(--jj-a) 22%, rgba(255, 255, 255, .12));
+  --jj-table-head: color-mix(in srgb, var(--jj-a) 10%, #0f1520);
+  --jj-row-hover: color-mix(in srgb, var(--jj-a) 10%, transparent);
+  --jj-chart-bg: radial-gradient(600px 220px at 18% 0%, color-mix(in srgb, var(--jj-a) 14%, transparent), transparent 70%);
+  --jj-chart-grid: color-mix(in srgb, var(--jj-a) 24%, transparent);
+  --jj-chart-crosshair: color-mix(in srgb, var(--jj-a) 55%, transparent);
+  --jj-chart-area-a: color-mix(in srgb, var(--jj-a) 30%, transparent);
+  --jj-chart-area-b: color-mix(in srgb, var(--jj-b) 26%, transparent);
+  --jj-chart-area-c: color-mix(in srgb, var(--jj-c) 26%, transparent);
+  --jj-probe-bg: color-mix(in srgb, var(--jj-a) 12%, rgba(10, 14, 22, .92));
+  --jj-kpi-bg:
+    radial-gradient(320px 180px at 100% -10%, color-mix(in srgb, var(--jj-b) 18%, transparent), transparent 70%),
+    linear-gradient(180deg, color-mix(in srgb, var(--jj-a) 7%, #151c28), color-mix(in srgb, var(--jj-a) 10%, #111722));
+  --jj-kpi-feature-bg:
+    radial-gradient(340px 200px at 100% -20%, color-mix(in srgb, var(--jj-b) 30%, transparent), transparent 68%),
+    linear-gradient(180deg, color-mix(in srgb, var(--jj-a) 10%, #151c28), color-mix(in srgb, var(--jj-a) 14%, #111722));
+  --jj-panel-bg: linear-gradient(180deg, color-mix(in srgb, var(--jj-a) 6%, #151c28), color-mix(in srgb, var(--jj-a) 10%, #111722));
+  --jj-panel-hairline: linear-gradient(90deg, transparent, color-mix(in srgb, var(--jj-b) 60%, transparent), transparent);
+  --jj-insight-bg: linear-gradient(150deg, color-mix(in srgb, var(--jj-a) 7%, rgba(255, 255, 255, .05)), rgba(255, 255, 255, .02));
+  --jj-dialog-bg:
+    radial-gradient(500px 240px at 100% -10%, color-mix(in srgb, var(--jj-b) 24%, transparent), transparent 68%),
+    linear-gradient(180deg, color-mix(in srgb, var(--jj-a) 10%, #151c28), color-mix(in srgb, var(--jj-a) 5%, #0d121c));
+  --jj-dialog-border: color-mix(in srgb, var(--jj-a) 22%, rgba(255, 255, 255, .12));
+  --jj-dialog-shadow: 0 50px 130px color-mix(in srgb, var(--jj-a) 30%, rgba(0, 0, 0, .55));
+  --jj-backdrop: color-mix(in srgb, var(--jj-a) 18%, rgba(4, 7, 12, .62));
+  --jj-brief-bg:
+    linear-gradient(120deg, color-mix(in srgb, var(--jj-a) 14%, transparent), rgba(255, 255, 255, .03) 50%, color-mix(in srgb, var(--jj-c) 10%, transparent)),
+    var(--jj-glass-strong);
+}
+
+/* ---------- 环境光 ---------- */
+html[data-jj-redo="v1"][data-appearance] .jj-ambient { background: var(--jj-ambient-bg); }
+html[data-jj-redo="v1"][data-appearance] .jj-ambient span:nth-child(1) { background: radial-gradient(circle, var(--jj-ambient-1), transparent 68%); }
+html[data-jj-redo="v1"][data-appearance] .jj-ambient span:nth-child(2) { background: radial-gradient(circle, var(--jj-ambient-2), transparent 68%); }
+html[data-jj-redo="v1"][data-appearance] .jj-ambient span:nth-child(3) { background: radial-gradient(circle, var(--jj-ambient-3), transparent 68%); }
+
+/* ---------- 侧栏 ---------- */
+html[data-jj-redo="v1"][data-appearance] .sidebar {
+  border-color: var(--jj-side-border);
+  background: var(--jj-side-bg);
+  color: var(--jj-side-text);
+  box-shadow: var(--jj-side-shadow), inset 0 1px 0 rgba(255, 255, 255, .20), inset 0 -1px 0 rgba(255, 255, 255, .04);
+}
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  html[data-jj-redo="v1"][data-appearance] .sidebar {
+    background: var(--jj-side-bg-blur);
+    -webkit-backdrop-filter: blur(30px) saturate(1.18) brightness(1.03);
+    backdrop-filter: blur(30px) saturate(1.18) brightness(1.03);
+  }
+}
+html[data-jj-redo="v1"][data-appearance] .sidebar::before { background: var(--jj-side-specular); }
+html[data-jj-redo="v1"][data-appearance] .sidebar::after { background: var(--jj-side-glare); }
+html[data-jj-redo="v1"][data-appearance] .brand { color: var(--jj-side-text); }
+html[data-jj-redo="v1"][data-appearance] .brand .wb-brand-wordmark { display: flex; flex-direction: column; gap: 2px; line-height: 1.28; }
+html[data-jj-redo="v1"][data-appearance] .brand .wb-brand-wordmark strong { color: var(--jj-side-text); font-size: 15px; font-weight: 720; letter-spacing: -.2px; }
+html[data-jj-redo="v1"][data-appearance] .brand .wb-brand-wordmark small { color: var(--jj-side-muted); font-size: 11px; font-weight: 500; letter-spacing: .02em; }
+html[data-jj-redo="v1"][data-appearance] .brand span { color: var(--jj-side-muted); }
+html[data-jj-redo="v1"][data-appearance] .nav-label { color: var(--jj-side-label); }
+html[data-jj-redo="v1"][data-appearance] .sidebar .nav-item { color: var(--jj-side-nav); }
+html[data-jj-redo="v1"][data-appearance] .sidebar .nav-icon { color: var(--jj-side-icon); }
+html[data-jj-redo="v1"][data-appearance] .sidebar .nav-item:hover { background: var(--jj-side-hover); color: var(--jj-side-text); }
+html[data-jj-redo="v1"][data-appearance] .sidebar .nav-item.active { color: var(--jj-pill-text); }
+html[data-jj-redo="v1"][data-appearance] .sidebar .nav-item.active .nav-icon { color: var(--jj-pill-icon); background: var(--jj-pill-icon-bg); }
+html[data-jj-redo="v1"][data-appearance] .sidebar .wb-selection { background: var(--jj-pill-bg); box-shadow: var(--jj-pill-shadow); }
+html[data-jj-redo="v1"][data-appearance] .sidebar .wb-selection::before { background: var(--jj-pill-ring); }
+html[data-jj-redo="v1"][data-appearance] .sidebar .wb-selection::after { background: var(--jj-pill-sheen); }
+html[data-jj-redo="v1"][data-appearance] .sidebar .wb-segment-copy { color: var(--jj-pill-text); }
+html[data-jj-redo="v1"][data-appearance] .sidebar .wb-segment-copy .nav-icon { color: var(--jj-pill-icon); background: var(--jj-pill-icon-bg); }
+html[data-jj-redo="v1"][data-appearance] .wb-sidebar-bottom p { color: var(--jj-side-muted); }
+html[data-jj-redo="v1"][data-appearance] .wb-mini-palette button { border-color: var(--jj-side-deep); box-shadow: 0 0 0 1px var(--jj-side-border), 0 4px 12px rgba(0, 0, 0, .28); }
+
+/* ---------- 顶栏 / 筛选 / 输入 ---------- */
+html[data-jj-redo="v1"][data-appearance] :is(.status, .glass-pill) {
+  border-color: var(--jj-glass-border);
+  background: var(--jj-glass-strong);
+  color: var(--jj-muted);
+  box-shadow: var(--jj-shadow-soft);
+}
+html[data-jj-redo="v1"][data-appearance] .status { color: var(--jj-positive); }
+html[data-jj-redo="v1"][data-appearance] :is(.wb-display-open, .command-button, .wb-float-open, .wb-marquee-toggle, .sort-trigger) {
+  border-color: var(--jj-button-border);
+  background: var(--jj-button-bg);
+  color: var(--jj-button-text);
+  box-shadow: var(--jj-shadow-soft);
+}
+html[data-jj-redo="v1"][data-appearance] :is(.wb-display-open, .command-button, .wb-float-open, .wb-marquee-toggle):hover {
+  border-color: var(--jj-a);
+  color: var(--jj-a);
+  background: var(--jj-button-hover);
+}
+html[data-jj-redo="v1"][data-appearance] .organization-filters {
+  border-color: var(--jj-glass-border);
+  background: var(--jj-glass-strong);
+  box-shadow: var(--jj-shadow-soft);
+}
+html[data-jj-redo="v1"][data-appearance] .organization-filters select,
+html[data-jj-redo="v1"][data-appearance] .filter-bar input,
+html[data-jj-redo="v1"][data-appearance] .filter-bar select {
+  border-color: var(--jj-input-border);
+  background-color: var(--jj-input-bg);
+  color: var(--jj-ink);
+}
+html[data-jj-redo="v1"][data-appearance] .organization-filters :is(select, input):focus,
+html[data-jj-redo="v1"][data-appearance] .filter-bar :is(select, input):focus {
+  border-color: var(--jj-a);
+  box-shadow: 0 0 0 4px var(--jj-focus-ring);
+}
+
+/* ---------- 玻璃 Tab ---------- */
+html[data-jj-redo="v1"][data-appearance] .glass-tabs {
+  border-color: var(--jj-tab-track-border);
+  background: var(--jj-tab-track);
+  box-shadow: var(--jj-tab-track-shadow);
+}
+html[data-jj-redo="v1"][data-appearance] .glass-tabs::after { background: var(--jj-tab-specular); }
+html[data-jj-redo="v1"][data-appearance] .glass-tab { color: var(--jj-tab-text); }
+html[data-jj-redo="v1"][data-appearance] .glass-tabs .wb-selection { background: var(--jj-tab-pill); box-shadow: var(--jj-tab-pill-shadow); }
+html[data-jj-redo="v1"][data-appearance] .glass-tabs .wb-selection::before { background: var(--jj-tab-ring); }
+html[data-jj-redo="v1"][data-appearance] .glass-tabs .wb-segment-copy { color: var(--jj-tab-active); }
+
+/* ---------- KPI / 面板 / 洞察 ---------- */
+html[data-jj-redo="v1"][data-appearance] .kpi {
+  border-color: var(--jj-card-border);
+  background: var(--jj-kpi-bg);
+  box-shadow: var(--jj-shadow), inset 0 1px 0 rgba(255, 255, 255, .55);
+}
+html[data-jj-redo="v1"][data-appearance] #overview .kpi:first-child {
+  border-top-color: var(--jj-card-border);
+  background: var(--jj-kpi-feature-bg);
+}
+html[data-jj-redo="v1"][data-appearance] .kpi::after { background: var(--jj-kpi-specular); }
+html[data-jj-redo="v1"][data-appearance] .kpi:hover {
+  border-color: var(--jj-glass-border);
+  box-shadow: var(--jj-shadow-strong), inset 0 1px 0 rgba(255, 255, 255, .6);
+}
+html[data-jj-redo="v1"][data-appearance] .panel {
+  border-color: var(--jj-card-border);
+  background: var(--jj-panel-bg);
+  box-shadow: var(--jj-shadow), inset 0 1px 0 rgba(255, 255, 255, .55);
+}
+html[data-jj-redo="v1"][data-appearance] .panel::before { background: var(--jj-panel-hairline); }
+html[data-jj-redo="v1"][data-appearance] .insight {
+  border-color: var(--jj-border);
+  background: var(--jj-insight-bg);
+}
+html[data-jj-redo="v1"][data-appearance] .tag.good { color: var(--jj-positive); background: color-mix(in srgb, var(--jj-positive) 12%, transparent); }
+html[data-jj-redo="v1"][data-appearance] .tag.warn { color: var(--jj-negative); background: color-mix(in srgb, var(--jj-negative) 12%, transparent); }
+
+/* ---------- 表格 ---------- */
+html[data-jj-redo="v1"][data-appearance] th {
+  background: var(--jj-table-head);
+  border-bottom-color: var(--jj-border);
+  color: var(--jj-muted);
+}
+html[data-jj-redo="v1"][data-appearance] td { border-bottom-color: var(--jj-border-soft); }
+html[data-jj-redo="v1"][data-appearance] tbody tr:hover td { background: var(--jj-row-hover); }
+html[data-jj-redo="v1"][data-appearance] .provider,
+html[data-jj-redo="v1"][data-appearance] .score-dimension-tag,
+html[data-jj-redo="v1"][data-appearance] .channel-chip {
+  background: color-mix(in srgb, var(--jj-a) 9%, transparent);
+  color: color-mix(in srgb, var(--jj-a) 74%, var(--jj-ink));
+}
+
+/* ---------- 图表 ---------- */
+html[data-jj-redo="v1"][data-appearance] .chart-scroll { background: var(--jj-chart-bg); }
+html[data-jj-redo="v1"][data-appearance] .chart-svg line:not([stroke-dasharray]) { stroke: var(--jj-chart-grid); }
+html[data-jj-redo="v1"][data-appearance] .chart-svg line[stroke-dasharray] { stroke: var(--jj-chart-crosshair); }
+html[data-jj-redo="v1"][data-appearance] .chart-svg .axis-label { fill: var(--jj-chart-axis); }
+html[data-jj-redo="v1"][data-appearance] .chart-svg .payment-point,
+html[data-jj-redo="v1"][data-appearance] .chart-svg .payment-label { fill: var(--jj-a); }
+html[data-jj-redo="v1"][data-appearance] .chart-svg .redeem-point,
+html[data-jj-redo="v1"][data-appearance] .chart-svg .redeem-label { fill: var(--jj-c); }
+html[data-jj-redo="v1"][data-appearance] .chart-svg .merchant-live-point { fill: var(--jj-b); }
+html[data-jj-redo="v1"][data-appearance] .chart-svg rect[fill="#00A7A0"] { fill: var(--jj-mint, var(--jj-a)); }
+html[data-jj-redo="v1"][data-appearance] .chart-svg .jj-line { filter: drop-shadow(0 6px 10px var(--jj-chart-shadow-a)); }
+html[data-jj-redo="v1"][data-appearance] .chart-svg .jj-line[data-jj-line="1"] { filter: drop-shadow(0 6px 10px var(--jj-chart-shadow-c)); }
+html[data-jj-redo="v1"][data-appearance] .chart-svg .jj-line[data-jj-line="2"] { filter: drop-shadow(0 6px 10px var(--jj-chart-shadow-b)); }
+html[data-jj-redo="v1"][data-appearance] .chart-svg .trend-point.is-hot { filter: drop-shadow(0 0 10px color-mix(in srgb, var(--jj-a) 60%, transparent)); }
+html[data-jj-redo="v1"][data-appearance] .wb-chart-probe {
+  border-color: var(--jj-glass-border);
+  background: var(--jj-probe-bg);
+  color: var(--jj-probe-text);
+  box-shadow: var(--jj-shadow-strong), inset 0 1px 0 rgba(255, 255, 255, .12);
+}
+
+/* ---------- 简报 / 浮窗 ---------- */
+html[data-jj-redo="v1"][data-appearance] .wb-brief {
+  border-color: var(--jj-glass-border);
+  background: var(--jj-brief-bg);
+  box-shadow: var(--jj-shadow-soft);
+}
+html[data-jj-redo="v1"][data-appearance] .wb-brief-label { color: var(--jj-a); }
+
+/* ---------- 弹窗 / 详情 ---------- */
+html[data-jj-redo="v1"][data-appearance] .wb-dialog {
+  border-color: var(--jj-dialog-border);
+  background: var(--jj-dialog-bg);
+  color: var(--jj-ink);
+  box-shadow: var(--jj-dialog-shadow), inset 0 1px 0 rgba(255, 255, 255, .6);
+}
+html[data-jj-redo="v1"][data-appearance] .wb-dialog::backdrop { background: var(--jj-backdrop); }
+html[data-jj-redo="v1"][data-appearance] .wb-choice label span {
+  border-color: var(--jj-input-border);
+  background: var(--jj-input-bg);
+}
+html[data-jj-redo="v1"][data-appearance] .wb-choice input:checked + span {
+  box-shadow: 0 0 0 2px var(--jj-a), 0 8px 20px color-mix(in srgb, var(--jj-a) 18%, transparent);
+  color: var(--jj-a);
+}
+html[data-jj-redo="v1"][data-appearance] #wb-store-detail::backdrop { background: var(--jj-backdrop); }
+html[data-jj-redo="v1"][data-appearance] .wb-detail-shell {
+  border-color: var(--jj-dialog-border);
+  background: var(--jj-dialog-bg);
+  box-shadow: var(--jj-dialog-shadow), inset 0 1px 0 rgba(255, 255, 255, .6);
+}
+html[data-jj-redo="v1"][data-appearance] .wb-detail-footer {
+  background: var(--jj-surface-2);
+  border-top-color: var(--jj-border);
+}
+html[data-jj-redo="v1"][data-appearance] .wb-detail-nav {
+  border-color: var(--jj-button-border);
+  background: var(--jj-button-bg);
+}
+html[data-jj-redo="v1"][data-appearance] #wb-trend-float {
+  border-color: var(--jj-dialog-border);
+  background: var(--jj-glass-strong);
+  box-shadow: var(--jj-dialog-shadow);
+}
+html[data-jj-redo="v1"][data-appearance] .wb-float-dock button[aria-pressed="true"] {
+  background: color-mix(in srgb, var(--jj-a) 12%, transparent);
+  color: var(--jj-a);
+}
+
+/* ---------- 选中态光晕 ---------- */
+html[data-jj-redo="v1"][data-appearance] .jj-seg-glow { background: var(--jj-glow-bg); }
+html[data-jj-redo="v1"][data-appearance] .glass-tabs .jj-seg-glow,
+html[data-jj-redo="v1"][data-appearance] .mobile-nav .jj-seg-glow { background: var(--jj-glow-soft); }
+
+/* ---------- 手机底栏 ---------- */
+html[data-jj-redo="v1"][data-appearance] .mobile-nav {
+  border-color: var(--jj-glass-border);
+  background: var(--jj-glass-strong);
+  box-shadow: var(--jj-shadow), inset 0 1px 0 rgba(255, 255, 255, .5);
+}
+html[data-jj-redo="v1"][data-appearance] .mobile-nav .wb-selection {
+  background: var(--jj-tab-pill);
+  box-shadow: var(--jj-tab-pill-shadow);
+}
+html[data-jj-redo="v1"][data-appearance] .mobile-nav .wb-segment-copy { color: var(--jj-tab-active); }
+
+/* ---------- 剩余表面补全 ---------- */
+html[data-jj-redo="v1"][data-appearance] .wb-brand-logo { border-color: var(--jj-side-border); }
+html[data-jj-redo="v1"][data-appearance] .wb-setting input { background: var(--jj-toggle-bg); }
+html[data-jj-redo="v1"][data-appearance] .wb-detail-handle { background: var(--jj-handle-bg); }
+html[data-jj-redo="v1"][data-appearance] .wb-spatial-close { background: var(--jj-close-bg); }
+html[data-jj-redo="v1"][data-appearance] .wb-detail-values { border-top-color: var(--jj-metric-border); }
+html[data-jj-redo="v1"][data-appearance] .wb-detail-metric { border-bottom-color: var(--jj-metric-border); }
+html[data-jj-redo="v1"][data-appearance] .empty-state { background: var(--jj-empty-bg); border-color: var(--jj-border); }
+
+/* ---------- 语义色：刻意固定 ---------- */
+html[data-jj-redo="v1"] .positive,
+html[data-jj-redo="v1"] .kpi-foot .positive,
+html[data-jj-redo="v1"] .wb-detail-number.positive { color: var(--jj-positive) !important; -webkit-text-fill-color: var(--jj-positive); }
+html[data-jj-redo="v1"] .negative,
+html[data-jj-redo="v1"] .kpi-foot .negative,
+html[data-jj-redo="v1"] .wb-detail-number.negative { color: var(--jj-negative) !important; -webkit-text-fill-color: var(--jj-negative); }
+</style>
+<!-- jj-theme-v1:style:end -->
 </head>
 <body>
 <div class="app">
@@ -11574,5 +13144,380 @@ SOFTWARE. */
 })();
 </script>
 <!-- workbench-presentation-v1:script:end -->
+<!-- jj-redo-v1:script:start -->
+<script id="jj-redo-script">
+/* 生意经基础看板 · 交互重做层 v1
+   只增强展示与操作反馈，不接管业务数据、筛选口径、排序或导出。 */
+(() => {
+  "use strict";
+  const root = document.documentElement;
+  if (root.dataset.jjRedo === "v1") return;
+  root.dataset.jjRedo = "v1";
+
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+  const motionOn = () => !reduced.matches && root.dataset.effects !== "off" && !document.hidden;
+  const springEase = "cubic-bezier(.34,1.56,.64,1)";
+  const outEase = "cubic-bezier(.16,1,.3,1)";
+  const NS = "http://www.w3.org/2000/svg";
+
+  document.title = "生意经基础看板 · 津河省区";
+  const brand = document.querySelector(".brand");
+  if (brand) {
+    const wordmark = brand.querySelector(".wb-brand-wordmark");
+    if (wordmark) {
+      const small = wordmark.querySelector("small");
+      if (small) small.textContent = "生意经 · 基础看板";
+    } else {
+      const text = [...brand.childNodes].find(node => node.nodeType === Node.TEXT_NODE && node.textContent.trim());
+      if (text) text.textContent = "\n生意经 · 基础看板\n";
+    }
+  }
+
+  // 新配色的中文名与色卡。
+  const paletteNames = { aurora: "极光蓝", halo: "香槟金", frost: "薄荷玉", spark: "星夜紫" };
+  document.querySelectorAll('.wb-choice input[name="wb-palette"]').forEach(input => {
+    const span = input.nextElementSibling;
+    if (!span) return;
+    const text = [...span.childNodes].reverse().find(node => node.nodeType === Node.TEXT_NODE && node.textContent.trim());
+    if (text) text.textContent = paletteNames[input.value] || text.textContent;
+  });
+
+  // 环境光层铺在内容背后，给玻璃导航提供真实可模糊的细节。
+  const ambient = document.createElement("div");
+  ambient.className = "jj-ambient";
+  ambient.setAttribute("aria-hidden", "true");
+  ambient.innerHTML = "<span></span><span></span><span></span>";
+  document.body.prepend(ambient);
+
+  // 导航玻璃的跟随高光。
+  const sidebar = document.querySelector(".sidebar");
+  if (sidebar) {
+    const move = event => {
+      const box = sidebar.getBoundingClientRect();
+      sidebar.style.setProperty("--jj-mx", `${((event.clientX - box.left) / box.width) * 100}%`);
+      sidebar.style.setProperty("--jj-my", `${((event.clientY - box.top) / box.height) * 100}%`);
+      sidebar.style.setProperty("--jj-spec", "1");
+    };
+    sidebar.addEventListener("pointermove", move, { passive: true });
+    sidebar.addEventListener("pointerleave", () => sidebar.style.setProperty("--jj-spec", ".7"));
+  }
+
+  // KPI 卡片的光泽跟随指针，不做倾斜，保证数字始终水平可读。
+  document.querySelectorAll(".kpi").forEach(card => {
+    card.addEventListener("pointermove", event => {
+      const box = card.getBoundingClientRect();
+      card.style.setProperty("--jj-kx", `${((event.clientX - box.left) / box.width) * 100}%`);
+      card.style.setProperty("--jj-ky", `${((event.clientY - box.top) / box.height) * 100}%`);
+    }, { passive: true });
+  });
+
+  // ---------- 图表：渐变、面积、入场与 hover ----------
+  let chartSeq = 0;
+  function prepChart(svg) {
+    if (svg.dataset.jjChart === "1") return;
+    svg.dataset.jjChart = "1";
+    const id = `jj${++chartSeq}`;
+    const defs = document.createElementNS(NS, "defs");
+    const lineA = document.createElementNS(NS, "linearGradient");
+    lineA.id = `${id}-a`;
+    lineA.setAttribute("x1", "0"); lineA.setAttribute("y1", "0");
+    lineA.setAttribute("x2", "1"); lineA.setAttribute("y2", "0");
+    lineA.innerHTML = '<stop offset="0" style="stop-color:var(--jj-a)"/><stop offset=".58" style="stop-color:var(--jj-b)"/><stop offset="1" style="stop-color:var(--jj-c)"/>';
+    const lineB = document.createElementNS(NS, "linearGradient");
+    lineB.id = `${id}-b`;
+    lineB.setAttribute("x1", "0"); lineB.setAttribute("y1", "0");
+    lineB.setAttribute("x2", "1"); lineB.setAttribute("y2", "0");
+    lineB.innerHTML = '<stop offset="0" style="stop-color:var(--jj-b)"/><stop offset="1" style="stop-color:var(--jj-a)"/>';
+    const lineC = document.createElementNS(NS, "linearGradient");
+    lineC.id = `${id}-c`;
+    lineC.setAttribute("x1", "0"); lineC.setAttribute("y1", "0");
+    lineC.setAttribute("x2", "1"); lineC.setAttribute("y2", "0");
+    lineC.innerHTML = '<stop offset="0" style="stop-color:var(--jj-c)"/><stop offset="1" style="stop-color:var(--jj-c-soft)"/>';
+    const areaA = document.createElementNS(NS, "linearGradient");
+    areaA.id = `${id}-area-a`;
+    areaA.setAttribute("x1", "0"); areaA.setAttribute("y1", "0");
+    areaA.setAttribute("x2", "0"); areaA.setAttribute("y2", "1");
+    areaA.innerHTML = '<stop offset="0" style="stop-color:var(--jj-chart-area-a)"/><stop offset="1" style="stop-color:transparent"/>';
+    const areaC = document.createElementNS(NS, "linearGradient");
+    areaC.id = `${id}-area-c`;
+    areaC.setAttribute("x1", "0"); areaC.setAttribute("y1", "0");
+    areaC.setAttribute("x2", "0"); areaC.setAttribute("y2", "1");
+    areaC.innerHTML = '<stop offset="0" style="stop-color:var(--jj-chart-area-c)"/><stop offset="1" style="stop-color:transparent"/>';
+    const areaB = document.createElementNS(NS, "linearGradient");
+    areaB.id = `${id}-area-b`;
+    areaB.setAttribute("x1", "0"); areaB.setAttribute("y1", "0");
+    areaB.setAttribute("x2", "0"); areaB.setAttribute("y2", "1");
+    areaB.innerHTML = '<stop offset="0" style="stop-color:var(--jj-chart-area-b)"/><stop offset="1" style="stop-color:transparent"/>';
+    defs.append(lineA, lineB, lineC, areaA, areaB, areaC);
+
+    const paths = [...svg.querySelectorAll(":scope > path[fill='none']")];
+    const areas = [];
+    paths.forEach((path, index) => {
+      const d = path.getAttribute("d") || "";
+      const xs = [...d.matchAll(/[ML]\s*([\d.]+)\s+([\d.]+)/g)];
+      if (!xs.length) return;
+      const firstX = xs[0][1];
+      const lastX = xs[xs.length - 1][1];
+      const area = document.createElementNS(NS, "path");
+      area.setAttribute("class", "jj-area");
+      area.setAttribute("d", `${d} L${lastX} 248 L${firstX} 248 Z`);
+      const strokeValue = (path.getAttribute("stroke") || "").toUpperCase();
+      const key = strokeValue === "#8B6DFF" ? "b" : strokeValue === "#FF8A3D" ? "c" : "a";
+      area.setAttribute("fill", `url(#${id}-area-${key})`);
+      area.setAttribute("opacity", "0");
+      const grid = svg.querySelector("line");
+      if (grid) svg.insertBefore(area, grid); else path.before(area);
+      areas.push(area);
+
+      path.setAttribute("stroke", `url(#${id}-${key})`);
+      path.classList.add("jj-line");
+      path.dataset.jjLine = key === "a" ? "0" : key === "c" ? "1" : "2";
+      const length = path.getTotalLength();
+      path.dataset.jjLength = String(length);
+      path.style.strokeDasharray = `${length}`;
+      path.style.strokeDashoffset = `${length}`;
+      path.style.opacity = "1";
+    });
+    svg.prepend(defs);
+    svg.dataset.jjAreas = String(areas.length);
+  }
+
+  function playChart(svg) {
+    prepChart(svg);
+    const paths = [...svg.querySelectorAll(":scope > path[fill='none']")];
+    const areas = [...svg.querySelectorAll(":scope > .jj-area")];
+    const points = [...svg.querySelectorAll(".trend-point")];
+    const labels = [...svg.querySelectorAll(".point-label")];
+    if (!motionOn()) {
+      paths.forEach(path => { path.style.strokeDashoffset = "0"; path.style.strokeDasharray = ""; });
+      areas.forEach(area => { area.style.opacity = "1"; });
+      points.forEach(point => { point.style.opacity = "1"; });
+      labels.forEach(label => { label.style.opacity = "1"; });
+      return;
+    }
+    paths.forEach((path, index) => {
+      const length = Number(path.dataset.jjLength) || path.getTotalLength();
+      path.style.strokeDasharray = `${length}`;
+      path.animate(
+        [{ strokeDashoffset: `${length}` }, { strokeDashoffset: "0" }],
+        { duration: 1050, delay: index * 110, easing: outEase, fill: "both" }
+      ).onfinish = () => { path.style.strokeDasharray = ""; path.style.strokeDashoffset = "0"; };
+    });
+    areas.forEach((area, index) => {
+      area.animate(
+        [{ opacity: 0 }, { opacity: 1 }],
+        { duration: 760, delay: 220 + index * 110, easing: outEase, fill: "both" }
+      ).onfinish = () => { area.style.opacity = "1"; };
+    });
+    points.forEach((point, index) => {
+      point.animate(
+        [{ opacity: 0, transform: "scale(.2)" }, { opacity: 1, transform: "scale(1)" }],
+        { duration: 460, delay: 300 + index * 16, easing: springEase, fill: "both" }
+      );
+    });
+    labels.forEach((label, index) => {
+      label.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 420, delay: 380 + index * 14, easing: "ease-out", fill: "both" });
+    });
+  }
+
+  document.querySelectorAll(".chart-svg").forEach(prepChart);
+  const playVisible = () => {
+    document.querySelectorAll(".section.active .chart-svg").forEach(svg => {
+      if (svg.closest("[hidden]") || svg.closest(".local-panel")?.style.display === "none") return;
+      playChart(svg);
+    });
+  };
+  requestAnimationFrame(() => requestAnimationFrame(playVisible));
+
+  // 悬浮时高亮同一日期的两条曲线点，并保留原有读数浮窗。
+  document.querySelectorAll(".chart-svg").forEach(svg => {
+    const points = [...svg.querySelectorAll(".trend-point")];
+    if (!points.length) return;
+    const clear = () => points.forEach(point => point.classList.remove("is-hot"));
+    svg.addEventListener("pointermove", event => {
+      const pt = svg.createSVGPoint();
+      pt.x = event.clientX; pt.y = event.clientY;
+      const local = pt.matrixTransform(svg.getScreenCTM().inverse());
+      let nearest = null;
+      let distance = Infinity;
+      points.forEach(point => {
+        const d = Math.abs(Number(point.getAttribute("cx")) - local.x);
+        if (d < distance) { distance = d; nearest = point; }
+      });
+      if (!nearest) return;
+      const x = nearest.getAttribute("cx");
+      points.forEach(point => point.classList.toggle("is-hot", point.getAttribute("cx") === x));
+    }, { passive: true });
+    svg.addEventListener("pointerleave", clear);
+    svg.addEventListener("blur", clear);
+  });
+
+  const sections = [...document.querySelectorAll(".content > .section")];
+  const chartObserver = new MutationObserver(() => {
+    requestAnimationFrame(() => requestAnimationFrame(playVisible));
+  });
+  sections.forEach(section => chartObserver.observe(section, { attributes: true, attributeFilter: ["class"] }));
+  document.querySelectorAll("[data-local]").forEach(tab => {
+    tab.addEventListener("click", () => setTimeout(playVisible, 80));
+  });
+
+  // ---------- 选中态：弹簧拖尾 + 激活图标回弹 ----------
+  function setupSegmentGlow(host, selector) {
+    const pill = host.querySelector(".wb-selection");
+    if (!pill) return;
+    const buttons = [...host.querySelectorAll(selector)];
+    if (!buttons.length || host.querySelector(":scope > .jj-seg-glow")) return;
+    const glow = document.createElement("div");
+    glow.className = "jj-seg-glow";
+    glow.setAttribute("aria-hidden", "true");
+    host.insertBefore(glow, host.firstChild);
+    const sync = (immediate = false) => {
+      const index = buttons.findIndex(button => button.classList.contains("active"));
+      if (index < 0) { glow.style.opacity = "0"; return; }
+      const copies = [...pill.querySelectorAll(".wb-segment-copy")];
+      copies.forEach(copy => copy.classList.toggle("is-active-copy", copy.dataset.sourceIndex === String(index)));
+      const copy = copies.find(node => node.dataset.sourceIndex === String(index));
+      if (!copy) return;
+      const left = copy.style.left || "0px";
+      const top = copy.style.top || "0px";
+      const width = copy.style.width || "0px";
+      const height = copy.style.height || "0px";
+      if (width === "0px" || height === "0px") return;
+      if (immediate) glow.classList.add("is-init");
+      glow.style.opacity = ".5";
+      glow.style.transform = `translate3d(${left},${top},0)`;
+      glow.style.width = width;
+      glow.style.height = height;
+      if (immediate) requestAnimationFrame(() => glow.classList.remove("is-init"));
+    };
+    sync(true);
+    const observer = new MutationObserver(() => requestAnimationFrame(() => sync(false)));
+    observer.observe(pill, { attributes: true, attributeFilter: ["data-wb-selected"] });
+    buttons.forEach(button => observer.observe(button, { attributes: true, attributeFilter: ["class"] }));
+    const resize = new ResizeObserver(() => sync(true));
+    resize.observe(host);
+    buttons.forEach(button => resize.observe(button));
+    if (document.fonts?.ready) document.fonts.ready.then(() => sync(true));
+    window.addEventListener("resize", () => sync(true));
+  }
+  document.querySelectorAll(".sidebar, .glass-tabs, .mobile-nav").forEach(host => {
+    setupSegmentGlow(host, host.classList.contains("glass-tabs") ? "[data-local]" : "[data-target]");
+  });
+
+  // ---------- 玻璃选项卡：跟随指针的高光 ----------
+  document.querySelectorAll(".glass-tabs").forEach(host => {
+    host.addEventListener("pointermove", event => {
+      const box = host.getBoundingClientRect();
+      host.style.setProperty("--jj-gx", `${((event.clientX - box.left) / box.width) * 100}%`);
+      host.style.setProperty("--jj-gy", `${((event.clientY - box.top) / box.height) * 100}%`);
+      host.style.setProperty("--jj-glow", ".85");
+    }, { passive: true });
+    host.addEventListener("pointerleave", () => host.style.setProperty("--jj-glow", ".35"));
+  });
+
+  // ---------- 筛选与滚动位置：返回时原样恢复 ----------
+  const STORE_KEY = "jj-base-dashboard-state-v1";
+  const filterNodes = [...document.querySelectorAll(".filter-bar input, .filter-bar select")];
+  const readFilters = () => {
+    const values = {};
+    for (const node of filterNodes) {
+      const key = node.id || node.name;
+      if (key) values[key] = node.value;
+    }
+    return values;
+  };
+  const writeState = () => {
+    try {
+      sessionStorage.setItem(STORE_KEY, JSON.stringify({
+        scrollY,
+        filters: readFilters(),
+        section: document.querySelector(".section.active")?.id || "overview",
+        at: Date.now()
+      }));
+    } catch (_) {}
+  };
+  let saveTimer = 0;
+  const queueSave = () => {
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(writeState, 180);
+  };
+  filterNodes.forEach(node => {
+    node.addEventListener("input", queueSave);
+    node.addEventListener("change", queueSave);
+  });
+  let scrollTimer = 0;
+  window.addEventListener("scroll", () => {
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(writeState, 220);
+  }, { passive: true });
+  window.addEventListener("pagehide", writeState);
+  document.addEventListener("visibilitychange", () => { if (document.hidden) writeState(); });
+
+  function restoreState() {
+    let saved;
+    try { saved = JSON.parse(sessionStorage.getItem(STORE_KEY) || "null"); } catch (_) { return; }
+    if (!saved || Date.now() - saved.at > 30 * 60 * 1000) return;
+    if (saved.filters) {
+      filterNodes.forEach(node => {
+        const key = node.id || node.name;
+        if (!key || !(key in saved.filters)) return;
+        if (node.value === saved.filters[key]) return;
+        node.value = saved.filters[key];
+        const event = node.tagName === "SELECT" ? "change" : "input";
+        node.dispatchEvent(new Event(event, { bubbles: true }));
+      });
+    }
+    if (document.querySelector(".section.active")?.id === saved.section && saved.scrollY > 0) {
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        window.scrollTo({ top: saved.scrollY, behavior: "instant" });
+      }));
+      setTimeout(() => window.scrollTo({ top: saved.scrollY, behavior: "instant" }), 320);
+    }
+  }
+  restoreState();
+
+  // ---------- 浏览器返回：关闭门店详情，而不是离开看板 ----------
+  const detail = document.getElementById("wb-store-detail");
+  let detailPushed = false;
+  document.addEventListener("click", event => {
+    if (event.target.closest(".wb-store-open") && !detailPushed) {
+      detailPushed = true;
+      try { history.pushState({ ...(history.state || {}), jjDetail: true }, "", location.href); } catch (_) {}
+    }
+  }, true);
+  window.addEventListener("popstate", () => {
+    if (!detail?.open) return;
+    detailPushed = false;
+    document.getElementById("wb-detail-close")?.click();
+  });
+  detail?.addEventListener("close", () => {
+    if (!detailPushed) return;
+    detailPushed = false;
+    try { history.back(); } catch (_) {}
+  });
+
+  // 重做层改变品牌与导航排版后，让原有的滑动选中块重新测量一次。
+  function refreshSegments() {
+    document.querySelectorAll(".sidebar, .mobile-nav, .glass-tabs").forEach(host => {
+      const active = host.querySelector(".nav-item.active, .glass-tab.active");
+      if (!active) return;
+      active.classList.remove("active");
+      requestAnimationFrame(() => requestAnimationFrame(() => active.classList.add("active")));
+    });
+  }
+  if (document.fonts?.ready) document.fonts.ready.then(() => setTimeout(refreshSegments, 80));
+  window.addEventListener("load", () => setTimeout(refreshSegments, 160));
+
+  // 减少动态效果或关闭动效时，立即呈现最终状态。
+  reduced.addEventListener("change", () => {
+    if (reduced.matches) {
+      document.querySelectorAll(".chart-svg :is(.trend-point, .point-label)").forEach(node => { node.style.opacity = "1"; });
+      document.querySelectorAll(".chart-svg .jj-area").forEach(node => { node.style.opacity = "1"; });
+      document.querySelectorAll(".chart-svg path.jj-line").forEach(node => { node.style.strokeDasharray = ""; node.style.strokeDashoffset = "0"; });
+    }
+  });
+})();
+</script>
+<!-- jj-redo-v1:script:end -->
 </body>
 </html>
