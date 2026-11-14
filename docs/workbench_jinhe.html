@@ -2514,6 +2514,113 @@ html[data-jj-redo="v1"] .wb-detail-number.positive { color: var(--jj-positive) !
 html[data-jj-redo="v1"] .negative,
 html[data-jj-redo="v1"] .kpi-foot .negative,
 html[data-jj-redo="v1"] .wb-detail-number.negative { color: var(--jj-negative) !important; -webkit-text-fill-color: var(--jj-negative); }
+
+/* ---------- 明度层级重算（浅色）：底最轻 / 卡近白 / 侧栏中等，强调色只留少量点位 ---------- */
+html[data-jj-redo="v1"][data-palette="aurora"][data-appearance="light"] {
+  --jj-paper: oklch(96% 0.008 265);
+  --jj-side-base: oklch(36% 0.026 265);
+  --jj-side-deep: oklch(29% 0.020 265);
+}
+html[data-jj-redo="v1"][data-palette="halo"][data-appearance="light"] {
+  --jj-paper: oklch(96% 0.008 75);
+  --jj-side-base: oklch(36% 0.024 75);
+  --jj-side-deep: oklch(29% 0.019 75);
+}
+html[data-jj-redo="v1"][data-palette="frost"][data-appearance="light"] {
+  --jj-paper: oklch(96% 0.008 170);
+  --jj-side-base: oklch(36% 0.024 170);
+  --jj-side-deep: oklch(29% 0.019 170);
+}
+html[data-jj-redo="v1"][data-palette="spark"][data-appearance="light"] {
+  --jj-paper: oklch(96% 0.008 300);
+  --jj-side-base: oklch(36% 0.026 300);
+  --jj-side-deep: oklch(29% 0.020 300);
+}
+html[data-jj-redo="v1"][data-appearance="light"] {
+  --jj-canvas: var(--jj-paper);
+  --jj-canvas-top: color-mix(in srgb, var(--jj-paper) 82%, #fff);
+  --jj-canvas-2: color-mix(in srgb, var(--jj-paper) 92%, var(--jj-a) 8%);
+  --jj-ambient-1: color-mix(in srgb, var(--jj-b) 16%, transparent);
+  --jj-ambient-2: color-mix(in srgb, var(--jj-c) 12%, transparent);
+  --jj-ambient-3: color-mix(in srgb, var(--jj-a) 12%, transparent);
+  --jj-ambient-bg:
+    radial-gradient(1200px 700px at 82% -12%, color-mix(in srgb, var(--jj-b) 13%, transparent), transparent 62%),
+    radial-gradient(900px 620px at 6% 18%, color-mix(in srgb, var(--jj-c) 10%, transparent), transparent 64%),
+    radial-gradient(1000px 760px at 68% 104%, color-mix(in srgb, var(--jj-a) 10%, transparent), transparent 66%),
+    linear-gradient(180deg, var(--jj-canvas-top), var(--jj-canvas) 68%, var(--jj-canvas-2));
+
+  --jj-surface: color-mix(in srgb, #fff 97%, var(--jj-a) 3%);
+  --jj-surface-2: color-mix(in srgb, #fff 94%, var(--jj-a) 6%);
+  --jj-surface-3: color-mix(in srgb, #fff 90%, var(--jj-a) 10%);
+  --jj-glass-strong: color-mix(in srgb, #fff 94%, var(--jj-a) 6%);
+  --jj-glass-soft: color-mix(in srgb, #fff 88%, var(--jj-a) 12%);
+  --jj-glass-border: color-mix(in srgb, var(--jj-a) 10%, rgba(255, 255, 255, .86));
+  --jj-card-border: color-mix(in srgb, var(--jj-a) 9%, rgba(255, 255, 255, .88));
+  --jj-border: color-mix(in srgb, var(--jj-a) 14%, transparent);
+  --jj-border-soft: color-mix(in srgb, var(--jj-a) 8%, transparent);
+  --jj-shadow: 0 16px 42px color-mix(in srgb, var(--jj-a) 8%, transparent);
+  --jj-shadow-soft: 0 9px 24px color-mix(in srgb, var(--jj-a) 6%, transparent);
+  --jj-shadow-strong: 0 22px 54px color-mix(in srgb, var(--jj-a) 11%, transparent);
+
+  --jj-side-bg: linear-gradient(168deg,
+    color-mix(in srgb, var(--jj-a) 6%, var(--jj-side-base)),
+    var(--jj-side-deep) 52%,
+    color-mix(in srgb, var(--jj-a) 4%, var(--jj-side-base)));
+  --jj-side-bg-blur: linear-gradient(168deg,
+    color-mix(in srgb, var(--jj-a) 6%, color-mix(in srgb, var(--jj-side-base) 82%, transparent)),
+    color-mix(in srgb, var(--jj-side-deep) 80%, transparent) 52%,
+    color-mix(in srgb, var(--jj-a) 4%, color-mix(in srgb, var(--jj-side-base) 80%, transparent)));
+  --jj-side-border: color-mix(in srgb, var(--jj-a) 16%, rgba(255, 255, 255, .30));
+  --jj-side-muted: color-mix(in srgb, var(--jj-side-text) 92%, transparent);
+  --jj-side-label: color-mix(in srgb, var(--jj-side-text) 88%, transparent);
+  --jj-side-nav: color-mix(in srgb, var(--jj-side-text) 96%, transparent);
+  --jj-side-icon: color-mix(in srgb, var(--jj-side-text) 88%, transparent);
+  --jj-side-hover: color-mix(in srgb, var(--jj-a) 12%, transparent);
+  --jj-side-specular:
+    radial-gradient(460px 300px at var(--jj-mx, 30%) var(--jj-my, 0%), color-mix(in srgb, var(--jj-a) 14%, rgba(255, 255, 255, .22)), transparent 62%),
+    linear-gradient(135deg, color-mix(in srgb, var(--jj-a) 8%, transparent), transparent 42%, color-mix(in srgb, var(--jj-b) 6%, transparent));
+  --jj-side-glare: linear-gradient(118deg, rgba(255, 255, 255, .11), transparent 28%, transparent 72%, color-mix(in srgb, var(--jj-a) 5%, transparent));
+  --jj-side-shadow: 0 24px 60px rgba(8, 10, 16, .20);
+
+  --jj-pill-bg: linear-gradient(180deg, #fff, color-mix(in srgb, var(--jj-a) 8%, var(--jj-paper)));
+  --jj-tab-track: color-mix(in srgb, var(--jj-a) 6%, rgba(20, 23, 29, .04));
+  --jj-tab-track-border: color-mix(in srgb, var(--jj-a) 8%, rgba(255, 255, 255, .80));
+  --jj-tab-track-shadow: inset 0 1px 3px color-mix(in srgb, var(--jj-a) 6%, transparent);
+  --jj-button-bg: color-mix(in srgb, #fff 96%, var(--jj-a) 4%);
+  --jj-button-border: color-mix(in srgb, var(--jj-a) 16%, transparent);
+  --jj-input-bg: color-mix(in srgb, #fff 97%, var(--jj-a) 3%);
+  --jj-input-border: color-mix(in srgb, var(--jj-a) 14%, transparent);
+  --jj-table-head: color-mix(in srgb, var(--jj-paper) 94%, var(--jj-a) 6%);
+  --jj-row-hover: color-mix(in srgb, var(--jj-a) 5%, transparent);
+
+  --jj-chart-bg:
+    radial-gradient(600px 220px at 18% 0%, color-mix(in srgb, var(--jj-a) 6%, transparent), transparent 70%),
+    linear-gradient(180deg, color-mix(in srgb, var(--jj-a) 2%, transparent), transparent);
+  --jj-chart-grid: color-mix(in srgb, var(--jj-a) 11%, transparent);
+  --jj-chart-area-a: color-mix(in srgb, var(--jj-a) 18%, transparent);
+  --jj-chart-area-b: color-mix(in srgb, var(--jj-b) 16%, transparent);
+  --jj-chart-area-c: color-mix(in srgb, var(--jj-c) 16%, transparent);
+
+  --jj-kpi-bg:
+    radial-gradient(320px 180px at 100% -10%, color-mix(in srgb, var(--jj-b) 9%, transparent), transparent 70%),
+    linear-gradient(180deg, #fff, color-mix(in srgb, #fff 96%, var(--jj-a) 4%));
+  --jj-kpi-feature-bg:
+    radial-gradient(340px 200px at 100% -20%, color-mix(in srgb, var(--jj-b) 16%, transparent), transparent 68%),
+    radial-gradient(300px 180px at 0% 110%, color-mix(in srgb, var(--jj-c) 10%, transparent), transparent 70%),
+    linear-gradient(180deg, #fff, color-mix(in srgb, #fff 96%, var(--jj-a) 4%));
+  --jj-panel-bg: linear-gradient(180deg, #fff, color-mix(in srgb, #fff 97%, var(--jj-a) 3%));
+  --jj-insight-bg: linear-gradient(150deg, color-mix(in srgb, #fff 97%, var(--jj-a) 3%), color-mix(in srgb, var(--jj-paper) 94%, var(--jj-a) 6%));
+
+  --jj-dialog-bg:
+    radial-gradient(500px 240px at 100% -10%, color-mix(in srgb, var(--jj-b) 12%, transparent), transparent 68%),
+    linear-gradient(180deg, color-mix(in srgb, #fff 98%, var(--jj-a) 2%), color-mix(in srgb, var(--jj-paper) 96%, var(--jj-a) 4%)));
+  --jj-dialog-border: color-mix(in srgb, var(--jj-a) 9%, rgba(255, 255, 255, .86));
+  --jj-dialog-shadow: 0 40px 110px color-mix(in srgb, var(--jj-a) 18%, rgba(6, 10, 20, .28));
+  --jj-brief-bg:
+    linear-gradient(120deg, color-mix(in srgb, var(--jj-a) 6%, transparent), transparent 42%, color-mix(in srgb, var(--jj-c) 5%, transparent)),
+    var(--jj-glass-strong);
+}
+html[data-jj-redo="v1"][data-appearance="light"] .jj-ambient span { opacity: .36; }
 </style>
 <!-- jj-theme-v1:style:end -->
 </head>
