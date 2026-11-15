@@ -1899,7 +1899,8 @@ html[data-jj-redo="v1"] .command-button:active,
 html[data-jj-redo="v1"] .nav-item:active,
 html[data-jj-redo="v1"] .glass-tab:active,
 html[data-jj-redo="v1"] .mobile-nav button:active {
-  scale: .952 .915;
+  /* 只做亮度变化；不要缩放真实命中目标，否则边缘点击会在 pointerup 时落空。 */
+  scale: 1;
   transition-duration: .07s;
 }
 html[data-jj-redo="v1"] button:focus-visible,
@@ -2021,6 +2022,7 @@ html[data-jj-redo="v1"][data-effects="off"] .jj-ambient span,
 html[data-jj-redo="v1"][data-effects="off"] .content > .section.active { animation: none; }
 html[data-jj-redo="v1"][data-effects="off"] .wb-dialog[open] *,
 html[data-jj-redo="v1"][data-effects="off"] #wb-store-detail[open] * { animation: none !important; }
+
 /* 生意经基础看板 · 主题全站联动层 v1
    四套配色只改变 token，所有表面、图表、选中态、按钮、弹窗、hover 均引用 token。
    文字黑白灰与正负值红绿属于语义色，刻意不随配色变化。 */
@@ -2614,6 +2616,846 @@ html[data-jj-redo="v1"][data-appearance="light"] {
     var(--jj-glass-strong);
 }
 html[data-jj-redo="v1"][data-appearance="light"] .jj-ambient span { opacity: .36; }
+
+/* ============================================================
+   玻璃材质 v2 · 参考抖音「精致玻璃态数据看板」的观感拆解
+   只改展示层：层次、透明度、模糊、边框高光、阴影、留白、字号
+   数据、统计、筛选、排序、导出逻辑均不在此层改动
+   ============================================================ */
+
+/* ---------- v2 四套配色：低饱和、暖中性底 ---------- */
+html[data-jj-redo="v1"]:not([data-appearance="dark"])[data-palette="aurora"],
+html[data-jj-redo="v1"]:not([data-appearance="dark"]):not([data-palette]) {
+  --jj-a: #3c63d6;
+  --jj-b: #7d6bd6;
+  --jj-c: #c98a5e;
+  --jj-c-soft: #e6bd93;
+  --jj-mint: #2f8f7d;
+  --jj-paper: #f6f3ec;
+  --jj-side-base: #565d6b;
+  --jj-side-deep: #3d4450;
+  --jj-side-text: #fbf7f0;
+}
+html[data-jj-redo="v1"]:not([data-appearance="dark"])[data-palette="halo"] {
+  --jj-a: #a9711f;
+  --jj-b: #c99a4e;
+  --jj-c: #c56a52;
+  --jj-c-soft: #e7b98e;
+  --jj-mint: #9a7a35;
+  --jj-paper: #f8f2e6;
+  --jj-side-base: #5e554a;
+  --jj-side-deep: #443d34;
+  --jj-side-text: #fbf5eb;
+}
+html[data-jj-redo="v1"]:not([data-appearance="dark"])[data-palette="frost"] {
+  --jj-a: #16897b;
+  --jj-b: #4aa895;
+  --jj-c: #7d9c4d;
+  --jj-c-soft: #b7cf92;
+  --jj-mint: #16897b;
+  --jj-paper: #f1f6f1;
+  --jj-side-base: #4f5b57;
+  --jj-side-deep: #3a4642;
+  --jj-side-text: #f3faf6;
+}
+html[data-jj-redo="v1"]:not([data-appearance="dark"])[data-palette="spark"] {
+  --jj-a: #7358c9;
+  --jj-b: #a06bc4;
+  --jj-c: #cf9350;
+  --jj-c-soft: #e6bd93;
+  --jj-mint: #8b6fc4;
+  --jj-paper: #f5f2f7;
+  --jj-side-base: #574f60;
+  --jj-side-deep: #3f3948;
+  --jj-side-text: #f8f3fb;
+}
+
+/* ---------- v2 明度层级：画布 L*95 / 卡片 L*98 / 侧栏 L*42-46 ---------- */
+html[data-jj-redo="v1"]:not([data-appearance="dark"]) {
+  --jj-ink: #241f19;
+  --jj-muted: #6f675d;
+  --jj-canvas: color-mix(in srgb, var(--jj-a) 4%, #f6f3ec);
+  --jj-canvas-top: color-mix(in srgb, var(--jj-a) 1%, #fcfaf6);
+  --jj-canvas-2: color-mix(in srgb, var(--jj-a) 6%, #f1ede5);
+  --jj-surface: color-mix(in srgb, var(--jj-a) 1.5%, rgba(255, 255, 255, .76));
+  --jj-surface-2: color-mix(in srgb, var(--jj-a) 3%, rgba(255, 255, 255, .82));
+  --jj-surface-3: color-mix(in srgb, var(--jj-a) 5%, rgba(255, 255, 255, .88));
+  --jj-glass-strong: color-mix(in srgb, var(--jj-a) 2%, rgba(255, 255, 255, .88));
+  --jj-glass-soft: color-mix(in srgb, var(--jj-a) 1.5%, rgba(255, 255, 255, .62));
+  --jj-glass-border: color-mix(in srgb, var(--jj-a) 6%, rgba(255, 255, 255, .86));
+  --jj-card-border: color-mix(in srgb, var(--jj-a) 7%, rgba(255, 255, 255, .90));
+  --jj-border: color-mix(in srgb, var(--jj-a) 10%, rgba(60, 48, 34, .10));
+  --jj-border-soft: color-mix(in srgb, var(--jj-a) 6%, rgba(60, 48, 34, .07));
+  --jj-shadow: 0 22px 56px -30px rgba(62, 48, 32, .35), 0 2px 6px rgba(62, 48, 32, .05);
+  --jj-shadow-soft: 0 12px 30px -20px rgba(62, 48, 32, .28);
+  --jj-shadow-strong: 0 34px 80px -36px rgba(62, 48, 32, .42);
+
+  --jj-side-bg: linear-gradient(168deg,
+    color-mix(in srgb, var(--jj-a) 11%, color-mix(in srgb, var(--jj-side-base) 94%, transparent)),
+    color-mix(in srgb, var(--jj-side-deep) 96%, transparent) 64%,
+    color-mix(in srgb, var(--jj-a) 6%, color-mix(in srgb, var(--jj-side-deep) 96%, transparent)));
+  --jj-side-bg-blur: var(--jj-side-bg);
+  --jj-side-border: color-mix(in srgb, var(--jj-a) 16%, rgba(255, 255, 255, .16));
+  --jj-side-shadow: 0 30px 70px -32px rgba(28, 22, 16, .55), inset 0 1px 0 rgba(255, 255, 255, .18);
+  --jj-side-muted: color-mix(in srgb, var(--jj-side-text) 62%, transparent);
+  --jj-side-label: color-mix(in srgb, var(--jj-side-text) 46%, transparent);
+  --jj-side-nav: color-mix(in srgb, var(--jj-side-text) 74%, transparent);
+  --jj-side-icon: color-mix(in srgb, var(--jj-side-text) 70%, transparent);
+  --jj-side-hover: color-mix(in srgb, var(--jj-a) 14%, rgba(255, 255, 255, .06));
+  --jj-side-specular: linear-gradient(150deg, rgba(255, 242, 220, .18), transparent 42%, rgba(255, 255, 255, .05) 72%, transparent);
+  --jj-side-glare: none;
+
+  --jj-pill-bg: linear-gradient(180deg, #fffdf9, color-mix(in srgb, var(--jj-a) 3%, #f7f1e7));
+  --jj-pill-text: #262019;
+  --jj-pill-icon: var(--jj-a);
+  --jj-pill-icon-bg: color-mix(in srgb, var(--jj-a) 9%, transparent);
+  --jj-pill-ring: linear-gradient(120deg, rgba(255, 255, 255, .95), color-mix(in srgb, var(--jj-a) 16%, rgba(255, 255, 255, .55)) 55%, rgba(255, 255, 255, .85));
+  --jj-pill-sheen: linear-gradient(112deg, rgba(255, 255, 255, .48), transparent 38%, transparent 78%, rgba(255, 255, 255, .40));
+  --jj-pill-shadow: 0 12px 28px -14px rgba(40, 28, 16, .42), inset 0 1px 0 #fff;
+
+  --jj-tab-track: color-mix(in srgb, var(--jj-a) 4%, rgba(70, 56, 40, .085));
+  --jj-tab-track-border: rgba(255, 255, 255, .70);
+  --jj-tab-track-shadow: inset 0 1px 2px rgba(60, 46, 30, .06);
+  --jj-tab-pill: #fffdf9;
+  --jj-tab-pill-shadow: 0 6px 14px -6px rgba(40, 28, 16, .35), 0 0 0 1px color-mix(in srgb, var(--jj-a) 10%, rgba(255, 255, 255, .7)), inset 0 1px 0 #fff;
+  --jj-tab-ring: linear-gradient(120deg, rgba(255, 255, 255, .9), color-mix(in srgb, var(--jj-a) 14%, rgba(255, 255, 255, .6)));
+  --jj-tab-specular: linear-gradient(180deg, rgba(255, 255, 255, .42), transparent 46%);
+  --jj-tab-text: var(--jj-muted);
+  --jj-tab-active: var(--jj-ink);
+
+  --jj-button-bg: rgba(255, 255, 255, .66);
+  --jj-button-text: var(--jj-ink);
+  --jj-button-border: rgba(58, 44, 28, .10);
+  --jj-button-hover: rgba(255, 255, 255, .92);
+  --jj-input-bg: rgba(255, 255, 255, .72);
+  --jj-input-border: rgba(58, 44, 28, .12);
+  --jj-table-head: color-mix(in srgb, var(--jj-a) 3%, rgba(255, 255, 255, .55));
+  --jj-row-hover: color-mix(in srgb, var(--jj-a) 4%, rgba(255, 255, 255, .40));
+
+  --jj-chart-grid: color-mix(in srgb, var(--jj-a) 7%, rgba(60, 46, 30, .08));
+  --jj-chart-area-a: color-mix(in srgb, var(--jj-a) 18%, transparent);
+  --jj-chart-area-b: color-mix(in srgb, var(--jj-b) 15%, transparent);
+  --jj-chart-area-c: color-mix(in srgb, var(--jj-c) 15%, transparent);
+  --jj-chart-shadow-a: color-mix(in srgb, var(--jj-a) 18%, transparent);
+  --jj-chart-shadow-b: color-mix(in srgb, var(--jj-b) 18%, transparent);
+  --jj-chart-shadow-c: color-mix(in srgb, var(--jj-c) 18%, transparent);
+  --jj-probe-bg: rgba(36, 31, 25, .92);
+
+  --jj-kpi-bg: linear-gradient(180deg, rgba(255, 255, 255, .70), rgba(255, 255, 255, .50));
+  --jj-kpi-feature-bg: linear-gradient(180deg,
+    color-mix(in srgb, var(--jj-a) 5%, rgba(255, 255, 255, .76)),
+    color-mix(in srgb, var(--jj-a) 8%, rgba(255, 255, 255, .54)));
+  --jj-kpi-specular: linear-gradient(180deg, rgba(255, 255, 255, .46), transparent 42%);
+  --jj-panel-bg: linear-gradient(180deg, rgba(255, 255, 255, .66), rgba(255, 255, 255, .48));
+  --jj-panel-hairline: linear-gradient(90deg, transparent, rgba(255, 255, 255, .8), transparent);
+  --jj-insight-bg: linear-gradient(150deg,
+    color-mix(in srgb, var(--jj-a) 3%, rgba(255, 255, 255, .72)),
+    rgba(255, 255, 255, .48));
+
+  --jj-dialog-bg: linear-gradient(180deg, rgba(255, 253, 248, .96), rgba(255, 250, 243, .92));
+  --jj-dialog-border: rgba(255, 255, 255, .78);
+  --jj-dialog-shadow: 0 50px 120px -40px rgba(40, 28, 16, .50);
+  --jj-backdrop: rgba(30, 24, 18, .28);
+  --jj-brief-bg: transparent;
+
+  --jjg-blur-canvas: 30px;
+  --jjg-blur-panel: 24px;
+  --jjg-blur-control: 18px;
+  --jjg-radius-xl: 24px;
+  --jjg-radius-lg: 18px;
+  --jjg-radius-md: 12px;
+}
+
+/* ---------- v2 深色：同一套材质，换成暖黑 ---------- */
+html[data-jj-redo="v1"][data-appearance="dark"] {
+  --jj-ink: #f3eee6;
+  --jj-muted: #a89f92;
+  --jj-canvas: color-mix(in srgb, var(--jj-a) 3%, #12100d);
+  --jj-canvas-top: color-mix(in srgb, var(--jj-a) 2%, #17140f);
+  --jj-canvas-2: color-mix(in srgb, var(--jj-a) 4%, #0e0c09);
+  --jj-surface: color-mix(in srgb, var(--jj-a) 4%, rgba(38, 34, 28, .78));
+  --jj-surface-2: color-mix(in srgb, var(--jj-a) 5%, rgba(44, 39, 32, .82));
+  --jj-surface-3: color-mix(in srgb, var(--jj-a) 6%, rgba(50, 44, 36, .86));
+  --jj-card-border: color-mix(in srgb, var(--jj-a) 10%, rgba(255, 255, 255, .12));
+  --jj-border: color-mix(in srgb, var(--jj-a) 14%, rgba(255, 255, 255, .10));
+  --jj-border-soft: color-mix(in srgb, var(--jj-a) 10%, rgba(255, 255, 255, .07));
+  --jj-shadow: 0 26px 64px -30px rgba(0, 0, 0, .60);
+  --jj-shadow-soft: 0 14px 34px -22px rgba(0, 0, 0, .50);
+  --jj-shadow-strong: 0 34px 80px -34px rgba(0, 0, 0, .70);
+  --jj-side-bg: linear-gradient(168deg,
+    color-mix(in srgb, var(--jj-a) 12%, rgba(46, 42, 36, .94)),
+    rgba(32, 29, 24, .96) 64%,
+    color-mix(in srgb, var(--jj-a) 7%, rgba(27, 24, 20, .96)));
+  --jj-side-border: color-mix(in srgb, var(--jj-a) 18%, rgba(255, 255, 255, .14));
+  --jj-side-specular: linear-gradient(150deg, rgba(255, 236, 206, .12), transparent 42%, rgba(255, 255, 255, .03) 72%, transparent);
+  --jj-side-glare: none;
+  --jj-pill-bg: linear-gradient(180deg, #fffdf8, color-mix(in srgb, var(--jj-a) 5%, #f2ece2));
+  --jj-pill-text: #262019;
+  --jj-tab-track: color-mix(in srgb, var(--jj-a) 6%, rgba(255, 255, 255, .04));
+  --jj-tab-track-border: rgba(255, 255, 255, .10);
+  --jj-tab-pill: color-mix(in srgb, var(--jj-a) 8%, #f7f2ea);
+  --jj-tab-pill-shadow: 0 6px 16px -8px rgba(0, 0, 0, .55), inset 0 1px 0 rgba(255, 255, 255, .12);
+  --jj-tab-active: #f7f2ea;
+  --jj-tab-ring: linear-gradient(120deg, rgba(255, 255, 255, .45), color-mix(in srgb, var(--jj-a) 24%, rgba(255, 255, 255, .12)));
+  --jj-button-bg: color-mix(in srgb, var(--jj-a) 8%, rgba(255, 255, 255, .06));
+  --jj-button-border: color-mix(in srgb, var(--jj-a) 18%, rgba(255, 255, 255, .12));
+  --jj-input-bg: color-mix(in srgb, var(--jj-a) 6%, rgba(255, 255, 255, .05));
+  --jj-input-border: color-mix(in srgb, var(--jj-a) 16%, rgba(255, 255, 255, .12));
+  --jj-table-head: color-mix(in srgb, var(--jj-a) 6%, rgba(255, 255, 255, .05));
+  --jj-row-hover: color-mix(in srgb, var(--jj-a) 7%, rgba(255, 255, 255, .04));
+  --jj-kpi-bg: linear-gradient(180deg, rgba(255, 255, 255, .055), rgba(255, 255, 255, .025));
+  --jj-kpi-feature-bg: linear-gradient(180deg, color-mix(in srgb, var(--jj-a) 12%, rgba(255, 255, 255, .05)), color-mix(in srgb, var(--jj-a) 7%, rgba(255, 255, 255, .02)));
+  --jj-panel-bg: linear-gradient(180deg, rgba(255, 255, 255, .055), rgba(255, 255, 255, .025));
+  --jj-insight-bg: linear-gradient(150deg, color-mix(in srgb, var(--jj-a) 7%, transparent), rgba(255, 255, 255, .02));
+  --jj-dialog-bg: linear-gradient(180deg, rgba(40, 35, 29, .97), rgba(31, 28, 23, .96));
+  --jj-dialog-border: rgba(255, 255, 255, .12);
+  --jj-dialog-shadow: 0 50px 120px -36px rgba(0, 0, 0, .72);
+  --jj-backdrop: rgba(10, 8, 6, .52);
+}
+
+/* ---------- v2 画布与骨架：去掉会动的装饰光斑 ---------- */
+html[data-jj-redo="v1"] .jj-ambient {
+  background:
+    radial-gradient(980px 620px at 88% -8%, rgba(255, 228, 188, .92), transparent 60%),
+    radial-gradient(780px 560px at -4% 18%, color-mix(in srgb, var(--jj-a) 12%, transparent), transparent 66%),
+    radial-gradient(900px 680px at 72% 108%, rgba(198, 214, 232, .58), transparent 62%),
+    linear-gradient(180deg, var(--jj-canvas-top), var(--jj-canvas) 62%, var(--jj-canvas-2));
+}
+html[data-jj-redo="v1"] .jj-ambient span { display: none; }
+html[data-jj-redo="v1"][data-appearance="dark"] .jj-ambient {
+  background:
+    radial-gradient(1000px 640px at 84% -10%, color-mix(in srgb, var(--jj-b) 16%, transparent), transparent 62%),
+    radial-gradient(820px 600px at 4% 24%, color-mix(in srgb, var(--jj-a) 10%, transparent), transparent 68%),
+    linear-gradient(180deg, var(--jj-canvas-top), var(--jj-canvas) 64%, var(--jj-canvas-2));
+}
+html[data-jj-redo="v1"] .app {
+  grid-template-columns: 236px minmax(0, 1fr);
+  gap: 26px;
+  padding: 26px 28px 30px;
+  max-width: 1640px;
+}
+html[data-jj-redo="v1"] .content { padding: 0 4px 72px 0; }
+
+/* ---------- v2 侧栏：烟熏暖玻璃，比卡片重一档 ---------- */
+html[data-jj-redo="v1"] .sidebar {
+  padding: 22px 14px 18px;
+  border-radius: 28px;
+  border: 1px solid var(--jj-side-border);
+  background: var(--jj-side-bg);
+  box-shadow: var(--jj-side-shadow);
+  backdrop-filter: blur(var(--jjg-blur-canvas)) saturate(1.12);
+  -webkit-backdrop-filter: blur(var(--jjg-blur-canvas)) saturate(1.12);
+}
+html[data-jj-redo="v1"] .sidebar::before {
+  background: var(--jj-side-specular);
+  opacity: 1;
+  transition: none;
+}
+html[data-jj-redo="v1"] .sidebar::after { display: none; }
+html[data-jj-redo="v1"] .brand { padding: 4px 10px 18px; gap: 12px; }
+html[data-jj-redo="v1"] .wb-brand-logo { border-radius: 16px; }
+html[data-jj-redo="v1"] .brand .wb-brand-wordmark strong { font-size: 14.5px; letter-spacing: -.1px; }
+html[data-jj-redo="v1"] .brand .wb-brand-wordmark small { font-size: 10.5px; }
+html[data-jj-redo="v1"] .wb-brand-context { padding: 0 10px; font-size: 10.5px; line-height: 1.5; }
+html[data-jj-redo="v1"] .nav-label { margin: 16px 10px 8px; font-size: 9.5px; letter-spacing: .12em; }
+html[data-jj-redo="v1"] .sidebar .nav-item,
+html[data-jj-redo="v1"] .sidebar .wb-segment-copy {
+  height: 46px;
+  min-height: 46px;
+  gap: 11px;
+  padding: 0 12px;
+  border-radius: 14px;
+  font-size: 13px;
+  line-height: 1.2;
+}
+html[data-jj-redo="v1"] .sidebar .nav-icon,
+html[data-jj-redo="v1"] .sidebar .wb-segment-copy .nav-icon {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  border-radius: 9px;
+}
+html[data-jj-redo="v1"] .sidebar .nav-item:hover { background: var(--jj-side-hover); }
+html[data-jj-redo="v1"] .sidebar .wb-selection {
+  border-radius: 14px;
+  background: var(--jj-pill-bg);
+  box-shadow: var(--jj-pill-shadow);
+}
+html[data-jj-redo="v1"] .sidebar .wb-selection::before { background: var(--jj-pill-ring); }
+html[data-jj-redo="v1"] .sidebar .wb-selection::after { background: var(--jj-pill-sheen); }
+html[data-jj-redo="v1"] .sidebar .nav-item.active .nav-icon,
+html[data-jj-redo="v1"] .sidebar .wb-segment-copy.is-active-copy .nav-icon { transform: none; }
+
+/* ---------- v2 顶栏：一条轻玻璃应用条 ---------- */
+html[data-jj-redo="v1"] .topbar {
+  gap: 20px;
+  margin-bottom: 18px;
+  padding: 14px 18px;
+  border-radius: 22px;
+  border: 1px solid var(--jj-card-border);
+  background: linear-gradient(135deg, rgba(255, 255, 255, .52), transparent 46%),
+    linear-gradient(180deg, rgba(255, 255, 255, .60), rgba(255, 255, 255, .42));
+  box-shadow: 0 18px 44px -34px rgba(62, 48, 32, .40), inset 0 1px 0 rgba(255, 255, 255, .90);
+  backdrop-filter: blur(var(--jjg-blur-panel)) saturate(1.25);
+  -webkit-backdrop-filter: blur(var(--jjg-blur-panel)) saturate(1.25);
+}
+html[data-jj-redo="v1"][data-appearance="dark"] .topbar {
+  background: linear-gradient(135deg, rgba(255, 255, 255, .05), transparent 46%),
+    linear-gradient(180deg, rgba(255, 255, 255, .055), rgba(255, 255, 255, .025));
+}
+html[data-jj-redo="v1"][data-appearance="dark"] .kpi {
+  background: linear-gradient(135deg, rgba(255, 255, 255, .05), transparent 44%), var(--jj-kpi-bg);
+}
+html[data-jj-redo="v1"][data-appearance="dark"] .panel {
+  background: linear-gradient(135deg, rgba(255, 255, 255, .05), transparent 44%), var(--jj-panel-bg);
+}
+html[data-jj-redo="v1"] .eyebrow { font-size: 11px; letter-spacing: .02em; color: var(--jj-muted); }
+html[data-jj-redo="v1"] h1 { font-size: 30px; line-height: 1.18; font-weight: 680; letter-spacing: -.6px; margin-top: 3px; }
+html[data-jj-redo="v1"] .top-actions { gap: 8px; align-items: center; max-width: none; }
+html[data-jj-redo="v1"] .status,
+html[data-jj-redo="v1"] .glass-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 28px;
+  padding: 0 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(70, 55, 38, .08);
+  background: rgba(255, 255, 255, .56);
+  color: var(--jj-muted);
+  font-size: 10.5px;
+  line-height: 1;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .70);
+}
+html[data-jj-redo="v1"][data-appearance="dark"] .status,
+html[data-jj-redo="v1"][data-appearance="dark"] .glass-pill {
+  border-color: rgba(255, 255, 255, .10);
+  background: rgba(255, 255, 255, .05);
+}
+html[data-jj-redo="v1"] .status i { width: 6px; height: 6px; }
+html[data-jj-redo="v1"] .wb-display-open {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  height: 40px;
+  min-height: 40px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(70, 55, 38, .10);
+  background: rgba(255, 255, 255, .72);
+  color: var(--jj-ink);
+  font-size: 12px;
+  line-height: 1;
+  box-shadow: 0 6px 16px -12px rgba(40, 28, 16, .40), inset 0 1px 0 #fff;
+}
+html[data-jj-redo="v1"] .wb-display-open:hover { background: #fff; }
+html[data-jj-redo="v1"][data-appearance="dark"] .wb-display-open {
+  border-color: rgba(255, 255, 255, .12);
+  background: rgba(255, 255, 255, .06);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .08);
+}
+html[data-jj-redo="v1"][data-appearance="dark"] .wb-display-open:hover { background: rgba(255, 255, 255, .10); }
+
+/* ---------- v2 筛选条：细工具栏，不再是一整张卡 ---------- */
+html[data-jj-redo="v1"] .organization-filters {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+  width: max-content;
+  max-width: 100%;
+  margin: 0 0 18px;
+  padding: 14px 18px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, .62);
+  background: rgba(255, 255, 255, .40);
+  box-shadow: 0 12px 30px -26px rgba(60, 45, 30, .40), inset 0 1px 0 rgba(255, 255, 255, .80);
+  backdrop-filter: blur(var(--jjg-blur-control)) saturate(1.2);
+  -webkit-backdrop-filter: blur(var(--jjg-blur-control)) saturate(1.2);
+}
+html[data-jj-redo="v1"][data-appearance="dark"] .organization-filters {
+  border-color: rgba(255, 255, 255, .09);
+  background: rgba(255, 255, 255, .035);
+}
+html[data-jj-redo="v1"] .organization-filters label { display: flex; flex-direction: column; gap: 6px; margin: 0; }
+html[data-jj-redo="v1"] .organization-filters label span {
+  font-size: 10px;
+  line-height: 1.2;
+  letter-spacing: .08em;
+  color: var(--jj-muted);
+  text-transform: none;
+}
+html[data-jj-redo="v1"] .organization-filters select {
+  height: 40px;
+  padding: 0 34px 0 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(60, 46, 30, .10);
+  background-color: rgba(255, 255, 255, .72);
+  color: var(--jj-ink);
+  font-size: 12.5px;
+  line-height: normal;
+  box-shadow: inset 0 1px 2px rgba(60, 46, 30, .04);
+}
+html[data-jj-redo="v1"][data-appearance="dark"] .organization-filters select {
+  border-color: rgba(255, 255, 255, .10);
+  background-color: rgba(255, 255, 255, .05);
+}
+
+/* ---------- v2 选项卡：可横向滚动，单击即响应 ---------- */
+html[data-jj-redo="v1"] .glass-tabs {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  width: max-content;
+  max-width: 100%;
+  margin: 0 0 20px;
+  padding: 5px;
+  border-radius: 14px;
+  border: 1px solid var(--jj-tab-track-border);
+  background: var(--jj-tab-track);
+  box-shadow: var(--jj-tab-track-shadow);
+  backdrop-filter: blur(var(--jjg-blur-control)) saturate(1.2);
+  -webkit-backdrop-filter: blur(var(--jjg-blur-control)) saturate(1.2);
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+html[data-jj-redo="v1"] .glass-tabs::-webkit-scrollbar { display: none; }
+html[data-jj-redo="v1"] .glass-tabs::after { display: none; }
+html[data-jj-redo="v1"] .glass-tab {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 38px;
+  min-height: 38px;
+  min-width: 44px;
+  margin: 0;
+  padding: 0 15px;
+  border-radius: 10px;
+  font-size: 12.5px;
+  line-height: 1;
+  font-weight: 600;
+  color: var(--jj-tab-text);
+  touch-action: manipulation;
+}
+html[data-jj-redo="v1"] .glass-tabs .wb-selection { border-radius: 10px; background: var(--jj-tab-pill); box-shadow: var(--jj-tab-pill-shadow); }
+html[data-jj-redo="v1"] .glass-tabs .wb-selection::before { background: var(--jj-tab-ring); }
+html[data-jj-redo="v1"] .glass-tabs .wb-selection::after { background: var(--jj-tab-specular); }
+
+/* ---------- v2 KPI：奶白玻璃，只有首卡带一点色相 ---------- */
+html[data-jj-redo="v1"] .kpis { gap: 16px; margin-top: 2px; }
+html[data-jj-redo="v1"] .kpi {
+  min-height: 154px;
+  padding: 20px 22px;
+  border-radius: 22px;
+  border: 1px solid var(--jj-card-border);
+  background: linear-gradient(135deg, rgba(255, 255, 255, .42), transparent 40%), var(--jj-kpi-bg);
+  box-shadow: var(--jj-shadow-soft), inset 0 1px 0 rgba(255, 255, 255, .90);
+  backdrop-filter: blur(var(--jjg-blur-panel)) saturate(1.15);
+  -webkit-backdrop-filter: blur(var(--jjg-blur-panel)) saturate(1.15);
+}
+html[data-jj-redo="v1"] #overview .kpi:first-child {
+  border-top-color: var(--jj-card-border);
+  background: linear-gradient(135deg, rgba(255, 255, 255, .34), transparent 40%), var(--jj-kpi-feature-bg);
+}
+html[data-jj-redo="v1"] .kpi::after { display: none; }
+html[data-jj-redo="v1"] .kpi-label { font-size: 11.5px; line-height: 1.2; letter-spacing: .06em; }
+html[data-jj-redo="v1"] .kpi-value { margin-top: 14px; font-size: 36px; line-height: 1.04; letter-spacing: -1px; font-weight: 660; }
+html[data-jj-redo="v1"] .kpi-foot { margin-top: 12px; font-size: 10.5px; line-height: 1.3; }
+html[data-jj-redo="v1"] .kpi:hover { transform: translateY(-2px); }
+
+/* ---------- v2 面板、章节与表格：更少边框、更多留白 ---------- */
+html[data-jj-redo="v1"] .section-head { margin-top: 26px; margin-bottom: 16px; }
+html[data-jj-redo="v1"] .section-head h2 { font-size: 21px; line-height: 1.2; letter-spacing: -.3px; }
+html[data-jj-redo="v1"] .section-head p { margin-top: 4px; font-size: 11.5px; line-height: 1.5; }
+html[data-jj-redo="v1"] .grid-2 { gap: 18px; }
+html[data-jj-redo="v1"] .panel {
+  padding: 22px;
+  border-radius: 24px;
+  border: 1px solid var(--jj-card-border);
+  background: linear-gradient(135deg, rgba(255, 255, 255, .34), transparent 44%), var(--jj-panel-bg);
+  box-shadow: var(--jj-shadow-soft), inset 0 1px 0 rgba(255, 255, 255, .90);
+  backdrop-filter: blur(var(--jjg-blur-panel)) saturate(1.15);
+  -webkit-backdrop-filter: blur(var(--jjg-blur-panel)) saturate(1.15);
+}
+html[data-jj-redo="v1"] .panel-head { gap: 6px; }
+html[data-jj-redo="v1"] .panel-head h2 { font-size: 15px; line-height: 1.3; }
+html[data-jj-redo="v1"] .panel-head p { font-size: 11px; line-height: 1.45; }
+html[data-jj-redo="v1"] .panel::before { display: none; }
+html[data-jj-redo="v1"] table th {
+  height: 38px;
+  font-size: 10.5px;
+  line-height: 1.2;
+  letter-spacing: .04em;
+  color: var(--jj-muted);
+  background: var(--jj-table-head);
+}
+html[data-jj-redo="v1"] table td { height: 44px; font-size: 12px; line-height: 1.35; }
+html[data-jj-redo="v1"] .table-scroll { border-radius: 14px; }
+html[data-jj-redo="v1"] .insights { gap: 10px; }
+html[data-jj-redo="v1"] .insight {
+  border-radius: 14px;
+  border: 1px solid rgba(60, 46, 30, .07);
+  background: var(--jj-insight-bg);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .70);
+}
+html[data-jj-redo="v1"][data-appearance="dark"] .insight { border-color: rgba(255, 255, 255, .07); }
+
+/* ---------- v2 按钮：统一 flex 居中，取消会缩小的按压 ---------- */
+html[data-jj-redo="v1"] :is(button, .command-button, .wb-display-open, .wb-float-open, .wb-filter-open,
+  .wb-filter-done, .wb-filter-reset, #wb-detail-close, .glass-tab, .nav-item) {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+html[data-jj-redo="v1"] button:not(.sort-trigger):active,
+html[data-jj-redo="v1"] .command-button:active { transform: none; scale: 1; filter: brightness(.97); }
+html[data-jj-redo="v1"] button[data-wb-press="true"] { filter: brightness(.97); }
+html[data-jj-redo="v1"] .command-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 40px;
+  min-height: 40px;
+  padding: 0 15px;
+  border-radius: 999px;
+  border: 1px solid rgba(60, 46, 30, .10);
+  background: rgba(255, 255, 255, .70);
+  color: var(--jj-ink);
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 600;
+  box-shadow: 0 8px 20px -16px rgba(40, 28, 16, .40), inset 0 1px 0 #fff;
+}
+html[data-jj-redo="v1"] .command-button:hover { background: #fff; }
+html[data-jj-redo="v1"][data-appearance="dark"] .command-button {
+  border-color: rgba(255, 255, 255, .12);
+  background: rgba(255, 255, 255, .06);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .08);
+}
+html[data-jj-redo="v1"] .sort-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 4px;
+  min-height: 28px;
+  padding: 0 2px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  line-height: 1;
+  touch-action: manipulation;
+}
+html[data-jj-redo="v1"] .sort-trigger:active { transform: none; }
+html[data-jj-redo="v1"] .wb-float-open {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 36px;
+  min-height: 36px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(60, 46, 30, .10);
+  background: rgba(255, 255, 255, .70);
+  color: var(--jj-ink);
+  font-size: 11px;
+  line-height: 1;
+}
+html[data-jj-redo="v1"] .wb-filter-open {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 40px;
+  min-height: 40px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(60, 46, 30, .10);
+  background: rgba(255, 255, 255, .70);
+  color: var(--jj-ink);
+  font-size: 12px;
+  line-height: 1;
+}
+html[data-jj-redo="v1"] .filter-bar input,
+html[data-jj-redo="v1"] .filter-bar select {
+  height: 40px;
+  border-radius: 12px;
+  border: 1px solid rgba(60, 46, 30, .10);
+  background: rgba(255, 255, 255, .72);
+  color: var(--jj-ink);
+  font-size: 12.5px;
+}
+html[data-jj-redo="v1"] .filter-bar { align-items: center; }
+html[data-jj-redo="v1"] .filter-bar .wb-filter-open,
+html[data-jj-redo="v1"] .filter-bar .filter-count { flex: 0 0 auto; white-space: nowrap; }
+html[data-jj-redo="v1"] #stores .filter-bar { flex-wrap: wrap; }
+html[data-jj-redo="v1"] #stores .table-scroll table { min-width: 100%; }
+html[data-jj-redo="v1"] #stores th,
+html[data-jj-redo="v1"] #stores td { padding-left: 8px; padding-right: 8px; }
+html[data-jj-redo="v1"] #stores th:nth-child(4),
+html[data-jj-redo="v1"] #stores td:nth-child(4) { width: 232px; max-width: 232px; white-space: nowrap; overflow: hidden; }
+html[data-jj-redo="v1"] #stores td:nth-child(4) strong { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+html[data-jj-redo="v1"] #stores th:nth-child(5),
+html[data-jj-redo="v1"] #stores td:nth-child(5) { width: 168px; max-width: 168px; overflow: hidden; }
+html[data-jj-redo="v1"] #stores td:nth-child(5) .provider { display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; vertical-align: middle; }
+html[data-jj-redo="v1"][data-appearance="dark"] :is(.filter-bar input, .filter-bar select) {
+  border-color: rgba(255, 255, 255, .10);
+  background: rgba(255, 255, 255, .05);
+}
+
+/* ---------- v2 弹窗与详情：乳白玻璃，按钮不随入场位移 ---------- */
+html[data-jj-redo="v1"] .wb-dialog {
+  width: min(520px, calc(100% - 32px));
+  padding: 26px 28px 22px;
+  border-radius: 26px;
+  border: 1px solid var(--jj-dialog-border);
+  background: var(--jj-dialog-bg);
+  color: var(--jj-ink);
+  box-shadow: var(--jj-dialog-shadow), inset 0 1px 0 rgba(255, 255, 255, .70);
+  backdrop-filter: blur(var(--jjg-blur-canvas)) saturate(1.25);
+  -webkit-backdrop-filter: blur(var(--jjg-blur-canvas)) saturate(1.25);
+}
+html[data-jj-redo="v1"] .wb-dialog::backdrop {
+  background: var(--jj-backdrop);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+html[data-jj-redo="v1"] .wb-dialog[open] { animation: jjg-fade-in .22s var(--ui-ease-out) both; }
+html[data-jj-redo="v1"] .wb-dialog::before { display: none; }
+html[data-jj-redo="v1"] .wb-dialog[open] :is(.wb-dialog-handle, .wb-choice, .wb-setting, .wb-dialog-footer) {
+  animation: jjg-fade-in .24s ease both;
+}
+@keyframes jjg-fade-in { from { opacity: 0; } to { opacity: 1; } }
+html[data-jj-redo="v1"] .wb-dialog h2 { font-size: 19px; line-height: 1.3; letter-spacing: -.2px; }
+html[data-jj-redo="v1"] .wb-dialog-note { font-size: 12px; line-height: 1.6; }
+html[data-jj-redo="v1"] .wb-dialog-handle { padding-top: 6px; }
+html[data-jj-redo="v1"] .wb-dialog-handle::before { display: none; }
+html[data-jj-redo="v1"] .wb-choice-row { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 8px; }
+html[data-jj-redo="v1"] .wb-choice label { flex: 0 0 auto; min-width: 100px; }
+html[data-jj-redo="v1"] .wb-choice label span {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 8px 14px;
+  border-radius: 12px;
+  line-height: 1;
+}
+html[data-jj-redo="v1"] .wb-setting { min-height: 56px; }
+html[data-jj-redo="v1"] .wb-dialog-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(60, 46, 30, .08);
+}
+html[data-jj-redo="v1"] .wb-dialog-footer button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  min-height: 40px;
+  padding: 0 20px;
+  border-radius: 999px;
+  font-size: 13px;
+  line-height: 1;
+}
+html[data-jj-redo="v1"] #wb-close-settings {
+  border: 0;
+  background: #241f19;
+  color: #fff;
+  box-shadow: 0 8px 20px -12px rgba(30, 20, 10, .60);
+}
+html[data-jj-redo="v1"][data-appearance="dark"] #wb-close-settings { background: #f7f2ea; color: #241f19; }
+html[data-jj-redo="v1"] .wb-filter-footer { display: flex; align-items: center; justify-content: flex-end; gap: 10px; }
+html[data-jj-redo="v1"] .wb-filter-reset {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  min-height: 40px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(60, 46, 30, .10);
+  background: rgba(255, 255, 255, .70);
+  color: var(--jj-ink);
+  font-size: 12px;
+  line-height: 1;
+}
+html[data-jj-redo="v1"] .wb-filter-done {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  min-height: 40px;
+  padding: 0 20px;
+  border-radius: 999px;
+  border: 0;
+  background: #241f19;
+  color: #fff;
+  font-size: 12px;
+  line-height: 1;
+}
+html[data-jj-redo="v1"][data-appearance="dark"] .wb-filter-done { background: #f7f2ea; color: #241f19; }
+html[data-jj-redo="v1"] .wb-detail-shell {
+  border-radius: 26px;
+  border: 1px solid var(--jj-dialog-border);
+  background: var(--jj-dialog-bg);
+  box-shadow: var(--jj-dialog-shadow), inset 0 1px 0 rgba(255, 255, 255, .70);
+  backdrop-filter: blur(var(--jjg-blur-canvas)) saturate(1.25);
+  -webkit-backdrop-filter: blur(var(--jjg-blur-canvas)) saturate(1.25);
+}
+html[data-jj-redo="v1"] #wb-store-detail[open] .wb-detail-content,
+html[data-jj-redo="v1"] #wb-store-detail[open] .wb-detail-metric { animation: jjg-fade-in .24s ease both; }
+html[data-jj-redo="v1"] #wb-detail-close {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  min-height: 36px;
+  padding: 0;
+  border-radius: 999px;
+  border: 1px solid rgba(60, 46, 30, .08);
+  background: rgba(255, 255, 255, .62);
+  color: var(--jj-ink);
+}
+
+/* ---------- v2 图表：更细的网格、更克制的面积 ---------- */
+html[data-jj-redo="v1"] .chart-svg path[fill="none"] { stroke-width: 2.2; }
+html[data-jj-redo="v1"] .chart-svg line { stroke: var(--jj-chart-grid); stroke-width: 1; }
+html[data-jj-redo="v1"] .chart-svg text { fill: var(--jj-muted); font-size: 10px; }
+html[data-jj-redo="v1"] .chart-svg .trend-point { stroke: #fff; stroke-width: 2; }
+html[data-jj-redo="v1"][data-appearance="dark"] .chart-svg .trend-point { stroke: #241f19; }
+html[data-jj-redo="v1"] .wb-float-chart { border-radius: 14px; }
+
+/* ---------- v2 选中态：不再有彩色描边和拖尾光 ---------- */
+html[data-jj-redo="v1"] .sidebar .wb-selection::before,
+html[data-jj-redo="v1"] .glass-tabs .wb-selection::before {
+  background: linear-gradient(120deg, rgba(255, 255, 255, .95), color-mix(in srgb, var(--jj-a) 12%, rgba(255, 255, 255, .65)) 58%, rgba(255, 255, 255, .90));
+}
+html[data-jj-redo="v1"] .jj-seg-glow { display: none; }
+html[data-jj-redo="v1"] .wb-selection,
+html[data-jj-redo="v1"] .wb-selection *,
+html[data-jj-redo="v1"] .wb-selection::before,
+html[data-jj-redo="v1"] .wb-selection::after,
+html[data-jj-redo="v1"] .wb-segment-copy,
+html[data-jj-redo="v1"] .wb-selection-copies {
+  pointer-events: none !important;
+}
+
+/* ---------- v2 密度：收回没有信息量的装饰 ---------- */
+html[data-jj-redo="v1"] .wb-brief,
+html[data-jj-redo="v1"] .wb-wave-canvas,
+html[data-jj-redo="v1"] .wb-wave-launch,
+html[data-jj-redo="v1"] .wb-ripple,
+html[data-jj-redo="v1"] .wb-dock-target {
+  display: none !important;
+}
+html[data-jj-redo="v1"] .kpi::after,
+html[data-jj-redo="v1"] .glass-tabs::after,
+html[data-jj-redo="v1"] .sidebar::after { display: none; }
+
+/* ---------- v2 板块切换：只淡入，不位移，避免点击目标在动画中移动 ---------- */
+html[data-jj-redo="v1"] .content > .section.active {
+  animation: jjg-section-in .26s ease both;
+}
+@keyframes jjg-section-in { from { opacity: .72; } to { opacity: 1; } }
+
+/* ---------- v2 移动端 ---------- */
+@media (max-width: 1180px) {
+  html[data-jj-redo="v1"] .app { grid-template-columns: 210px minmax(0, 1fr); gap: 20px; padding: 20px; }
+}
+@media (max-width: 700px) {
+  html[data-jj-redo="v1"] .app { padding: 0; gap: 0; }
+  html[data-jj-redo="v1"] .content { padding: 16px 14px calc(112px + env(safe-area-inset-bottom)); }
+  html[data-jj-redo="v1"] .topbar { flex-direction: column; align-items: flex-start; gap: 14px; padding: 14px; border-radius: 20px; }
+  html[data-jj-redo="v1"] .wb-mobile-brand { width: 42px; height: 42px; border-radius: 12px; }
+  html[data-jj-redo="v1"] .top-actions { width: 100%; justify-content: flex-start; flex-wrap: wrap; }
+  html[data-jj-redo="v1"] h1 { font-size: 26px; }
+  html[data-jj-redo="v1"] .eyebrow { font-size: 10.5px; line-height: 1.5; }
+  html[data-jj-redo="v1"] .organization-filters { flex-direction: column; align-items: stretch; gap: 10px; width: 100%; padding: 12px 14px; border-radius: 16px; }
+  html[data-jj-redo="v1"] .organization-filters label { width: 100%; }
+  html[data-jj-redo="v1"] .organization-filters select { width: 100%; height: 44px; }
+  html[data-jj-redo="v1"] .glass-tabs { width: 100%; max-width: 100%; margin-bottom: 16px; }
+  html[data-jj-redo="v1"] .glass-tab { height: 40px; min-height: 40px; min-width: 48px; padding: 0 14px; font-size: 12px; }
+  html[data-jj-redo="v1"] .kpi { min-height: 138px; padding: 16px; border-radius: 18px; }
+  html[data-jj-redo="v1"] .kpi-value { font-size: 30px; }
+  html[data-jj-redo="v1"] .panel { padding: 18px; border-radius: 20px; }
+  html[data-jj-redo="v1"] .mobile-nav {
+    border-radius: 22px;
+    border: 1px solid rgba(255, 255, 255, .62);
+    background: rgba(255, 252, 246, .86);
+    box-shadow: 0 18px 44px -18px rgba(40, 28, 16, .40), inset 0 1px 0 #fff;
+  }
+  html[data-jj-redo="v1"] .mobile-nav button { touch-action: manipulation; }
+  html[data-jj-redo="v1"] .mobile-nav .wb-selection { border-radius: 16px; background: #fffdf9; box-shadow: 0 6px 16px -8px rgba(40, 28, 16, .35); }
+}
+
+/* ---------- v2 减少动态效果 ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html[data-jj-redo="v1"] .content > .section.active,
+  html[data-jj-redo="v1"] .wb-dialog[open],
+  html[data-jj-redo="v1"] .wb-dialog[open] *,
+  html[data-jj-redo="v1"] #wb-store-detail[open] * { animation: none !important; }
+  html[data-jj-redo="v1"] .kpi { transition: none; }
+}
+
+/* ---------- v2 优先级守卫：压过 [data-appearance] 的组件底色 ---------- */
+html[data-jj-redo="v1"][data-appearance="light"] .jj-ambient {
+  background:
+    radial-gradient(980px 620px at 88% -8%, rgba(255, 228, 188, .92), transparent 60%),
+    radial-gradient(780px 560px at -4% 18%, color-mix(in srgb, var(--jj-a) 12%, transparent), transparent 66%),
+    radial-gradient(900px 680px at 72% 108%, rgba(198, 214, 232, .58), transparent 62%),
+    linear-gradient(180deg, var(--jj-canvas-top), var(--jj-canvas) 62%, var(--jj-canvas-2));
+}
+html[data-jj-redo="v1"][data-appearance="light"] .kpi {
+  padding: 20px 22px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, .42), transparent 40%), var(--jj-kpi-bg);
+  box-shadow: var(--jj-shadow-soft), inset 0 1px 0 rgba(255, 255, 255, .90);
+}
+html[data-jj-redo="v1"][data-appearance="light"] #overview .kpi:first-child {
+  background: linear-gradient(135deg, rgba(255, 255, 255, .34), transparent 40%), var(--jj-kpi-feature-bg);
+}
+html[data-jj-redo="v1"][data-appearance="light"] .panel {
+  padding: 22px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, .34), transparent 44%), var(--jj-panel-bg);
+  box-shadow: var(--jj-shadow-soft), inset 0 1px 0 rgba(255, 255, 255, .90);
+}
+html[data-jj-redo="v1"][data-appearance="light"] .glass-tabs {
+  padding: 5px;
+  border-radius: 14px;
+  border-color: var(--jj-tab-track-border);
+  background: var(--jj-tab-track);
+  box-shadow: var(--jj-tab-track-shadow);
+}
+html[data-jj-redo="v1"][data-appearance="light"] .insight {
+  border-color: rgba(60, 46, 30, .07);
+  background: var(--jj-insight-bg);
+}
+html[data-jj-redo="v1"][data-appearance] .chart-svg .jj-line { filter: none; }
+html[data-jj-redo="v1"][data-appearance] .chart-scroll { background: transparent; }
+
+/* ---------- v2 深色图表对比度 ---------- */
+html[data-jj-redo="v1"][data-appearance="dark"] {
+  --jj-chart-area-a: color-mix(in srgb, var(--jj-a) 16%, transparent);
+  --jj-chart-area-b: color-mix(in srgb, var(--jj-b) 14%, transparent);
+  --jj-chart-area-c: color-mix(in srgb, var(--jj-c) 14%, transparent);
+}
+html[data-jj-redo="v1"][data-appearance="dark"] .chart-svg .payment-label { fill: color-mix(in srgb, var(--jj-a) 42%, #fff); }
+html[data-jj-redo="v1"][data-appearance="dark"] .chart-svg .redeem-label { fill: color-mix(in srgb, var(--jj-c) 52%, #fff); }
+html[data-jj-redo="v1"][data-appearance="dark"] .chart-svg .trend-point.is-hot { filter: none; }
 /* new-ui:end */
 </style>
 <!-- workbench-presentation-v1:style:end -->
@@ -2650,8 +3492,8 @@ html[data-jj-redo="v1"][data-appearance="light"] .jj-ambient span { opacity: .36
         <article class="kpi"><span class="kpi-label">支付间夜</span><b class="kpi-value">223</b><div class="kpi-foot"><span class="positive">+22.5%</span><span>间夜</span></div></article>
         <article class="kpi"><span class="kpi-label">动销门店</span><b class="kpi-value">26<small style="font-size:14px">家</small></b><div class="kpi-foot"><span class="negative">-2家</span><span>较上期</span></div></article>
       </div>
-      <article class="panel" id="reconciliation-notice" style="margin-top:16px"><div class="panel-head"><div><h2>门店清单复核</h2><p>2026-11-09核对 · 鲁东原台账 387 家，补全 3 家 WH 与 POI</p></div></div><p>当前范围 12 家交易源缺记录，门店明细显示“—”；金额汇总仅包含来源中已有的记录。认领说明来自 2026-10-10 台账，后台检索日期逐店列示。缺记录不能直接判断为实际零交易。</p><p>鲁东另有 4 家自播门店待补 WH 编码和集团片区，暂未进入组织自播汇总；处理清单保留来源记录。</p></article>
-      <div class="insight" id="source-audit-notice" style="margin-top:16px"><b>门店与来源复核</b><p>按11月版复核总表及完整原始报表重算。当前范围 42 家；其中 0 家缺有效 POI，12 家交易源无记录，保留在全集，明细显示“—”。全大区另有60家名称地点差异待确认，仍沿用集团提供的 POI，不按名称猜测换店。</p> </div>
+
+      <style>#overview .wb-brief{display:none!important}</style>
       <div class="grid-2">
         <article class="panel"><div class="panel-head trend-panel-head"><div class="trend-heading"><h2>支付与核销日趋势</h2><span class="trend-range">11-08–11-14 · 单位：万元</span></div><div class="legend"><span><i style="background:var(--blue)"></i>支付</span><span><i style="background:var(--orange)"></i>核销</span></div></div><div class="chart-scroll">
       <svg class="chart-svg" viewBox="0 0 760 300" role="img"
@@ -4231,7 +5073,16 @@ html[data-jj-redo="v1"][data-appearance="light"] .jj-ambient span { opacity: .36
 
 
     <section class="section" id="merchant-live">
-      <div class="section-head"><div><h2>商家自播</h2><p>商家官号与职人/店员 · 近 7 日对比前 7 日 · 数据来源：生意经</p></div></div>
+      <div class="section-head"><div><h2>商家自播</h2><p>商家官号 · 近 7 日 / 昨日 · 数据来源：生意经</p></div></div>
+      <div class="live-view-switch" role="tablist" aria-label="直播时间范围"><button type="button" class="live-view-btn is-active" data-live-view="week" role="tab" aria-selected="true">近 7 天</button><button type="button" class="live-view-btn" data-live-view="day" role="tab" aria-selected="false">昨日</button></div>
+      <style>
+      .live-view-switch{display:inline-flex;gap:2px;padding:3px;margin:10px 0 4px;border-radius:999px;background:rgba(60,46,30,.06)}
+      .live-view-btn{border:0;background:none;padding:7px 15px;border-radius:999px;font-size:12px;line-height:1.2;color:var(--muted);cursor:pointer}
+      .live-view-btn.is-active{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(60,46,30,.12)}
+      .live-day-table td,.live-day-table th{white-space:nowrap}
+      .live-missing{color:var(--muted);font-size:11.5px}
+      </style>
+      <div data-live-panel="week">
       <div class="kpis" id="store-live-coverage"><article class="kpi" data-live-metric="total"><span class="kpi-label">总门店</span><b class="kpi-value">42<small style="font-size:14px">家</small></b><div class="kpi-foot">当前组织名单 · POI 去重</div></article><article class="kpi" data-live-metric="live"><span class="kpi-label">已开播门店</span><b class="kpi-value">7<small style="font-size:14px">家</small></b><div class="kpi-foot">周期内至少开播一次</div></article><article class="kpi" data-live-metric="not-live"><span class="kpi-label">未开播门店</span><b class="kpi-value">35<small style="font-size:14px">家</small></b><div class="kpi-foot">未匹配到本期开播记录</div></article><article class="kpi" data-live-metric="rate"><span class="kpi-label">门店开播率</span><b class="kpi-value">16.7%<small style="font-size:14px"></small></b><div class="kpi-foot">已开播门店 ÷ 总门店</div></article></div><p style="font-size:12px;color:var(--muted);line-height:1.7">统计周期：2026-11-08 至 2026-11-14。商家官号直播场次或直播时长大于 0 计为开播，按门店 POI 去重；账号所属门店名称仅接受唯一 POI 匹配。未开播表示未匹配到本期开播记录，未匹配账号可能影响统计结果。</p><article class="panel" style="margin:16px 0"><div class="panel-head"><div><h2>各片区门店开播率与自播业绩</h2><p>近 7 日 · 与当前省区、片区选择一致</p></div></div><div style="overflow-x:auto"><table id="store-live-area-summary"><thead><tr><th>片区</th><th>总门店</th><th>已开播</th><th>未开播*</th><th>开播率</th><th>直播支付额</th><th>直播时长</th><th>直播场次</th><th>开播账号数</th></tr></thead><tbody><tr><td>日照片区</td><td>42</td><td>7</td><td>35</td><td>16.7%</td><td>129</td><td>207.2h</td><td>61</td><td>7</td></tr></tbody></table></div></article>
       <div class="kpis">
         <article class="kpi"><span class="kpi-label">直播成交金额</span><b class="kpi-value">129</b><div class="kpi-foot"><span class="negative">-53.6%</span><span>较前 7 日 278</span></div></article>
@@ -4599,6 +5450,34 @@ html[data-jj-redo="v1"][data-appearance="light"] .jj-ambient span { opacity: .36
       </div>
     </article>
       </div>
+      </div>
+      <div data-live-panel="day" hidden>
+        <div class="kpis"><article class="kpi"><span class="kpi-label">已开播门店</span><b class="kpi-value">4<small style="font-size:14px">家</small></b><div class="kpi-foot"><span>2026-11-14</span><span>5 场</span></div></article><article class="kpi"><span class="kpi-label">有记录未开播</span><b class="kpi-value">1<small style="font-size:14px">家</small></b><div class="kpi-foot"><span>当日有账号记录</span><span>场次与时长为 0</span></div></article><article class="kpi"><span class="kpi-label">未匹配记录</span><b class="kpi-value">37<small style="font-size:14px">家</small></b><div class="kpi-foot"><span>不等于未开播</span><span>可能未采集</span></div></article><article class="kpi"><span class="kpi-label">直播支付</span><b class="kpi-value">0</b><div class="kpi-foot"><span>单位：元</span><span>16.4h · 4 个开播账号</span></div></article></div><article class="panel" style="margin:16px 0"><div class="panel-head"><div><h2>已开播门店</h2><p>2026-11-14 · 按直播支付从高到低</p></div></div><div style="overflow-x:auto"><table class="live-day-table"><thead><tr><th>门店</th><th>片区</th><th>开播</th><th>场次</th><th>时长</th><th>直播支付</th><th>账号总核销</th><th>观看人数</th></tr></thead><tbody><tr><td>丽怡酒店(日照万象汇万平口景区店)</td><td>日照片区</td><td>已开播</td><td>1</td><td>11.3h</td><td>0</td><td>0</td><td><span class="live-missing" title="该字段未采集">未采集</span></td></tr><tr><td>白玉兰商务酒店(日照茶叶科创示范园店)</td><td>日照片区</td><td>已开播</td><td>2</td><td>3.2h</td><td>0</td><td>0</td><td><span class="live-missing" title="该字段未采集">未采集</span></td></tr><tr><td>白玉兰酒店(日照五莲解放路店)</td><td>日照片区</td><td>已开播</td><td>1</td><td>1.4h</td><td>0</td><td>0</td><td><span class="live-missing" title="该字段未采集">未采集</span></td></tr><tr><td>喆啡酒店(日照万平口灯塔景区店)</td><td>日照片区</td><td>已开播</td><td>1</td><td>0.4h</td><td>0</td><td>0</td><td><span class="live-missing" title="该字段未采集">未采集</span></td></tr></tbody></table></div></article><article class="panel" style="margin:16px 0"><div class="panel-head"><div><h2>未开播门店 · 督导跟进</h2><p>2026-11-14 有记录未开播 1 家，未匹配记录 37 家</p></div></div><div style="overflow-x:auto"><table class="live-day-table"><thead><tr><th>门店</th><th>片区</th><th>开播</th><th>场次</th><th>时长</th><th>直播支付</th><th>账号总核销</th><th>观看人数</th></tr></thead><tbody><tr><td>白玉兰(商务)酒店(日照岚山港多岛海风景区店)</td><td>日照片区</td><td>有记录未开播</td><td>0</td><td>0.0h</td><td>0</td><td>0</td><td><span class="live-missing" title="该字段未采集">未采集</span></td></tr><tr><td>7天酒店(日照五莲县宝山路店)</td><td>日照片区</td><td>未匹配记录</td><td>0</td><td>0.0h</td><td>0</td><td>0</td><td><span class="live-missing" title="该字段未采集">未采集</span></td></tr><tr><td>7天酒店(日照五莲山风景区店)</td><td>日照片区</td><td>未匹配记录</td><td>0</td><td>0.0h</td><td>0</td><td>0</td><td><span class="live-missing" title="该字段未采集">未采集</span></td></tr><tr><td>7天酒店(日照黄海一路店)</td><td>日照片区</td><td>未匹配记录</td><td>0</td><td>0.0h</td><td>0</td><td>0</td><td><span class="live-missing" title="该字段未采集">未采集</span></td></tr><tr><td>7天酒店（日照岚山汽车站店）</td><td>日照片区</td><td>未匹配记录</td><td>0</td><td>0.0h</td><td>0</td><td>0</td><td><span class="live-missing" title="该字段未采集">未采集</span></td></tr><tr><td>凯里亚德酒店(日照万平口景区店)</td><td>日照片区</td><td>未匹配记录</td><td>0</td><td>0.0h</td><td>0</td><td>0</td><td><span class="live-missing" title="该字段未采集">未采集</span></td></tr><tr><td>喆·啡酒店(日照万平口万象汇店)</td><td>日照片区</td><td>未匹配记录</td><td>0</td><td>0.0h</td><td>0</td><td>0</td><td><span class="live-missing" title="该字段未采集">未采集</span></td></tr><tr><td>希岸Deluxe酒店日照市政府万平口店</td><td>日照片区</td><td>未匹配记录</td><td>0</td><td>0.0h</td><td>0</td><td>0</td><td><span class="live-missing" title="该字段未采集">未采集</span></td></tr><tr><td>希岸·轻雅酒店(日照东夷小镇第三海水浴场店)</td><td>日照片区</td><td>未匹配记录</td><td>0</td><td>0.0h</td><td>0</td><td>0</td><td><span class="live-missing" title="该字段未采集">未采集</span></td></tr><tr><td>希岸酒店(日照东港区万平口万达广场店)</td><td>日照片区</td><td>未匹配记录</td><td>0</td><td>0.0h</td><td>0</td><td>0</td><td><span class="live-missing" title="该字段未采集">未采集</span></td></tr><tr><td>希岸酒店(日照岚山区政府店)</td><td>日照片区</td><td>未匹配记录</td><td>0</td><td>0.0h</td><td>0</td><td>0</td><td><span class="live-missing" title="该字段未采集">未采集</span></td></tr><tr><td>希岸酒店(日照市政府东港区万象汇店)</td><td>日照片区</td><td>未匹配记录</td><td>0</td><td>0.0h</td><td>0</td><td>0</td><td><span class="live-missing" title="该字段未采集">未采集</span></td></tr><tr><td>希岸酒店（日照万平口灯塔景区店）</td><td>日照片区</td><td>未匹配记录</td><td>0</td><td>0.0h</td><td>0</td><td>0</td><td><span class="live-missing" title="该字段未采集">未采集</span></td></tr><tr><td>希岸酒店（日照第三海水浴场店）</td><td>日照片区</td><td>未匹配记录</td><td>0</td><td>0.0h</td><td>0</td><td>0</td><td><span class="live-missing" title="该字段未采集">未采集</span></td></tr><tr><td>日照万平口景区锦江都城酒店</td><td>日照片区</td><td>未匹配记录</td><td>0</td><td>0.0h</td><td>0</td><td>0</td><td><span class="live-missing" title="该字段未采集">未采集</span></td></tr><tr><td>日照岚山多岛海云居酒店</td><td>日照片区</td><td>未匹配记录</td><td>0</td><td>0.0h</td><td>0</td><td>0</td><td><span class="live-missing" title="该字段未采集">未采集</span></td></tr><tr><td>潮漫酒店（日照西站万平口店）</td><td>日照片区</td><td>未匹配记录</td><td>0</td><td>0.0h</td><td>0</td><td>0</td><td><span class="live-missing" title="该字段未采集">未采集</span></td></tr><tr><td>白玉兰商务酒店(日照万平口景区市政府店)</td><td>日照片区</td><td>未匹配记录</td><td>0</td><td>0.0h</td><td>0</td><td>0</td><td><span class="live-missing" title="该字段未采集">未采集</span></td></tr><tr><td>白玉兰商务酒店(日照万平口景区海滨五路店)</td><td>日照片区</td><td>未匹配记录</td><td>0</td><td>0.0h</td><td>0</td><td>0</td><td><span class="live-missing" title="该字段未采集">未采集</span></td></tr><tr><td>白玉兰酒店(日照万象汇荣成路店)</td><td>日照片区</td><td>未匹配记录</td><td>0</td><td>0.0h</td><td>0</td><td>0</td><td><span class="live-missing" title="该字段未采集">未采集</span></td></tr><tr><td>白玉兰酒店(日照海曲东路大润发店)</td><td>日照片区</td><td>未匹配记录</td><td>0</td><td>0.0h</td><td>0</td><td>0</td><td><span class="live-missing" title="该字段未采集">未采集</span></td></tr><tr><td>白玉兰酒店(日照港万平口灯塔景区店)</td><td>日照片区</td><td>未匹配记录</td><td>0</td><td>0.0h</td><td>0</td><td>0</td><td><span class="live-missing" title="该字段未采集">未采集</span></td></tr><tr><td>白玉兰酒店(日照莒县古城店)</td><td>日照片区</td><td>未匹配记录</td><td>0</td><td>0.0h</td><td>0</td><td>0</td><td><span class="live-missing" title="该字段未采集">未采集</span></td></tr><tr><td>维也纳3好酒店(山东日照万平口灯塔景区店)</td><td>日照片区</td><td>未匹配记录</td><td>0</td><td>0.0h</td><td>0</td><td>0</td><td><span class="live-missing" title="该字段未采集">未采集</span></td></tr><tr><td>维也纳国际酒店(日照莒县古城店)</td><td>日照片区</td><td>未匹配记录</td><td>0</td><td>0.0h</td><td>0</td><td>0</td><td><span class="live-missing" title="该字段未采集">未采集</span></td></tr><tr><td>维也纳国际酒店(日照西站苏宁广场店)</td><td>日照片区</td><td>未匹配记录</td><td>0</td><td>0.0h</td><td>0</td><td>0</td><td><span class="live-missing" title="该字段未采集">未采集</span></td></tr><tr><td>维也纳国际酒店（5.0版山东日照万象汇万平口景区店）</td><td>日照片区</td><td>未匹配记录</td><td>0</td><td>0.0h</td><td>0</td><td>0</td><td><span class="live-missing" title="该字段未采集">未采集</span></td></tr><tr><td>维也纳国际酒店（日照五莲店）</td><td>日照片区</td><td>未匹配记录</td><td>0</td><td>0.0h</td><td>0</td><td>0</td><td><span class="live-missing" title="该字段未采集">未采集</span></td></tr><tr><td>维也纳酒店(日照万平口东夷小镇店)</td><td>日照片区</td><td>未匹配记录</td><td>0</td><td>0.0h</td><td>0</td><td>0</td><td><span class="live-missing" title="该字段未采集">未采集</span></td></tr><tr><td>维也纳酒店（日照万平口景区日照站店）</td><td>日照片区</td><td>未匹配记录</td><td>0</td><td>0.0h</td><td>0</td><td>0</td><td><span class="live-missing" title="该字段未采集">未采集</span></td></tr><tr><td>锦江都城酒店（日照万平口景区大润发店）</td><td>日照片区</td><td>未匹配记录</td><td>0</td><td>0.0h</td><td>0</td><td>0</td><td><span class="live-missing" title="该字段未采集">未采集</span></td></tr><tr><td>非繁城品(日照万平口灯塔景区店)</td><td>日照片区</td><td>未匹配记录</td><td>0</td><td>0.0h</td><td>0</td><td>0</td><td><span class="live-missing" title="该字段未采集">未采集</span></td></tr><tr><td>麗枫酒店(日照万平口万达广场店)</td><td>日照片区</td><td>未匹配记录</td><td>0</td><td>0.0h</td><td>0</td><td>0</td><td><span class="live-missing" title="该字段未采集">未采集</span></td></tr><tr><td>麗枫酒店(日照万平口风景区店)</td><td>日照片区</td><td>未匹配记录</td><td>0</td><td>0.0h</td><td>0</td><td>0</td><td><span class="live-missing" title="该字段未采集">未采集</span></td></tr><tr><td>麗枫酒店(日照岚山多岛海景区店)</td><td>日照片区</td><td>未匹配记录</td><td>0</td><td>0.0h</td><td>0</td><td>0</td><td><span class="live-missing" title="该字段未采集">未采集</span></td></tr><tr><td>麗枫酒店(日照港灯塔景区北京路店)</td><td>日照片区</td><td>未匹配记录</td><td>0</td><td>0.0h</td><td>0</td><td>0</td><td><span class="live-missing" title="该字段未采集">未采集</span></td></tr><tr><td>麗枫酒店(日照苏宁广场东港区政府店)</td><td>日照片区</td><td>未匹配记录</td><td>0</td><td>0.0h</td><td>0</td><td>0</td><td><span class="live-missing" title="该字段未采集">未采集</span></td></tr><tr><td>麗枫酒店（日照海曲东路大润发店）</td><td>日照片区</td><td>未匹配记录</td><td>0</td><td>0.0h</td><td>0</td><td>0</td><td><span class="live-missing" title="该字段未采集">未采集</span></td></tr></tbody></table></div></article><p style="font-size:12px;color:var(--muted);line-height:1.7">口径：2026-11-14 当天，商家官号直播场次或直播时长大于 0 计为已开播，按门店 POI 去重。直播支付取「直播成交金额」。账号总核销取账号当日「总核销金额」，包含直播、视频、搜索等归因来源，不等于直播核销，也不等于门店全渠道核销。未匹配记录表示当日没有该门店的商家官号记录，可能因账号未纳入采集或门店名称未匹配，不能直接等同于实际未开播。观看人数该字段未采集，未做摊算或估算。</p>
+      </div>
+      <script>
+      (function () {
+        var section = document.getElementById("merchant-live");
+        if (!section) return;
+        var buttons = section.querySelectorAll("[data-live-view]");
+        var panels = {
+          week: section.querySelector('[data-live-panel="week"]'),
+          day: section.querySelector('[data-live-panel="day"]'),
+        };
+        Array.prototype.forEach.call(buttons, function (button) {
+          button.addEventListener("click", function () {
+            var key = button.getAttribute("data-live-view");
+            Array.prototype.forEach.call(buttons, function (item) {
+              var active = item === button;
+              item.classList.toggle("is-active", active);
+              item.setAttribute("aria-selected", active ? "true" : "false");
+            });
+            Object.keys(panels).forEach(function (name) {
+              if (panels[name]) panels[name].hidden = name !== key;
+            });
+          });
+        });
+      })();
+      </script>
     </section>
 
 
@@ -4954,7 +5833,7 @@ sortChannelTable('redeem-delta');
 sortMerchantCityTable('city-live-amount');
 sortMerchantAccountTable('account-live-amount');
 sortOperationScoreTable('score');
-document.documentElement.dataset.workbench="{\"region\": \"鲁东省区 · 日照片区\", \"periods\": {\"previous_start\": \"2026-11-01\", \"previous_end\": \"2026-11-07\", \"current_start\": \"2026-11-08\", \"current_end\": \"2026-11-14\"}, \"verification\": {\"detail_row_count\": 460, \"channel_row_count\": 466, \"other_region_row_count\": 0, \"provider_count\": 4, \"store_count\": 30, \"voucher_product_count\": 16, \"product_structure_closed\": true, \"master_store_count\": 42, \"data_store_count\": 30, \"zero_data_store_count\": 12, \"organization_province_count\": 1, \"organization_area_count\": 1, \"selected_province\": \"鲁东省区\", \"selected_area\": \"日照片区\", \"detail_channel_closure\": {\"意向成交金额\": true, \"意向成交券数\": true, \"意向成交间夜\": true, \"核销金额\": true, \"核销券数\": true, \"核销间夜\": true}, \"provider_binding_counts\": {\"杭州四库传媒有限公司\": 27, \"青岛三合酒店管理有限公司\": 1, \"未绑定服务商\": 3, \"赣州悦合文化传媒有限公司\": 1, \"绑定待核实\": 10}, \"bound_store_count\": 29, \"unbound_store_count\": 3, \"binding_unknown_store_count\": 10, \"passed\": true, \"store_live_coverage\": {\"total_stores\": 42, \"live_stores\": 7, \"not_live_stores\": 35, \"live_rate\": 0.16666666666666666, \"start\": \"2026-11-08\", \"end\": \"2026-11-14\"}}, \"organization_navigation\": {\"selected_province\": \"鲁东省区\", \"selected_area\": \"日照片区\", \"province_urls\": {\"鲁东省区\": \"workbench_ludong.html\"}, \"area_urls\": {\"鲁东省区\": {\"临沂片区\": \"workbench_ludong__鲁东省区__临沂片区.html\", \"威烟片区\": \"workbench_ludong__鲁东省区__威烟片区.html\", \"日照片区\": \"workbench_ludong__鲁东省区__日照片区.html\", \"沂枣片区\": \"workbench_ludong__鲁东省区__沂枣片区.html\", \"淄博片区\": \"workbench_ludong__鲁东省区__淄博片区.html\", \"潍坊片区\": \"workbench_ludong__鲁东省区__潍坊片区.html\", \"烟台片区\": \"workbench_ludong__鲁东省区__烟台片区.html\", \"青岛前海片区\": \"workbench_ludong__鲁东省区__青岛前海片区.html\", \"青岛北片区\": \"workbench_ludong__鲁东省区__青岛北片区.html\", \"青岛西片区\": \"workbench_ludong__鲁东省区__青岛西片区.html\"}}}}";
+document.documentElement.dataset.workbench="{\"region\": \"鲁东省区 · 日照片区\", \"periods\": {\"previous_start\": \"2026-11-01\", \"previous_end\": \"2026-11-07\", \"current_start\": \"2026-11-08\", \"current_end\": \"2026-11-14\"}, \"verification\": {\"detail_row_count\": 460, \"channel_row_count\": 466, \"other_region_row_count\": 0, \"provider_count\": 4, \"store_count\": 30, \"voucher_product_count\": 16, \"product_structure_closed\": true, \"master_store_count\": 42, \"data_store_count\": 30, \"zero_data_store_count\": 12, \"organization_province_count\": 1, \"organization_area_count\": 1, \"unmapped_area_store_count\": 0, \"area_master_store_count\": 42, \"selected_province\": \"鲁东省区\", \"selected_area\": \"日照片区\", \"detail_channel_closure\": {\"意向成交金额\": true, \"意向成交券数\": true, \"意向成交间夜\": true, \"核销金额\": true, \"核销券数\": true, \"核销间夜\": true}, \"provider_binding_counts\": {\"杭州四库传媒有限公司\": 27, \"青岛三合酒店管理有限公司\": 1, \"未绑定服务商\": 3, \"赣州悦合文化传媒有限公司\": 1, \"绑定待核实\": 10}, \"bound_store_count\": 29, \"unbound_store_count\": 3, \"binding_unknown_store_count\": 10, \"passed\": true, \"store_live_coverage\": {\"total_stores\": 42, \"live_stores\": 7, \"not_live_stores\": 35, \"live_rate\": 0.16666666666666666, \"start\": \"2026-11-08\", \"end\": \"2026-11-14\"}}, \"organization_navigation\": {\"selected_province\": \"鲁东省区\", \"selected_area\": \"日照片区\", \"province_urls\": {\"鲁东省区\": \"workbench_ludong.html\"}, \"area_urls\": {\"鲁东省区\": {\"临沂片区\": \"workbench_ludong__鲁东省区__临沂片区.html\", \"威烟片区\": \"workbench_ludong__鲁东省区__威烟片区.html\", \"日照片区\": \"workbench_ludong__鲁东省区__日照片区.html\", \"沂枣片区\": \"workbench_ludong__鲁东省区__沂枣片区.html\", \"淄博片区\": \"workbench_ludong__鲁东省区__淄博片区.html\", \"潍坊片区\": \"workbench_ludong__鲁东省区__潍坊片区.html\", \"烟台片区\": \"workbench_ludong__鲁东省区__烟台片区.html\", \"青岛前海片区\": \"workbench_ludong__鲁东省区__青岛前海片区.html\", \"青岛北片区\": \"workbench_ludong__鲁东省区__青岛北片区.html\", \"青岛西片区\": \"workbench_ludong__鲁东省区__青岛西片区.html\"}}}}";
 </script>
 <!-- workbench-presentation-v1:script:start -->
 <script id="workbench-motion-library">
@@ -5846,7 +6725,9 @@ SOFTWARE. */
   createSegment(document.querySelector(".mobile-nav"), "[data-target]");
   document.querySelectorAll(".glass-tabs").forEach(host => createSegment(host, "[data-local]"));
 
-  // Press starts on down, is released everywhere, and never changes click handling.
+  // Press feedback must never shrink the real hit target: a scale(.97) on the
+  // button made edge clicks land outside after pointerdown, so pointerup no
+  // longer produced a click. Animate only the non-interactive copy instead.
   const presses = new Map();
   const pressed = new Set();
   function press(node, down) {
@@ -5855,18 +6736,17 @@ SOFTWARE. */
     down ? pressed.add(node) : pressed.delete(node);
     const segment = segments.find(s => s.buttons.includes(node));
     const copy = segment?.copyNodes[segment.buttons.indexOf(node)];
-    for (const element of [node, copy].filter(Boolean)) {
-      presses.get(element)?.stop(); presses.delete(element);
-      if (!enabled() || !animate) { element.style.transform = ""; continue; }
-      const owned = animate(element, { transform: down ? "scale(.97)" : "scale(1)" }, {
-        duration: down ? .12 : .18, ease,
-        onComplete: () => {
-          if (presses.get(element) !== owned || down) return;
-          element.style.transform = ""; presses.delete(element);
-        }
-      });
-      presses.set(element, owned);
-    }
+    if (!copy) return;
+    presses.get(copy)?.stop(); presses.delete(copy);
+    if (!enabled() || !animate) { copy.style.transform = ""; return; }
+    const owned = animate(copy, { transform: down ? "scale(.97)" : "scale(1)" }, {
+      duration: down ? .12 : .18, ease,
+      onComplete: () => {
+        if (presses.get(copy) !== owned || down) return;
+        copy.style.transform = ""; presses.delete(copy);
+      }
+    });
+    presses.set(copy, owned);
   }
   const pressable = event => event.target.closest?.("button, a.command-button");
   const releaseAll = () => { for (const node of [...pressed]) press(node, false); };
@@ -6619,6 +7499,31 @@ SOFTWARE. */
   const outEase = "cubic-bezier(.16,1,.3,1)";
   const NS = "http://www.w3.org/2000/svg";
 
+  // “总体”选项卡在生成层没有 data-target，点击时不会回到总览。
+  // 这里补上行为，并让它的选中态跟随总览板块，避免看起来“点了没反应”。
+  const overviewSection = document.getElementById("overview");
+  const overviewTabs = overviewSection?.querySelector(".glass-tabs");
+  const totalTab = overviewTabs?.querySelector(".glass-tab:not([data-target]):not([data-local])");
+  if (overviewSection && overviewTabs && totalTab) {
+    const tabs = [...overviewTabs.children].filter(node => node.classList.contains("glass-tab"));
+    totalTab.dataset.target = "overview";
+    totalTab.addEventListener("click", () => {
+      if (typeof window.showSection === "function") window.showSection("overview");
+      tabs.forEach(tab => tab.classList.toggle("active", tab === totalTab));
+    });
+    const syncTotalTab = () => tabs.forEach(tab => {
+      if (tab === totalTab) tab.classList.toggle("active", overviewSection.classList.contains("active"));
+      else if (overviewSection.classList.contains("active")) tab.classList.toggle("active", tab.dataset.target === "overview");
+    });
+    new MutationObserver(syncTotalTab).observe(overviewSection, { attributes: true, attributeFilter: ["class"] });
+    syncTotalTab();
+  }
+
+  // 表格里被省略号截断的门店名/服务商名，用原生 title 保留完整信息。
+  document.querySelectorAll("#stores td:nth-child(4) strong, #stores td:nth-child(5) .provider").forEach(node => {
+    if (!node.title) node.title = node.textContent.trim();
+  });
+
   const regionTitle = (document.querySelector(".topbar h1") || document.querySelector("h1"))?.textContent.trim() || "经营区";
   document.title = `生意经基础看板 · ${regionTitle}`;
   const brand = document.querySelector(".brand");
@@ -6649,27 +7554,7 @@ SOFTWARE. */
   ambient.innerHTML = "<span></span><span></span><span></span>";
   document.body.prepend(ambient);
 
-  // 导航玻璃的跟随高光。
-  const sidebar = document.querySelector(".sidebar");
-  if (sidebar) {
-    const move = event => {
-      const box = sidebar.getBoundingClientRect();
-      sidebar.style.setProperty("--jj-mx", `${((event.clientX - box.left) / box.width) * 100}%`);
-      sidebar.style.setProperty("--jj-my", `${((event.clientY - box.top) / box.height) * 100}%`);
-      sidebar.style.setProperty("--jj-spec", "1");
-    };
-    sidebar.addEventListener("pointermove", move, { passive: true });
-    sidebar.addEventListener("pointerleave", () => sidebar.style.setProperty("--jj-spec", ".7"));
-  }
-
-  // KPI 卡片的光泽跟随指针，不做倾斜，保证数字始终水平可读。
-  document.querySelectorAll(".kpi").forEach(card => {
-    card.addEventListener("pointermove", event => {
-      const box = card.getBoundingClientRect();
-      card.style.setProperty("--jj-kx", `${((event.clientX - box.left) / box.width) * 100}%`);
-      card.style.setProperty("--jj-ky", `${((event.clientY - box.top) / box.height) * 100}%`);
-    }, { passive: true });
-  });
+  // 玻璃层改为静态高光：不再跟随指针重算，减少主线程负担。
 
   // ---------- 图表：渐变、面积、入场与 hover ----------
   let chartSeq = 0;
@@ -6821,59 +7706,8 @@ SOFTWARE. */
     tab.addEventListener("click", () => setTimeout(playVisible, 80));
   });
 
-  // ---------- 选中态：弹簧拖尾 + 激活图标回弹 ----------
-  function setupSegmentGlow(host, selector) {
-    const pill = host.querySelector(".wb-selection");
-    if (!pill) return;
-    const buttons = [...host.querySelectorAll(selector)];
-    if (!buttons.length || host.querySelector(":scope > .jj-seg-glow")) return;
-    const glow = document.createElement("div");
-    glow.className = "jj-seg-glow";
-    glow.setAttribute("aria-hidden", "true");
-    host.insertBefore(glow, host.firstChild);
-    const sync = (immediate = false) => {
-      const index = buttons.findIndex(button => button.classList.contains("active"));
-      if (index < 0) { glow.style.opacity = "0"; return; }
-      const copies = [...pill.querySelectorAll(".wb-segment-copy")];
-      copies.forEach(copy => copy.classList.toggle("is-active-copy", copy.dataset.sourceIndex === String(index)));
-      const copy = copies.find(node => node.dataset.sourceIndex === String(index));
-      if (!copy) return;
-      const left = copy.style.left || "0px";
-      const top = copy.style.top || "0px";
-      const width = copy.style.width || "0px";
-      const height = copy.style.height || "0px";
-      if (width === "0px" || height === "0px") return;
-      if (immediate) glow.classList.add("is-init");
-      glow.style.opacity = ".5";
-      glow.style.transform = `translate3d(${left},${top},0)`;
-      glow.style.width = width;
-      glow.style.height = height;
-      if (immediate) requestAnimationFrame(() => glow.classList.remove("is-init"));
-    };
-    sync(true);
-    const observer = new MutationObserver(() => requestAnimationFrame(() => sync(false)));
-    observer.observe(pill, { attributes: true, attributeFilter: ["data-wb-selected"] });
-    buttons.forEach(button => observer.observe(button, { attributes: true, attributeFilter: ["class"] }));
-    const resize = new ResizeObserver(() => sync(true));
-    resize.observe(host);
-    buttons.forEach(button => resize.observe(button));
-    if (document.fonts?.ready) document.fonts.ready.then(() => sync(true));
-    window.addEventListener("resize", () => sync(true));
-  }
-  document.querySelectorAll(".sidebar, .glass-tabs, .mobile-nav").forEach(host => {
-    setupSegmentGlow(host, host.classList.contains("glass-tabs") ? "[data-local]" : "[data-target]");
-  });
-
-  // ---------- 玻璃选项卡：跟随指针的高光 ----------
-  document.querySelectorAll(".glass-tabs").forEach(host => {
-    host.addEventListener("pointermove", event => {
-      const box = host.getBoundingClientRect();
-      host.style.setProperty("--jj-gx", `${((event.clientX - box.left) / box.width) * 100}%`);
-      host.style.setProperty("--jj-gy", `${((event.clientY - box.top) / box.height) * 100}%`);
-      host.style.setProperty("--jj-glow", ".85");
-    }, { passive: true });
-    host.addEventListener("pointerleave", () => host.style.setProperty("--jj-glow", ".35"));
-  });
+  // ---------- 选中态由底层 workbench_interactions 统一维护 ----------
+  // v2 不再创建跟随光斑，避免额外观察器与装饰层。
 
   // ---------- 筛选与滚动位置：返回时原样恢复 ----------
   const pageKey = (location.pathname.split("/").pop() || "workbench").replace(/[^\w.-]+/g, "_");
@@ -6957,17 +7791,8 @@ SOFTWARE. */
     try { history.back(); } catch (_) {}
   });
 
-  // 重做层改变品牌与导航排版后，让原有的滑动选中块重新测量一次。
-  function refreshSegments() {
-    document.querySelectorAll(".sidebar, .mobile-nav, .glass-tabs").forEach(host => {
-      const active = host.querySelector(".nav-item.active, .glass-tab.active");
-      if (!active) return;
-      active.classList.remove("active");
-      requestAnimationFrame(() => requestAnimationFrame(() => active.classList.add("active")));
-    });
-  }
-  if (document.fonts?.ready) document.fonts.ready.then(() => setTimeout(refreshSegments, 80));
-  window.addEventListener("load", () => setTimeout(refreshSegments, 160));
+  // 选中块由 workbench_interactions 的 ResizeObserver 自行测量；
+  // 这里不再临时移除 active 类，避免用户恰好在此窗口点击时高亮被旧状态覆盖。
 
   // 减少动态效果或关闭动效时，立即呈现最终状态。
   reduced.addEventListener("change", () => {
