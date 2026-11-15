@@ -1899,7 +1899,8 @@ html[data-jj-redo="v1"] .command-button:active,
 html[data-jj-redo="v1"] .nav-item:active,
 html[data-jj-redo="v1"] .glass-tab:active,
 html[data-jj-redo="v1"] .mobile-nav button:active {
-  scale: .952 .915;
+  /* 只做亮度变化；不要缩放真实命中目标，否则边缘点击会在 pointerup 时落空。 */
+  scale: 1;
   transition-duration: .07s;
 }
 html[data-jj-redo="v1"] button:focus-visible,
@@ -3112,7 +3113,7 @@ html[data-jj-redo="v1"] :is(button, .command-button, .wb-display-open, .wb-float
   -webkit-tap-highlight-color: transparent;
 }
 html[data-jj-redo="v1"] button:not(.sort-trigger):active,
-html[data-jj-redo="v1"] .command-button:active { transform: none; filter: brightness(.97); }
+html[data-jj-redo="v1"] .command-button:active { transform: none; scale: 1; filter: brightness(.97); }
 html[data-jj-redo="v1"] button[data-wb-press="true"] { filter: brightness(.97); }
 html[data-jj-redo="v1"] .command-button {
   display: inline-flex;
