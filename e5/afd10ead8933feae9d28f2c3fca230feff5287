@@ -1,0 +1,32 @@
+docs/hangzhou-siku-hotel-atlas/api.js
+  h_8a7325ff3be7f5 1-18
+docs/hangzhou-siku-hotel-atlas/app.js
+  h_8a7325ff3be7f5 1-1129
+docs/hangzhou-siku-hotel-atlas/core.js
+  h_8a7325ff3be7f5 1-288
+docs/hangzhou-siku-hotel-atlas/data/siku-hotels.json
+  h_8a7325ff3be7f5 1-26795
+docs/hangzhou-siku-hotel-atlas/index.html
+  h_8a7325ff3be7f5 1-312
+docs/hangzhou-siku-hotel-atlas/marker-labels.css
+  h_8a7325ff3be7f5 1-47
+docs/hangzhou-siku-hotel-atlas/marker-labels.js
+  h_8a7325ff3be7f5 1-77
+docs/hangzhou-siku-hotel-atlas/real-data.js
+  h_8a7325ff3be7f5 1-26794
+docs/hangzhou-siku-hotel-atlas/styles.css
+  h_8a7325ff3be7f5 1-2315
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.21",
+  "base_commit_sha": "e5afd10ead8933feae9d28f2c3fca230feff5287",
+  "prompts": {},
+  "humans": {
+    "h_8a7325ff3be7f5": {
+      "author": "yishenweizhong <yishenweizhong@users.noreply.github.com>"
+    }
+  },
+  "attestation_metadata": {},
+  "remote_transcripts": {}
+}
